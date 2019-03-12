@@ -164,7 +164,6 @@ namespace MDIDemo.PublicClass
 
         public string GetMainWhereLable()
         {
-            //bool HaveChoose = false;
             bool HaveGroup = false;
             bool HaveHaving = false;
             List<Class_OrderBy> class_OrderBies = new List<Class_OrderBy>();
@@ -187,7 +186,6 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
                     break;
             }
-            //int WhereCounter = 0;
             stringBuilderWhereAnd.AppendFormat("{0}<where>\r\n", class_ToolWhere.GetSetSpaceCount(2));
             foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
             {
@@ -207,7 +205,6 @@ namespace MDIDemo.PublicClass
                     }
                     if (class_Field.WhereType == "OR")
                     {
-                        //HaveChoose = true;
                         IfLabel = string.Format("{1}<when test=\"{0} != null\">\r\n"
                             , class_Field.ParaName, class_ToolWhere.GetSetSpaceCount(4));
                     }
@@ -273,7 +270,6 @@ namespace MDIDemo.PublicClass
                     }
                     if (class_Field.WhereType == "OR")
                     {
-                        //<when test="title != null">
                         NowWhere += string.Format("{0}</when>\r\n", class_ToolWhere.GetSetSpaceCount(4));
                     }
                     if (class_Field.WhereType == "AND")
@@ -287,14 +283,13 @@ namespace MDIDemo.PublicClass
                 {
                     if (!HaveGroup)
                     {
-                        //class_ToolGroup.SetSpaceCount(4);
-                        stringBuilderGroup.AppendFormat("{0}", class_Field.FieldName);
                         HaveGroup = true;
                     }
                     else
                     {
-                        stringBuilderGroup.AppendFormat(",{0}", class_Field.FieldName);
+                        stringBuilderGroup.Append(",");
                     }
+                    stringBuilderGroup.AppendFormat("{0}", class_Field.FieldName);
                 }
                 #endregion
 
@@ -350,7 +345,7 @@ namespace MDIDemo.PublicClass
             class_OrderBies = class_OrderBies.OrderBy(a => a.SortNo).ToList();
             foreach (Class_OrderBy row in class_OrderBies)
             {
-                stringBuilderOrder.AppendFormat(",{0}{1}", row.FieldName,row.SortType);
+                stringBuilderOrder.AppendFormat(",{0}{1}", row.FieldName, row.SortType);
             }
             if (class_OrderBies.Count > 0)
             {
