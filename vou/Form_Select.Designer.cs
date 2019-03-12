@@ -2612,16 +2612,17 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox4.Items.AddRange(new object[] {
             "=",
+            "!=",
             "右Like",
-            "BETWEEN",
             "全Like",
             "左Like",
-            "!=",
+            "IN",
+            "NOT IN",
+            "BETWEEN",
             ">",
             "<",
             ">=",
             "<=",
-            "!=",
             "IS NULL",
             "IS NOT NULL"});
             this.repositoryItemComboBox4.Name = "repositoryItemComboBox4";
