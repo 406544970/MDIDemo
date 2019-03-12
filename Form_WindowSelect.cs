@@ -44,7 +44,6 @@ namespace MDIDemo
             gridViewC.SetGridView(this.gridView3);
             gridViewC.SetGridView(this.gridView4);
 
-            this.xtraTabControl1.SelectedTabPageIndex = 0;
             Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
             DataSet dataSet = new DataSet();
             dataSet = class_SQLiteOperator.GetAllWindowInfomation();
@@ -52,6 +51,8 @@ namespace MDIDemo
             this.gridControl2.DataSource = dataSet.Tables[1];
             this.gridControl3.DataSource = dataSet.Tables[2];
             this.gridControl4.DataSource = dataSet.Tables[3];
+            this.xtraTabControl1.SelectedTabPageIndex = 0;
+            this.gridView1.Focus();
         }
         private void SelectPageKey()
         {

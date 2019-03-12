@@ -17,6 +17,7 @@ namespace MDIDemo.PublicClass
             class_Main = new Class_Main();
             class_Subs = new Class_Sub();
             class_SubSubs = new Class_Sub();
+            class_WindowLastState = new Class_WindowLastState();
             LastSelectTableName = null;
             classType = "select";
             IsAutoWard = true;
@@ -28,6 +29,7 @@ namespace MDIDemo.PublicClass
 
         #region 属性
         public string AllPackerName { get; set; }
+        public Class_WindowLastState class_WindowLastState { get; set; }
         public Class_MyBatisMap class_MyBatisMap { get; set; }
         /// <summary>
         /// 生成代码类型
@@ -45,6 +47,32 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 子类
+
+        #region 界面最后状态
+        /// <summary>
+        /// 界面最后状态
+        /// </summary>
+        public partial class Class_WindowLastState
+        {
+            public Class_WindowLastState()
+            {
+                xtraTabControl1 = 0;
+                xtraTabControl3 = 0;
+                xtraTabControl5 = 0;
+                xtraTabControl8 = 0;
+                xtraTabControl6 = 0;
+                xtraTabControl7 = 0;
+                xtraTabControl9 = 0;
+            }
+            public int xtraTabControl1 { get; set; }
+            public int xtraTabControl3 { get; set; }
+            public int xtraTabControl5 { get; set; }
+            public int xtraTabControl8 { get; set; }
+            public int xtraTabControl6 { get; set; }
+            public int xtraTabControl7 { get; set; }
+            public int xtraTabControl9 { get; set; }
+        }
+        #endregion
 
         #region mybatisMap文件配置
         public partial class Class_MyBatisMap

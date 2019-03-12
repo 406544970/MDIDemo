@@ -37,7 +37,7 @@ namespace MDIDemo.PublicClass
             }
             catch (Exception ex)
             {
-                return value;
+                throw ex;
             }
             return value;
         }

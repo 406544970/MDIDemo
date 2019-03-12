@@ -34,7 +34,6 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        private int SpaceCount;
         public string GetSetSpaceCount(int Number)
         {
             if (Number > 0)
@@ -51,57 +50,8 @@ namespace MDIDemo.PublicClass
             else
                 return "";
         }
-        public int GetSpaceCount()
-        {
-            return SpaceCount;
-        }
-        public void SetSpaceCount(int Counter)
-        {
-            SpaceCount = Counter;
-        }
-        public void AddOne()
-        {
-            SpaceCount++;
-        }
-        public void LessOne()
-        {
-            if (SpaceCount > 0)
-                SpaceCount--;
-        }
-        public void ReSetSpaceCount()
-        {
-            SpaceCount = 0;
-        }
-        public string LessOneSpace()
-        {
-            if (SpaceCount > 0)
-                SpaceCount--;
-            return GetSpace();
-        }
-        public string AddOneSpace()
-        {
-            SpaceCount++;
-            return GetSpace();
-        }
-        public string GetSpace()
-        {
-            if (SpaceCount > 0)
-            {
-                int Index = 0;
-                string Result = null;
-                while (Index < SpaceCount)
-                {
-                    Result += "    ";
-                    Index++;
-                }
-                return Result;
-            }
-            else
-                return "";
-        }
         public Class_Tool()
         {
-            SpaceCount = 0;
             class_JavaAndJdbcs = new List<Class_JavaAndJdbc>();
             Class_JavaAndJdbc class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "VARCHAR";

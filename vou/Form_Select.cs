@@ -91,6 +91,13 @@ namespace MDIDemo.vou
             this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.TestUnit);
             this.textEdit21.Text = class_SelectAllModel.TestClassName;
 
+            this.xtraTabControl1.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl1;
+            this.xtraTabControl3.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl3;
+            this.xtraTabControl5.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl5;
+            this.xtraTabControl8.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl8;
+            this.xtraTabControl6.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl6;
+            this.xtraTabControl7.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl7;
+            this.xtraTabControl9.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl9;
 
             #region 主表
             this.textEdit14.Text = class_SelectAllModel.class_Main.MethodId;
@@ -334,8 +341,8 @@ namespace MDIDemo.vou
                 default:
                     break;
             }
-            if (PageSelectIndex > -1)
-                this.xtraTabControl5.SelectedTabPageIndex = PageSelectIndex;
+            //if (PageSelectIndex > -1)
+            //    this.xtraTabControl5.SelectedTabPageIndex = PageSelectIndex;
         }
         private void ToMain()
         {
@@ -345,7 +352,6 @@ namespace MDIDemo.vou
         {
             try
             {
-                labelControl1.Visible = false;
                 if (TableName == null)
                 {
                     int Index = this.listBoxControl1.SelectedIndex;
@@ -495,17 +501,11 @@ namespace MDIDemo.vou
             if (Index > -1)
             {
                 DataRow row = (sender as BandedGridView).GetDataRow(Index);
-                labelControl1.Visible = true;
-                labelControl1.Text = string.Format("共{0}列，已选择第{1}列", (sender as BandedGridView).DataRowCount.ToString(), (Index + 1).ToString());
                 if (row != null)
                 {
                     this.textEdit2.Text = row["FieldName"].ToString();
                     this.textEdit3.Text = row["FieldRemark"].ToString();
                 }
-            }
-            else
-            {
-                labelControl1.Text = string.Format("共{0}列", (sender as BandedGridView).DataRowCount.ToString());
             }
         }
         private void SelectCaseWhen(object sender)
@@ -639,6 +639,15 @@ namespace MDIDemo.vou
             class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
             class_SelectAllModel.TestUnit = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
             class_SelectAllModel.TestClassName = this.textEdit21.Text;
+
+            class_SelectAllModel.class_WindowLastState.xtraTabControl1 = this.xtraTabControl1.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl3 = this.xtraTabControl3.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl5 = this.xtraTabControl5.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl8 = this.xtraTabControl8.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl6 = this.xtraTabControl6.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl7 = this.xtraTabControl7.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl9 = this.xtraTabControl9.SelectedTabPageIndex;
+
             #region 主表
             class_SelectAllModel.class_Main.MethodId = this.textEdit14.Text;
             class_SelectAllModel.class_Main.MethodContent = this.textEdit15.Text;
@@ -744,19 +753,12 @@ namespace MDIDemo.vou
             if (Index > -1)
             {
                 DataRow row = (sender as BandedGridView).GetDataRow(Index);
-                labelControl2.Visible = true;
-                labelControl2.Text = string.Format("共{0}列，已选择第{1}列", (sender as BandedGridView).DataRowCount.ToString(), (Index + 1).ToString());
                 if (row != null)
                 {
                     this.textEdit5.Text = row["FieldName"].ToString();
                     this.textEdit4.Text = row["FieldRemark"].ToString();
                 }
             }
-            else
-            {
-                labelControl2.Text = string.Format("共{0}列", (sender as BandedGridView).DataRowCount.ToString());
-            }
-
         }
 
         private void bandedGridView3_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -765,17 +767,11 @@ namespace MDIDemo.vou
             if (Index > -1)
             {
                 DataRow row = (sender as BandedGridView).GetDataRow(Index);
-                labelControl3.Visible = true;
-                labelControl3.Text = string.Format("共{0}列，已选择第{1}列", (sender as BandedGridView).DataRowCount.ToString(), (Index + 1).ToString());
                 if (row != null)
                 {
                     this.textEdit8.Text = row["FieldName"].ToString();
                     this.textEdit7.Text = row["FieldRemark"].ToString();
                 }
-            }
-            else
-            {
-                labelControl3.Text = string.Format("共{0}列", (sender as BandedGridView).DataRowCount.ToString());
             }
         }
 
@@ -907,7 +903,7 @@ namespace MDIDemo.vou
             this.textEdit23.Text = string.Format("{0}.{1}", this.textEdit13.Text, this.textEdit24.Text);
         }
 
-        private void barButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void CreateCode()
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
             //1：保存到XML
@@ -926,33 +922,19 @@ namespace MDIDemo.vou
                 this.memoEdit4.Text = class_InterFaceCreateCode.GetMainMapLable();
                 this.DisplayText("代码已重新生成!");
             }
+            _SaveSelectToXml(false);
             waitDialogForm.Close();
+        }
+        private void barButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CreateCode();
         }
 
         private void memoEdit3_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F9 && e.Shift)
             {
-                WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
-                //1：保存到XML
-                _SaveSelectToXml(false);
-                //2：得到XML文件名
-                string MethodId = class_SelectAllModel.class_Create.MethodId;
-                //3：初始化生成类
-                Class_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(MethodId);
-                //4：验证合法性
-                if (class_InterFaceCreateCode.IsCheckOk())
-                {
-                    //5：生成代码
-                    //MAP
-                    this.memoEdit3.Text = class_InterFaceCreateCode.GetMainMap();
-                    //Select标签
-                    this.memoEdit4.Text = class_InterFaceCreateCode.GetMainMapLable();
-                    this.DisplayText("代码已重新生成!");
-
-                }
-                _SaveSelectToXml(false);
-                waitDialogForm.Close();
+                CreateCode();
             }
 
         }

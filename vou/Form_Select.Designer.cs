@@ -148,7 +148,6 @@
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
@@ -220,7 +219,6 @@
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit6 = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
@@ -292,7 +290,6 @@
             this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit8 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit9 = new DevExpress.XtraEditors.TextEdit();
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
@@ -2910,7 +2907,6 @@
             this.panelControl1.Controls.Add(this.textEdit10);
             this.panelControl1.Controls.Add(this.textEdit3);
             this.panelControl1.Controls.Add(this.textEdit2);
-            this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.textEdit1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -2944,13 +2940,6 @@
             this.textEdit2.Size = new System.Drawing.Size(127, 20);
             this.textEdit2.TabIndex = 2;
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(6, 8);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(0, 14);
-            this.labelControl1.TabIndex = 1;
-            // 
             // textEdit1
             // 
             this.textEdit1.Location = new System.Drawing.Point(5, 42);
@@ -2966,7 +2955,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(885, 638);
+            this.xtraTabPage12.Size = new System.Drawing.Size(885, 607);
             this.xtraTabPage12.Text = "从表一";
             // 
             // gridControl2
@@ -3001,7 +2990,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(885, 566);
+            this.gridControl2.Size = new System.Drawing.Size(885, 535);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -3732,7 +3721,6 @@
             this.panelControl2.Controls.Add(this.radioGroup1);
             this.panelControl2.Controls.Add(this.textEdit4);
             this.panelControl2.Controls.Add(this.textEdit5);
-            this.panelControl2.Controls.Add(this.labelControl2);
             this.panelControl2.Controls.Add(this.textEdit6);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
@@ -3814,13 +3802,6 @@
             this.textEdit5.Size = new System.Drawing.Size(127, 20);
             this.textEdit5.TabIndex = 2;
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(6, 8);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(0, 14);
-            this.labelControl2.TabIndex = 1;
-            // 
             // textEdit6
             // 
             this.textEdit6.Location = new System.Drawing.Point(5, 42);
@@ -3836,7 +3817,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(885, 638);
+            this.xtraTabPage14.Size = new System.Drawing.Size(885, 607);
             this.xtraTabPage14.Text = "从表二";
             // 
             // gridControl3
@@ -3871,7 +3852,7 @@
             this.repositoryItemCheckEdit35,
             this.repositoryItemComboBox23,
             this.repositoryItemComboBox24});
-            this.gridControl3.Size = new System.Drawing.Size(885, 566);
+            this.gridControl3.Size = new System.Drawing.Size(885, 535);
             this.gridControl3.TabIndex = 2;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});
@@ -4602,7 +4583,6 @@
             this.panelControl3.Controls.Add(this.radioGroup2);
             this.panelControl3.Controls.Add(this.textEdit7);
             this.panelControl3.Controls.Add(this.textEdit8);
-            this.panelControl3.Controls.Add(this.labelControl3);
             this.panelControl3.Controls.Add(this.textEdit9);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
@@ -4683,13 +4663,6 @@
             this.textEdit8.Properties.ReadOnly = true;
             this.textEdit8.Size = new System.Drawing.Size(127, 20);
             this.textEdit8.TabIndex = 2;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(6, 8);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(0, 14);
-            this.labelControl3.TabIndex = 1;
             // 
             // textEdit9
             // 
@@ -5217,6 +5190,7 @@
             this.memoEdit4.Name = "memoEdit4";
             this.memoEdit4.Size = new System.Drawing.Size(873, 362);
             this.memoEdit4.TabIndex = 3;
+            this.memoEdit4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memoEdit3_KeyDown);
             // 
             // panelControl7
             // 
@@ -5281,6 +5255,7 @@
             this.memoEdit5.Name = "memoEdit5";
             this.memoEdit5.Size = new System.Drawing.Size(873, 340);
             this.memoEdit5.TabIndex = 0;
+            this.memoEdit5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memoEdit3_KeyDown);
             // 
             // panelControl14
             // 
@@ -5333,6 +5308,7 @@
             this.memoEdit6.Name = "memoEdit6";
             this.memoEdit6.Size = new System.Drawing.Size(873, 340);
             this.memoEdit6.TabIndex = 3;
+            this.memoEdit6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memoEdit3_KeyDown);
             // 
             // panelControl15
             // 
@@ -5535,13 +5511,13 @@
             // xtraTabPage24
             // 
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(885, 607);
+            this.xtraTabPage24.Size = new System.Drawing.Size(885, 576);
             this.xtraTabPage24.Text = "xtraTabPage24";
             // 
             // xtraTabPage25
             // 
             this.xtraTabPage25.Name = "xtraTabPage25";
-            this.xtraTabPage25.Size = new System.Drawing.Size(885, 607);
+            this.xtraTabPage25.Size = new System.Drawing.Size(885, 576);
             this.xtraTabPage25.Text = "xtraTabPage25";
             // 
             // xtraTabPage28
@@ -5748,7 +5724,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
@@ -5781,7 +5756,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).EndInit();
@@ -5818,7 +5792,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit36)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
@@ -6019,7 +5992,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn28;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit textEdit3;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit2;
@@ -6114,7 +6086,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.TextEdit textEdit4;
         private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit textEdit6;
         private DevExpress.XtraGrid.GridControl gridControl3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView3;
@@ -6172,7 +6143,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.TextEdit textEdit7;
         private DevExpress.XtraEditors.TextEdit textEdit8;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit textEdit9;
         private DevExpress.XtraEditors.RadioGroup radioGroup1;
         private DevExpress.XtraEditors.RadioGroup radioGroup2;
