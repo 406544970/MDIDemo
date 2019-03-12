@@ -162,6 +162,7 @@ namespace MDIDemo.PublicClass
 
         public string GetMainWhereLable()
         {
+            bool HavaChoose = false;
             Class_Tool class_ToolWhere = new Class_Tool();
             Class_Tool class_ToolChoose = new Class_Tool();
             StringBuilder stringBuilderWhereAnd = new StringBuilder();
@@ -190,84 +191,106 @@ namespace MDIDemo.PublicClass
                 #region Where
                 if (class_Field.WhereSelect)
                 {
+                    if (WhereCounter++ == 0)
+                    {
+                        class_ToolWhere.SetSpaceCount(3);
+                    }
+                    string FieldName = class_Field.FieldName;
+                    string IfLabel = null;
+                    string NowWhere = null;
                     if (class_Field.WhereType == "AND")
                     {
-                        if (WhereCounter++ == 0)
-                        {
-                            class_ToolWhere.SetSpaceCount(3);
-                        }
-                        string FieldName = class_Field.FieldName;
-                        string IfLabel = null;
-                        string NowWhere = null;
                         if (class_Field.WhereIsNull)
                         {
                             IfLabel = string.Format("{1}<if test=\"{0} != null\">\r\n", class_Field.ParaName, class_ToolWhere.GetSpace());
                         }
-                        //<if test="title != null">
-                        //  AND title like #{title}
-                        //</if>
-                        NowWhere = string.Format("{0}{2} {1} "
-                            , class_ToolWhere.AddOneSpace()
-                            , FieldName
-                            , class_Field.WhereType);
-                        int LikeType = class_Field.LogType.IndexOf("Like") > -1 ? 1 : -100;
-                        if (class_Field.LogType.Equals("左Like"))
-                            LikeType = -1;
-                        if (class_Field.LogType.Equals("右Like"))
-                            LikeType = 1;
-                        if (class_Field.LogType.Equals("全Like"))
-                            LikeType = 0;
-                        NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
-                        if (class_Field.WhereValue == "固定值")
+                    }
+                    if (class_Field.WhereType == "OR")
+                    {
+                        if (!HavaChoose)
                         {
-                            NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
+                            class_ToolChoose.SetSpaceCount(class_ToolWhere.GetSpaceCount() + 1);
                         }
+                        HavaChoose = true;
+                        IfLabel = string.Format("{1}<when test=\"{0} != null\">\r\n", class_Field.ParaName, class_ToolChoose.GetSpace());
+                    }
+                    NowWhere = string.Format("{0}{2} {1} "
+                        , (class_Field.WhereType == "AND" ? class_ToolWhere.AddOneSpace() : class_ToolChoose.AddOneSpace())
+                        , FieldName
+                        , class_Field.WhereType);
+                    int LikeType = class_Field.LogType.IndexOf("Like") > -1 ? 1 : -100;
+                    if (class_Field.LogType.Equals("左Like"))
+                        LikeType = -1;
+                    if (class_Field.LogType.Equals("右Like"))
+                        LikeType = 1;
+                    if (class_Field.LogType.Equals("全Like"))
+                        LikeType = 0;
+                    NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
+                    if (class_Field.WhereValue == "固定值")
+                    {
+                        NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
+                    }
+                    else
+                    {
+                        if (LikeType < -99)
+                            NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
+                            , class_Field.ParaName
+                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
                         else
                         {
-                            if (LikeType < -99)
-                                NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
-                                , class_Field.ParaName
-                                , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
-                            else
+                            switch (LikeType)
                             {
-                                switch (LikeType)
-                                {
-                                    case -1:
-                                        NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
-                                        break;
-                                    case 0:
-                                        NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}%";
-                                        break;
-                                    case 1:
-                                        NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}%";
-                                        break;
-                                    default:
-                                        NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
-                                        break;
-                                }
+                                case -1:
+                                    NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
+                                    , class_Field.ParaName
+                                    , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
+                                    break;
+                                case 0:
+                                    NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
+                                    , class_Field.ParaName
+                                    , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}%";
+                                    break;
+                                case 1:
+                                    NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
+                                    , class_Field.ParaName
+                                    , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}%";
+                                    break;
+                                default:
+                                    NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
+                                    , class_Field.ParaName
+                                    , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
+                                    break;
                             }
                         }
-                        if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf(">") > -1) || (class_Field.LogType.IndexOf("&") > -1))
-                            NowWhere = string.Format("{0}<!CDATA[{1}]]>\r\n", class_ToolWhere.GetSpace(), NowWhere.Trim());
-                        else
-                            NowWhere += "\r\n";
+                    }
+                    if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf(">") > -1) || (class_Field.LogType.IndexOf("&") > -1))
+                        NowWhere = string.Format("{0}<!CDATA[{1}]]>\r\n", class_ToolWhere.GetSpace(), NowWhere.Trim());
+                    else
+                        NowWhere += "\r\n";
+                    if (class_Field.WhereType == "AND")
+                    {
                         if (class_Field.WhereIsNull)
                         {
                             NowWhere += string.Format("{0}</if>\r\n", class_ToolWhere.LessOneSpace());
                         }
-
-                        stringBuilderWhereAnd.Append(IfLabel + NowWhere);
                     }
+                    if (class_Field.WhereType == "OR")
+                    {
+                        //<when test="title != null">
+                        NowWhere += string.Format("{0}</when>\r\n", class_ToolChoose.LessOneSpace());
+                    }
+                    if (class_Field.WhereType == "AND")
+                        stringBuilderWhereAnd.Append(IfLabel + NowWhere);
+                    if (class_Field.WhereType == "OR")
+                        stringBuilderWhereOr.Append(IfLabel + NowWhere);
                 }
                 #endregion
+            }
+            if (stringBuilderWhereOr.Length > 0)
+            {
+                stringBuilderWhereAnd.AppendFormat("{0}<choose>\r\n", class_ToolChoose.LessOneSpace());
+                stringBuilderWhereAnd.Append(stringBuilderWhereOr.ToString());
+                stringBuilderWhereAnd.AppendFormat("{0}</choose>\r\n", class_ToolChoose.GetSpace());
             }
             stringBuilderWhereAnd.AppendFormat("{0}</where>\r\n", class_ToolWhere.LessOneSpace());
             if (stringBuilderGroup.Length > 0)
