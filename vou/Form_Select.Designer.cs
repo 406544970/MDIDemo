@@ -2171,6 +2171,8 @@
             // 
             // bandedGridView1
             // 
+            this.bandedGridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.bandedGridView1.Appearance.Row.Options.UseFont = true;
             this.bandedGridView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand7,
             this.gridBand1,
@@ -2939,7 +2941,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(885, 638);
+            this.xtraTabPage12.Size = new System.Drawing.Size(885, 474);
             this.xtraTabPage12.Text = "从表一";
             // 
             // gridControl2
@@ -2974,7 +2976,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(885, 566);
+            this.gridControl2.Size = new System.Drawing.Size(885, 402);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -3800,7 +3802,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(885, 638);
+            this.xtraTabPage14.Size = new System.Drawing.Size(885, 474);
             this.xtraTabPage14.Text = "从表二";
             // 
             // gridControl3
@@ -3835,7 +3837,7 @@
             this.repositoryItemCheckEdit35,
             this.repositoryItemComboBox23,
             this.repositoryItemComboBox24});
-            this.gridControl3.Size = new System.Drawing.Size(885, 566);
+            this.gridControl3.Size = new System.Drawing.Size(885, 402);
             this.gridControl3.TabIndex = 2;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});

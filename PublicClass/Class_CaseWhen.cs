@@ -68,7 +68,7 @@ ORDER BY sub.sortNo
 ", CaseWhenId);
             List<string> vs = new List<string>();
             vs = mySqlite3.ExecuteReadList(Sql);
-            if (vs.Count > 0)
+            if ((vs != null) && (vs.Count > 0))
             {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.AppendFormat("CASE {0}\r\n", FieldName);
@@ -111,8 +111,7 @@ ORDER BY sub.sortNo
             }
             else
             {
-                vs.Clear();
-                return null;
+                return FieldName;
             }
         }
     }

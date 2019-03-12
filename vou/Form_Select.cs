@@ -189,8 +189,20 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit18);
             class_SetTextEdit.SetTextEdit(this.textEdit23);
             class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit10, Color.Yellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit11, Color.Yellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit12, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit1, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit2, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit3, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit4, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit5, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit6, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit7, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit8, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit9, true, Color.GreenYellow);
+
             this.xtraTabControl8.Images = this.xtraTabControl5.Images;
             for (int index = 0; index < this.xtraTabControl8.TabPages.Count; index++)
             {

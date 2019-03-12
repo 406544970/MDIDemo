@@ -39,6 +39,7 @@ namespace MDIDemo.PublicSetUp
             bgv.OptionsView.EnableAppearanceOddRow = true;
             bgv.OptionsCustomization.AllowGroup = false;
             bgv.OptionsView.ShowFooter = false;
+            bgv.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 11F);
         }
 
         private void pri_SetBandGridColumnStyle(BandedGridView bgv1, BandedGridColumn bgc, DataRow p_datarow)

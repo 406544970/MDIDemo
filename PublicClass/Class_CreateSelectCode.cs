@@ -258,7 +258,7 @@ namespace MDIDemo.PublicClass
                         }
                     }
                     if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf(">") > -1) || (class_Field.LogType.IndexOf("&") > -1))
-                        NowWhere = string.Format("{0}<!CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(5), NowWhere.Trim());
+                        NowWhere = string.Format("{0}<![CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(5), NowWhere.Trim());
                     else
                         NowWhere += "\r\n";
                     if (class_Field.WhereType == "AND")
@@ -338,7 +338,7 @@ namespace MDIDemo.PublicClass
             {
                 stringBuilderWhereAnd.AppendFormat("{0}HAVING ", class_ToolSpace.GetSetSpaceCount(2));
                 if ((stringBuilderHaving.ToString().IndexOf("<") > -1) || (stringBuilderHaving.ToString().IndexOf(">") > -1) || (stringBuilderHaving.ToString().IndexOf("&") > -1))
-                    stringBuilderWhereAnd.AppendFormat("<!CDATA[{0}]]>\r\n", stringBuilderHaving.ToString());
+                    stringBuilderWhereAnd.AppendFormat("<![CDATA[{0}]]>\r\n", stringBuilderHaving.ToString());
                 else
                     stringBuilderWhereAnd.Append(stringBuilderHaving.ToString() + "\r\n");
             }
