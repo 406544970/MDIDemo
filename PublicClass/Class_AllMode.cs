@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    public class Class_OrderBy
+    {
+        public string FieldName { get; set; }
+        public string SortType { get; set; }
+        public int SortNo { get; set; }
+    }
     public class Class_SqlServerAndJava: Class_MySqlFieldAndJava
     {
 

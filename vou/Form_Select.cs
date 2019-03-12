@@ -951,6 +951,7 @@ namespace MDIDemo.vou
                     this.DisplayText("代码已重新生成!");
 
                 }
+                _SaveSelectToXml(false);
                 waitDialogForm.Close();
             }
 

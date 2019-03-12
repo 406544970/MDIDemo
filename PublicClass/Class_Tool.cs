@@ -35,6 +35,22 @@ namespace MDIDemo.PublicClass
                 return null;
         }
         private int SpaceCount;
+        public string GetSetSpaceCount(int Number)
+        {
+            if (Number > 0)
+            {
+                int Index = 0;
+                string Result = null;
+                while (Index < Number)
+                {
+                    Result += "    ";
+                    Index++;
+                }
+                return Result;
+            }
+            else
+                return "";
+        }
         public int GetSpaceCount()
         {
             return SpaceCount;

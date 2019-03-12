@@ -71,23 +71,26 @@ namespace MDIDemo.PublicClass
                 }
                 foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
                 {
-                    if (class_Field.FieldIsKey)
+                    if (class_Field.SelectSelect)
                     {
-                        stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!--{4}-->\r\n"
-                            , class_Tool.GetSpace()
-                            , class_Field.FieldName
-                            , class_Field.ParaName
-                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))
-                            , class_Field.FieldRemark);
-                    }
-                    else
-                    {
-                        stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!--{4}-->\r\n"
-                            , class_Tool.GetSpace()
-                            , class_Field.FieldName
-                            , class_Field.ParaName
-                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))
-                            , class_Field.FieldRemark);
+                        if (class_Field.FieldIsKey)
+                        {
+                            stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!--{4}-->\r\n"
+                                , class_Tool.GetSpace()
+                                , class_Field.FieldName
+                                , class_Field.ParaName
+                                , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                , class_Field.FieldRemark);
+                        }
+                        else
+                        {
+                            stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!--{4}-->\r\n"
+                                , class_Tool.GetSpace()
+                                , class_Field.FieldName
+                                , class_Field.ParaName
+                                , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                , class_Field.FieldRemark);
+                        }
                     }
                 }
                 stringBuilder.AppendFormat("{0}</resultMap>\r\n", class_Tool.LessOneSpace());
@@ -162,9 +165,12 @@ namespace MDIDemo.PublicClass
 
         public string GetMainWhereLable()
         {
-            bool HavaChoose = false;
+            bool HaveChoose = false;
+            bool HaveGroup = false;
+            bool HaveHaving = false;
             Class_Tool class_ToolWhere = new Class_Tool();
             Class_Tool class_ToolChoose = new Class_Tool();
+            //Class_Tool class_ToolGroup = new Class_Tool();
             StringBuilder stringBuilderWhereAnd = new StringBuilder();
             StringBuilder stringBuilderWhereOr = new StringBuilder();
             StringBuilder stringBuilderGroup = new StringBuilder();
@@ -207,11 +213,11 @@ namespace MDIDemo.PublicClass
                     }
                     if (class_Field.WhereType == "OR")
                     {
-                        if (!HavaChoose)
+                        if (!HaveChoose)
                         {
                             class_ToolChoose.SetSpaceCount(class_ToolWhere.GetSpaceCount() + 1);
                         }
-                        HavaChoose = true;
+                        HaveChoose = true;
                         IfLabel = string.Format("{1}<when test=\"{0} != null\">\r\n", class_Field.ParaName, class_ToolChoose.GetSpace());
                     }
                     NowWhere = string.Format("{0}{2} {1} "
@@ -277,13 +283,49 @@ namespace MDIDemo.PublicClass
                     if (class_Field.WhereType == "OR")
                     {
                         //<when test="title != null">
-                        NowWhere += string.Format("{0}</when>\r\n", class_ToolChoose.LessOneSpace());
+                        NowWhere += string.Format("{0}</when>\r\n", class_ToolChoose.GetSetSpaceCount(2));
                     }
                     if (class_Field.WhereType == "AND")
                         stringBuilderWhereAnd.Append(IfLabel + NowWhere);
                     if (class_Field.WhereType == "OR")
                         stringBuilderWhereOr.Append(IfLabel + NowWhere);
                 }
+                #endregion
+                #region Group
+                if (class_Field.GroupSelect)
+                {
+                    if (!HaveGroup)
+                    {
+                        //class_ToolGroup.SetSpaceCount(4);
+                        stringBuilderGroup.AppendFormat("{0}", class_Field.FieldName);
+                        HaveGroup = true;
+                    }
+                    else
+                    {
+                        stringBuilderGroup.AppendFormat(",{0}", class_Field.FieldName);
+                    }
+                }
+                #endregion
+
+                #region Having
+                if (class_Field.HavingSelect)
+                {
+                    if (!HaveHaving)
+                    {
+                        HaveHaving = true;
+                    }
+                    else
+                    {
+                        stringBuilderHaving.Append(",");
+                    }
+                    stringBuilderHaving.AppendFormat("{0} {1} {2}"
+                        , class_Field.HavingFunction.Replace("?", class_Field.FieldName)
+                        , class_Field.HavingCondition
+                        , class_Field.HavingValue);
+                }
+                #endregion
+
+                #region Order
                 #endregion
             }
             if (stringBuilderWhereOr.Length > 0)
@@ -292,14 +334,19 @@ namespace MDIDemo.PublicClass
                 stringBuilderWhereAnd.Append(stringBuilderWhereOr.ToString());
                 stringBuilderWhereAnd.AppendFormat("{0}</choose>\r\n", class_ToolChoose.GetSpace());
             }
-            stringBuilderWhereAnd.AppendFormat("{0}</where>\r\n", class_ToolWhere.LessOneSpace());
+            stringBuilderWhereAnd.AppendFormat("{0}</where>\r\n", class_ToolWhere.GetSetSpaceCount(2));
             if (stringBuilderGroup.Length > 0)
             {
-
+                stringBuilderWhereAnd.AppendFormat("{0}GROUP BY ", class_ToolChoose.GetSetSpaceCount(2));
+                stringBuilderWhereAnd.Append(stringBuilderGroup.ToString() + "\r\n");
             }
             if (stringBuilderHaving.Length > 0)
             {
-
+                stringBuilderWhereAnd.AppendFormat("{0}HAVING ", class_ToolChoose.GetSetSpaceCount(2));
+                if ((stringBuilderHaving.ToString().IndexOf("<") > -1) || (stringBuilderHaving.ToString().IndexOf(">") > -1) || (stringBuilderHaving.ToString().IndexOf("&") > -1))
+                    stringBuilderWhereAnd.AppendFormat("<!CDATA[{0}]]>\r\n", stringBuilderHaving.ToString());
+                else
+                    stringBuilderWhereAnd.Append(stringBuilderHaving.ToString() + "\r\n");
             }
             if (stringBuilderOrder.Length > 0)
             {
