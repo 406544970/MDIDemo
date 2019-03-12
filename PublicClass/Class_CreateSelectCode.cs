@@ -186,7 +186,6 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
                     break;
             }
-            stringBuilderWhereAnd.AppendFormat("{0}<where>\r\n", class_ToolSpace.GetSetSpaceCount(2));
             foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
             {
                 #region Where
@@ -292,7 +291,6 @@ namespace MDIDemo.PublicClass
                     stringBuilderGroup.AppendFormat("{0}", class_Field.FieldName);
                 }
                 #endregion
-
                 #region Having
                 if (class_Field.HavingSelect)
                 {
@@ -310,7 +308,6 @@ namespace MDIDemo.PublicClass
                         , class_Field.HavingValue);
                 }
                 #endregion
-
                 #region Order
                 if (class_Field.OrderSelect)
                 {
@@ -328,7 +325,11 @@ namespace MDIDemo.PublicClass
                 stringBuilderWhereAnd.Append(stringBuilderWhereOr.ToString());
                 stringBuilderWhereAnd.AppendFormat("{0}</choose>\r\n", class_ToolSpace.GetSetSpaceCount(3));
             }
-            stringBuilderWhereAnd.AppendFormat("{0}</where>\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            if (stringBuilderWhereAnd.Length > 0)
+            {
+                stringBuilderWhereAnd.Insert(0,string.Format("{0}<where>\r\n", class_ToolSpace.GetSetSpaceCount(2)));
+                stringBuilderWhereAnd.AppendFormat("{0}</where>\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            }
             if (stringBuilderGroup.Length > 0)
             {
                 stringBuilderWhereAnd.AppendFormat("{0}GROUP BY ", class_ToolSpace.GetSetSpaceCount(2));
