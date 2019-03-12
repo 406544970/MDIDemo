@@ -808,18 +808,9 @@ namespace MDIDemo.vou
         }
         private void DisplayText(string Content)
         {
-            AddDisplayText(true);
             this.memoEdit1.Text = string.Format("{1}\r\n{0}:----------->>>{2}", System.DateTime.Now.ToLongTimeString(), this.memoEdit1.Text, Content);
             this.memoEdit1.SelectionStart = this.memoEdit1.Text.Length;
             this.memoEdit1.ScrollToCaret();
-            //AddDisplayText(false);
-        }
-        private void AddDisplayText(bool IsVisibility)
-        {
-            if (IsVisibility)
-                dockPanel3.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Visible;
-            else
-                dockPanel3.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
         }
 
         private void xtraTabControl5_MouseUp(object sender, MouseEventArgs e)
