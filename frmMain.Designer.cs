@@ -1503,7 +1503,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.bar5.FloatLocation = new System.Drawing.Point(59, 506);
             this.bar5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.iDocName),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem2, "", false, true, true, 457)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem2, "", false, true, true, 782)});
             this.bar5.OptionsBar.AllowQuickCustomization = false;
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.DrawSizeGrip = true;
@@ -1527,10 +1527,13 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barEditItem2.Edit = this.repositoryItemProgressBar2;
             this.barEditItem2.Id = 32;
             this.barEditItem2.Name = "barEditItem2";
+            this.barEditItem2.Size = new System.Drawing.Size(700, 0);
             // 
             // repositoryItemProgressBar2
             // 
+            this.repositoryItemProgressBar2.Maximum = 90;
             this.repositoryItemProgressBar2.Name = "repositoryItemProgressBar2";
+            this.repositoryItemProgressBar2.Step = 1;
             // 
             // bar4
             // 

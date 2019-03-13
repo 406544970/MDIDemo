@@ -16,6 +16,7 @@ using System.Text;
 using System.Collections.Generic;
 using MDIDemo.PublicClass;
 using DevExpress.Utils;
+using System.Threading;
 
 namespace DevExpress.XtraBars.Demos.MDIDemo
 {
@@ -88,11 +89,13 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
             Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
             class_WindowTypes = class_SQLiteOperator.GetWindowTypes();
-
+            this.barEditItem2.Visibility = BarItemVisibility.Always;
             if ((class_WindowTypes != null) && (class_WindowTypes.Count > 0))
             {
+                this.repositoryItemProgressBar2.Maximum = class_WindowTypes.Count;
+                this.repositoryItemProgressBar2.Minimum = 0;
                 Class_WindowType OpenPageTag = new Class_WindowType();
-
+                int Counter = 0;
                 foreach (Class_WindowType class_WindowType in class_WindowTypes)
                 {
                     if (class_WindowType.ActiveSign)
@@ -119,6 +122,9 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                             OpenSelectWin(class_WindowType.XmlFileName);
                             break;
                     }
+                    this.barEditItem2.EditValue = (++Counter).ToString();
+                    Thread.Sleep(0);
+                    Application.DoEvents();
                 }
                 int num = -1;
                 foreach (Form Children in this.MdiChildren)
@@ -142,6 +148,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                     }
                 }
             }
+            this.barEditItem2.Visibility = BarItemVisibility.Never;
         }
         private void iOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
