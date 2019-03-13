@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    public class class_ReadWriteSetUpXml
+    {
+        public class_ReadWriteSetUpXml()
+        {
+            GridFontSize = 11;
+            OpenWelcome = true;
+        }
+        public float GridFontSize { get; set; }
+        public bool OpenWelcome { get; set; }
+    }
     public class Class_WindowType
     {
         public Class_WindowType()

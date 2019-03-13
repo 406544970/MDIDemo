@@ -692,7 +692,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem22),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem24)});
-            this.bar4.Offset = 120;
+            this.bar4.Offset = 97;
             this.bar4.Text = "Custom 2";
             // 
             // barButtonItem22

@@ -5,6 +5,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.BandedGrid;
 using DevExpress.XtraGrid.Views.Grid;
+using MDIDemo.PublicClass;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,6 +33,8 @@ namespace MDIDemo.PublicSetUp
 
         private void pri_SetBandedGridViewStyle(BandedGridView bgv)
         {
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Font font = new Font("Tahoma", class_PublicMethod.GetGridFontSize());
             bgv.OptionsView.ShowColumnHeaders = true;
             bgv.OptionsView.ColumnAutoWidth = false;
             bgv.OptionsView.ShowAutoFilterRow = true;
@@ -39,7 +42,8 @@ namespace MDIDemo.PublicSetUp
             bgv.OptionsView.EnableAppearanceOddRow = true;
             bgv.OptionsCustomization.AllowGroup = false;
             bgv.OptionsView.ShowFooter = false;
-            bgv.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 11F);
+            //bgv.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 11F);
+            bgv.Appearance.Row.Font = font;
         }
 
         private void pri_SetBandGridColumnStyle(BandedGridView bgv1, BandedGridColumn bgc, DataRow p_datarow)

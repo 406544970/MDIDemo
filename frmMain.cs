@@ -320,8 +320,12 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.Text = _Text + " V " + _Version;
-            //openFirstPage();
             OpenHistoryWin();
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            if ((this.MdiChildren.Length == 0) && (class_PublicMethod.GetOpenWelcome()))
+            {
+                openFirstPage();
+            }
         }
 
         #region 公共方法
@@ -502,6 +506,21 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             class_SQLiteOperator.SaveCurrentOpenWin(class_WindowTypes);
             waitDialogForm.Close();
             waitDialogForm.Dispose();
+        }
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Font font = new Font("Tahoma", class_PublicMethod.GetGridFontSize());
+            FontDialog fontDialog = new FontDialog
+            {
+                Font = font
+            };
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+            {
+                class_PublicMethod.SetGridFontSize(fontDialog.Font.Size);
+            }
+            fontDialog.Dispose();
         }
     }
 }

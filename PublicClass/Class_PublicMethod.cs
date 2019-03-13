@@ -65,7 +65,72 @@ namespace MDIDemo.PublicClass
             else
                 return false;
         }
-
+        /// <summary>
+        /// 是否启动首页
+        /// </summary>
+        /// <returns></returns>
+        public bool GetOpenWelcome()
+        {
+            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
+            class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
+            if (class_ReadWriteSetUpXml != null)
+                return class_ReadWriteSetUpXml.OpenWelcome;
+            else
+                return true;
+        }
+        /// <summary>
+        /// 设置是否启动打开首页
+        /// </summary>
+        /// <param name="OpenWelcome"></param>
+        /// <returns></returns>
+        public bool SetOpenWelcome(bool OpenWelcome)
+        {
+            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
+            class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
+            class_ReadWriteSetUpXml.OpenWelcome = OpenWelcome;
+            return xmlUtil.ObjectSerialXml(Application.StartupPath, "SetUp", class_ReadWriteSetUpXml);
+        }
+        /// <summary>
+        /// 设置GridView字体大小
+        /// </summary>
+        /// <param name="FontSize"></param>
+        /// <returns></returns>
+        public bool SetGridFontSize(float FontSize)
+        {
+            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
+            //class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
+            if (_GetSetUpXml<class_ReadWriteSetUpXml>() != null)
+                class_ReadWriteSetUpXml.GridFontSize = FontSize;
+            else
+                class_ReadWriteSetUpXml.GridFontSize = 11;
+            return xmlUtil.ObjectSerialXml(Application.StartupPath, "SetUp", class_ReadWriteSetUpXml);
+        }
+        /// <summary>
+        /// 得到GridView字体大小尺寸
+        /// </summary>
+        /// <returns></returns>
+        public float GetGridFontSize()
+        {
+            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
+            class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
+            if (class_ReadWriteSetUpXml != null)
+                return class_ReadWriteSetUpXml.GridFontSize;
+            else
+                return 11;
+        }
+        /// <summary>
+        /// 得到XML内容
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private T _GetSetUpXml<T>() where T : class
+        {
+            string SetUpXmlFieldName = string.Format("{0}\\{1}.xml", Application.StartupPath, "SetUp");
+            if (File.Exists(SetUpXmlFieldName))
+                return xmlUtil.XmlSerialObject<T>(SetUpXmlFieldName);
+            else
+                return null;
+        }
         private T _FromXmlToObject<T>(string fileFolderName, string fileFullName) where T : class
         {
             fileFullName = string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, fileFolderName, fileFullName);
