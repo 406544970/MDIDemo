@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    public class Class_WindowType
+    {
+        public Class_WindowType()
+        {
+            ActiveSign = false;
+        }
+        public string XmlFileName { get; set; }
+        public string WindowType { get; set; }
+        public bool ActiveSign { get; set; }
+    }
     public class Class_OrderBy
     {
         public string FieldName { get; set; }

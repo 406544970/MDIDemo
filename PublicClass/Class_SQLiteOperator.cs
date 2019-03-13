@@ -58,6 +58,51 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10})"
             else
                 return -1;
         }
+        public List<Class_WindowType> GetWindowTypes()
+        {
+            List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
+            List<string> vs = new List<string>();
+            vs = mySqlite3.ExecuteReadList("Select XmlFileName,WindowType,ActiveSign From vou_CurrentOpenWin order by SortNo");
+            foreach (string row in vs)
+            {
+                string[] rowList = row.Split(';');
+                Class_WindowType class_WindowType = new Class_WindowType()
+                {
+                    XmlFileName = rowList[0],
+                    WindowType = rowList[1],
+                    ActiveSign = Convert.ToInt32(rowList[2]) == 1 ? true : false
+                };
+                class_WindowTypes.Add(class_WindowType);
+            }
+            return class_WindowTypes;
+        }
+        /// <summary>
+        /// 保存当前打开窗口状态
+        /// </summary>
+        /// <param name="class_WindowTypes"></param>
+        /// <returns></returns>
+        public int SaveCurrentOpenWin(List<Class_WindowType> class_WindowTypes)
+        {
+            int ResultCounter = 0;
+            int Counter = 1;
+            //1：删除数据库vou_CurrentOpenWin
+            mySqlite3.ExecuteSql("delete from vou_CurrentOpenWin");
+            if ((class_WindowTypes != null) && (class_WindowTypes.Count > 0))
+            {
+                //2：insert into
+                foreach (Class_WindowType class_WindowType in class_WindowTypes)
+                {
+                    string Sql = string.Format(@"Insert into vou_CurrentOpenWin(XmlFileName,WindowType,ActiveSign,SortNo)
+                        values('{0}','{1}',{2},{3})"
+                        , class_WindowType.XmlFileName
+                        , class_WindowType.WindowType
+                        , class_WindowType.ActiveSign ? 1 : 0
+                        , Counter++);
+                    ResultCounter += mySqlite3.ExecuteSql(Sql);
+                }
+            }
+            return ResultCounter;
+        }
         public bool InsertIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
         {
             if (_GetPageKeyCount(class_PageInfomationMode.pageKey) == 0)

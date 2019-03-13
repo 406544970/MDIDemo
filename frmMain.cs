@@ -65,20 +65,83 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         public void OpenSelectWin(string xmlFileName)
         {
+            Class_WindowType class_WindowType = new Class_WindowType();
+            class_WindowType.WindowType = "select";
             Form_Select form_Select;
             if (xmlFileName == null)
             {
                 form_Select = new Form_Select(mySkinName);
                 form_Select.Text = "新SELECT";
-                form_Select.Tag = "方法编号：无";
+                form_Select.Tag = class_WindowType;
             }
             else
             {
+                class_WindowType.XmlFileName = xmlFileName;
                 form_Select = new Form_Select(mySkinName, xmlFileName);
                 form_Select.Text = string.Format("SELECT：{0}", xmlFileName);
-                form_Select.Tag = xmlFileName;
+                form_Select.Tag = class_WindowType;
             }
             OpenSubForm(form_Select);
+        }
+        private void OpenHistoryWin()
+        {
+            List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
+            Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
+            class_WindowTypes = class_SQLiteOperator.GetWindowTypes();
+
+            if ((class_WindowTypes != null) && (class_WindowTypes.Count > 0))
+            {
+                Class_WindowType OpenPageTag = new Class_WindowType();
+
+                foreach (Class_WindowType class_WindowType in class_WindowTypes)
+                {
+                    if (class_WindowType.ActiveSign)
+                    {
+                        OpenPageTag.XmlFileName = class_WindowType.XmlFileName;
+                        OpenPageTag.WindowType = class_WindowType.WindowType;
+                        OpenPageTag.ActiveSign = class_WindowType.ActiveSign;
+                    }
+                    switch (class_WindowType.WindowType)
+                    {
+                        case "select":
+                            OpenSelectWin(class_WindowType.XmlFileName);
+                            break;
+                        case "insert":
+                            break;
+                        case "update":
+                            break;
+                        case "delete":
+                            break; 
+                        case "welcome":
+                            openFirstPage();
+                            break; 
+                        default:
+                            OpenSelectWin(class_WindowType.XmlFileName);
+                            break;
+                    }
+                }
+                int num = -1;
+                foreach (Form Children in this.MdiChildren)
+                {
+                    num++;
+                    Class_WindowType ChildrenTag = new Class_WindowType()
+                    {
+                        XmlFileName = (Children.Tag as Class_WindowType).XmlFileName,
+                        WindowType = (Children.Tag as Class_WindowType).WindowType,
+                    };
+                    if (ChildrenTag.XmlFileName.Equals(OpenPageTag.XmlFileName))
+                    {
+                        Children.WindowState = FormWindowState.Maximized;
+                        Children.Select();
+                        Children.BringToFront();
+                        if (this.xtraTabbedMdiManager1.MdiParent != null)
+                        {
+                            this.xtraTabbedMdiManager1.Pages[Children].TabControl.ViewInfo.SelectedTabPageIndex = num;
+                        }
+                        break;
+                    }
+                }
+            }
         }
         private void iOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -140,7 +203,17 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             foreach (Form Children in this.MdiChildren)
             {
                 num++;
-                if (Children.Tag.Equals(OpenPage.Tag))
+                Class_WindowType ChildrenTag = new Class_WindowType()
+                {
+                    XmlFileName = (Children.Tag as Class_WindowType).XmlFileName,
+                    WindowType = (Children.Tag as Class_WindowType).WindowType,
+                };
+                Class_WindowType OpenPageTag = new Class_WindowType()
+                {
+                    XmlFileName = (OpenPage.Tag as Class_WindowType).XmlFileName,
+                    WindowType = (OpenPage.Tag as Class_WindowType).WindowType,
+                };
+                if (ChildrenTag.XmlFileName.Equals(OpenPageTag.XmlFileName))
                 {
                     finder = true;
                     Children.WindowState = FormWindowState.Maximized;
@@ -164,6 +237,8 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                     this.xtraTabbedMdiManager1.Pages[OpenPage].TabControl.ViewInfo.SelectedTabPageIndex = base.MdiChildren.Length - 1;
                 }
                 waitDialogForm.Close();
+                waitDialogForm.Dispose();
+
             }
 
             RefreshForm(false);
@@ -176,7 +251,6 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         private void frmMain_MdiChildActivate(object sender, System.EventArgs e)
         {
-            //
         }
 
         private void iClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -246,7 +320,8 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.Text = _Text + " V " + _Version;
-            openFirstPage();
+            //openFirstPage();
+            OpenHistoryWin();
         }
 
         #region 公共方法
@@ -300,8 +375,11 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         private void openFirstPage()
         {
+            Class_WindowType class_WindowType = new Class_WindowType();
+            class_WindowType.WindowType = "welcome";
+            class_WindowType.XmlFileName = "代码生成器欢迎您啊！";
             Form_welCome form_WelCome = new Form_welCome(mySkinName);
-            form_WelCome.Tag = "代码生成器欢迎您啊！哦！哈哈哈！";
+            form_WelCome.Tag = class_WindowType;
             form_WelCome.mainPage = this;
             OpenSubForm(form_WelCome);
 
@@ -406,6 +484,24 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenSelectWin(null);
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WaitDialogForm waitDialogForm = new WaitDialogForm("正在保存当前状态......", "温馨提示");
+            List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
+            foreach (XtraMdiTabPage xtra in xtraTabbedMdiManager1.Pages)
+            {
+                Class_WindowType class_WindowType = new Class_WindowType();
+                class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
+                if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
+                    class_WindowType.ActiveSign = true;
+                class_WindowTypes.Add(class_WindowType);
+            }
+            Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
+            class_SQLiteOperator.SaveCurrentOpenWin(class_WindowTypes);
+            waitDialogForm.Close();
+            waitDialogForm.Dispose();
         }
     }
 }
