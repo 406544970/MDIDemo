@@ -150,6 +150,7 @@ namespace MDIDemo.vou
             class_SetUpBar.setBar(this.bar2, "提示操作");
             class_SetUpBar.setBar(this.bar1, "提示操作");
             class_SetUpBar.setBar(this.bar3, "提示操作");
+            class_SetUpBar.setBar(this.bar4, "提示操作");
 
             setIniSkin(publicSkinName);
             xtraTabControl3.SelectedTabPageIndex = 0;
@@ -820,7 +821,10 @@ namespace MDIDemo.vou
         }
         private void DisplayText(string Content)
         {
-            this.memoEdit1.Text = string.Format("{1}\r\n{0}:----------->>>{2}", System.DateTime.Now.ToLongTimeString(), this.memoEdit1.Text, Content);
+            if (this.memoEdit1.Text.Length > 0)
+                this.memoEdit1.Text = string.Format("{1}\r\n{0}:----------->>>{2}", System.DateTime.Now.ToLongTimeString(), this.memoEdit1.Text, Content);
+            else
+                this.memoEdit1.Text = string.Format("{0}:----------->>>{1}", System.DateTime.Now.ToLongTimeString(), Content);
             this.memoEdit1.SelectionStart = this.memoEdit1.Text.Length;
             this.memoEdit1.ScrollToCaret();
         }
