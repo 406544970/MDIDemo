@@ -25,7 +25,7 @@ namespace MDIDemo.PublicSetUp
         /// <param name="textEdit">控件对象</param>
         public void SetTextEdit(TextEdit textEdit)
         {
-            SetTextEdit(textEdit, true,Color.Red);
+            SetTextEdit(textEdit, true,Color.Tomato);
         }
         /// <summary>
         /// 设置DevTestEdit

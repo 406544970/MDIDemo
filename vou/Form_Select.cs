@@ -188,11 +188,17 @@ namespace MDIDemo.vou
 
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
             class_SetTextEdit.SetTextEdit(this.textEdit18);
+            class_SetTextEdit.SetTextEdit(this.textEdit25);
             class_SetTextEdit.SetTextEdit(this.textEdit23);
             class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit10, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit11, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit12, Color.Yellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit14, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit15, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit16, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit22, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit24, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit1, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit2, true, Color.GreenYellow);
@@ -895,19 +901,20 @@ namespace MDIDemo.vou
 
         private void textEdit16_EditValueChanged(object sender, EventArgs e)
         {
-            this.textEdit18.Text = string.Format("{0}.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
+            this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
             this.textEdit24.Text = (sender as TextEdit).Text;
         }
 
         private void textEdit13_EditValueChanged(object sender, EventArgs e)
         {
-            this.textEdit18.Text = string.Format("{0}.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
-            this.textEdit23.Text = string.Format("{0}.{1}", this.textEdit13.Text, this.textEdit24.Text);
+            this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
+            this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
+            //this.textEdit25.Text = string.Format("{0}.{1}Map", this.textEdit13.Text, this.textEdit22.Text);
         }
 
         private void textEdit24_EditValueChanged(object sender, EventArgs e)
         {
-            this.textEdit23.Text = string.Format("{0}.{1}", this.textEdit13.Text, this.textEdit24.Text);
+            this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
         }
 
         private void CreateCode()
@@ -943,6 +950,12 @@ namespace MDIDemo.vou
             {
                 CreateCode();
             }
+        }
+
+        private void textEdit22_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit25.Text = string.Format("{0}Map", this.textEdit22.Text);
+            //this.textEdit24.Text = (sender as TextEdit).Text;
         }
     }
 }

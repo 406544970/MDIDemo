@@ -38,34 +38,34 @@ namespace MDIDemo.PublicClass
 
         public string GetMainMap()
         {
-            Class_Tool class_ToolSpace = new Class_Tool();
-            StringBuilder stringBuilder = new StringBuilder();
-            Class_InterFaceDataBase class_InterFaceDataBase;
-            if (class_SelectAllModel.class_Main.IsAddXmlHead)
-            {
-                stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF - 8\" ?>\r\n");
-                stringBuilder.Append("< !DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
-            }
-            stringBuilder.AppendFormat("<mapper namespace=\"{0}.{1}Mapper\">\r\n"
-                , class_SelectAllModel.AllPackerName
-                , class_SelectAllModel.class_Main.NameSpace);
             if (class_SelectAllModel.class_Main.ResultType == 0)
             {
-                stringBuilder.AppendFormat("{0}<resultMap id=\"{1}\" type=\"{3}.{2}\">\r\n"
+                Class_Tool class_ToolSpace = new Class_Tool();
+                StringBuilder stringBuilder = new StringBuilder();
+                Class_InterFaceDataBase class_InterFaceDataBase;
+                if (class_SelectAllModel.class_Main.IsAddXmlHead)
+                {
+                    stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF - 8\" ?>\r\n");
+                    stringBuilder.Append("< !DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
+                }
+                stringBuilder.AppendFormat("<mapper namespace=\"{0}.dao.{1}Mapper\">\r\n"
+                    , class_SelectAllModel.AllPackerName
+                    , class_SelectAllModel.class_Main.NameSpace);
+                stringBuilder.AppendFormat("{0}<resultMap id=\"{1}Map\" type=\"{3}.model.{2}\">\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
                     , class_SelectAllModel.class_Main.ResultMapId
                     , class_SelectAllModel.class_Main.ResultMapType
-                , class_SelectAllModel.AllPackerName);
+                    , class_SelectAllModel.AllPackerName);
                 switch (class_SelectAllModel.class_SelectDataBase.databaseType)
                 {
                     case "MySql":
-                        class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
+                        class_InterFaceDataBase = new Class_MySqlDataBase();
                         break;
                     case "SqlServer 2017":
-                        class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
+                        class_InterFaceDataBase = new Class_SqlServer2017DataBase();
                         break;
                     default:
-                        class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
+                        class_InterFaceDataBase = new Class_MySqlDataBase();
                         break;
                 }
                 foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
@@ -93,38 +93,106 @@ namespace MDIDemo.PublicClass
                     }
                 }
                 stringBuilder.AppendFormat("{0}</resultMap>\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.Append("</mapper>\r\n");
+                if (stringBuilder.Length > 0)
+                    return stringBuilder.ToString();
+                else
+                    return null;
             }
-            stringBuilder.Append("</mapper>\r\n");
-            if (stringBuilder.Length > 0)
-                return stringBuilder.ToString();
             else
                 return null;
         }
-
+        private string GetSelectType(Class_SelectAllModel.Class_Main class_Main)
+        {
+            string ResultValue = null;
+            int Index = 0;
+            int Counter = 0;
+            while (Index < class_Main.class_Fields.Count)
+            {
+                if (class_Main.class_Fields[Index].SelectSelect)
+                {
+                    if (Counter == 0)
+                        ResultValue = class_Main.class_Fields[Index].ReturnType;
+                    Counter++;
+                }
+                if (Counter > 1)
+                    break;
+                Index++;
+            }
+            if (Counter > 1)
+                ResultValue = "mult";
+            return ResultValue;
+        }
+        private string GetParameterType(Class_SelectAllModel.Class_Main class_Main)
+        {
+            string ResultValue = null;
+            int Index = 0;
+            int Counter = 0;
+            while (Index < class_Main.class_Fields.Count)
+            {
+                if (class_Main.class_Fields[Index].WhereSelect)
+                {
+                    if (Counter == 0)
+                        ResultValue = class_Main.class_Fields[Index].FieldType;
+                    Counter++;
+                }
+                if (Counter > 1)
+                    break;
+                Index++;
+            }
+            if (Counter > 1)
+                ResultValue = "mult";
+            return ResultValue;
+        }
         public string GetMainMapLable()
         {
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             Class_InterFaceDataBase class_InterFaceDataBase;
+
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
             stringBuilder.AppendFormat("{1}<!--注释：{0}-->\r\n", class_SelectAllModel.class_Main.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0}<select id=\"{1}\" "
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_SelectAllModel.class_Main.MethodId);
-            stringBuilder.AppendFormat(" parameterType=\"{0}.{1}\">\r\n"
-                , class_SelectAllModel.AllPackerName
-                , "User");
-            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            if (class_SelectAllModel.class_Main.ResultType == 0)
             {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
-                    break;
+                stringBuilder.AppendFormat("resultMap=\"{0}Map\""
+                    , class_SelectAllModel.class_Main.ResultMapId
+                    , class_SelectAllModel.AllPackerName
+                    , class_SelectAllModel.class_Main.ResultMapType);
             }
+            else
+            {
+                string ResultType = GetSelectType(class_SelectAllModel.class_Main);
+                if (ResultType == "mult")
+                    stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
+                    , class_SelectAllModel.AllPackerName
+                    , class_SelectAllModel.class_Main.ResultMapType);
+                else
+                    stringBuilder.AppendFormat("resultType=\"{0}\""
+                    , class_InterFaceDataBase.GetJavaType(ResultType));
+            }
+            string FieldType = GetParameterType(class_SelectAllModel.class_Main);
+            if (FieldType == "mult")
+                stringBuilder.AppendFormat(" parameterType=\"{0}.{1}\">\r\n"
+                , class_SelectAllModel.AllPackerName
+                , class_SelectAllModel.class_Main.ResultMapType);
+            else
+                stringBuilder.AppendFormat(" parameterType=\"{0}\">\r\n"
+                , class_InterFaceDataBase.GetJavaType(FieldType));
+
             stringBuilder.AppendFormat("{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
             int Counter = 0;
             foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
@@ -137,14 +205,14 @@ namespace MDIDemo.PublicClass
                     {
                         Class_CaseWhen class_CaseWhen = new Class_CaseWhen();
                         FieldName = class_CaseWhen.GetCaseWhenContent(class_Field.CaseWhen, FieldName, class_ToolSpace.GetSetSpaceCount(3));
-                        if ((class_Field.FunctionName == null) || (class_Field.FunctionName.Length == 0))
-                        {
-                            FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
-                        }
                     }
                     if ((class_Field.FunctionName != null) && (class_Field.FunctionName.Length > 0))
                     {
                         FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}") + " AS {1}", FieldName, class_Field.ParaName);
+                    }
+                    if (!FieldName.Equals(class_Field.ParaName))
+                    {
+                        FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
                     }
                     if (Counter++ > 0)
                         stringBuilder.AppendFormat("{1},{0}<!--{2}-->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
@@ -177,13 +245,13 @@ namespace MDIDemo.PublicClass
             switch (class_SelectAllModel.class_SelectDataBase.databaseType)
             {
                 case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
                 case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
                     break;
                 default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
             foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
@@ -290,10 +358,10 @@ namespace MDIDemo.PublicClass
                             NowWhere += string.Format("{0}</when>\r\n", class_ToolSpace.GetSetSpaceCount(4));
                         }
                     }
-                        if (class_Field.WhereType == "AND")
-                            stringBuilderWhereAnd.Append(IfLabel + NowWhere);
-                        if (class_Field.WhereType == "OR")
-                            stringBuilderWhereOr.Append(IfLabel + NowWhere);
+                    if (class_Field.WhereType == "AND")
+                        stringBuilderWhereAnd.Append(IfLabel + NowWhere);
+                    if (class_Field.WhereType == "OR")
+                        stringBuilderWhereOr.Append(IfLabel + NowWhere);
                 }
                 #endregion
                 #region Group

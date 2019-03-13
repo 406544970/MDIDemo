@@ -21,6 +21,10 @@ namespace MDIDemo.PublicClass
         private string OperateType;
         private object class_AllModel;
         private List<Class_MySqlFieldAndJava> class_MySqlFieldAndJavas;
+        public Class_MySqlDataBase()
+        {
+            IniFieldTypeChange();
+        }
         public Class_MySqlDataBase(string ip, string dataBaseName, string userName, string passWord, int port)
         {
             if (ip != null)
@@ -109,11 +113,11 @@ namespace MDIDemo.PublicClass
             class_MySqlFieldAndJavas.Add(class_MySqlFieldAndJava);
             class_MySqlFieldAndJava = new Class_MySqlFieldAndJava();
             class_MySqlFieldAndJava.DataBaseFieldType = "INT";
-            class_MySqlFieldAndJava.JavaType = "java.lang.int";
+            class_MySqlFieldAndJava.JavaType = "java.lang.Integer";
             class_MySqlFieldAndJavas.Add(class_MySqlFieldAndJava);
             class_MySqlFieldAndJava = new Class_MySqlFieldAndJava();
             class_MySqlFieldAndJava.DataBaseFieldType = "TINYINT";
-            class_MySqlFieldAndJava.JavaType = "java.lang.int";
+            class_MySqlFieldAndJava.JavaType = "java.lang.Integer";
             class_MySqlFieldAndJavas.Add(class_MySqlFieldAndJava);
             class_MySqlFieldAndJava = new Class_MySqlFieldAndJava();
             class_MySqlFieldAndJava.DataBaseFieldType = "SMALLINT";
@@ -130,7 +134,7 @@ namespace MDIDemo.PublicClass
             class_MySqlFieldAndJava = new Class_MySqlFieldAndJava();
             class_MySqlFieldAndJava.DataBaseFieldType = "BIGINT";
             //class_MySqlFieldAndJava.JavaType = "java.math.BigInteger";
-            class_MySqlFieldAndJava.JavaType = "java.lang.int";
+            class_MySqlFieldAndJava.JavaType = "java.lang.Integer";
             class_MySqlFieldAndJavas.Add(class_MySqlFieldAndJava);
             class_MySqlFieldAndJava = new Class_MySqlFieldAndJava();
             class_MySqlFieldAndJava.DataBaseFieldType = "FLOAT";

@@ -92,7 +92,6 @@ ORDER BY sub.sortNo
                     if (index < vs.Count - 1)
                     {
                         WhenOrElse = "WHEN";
-                    }
                     if (whenTypeSign)
                         stringBuilder.AppendFormat("{0}{2} '{1}'", Space, whenContent, WhenOrElse);
                     else
@@ -101,6 +100,14 @@ ORDER BY sub.sortNo
                         stringBuilder.AppendFormat(" THEN '{0}'\r\n", thenContent);
                     else
                         stringBuilder.AppendFormat(" THEN {0}\r\n", thenContent);
+                    }
+                    else
+                    {
+                        if (thenTypeSign)
+                            stringBuilder.AppendFormat("{2}{1} '{0}'\r\n", thenContent, WhenOrElse, Space);
+                        else
+                            stringBuilder.AppendFormat("{2}{1} {0}\r\n", thenContent, WhenOrElse, Space);
+                    }
                 }
                 stringBuilder.AppendFormat("{0}END", Space);
                 vs.Clear();
