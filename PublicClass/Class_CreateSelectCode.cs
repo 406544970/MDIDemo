@@ -185,13 +185,18 @@ namespace MDIDemo.PublicClass
                     , class_InterFaceDataBase.GetJavaType(ResultType));
             }
             string FieldType = GetParameterType(class_SelectAllModel.class_Main);
-            if (FieldType == "mult")
-                stringBuilder.AppendFormat(" parameterType=\"{0}.{1}\">\r\n"
-                , class_SelectAllModel.AllPackerName
-                , class_SelectAllModel.class_Main.ResultMapType);
+            if (FieldType != null)
+            {
+                if (FieldType == "mult")
+                    stringBuilder.AppendFormat(" parameterType=\"{0}.{1}\">\r\n"
+                    , class_SelectAllModel.AllPackerName
+                    , class_SelectAllModel.class_Main.ResultMapType);
+                else
+                    stringBuilder.AppendFormat(" parameterType=\"{0}\">\r\n"
+                    , class_InterFaceDataBase.GetJavaType(FieldType));
+            }
             else
-                stringBuilder.AppendFormat(" parameterType=\"{0}\">\r\n"
-                , class_InterFaceDataBase.GetJavaType(FieldType));
+                stringBuilder.Append(" >\r\n");
 
             stringBuilder.AppendFormat("{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
             int Counter = 0;
