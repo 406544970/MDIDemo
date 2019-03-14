@@ -235,7 +235,7 @@ namespace MDIDemo.vou
         private void Form_Select_Shown(object sender, EventArgs e)
         {
             this.dockPanel1.Size = new System.Drawing.Size(295, 288);
-            //this.dockPanel2.Size = new System.Drawing.Size(314, 288);
+            this.dockPanel2.Size = new System.Drawing.Size(314, 288);
             //this.dockPanel3.Size = new System.Drawing.Size(552, 266);
         }
         private void AddColumnComboxHavingFunctionByDataType(RepositoryItemComboBox repositoryItemComboBox, string FieldType)
