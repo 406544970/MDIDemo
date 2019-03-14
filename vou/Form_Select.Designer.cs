@@ -2248,8 +2248,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox5.Items.AddRange(new object[] {
             "参数",
-            "固定值",
-            "当前时间"});
+            "固定值"});
             this.repositoryItemComboBox5.Name = "repositoryItemComboBox5";
             // 
             // bandedGridColumn19

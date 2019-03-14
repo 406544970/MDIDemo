@@ -130,7 +130,7 @@ namespace MDIDemo.PublicClass
             int Counter = 0;
             while (Index < class_Main.class_Fields.Count)
             {
-                if (class_Main.class_Fields[Index].WhereSelect)
+                if ((class_Main.class_Fields[Index].WhereSelect) && (class_Main.class_Fields[Index].WhereValue == "参数"))
                 {
                     if (Counter == 0)
                         ResultValue = class_Main.class_Fields[Index].FieldType;
@@ -286,9 +286,6 @@ namespace MDIDemo.PublicClass
                         , class_Field.WhereType);
                     if (class_Field.LogType.IndexOf("IN") > -1)
                     {
-                        //                      <foreach item = "item" index = "index" collection = "list" open = "(" separator = "," close = ")" >
-                        //          #{item}
-                        //</foreach>
                         NowWhere += string.Format("{2}\r\n{0}<foreach item = \"item\" index = \"index\" collection = \"{1}\" open = \"(\" separator = \", \" close = \")\" >\r\n"
                             , class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 4 : 5)
                             , FieldName
@@ -310,13 +307,9 @@ namespace MDIDemo.PublicClass
                         if (class_Field.LogType.Equals("全Like"))
                             LikeType = 0;
                         NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
-                        if (class_Field.WhereValue == "固定值")
+                        if (class_Field.WhereValue == "参数")
                         {
-                            NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
-                        }
-                        else
-                        {
-                            if (LikeType < -99)
+                            if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
                                 NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
                                 , class_Field.ParaName
                                 , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
@@ -340,15 +333,23 @@ namespace MDIDemo.PublicClass
                                         , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}%";
                                         break;
                                     default:
-                                        NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
+                                        if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
+                                            NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
                                         , class_Field.ParaName
                                         , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
                                         break;
                                 }
                             }
                         }
+                        else
+                        {
+                            if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType))
+                                NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
+                            else
+                                NowWhere = NowWhere + string.Format("{0}", class_Field.WhereValue);
+                        }
                         if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf(">") > -1) || (class_Field.LogType.IndexOf("&") > -1))
-                            NowWhere = string.Format("{0}<![CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(5), NowWhere.Trim());
+                            NowWhere = string.Format("{0}<![CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(4), NowWhere.Trim());
                         else
                             NowWhere += "\r\n";
                         if (class_Field.WhereType == "AND")
