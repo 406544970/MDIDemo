@@ -740,6 +740,14 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public string SelectContent { get; set; }
             public string ServiceInterFaceContent { get; set; }
+            /// <summary>
+            /// Service接口层方法返回说明
+            /// </summary>
+            public string ServiceInterFaceReturnRemark { get; set; }
+            /// <summary>
+            /// Service 返回单条，还是多条
+            /// </summary>
+            public int ServiceInterFaceReturnCount { get; set; }
             public string ServiceImplContent { get; set; }
             public string ModelContent { get; set; }
             public string DTOContent { get; set; }

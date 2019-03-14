@@ -463,7 +463,48 @@ namespace MDIDemo.PublicClass
 
         public string GetMainServiceInterFace()
         {
-            throw new NotImplementedException();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            Class_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n",System.DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.Append("public interface UserService {\r\n");
+            ///**
+            //* 添加更新
+            //* @param user
+            //* @return
+            //*/
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                ,class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @param {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark);
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            //R selectRoleById(long id );
+            if (class_SelectAllModel.class_Main.ServiceInterFaceReturnCount == 0)
+                stringBuilder.AppendFormat("{0}R", class_ToolSpace.GetSetSpaceCount(1));
+            else
+                stringBuilder.AppendFormat("{0}List<R>", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat(" {0}(long id);\r\n"
+                , class_SelectAllModel.class_Main.MethodId);
+            stringBuilder.Append("}\r\n");
+            return stringBuilder.ToString();
         }
 
         public string GetMainTestUnit()

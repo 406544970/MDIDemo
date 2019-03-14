@@ -117,6 +117,8 @@ namespace MDIDemo.vou
             this.textEdit22.Text = class_SelectAllModel.class_Main.ResultMapId;
             this.textEdit24.Text = class_SelectAllModel.class_Main.ResultMapType;
             this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
+            this.textEdit20.Text = class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark;
+            this.radioGroup9.SelectedIndex = class_SelectAllModel.class_Main.ServiceInterFaceReturnCount;
             #endregion
 
             if (class_SelectAllModel != null)
@@ -197,6 +199,8 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit14, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit15, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit16, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit19, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit20, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit22, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit24, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
@@ -684,6 +688,9 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_Main.ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
             class_SelectAllModel.class_Main.ResultMapId = this.textEdit22.Text;
             class_SelectAllModel.class_Main.ResultMapType = this.textEdit24.Text;
+            class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark = this.textEdit20.Text;
+            class_SelectAllModel.class_Main.ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
+
             #endregion
 
             if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
@@ -934,6 +941,8 @@ namespace MDIDemo.vou
                 this.memoEdit3.Text = class_InterFaceCreateCode.GetMainMap();
                 //Select标签
                 this.memoEdit4.Text = class_InterFaceCreateCode.GetMainMapLable();
+                //ServiceInterFace
+                this.memoEdit5.Text = class_InterFaceCreateCode.GetMainServiceInterFace();
                 this.DisplayText("代码已重新生成!");
             }
             _SaveSelectToXml(false);

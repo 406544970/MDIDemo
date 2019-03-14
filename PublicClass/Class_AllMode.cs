@@ -42,6 +42,14 @@ namespace MDIDemo.PublicClass
         public string JavaType;
     }
     /// <summary>
+    /// java基本类型与封闭类
+    /// </summary>
+    public class Class_JavaAndClosedClass
+    {
+        public string JavaType;
+        public string ClosedType;
+    }
+    /// <summary>
     /// java类型与jdbc类型
     /// </summary>
     public class Class_JavaAndJdbc

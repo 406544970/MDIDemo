@@ -52,6 +52,7 @@ namespace MDIDemo.PublicClass
         }
         public Class_Tool()
         {
+            #region Java基本类型与Jdbc类型
             class_JavaAndJdbcs = new List<Class_JavaAndJdbc>();
             Class_JavaAndJdbc class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "VARCHAR";
@@ -145,8 +146,61 @@ namespace MDIDemo.PublicClass
             class_JavaAndJdbc.JdbcType = "ARRAY";
             class_JavaAndJdbc.JavaType = "java.lang.Array";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+            #endregion
+
+            #region Java基本类型与封装类
+            class_JavaAndClosedClasses = new List<Class_JavaAndClosedClass>();
+            Class_JavaAndClosedClass class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "byte";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Byte";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "short";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Short";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "int";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Integer";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "long";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Long";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "float";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Float";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "double";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Double";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "char";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Character";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "boolean";
+            class_JavaAndClosedClass.ClosedType = "java.lang.Boolean";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            #endregion
         }
         private static List<Class_JavaAndJdbc> class_JavaAndJdbcs;
+        private static List<Class_JavaAndClosedClass> class_JavaAndClosedClasses;
+        /// <summary>
+        /// 根据封装类得到Java类
+        /// </summary>
+        /// <param name="ClosedType">封装类名称</param>
+        /// <returns></returns>
+        public static string GetJavaTypeByClosedType(string ClosedType)
+        {
+            if ((class_JavaAndClosedClasses == null) || (class_JavaAndClosedClasses.Count == 0))
+                return ClosedType;
+            int Index = class_JavaAndClosedClasses.FindIndex(a => a.JavaType.Equals(ClosedType));
+            if (Index > -1)
+                return string.Format("{0}", class_JavaAndClosedClasses[Index].JavaType);
+            else
+                return ClosedType;
+        }
         /// <summary>
         /// 通过JavaType类型，得到JDBC类型
         /// </summary>
