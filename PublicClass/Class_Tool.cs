@@ -9,115 +9,139 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Xml.Serialization;
+using static MDIDemo.PublicClass.Class_DataBaseContent;
 
 namespace MDIDemo.PublicClass
 {
     public class Class_ToExcel
     {
-        /// <summary>
-        /// 财务费用信息ToExcel
-        /// </summary>
-        public void AcountCashTempListToExcel()
-        {
-            DataSet ExcelDataSet = new DataSet();
-            //DateTime VouDate = Convert.ToDateTime(VouDateStr);
-            //string VouDateStr = this._GetRequest("VouDate");
-            //string OperName = _ReadCookid("PersName");
-            //string CorpName = this._GetRequest("CorpName");
-            //string DepartName = this._GetRequest("DepartName");
-            //string InvoiceNumber = this._GetRequest("InvoiceNumber");
-            DateTime VouDate = System.DateTime.Now;
-            string VouDateStr = null;
-            string OperName = null;
-            string CorpName = null;
-            string DepartName = null;
-            string InvoiceNumber = null;
-            #region 查询条件
-            StringBuilder WhereKey = new StringBuilder();
-            WhereKey.AppendFormat(@" Where CONVERT(varchar(7),AC.[WorkTime],120) = CONVERT(varchar(7),'{0}',120)", VouDateStr);
-            if (CorpName.Length > 0)
-                WhereKey.AppendFormat(@" And isnull(co.CorpName,AC.CorpName) like '%{0}%'", CorpName);
-            if (OperName.Length > 0)
-                WhereKey.AppendFormat(@" And AC.OperName = '{0}'", OperName);
-            if (DepartName.Length > 0)
-                WhereKey.AppendFormat(@" And Dep.DepartName like '{0}%'", DepartName);
-            if (InvoiceNumber.Length > 0)
-                WhereKey.AppendFormat(@" And AC.InvoiceNumber like '{0}%'", InvoiceNumber);
-            #endregion
+        //public string GetDataBaseContent(DataSet ExcelDataSet)
+        //{
+        //    string AllPathFieldName = null;
 
-            #region 外来参数
-            string TitleFileName = string.Format(@"{0}财务费用信息", VouDate.ToString("yyyy年MM月"));
-            #endregion
+        //    #region 外来参数
+        //    string TitleFileName = string.Format(@"数据库说明书{0}", System.DateTime.Now.ToString("yyyy年MM月dd日"));
+        //    #endregion
 
-            #region 参数
-            bool IsTotal = true;
-            bool IsAverage = false;
-            string ExcelFileName = string.Format(@"{0}财务费用信息.xlsx", VouDate.ToString("yyyy年MM月"));
-            #endregion
+        //    #region 参数
+        //    string ExcelFileName = string.Format(@"数据库说明书{0}.xlsx", System.DateTime.Now.ToString("yyyy年MM月dd日"));
+        //    #endregion
 
-            #region Sql语句集
-            ArrayList SqlArray = new ArrayList();
-            ArrayList FieldTitleArray = new ArrayList();
-            ArrayList SheetNameArray = new ArrayList();
-            ArrayList SheetTitleArray = new ArrayList();
-            ArrayList AveFieldNameArray = new ArrayList();
+        //    ArrayList FieldTitleArray = new ArrayList();
+        //    ArrayList SheetNameArray = new ArrayList();
+        //    ArrayList SheetTitleArray = new ArrayList();
+        //    ArrayList AveFieldNameArray = new ArrayList();
 
-            SqlArray.Add(string.Format(@"
-            Select isnull(co.CorpName,AC.CorpName) as [企业名称]
-                    ,Dep.[DepartName] as [所属部门]
-                    ,AC.[OperName] as [核算员]
-                    ,AC.InvoiceNumber as [发票号]  
-                    ,AC.InvoiceType as [发票类型] 
-                    ,Case When Convert(varchar(10),AC.[BillingTime],120) = '1900-01-01' then '' else Convert(varchar(10),AC.[BillingTime],120) end as [开票日期]
-                    ,Case When Convert(varchar(10),AC.[ArrivalTime],120) = '1900-01-01' then '' else Convert(varchar(10),AC.[ArrivalTime],120) end as [到款日期]
-                    ,AC.[NoTax] as [无税金额]
-                    ,AC.[TaxSix] as [6%税金额]
-                    ,AC.[TaxFive] as [5%税金额]
-                    ,AC.[TaxEleven] as [11%税金额]
-                    ,AC.[TaxSeventeen] as [17%税金额]
-                    ,AC.[NoTax] + AC.[TaxSix] + AC.[TaxFive] + AC.[TaxSeventeen]+AC.TaxEleven as [税合计]
-                    ,AC.[NoTax] + AC.[TaxSix] + AC.[TaxFive] + AC.[TaxSeventeen]+AC.TaxEleven - AC.[ReceiveAccount] as [应收金额]
-                    ,AC.[ReceiveAccount] as [实收金额]
-                    ,AC.[YSalary] - AC.[SSalary] as [工资]
-                    ,AC.[YTax] - AC.[STax] as [个税]
-                    ,AC.[YSoc] - AC.[SSoc] as [社保]
-                    ,AC.[YGjj] - AC.[SGjj] as [公积金]
-                    ,AC.[YAdminCash] - AC.[SAdminCash] as [行政费用]
-                    ,AC.[YOtherCash] - AC.[SOtherCash] as [其它费用]
-                    ,AC.[YSalary] + AC.[YTax] + AC.[YSoc] + AC.[YGjj] + AC.[YAdminCash] + AC.[YOtherCash] +AC.[YTaxCash]+AC.[YManageCash] - AC.[SSalary] - AC.[STax] - AC.[SSoc] - AC.[SGjj] - AC.[SAdminCash] - AC.[SOtherCash] as [差异小计]
-                    ,AC.[YSalary] as [应收工资]
-                    ,AC.[YTax] as [应收个税]
-                    ,AC.[YSoc] as [应收社保]
-                    ,AC.[YGjj] as [应收公积金]
-                    ,AC.[YAdminCash] as [应收行政费用]
-                    ,AC.[YOtherCash] as [应收其它费用]
-                    ,AC.[YTaxCash]  as [税金]
-                    ,AC.[YManageCash] as [管理费]
-                    ,AC.[YSalary] + AC.[YTax] + AC.[YSoc] + AC.[YGjj] + AC.[YAdminCash] + AC.[YOtherCash]+AC.[YTaxCash]+AC.[YManageCash] as [应收小计]
-                    ,AC.[SSalary] as [实付工资]
-                    ,AC.[STax] as [实付个税]
-                    ,AC.[SSoc] as [实付社保]
-                    ,AC.[SGjj] as [实付公积金]
-                    ,AC.[SAdminCash] as [实付行政费用]
-                    ,AC.[SOtherCash] as [实付其它费用]
-                    ,AC.[SSalary] + AC.[STax] + AC.[SSoc] + AC.[SGjj] + AC.[SAdminCash] + AC.[SOtherCash]  as [实付小计]                   
-                    ,Convert(varchar(19),AC.[WorkTime],120) as [数据生成时间]                                      
-                    ,AC.[Remark] as [备注]
-            From Vou_AcountCashTemp As AC Left join Inf_Department as Dep on Dep.ID = AC.DepartID 
-            left join Inf_CorpFinance as co on co.ID = AC.CorpID  {0}
-            Order by AC.[WorkTime] Desc
-            ", WhereKey.ToString()));
-            SheetTitleArray.Add(string.Format(@"{0}财务费用信息明细", VouDate.ToString("yyyy年MM月")));
-            SheetNameArray.Add("财务费用信息明细");
+        //    SheetTitleArray.Add(string.Format(@"{0}财务费用信息明细", System.DateTime.Now.ToString("yyyy年MM月dd日")));
+        //    SheetNameArray.Add("财务费用信息明细");
+
+        //    _GiveYouExcel(SheetNameArray, SheetTitleArray, false, ExcelFileName, FieldTitleArray, null, false, null, true, null, ExcelDataSet);
+        //    return AllPathFieldName;
+        //}
+        ///// <summary>
+        ///// 财务费用信息ToExcel
+        ///// </summary>
+        //public void AcountCashTempListToExcel()
+        //{
+        //    DataSet ExcelDataSet = new DataSet();
+        //    //DateTime VouDate = Convert.ToDateTime(VouDateStr);
+        //    //string VouDateStr = this._GetRequest("VouDate");
+        //    //string OperName = _ReadCookid("PersName");
+        //    //string CorpName = this._GetRequest("CorpName");
+        //    //string DepartName = this._GetRequest("DepartName");
+        //    //string InvoiceNumber = this._GetRequest("InvoiceNumber");
+        //    DateTime VouDate = System.DateTime.Now;
+        //    string VouDateStr = null;
+        //    string OperName = null;
+        //    string CorpName = null;
+        //    string DepartName = null;
+        //    string InvoiceNumber = null;
+        //    #region 查询条件
+        //    StringBuilder WhereKey = new StringBuilder();
+        //    WhereKey.AppendFormat(@" Where CONVERT(varchar(7),AC.[WorkTime],120) = CONVERT(varchar(7),'{0}',120)", VouDateStr);
+        //    if (CorpName.Length > 0)
+        //        WhereKey.AppendFormat(@" And isnull(co.CorpName,AC.CorpName) like '%{0}%'", CorpName);
+        //    if (OperName.Length > 0)
+        //        WhereKey.AppendFormat(@" And AC.OperName = '{0}'", OperName);
+        //    if (DepartName.Length > 0)
+        //        WhereKey.AppendFormat(@" And Dep.DepartName like '{0}%'", DepartName);
+        //    if (InvoiceNumber.Length > 0)
+        //        WhereKey.AppendFormat(@" And AC.InvoiceNumber like '{0}%'", InvoiceNumber);
+        //    #endregion
+
+        //    #region 外来参数
+        //    string TitleFileName = string.Format(@"{0}财务费用信息", VouDate.ToString("yyyy年MM月"));
+        //    #endregion
+
+        //    #region 参数
+        //    bool IsTotal = true;
+        //    bool IsAverage = false;
+        //    string ExcelFileName = string.Format(@"{0}财务费用信息.xlsx", VouDate.ToString("yyyy年MM月"));
+        //    #endregion
+
+        //    #region Sql语句集
+        //    ArrayList SqlArray = new ArrayList();
+        //    ArrayList FieldTitleArray = new ArrayList();
+        //    ArrayList SheetNameArray = new ArrayList();
+        //    ArrayList SheetTitleArray = new ArrayList();
+        //    ArrayList AveFieldNameArray = new ArrayList();
+
+        //    SqlArray.Add(string.Format(@"
+        //    Select isnull(co.CorpName,AC.CorpName) as [企业名称]
+        //            ,Dep.[DepartName] as [所属部门]
+        //            ,AC.[OperName] as [核算员]
+        //            ,AC.InvoiceNumber as [发票号]  
+        //            ,AC.InvoiceType as [发票类型] 
+        //            ,Case When Convert(varchar(10),AC.[BillingTime],120) = '1900-01-01' then '' else Convert(varchar(10),AC.[BillingTime],120) end as [开票日期]
+        //            ,Case When Convert(varchar(10),AC.[ArrivalTime],120) = '1900-01-01' then '' else Convert(varchar(10),AC.[ArrivalTime],120) end as [到款日期]
+        //            ,AC.[NoTax] as [无税金额]
+        //            ,AC.[TaxSix] as [6%税金额]
+        //            ,AC.[TaxFive] as [5%税金额]
+        //            ,AC.[TaxEleven] as [11%税金额]
+        //            ,AC.[TaxSeventeen] as [17%税金额]
+        //            ,AC.[NoTax] + AC.[TaxSix] + AC.[TaxFive] + AC.[TaxSeventeen]+AC.TaxEleven as [税合计]
+        //            ,AC.[NoTax] + AC.[TaxSix] + AC.[TaxFive] + AC.[TaxSeventeen]+AC.TaxEleven - AC.[ReceiveAccount] as [应收金额]
+        //            ,AC.[ReceiveAccount] as [实收金额]
+        //            ,AC.[YSalary] - AC.[SSalary] as [工资]
+        //            ,AC.[YTax] - AC.[STax] as [个税]
+        //            ,AC.[YSoc] - AC.[SSoc] as [社保]
+        //            ,AC.[YGjj] - AC.[SGjj] as [公积金]
+        //            ,AC.[YAdminCash] - AC.[SAdminCash] as [行政费用]
+        //            ,AC.[YOtherCash] - AC.[SOtherCash] as [其它费用]
+        //            ,AC.[YSalary] + AC.[YTax] + AC.[YSoc] + AC.[YGjj] + AC.[YAdminCash] + AC.[YOtherCash] +AC.[YTaxCash]+AC.[YManageCash] - AC.[SSalary] - AC.[STax] - AC.[SSoc] - AC.[SGjj] - AC.[SAdminCash] - AC.[SOtherCash] as [差异小计]
+        //            ,AC.[YSalary] as [应收工资]
+        //            ,AC.[YTax] as [应收个税]
+        //            ,AC.[YSoc] as [应收社保]
+        //            ,AC.[YGjj] as [应收公积金]
+        //            ,AC.[YAdminCash] as [应收行政费用]
+        //            ,AC.[YOtherCash] as [应收其它费用]
+        //            ,AC.[YTaxCash]  as [税金]
+        //            ,AC.[YManageCash] as [管理费]
+        //            ,AC.[YSalary] + AC.[YTax] + AC.[YSoc] + AC.[YGjj] + AC.[YAdminCash] + AC.[YOtherCash]+AC.[YTaxCash]+AC.[YManageCash] as [应收小计]
+        //            ,AC.[SSalary] as [实付工资]
+        //            ,AC.[STax] as [实付个税]
+        //            ,AC.[SSoc] as [实付社保]
+        //            ,AC.[SGjj] as [实付公积金]
+        //            ,AC.[SAdminCash] as [实付行政费用]
+        //            ,AC.[SOtherCash] as [实付其它费用]
+        //            ,AC.[SSalary] + AC.[STax] + AC.[SSoc] + AC.[SGjj] + AC.[SAdminCash] + AC.[SOtherCash]  as [实付小计]                   
+        //            ,Convert(varchar(19),AC.[WorkTime],120) as [数据生成时间]                                      
+        //            ,AC.[Remark] as [备注]
+        //    From Vou_AcountCashTemp As AC Left join Inf_Department as Dep on Dep.ID = AC.DepartID 
+        //    left join Inf_CorpFinance as co on co.ID = AC.CorpID  {0}
+        //    Order by AC.[WorkTime] Desc
+        //    ", WhereKey.ToString()));
+        //    SheetTitleArray.Add(string.Format(@"{0}财务费用信息明细", VouDate.ToString("yyyy年MM月")));
+        //    SheetNameArray.Add("财务费用信息明细");
 
 
-            string SumFieldName = @"
-            ,无税金额,6%税金额,5%税金额,11%税金额,17%税金额,税合计,应收金额,实收金额,工资,个税,社保,公积金,行政费用,其它费用,差异小计,应收工资,应收个税,应收社保,应收公积金,应收行政费用,应收其它费用,税金,管理费,应收小计,实付工资,实付个税,实付社保,实付公积金,实付行政费用,实付其它费用,实付小计,";
-            string LeftFieldName = ",备注,";
-            #endregion
+        //    string SumFieldName = @"
+        //    ,无税金额,6%税金额,5%税金额,11%税金额,17%税金额,税合计,应收金额,实收金额,工资,个税,社保,公积金,行政费用,其它费用,差异小计,应收工资,应收个税,应收社保,应收公积金,应收行政费用,应收其它费用,税金,管理费,应收小计,实付工资,实付个税,实付社保,实付公积金,实付行政费用,实付其它费用,实付小计,";
+        //    string LeftFieldName = ",备注,";
+        //    #endregion
 
-            _GiveYouExcel(SheetNameArray, SheetTitleArray, IsTotal, ExcelFileName, FieldTitleArray, IsTotal ? SumFieldName : null, IsAverage, IsAverage ? AveFieldNameArray : null, true, LeftFieldName, ExcelDataSet);
-        }
+        //    _GiveYouExcel(SheetNameArray, SheetTitleArray, IsTotal, ExcelFileName, FieldTitleArray, IsTotal ? SumFieldName : null, IsAverage, IsAverage ? AveFieldNameArray : null, true, LeftFieldName, ExcelDataSet);
+        //}
 
         private DataSet GetChangeExcel(ArrayList SqlArray, ArrayList TableNameArray)
         {
@@ -133,6 +157,212 @@ namespace MDIDemo.PublicClass
             //}
             //JsDB.Close(); JsDB.Dispose();
             return ReturnSet;
+        }
+
+        /// <summary>
+        /// 导出数据库说明书
+        /// </summary>
+        /// <param name="class_DataBaseContent"></param>
+        /// <returns></returns>
+        public string GetDataBaseContent(Class_DataBaseContent class_DataBaseContent, string AllPathFileName)
+        {
+            #region 参数
+            int TitleRow = 1;
+            int TitleLength = 7;
+            int TitleScriptRow = TitleRow + 2;
+            #endregion
+
+            if ((class_DataBaseContent != null) && (class_DataBaseContent.class_SheetContents.Count > 0))
+            {
+                using (ExcelPackage package = new ExcelPackage())
+                {
+                    int DataBeginRow = TitleScriptRow + 1;
+                    int DataEndRow = TitleScriptRow + 1;
+                    int DataBeginCol = 2;
+                    int DataEndCol = 2;
+                    //int TableIndex = 0;
+
+                    OfficeOpenXml.Table.TableStyles NowTableStyle = OfficeOpenXml.Table.TableStyles.Medium2;
+                    foreach (Class_SheetContent class_SheetContent in class_DataBaseContent.class_SheetContents)
+                    {
+                        DataEndRow = DataBeginRow + class_SheetContent.dataTable.Rows.Count;
+                        DataEndCol = DataBeginCol + class_SheetContent.dataTable.Columns.Count - 1;
+                        ExcelWorksheet NowSheet = package.Workbook.Worksheets.Add(class_SheetContent.SheetName);
+                        if (class_SheetContent.dataTable.Rows.Count > 0)
+                        {
+                            #region 设置字体和对齐
+                            NowSheet.Cells.Style.Font.Name = "微软雅黑";
+                            NowSheet.Cells.Style.Font.Size = 12;
+                            NowSheet.Cells.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                            NowSheet.Cells.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
+                            #endregion
+
+                            #region 标题
+                            if (class_SheetContent.SheetTitle.Length > 0)
+                            {
+                                NowSheet.Cells[TitleRow, DataBeginCol].Value = class_SheetContent.SheetTitle;
+                                NowSheet.Cells[TitleRow, DataBeginCol].Style.Font.Bold = true;
+                                NowSheet.Cells[TitleRow, DataBeginCol].Style.Font.Size = 24;
+                                NowSheet.Cells[TitleRow, DataBeginCol, TitleRow, DataBeginCol + TitleLength].Merge = true;
+                                NowSheet.Cells[TitleRow, DataBeginCol, TitleRow, DataBeginCol + TitleLength].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                NowSheet.Cells[TitleRow, DataBeginCol, TitleRow, DataBeginCol + TitleLength].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(91, 155, 213));
+                                NowSheet.Cells[TitleScriptRow, (DataEndCol > 9 ? 9 : DataEndCol) - 2, TitleScriptRow, DataEndCol > 9 ? 9 : DataEndCol].Merge = true;
+                            }
+                            #endregion
+
+                            #region 描述栏
+                            if (class_SheetContent.SheetTitle.Length > 0)
+                            {
+                                NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                                NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Style.Font.Bold = true;
+                                NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Style.Font.Size = 13;
+                                NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Value = string.Format("导出时间：{0}", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                            }
+                            #endregion
+
+                            #region 写入数据
+                            NowSheet.Cells[DataBeginRow, DataBeginCol].LoadFromDataTable(class_SheetContent.dataTable, true, NowTableStyle);
+                            #endregion
+
+                            #region 写入中文表头
+                            if (class_SheetContent.FieldTitleList.Count > 0)
+                            {
+                                for (int Index = 0; Index < class_SheetContent.FieldTitleList.Count; Index++)
+                                {
+                                    NowSheet.Cells[DataBeginRow, DataBeginCol + Index].Value = class_SheetContent.FieldTitleList[Index].ToString();
+                                    NowSheet.Cells[DataBeginRow, DataBeginCol + Index].Style.Font.Bold = true;
+                                }
+                            }
+                            #endregion
+
+                            #region 数字列左靠齐
+                            for (int Index = 0; Index < class_SheetContent.dataTable.Columns.Count; Index++)
+                            {
+                                if (Index > 0)
+                                {
+                                    string ColType = class_SheetContent.dataTable.Columns[Index].DataType.ToString();
+                                    bool IsRight = false;
+                                    bool IsNumber = false;
+                                    bool IsPercent = false;
+                                    #region 类型
+                                    switch (ColType)
+                                    {
+                                        case "System.Decimal":
+                                            IsRight = true;
+                                            IsNumber = true;
+                                            if ((class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("比例") > -1) || (class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("Scale") > -1))
+                                            {
+                                                IsPercent = true;
+                                            }
+                                            if (IsRight)
+                                            {
+                                                if (!IsPercent)
+                                                    NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.Numberformat.Format = "#,##0.00";
+                                                else
+                                                    NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.Numberformat.Format = "0.00%";
+                                            }
+                                            break;
+                                        case "System.Int32":
+                                            IsRight = true;
+                                            break;
+                                        case "System.String":
+                                            if (class_SheetContent.dataTable.Columns[Index].ColumnName == "FieldRemark")
+                                            {
+                                                NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                                            }
+                                            break;
+                                        case "System.Float":
+                                            IsRight = true;
+                                            IsNumber = true;
+                                            if ((class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("比例") > -1) || (class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("Scale") > -1))
+                                            {
+                                                IsPercent = true;
+                                            }
+                                            if (IsRight)
+                                            {
+                                                if (!IsPercent)
+                                                    NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.Numberformat.Format = "#,##0.00";
+                                                else
+                                                    NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.Numberformat.Format = "0.00%";
+                                            }
+                                            break;
+                                        default:
+                                            IsRight = false;
+                                            break;
+                                    }
+                                    if (IsRight)
+                                    {
+                                        NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                                    }
+                                    //if (IsTotal || IsAverage)
+                                    //{
+                                    //    if (IsTotal)
+                                    //    {
+                                    //        if (SumFieldNameList.IndexOf("," + NowTable.Columns[Index].Caption + ",") > -1)
+                                    //        {
+                                    //            NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Formula = string.Format(@"SUM({0})"
+                                    //                , new ExcelAddress(DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index).Address);
+                                    //            if (IsNumber)
+                                    //                NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Style.Numberformat.Format = "#,##0.00";
+                                    //        }
+                                    //    }
+                                    //    if (IsAverage)
+                                    //    {
+                                    //        if (AveFieldNameList.IndexOf(NowTable.Columns[Index].Caption) > -1)
+                                    //        {
+                                    //            NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Formula = string.Format(@"AVERAGE({0})"
+                                    //                , new ExcelAddress(DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index).Address);
+                                    //            if (IsNumber)
+                                    //                NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Style.Numberformat.Format = "#,##0.00";
+                                    //        }
+                                    //    }
+                                    //    NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                    //    NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Style.Fill.BackgroundColor.SetColor(Color.Blue);
+                                    //    NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Style.Font.Color.SetColor(Color.Yellow);
+                                    //    NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Style.Font.Bold = true;
+                                    //}
+                                    #endregion
+
+                                    //#region 备注
+                                    //string RemarkCol = NowTable.Columns[Index].ColumnName;
+                                    //if ((RemarkCol == "Remark") || (RemarkCol == "remark") || (RemarkCol == "备注"))
+                                    //{
+                                    //    NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                                    //    NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.WrapText = true;//自动换行
+                                    //}
+                                    //#endregion
+                                }
+                                NowSheet.Column(DataBeginCol + Index).AutoFit();
+                            }
+                            #endregion
+
+                            #region 边框
+                            NowSheet.Cells[DataBeginRow, DataBeginCol, DataEndRow, DataEndCol].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            NowSheet.Cells[DataBeginRow, DataBeginCol, DataEndRow, DataEndCol].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            NowSheet.Cells[DataBeginRow, DataBeginCol, DataEndRow, DataEndCol].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            NowSheet.Cells[DataBeginRow, DataBeginCol, DataEndRow, DataEndCol].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                            NowSheet.Cells[DataBeginRow, DataBeginCol, DataEndRow, DataEndCol].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thick);
+                            #endregion
+
+                            #region 表注释
+                            NowSheet.Cells[DataEndRow + 1, DataBeginCol].Value = string.Format("说明：{0}", class_SheetContent.TableContent);
+                            NowSheet.Cells[DataEndRow + 1, DataBeginCol].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
+                            NowSheet.Cells[DataEndRow + 1, DataBeginCol].Style.Font.Color.SetColor(Color.Blue);
+                            NowSheet.Cells[DataEndRow + 1, DataBeginCol].Style.Font.Bold = true;
+
+                            #endregion
+                        }
+
+                    }
+                    #region 保存EXCEL
+                    FileInfo file = new FileInfo(AllPathFileName);
+                    package.SaveAs(file);
+                    #endregion
+                }
+                return AllPathFileName;
+            }
+            else
+                return null;
         }
 
         /// <summary>

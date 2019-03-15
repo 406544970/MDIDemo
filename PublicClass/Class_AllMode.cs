@@ -1,11 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    /// <summary>
+    /// 数据库说明书类
+    /// </summary>
+    public class Class_DataBaseContent
+    {
+        public Class_DataBaseContent()
+        {
+            class_SheetContents = new List<Class_SheetContent>();
+        }
+        ~Class_DataBaseContent()
+        {
+            class_SheetContents.Clear();
+        }
+        /// <summary>
+        /// 单Sheet类
+        /// </summary>
+        public partial class Class_SheetContent
+        {
+            public Class_SheetContent()
+            {
+                dataTable = new DataTable();
+                FieldTitleList = new List<string>();
+            }
+            ~Class_SheetContent()
+            {
+                dataTable.Dispose();
+                FieldTitleList.Clear();
+            }
+            /// <summary>
+            /// Sheet名称
+            /// </summary>
+            public string SheetName;
+            /// <summary>
+            /// Sheet标题
+            /// </summary>
+            public string SheetTitle;
+            /// <summary>
+            /// 内容
+            /// </summary>
+            public string TableContent;
+            /// <summary>
+            /// 实际数据
+            /// </summary>
+            public DataTable dataTable;
+            /// <summary>
+            /// 列标题名称
+            /// </summary>
+            public List<string> FieldTitleList;
+        }
+        /// <summary>
+        /// 数据库说明书文件名称
+        /// </summary>
+        public string DataBaseFileName;
+        /// <summary>
+        /// Sheet集列表
+        /// </summary>
+        public List<Class_SheetContent> class_SheetContents;
+    }
     public class Class_TableInfo
     {
         /// <summary>

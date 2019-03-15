@@ -326,7 +326,7 @@ namespace MDIDemo.vou
                         this.radioGroup1.SelectedIndex = class_SelectAllModel.class_Subs.LinkType;
                         this.radioGroup3.SelectedIndex = class_SelectAllModel.class_Subs.CountToCount;
                         this.comboBoxEdit1.Text = class_SelectAllModel.class_Subs.OutFieldName;
-                        AddColumnRepositoryCombox(this.repositoryItemComboBox10); 
+                        AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox15, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
                         this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("从表一：{0}", TableName);
@@ -965,6 +965,18 @@ namespace MDIDemo.vou
         {
             this.textEdit25.Text = string.Format("{0}Map", this.textEdit22.Text);
             //this.textEdit24.Text = (sender as TextEdit).Text;
+        }
+
+        private void barButtonItem26_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string FileName = class_InterFaceDataBase.GetDataBaseContent();
+            if (FileName != null)
+            {
+                if (MessageBox.Show("数据库说明书已生成完成，是否打开？", "温馨提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                    System.Diagnostics.Process.Start(FileName);
+            }
+            else
+                MessageBox.Show("导出失败!");
         }
     }
 }

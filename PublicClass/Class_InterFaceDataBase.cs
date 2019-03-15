@@ -41,6 +41,12 @@ namespace MDIDemo.PublicClass
         bool IsAddPoint(string FieldType);
         void SetClass_AllModel<T>(T class_AllModel);
 
+        /// <summary>
+        /// 导出数据库说明书
+        /// </summary>
+        /// <param name="class_DataBaseContent"></param>
+        /// <returns></returns>
+        string GetDataBaseContent();
 
     }
 }

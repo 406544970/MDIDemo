@@ -582,5 +582,10 @@ namespace MDIDemo.PublicClass
                 this.class_AllModel = class_AllModel;
             }
         }
+
+        public string GetDataBaseContent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
