@@ -415,11 +415,11 @@ namespace MDIDemo.PublicClass
         /// 得到指定数据库所有用户表
         /// </summary>
         /// <returns></returns>
-        public List<string> GetUseTableList()
+        public List<Class_TableInfo> GetUseTableList()
         {
-            List<string> vs = new List<string>();
+            List<Class_TableInfo> vs = new List<Class_TableInfo>();
             string Str = string.Format(@"select d.[name] as TableName
-                ,isnull(f.value, '') as TableRemark
+                ,isnull(f.value, '') as TableComment
                 from sysobjects as d
                 left join sys.extended_properties f on d.id = f.major_id and f.minor_id = 0
                 where d.xtype in('u','V')
@@ -428,7 +428,10 @@ namespace MDIDemo.PublicClass
             UseTable = mydb.GetDataTable(Str);
             foreach (DataRow row in UseTable.Rows)
             {
-                vs.Add(row["TableName"].ToString());
+                Class_TableInfo class_TableInfo = new Class_TableInfo();
+                class_TableInfo.TableName = row["TableName"].ToString();
+                class_TableInfo.TableComment = row["TableComment"].ToString();
+                vs.Add(class_TableInfo);
             }
             UseTable.Dispose();
             return vs;

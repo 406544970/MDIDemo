@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
-    public class class_ReadWriteSetUpXml
+    public class Class_TableInfo
     {
-        public class_ReadWriteSetUpXml()
+        /// <summary>
+        /// 表名
+        /// </summary>
+        public string TableName;
+        /// <summary>
+        /// 表注释
+        /// </summary>
+        public string TableComment;
+    }
+    public class Class_ReadWriteSetUpXml
+    {
+        public Class_ReadWriteSetUpXml()
         {
             GridFontSize = 11;
             OpenWelcome = true;

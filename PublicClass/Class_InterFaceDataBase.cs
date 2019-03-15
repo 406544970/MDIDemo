@@ -23,7 +23,7 @@ namespace MDIDemo.PublicClass
         /// 得到用户列表
         /// </summary>
         /// <returns></returns>
-        List<string> GetUseTableList();
+        List<Class_TableInfo> GetUseTableList();
         /// <summary>
         /// 得到指定表结构
         /// </summary>

@@ -71,8 +71,8 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public bool GetOpenWelcome()
         {
-            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
-            class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
+            Class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new Class_ReadWriteSetUpXml();
+            class_ReadWriteSetUpXml = _GetSetUpXml<Class_ReadWriteSetUpXml>();
             if (class_ReadWriteSetUpXml != null)
                 return class_ReadWriteSetUpXml.OpenWelcome;
             else
@@ -85,8 +85,8 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public bool SetOpenWelcome(bool OpenWelcome)
         {
-            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
-            class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
+            Class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new Class_ReadWriteSetUpXml();
+            class_ReadWriteSetUpXml = _GetSetUpXml<Class_ReadWriteSetUpXml>();
             class_ReadWriteSetUpXml.OpenWelcome = OpenWelcome;
             return xmlUtil.ObjectSerialXml(Application.StartupPath, "SetUp", class_ReadWriteSetUpXml);
         }
@@ -97,9 +97,9 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public bool SetGridFontSize(float FontSize)
         {
-            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
+            Class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new Class_ReadWriteSetUpXml();
             //class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
-            if (_GetSetUpXml<class_ReadWriteSetUpXml>() != null)
+            if (_GetSetUpXml<Class_ReadWriteSetUpXml>() != null)
                 class_ReadWriteSetUpXml.GridFontSize = FontSize;
             else
                 class_ReadWriteSetUpXml.GridFontSize = 11;
@@ -111,8 +111,8 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public float GetGridFontSize()
         {
-            class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new class_ReadWriteSetUpXml();
-            class_ReadWriteSetUpXml = _GetSetUpXml<class_ReadWriteSetUpXml>();
+            Class_ReadWriteSetUpXml class_ReadWriteSetUpXml = new Class_ReadWriteSetUpXml();
+            class_ReadWriteSetUpXml = _GetSetUpXml<Class_ReadWriteSetUpXml>();
             if (class_ReadWriteSetUpXml != null)
                 return class_ReadWriteSetUpXml.GridFontSize;
             else

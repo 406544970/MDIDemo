@@ -497,7 +497,7 @@ namespace MDIDemo.vou
             if (listBoxControl1.ItemCount > 0)
                 listBoxControl1.Items.Clear();
             myTableNameList.Clear();
-            myTableNameList = class_InterFaceDataBase.GetUseTableList();
+            myTableNameList = class_InterFaceDataBase.GetUseTableList().Select(a => a.TableName).ToList();
             foreach (string row in myTableNameList)
             {
                 this.listBoxControl1.Items.Add(row);

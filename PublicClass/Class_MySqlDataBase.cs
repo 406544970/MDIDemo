@@ -499,10 +499,11 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             }
         }
 
-        public List<string> GetUseTableList()
+        public List<Class_TableInfo> GetUseTableList()
         {
-            List<string> vs = new List<string>();
+            List<Class_TableInfo> vs = new List<Class_TableInfo>();
             string Str = string.Format(@"SELECT TABLE_NAME AS TableName
+                ,TABLE_COMMENT as TableComment
                 FROM information_schema.TABLES
                 WHERE TABLE_SCHEMA = '{0}'
                 ORDER BY CREATE_TIME", this.DataBaseName);
@@ -510,7 +511,10 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             UseTable = mySqlDb.GetDataTable(Str);
             foreach (DataRow row in UseTable.Rows)
             {
-                vs.Add(row["TableName"].ToString());
+                Class_TableInfo class_TableInfo = new Class_TableInfo();
+                class_TableInfo.TableName = row["TableName"].ToString();
+                class_TableInfo.TableComment = row["TableComment"].ToString();
+                vs.Add(class_TableInfo);
             }
             UseTable.Dispose();
             return vs;
