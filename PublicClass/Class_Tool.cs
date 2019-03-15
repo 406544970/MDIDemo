@@ -19,6 +19,7 @@ namespace MDIDemo.PublicClass
         /// </summary>
         public void AcountCashTempListToExcel()
         {
+            DataSet ExcelDataSet = new DataSet();
             //DateTime VouDate = Convert.ToDateTime(VouDateStr);
             //string VouDateStr = this._GetRequest("VouDate");
             //string OperName = _ReadCookid("PersName");
@@ -50,7 +51,7 @@ namespace MDIDemo.PublicClass
 
             #region 参数
             bool IsTotal = true;
-            bool IsAVERAGE = false;
+            bool IsAverage = false;
             string ExcelFileName = string.Format(@"{0}财务费用信息.xlsx", VouDate.ToString("yyyy年MM月"));
             #endregion
 
@@ -59,7 +60,7 @@ namespace MDIDemo.PublicClass
             ArrayList FieldTitleArray = new ArrayList();
             ArrayList SheetNameArray = new ArrayList();
             ArrayList SheetTitleArray = new ArrayList();
-            ArrayList AVEFieldNameArray = new ArrayList();
+            ArrayList AveFieldNameArray = new ArrayList();
 
             SqlArray.Add(string.Format(@"
             Select isnull(co.CorpName,AC.CorpName) as [企业名称]
@@ -115,7 +116,7 @@ namespace MDIDemo.PublicClass
             string LeftFieldName = ",备注,";
             #endregion
 
-            _GiveYouExcel(SqlArray, SheetNameArray, SheetTitleArray, IsTotal, ExcelFileName, FieldTitleArray, IsTotal ? SumFieldName : null, IsAVERAGE, IsAVERAGE ? AVEFieldNameArray : null, true, LeftFieldName);
+            _GiveYouExcel(SheetNameArray, SheetTitleArray, IsTotal, ExcelFileName, FieldTitleArray, IsTotal ? SumFieldName : null, IsAverage, IsAverage ? AveFieldNameArray : null, true, LeftFieldName, ExcelDataSet);
         }
 
         private DataSet GetChangeExcel(ArrayList SqlArray, ArrayList TableNameArray)
@@ -137,20 +138,25 @@ namespace MDIDemo.PublicClass
         /// <summary>
         /// 导出EXCEL
         /// </summary>
-        /// <param name="SqlArray">Sql语句集</param>
         /// <param name="SheetNameArray">Sheet名</param>
         /// <param name="SheetTitleArray">Sheet内部标题</param>
         /// <param name="IsTotal">是否有合计</param>
         /// <param name="ExcelFileName">EXCEL文件名</param>
         /// <param name="FieldTitleArray">中文表头</param>
         /// <param name="SumFieldNameList">合计字段名（英文）</param>
-        /// <param name="IsAVERAGE">取平均数</param>
-        /// <param name="AVEFieldNameList">平均值字段名（英文）</param>
-        private void _GiveYouExcel(ArrayList SqlArray, ArrayList SheetNameArray, ArrayList SheetTitleArray
-            , bool IsTotal, string ExcelFileName, ArrayList FieldTitleArray, string SumFieldNameList, bool IsAVERAGE, ArrayList AVEFieldNameList, bool IsHeader, string LeftFieldName, bool IsZip = false)
+        /// <param name="IsAverage">取平均数</param>
+        /// <param name="AveFieldNameList">平均字段名</param>
+        /// <param name="IsHeader">是否显示表标题</param>
+        /// <param name="LeftFieldName">左空字段</param>
+        /// <param name="ExcelDataSet">数据集</param>
+        /// <param name="IsZip"></param>
+        private void _GiveYouExcel(ArrayList SheetNameArray, ArrayList SheetTitleArray
+            , bool IsTotal, string ExcelFileName, ArrayList FieldTitleArray, string SumFieldNameList
+            , bool IsAverage, ArrayList AveFieldNameList, bool IsHeader, string LeftFieldName
+            , DataSet ExcelDataSet
+            , bool IsZip = false)
         {
             #region 参数
-
             int TitleRow = 1;
             int TitleLength = 10;
             int TitleScriptRow = TitleRow + 2;
@@ -162,7 +168,6 @@ namespace MDIDemo.PublicClass
 
             #region 导出
             //MyClass = new Frame_Class();
-            DataSet ExcelDataSet = new DataSet();
             //ExcelDataSet = MyClass.GetChangeExcel(SqlArray, SheetNameArray);
             if ((ExcelDataSet != null) && (ExcelDataSet.Tables.Count > 0))
             {
@@ -294,7 +299,7 @@ namespace MDIDemo.PublicClass
                                     {
                                         NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
                                     }
-                                    if (IsTotal || IsAVERAGE)
+                                    if (IsTotal || IsAverage)
                                     {
                                         if (IsTotal)
                                         {
@@ -306,9 +311,9 @@ namespace MDIDemo.PublicClass
                                                     NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Style.Numberformat.Format = "#,##0.00";
                                             }
                                         }
-                                        if (IsAVERAGE)
+                                        if (IsAverage)
                                         {
-                                            if (AVEFieldNameList.IndexOf(NowTable.Columns[Index].Caption) > -1)
+                                            if (AveFieldNameList.IndexOf(NowTable.Columns[Index].Caption) > -1)
                                             {
                                                 NowSheet.Cells[DataEndRow + 1, DataBeginCol + Index].Formula = string.Format(@"AVERAGE({0})"
                                                     , new ExcelAddress(DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index).Address);
@@ -337,7 +342,7 @@ namespace MDIDemo.PublicClass
                             #endregion
 
                             #region 合计栏
-                            if (IsTotal || IsAVERAGE)
+                            if (IsTotal || IsAverage)
                             {
                                 NowSheet.Cells[DataEndRow + 1, DataBeginCol].Value = "合计";
                                 NowSheet.Cells[DataEndRow + 1, DataBeginCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -356,16 +361,16 @@ namespace MDIDemo.PublicClass
                             NowSheet.Cells[DataBeginRow, DataBeginCol, IsTotal ? DataEndRow + 1 : DataEndRow, DataEndCol].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
                             NowSheet.Cells[DataBeginRow, DataBeginCol, IsTotal ? DataEndRow + 1 : DataEndRow, DataEndCol].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thick);
                             #endregion
-
-
                         }
                         else
                         {
+                            #region 无数据
                             NowSheet.Cells[DataBeginCol, DataEndCol].Value = "无数据";
                             NowSheet.Cells[DataBeginCol, DataEndCol].Style.Font.Bold = true;
                             NowSheet.Cells[DataBeginCol, DataEndCol].Style.Font.Size = 24;
                             NowSheet.Cells[DataBeginCol, DataEndCol].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                             NowSheet.Cells[DataBeginCol, DataEndCol].Style.Fill.BackgroundColor.SetColor(Color.FromArgb(91, 155, 213));
+                            #endregion
                         }
                         TableIndex++;
                     }
@@ -392,6 +397,15 @@ namespace MDIDemo.PublicClass
                         //Response.AddHeader("content-disposition", string.Format("attachment;  filename={0}", ExcelFileName));
                         //Response.BinaryWrite(package.GetAsByteArray());
                     }
+                    #endregion
+
+                    #region 保存EXCEL
+                    //FileInfo file = new FileInfo(Server.MapPath(FilePath) + ExcelFileName);
+                    //if (!Directory.Exists(Server.MapPath(FilePath)))//判断文件夹是否存在 
+                    //{
+                    //    Directory.CreateDirectory(Server.MapPath(FilePath));//不存在则创建文件夹 
+                    //}
+                    //package.SaveAs(file);
                     #endregion
                 }
             }
