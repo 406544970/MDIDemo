@@ -969,14 +969,21 @@ namespace MDIDemo.vou
 
         private void barButtonItem26_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            string FileName = class_InterFaceDataBase.GetDataBaseContent();
-            if (FileName != null)
+            try
             {
-                if (MessageBox.Show("数据库说明书已生成完成，是否打开？", "温馨提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1) == DialogResult.OK)
-                    System.Diagnostics.Process.Start(FileName);
+                string FileName = class_InterFaceDataBase.GetDataBaseContent();
+                if (FileName != null)
+                {
+                    if (MessageBox.Show("数据库说明书已生成完成，是否打开？", "温馨提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                        System.Diagnostics.Process.Start(FileName);
+                }
+                else
+                    MessageBox.Show("导出失败!");
             }
-            else
-                MessageBox.Show("导出失败!");
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
     }
 }

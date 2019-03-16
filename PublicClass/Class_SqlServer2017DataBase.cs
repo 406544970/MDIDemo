@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static MDIDemo.PublicClass.Class_DataBaseContent;
 using static MDIDemo.PublicClass.Class_SelectAllModel;
 
 namespace MDIDemo.PublicClass
@@ -422,8 +423,10 @@ namespace MDIDemo.PublicClass
                 ,isnull(f.value, '') as TableComment
                 from sysobjects as d
                 left join sys.extended_properties f on d.id = f.major_id and f.minor_id = 0
-                where d.xtype in('u','V')
+                where d.xtype = 'U'
                 order by d.xtype,d.[name]");
+
+            //on(a.object_id = g.major_id AND g.minor_id = 0 and a.[type] = 'U');
             DataTable UseTable = new DataTable("UseTable");
             UseTable = mydb.GetDataTable(Str);
             foreach (DataRow row in UseTable.Rows)
@@ -585,7 +588,92 @@ namespace MDIDemo.PublicClass
 
         public string GetDataBaseContent()
         {
-            throw new NotImplementedException();
+            try
+            {
+                string DataBaseFileName = string.Format("{0}数据库说明书{1}", this.DataBaseName, System.DateTime.Now.ToString("yyyyMMdd"));
+                SaveFileDialog SaveFileDialog = new SaveFileDialog();
+                SaveFileDialog.FileName = DataBaseFileName;
+                SaveFileDialog.Filter = "EXCEL|*.xlsx";
+                SaveFileDialog.Title = "生成数据库说明书";
+                if (SaveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Class_ToExcel class_ToExcel = new Class_ToExcel();
+                    Class_DataBaseContent class_DataBaseContent = new Class_DataBaseContent();
+                    class_DataBaseContent.DataBaseFileName = DataBaseFileName;
+                    //1：得到所有用户列表信息，包括：表名、表注释；
+                    List<Class_TableInfo> class_TableInfos = new List<Class_TableInfo>();
+                    class_TableInfos = GetUseTableList();
+                    if ((class_TableInfos != null) && (class_TableInfos.Count > 0))
+                    {
+                        #region 得到所有表信息
+                        DataTable dataTable = new DataTable("TableInfo");
+                        DataColumn TableIndex = new DataColumn("TableIndex", typeof(int));
+                        DataColumn TableName = new DataColumn("TableName", typeof(string));
+                        DataColumn TableComment = new DataColumn("TableComment", typeof(string));
+                        dataTable.Columns.Add(TableIndex);
+                        dataTable.Columns.Add(TableName);
+                        dataTable.Columns.Add(TableComment);
+
+                        int TableCount = 1;
+                        foreach (Class_TableInfo class_TableInfo in class_TableInfos)
+                        {
+                            DataRow newRow = dataTable.NewRow();
+                            newRow["TableIndex"] = TableCount++;
+                            newRow["TableName"] = class_TableInfo.TableName;
+                            newRow["TableComment"] = class_TableInfo.TableComment;
+                            //TableCount++;
+                            dataTable.Rows.Add(newRow);
+                        }
+                        Class_SheetContent class_SheetContent = new Class_SheetContent();
+                        class_SheetContent.dataTable = dataTable;
+                        class_SheetContent.FieldTitleList.Add("序号");
+                        class_SheetContent.FieldTitleList.Add("表名");
+                        class_SheetContent.FieldTitleList.Add("注释");
+                        class_SheetContent.LeftFieldNameList.Add("TableComment");
+                        class_SheetContent.SheetName = "用户表";
+                        class_SheetContent.SheetTitle = "用户表";
+                        class_SheetContent.TableContent = string.Format("{0}库的所有用户表", this.DataBaseName);
+                        class_DataBaseContent.class_SheetContents.Add(class_SheetContent);
+                        #endregion
+
+                        //2：根据表名，得到表字段信息；
+                        TableCount = 1;
+                        foreach (Class_TableInfo class_TableInfo in class_TableInfos)
+                        {
+                            //class_TableInfo.TableName
+                            dataTable = new DataTable(class_TableInfo.TableName + TableCount.ToString());
+                            dataTable = _GetTableStruct(class_TableInfo.TableName);
+                            dataTable.TableName = string.Format("{0}{1}", class_TableInfo.TableName, TableCount.ToString());
+                            Class_SheetContent class_SheetContentRow = new Class_SheetContent();
+                            class_SheetContentRow.dataTable = dataTable;
+                            class_SheetContentRow.FieldTitleList.Add("字段名");
+                            class_SheetContentRow.FieldTitleList.Add("注释");
+                            class_SheetContentRow.FieldTitleList.Add("字段类型");
+                            class_SheetContentRow.FieldTitleList.Add("字段长度");
+                            class_SheetContentRow.FieldTitleList.Add("默认值");
+                            class_SheetContentRow.FieldTitleList.Add("是否可为空");
+                            class_SheetContentRow.FieldTitleList.Add("主键");
+                            class_SheetContentRow.FieldTitleList.Add("自增");//
+                            class_SheetContentRow.LeftFieldNameList.Add("FieldRemark");
+                            class_SheetContentRow.SheetName = TableCount.ToString();
+                            class_SheetContentRow.SheetTitle = class_TableInfo.TableName;
+                            class_SheetContentRow.TableContent = class_TableInfo.TableComment;
+                            class_DataBaseContent.class_SheetContents.Add(class_SheetContentRow);
+                            TableCount++;
+                        }
+                        dataTable.Dispose();
+                        DataBaseFileName = class_ToExcel.GetDataBaseContent(class_DataBaseContent, SaveFileDialog.FileName);
+                    }
+                    else
+                        DataBaseFileName = null;
+                }
+                SaveFileDialog.Dispose();
+                return DataBaseFileName;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

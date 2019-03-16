@@ -29,11 +29,13 @@ namespace MDIDemo.PublicClass
             {
                 dataTable = new DataTable();
                 FieldTitleList = new List<string>();
+                LeftFieldNameList = new List<string>();
             }
             ~Class_SheetContent()
             {
                 dataTable.Dispose();
                 FieldTitleList.Clear();
+                LeftFieldNameList.Clear();
             }
             /// <summary>
             /// Sheet名称
@@ -55,6 +57,10 @@ namespace MDIDemo.PublicClass
             /// 列标题名称
             /// </summary>
             public List<string> FieldTitleList;
+            /// <summary>
+            /// 需要居左的String字段名
+            /// </summary>
+            public List<string> LeftFieldNameList;
         }
         /// <summary>
         /// 数据库说明书文件名称

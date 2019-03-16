@@ -242,14 +242,14 @@ namespace MDIDemo.PublicClass
                                 {
                                     string ColType = class_SheetContent.dataTable.Columns[Index].DataType.ToString();
                                     bool IsRight = false;
-                                    bool IsNumber = false;
+                                    //bool IsNumber = false;
                                     bool IsPercent = false;
                                     #region 类型
                                     switch (ColType)
                                     {
                                         case "System.Decimal":
                                             IsRight = true;
-                                            IsNumber = true;
+                                            //IsNumber = true;
                                             if ((class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("比例") > -1) || (class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("Scale") > -1))
                                             {
                                                 IsPercent = true;
@@ -266,14 +266,15 @@ namespace MDIDemo.PublicClass
                                             IsRight = true;
                                             break;
                                         case "System.String":
-                                            if (class_SheetContent.dataTable.Columns[Index].ColumnName == "FieldRemark")
+                                        case "System.Object":
+                                            if (class_SheetContent.LeftFieldNameList.IndexOf(class_SheetContent.dataTable.Columns[Index].ColumnName) > -1)
                                             {
                                                 NowSheet.Cells[DataBeginRow + 1, DataBeginCol + Index, DataEndRow, DataBeginCol + Index].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
                                             }
                                             break;
                                         case "System.Float":
                                             IsRight = true;
-                                            IsNumber = true;
+                                            //IsNumber = true;
                                             if ((class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("比例") > -1) || (class_SheetContent.dataTable.Columns[Index].ColumnName.IndexOf("Scale") > -1))
                                             {
                                                 IsPercent = true;
