@@ -421,12 +421,12 @@ namespace MDIDemo.PublicClass
             List<Class_TableInfo> vs = new List<Class_TableInfo>();
             string Str;
             if (myTableNameList == null)
-                Str = string.Format(@"select d.[name] as TableName
+                Str = @"select d.[name] as TableName
                 ,isnull(f.value, '') as TableComment
                 from sysobjects as d
                 left join sys.extended_properties f on d.id = f.major_id and f.minor_id = 0
                 where d.xtype = 'U'
-                order by d.xtype,d.[name]");
+                order by d.xtype,d.[name]";
             else
             {
                 StringBuilder stringBuilder = new StringBuilder();

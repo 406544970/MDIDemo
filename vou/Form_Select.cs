@@ -517,8 +517,9 @@ namespace MDIDemo.vou
 
             if (class_SelectAllModel.LastSelectTableName != null)
             {
-                this.listBoxControl1.SelectedIndex = myTableNameList.IndexOf(class_SelectAllModel.LastSelectTableName);
-                this.listBoxControl2.SelectedIndex = myTableNameList.IndexOf(class_SelectAllModel.LastSelectTableName);
+                int LastIndex = myTableNameList.IndexOf(class_SelectAllModel.LastSelectTableName);
+                this.listBoxControl1.SelectedIndex = LastIndex;
+                this.listBoxControl2.SelectedIndex = LastIndex;
             }
             else
             {
