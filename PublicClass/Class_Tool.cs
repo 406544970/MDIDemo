@@ -45,7 +45,7 @@ namespace MDIDemo.PublicClass
                         DataEndRow = DataBeginRow + class_SheetContent.dataTable.Rows.Count;
                         DataEndCol = DataBeginCol + class_SheetContent.dataTable.Columns.Count - 1;
                         ExcelWorksheet NowSheet = package.Workbook.Worksheets.Add(class_SheetContent.SheetName);
-                        
+
                         if (class_SheetContent.dataTable.Rows.Count > 0)
                         {
                             #region 设置字体和对齐
@@ -505,6 +505,39 @@ namespace MDIDemo.PublicClass
     public class Class_Tool
     {
         /// <summary>
+        /// 得到封装类Java类型
+        /// </summary>
+        /// <param name="MultJavaType"></param>
+        /// <returns></returns>
+        public static string GetClosedJavaType(string MultJavaType)
+        {
+            string[] vs = MultJavaType.Split('.');
+            if (MultJavaType != null)
+            {
+                if (vs.Length > 0)
+                    return class_JavaAndClosedClasses.Find(a => a.ClosedType.Equals(MultJavaType)).SimplClosedType;
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+        /// <summary>
+        /// 得到简单Java类型
+        /// </summary>
+        /// <param name="MultJavaType"></param>
+        /// <returns></returns>
+        public static string GetSimplificationJavaType(string MultJavaType)
+        {
+            string[] vs = MultJavaType.Split('.');
+            if (vs.Length > 0)
+            {
+                return class_JavaAndClosedClasses.Find(a => a.ClosedType.Equals(MultJavaType)).JavaType;
+            }
+            else
+                return null;
+        }
+        /// <summary>
         /// 得到原文
         /// </summary>
         /// <param name="Content"></param>
@@ -647,34 +680,52 @@ namespace MDIDemo.PublicClass
             Class_JavaAndClosedClass class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "byte";
             class_JavaAndClosedClass.ClosedType = "java.lang.Byte";
+            class_JavaAndClosedClass.SimplClosedType = "Byte";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "short";
             class_JavaAndClosedClass.ClosedType = "java.lang.Short";
+            class_JavaAndClosedClass.SimplClosedType = "Short";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "int";
             class_JavaAndClosedClass.ClosedType = "java.lang.Integer";
+            class_JavaAndClosedClass.SimplClosedType = "Integer";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "long";
             class_JavaAndClosedClass.ClosedType = "java.lang.Long";
+            class_JavaAndClosedClass.SimplClosedType = "Long";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "float";
             class_JavaAndClosedClass.ClosedType = "java.lang.Float";
+            class_JavaAndClosedClass.SimplClosedType = "Float";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "double";
             class_JavaAndClosedClass.ClosedType = "java.lang.Double";
+            class_JavaAndClosedClass.SimplClosedType = "double";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "char";
             class_JavaAndClosedClass.ClosedType = "java.lang.Character";
+            class_JavaAndClosedClass.SimplClosedType = "Char";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             class_JavaAndClosedClass = new Class_JavaAndClosedClass();
             class_JavaAndClosedClass.JavaType = "boolean";
             class_JavaAndClosedClass.ClosedType = "java.lang.Boolean";
+            class_JavaAndClosedClass.SimplClosedType = "Boolean";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "String";
+            class_JavaAndClosedClass.ClosedType = "java.lang.String";
+            class_JavaAndClosedClass.SimplClosedType = "String";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "Date";
+            class_JavaAndClosedClass.ClosedType = "java.sql.Timestamp";
+            class_JavaAndClosedClass.SimplClosedType = "Date";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             #endregion
         }

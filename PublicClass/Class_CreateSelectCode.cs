@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static MDIDemo.PublicClass.Class_SelectAllModel;
 
 namespace MDIDemo.PublicClass
 {
@@ -23,12 +24,109 @@ namespace MDIDemo.PublicClass
         private Class_SelectAllModel class_SelectAllModel;
         public string GetMainControl()
         {
-            throw new NotImplementedException();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            Class_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.Append("@RestController\r\n");
+            stringBuilder.AppendFormat("@RequestMapping(\" / {0}\")\r\n", Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_Main.NameSpace.ToLower()));
+            stringBuilder.Append(string.Format("public class {0}Controller ", class_SelectAllModel.class_Main.NameSpace) + "{\r\n");
+            stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.NameSpace
+                , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_Main.NameSpace.ToLower()));
+
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @param {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark);
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            //R selectRoleById(long id );
+            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Create.HttpRequestType
+                , class_SelectAllModel.class_Main.MethodId);
+            stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
+
+            if (class_SelectAllModel.class_Main.ServiceInterFaceReturnCount == 0)
+                stringBuilder.AppendFormat("{0}", GetServiceReturnType(class_SelectAllModel.class_Main, false));
+            else
+                stringBuilder.AppendFormat("List<{0}>", GetServiceReturnType(class_SelectAllModel.class_Main, false));
+            stringBuilder.AppendFormat(" {0}(long id)"
+                , class_SelectAllModel.class_Main.MethodId);
+            stringBuilder.Append(" {\r\n");
+            stringBuilder.AppendFormat("{0}return null;\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.Append("}\r\n");
+            stringBuilder.Append("}\r\n");
+
+            return stringBuilder.ToString();
         }
 
         public string GetMainDAO()
         {
-            throw new NotImplementedException();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            Class_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.Append("@Mapper\r\n");
+            stringBuilder.Append(string.Format("public interface {0}Mapper ", class_SelectAllModel.class_Main.NameSpace) + "{\r\n");
+
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @param {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark);
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            //R selectRoleById(long id );
+
+            if (class_SelectAllModel.class_Main.ServiceInterFaceReturnCount == 0)
+                stringBuilder.AppendFormat("{0}{1}", class_ToolSpace.GetSetSpaceCount(1)
+                    , GetServiceReturnType(class_SelectAllModel.class_Main, false));
+            else
+                stringBuilder.AppendFormat("{0}List<{1}>", class_ToolSpace.GetSetSpaceCount(1)
+                    , GetServiceReturnType(class_SelectAllModel.class_Main, false));
+            stringBuilder.AppendFormat(" {0}(long id);\r\n"
+                , class_SelectAllModel.class_Main.MethodId);
+            stringBuilder.Append("}\r\n");
+
+            return stringBuilder.ToString();
         }
 
         public string GetMainDTO()
@@ -453,14 +551,131 @@ namespace MDIDemo.PublicClass
         }
         public string GetMainModel()
         {
-            throw new NotImplementedException();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            Class_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.AppendFormat("public class {0} implements Serializable ", class_SelectAllModel.class_Main.NameSpace);
+            stringBuilder.Append(" {\r\n");
+            //加入字段
+            foreach (Class_Field row in class_SelectAllModel.class_Main.class_Fields)
+            {
+                if (row.SelectSelect)
+                {
+                    stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), row.FieldRemark);
+                    stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(row.ReturnType))
+                        , row.ParaName);
+                }
+            }
+
+            stringBuilder.Append("}\r\n");
+
+            return stringBuilder.ToString();
         }
 
         public string GetMainServiceImpl()
         {
-            throw new NotImplementedException();
-        }
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            Class_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.Append("@SuppressWarnings(\"SpringJavaInjectionPointsAutowiringInspection\")\r\n@Service\r\n");
+            stringBuilder.AppendFormat("public class {0}ServiceImpl implements {0}Service", class_SelectAllModel.class_Main.NameSpace);
+            stringBuilder.Append(" {\r\n");
 
+            stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}{1}Mapper {2}Dao;\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            , class_SelectAllModel.class_Main.NameSpace, class_SelectAllModel.class_Main.NameSpace.ToLower());
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @param {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.MethodContent);
+            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark);
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            //R selectRoleById(long id );
+            stringBuilder.AppendFormat("{0}@Override\r\n{0}public ", class_ToolSpace.GetSetSpaceCount(1));
+            if (class_SelectAllModel.class_Main.ServiceInterFaceReturnCount == 0)
+                stringBuilder.AppendFormat("{0}", GetServiceReturnType(class_SelectAllModel.class_Main, false));
+            else
+                stringBuilder.AppendFormat("List<{0}>", GetServiceReturnType(class_SelectAllModel.class_Main, false));
+            stringBuilder.AppendFormat(" {0}(long id)"
+                , class_SelectAllModel.class_Main.MethodId);
+            stringBuilder.Append(" {\r\n");
+            stringBuilder.AppendFormat("{0}return null;\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.Append("}\r\n");
+
+
+            stringBuilder.Append("}\r\n");
+            return stringBuilder.ToString();
+        }
+        private string GetServiceReturnType(Class_Main class_Main, bool HavePackageName = true)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            Class_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            string ResultType = GetSelectType(class_Main);
+            if (ResultType == "mult")
+            {
+                if (HavePackageName)
+                    stringBuilder.AppendFormat("{0}.model.{1}"
+                    , class_SelectAllModel.AllPackerName
+                    , class_SelectAllModel.class_Main.ResultMapType);
+                else
+                    stringBuilder.Append(class_SelectAllModel.class_Main.ResultMapType);
+            }
+            else
+                stringBuilder.AppendFormat("{0}"
+                , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(ResultType)));
+            return stringBuilder.ToString();
+        }
         public string GetMainServiceInterFace()
         {
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -480,9 +695,9 @@ namespace MDIDemo.PublicClass
             }
             stringBuilder.Append("/**\r\n");
             stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
-            stringBuilder.AppendFormat(" * @create {0}\r\n",System.DateTime.Now.ToString("yyyy-MM-dd hh:mm"));
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" */\r\n");
-            stringBuilder.Append("public interface UserService {\r\n");
+            stringBuilder.Append(string.Format("public interface {0}Service ", class_SelectAllModel.class_Main.NameSpace) + "{\r\n");
             ///**
             //* 添加更新
             //* @param user
@@ -490,17 +705,20 @@ namespace MDIDemo.PublicClass
             //*/
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
-                ,class_SelectAllModel.class_Main.MethodContent);
+                , class_SelectAllModel.class_Main.MethodContent);
             stringBuilder.AppendFormat("{0} * @param {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_SelectAllModel.class_Main.MethodContent);
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
             //R selectRoleById(long id );
+
             if (class_SelectAllModel.class_Main.ServiceInterFaceReturnCount == 0)
-                stringBuilder.AppendFormat("{0}R", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}{1}", class_ToolSpace.GetSetSpaceCount(1)
+                    , GetServiceReturnType(class_SelectAllModel.class_Main, false));
             else
-                stringBuilder.AppendFormat("{0}List<R>", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}List<{1}>", class_ToolSpace.GetSetSpaceCount(1)
+                    , GetServiceReturnType(class_SelectAllModel.class_Main, false));
             stringBuilder.AppendFormat(" {0}(long id);\r\n"
                 , class_SelectAllModel.class_Main.MethodId);
             stringBuilder.Append("}\r\n");

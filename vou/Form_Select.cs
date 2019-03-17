@@ -971,6 +971,14 @@ namespace MDIDemo.vou
                 this.memoEdit4.Text = class_InterFaceCreateCode.GetMainMapLable();
                 //ServiceInterFace
                 this.memoEdit5.Text = class_InterFaceCreateCode.GetMainServiceInterFace();
+                //ServiceImpl
+                this.memoEdit6.Text = class_InterFaceCreateCode.GetMainServiceImpl();
+                //Model
+                this.memoEdit8.Text = class_InterFaceCreateCode.GetMainModel();
+                //DAO
+                this.memoEdit10.Text = class_InterFaceCreateCode.GetMainDAO();
+                //Control
+                this.memoEdit11.Text = class_InterFaceCreateCode.GetMainControl();
                 this.DisplayText("代码已重新生成!");
             }
             _SaveSelectToXml(false);
