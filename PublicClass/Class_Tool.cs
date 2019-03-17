@@ -824,6 +824,17 @@ namespace MDIDemo.PublicClass
             return _getRandomInt(100, 300);
         }
         /// <summary>
+        /// 首字母大写
+        /// </summary>
+        /// <param name="Content"></param>
+        /// <returns></returns>
+        public static string GetFirstCodeUpper(string Content)
+        {
+            if ((Content == null) || Content.Length == 0)
+                return null;
+            return Content.Substring(0, 1).ToUpper() + Content.Substring(1);
+        }
+        /// <summary>
         /// 转成驼峰命名
         /// </summary>
         /// <param name="Content"></param>

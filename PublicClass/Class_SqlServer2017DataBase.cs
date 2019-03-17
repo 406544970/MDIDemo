@@ -10,7 +10,7 @@ using static MDIDemo.PublicClass.Class_SelectAllModel;
 
 namespace MDIDemo.PublicClass
 {
-    public class Class_SqlServer2017DataBase : Class_InterFaceDataBase
+    public class Class_SqlServer2017DataBase : IClass_InterFaceDataBase
     {
         public Class_SqlServer2017DataBase()
         {

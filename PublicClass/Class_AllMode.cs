@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    public class Class_WhereField
+    {
+        public string FieldName;
+        public string FieldRemark;
+        public string FieldType;
+        public string FieldDefaultValue;
+    }
     /// <summary>
     /// 数据库说明书类
     /// </summary>

@@ -11,7 +11,7 @@ using static MDIDemo.PublicClass.Class_SelectAllModel;
 
 namespace MDIDemo.PublicClass
 {
-    public class Class_MySqlDataBase : Class_InterFaceDataBase
+    public class Class_MySqlDataBase : IClass_InterFaceDataBase
     {
         public string Ip { get; set; }
         public string UserName { get; set; }

@@ -108,15 +108,11 @@ namespace MDIDemo.PublicClass
     {
         public HttpRequestTypeItem()
         {
-            base.myList = new string[8];
-            myList[0] = "OPTIONS";
-            myList[1] = "HEAD";
-            myList[2] = "GET";
-            myList[3] = "POST";
-            myList[4] = "PUT";
-            myList[5] = "DELETE";
-            myList[6] = "TRACE";
-            myList[7] = "CONNECT";
+            base.myList = new string[4];
+            myList[0] = "Post";
+            myList[1] = "Get";
+            myList[2] = "Delete";
+            myList[3] = "Put";
         }
     }
     public sealed class MybatisXmlCreateType : ComboxItem

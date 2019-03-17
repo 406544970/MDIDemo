@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
-    public interface Class_InterFaceCreateCode
+    public interface IClass_InterFaceCreateCode
     {
         bool IsCheckOk();
         #region 主表
         string GetMainMap();
         string GetMainMapLable();
-        string GetMainWhereLable();
+        //string GetMainWhereLable();
         string GetMainServiceInterFace();
         string GetMainServiceImpl();
         string GetMainModel();

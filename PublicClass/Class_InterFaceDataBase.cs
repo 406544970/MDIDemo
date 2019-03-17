@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MDIDemo.PublicClass
 {
-    public interface Class_InterFaceDataBase
+    public interface IClass_InterFaceDataBase
     {
         //string OperateType { get; set; }
         string Ip { get; set; }

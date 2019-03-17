@@ -29,7 +29,7 @@ namespace MDIDemo.vou
         }
 
         private Class_SelectAllModel class_SelectAllModel;
-        private Class_InterFaceDataBase class_InterFaceDataBase;
+        private IClass_InterFaceDataBase class_InterFaceDataBase;
         private List<string> myTableNameList;
         private List<string> myTableContentList;
         private Class_PublicMethod class_PublicMethod;
@@ -960,7 +960,7 @@ namespace MDIDemo.vou
             //2：得到XML文件名
             string MethodId = class_SelectAllModel.class_Create.MethodId;
             //3：初始化生成类
-            Class_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(MethodId);
+            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(MethodId);
             //4：验证合法性
             if (class_InterFaceCreateCode.IsCheckOk())
             {

@@ -420,7 +420,7 @@ namespace MDIDemo.PublicClass
             {
                 EnglishSign = true;
                 MethodSite = "粘子层";
-                HttpRequestType = "POST";
+                HttpRequestType = "Post";
                 ReadOnly = false;
             }
             [Browsable(true)]
@@ -445,7 +445,7 @@ namespace MDIDemo.PublicClass
 8、【CONNECT】：HTTP / 1.1协议中预留给能够将连接改为管道方式的代理服务器")]
             [ReadOnly(false)]
             [TypeConverter(typeof(HttpRequestTypeItem))] //使用自定义的属性下拉框
-            [DefaultValue("POST")]
+            [DefaultValue("Post")]
             public string HttpRequestType
             {
                 get; set;
@@ -458,6 +458,16 @@ namespace MDIDemo.PublicClass
             [TypeConverter(typeof(MothedTypeItem))] //使用自定义的属性下拉框
             [DefaultValue("粘子层")]
             public string MethodSite
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
+            [DisplayName("微服务名")]
+            [Description("微服务名,将放入Control层")]
+            [ReadOnly(false)]
+            [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            public string MicroServiceName
             {
                 get; set;
             }
