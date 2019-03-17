@@ -1020,7 +1020,6 @@ namespace MDIDemo.vou
         private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.listBoxControl2.SelectedIndex = this.listBoxControl1.SelectedIndex;
-
         }
     }
 }

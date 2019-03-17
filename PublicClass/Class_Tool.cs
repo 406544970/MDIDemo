@@ -74,7 +74,7 @@ namespace MDIDemo.PublicClass
                                 NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
                                 NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Style.Font.Bold = true;
                                 NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Style.Font.Size = 13;
-                                NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Value = string.Format("导出时间：{0}", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                NowSheet.Cells[TitleScriptRow, (DataEndCol > 12 ? 12 : DataEndCol) - 2].Value = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                             }
                             #endregion
 
