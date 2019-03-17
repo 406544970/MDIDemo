@@ -31,6 +31,7 @@ namespace MDIDemo.vou
         private Class_SelectAllModel class_SelectAllModel;
         private Class_InterFaceDataBase class_InterFaceDataBase;
         private List<string> myTableNameList;
+        private List<string> myTableContentList;
         private Class_PublicMethod class_PublicMethod;
         private string MainKeyFieldName;
 
@@ -161,6 +162,7 @@ namespace MDIDemo.vou
 
             this.bandedGridColumn1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             myTableNameList = new List<string>();
+            myTableContentList = new List<string>();
 
             GridC gridC = new GridC();
             gridC.pub_SetBandedGridViewStyle(this.bandedGridView1);
@@ -479,6 +481,7 @@ namespace MDIDemo.vou
         }
         private void _getUseTable(bool ReSet)
         {
+            List<Class_TableInfo> class_TableInfos = new List<Class_TableInfo>();
             if (ReSet)
             {
                 switch (class_SelectAllModel.class_SelectDataBase.databaseType)
@@ -496,19 +499,31 @@ namespace MDIDemo.vou
             }
             if (listBoxControl1.ItemCount > 0)
                 listBoxControl1.Items.Clear();
+            if (listBoxControl2.ItemCount > 0)
+                listBoxControl2.Items.Clear();
             myTableNameList.Clear();
-            myTableNameList = class_InterFaceDataBase.GetUseTableList().Select(a => a.TableName).ToList();
+            myTableContentList.Clear();
+            class_TableInfos = class_InterFaceDataBase.GetUseTableList(null);
+            myTableNameList = class_TableInfos.Select(a => a.TableName).ToList();
+            myTableContentList = class_TableInfos.Select(a => a.TableComment).ToList();
             foreach (string row in myTableNameList)
             {
                 this.listBoxControl1.Items.Add(row);
             }
+            foreach (string row in myTableContentList)
+            {
+                this.listBoxControl2.Items.Add(row);
+            }
+
             if (class_SelectAllModel.LastSelectTableName != null)
             {
                 this.listBoxControl1.SelectedIndex = myTableNameList.IndexOf(class_SelectAllModel.LastSelectTableName);
+                this.listBoxControl2.SelectedIndex = myTableNameList.IndexOf(class_SelectAllModel.LastSelectTableName);
             }
             else
             {
                 this.listBoxControl1.SelectedIndex = -1;
+                this.listBoxControl2.SelectedIndex = -1;
             }
         }
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -720,13 +735,25 @@ namespace MDIDemo.vou
                 }
             }
         }
+        private List<string> GetAnyTableContent(List<string> TableNameList)
+        {
+            List<string> vs = new List<string>();
+            return vs;
+        }
         private void filterList()
         {
             this.listBoxControl1.Items.Clear();
+            this.listBoxControl2.Items.Clear();
+            List<string> TableNameList = new List<string>();
             foreach (string item in filterUseTable(this.searchControl1.Text.Length > 0 ? this.searchControl1.Text : null))
             {
                 this.listBoxControl1.Items.Add(item);
+                TableNameList.Add(item);
             }
+            foreach (string item in class_InterFaceDataBase.GetUseTableList(TableNameList).Select(a => a.TableComment).ToList())
+            {
+                this.listBoxControl2.Items.Add(item);
+            }            
             if (this.listBoxControl1.ItemCount > 0)
             {
                 this.listBoxControl1.SelectedIndex = 0;
@@ -969,6 +996,7 @@ namespace MDIDemo.vou
 
         private void barButtonItem26_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
             try
             {
                 string FileName = class_InterFaceDataBase.GetDataBaseContent();
@@ -977,13 +1005,21 @@ namespace MDIDemo.vou
                     if (MessageBox.Show("数据库说明书已生成完成，是否打开？", "温馨提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button1) == DialogResult.OK)
                         System.Diagnostics.Process.Start(FileName);
                 }
-                else
-                    MessageBox.Show("导出失败!");
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
             }
+            finally
+            {
+                waitDialogForm.Close();
+            }
+        }
+
+        private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.listBoxControl2.SelectedIndex = this.listBoxControl1.SelectedIndex;
+
         }
     }
 }

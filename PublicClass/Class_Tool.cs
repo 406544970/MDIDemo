@@ -15,149 +15,6 @@ namespace MDIDemo.PublicClass
 {
     public class Class_ToExcel
     {
-        //public string GetDataBaseContent(DataSet ExcelDataSet)
-        //{
-        //    string AllPathFieldName = null;
-
-        //    #region 外来参数
-        //    string TitleFileName = string.Format(@"数据库说明书{0}", System.DateTime.Now.ToString("yyyy年MM月dd日"));
-        //    #endregion
-
-        //    #region 参数
-        //    string ExcelFileName = string.Format(@"数据库说明书{0}.xlsx", System.DateTime.Now.ToString("yyyy年MM月dd日"));
-        //    #endregion
-
-        //    ArrayList FieldTitleArray = new ArrayList();
-        //    ArrayList SheetNameArray = new ArrayList();
-        //    ArrayList SheetTitleArray = new ArrayList();
-        //    ArrayList AveFieldNameArray = new ArrayList();
-
-        //    SheetTitleArray.Add(string.Format(@"{0}财务费用信息明细", System.DateTime.Now.ToString("yyyy年MM月dd日")));
-        //    SheetNameArray.Add("财务费用信息明细");
-
-        //    _GiveYouExcel(SheetNameArray, SheetTitleArray, false, ExcelFileName, FieldTitleArray, null, false, null, true, null, ExcelDataSet);
-        //    return AllPathFieldName;
-        //}
-        ///// <summary>
-        ///// 财务费用信息ToExcel
-        ///// </summary>
-        //public void AcountCashTempListToExcel()
-        //{
-        //    DataSet ExcelDataSet = new DataSet();
-        //    //DateTime VouDate = Convert.ToDateTime(VouDateStr);
-        //    //string VouDateStr = this._GetRequest("VouDate");
-        //    //string OperName = _ReadCookid("PersName");
-        //    //string CorpName = this._GetRequest("CorpName");
-        //    //string DepartName = this._GetRequest("DepartName");
-        //    //string InvoiceNumber = this._GetRequest("InvoiceNumber");
-        //    DateTime VouDate = System.DateTime.Now;
-        //    string VouDateStr = null;
-        //    string OperName = null;
-        //    string CorpName = null;
-        //    string DepartName = null;
-        //    string InvoiceNumber = null;
-        //    #region 查询条件
-        //    StringBuilder WhereKey = new StringBuilder();
-        //    WhereKey.AppendFormat(@" Where CONVERT(varchar(7),AC.[WorkTime],120) = CONVERT(varchar(7),'{0}',120)", VouDateStr);
-        //    if (CorpName.Length > 0)
-        //        WhereKey.AppendFormat(@" And isnull(co.CorpName,AC.CorpName) like '%{0}%'", CorpName);
-        //    if (OperName.Length > 0)
-        //        WhereKey.AppendFormat(@" And AC.OperName = '{0}'", OperName);
-        //    if (DepartName.Length > 0)
-        //        WhereKey.AppendFormat(@" And Dep.DepartName like '{0}%'", DepartName);
-        //    if (InvoiceNumber.Length > 0)
-        //        WhereKey.AppendFormat(@" And AC.InvoiceNumber like '{0}%'", InvoiceNumber);
-        //    #endregion
-
-        //    #region 外来参数
-        //    string TitleFileName = string.Format(@"{0}财务费用信息", VouDate.ToString("yyyy年MM月"));
-        //    #endregion
-
-        //    #region 参数
-        //    bool IsTotal = true;
-        //    bool IsAverage = false;
-        //    string ExcelFileName = string.Format(@"{0}财务费用信息.xlsx", VouDate.ToString("yyyy年MM月"));
-        //    #endregion
-
-        //    #region Sql语句集
-        //    ArrayList SqlArray = new ArrayList();
-        //    ArrayList FieldTitleArray = new ArrayList();
-        //    ArrayList SheetNameArray = new ArrayList();
-        //    ArrayList SheetTitleArray = new ArrayList();
-        //    ArrayList AveFieldNameArray = new ArrayList();
-
-        //    SqlArray.Add(string.Format(@"
-        //    Select isnull(co.CorpName,AC.CorpName) as [企业名称]
-        //            ,Dep.[DepartName] as [所属部门]
-        //            ,AC.[OperName] as [核算员]
-        //            ,AC.InvoiceNumber as [发票号]  
-        //            ,AC.InvoiceType as [发票类型] 
-        //            ,Case When Convert(varchar(10),AC.[BillingTime],120) = '1900-01-01' then '' else Convert(varchar(10),AC.[BillingTime],120) end as [开票日期]
-        //            ,Case When Convert(varchar(10),AC.[ArrivalTime],120) = '1900-01-01' then '' else Convert(varchar(10),AC.[ArrivalTime],120) end as [到款日期]
-        //            ,AC.[NoTax] as [无税金额]
-        //            ,AC.[TaxSix] as [6%税金额]
-        //            ,AC.[TaxFive] as [5%税金额]
-        //            ,AC.[TaxEleven] as [11%税金额]
-        //            ,AC.[TaxSeventeen] as [17%税金额]
-        //            ,AC.[NoTax] + AC.[TaxSix] + AC.[TaxFive] + AC.[TaxSeventeen]+AC.TaxEleven as [税合计]
-        //            ,AC.[NoTax] + AC.[TaxSix] + AC.[TaxFive] + AC.[TaxSeventeen]+AC.TaxEleven - AC.[ReceiveAccount] as [应收金额]
-        //            ,AC.[ReceiveAccount] as [实收金额]
-        //            ,AC.[YSalary] - AC.[SSalary] as [工资]
-        //            ,AC.[YTax] - AC.[STax] as [个税]
-        //            ,AC.[YSoc] - AC.[SSoc] as [社保]
-        //            ,AC.[YGjj] - AC.[SGjj] as [公积金]
-        //            ,AC.[YAdminCash] - AC.[SAdminCash] as [行政费用]
-        //            ,AC.[YOtherCash] - AC.[SOtherCash] as [其它费用]
-        //            ,AC.[YSalary] + AC.[YTax] + AC.[YSoc] + AC.[YGjj] + AC.[YAdminCash] + AC.[YOtherCash] +AC.[YTaxCash]+AC.[YManageCash] - AC.[SSalary] - AC.[STax] - AC.[SSoc] - AC.[SGjj] - AC.[SAdminCash] - AC.[SOtherCash] as [差异小计]
-        //            ,AC.[YSalary] as [应收工资]
-        //            ,AC.[YTax] as [应收个税]
-        //            ,AC.[YSoc] as [应收社保]
-        //            ,AC.[YGjj] as [应收公积金]
-        //            ,AC.[YAdminCash] as [应收行政费用]
-        //            ,AC.[YOtherCash] as [应收其它费用]
-        //            ,AC.[YTaxCash]  as [税金]
-        //            ,AC.[YManageCash] as [管理费]
-        //            ,AC.[YSalary] + AC.[YTax] + AC.[YSoc] + AC.[YGjj] + AC.[YAdminCash] + AC.[YOtherCash]+AC.[YTaxCash]+AC.[YManageCash] as [应收小计]
-        //            ,AC.[SSalary] as [实付工资]
-        //            ,AC.[STax] as [实付个税]
-        //            ,AC.[SSoc] as [实付社保]
-        //            ,AC.[SGjj] as [实付公积金]
-        //            ,AC.[SAdminCash] as [实付行政费用]
-        //            ,AC.[SOtherCash] as [实付其它费用]
-        //            ,AC.[SSalary] + AC.[STax] + AC.[SSoc] + AC.[SGjj] + AC.[SAdminCash] + AC.[SOtherCash]  as [实付小计]                   
-        //            ,Convert(varchar(19),AC.[WorkTime],120) as [数据生成时间]                                      
-        //            ,AC.[Remark] as [备注]
-        //    From Vou_AcountCashTemp As AC Left join Inf_Department as Dep on Dep.ID = AC.DepartID 
-        //    left join Inf_CorpFinance as co on co.ID = AC.CorpID  {0}
-        //    Order by AC.[WorkTime] Desc
-        //    ", WhereKey.ToString()));
-        //    SheetTitleArray.Add(string.Format(@"{0}财务费用信息明细", VouDate.ToString("yyyy年MM月")));
-        //    SheetNameArray.Add("财务费用信息明细");
-
-
-        //    string SumFieldName = @"
-        //    ,无税金额,6%税金额,5%税金额,11%税金额,17%税金额,税合计,应收金额,实收金额,工资,个税,社保,公积金,行政费用,其它费用,差异小计,应收工资,应收个税,应收社保,应收公积金,应收行政费用,应收其它费用,税金,管理费,应收小计,实付工资,实付个税,实付社保,实付公积金,实付行政费用,实付其它费用,实付小计,";
-        //    string LeftFieldName = ",备注,";
-        //    #endregion
-
-        //    _GiveYouExcel(SheetNameArray, SheetTitleArray, IsTotal, ExcelFileName, FieldTitleArray, IsTotal ? SumFieldName : null, IsAverage, IsAverage ? AveFieldNameArray : null, true, LeftFieldName, ExcelDataSet);
-        //}
-
-        private DataSet GetChangeExcel(ArrayList SqlArray, ArrayList TableNameArray)
-        {
-            DataSet ReturnSet = new DataSet();
-            //JsDB = new myDb();
-            //JsDB.Open();
-            //for (int Index = 0; Index < SqlArray.Count; Index++)
-            //{
-            //    DataTable ChangeTable = new DataTable();
-            //    ChangeTable = JsDB.GetDataSet(SqlArray[Index].ToString()).Tables[0].Copy();
-            //    ChangeTable.TableName = TableNameArray[Index].ToString();
-            //    ReturnSet.Tables.Add(ChangeTable);
-            //}
-            //JsDB.Close(); JsDB.Dispose();
-            return ReturnSet;
-        }
 
         /// <summary>
         /// 导出数据库说明书
@@ -188,6 +45,7 @@ namespace MDIDemo.PublicClass
                         DataEndRow = DataBeginRow + class_SheetContent.dataTable.Rows.Count;
                         DataEndCol = DataBeginCol + class_SheetContent.dataTable.Columns.Count - 1;
                         ExcelWorksheet NowSheet = package.Workbook.Worksheets.Add(class_SheetContent.SheetName);
+                        
                         if (class_SheetContent.dataTable.Rows.Count > 0)
                         {
                             #region 设置字体和对齐
@@ -350,7 +208,6 @@ namespace MDIDemo.PublicClass
                             NowSheet.Cells[DataEndRow + 1, DataBeginCol].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Left;
                             NowSheet.Cells[DataEndRow + 1, DataBeginCol].Style.Font.Color.SetColor(Color.Blue);
                             NowSheet.Cells[DataEndRow + 1, DataBeginCol].Style.Font.Bold = true;
-
                             #endregion
                         }
 

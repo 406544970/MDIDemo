@@ -416,15 +416,34 @@ namespace MDIDemo.PublicClass
         /// 得到指定数据库所有用户表
         /// </summary>
         /// <returns></returns>
-        public List<Class_TableInfo> GetUseTableList()
+        public List<Class_TableInfo> GetUseTableList(List<string> myTableNameList)
         {
             List<Class_TableInfo> vs = new List<Class_TableInfo>();
-            string Str = string.Format(@"select d.[name] as TableName
+            string Str;
+            if (myTableNameList == null)
+                Str = string.Format(@"select d.[name] as TableName
                 ,isnull(f.value, '') as TableComment
                 from sysobjects as d
                 left join sys.extended_properties f on d.id = f.major_id and f.minor_id = 0
                 where d.xtype = 'U'
                 order by d.xtype,d.[name]");
+            else
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                foreach (string row in myTableNameList)
+                {
+                    stringBuilder.AppendFormat(",'{0}'", row);
+                }
+                Str = string.Format(@"select d.[name] as TableName
+                ,isnull(f.value, '') as TableComment
+                from sysobjects as d
+                left join sys.extended_properties f on d.id = f.major_id and f.minor_id = 0
+                where d.xtype = 'U'
+                and d.[name] in ({0})
+                order by d.xtype,d.[name]"
+                , stringBuilder.ToString().Substring(1));
+                stringBuilder.Clear();
+            }
 
             //on(a.object_id = g.major_id AND g.minor_id = 0 and a.[type] = 'U');
             DataTable UseTable = new DataTable("UseTable");
@@ -602,7 +621,7 @@ namespace MDIDemo.PublicClass
                     class_DataBaseContent.DataBaseFileName = DataBaseFileName;
                     //1：得到所有用户列表信息，包括：表名、表注释；
                     List<Class_TableInfo> class_TableInfos = new List<Class_TableInfo>();
-                    class_TableInfos = GetUseTableList();
+                    class_TableInfos = GetUseTableList(null);
                     if ((class_TableInfos != null) && (class_TableInfos.Count > 0))
                     {
                         #region 得到所有表信息
@@ -666,6 +685,10 @@ namespace MDIDemo.PublicClass
                     }
                     else
                         DataBaseFileName = null;
+                }
+                else
+                {
+                    DataBaseFileName = null;
                 }
                 SaveFileDialog.Dispose();
                 return DataBaseFileName;

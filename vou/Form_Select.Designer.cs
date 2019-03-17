@@ -399,6 +399,7 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.listBoxControl2 = new DevExpress.XtraEditors.ListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
@@ -540,6 +541,7 @@
             this.xtraTabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
+            this.xtraTabPage5.SuspendLayout();
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl8)).BeginInit();
             this.xtraTabControl8.SuspendLayout();
@@ -613,6 +615,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -4940,7 +4943,7 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(150, 200);
             this.dockPanel1.Size = new System.Drawing.Size(150, 564);
-            this.dockPanel1.Text = "用户表名称";
+            this.dockPanel1.Text = "用户表";
             // 
             // dockPanel1_Container
             // 
@@ -4985,6 +4988,7 @@
             this.listBoxControl1.Name = "listBoxControl1";
             this.listBoxControl1.Size = new System.Drawing.Size(135, 450);
             this.listBoxControl1.TabIndex = 0;
+            this.listBoxControl1.SelectedIndexChanged += new System.EventHandler(this.listBoxControl1_SelectedIndexChanged);
             this.listBoxControl1.DoubleClick += new System.EventHandler(this.listBoxControl1_DoubleClick);
             this.listBoxControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxControl1_KeyDown);
             this.listBoxControl1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listBoxControl1_MouseUp);
@@ -5017,9 +5021,10 @@
             // 
             // xtraTabPage5
             // 
+            this.xtraTabPage5.Controls.Add(this.listBoxControl2);
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(135, 508);
-            this.xtraTabPage5.Text = "数据库设置";
+            this.xtraTabPage5.Text = "表说明";
             // 
             // imageList1
             // 
@@ -5746,6 +5751,20 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // listBoxControl2
+            // 
+            this.listBoxControl2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxControl2.Items.AddRange(new object[] {
+            "dasfas",
+            "adsfsaf",
+            "adsfaf",
+            "asdfsaf"});
+            this.listBoxControl2.Location = new System.Drawing.Point(0, 0);
+            this.listBoxControl2.Name = "listBoxControl2";
+            this.listBoxControl2.Size = new System.Drawing.Size(135, 508);
+            this.listBoxControl2.TabIndex = 1;
+            // 
             // Form_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -5902,6 +5921,7 @@
             this.xtraTabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
+            this.xtraTabPage5.ResumeLayout(false);
             this.xtraTabPage7.ResumeLayout(false);
             this.xtraTabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl8)).EndInit();
@@ -5981,6 +6001,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -6356,5 +6377,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand20;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand21;
         private DevExpress.XtraEditors.RadioGroup radioGroup9;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl2;
     }
 }

@@ -501,14 +501,31 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             }
         }
 
-        public List<Class_TableInfo> GetUseTableList()
+        public List<Class_TableInfo> GetUseTableList(List<string> myTableNameList)
         {
             List<Class_TableInfo> vs = new List<Class_TableInfo>();
-            string Str = string.Format(@"SELECT TABLE_NAME AS TableName
+            string Str;
+            if (myTableNameList == null)
+                Str = string.Format(@"SELECT TABLE_NAME AS TableName
                 ,TABLE_COMMENT as TableComment
                 FROM information_schema.TABLES
                 WHERE TABLE_SCHEMA = '{0}'
                 ORDER BY CREATE_TIME", this.DataBaseName);
+            else
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                foreach (string row in myTableNameList)
+                {
+                    stringBuilder.AppendFormat(",'{0}'", row);
+                }
+                Str = string.Format(@"SELECT TABLE_NAME AS TableName
+                ,TABLE_COMMENT as TableComment
+                FROM information_schema.TABLES
+                WHERE TABLE_SCHEMA = '{0}'
+                AND TABLE_NAME in ({1})
+                ORDER BY CREATE_TIME", this.DataBaseName, stringBuilder.ToString().Substring(1));
+                stringBuilder.Clear();
+            }
             DataTable UseTable = new DataTable("UseTable");
             UseTable = mySqlDb.GetDataTable(Str);
             foreach (DataRow row in UseTable.Rows)
@@ -598,7 +615,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     class_DataBaseContent.DataBaseFileName = DataBaseFileName;
                     //1：得到所有用户列表信息，包括：表名、表注释；
                     List<Class_TableInfo> class_TableInfos = new List<Class_TableInfo>();
-                    class_TableInfos = GetUseTableList();
+                    class_TableInfos = GetUseTableList(null);
                     if ((class_TableInfos != null) && (class_TableInfos.Count > 0))
                     {
                         #region 得到所有表信息
@@ -661,6 +678,10 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     }
                     else
                         DataBaseFileName = null;
+                }
+                else
+                {
+                    DataBaseFileName = null;
                 }
                 SaveFileDialog.Dispose();
                 return DataBaseFileName;
