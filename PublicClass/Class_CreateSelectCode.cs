@@ -236,7 +236,7 @@ namespace MDIDemo.PublicClass
                 , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(ResultType)));
             return stringBuilder.ToString();
         }
-        private string _GetMainWhereLable()
+        private string _GetMainWhereLable(Class_Main class_Main)
         {
             bool HaveGroup = false;
             bool HaveHaving = false;
@@ -260,7 +260,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
+            foreach (Class_Field class_Field in class_Main.class_Fields)
             {
                 #region Where
                 if (class_Field.WhereSelect)
@@ -638,39 +638,25 @@ namespace MDIDemo.PublicClass
 
             return stringBuilder.ToString();
         }
-
-        public string GetMainControl()
+        private string _GetMainMap(Class_Main class_Main)
         {
-            return _GetMainControl(class_SelectAllModel.class_Main);
-        }
-        public string GetMainDAO()
-        {
-            return _GetMainDAO(class_SelectAllModel.class_Main);
-        }
-
-        /// <summary>
-        /// 得到Map
-        /// </summary>
-        /// <returns></returns>
-        public string GetMainMap()
-        {
-            if (class_SelectAllModel.class_Main.ResultType == 0)
+            if (class_Main.ResultType == 0)
             {
                 Class_Tool class_ToolSpace = new Class_Tool();
                 StringBuilder stringBuilder = new StringBuilder();
                 IClass_InterFaceDataBase class_InterFaceDataBase;
-                if (class_SelectAllModel.class_Main.IsAddXmlHead)
+                if (class_Main.IsAddXmlHead)
                 {
                     stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF - 8\" ?>\r\n");
                     stringBuilder.Append("< !DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
                 }
                 stringBuilder.AppendFormat("<mapper namespace=\"{0}.dao.{1}Mapper\">\r\n"
                     , class_SelectAllModel.AllPackerName
-                    , class_SelectAllModel.class_Main.NameSpace);
+                    , class_Main.NameSpace);
                 stringBuilder.AppendFormat("{0}<resultMap id=\"{1}Map\" type=\"{3}.model.{2}\">\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , class_SelectAllModel.class_Main.ResultMapId
-                    , class_SelectAllModel.class_Main.ResultMapType
+                    , class_Main.ResultMapId
+                    , class_Main.ResultMapType
                     , class_SelectAllModel.AllPackerName);
                 switch (class_SelectAllModel.class_SelectDataBase.databaseType)
                 {
@@ -684,7 +670,7 @@ namespace MDIDemo.PublicClass
                         class_InterFaceDataBase = new Class_MySqlDataBase();
                         break;
                 }
-                foreach (Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
+                foreach (Class_Field class_Field in class_Main.class_Fields)
                 {
                     if (class_Field.SelectSelect)
                     {
@@ -718,11 +704,7 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        /// <summary>
-        /// 得到MapXml
-        /// </summary>
-        /// <returns></returns>
-        public string GetMainMapLable()
+        private string _GetMainMapLable(Class_Main class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -741,35 +723,35 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            stringBuilder.AppendFormat("{1}<!--注释：{0}-->\r\n", class_SelectAllModel.class_Main.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{1}<!--注释：{0}-->\r\n", class_Main.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0}<select id=\"{1}\" "
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , class_SelectAllModel.class_Main.MethodId);
-            if (class_SelectAllModel.class_Main.ResultType == 0)
+                , class_Main.MethodId);
+            if (class_Main.ResultType == 0)
             {
                 stringBuilder.AppendFormat("resultMap=\"{0}Map\""
-                    , class_SelectAllModel.class_Main.ResultMapId
+                    , class_Main.ResultMapId
                     , class_SelectAllModel.AllPackerName
-                    , class_SelectAllModel.class_Main.ResultMapType);
+                    , class_Main.ResultMapType);
             }
             else
             {
-                string ResultType = _GetSelectType(class_SelectAllModel.class_Main);
+                string ResultType = _GetSelectType(class_Main);
                 if (ResultType == "mult")
                     stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
                     , class_SelectAllModel.AllPackerName
-                    , class_SelectAllModel.class_Main.ResultMapType);
+                    , class_Main.ResultMapType);
                 else
                     stringBuilder.AppendFormat("resultType=\"{0}\""
                     , class_InterFaceDataBase.GetJavaType(ResultType));
             }
-            class_WhereFields = _GetParameterType(class_SelectAllModel.class_Main);
+            class_WhereFields = _GetParameterType(class_Main);
             if (class_WhereFields != null)
             {
                 if (class_WhereFields.Count > 1)
                     stringBuilder.AppendFormat(" parameterType=\"{0}.{1}\">\r\n"
                     , class_SelectAllModel.AllPackerName
-                    , class_SelectAllModel.class_Main.ResultMapType);
+                    , class_Main.ResultMapType);
                 else if (class_WhereFields.Count == 1)
                     stringBuilder.AppendFormat(" parameterType=\"{0}\">\r\n"
                     , class_InterFaceDataBase.GetJavaType(class_WhereFields[0].FieldType));
@@ -781,7 +763,7 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.AppendFormat("{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
             int Counter = 0;
-            foreach (Class_SelectAllModel.Class_Field class_Field in class_SelectAllModel.class_Main.class_Fields)
+            foreach (Class_Field class_Field in class_Main.class_Fields)
             {
                 #region Select
                 if (class_Field.SelectSelect)
@@ -807,16 +789,15 @@ namespace MDIDemo.PublicClass
                 }
                 #endregion
             }
-            stringBuilder.AppendFormat("{0}FROM {1}\r\n", class_ToolSpace.GetSetSpaceCount(2), class_SelectAllModel.class_Main.TableName);
-            stringBuilder.Append(_GetMainWhereLable());
+            stringBuilder.AppendFormat("{0}FROM {1}\r\n", class_ToolSpace.GetSetSpaceCount(2), class_Main.TableName);
+            stringBuilder.Append(_GetMainWhereLable(class_Main));
             stringBuilder.AppendFormat("{0}</select>\r\n", class_ToolSpace.GetSetSpaceCount(1));
             if (stringBuilder.Length > 0)
                 return stringBuilder.ToString();
             else
                 return null;
         }
-
-        public string GetMainModel()
+        private string _GetMainModel(Class_Main class_Main)
         {
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
@@ -837,10 +818,10 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" */\r\n");
-            stringBuilder.AppendFormat("public class {0} implements Serializable ", class_SelectAllModel.class_Main.NameSpace);
+            stringBuilder.AppendFormat("public class {0} implements Serializable ", class_Main.NameSpace);
             stringBuilder.Append(" {\r\n");
             //加入字段
-            foreach (Class_Field row in class_SelectAllModel.class_Main.class_Fields)
+            foreach (Class_Field row in class_Main.class_Fields)
             {
                 if (row.SelectSelect)
                 {
@@ -858,12 +839,7 @@ namespace MDIDemo.PublicClass
 
             return stringBuilder.ToString();
         }
-
-        public string GetMainServiceImpl()
-        {
-            return _GetMainServiceImpl(class_SelectAllModel.class_Main);
-        }
-        public string _GetMainServiceInterFace(Class_Main class_Main)
+        private string _GetMainServiceInterFace(Class_Main class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -940,68 +916,94 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
-        public string GetMainServiceInterFace()
-        {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_Main);
-        }
 
         public bool IsCheckOk()
         {
             return true;
         }
+
+        /// <summary>
+        /// 得到Map
+        /// </summary>
+        /// <returns></returns>
+        public string GetMainMap()
+        {
+            return _GetMainMap(class_SelectAllModel.class_Main);
+        }
+        /// <summary>
+        /// 得到MapXml
+        /// </summary>
+        /// <returns></returns>
+        public string GetMainMapLable()
+        {
+            return _GetMainMapLable(class_SelectAllModel.class_Main);
+        }
+        public string GetMainServiceInterFace()
+        {
+            return _GetMainServiceInterFace(class_SelectAllModel.class_Main);
+        }
+        public string GetMainServiceImpl()
+        {
+            return _GetMainServiceImpl(class_SelectAllModel.class_Main);
+        }
+        public string GetMainModel()
+        {
+            return _GetMainModel(class_SelectAllModel.class_Main);
+        }
         public string GetMainDTO()
         {
-            throw new NotImplementedException();
+            return null;
+        }
+        public string GetMainDAO()
+        {
+            return _GetMainDAO(class_SelectAllModel.class_Main);
+        }
+        public string GetMainControl()
+        {
+            return _GetMainControl(class_SelectAllModel.class_Main);
         }
         public string GetMainTestUnit()
         {
             throw new NotImplementedException();
         }
 
-        public string GetSubOneControl()
+        public string GetSubOneMap()
         {
-            throw new NotImplementedException();
+            return _GetMainMap(class_SelectAllModel.class_Subs);
         }
-
-        public string GetSubOneDAO()
+        public string GetSubOneMapLable()
         {
-            throw new NotImplementedException();
+            return _GetMainMapLable(class_SelectAllModel.class_Subs);
         }
-
+        public string GetSubOneServiceInterFace()
+        {
+            return _GetMainServiceInterFace(class_SelectAllModel.class_Subs);
+        }
+        public string GetSubOneServiceImpl()
+        {
+            return _GetMainServiceImpl(class_SelectAllModel.class_Subs);
+        }
+        public string GetSubOneModel()
+        {
+            return _GetMainModel(class_SelectAllModel.class_Subs);
+        }
         public string GetSubOneDTO()
         {
             throw new NotImplementedException();
         }
-
-        public string GetSubOneMap()
+        public string GetSubOneDAO()
         {
-            throw new NotImplementedException();
+            return _GetMainDAO(class_SelectAllModel.class_Subs);
         }
-
-        public string GetSubOneMapLable()
+        public string GetSubOneControl()
         {
-            throw new NotImplementedException();
+            return _GetMainControl(class_SelectAllModel.class_Subs);
         }
-
-        public string GetSubOneModel()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetSubOneServiceImpl()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetSubOneServiceInterFace()
-        {
-            throw new NotImplementedException();
-        }
-
         public string GetSubOneTestUnit()
         {
             throw new NotImplementedException();
         }
+
 
         public string GetSubTwoControl()
         {
