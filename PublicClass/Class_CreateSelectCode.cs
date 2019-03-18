@@ -1004,47 +1004,38 @@ namespace MDIDemo.PublicClass
             throw new NotImplementedException();
         }
 
-
-        public string GetSubTwoControl()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetSubTwoDAO()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetSubTwoDTO()
-        {
-            throw new NotImplementedException();
-        }
-
         public string GetSubTwoMap()
         {
             throw new NotImplementedException();
         }
-
         public string GetSubTwoMapLable()
         {
             throw new NotImplementedException();
         }
-
-        public string GetSubTwoModel()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetSubTwoServiceImpl()
-        {
-            throw new NotImplementedException();
-        }
-
         public string GetSubTwoServiceInterFace()
         {
             throw new NotImplementedException();
         }
-
+        public string GetSubTwoServiceImpl()
+        {
+            throw new NotImplementedException();
+        }
+        public string GetSubTwoModel()
+        {
+            throw new NotImplementedException();
+        }
+        public string GetSubTwoDAO()
+        {
+            throw new NotImplementedException();
+        }
+        public string GetSubTwoDTO()
+        {
+            throw new NotImplementedException();
+        }
+        public string GetSubTwoControl()
+        {
+            throw new NotImplementedException();
+        }
         public string GetSubTwoTestUnit()
         {
             throw new NotImplementedException();
