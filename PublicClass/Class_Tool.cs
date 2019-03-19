@@ -505,6 +505,36 @@ namespace MDIDemo.PublicClass
     public class Class_Tool
     {
         /// <summary>
+        /// 根据英文字段，得到对应的中文字段
+        /// </summary>
+        /// <param name="FieldName">字段名</param>
+        /// <returns></returns>
+        public static string GetChinaField(string FieldName)
+        {
+            if (IsEnglishField(FieldName))
+                return FieldName.Replace("English", "");
+            else
+                return FieldName;
+        }
+        /// <summary>
+        /// 是否为英文字段
+        /// </summary>
+        /// <param name="FieldName">字段名</param>
+        /// <returns></returns>
+        public static bool IsEnglishField(string FieldName)
+        {
+            if ((FieldName != null) && (FieldName.Length > 0))
+            {
+                int Index = FieldName.IndexOf("English");
+                if (Index > -1)
+                    return Index == FieldName.Length - 7 ? true : false;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+        /// <summary>
         /// 得到封装类Java类型
         /// </summary>
         /// <param name="MultJavaType"></param>

@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    public class Class_EnglishField
+    {
+        public string FieldChinaName;
+        public string FieldEnglishName;
+    }
     public class Class_WhereField
     {
         public string FieldName;
