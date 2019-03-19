@@ -3745,8 +3745,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox13.Items.AddRange(new object[] {
             "参数",
-            "固定值",
-            "当前时间"});
+            "固定值"});
             this.repositoryItemComboBox13.Name = "repositoryItemComboBox13";
             // 
             // bandedGridColumn47
@@ -4606,8 +4605,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox21.Items.AddRange(new object[] {
             "参数",
-            "固定值",
-            "当前时间"});
+            "固定值"});
             this.repositoryItemComboBox21.Name = "repositoryItemComboBox21";
             // 
             // bandedGridColumn75

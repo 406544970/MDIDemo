@@ -458,6 +458,10 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                         }
                                         if (IsDefault)
                                         {
+                                            row["SortType"] = "升序";
+                                            row["LogType"] = "=";
+                                            row["WhereType"] = "AND";
+                                            row["WhereValue"] = "参数";
                                             row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
                                             row["MaxLegth"] = row["FieldLength"];
                                             row["ReturnType"] = row["FieldType"];
