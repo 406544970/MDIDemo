@@ -819,7 +819,7 @@ namespace MDIDemo.PublicClass
                     {
                         if (class_Field.FieldIsKey)
                         {
-                            stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!--{4}-->\r\n"
+                            stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
                                 , class_ToolSpace.GetSetSpaceCount(2)
                                 , class_Field.FieldName
                                 , class_Field.ParaName
@@ -828,7 +828,7 @@ namespace MDIDemo.PublicClass
                         }
                         else
                         {
-                            stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!--{4}-->\r\n"
+                            stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
                                 , class_ToolSpace.GetSetSpaceCount(2)
                                 , class_Field.FieldName
                                 , class_Field.ParaName
@@ -866,7 +866,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            stringBuilder.AppendFormat("{1}<!--注释：{0}-->\r\n", class_Main.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{1}<!-- 注释：{0} -->\r\n", class_Main.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0}<select id=\"{1}\" "
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Main.MethodId);
@@ -926,9 +926,9 @@ namespace MDIDemo.PublicClass
                         FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
                     }
                     if (Counter++ > 0)
-                        stringBuilder.AppendFormat("{1},{0}<!--{2}-->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
+                        stringBuilder.AppendFormat("{1},{0}<!-- {2} -->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
                     else
-                        stringBuilder.AppendFormat("{1}{0}<!--{2}-->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
+                        stringBuilder.AppendFormat("{1}{0}<!-- {2} -->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
                 }
                 #endregion
             }
