@@ -129,9 +129,16 @@ namespace MDIDemo.PublicClass
                     , row.FieldName);
                 if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
                     stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
-                stringBuilder.AppendFormat(") {0} {1}"
-                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType))
-                    , row.FieldName);
+                stringBuilder.Append(")");
+                if (row.FieldLogType.IndexOf("IN") > -1)
+                {
+                    stringBuilder.AppendFormat(" List<{0}>"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                }
+                else
+                    stringBuilder.AppendFormat(" {0}"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                stringBuilder.AppendFormat(" {0}", row.FieldName);
             }
             if (class_SelectAllModel.class_Create.EnglishSign)
             {
@@ -341,7 +348,8 @@ namespace MDIDemo.PublicClass
                         FieldName = row.ParaName,
                         FieldRemark = row.FieldRemark,
                         FieldType = row.FieldType,
-                        FieldDefaultValue = row.FieldDefaultValue
+                        FieldDefaultValue = row.FieldDefaultValue,
+                         FieldLogType = row.LogType
                     };
                     class_WhereFields.Add(class_WhereField);
                 }

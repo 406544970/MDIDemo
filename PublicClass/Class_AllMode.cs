@@ -18,6 +18,7 @@ namespace MDIDemo.PublicClass
         public string FieldRemark;
         public string FieldType;
         public string FieldDefaultValue;
+        public string FieldLogType;
     }
     /// <summary>
     /// 数据库说明书类
