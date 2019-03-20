@@ -92,13 +92,23 @@ namespace MDIDemo.vou
             this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.TestUnit);
             this.textEdit21.Text = class_SelectAllModel.TestClassName;
 
+            #region 设置上次打开的Tab
             this.xtraTabControl1.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl1;
+            this.xtraTabControl2.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl2;
             this.xtraTabControl3.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl3;
+            this.xtraTabControl4.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl4;
             this.xtraTabControl5.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl5;
-            this.xtraTabControl8.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl8;
             this.xtraTabControl6.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl6;
             this.xtraTabControl7.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl7;
             this.xtraTabControl9.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl9;
+            this.xtraTabControl8.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl8;
+            this.xtraTabControl10.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl10;
+            this.xtraTabControl11.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl11;
+            this.xtraTabControl12.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl12;
+            this.xtraTabControl13.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl13;
+            this.xtraTabControl14.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl14;
+            this.xtraTabControl15.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl15;
+            #endregion
 
             #region 主表
             this.textEdit14.Text = class_SelectAllModel.class_Main.MethodId;
@@ -758,13 +768,23 @@ namespace MDIDemo.vou
             class_SelectAllModel.TestUnit = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
             class_SelectAllModel.TestClassName = this.textEdit21.Text;
 
+            #region 保存上次打开的Tab
             class_SelectAllModel.class_WindowLastState.xtraTabControl1 = this.xtraTabControl1.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl2 = this.xtraTabControl2.SelectedTabPageIndex;
             class_SelectAllModel.class_WindowLastState.xtraTabControl3 = this.xtraTabControl3.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl4 = this.xtraTabControl4.SelectedTabPageIndex;
             class_SelectAllModel.class_WindowLastState.xtraTabControl5 = this.xtraTabControl5.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl8 = this.xtraTabControl8.SelectedTabPageIndex;
             class_SelectAllModel.class_WindowLastState.xtraTabControl6 = this.xtraTabControl6.SelectedTabPageIndex;
             class_SelectAllModel.class_WindowLastState.xtraTabControl7 = this.xtraTabControl7.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl8 = this.xtraTabControl8.SelectedTabPageIndex;
             class_SelectAllModel.class_WindowLastState.xtraTabControl9 = this.xtraTabControl9.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl10 = this.xtraTabControl10.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl11 = this.xtraTabControl11.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl12 = this.xtraTabControl12.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl13 = this.xtraTabControl13.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl14 = this.xtraTabControl14.SelectedTabPageIndex;
+            class_SelectAllModel.class_WindowLastState.xtraTabControl15 = this.xtraTabControl15.SelectedTabPageIndex;
+            #endregion
 
             #region 主表
             class_SelectAllModel.class_Main.MethodId = this.textEdit14.Text;

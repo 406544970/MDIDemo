@@ -438,22 +438,6 @@
             this.panelControl27 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl17 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabPage25 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
-            this.memoEdit12 = new DevExpress.XtraEditors.MemoEdit();
-            this.panelControl16 = new DevExpress.XtraEditors.PanelControl();
-            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
-            this.textEdit21 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
-            this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit13 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.panelControl28 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl13 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage39 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl14 = new DevExpress.XtraTab.XtraTabControl();
@@ -506,6 +490,22 @@
             this.xtraTabPage48 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit30 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl38 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl28 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit12 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl16 = new DevExpress.XtraEditors.PanelControl();
+            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
+            this.textEdit21 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
+            this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit13 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
@@ -763,22 +763,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).BeginInit();
             this.xtraTabPage25.SuspendLayout();
-            this.xtraTabPage28.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).BeginInit();
-            this.panelControl16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
-            this.panelControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).BeginInit();
-            this.xtraTabControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl13)).BeginInit();
             this.xtraTabControl13.SuspendLayout();
             this.xtraTabPage39.SuspendLayout();
@@ -832,6 +816,22 @@
             this.xtraTabPage48.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit30.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl38)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl28)).BeginInit();
+            this.xtraTabPage28.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).BeginInit();
+            this.panelControl16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
+            this.panelControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).BeginInit();
+            this.xtraTabControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -6209,7 +6209,7 @@
             this.xtraTabPage35.Controls.Add(this.memoEdit18);
             this.xtraTabPage35.Controls.Add(this.panelControl24);
             this.xtraTabPage35.Name = "xtraTabPage35";
-            this.xtraTabPage35.Size = new System.Drawing.Size(879, 451);
+            this.xtraTabPage35.Size = new System.Drawing.Size(879, 420);
             this.xtraTabPage35.Text = "Model";
             // 
             // memoEdit17
@@ -6218,7 +6218,7 @@
             this.memoEdit17.Location = new System.Drawing.Point(0, 50);
             this.memoEdit17.MenuManager = this.barManager1;
             this.memoEdit17.Name = "memoEdit17";
-            this.memoEdit17.Size = new System.Drawing.Size(879, 401);
+            this.memoEdit17.Size = new System.Drawing.Size(879, 370);
             this.memoEdit17.TabIndex = 5;
             // 
             // memoEdit18
@@ -6227,7 +6227,7 @@
             this.memoEdit18.Location = new System.Drawing.Point(0, 50);
             this.memoEdit18.MenuManager = this.barManager1;
             this.memoEdit18.Name = "memoEdit18";
-            this.memoEdit18.Size = new System.Drawing.Size(879, 401);
+            this.memoEdit18.Size = new System.Drawing.Size(879, 370);
             this.memoEdit18.TabIndex = 4;
             // 
             // panelControl24
@@ -6243,7 +6243,7 @@
             this.xtraTabPage36.Controls.Add(this.memoEdit19);
             this.xtraTabPage36.Controls.Add(this.panelControl25);
             this.xtraTabPage36.Name = "xtraTabPage36";
-            this.xtraTabPage36.Size = new System.Drawing.Size(879, 451);
+            this.xtraTabPage36.Size = new System.Drawing.Size(879, 420);
             this.xtraTabPage36.Text = "DTO";
             // 
             // memoEdit19
@@ -6252,7 +6252,7 @@
             this.memoEdit19.Location = new System.Drawing.Point(0, 50);
             this.memoEdit19.MenuManager = this.barManager1;
             this.memoEdit19.Name = "memoEdit19";
-            this.memoEdit19.Size = new System.Drawing.Size(879, 401);
+            this.memoEdit19.Size = new System.Drawing.Size(879, 370);
             this.memoEdit19.TabIndex = 4;
             // 
             // panelControl25
@@ -6268,7 +6268,7 @@
             this.xtraTabPage37.Controls.Add(this.memoEdit20);
             this.xtraTabPage37.Controls.Add(this.panelControl26);
             this.xtraTabPage37.Name = "xtraTabPage37";
-            this.xtraTabPage37.Size = new System.Drawing.Size(879, 451);
+            this.xtraTabPage37.Size = new System.Drawing.Size(879, 420);
             this.xtraTabPage37.Text = "DAO";
             // 
             // memoEdit20
@@ -6277,7 +6277,7 @@
             this.memoEdit20.Location = new System.Drawing.Point(0, 50);
             this.memoEdit20.MenuManager = this.barManager1;
             this.memoEdit20.Name = "memoEdit20";
-            this.memoEdit20.Size = new System.Drawing.Size(879, 401);
+            this.memoEdit20.Size = new System.Drawing.Size(879, 370);
             this.memoEdit20.TabIndex = 4;
             // 
             // panelControl26
@@ -6293,7 +6293,7 @@
             this.xtraTabPage38.Controls.Add(this.memoEdit21);
             this.xtraTabPage38.Controls.Add(this.panelControl27);
             this.xtraTabPage38.Name = "xtraTabPage38";
-            this.xtraTabPage38.Size = new System.Drawing.Size(879, 451);
+            this.xtraTabPage38.Size = new System.Drawing.Size(879, 420);
             this.xtraTabPage38.Text = "Controller";
             // 
             // memoEdit21
@@ -6302,7 +6302,7 @@
             this.memoEdit21.Location = new System.Drawing.Point(0, 50);
             this.memoEdit21.MenuManager = this.barManager1;
             this.memoEdit21.Name = "memoEdit21";
-            this.memoEdit21.Size = new System.Drawing.Size(879, 401);
+            this.memoEdit21.Size = new System.Drawing.Size(879, 370);
             this.memoEdit21.TabIndex = 4;
             // 
             // panelControl27
@@ -6328,160 +6328,6 @@
             this.xtraTabPage25.Name = "xtraTabPage25";
             this.xtraTabPage25.Size = new System.Drawing.Size(885, 465);
             this.xtraTabPage25.Text = "从表二";
-            // 
-            // xtraTabPage28
-            // 
-            this.xtraTabPage28.Controls.Add(this.memoEdit12);
-            this.xtraTabPage28.Controls.Add(this.panelControl16);
-            this.xtraTabPage28.Name = "xtraTabPage28";
-            this.xtraTabPage28.Size = new System.Drawing.Size(885, 465);
-            this.xtraTabPage28.Text = "测试单元";
-            // 
-            // memoEdit12
-            // 
-            this.memoEdit12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit12.Location = new System.Drawing.Point(0, 82);
-            this.memoEdit12.MenuManager = this.barManager1;
-            this.memoEdit12.Name = "memoEdit12";
-            this.memoEdit12.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memoEdit12.Properties.Appearance.Options.UseFont = true;
-            this.memoEdit12.Size = new System.Drawing.Size(885, 383);
-            this.memoEdit12.TabIndex = 1;
-            // 
-            // panelControl16
-            // 
-            this.panelControl16.Controls.Add(this.checkEdit2);
-            this.panelControl16.Controls.Add(this.textEdit21);
-            this.panelControl16.Controls.Add(this.labelControl12);
-            this.panelControl16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl16.Location = new System.Drawing.Point(0, 0);
-            this.panelControl16.Name = "panelControl16";
-            this.panelControl16.Size = new System.Drawing.Size(885, 82);
-            this.panelControl16.TabIndex = 0;
-            // 
-            // checkEdit2
-            // 
-            this.checkEdit2.EditValue = true;
-            this.checkEdit2.Location = new System.Drawing.Point(3, 34);
-            this.checkEdit2.MenuManager = this.barManager1;
-            this.checkEdit2.Name = "checkEdit2";
-            this.checkEdit2.Properties.Caption = "生成@AutoWard";
-            this.checkEdit2.Size = new System.Drawing.Size(136, 19);
-            this.checkEdit2.TabIndex = 6;
-            // 
-            // textEdit21
-            // 
-            this.textEdit21.Location = new System.Drawing.Point(73, 8);
-            this.textEdit21.MenuManager = this.barManager1;
-            this.textEdit21.Name = "textEdit21";
-            this.textEdit21.Size = new System.Drawing.Size(319, 20);
-            this.textEdit21.TabIndex = 5;
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Location = new System.Drawing.Point(6, 10);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(60, 14);
-            this.labelControl12.TabIndex = 4;
-            this.labelControl12.Text = "测试类名：";
-            // 
-            // panelControl8
-            // 
-            this.panelControl8.Controls.Add(this.textEdit17);
-            this.panelControl8.Controls.Add(this.labelControl9);
-            this.panelControl8.Controls.Add(this.textEdit13);
-            this.panelControl8.Controls.Add(this.labelControl4);
-            this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl8.Location = new System.Drawing.Point(0, 31);
-            this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(891, 33);
-            this.panelControl8.TabIndex = 11;
-            // 
-            // textEdit17
-            // 
-            this.textEdit17.Location = new System.Drawing.Point(464, 6);
-            this.textEdit17.MenuManager = this.barManager1;
-            this.textEdit17.Name = "textEdit17";
-            this.textEdit17.Properties.ReadOnly = true;
-            this.textEdit17.Size = new System.Drawing.Size(319, 20);
-            this.textEdit17.TabIndex = 9;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(410, 9);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(48, 14);
-            this.labelControl9.TabIndex = 8;
-            this.labelControl9.Text = "方法ID：";
-            // 
-            // textEdit13
-            // 
-            this.textEdit13.Location = new System.Drawing.Point(73, 6);
-            this.textEdit13.MenuManager = this.barManager1;
-            this.textEdit13.Name = "textEdit13";
-            this.textEdit13.Size = new System.Drawing.Size(319, 20);
-            this.textEdit13.TabIndex = 3;
-            this.textEdit13.EditValueChanged += new System.EventHandler(this.textEdit13_EditValueChanged);
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(9, 7);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(60, 14);
-            this.labelControl4.TabIndex = 2;
-            this.labelControl4.Text = "全局包名：";
-            // 
-            // xtraTabControl3
-            // 
-            this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl3.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
-            this.xtraTabControl3.HeaderOrientation = DevExpress.XtraTab.TabOrientation.Horizontal;
-            this.xtraTabControl3.Images = this.imageList2;
-            this.xtraTabControl3.Location = new System.Drawing.Point(150, 0);
-            this.xtraTabControl3.Name = "xtraTabControl3";
-            this.xtraTabControl3.SelectedTabPage = this.xtraTabPage6;
-            this.xtraTabControl3.Size = new System.Drawing.Size(954, 564);
-            this.xtraTabControl3.TabIndex = 7;
-            this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage6,
-            this.xtraTabPage7});
-            // 
-            // popupMenu1
-            // 
-            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem26, true)});
-            this.popupMenu1.Manager = this.barManager1;
-            this.popupMenu1.Name = "popupMenu1";
-            // 
-            // popupMenu2
-            // 
-            this.popupMenu2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem25)});
-            this.popupMenu2.Manager = this.barManager1;
-            this.popupMenu2.Name = "popupMenu2";
-            // 
-            // popupMenu3
-            // 
-            this.popupMenu3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem19),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20)});
-            this.popupMenu3.Manager = this.barManager1;
-            this.popupMenu3.Name = "popupMenu3";
-            // 
-            // panelControl28
-            // 
-            this.panelControl28.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl28.Location = new System.Drawing.Point(0, 0);
-            this.panelControl28.Name = "panelControl28";
-            this.panelControl28.Size = new System.Drawing.Size(885, 16);
-            this.panelControl28.TabIndex = 7;
             // 
             // xtraTabControl13
             // 
@@ -6827,7 +6673,7 @@
             this.xtraTabPage44.Controls.Add(this.memoEdit25);
             this.xtraTabPage44.Controls.Add(this.panelControl33);
             this.xtraTabPage44.Name = "xtraTabPage44";
-            this.xtraTabPage44.Size = new System.Drawing.Size(873, 341);
+            this.xtraTabPage44.Size = new System.Drawing.Size(873, 372);
             this.xtraTabPage44.Text = "Impl";
             // 
             // memoEdit25
@@ -6836,7 +6682,7 @@
             this.memoEdit25.Location = new System.Drawing.Point(0, 65);
             this.memoEdit25.MenuManager = this.barManager1;
             this.memoEdit25.Name = "memoEdit25";
-            this.memoEdit25.Size = new System.Drawing.Size(873, 276);
+            this.memoEdit25.Size = new System.Drawing.Size(873, 307);
             this.memoEdit25.TabIndex = 3;
             // 
             // panelControl33
@@ -6861,7 +6707,7 @@
             this.xtraTabPage45.Controls.Add(this.memoEdit27);
             this.xtraTabPage45.Controls.Add(this.panelControl35);
             this.xtraTabPage45.Name = "xtraTabPage45";
-            this.xtraTabPage45.Size = new System.Drawing.Size(879, 420);
+            this.xtraTabPage45.Size = new System.Drawing.Size(879, 451);
             this.xtraTabPage45.Text = "Model";
             // 
             // memoEdit26
@@ -6870,7 +6716,7 @@
             this.memoEdit26.Location = new System.Drawing.Point(0, 50);
             this.memoEdit26.MenuManager = this.barManager1;
             this.memoEdit26.Name = "memoEdit26";
-            this.memoEdit26.Size = new System.Drawing.Size(879, 370);
+            this.memoEdit26.Size = new System.Drawing.Size(879, 401);
             this.memoEdit26.TabIndex = 5;
             // 
             // memoEdit27
@@ -6879,7 +6725,7 @@
             this.memoEdit27.Location = new System.Drawing.Point(0, 50);
             this.memoEdit27.MenuManager = this.barManager1;
             this.memoEdit27.Name = "memoEdit27";
-            this.memoEdit27.Size = new System.Drawing.Size(879, 370);
+            this.memoEdit27.Size = new System.Drawing.Size(879, 401);
             this.memoEdit27.TabIndex = 4;
             // 
             // panelControl35
@@ -6895,7 +6741,7 @@
             this.xtraTabPage46.Controls.Add(this.memoEdit28);
             this.xtraTabPage46.Controls.Add(this.panelControl36);
             this.xtraTabPage46.Name = "xtraTabPage46";
-            this.xtraTabPage46.Size = new System.Drawing.Size(879, 420);
+            this.xtraTabPage46.Size = new System.Drawing.Size(879, 451);
             this.xtraTabPage46.Text = "DTO";
             // 
             // memoEdit28
@@ -6904,7 +6750,7 @@
             this.memoEdit28.Location = new System.Drawing.Point(0, 50);
             this.memoEdit28.MenuManager = this.barManager1;
             this.memoEdit28.Name = "memoEdit28";
-            this.memoEdit28.Size = new System.Drawing.Size(879, 370);
+            this.memoEdit28.Size = new System.Drawing.Size(879, 401);
             this.memoEdit28.TabIndex = 4;
             // 
             // panelControl36
@@ -6920,7 +6766,7 @@
             this.xtraTabPage47.Controls.Add(this.memoEdit29);
             this.xtraTabPage47.Controls.Add(this.panelControl37);
             this.xtraTabPage47.Name = "xtraTabPage47";
-            this.xtraTabPage47.Size = new System.Drawing.Size(879, 420);
+            this.xtraTabPage47.Size = new System.Drawing.Size(879, 451);
             this.xtraTabPage47.Text = "DAO";
             // 
             // memoEdit29
@@ -6929,7 +6775,7 @@
             this.memoEdit29.Location = new System.Drawing.Point(0, 50);
             this.memoEdit29.MenuManager = this.barManager1;
             this.memoEdit29.Name = "memoEdit29";
-            this.memoEdit29.Size = new System.Drawing.Size(879, 370);
+            this.memoEdit29.Size = new System.Drawing.Size(879, 401);
             this.memoEdit29.TabIndex = 4;
             // 
             // panelControl37
@@ -6945,7 +6791,7 @@
             this.xtraTabPage48.Controls.Add(this.memoEdit30);
             this.xtraTabPage48.Controls.Add(this.panelControl38);
             this.xtraTabPage48.Name = "xtraTabPage48";
-            this.xtraTabPage48.Size = new System.Drawing.Size(879, 420);
+            this.xtraTabPage48.Size = new System.Drawing.Size(879, 451);
             this.xtraTabPage48.Text = "Controller";
             // 
             // memoEdit30
@@ -6954,7 +6800,7 @@
             this.memoEdit30.Location = new System.Drawing.Point(0, 50);
             this.memoEdit30.MenuManager = this.barManager1;
             this.memoEdit30.Name = "memoEdit30";
-            this.memoEdit30.Size = new System.Drawing.Size(879, 370);
+            this.memoEdit30.Size = new System.Drawing.Size(879, 401);
             this.memoEdit30.TabIndex = 4;
             // 
             // panelControl38
@@ -6964,6 +6810,160 @@
             this.panelControl38.Name = "panelControl38";
             this.panelControl38.Size = new System.Drawing.Size(879, 50);
             this.panelControl38.TabIndex = 0;
+            // 
+            // panelControl28
+            // 
+            this.panelControl28.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl28.Location = new System.Drawing.Point(0, 0);
+            this.panelControl28.Name = "panelControl28";
+            this.panelControl28.Size = new System.Drawing.Size(885, 16);
+            this.panelControl28.TabIndex = 7;
+            // 
+            // xtraTabPage28
+            // 
+            this.xtraTabPage28.Controls.Add(this.memoEdit12);
+            this.xtraTabPage28.Controls.Add(this.panelControl16);
+            this.xtraTabPage28.Name = "xtraTabPage28";
+            this.xtraTabPage28.Size = new System.Drawing.Size(885, 496);
+            this.xtraTabPage28.Text = "测试单元";
+            // 
+            // memoEdit12
+            // 
+            this.memoEdit12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit12.Location = new System.Drawing.Point(0, 82);
+            this.memoEdit12.MenuManager = this.barManager1;
+            this.memoEdit12.Name = "memoEdit12";
+            this.memoEdit12.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memoEdit12.Properties.Appearance.Options.UseFont = true;
+            this.memoEdit12.Size = new System.Drawing.Size(885, 414);
+            this.memoEdit12.TabIndex = 1;
+            // 
+            // panelControl16
+            // 
+            this.panelControl16.Controls.Add(this.checkEdit2);
+            this.panelControl16.Controls.Add(this.textEdit21);
+            this.panelControl16.Controls.Add(this.labelControl12);
+            this.panelControl16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl16.Location = new System.Drawing.Point(0, 0);
+            this.panelControl16.Name = "panelControl16";
+            this.panelControl16.Size = new System.Drawing.Size(885, 82);
+            this.panelControl16.TabIndex = 0;
+            // 
+            // checkEdit2
+            // 
+            this.checkEdit2.EditValue = true;
+            this.checkEdit2.Location = new System.Drawing.Point(3, 34);
+            this.checkEdit2.MenuManager = this.barManager1;
+            this.checkEdit2.Name = "checkEdit2";
+            this.checkEdit2.Properties.Caption = "生成@AutoWard";
+            this.checkEdit2.Size = new System.Drawing.Size(136, 19);
+            this.checkEdit2.TabIndex = 6;
+            // 
+            // textEdit21
+            // 
+            this.textEdit21.Location = new System.Drawing.Point(73, 8);
+            this.textEdit21.MenuManager = this.barManager1;
+            this.textEdit21.Name = "textEdit21";
+            this.textEdit21.Size = new System.Drawing.Size(319, 20);
+            this.textEdit21.TabIndex = 5;
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Location = new System.Drawing.Point(6, 10);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(60, 14);
+            this.labelControl12.TabIndex = 4;
+            this.labelControl12.Text = "测试类名：";
+            // 
+            // panelControl8
+            // 
+            this.panelControl8.Controls.Add(this.textEdit17);
+            this.panelControl8.Controls.Add(this.labelControl9);
+            this.panelControl8.Controls.Add(this.textEdit13);
+            this.panelControl8.Controls.Add(this.labelControl4);
+            this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl8.Location = new System.Drawing.Point(0, 31);
+            this.panelControl8.Name = "panelControl8";
+            this.panelControl8.Size = new System.Drawing.Size(891, 33);
+            this.panelControl8.TabIndex = 11;
+            // 
+            // textEdit17
+            // 
+            this.textEdit17.Location = new System.Drawing.Point(464, 6);
+            this.textEdit17.MenuManager = this.barManager1;
+            this.textEdit17.Name = "textEdit17";
+            this.textEdit17.Properties.ReadOnly = true;
+            this.textEdit17.Size = new System.Drawing.Size(319, 20);
+            this.textEdit17.TabIndex = 9;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(410, 9);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(48, 14);
+            this.labelControl9.TabIndex = 8;
+            this.labelControl9.Text = "方法ID：";
+            // 
+            // textEdit13
+            // 
+            this.textEdit13.Location = new System.Drawing.Point(73, 6);
+            this.textEdit13.MenuManager = this.barManager1;
+            this.textEdit13.Name = "textEdit13";
+            this.textEdit13.Size = new System.Drawing.Size(319, 20);
+            this.textEdit13.TabIndex = 3;
+            this.textEdit13.EditValueChanged += new System.EventHandler(this.textEdit13_EditValueChanged);
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(9, 7);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(60, 14);
+            this.labelControl4.TabIndex = 2;
+            this.labelControl4.Text = "全局包名：";
+            // 
+            // xtraTabControl3
+            // 
+            this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl3.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Left;
+            this.xtraTabControl3.HeaderOrientation = DevExpress.XtraTab.TabOrientation.Horizontal;
+            this.xtraTabControl3.Images = this.imageList2;
+            this.xtraTabControl3.Location = new System.Drawing.Point(150, 0);
+            this.xtraTabControl3.Name = "xtraTabControl3";
+            this.xtraTabControl3.SelectedTabPage = this.xtraTabPage6;
+            this.xtraTabControl3.Size = new System.Drawing.Size(954, 564);
+            this.xtraTabControl3.TabIndex = 7;
+            this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage6,
+            this.xtraTabPage7});
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem26, true)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
+            // popupMenu2
+            // 
+            this.popupMenu2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem25)});
+            this.popupMenu2.Manager = this.barManager1;
+            this.popupMenu2.Name = "popupMenu2";
+            // 
+            // popupMenu3
+            // 
+            this.popupMenu3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem19),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20)});
+            this.popupMenu3.Manager = this.barManager1;
+            this.popupMenu3.Name = "popupMenu3";
             // 
             // Form_Select
             // 
@@ -7244,24 +7244,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl17)).EndInit();
             this.xtraTabPage25.ResumeLayout(false);
-            this.xtraTabPage28.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).EndInit();
-            this.panelControl16.ResumeLayout(false);
-            this.panelControl16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
-            this.panelControl8.ResumeLayout(false);
-            this.panelControl8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).EndInit();
-            this.xtraTabControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl13)).EndInit();
             this.xtraTabControl13.ResumeLayout(false);
             this.xtraTabPage39.ResumeLayout(false);
@@ -7318,6 +7300,24 @@
             this.xtraTabPage48.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit30.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl38)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl28)).EndInit();
+            this.xtraTabPage28.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).EndInit();
+            this.panelControl16.ResumeLayout(false);
+            this.panelControl16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
+            this.panelControl8.ResumeLayout(false);
+            this.panelControl8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit13.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).EndInit();
+            this.xtraTabControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
             this.ResumeLayout(false);
 
         }
