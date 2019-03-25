@@ -65,6 +65,60 @@ namespace MDIDemo.PublicClass
             else
                 return false;
         }
+        public bool DeleteXml(string xmlFileName, string classType)
+        {
+            if (true)
+            {
+                if (File.Exists(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName)))
+                {
+                    File.Delete(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName));
+                }
+                return class_SQLiteOperator.DeleteByPageKey(xmlFileName);
+            }
+        }
+        public string CopyToNewXml(string xmlFileName, string classType)
+        {
+            string returnKey;
+            switch (classType)
+            {
+                case "select":
+                    {
+                        returnKey = Class_Tool.getKeyId("SE");
+                        Class_SelectAllModel class_SelectAllModel = new Class_SelectAllModel();
+                        class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                        class_SelectAllModel.class_Create.MethodId = returnKey;
+                        class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
+                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
+                        {
+                            returnKey = null;
+                        }
+                    }
+                    break;
+                case "insert":
+                    returnKey = Class_Tool.getKeyId("IN");
+                    break;
+                case "update":
+                    returnKey = Class_Tool.getKeyId("UP");
+                    break;
+                case "delete":
+                    returnKey = Class_Tool.getKeyId("DE");
+                    break;
+                default:
+                    {
+                        returnKey = Class_Tool.getKeyId("SE");
+                        Class_SelectAllModel class_SelectAllModel = new Class_SelectAllModel();
+                        class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                        class_SelectAllModel.class_Create.MethodId = returnKey;
+                        class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
+                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
+                        {
+                            returnKey = null;
+                        }
+                    }
+                    break;
+            }
+            return returnKey;
+        }
         /// <summary>
         /// 是否启动首页
         /// </summary>

@@ -14,7 +14,14 @@ namespace MDIDemo.PublicClass
             mySqlite3 = new MySqlite3();
         }
         private MySqlite3 mySqlite3;
-
+        private bool _DeleteByPageKey(string XmlFileKey)
+        {
+            string Sql = string.Format(@"DELETE
+                FROM vou_pageInfomation
+                WHERE pageKey = '{0}'"
+                , XmlFileKey);
+            return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
+        }
         private bool _UpdateIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
         {
             string Sql = string.Format(@"UPDATE vou_pageInfomation
@@ -57,6 +64,10 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10})"
                 return Convert.ToInt32(ReturnValue);
             else
                 return -1;
+        }
+        public bool DeleteByPageKey(string XmlFileKey)
+        {
+            return _DeleteByPageKey(XmlFileKey);
         }
         public List<Class_WindowType> GetWindowTypes()
         {

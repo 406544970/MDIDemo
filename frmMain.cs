@@ -114,10 +114,10 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                         case "update":
                             break;
                         case "delete":
-                            break; 
+                            break;
                         case "welcome":
                             openFirstPage();
-                            break; 
+                            break;
                         default:
                             OpenSelectWin(class_WindowType.XmlFileName);
                             break;
@@ -528,6 +528,69 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                 class_PublicMethod.SetGridFontSize(fontDialog.Font.Size);
             }
             fontDialog.Dispose();
+        }
+
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Form_WindowSelect form_WindowSelect = new Form_WindowSelect();
+            if (form_WindowSelect.ShowDialog() == DialogResult.OK)
+            {
+                string PageKey = form_WindowSelect.PageKey;
+                if ((PageKey != null) && (PageKey.Length > 0))
+                {
+                    switch (form_WindowSelect.PageType)
+                    {
+                        case "select":
+                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
+                            if (PageKey != null)
+                            {
+                                OpenSelectWin(PageKey);
+                            }
+                            break;
+                        case "insert":
+                            break;
+                        case "update":
+                            break;
+                        case "delete":
+                            break;
+                        default:
+                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
+                            if (class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType) != null)
+                            {
+                                OpenSelectWin(PageKey);
+                            }
+                            break;
+                    }
+                }
+            }
+            form_WindowSelect.Dispose();
+        }
+
+        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Form_WindowSelect form_WindowSelect = new Form_WindowSelect();
+            if (form_WindowSelect.ShowDialog() == DialogResult.OK)
+            {
+                if (class_PublicMethod.DeleteXml(form_WindowSelect.PageKey, form_WindowSelect.PageType))
+                {
+                    XtraMdiTabPage xtraMdiTabPage = null;
+                    foreach (XtraMdiTabPage xtra in xtraTabbedMdiManager1.Pages)
+                    {
+                        Class_WindowType class_WindowType = new Class_WindowType();
+                        class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
+                        if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
+                            xtraMdiTabPage = xtra;
+                    }
+                    if (xtraMdiTabPage != null)
+                        xtraMdiTabPage.MdiChild.Close();
+                    displayAlertMessage("温馨", "指定窗体已删除成功！", null, 3);
+                }
+                else
+                    displayAlertMessage("温馨", "指定窗体删除失败！", null, 3);
+            }
+            form_WindowSelect.Dispose();
         }
     }
 }

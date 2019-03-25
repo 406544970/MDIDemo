@@ -78,6 +78,8 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
             this.popupControlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -1226,9 +1228,11 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem14,
             this.barButtonItem15,
             this.barButtonItem16,
-            this.barButtonItem17});
+            this.barButtonItem17,
+            this.barButtonItem18,
+            this.barButtonItem19});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 57;
+            this.barManager1.MaxItemId = 59;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemColorEdit1,
             this.repositoryItemImageComboBox1,
@@ -1264,6 +1268,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             new DevExpress.XtraBars.LinkPersistInfo(this.iOpen),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
             new DevExpress.XtraBars.LinkPersistInfo(this.iClose),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
@@ -1298,6 +1303,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem12.Id = 50;
             this.barButtonItem12.ImageOptions.ImageIndex = 630;
             this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
             // iClose
             // 
@@ -1468,6 +1474,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             new DevExpress.XtraBars.LinkPersistInfo(this.iOpen),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
             new DevExpress.XtraBars.LinkPersistInfo(this.iClose),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
@@ -1764,6 +1771,23 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.imageCollection1.ImageSize = new System.Drawing.Size(32, 32);
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             // 
+            // barButtonItem18
+            // 
+            this.barButtonItem18.Caption = "删除现有窗体";
+            this.barButtonItem18.Hint = "删除指定窗体";
+            this.barButtonItem18.Id = 57;
+            this.barButtonItem18.ImageOptions.ImageIndex = 631;
+            this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
+            // 
+            // barButtonItem19
+            // 
+            this.barButtonItem19.Caption = "删除现有窗体";
+            this.barButtonItem19.Hint = "删除指定窗体";
+            this.barButtonItem19.Id = 58;
+            this.barButtonItem19.ImageOptions.ImageIndex = 631;
+            this.barButtonItem19.Name = "barButtonItem19";
+            // 
             // frmMain
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(6, 15);
@@ -1862,5 +1886,7 @@ private BarButtonItem barButtonItem4;
         private BarButtonItem barButtonItem17;
         private Alerter.AlertControl alertControl1;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private BarButtonItem barButtonItem18;
+        private BarButtonItem barButtonItem19;
     }
 }

@@ -746,7 +746,7 @@ namespace MDIDemo.vou
                 class_SelectAllModel.LastSelectTableName = this.listBoxControl1.SelectedValue.ToString();
             if (class_SelectAllModel.class_Create.MethodId == null)
             {
-                class_SelectAllModel.class_Create.MethodId = Class_Tool.getKeyId("MM");
+                class_SelectAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
                 this.Text = string.Format("SELECT：{0}", class_SelectAllModel.class_Create.MethodId);
                 this.Tag = class_SelectAllModel.class_Create.MethodId;
             }
