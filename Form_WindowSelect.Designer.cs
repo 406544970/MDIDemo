@@ -147,7 +147,7 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "编码者";
+            this.gridColumn4.Caption = "执行者";
             this.gridColumn4.FieldName = "doOperatorId";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;

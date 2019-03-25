@@ -153,6 +153,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         private void iOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Form_WindowSelect form_WindowSelect = new Form_WindowSelect();
+            form_WindowSelect.OperateType = "打开";
             if (form_WindowSelect.ShowDialog() == DialogResult.OK)
             {
                 string PageKey = form_WindowSelect.PageKey;
@@ -534,6 +535,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         {
             Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
             Form_WindowSelect form_WindowSelect = new Form_WindowSelect();
+            form_WindowSelect.OperateType = "效仿添加";
             if (form_WindowSelect.ShowDialog() == DialogResult.OK)
             {
                 string PageKey = form_WindowSelect.PageKey;
@@ -571,6 +573,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         {
             Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
             Form_WindowSelect form_WindowSelect = new Form_WindowSelect();
+            form_WindowSelect.OperateType = "删除";
             if (form_WindowSelect.ShowDialog() == DialogResult.OK)
             {
                 if (class_PublicMethod.DeleteXml(form_WindowSelect.PageKey, form_WindowSelect.PageType))

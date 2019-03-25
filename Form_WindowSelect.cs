@@ -22,8 +22,10 @@ namespace MDIDemo
         }
         public string PageKey;
         public string PageType;
+        public string OperateType;
         private void SetCompoment()
         {
+            this.Text += "---" + OperateType;
             memoEdit1.ReadOnly = true;
             GridC gridC = new GridC();
             gridC.SetGridBar(this.gridControl1);
