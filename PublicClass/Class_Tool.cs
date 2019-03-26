@@ -559,10 +559,15 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public static string GetSimplificationJavaType(string MultJavaType)
         {
-            string[] vs = MultJavaType.Split('.');
-            if (vs.Length > 0)
+            if (MultJavaType != null)
             {
-                return class_JavaAndClosedClasses.Find(a => a.ClosedType.Equals(MultJavaType)).JavaType;
+                string[] vs = MultJavaType.Split('.');
+                if (vs.Length > 0)
+                {
+                    return class_JavaAndClosedClasses.Find(a => a.ClosedType.Equals(MultJavaType)).JavaType;
+                }
+                else
+                    return null;
             }
             else
                 return null;

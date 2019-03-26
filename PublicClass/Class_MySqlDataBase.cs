@@ -590,7 +590,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
 
         public string GetJavaType(string dataBaseFieldType)
         {
-            if ((class_MySqlFieldAndJavas == null) || (class_MySqlFieldAndJavas.Count == 0))
+            if ((class_MySqlFieldAndJavas == null) || (class_MySqlFieldAndJavas.Count == 0) || (dataBaseFieldType == null))
                 return null;
             int Index = class_MySqlFieldAndJavas.FindIndex(a => a.DataBaseFieldType.ToUpper().Equals(dataBaseFieldType.ToUpper()));
             if (Index > -1)
