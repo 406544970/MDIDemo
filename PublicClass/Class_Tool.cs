@@ -502,6 +502,9 @@ namespace MDIDemo.PublicClass
         }
 
     }
+    /// <summary>
+    /// 工具类 2019-3-26
+    /// </summary>
     public class Class_Tool
     {
         /// <summary>
