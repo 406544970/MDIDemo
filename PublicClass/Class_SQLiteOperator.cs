@@ -28,7 +28,7 @@ namespace MDIDemo.PublicClass
                 SET projectId = '{1}',pageType = '{2}',
                 pageVersion = pageVersion + 1,lastUpdateTime = '{3}',
                 createOperatorId = '{4}',doOperatorId = '{5}',finishCount = {6},
-                methodRemark = {7},readOnly = {8}
+                methodRemark = {7},readOnly = {8},frontOperatorId = '{9}'
                 WHERE pageKey = '{0}'"
                 , class_PageInfomationMode.pageKey, class_PageInfomationMode.projectId
                 , class_PageInfomationMode.pageType
@@ -36,22 +36,24 @@ namespace MDIDemo.PublicClass
                 , class_PageInfomationMode.createOperatorId, class_PageInfomationMode.doOperatorId
                 , class_PageInfomationMode.finishCount
                 , (class_PageInfomationMode.methodRemark == null ? "null" : "'" + class_PageInfomationMode.methodRemark + "'")
-                , (class_PageInfomationMode.readOnly ? 1 : 0));
+                , (class_PageInfomationMode.readOnly ? 1 : 0)
+                , class_PageInfomationMode.frontOperatorId);
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
         private bool _InsertIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
         {
             string Sql = string.Format(@"INSERT INTO vou_pageInfomation(pageKey, projectId, 
 pageType, pageVersion, createTime, lastUpdateTime, 
-createOperatorId, doOperatorId, finishCount, methodRemark,readOnly)
-VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10})"
+createOperatorId, doOperatorId, finishCount, methodRemark,readOnly,frontOperatorId)
+VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
 , class_PageInfomationMode.pageKey, class_PageInfomationMode.projectId
 , class_PageInfomationMode.pageType, class_PageInfomationMode.pageVersion
 , class_PageInfomationMode.createTime.ToString("yyyy-MM-dd HH:mm:ss")
 , class_PageInfomationMode.lastUpdateTime.ToString("yyyy-MM-dd HH:mm:ss")
 , class_PageInfomationMode.createOperatorId, class_PageInfomationMode.doOperatorId
 , class_PageInfomationMode.finishCount, (class_PageInfomationMode.methodRemark == null ? "null" : "'" + class_PageInfomationMode.methodRemark + "'")
-, (class_PageInfomationMode.readOnly ? 1 : 0));
+, (class_PageInfomationMode.readOnly ? 1 : 0)
+, class_PageInfomationMode.frontOperatorId);
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
         private int _GetPageKeyCount(string PageKey)
@@ -139,7 +141,10 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10})"
         public DataSet GetAllWindowInfomation()
         {
             int Index = 0;
-            string Sql = @"SELECT pageKey,lastUpdateTime,createOperatorId,doOperatorId,readOnly,methodRemark
+            string Sql = @"SELECT pageKey,lastUpdateTime
+                ,createOperatorId,doOperatorId
+                ,readOnly,methodRemark
+                ,frontOperatorId
                 FROM vou_pageInfomation
                 WHERE projectId = 'projectId'
                 AND pageType = '{0}'
@@ -152,12 +157,14 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10})"
             DataColumn doOperatorId = new DataColumn("doOperatorId", typeof(string));
             DataColumn readOnly = new DataColumn("readOnly", typeof(bool));
             DataColumn methodRemark = new DataColumn("methodRemark", typeof(string));
+            DataColumn frontOperatorId = new DataColumn("frontOperatorId", typeof(string));
             BeginTable.Columns.Add(pageKey);
             BeginTable.Columns.Add(lastUpdateTime);
             BeginTable.Columns.Add(createOperatorId);
             BeginTable.Columns.Add(doOperatorId);
             BeginTable.Columns.Add(readOnly);
             BeginTable.Columns.Add(methodRemark);
+            BeginTable.Columns.Add(frontOperatorId);
 
             while (Index < 4)
             {
@@ -195,6 +202,7 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10})"
                         NewRow["doOperatorId"] = RowList[3];
                         NewRow["readOnly"] = (RowList[4] == "1" ? true : false);
                         NewRow["methodRemark"] = RowList[5];
+                        NewRow["frontOperatorId"] = RowList[6];
                         BeginTable.Rows.Add(NewRow);
                     }
                     BeginTable.AcceptChanges();

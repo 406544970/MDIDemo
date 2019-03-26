@@ -293,7 +293,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         private void iAbout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
-            process.StartInfo.FileName = "http://www.jk2002.cn/";
+            process.StartInfo.FileName = "http://www.baidu.com/";
             process.StartInfo.Verb = "Open";
             process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
             process.Start();
@@ -327,7 +327,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = _Text + " V " + _Version;
+            this.Text = _Text + " V " + _Version + "   ×÷Õß£ºÁºê»";
             OpenHistoryWin();
             Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
             if ((this.MdiChildren.Length == 0) && (class_PublicMethod.GetOpenWelcome()))

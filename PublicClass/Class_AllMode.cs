@@ -175,6 +175,7 @@ namespace MDIDemo.PublicClass
         public DateTime lastUpdateTime;
         public string createOperatorId;
         public string doOperatorId;
+        public string frontOperatorId;
         public int finishCount;
         public string methodRemark;
         public bool readOnly;

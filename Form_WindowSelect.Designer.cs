@@ -53,6 +53,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -113,6 +114,7 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
+            this.gridColumn7,
             this.gridColumn5,
             this.gridColumn6});
             this.gridView1.GridControl = this.gridControl1;
@@ -147,7 +149,7 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "执行者";
+            this.gridColumn4.Caption = "后端工程师";
             this.gridColumn4.FieldName = "doOperatorId";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
@@ -159,7 +161,7 @@
             this.gridColumn5.FieldName = "readOnly";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 5;
             // 
             // gridColumn6
             // 
@@ -167,7 +169,7 @@
             this.gridColumn6.FieldName = "methodRemark";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.VisibleIndex = 6;
             // 
             // xtraTabPage2
             // 
@@ -288,6 +290,14 @@
             this.splitterControl1.TabIndex = 3;
             this.splitterControl1.TabStop = false;
             // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "前端工程师";
+            this.gridColumn7.FieldName = "frontOperatorId";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 4;
+            // 
             // Form_WindowSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -352,5 +362,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }
 }

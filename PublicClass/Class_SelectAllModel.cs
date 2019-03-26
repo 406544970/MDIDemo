@@ -520,11 +520,21 @@ namespace MDIDemo.PublicClass
             }
             [Browsable(true)]
             [Category("生成配置")]
-            [DisplayName("执行者姓名")]
-            [Description("执行者姓名")]
+            [DisplayName("后端工程师姓名")]
+            [Description("后端工程师姓名")]
             [ReadOnly(false)]
             [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string CreateDo
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
+            [DisplayName("前端工程师姓名")]
+            [Description("前端工程师姓名")]
+            [ReadOnly(false)]
+            [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            public string CreateFrontDo
             {
                 get; set;
             }
