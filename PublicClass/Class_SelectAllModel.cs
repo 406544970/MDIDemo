@@ -791,6 +791,18 @@ namespace MDIDemo.PublicClass
             public string ControlContent { get; set; }
             public string ResultMapId { get; set; }
             public string ResultMapType { get; set; }
+            /// <summary>
+            /// 0：join、1：assosication；2：
+            /// </summary>
+            public int JoinType { get; set; }
+            /// <summary>
+            /// 0:内连接、1:左连接
+            /// </summary>
+            public int InnerType { get; set; }
+            /// <summary>
+            /// 数据对应关系：0：一对一；2：一对多；3：三对三；
+            /// </summary>
+            public int OneToMult { get; set; }
 
         }
         #endregion

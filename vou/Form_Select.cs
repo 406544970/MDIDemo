@@ -149,6 +149,9 @@ namespace MDIDemo.vou
             this.memoEdit21.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_Subs.ControlContent);
             this.textEdit29.Text = class_SelectAllModel.class_Subs.ResultMapId;
             this.textEdit28.Text = class_SelectAllModel.class_Subs.ResultMapType;
+            this.radioGroup5.SelectedIndex = class_SelectAllModel.class_Subs.JoinType;
+            this.radioGroup1.SelectedIndex = class_SelectAllModel.class_Subs.InnerType;
+            this.radioGroup3.SelectedIndex = class_SelectAllModel.class_Subs.OneToMult;
             //this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
             this.textEdit35.Text = class_SelectAllModel.class_Subs.ServiceInterFaceReturnRemark;
             this.radioGroup12.SelectedIndex = class_SelectAllModel.class_Subs.ServiceInterFaceReturnCount;
@@ -173,6 +176,9 @@ namespace MDIDemo.vou
             this.textEdit38.Text = class_SelectAllModel.class_SubSubs.ResultMapType;
             this.textEdit45.Text = class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnRemark;
             this.radioGroup15.SelectedIndex = class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnCount;
+            this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubSubs.JoinType;
+            this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubSubs.InnerType;
+            this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubSubs.OneToMult;
             #endregion
 
             if (class_SelectAllModel != null)
@@ -207,6 +213,9 @@ namespace MDIDemo.vou
             class_SetUpBar.setBar(this.bar1, "提示操作");
             class_SetUpBar.setBar(this.bar3, "提示操作");
             class_SetUpBar.setBar(this.bar4, "提示操作");
+
+            radioGroup5.SelectedIndex = 0;
+            radioGroup6.SelectedIndex = 0;
 
             setIniSkin(publicSkinName);
             xtraTabControl3.SelectedTabPageIndex = 0;
@@ -826,6 +835,9 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_Subs.ResultMapType = this.textEdit28.Text;
             class_SelectAllModel.class_Subs.ServiceInterFaceReturnRemark = this.textEdit35.Text;
             class_SelectAllModel.class_Subs.ServiceInterFaceReturnCount = this.radioGroup12.SelectedIndex;
+            class_SelectAllModel.class_Subs.JoinType = this.radioGroup5.SelectedIndex;
+            class_SelectAllModel.class_Subs.InnerType = this.radioGroup1.SelectedIndex;
+            class_SelectAllModel.class_Subs.OneToMult = this.radioGroup3.SelectedIndex;
             #endregion
 
             #region 从表二
@@ -847,6 +859,9 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_SubSubs.ResultMapType = this.textEdit38.Text;
             class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnRemark = this.textEdit45.Text;
             class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnCount = this.radioGroup15.SelectedIndex;
+            class_SelectAllModel.class_SubSubs.JoinType = this.radioGroup6.SelectedIndex;
+            class_SelectAllModel.class_SubSubs.InnerType = this.radioGroup2.SelectedIndex;
+            class_SelectAllModel.class_SubSubs.OneToMult = this.radioGroup4.SelectedIndex;
             #endregion
 
             if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
@@ -894,7 +909,7 @@ namespace MDIDemo.vou
             foreach (string item in class_InterFaceDataBase.GetUseTableList(TableNameList).Select(a => a.TableComment).ToList())
             {
                 this.listBoxControl2.Items.Add(item);
-            }            
+            }
             if (this.listBoxControl1.ItemCount > 0)
             {
                 this.listBoxControl1.SelectedIndex = 0;
@@ -1242,6 +1257,18 @@ namespace MDIDemo.vou
         private void textEdit38_EditValueChanged(object sender, EventArgs e)
         {
             this.textEdit37.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit38.Text);
+        }
+
+        private void radioGroup5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.radioGroup1.Enabled = radioGroup5.SelectedIndex > 0 ? false : true;
+            this.radioGroup3.Enabled = ! this.radioGroup1.Enabled;
+        }
+
+        private void radioGroup6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.radioGroup2.Enabled = radioGroup6.SelectedIndex > 0 ? false : true;
+            this.radioGroup4.Enabled = ! this.radioGroup2.Enabled;
         }
     }
 }
