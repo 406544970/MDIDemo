@@ -30,7 +30,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         private string mySkinName;
         private const string _Text = "myBatis 粘子层代码生成器";
-        private const string _Version = "1.0";
+        private const string _Version = "0.1";
         bool IsTabbedMdi { get { return biTabbedMDI.Down; } }
         public static string Version => _Version;
 
