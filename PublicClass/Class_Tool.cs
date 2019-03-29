@@ -792,6 +792,11 @@ namespace MDIDemo.PublicClass
             class_JavaAndClosedClass.ClosedType = "java.sql.Date";
             class_JavaAndClosedClass.SimplClosedType = "Date";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "BigDecimal";
+            class_JavaAndClosedClass.ClosedType = "java.math.BigDecimal";
+            class_JavaAndClosedClass.SimplClosedType = "BigDecimal";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             #endregion
         }
         private static List<Class_JavaAndJdbc> class_JavaAndJdbcs;
