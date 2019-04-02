@@ -561,7 +561,7 @@ namespace MDIDemo.PublicClass
                             else
                                 NowWhere = NowWhere + string.Format("{0}", class_Field.WhereValue);
                         }
-                        if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf(">") > -1) || (class_Field.LogType.IndexOf("&") > -1))
+                        if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf("&") > -1))
                             NowWhere = string.Format("{0}<![CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(4), NowWhere.Trim());
                         else
                             NowWhere += "\r\n";
