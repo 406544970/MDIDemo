@@ -118,16 +118,24 @@ namespace MDIDemo.PublicClass
                 , class_Main.ServiceInterFaceReturnRemark);
                 stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
                 stringBuilder.Append("{\r\n");
+                int index = 0;
                 foreach (Class_WhereField row in class_WhereFields)
                 {
-                    stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\"),\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(3)
-                    , Class_Tool.GetFirstCodeLow(row.FieldName)
-                    , row.FieldRemark
-                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , Class_Tool.GetFirstCodeLow(row.FieldName)
+                        , row.FieldRemark
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                    if (index < class_WhereFields.Count - 1)
+                        stringBuilder.Append(",");
+                    if (index == class_WhereFields.Count - 1 && class_SelectAllModel.class_Create.EnglishSign)
+                        stringBuilder.Append(",");
+                    stringBuilder.Append("\r\n");
+                        index++;
                 }
-                stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"englishSign\", value = \"是否生成英文\", required = true, dataType = \"Boolean\")\r\n"
-                , class_ToolSpace.GetSetSpaceCount(3));
+                if (class_SelectAllModel.class_Create.EnglishSign)
+                    stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"englishSign\", value = \"是否生成英文\", required = true, dataType = \"Boolean\")\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(3));
 
                 stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
                 stringBuilder.Append("})\r\n");
@@ -385,7 +393,7 @@ namespace MDIDemo.PublicClass
                     {
                         FieldName = row.ParaName,
                         FieldRemark = row.FieldRemark,
-                        FieldType = row.FieldType,
+                        FieldType = row.ReturnType,
                         FieldDefaultValue = row.FieldDefaultValue,
                         FieldLogType = row.LogType
                     };
