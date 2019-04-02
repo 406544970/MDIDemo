@@ -121,17 +121,17 @@ namespace MDIDemo.PublicClass
                 int index = 0;
                 foreach (Class_WhereField row in class_WhereFields)
                 {
-                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
-                        , class_ToolSpace.GetSetSpaceCount(3)
-                        , Class_Tool.GetFirstCodeLow(row.FieldName)
-                        , row.FieldRemark
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                    stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                    , class_ToolSpace.GetSetSpaceCount(3)
+                    , Class_Tool.GetFirstCodeLow(row.FieldName)
+                    , row.FieldRemark
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
                     if (index < class_WhereFields.Count - 1)
                         stringBuilder.Append(",");
                     if (index == class_WhereFields.Count - 1 && class_SelectAllModel.class_Create.EnglishSign)
                         stringBuilder.Append(",");
                     stringBuilder.Append("\r\n");
-                        index++;
+                    index++;
                 }
                 if (class_SelectAllModel.class_Create.EnglishSign)
                     stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"englishSign\", value = \"是否生成英文\", required = true, dataType = \"Boolean\")\r\n"
@@ -510,38 +510,53 @@ namespace MDIDemo.PublicClass
                             if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
                                 NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
                                 , class_Field.ParaName
-                                , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
+                                , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
                             else
                             {
                                 switch (LikeType)
                                 {
-                                    case -1:
-                                        NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
+                                    case -1://CONCAT('%',#{id,jdbcType=VARCHAR},'%')
+                                        if (class_SelectAllModel.class_SelectDataBase.databaseType == "MySql")
+                                            NowWhere = NowWhere + "CONCAT(\'%\',#{" + string.Format("{0},jdbcType={1}"
+                                            , class_Field.ParaName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "})";
+                                        else
+                                            NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
+                                            , class_Field.ParaName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
                                         break;
                                     case 0:
-                                        NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}%";
+                                        if (class_SelectAllModel.class_SelectDataBase.databaseType == "MySql")
+                                            NowWhere = NowWhere + "CONCAT(\'%\',#{" + string.Format("{0},jdbcType={1}"
+                                            , class_Field.ParaName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "},\'%\')";
+                                        else
+                                            NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
+                                            , class_Field.ParaName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}%";
                                         break;
                                     case 1:
-                                        NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}%";
+                                        if (class_SelectAllModel.class_SelectDataBase.databaseType == "MySql")
+                                            NowWhere = NowWhere + "CONCAT(#{" + string.Format("{0},jdbcType={1}"
+                                            , class_Field.ParaName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "},\'%\')";
+                                        else
+                                            NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
+                                            , class_Field.ParaName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "} + \'%\'";
                                         break;
                                     default:
                                         if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
                                             NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
                                         , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
+                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
                                         break;
                                 }
                             }
                         }
                         else
                         {
-                            if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType))
+                            if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType))
                                 NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
                             else
                                 NowWhere = NowWhere + string.Format("{0}", class_Field.WhereValue);
@@ -818,7 +833,7 @@ namespace MDIDemo.PublicClass
             if (class_WhereFields != null)
             {
                 if (class_WhereFields.Count > 1)
-                    stringBuilder.AppendFormat(" {0}(@Param(\"{2}\") {1} {2});\r\n"
+                    stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
                         , class_Main.MethodId
                         , class_Main.NameSpace
                         , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
@@ -948,7 +963,7 @@ namespace MDIDemo.PublicClass
             if (class_WhereFields != null)
             {
                 if (class_WhereFields.Count > 1)
-                    stringBuilder.AppendFormat(" parameterType=\"{0}.{1}\">\r\n"
+                    stringBuilder.AppendFormat(" parameterType=\"{0}.model.{1}\">\r\n"
                     , class_SelectAllModel.AllPackerName
                     , class_Main.ResultMapType);
                 else if (class_WhereFields.Count == 1)
