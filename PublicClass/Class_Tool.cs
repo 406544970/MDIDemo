@@ -623,89 +623,112 @@ namespace MDIDemo.PublicClass
             class_JavaAndJdbc.JdbcType = "VARCHAR";
             class_JavaAndJdbc.JavaType = "java.lang.String";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
-            //class_JavaAndJdbc = new Class_JavaAndJdbc();
-            //class_JavaAndJdbc.JdbcType = "CHAR";
-            //class_JavaAndJdbc.JavaType = "java.lang.String";
-            //class_JavaAndJdbcs.Add(class_JavaAndJdbc);
-            //class_JavaAndJdbc = new Class_JavaAndJdbc();
-            //class_JavaAndJdbc.JdbcType = "LONGVARCHAR";
-            //class_JavaAndJdbc.JavaType = "java.lang.String";
-            //class_JavaAndJdbcs.Add(class_JavaAndJdbc);
-            //class_JavaAndJdbc = new Class_JavaAndJdbc();
-            //class_JavaAndJdbc.JdbcType = "NUMERIC";
-            //class_JavaAndJdbc.JavaType = "java.math.BigDecimal";
-            //class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
+            class_JavaAndJdbc = new Class_JavaAndJdbc();
+            class_JavaAndJdbc.JdbcType = "CHAR";
+            class_JavaAndJdbc.JavaType = "java.lang.String";
+            class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
+            class_JavaAndJdbc = new Class_JavaAndJdbc();
+            class_JavaAndJdbc.JdbcType = "LONGVARCHAR";
+            class_JavaAndJdbc.JavaType = "java.lang.String";
+            class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
+            class_JavaAndJdbc = new Class_JavaAndJdbc();
+            class_JavaAndJdbc.JdbcType = "NUMERIC";
+            class_JavaAndJdbc.JavaType = "java.math.BigDecimal";
+            class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "DECIMAL";
             class_JavaAndJdbc.JavaType = "java.math.BigDecimal";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
-            //class_JavaAndJdbc = new Class_JavaAndJdbc();
-            //class_JavaAndJdbc.JdbcType = "BIT";
-            //class_JavaAndJdbc.JavaType = "java.lang.Boolean";
-            //class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
+            class_JavaAndJdbc = new Class_JavaAndJdbc();
+            class_JavaAndJdbc.JdbcType = "BIT";
+            class_JavaAndJdbc.JavaType = "java.lang.Boolean";
+            class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "BOOLEAN";
             class_JavaAndJdbc.JavaType = "java.lang.Boolean";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "TINYINT";
             class_JavaAndJdbc.JavaType = "java.lang.byte";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "SMALLINT";
             class_JavaAndJdbc.JavaType = "java.lang.short";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "INTEGER";
             class_JavaAndJdbc.JavaType = "java.lang.Integer";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "BIGINT";
             class_JavaAndJdbc.JavaType = "java.lang.Long";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "REAL";
             class_JavaAndJdbc.JavaType = "java.lang.Float";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "FLOAT";
             class_JavaAndJdbc.JavaType = "java.lang.Double";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "DOUBLE";
             class_JavaAndJdbc.JavaType = "java.lang.Double";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "BINARY";
             class_JavaAndJdbc.JavaType = "java.lang.Byte[]";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
-            //class_JavaAndJdbc = new Class_JavaAndJdbc();
-            //class_JavaAndJdbc.JdbcType = "VARBINARY";
-            //class_JavaAndJdbc.JavaType = "java.lang.Byte[]";
-            //class_JavaAndJdbcs.Add(class_JavaAndJdbc);
-            //class_JavaAndJdbc = new Class_JavaAndJdbc();
-            //class_JavaAndJdbc.JdbcType = "LONGVARBINARY";
-            //class_JavaAndJdbc.JavaType = "java.lang.byte[]";
-            //class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
+            class_JavaAndJdbc = new Class_JavaAndJdbc();
+            class_JavaAndJdbc.JdbcType = "VARBINARY";
+            class_JavaAndJdbc.JavaType = "java.lang.Byte[]";
+            class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
+            class_JavaAndJdbc = new Class_JavaAndJdbc();
+            class_JavaAndJdbc.JdbcType = "LONGVARBINARY";
+            class_JavaAndJdbc.JavaType = "java.lang.byte[]";
+            class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "DATE";
             class_JavaAndJdbc.JavaType = "java.sql.Date";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "TIME";
             class_JavaAndJdbc.JavaType = "java.sql.Time";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
+            class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "TIMESTAMP";
             class_JavaAndJdbc.JavaType = "java.sql.Timestamp";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "CLOB";
             class_JavaAndJdbc.JavaType = "java.lang.Clob";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "BLOB";
             class_JavaAndJdbc.JavaType = "java.lang.Blob";
             class_JavaAndJdbcs.Add(class_JavaAndJdbc);
+
             class_JavaAndJdbc = new Class_JavaAndJdbc();
             class_JavaAndJdbc.JdbcType = "ARRAY";
             class_JavaAndJdbc.JavaType = "java.lang.Array";
@@ -763,6 +786,16 @@ namespace MDIDemo.PublicClass
             class_JavaAndClosedClass.JavaType = "Date";
             class_JavaAndClosedClass.ClosedType = "java.sql.Timestamp";
             class_JavaAndClosedClass.SimplClosedType = "Date";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "Date";
+            class_JavaAndClosedClass.ClosedType = "java.sql.Date";
+            class_JavaAndClosedClass.SimplClosedType = "Date";
+            class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
+            class_JavaAndClosedClass = new Class_JavaAndClosedClass();
+            class_JavaAndClosedClass.JavaType = "BigDecimal";
+            class_JavaAndClosedClass.ClosedType = "java.math.BigDecimal";
+            class_JavaAndClosedClass.SimplClosedType = "BigDecimal";
             class_JavaAndClosedClasses.Add(class_JavaAndClosedClass);
             #endregion
         }
