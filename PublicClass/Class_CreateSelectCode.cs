@@ -64,9 +64,14 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("/**\r\n");
             stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.Append("@RestController\r\n");
             stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n", class_SelectAllModel.class_Create.MicroServiceName);
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+                stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
+                    , class_Main.ControlSwaggerValue
+                    , class_Main.ControlSwaggerDescription);
             stringBuilder.Append(string.Format("public class {0}Controller ", class_Main.NameSpace) + "{\r\n");
 
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@Value(\"${server.port}\"\r\n");
@@ -80,7 +85,7 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.Append("\r\n");
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Main.MethodContent);
             class_WhereFields = _GetParameterType(class_Main);
             if (class_WhereFields != null)
@@ -104,11 +109,34 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
             , class_Main.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-
-            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}\")\r\n"
+            #region Swagger
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+            {
+                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , class_SelectAllModel.class_Create.HttpRequestType
-                , class_Main.MethodId);
+                , class_Main.MethodContent
+                , class_Main.ServiceInterFaceReturnRemark);
+                stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.Append("{\r\n");
+                foreach (Class_WhereField row in class_WhereFields)
+                {
+                    stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\"),\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(3)
+                    , Class_Tool.GetFirstCodeLow(row.FieldName)
+                    , row.FieldRemark
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                }
+                stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"englishSign\", value = \"是否生成英文\", required = true, dataType = \"Boolean\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(3));
+
+                stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.Append("})\r\n");
+            }
+            #endregion
+            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}\")\r\n"
+            , class_ToolSpace.GetSetSpaceCount(1)
+            , class_SelectAllModel.class_Create.HttpRequestType
+            , class_Main.MethodId);
             stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
 
             if (class_Main.ServiceInterFaceReturnCount == 0)
@@ -303,11 +331,21 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
             stringBuilder.Append("\r\n");
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , "查看该站点端口"
+                , "以便观察负载均衡");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@PostMapping(value = \"/myPort\")\r\n");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "public String myPort(){\r\n");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return \"myPort: \" + this.myPort;\r\n");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
             stringBuilder.Append("\r\n");
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , "手动下线该站点功能"
+                , "通过此方法，主动向注册中心提出下线");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@GetMapping(value = \"/downLine\")\r\n");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "public void downLine(){\r\n");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "getInstance().shutdownComponent();\r\n");
@@ -349,7 +387,7 @@ namespace MDIDemo.PublicClass
                         FieldRemark = row.FieldRemark,
                         FieldType = row.FieldType,
                         FieldDefaultValue = row.FieldDefaultValue,
-                         FieldLogType = row.LogType
+                        FieldLogType = row.LogType
                     };
                     class_WhereFields.Add(class_WhereField);
                 }
@@ -624,6 +662,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("/**\r\n");
             stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.Append("@SuppressWarnings(\"SpringJavaInjectionPointsAutowiringInspection\")\r\n@Service\r\n");
             stringBuilder.AppendFormat("public class {0}ServiceImpl implements {0}Service", class_Main.NameSpace);
@@ -634,7 +673,7 @@ namespace MDIDemo.PublicClass
             , class_Main.NameSpace
             , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Main.MethodContent);
             class_WhereFields = _GetParameterType(class_Main);
             if (class_WhereFields != null)
@@ -731,12 +770,13 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("/**\r\n");
             stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.Append("@Mapper\r\n");
             stringBuilder.Append(string.Format("public interface {0}Mapper ", class_Main.NameSpace) + "{\r\n");
 
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Main.MethodContent);
             class_WhereFields = _GetParameterType(class_Main);
             if (class_WhereFields != null)
@@ -770,13 +810,13 @@ namespace MDIDemo.PublicClass
             if (class_WhereFields != null)
             {
                 if (class_WhereFields.Count > 1)
-                    stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
+                    stringBuilder.AppendFormat(" {0}(@Param(\"{2}\") {1} {2});\r\n"
                         , class_Main.MethodId
                         , class_Main.NameSpace
                         , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
                 else if (class_WhereFields.Count == 1)
                 {
-                    stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
+                    stringBuilder.AppendFormat(" {0}(@Param(\"{2}\") {1} {2});\r\n"
                         , class_Main.MethodId
                         , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].FieldType))
                         , class_WhereFields[0].FieldName);
@@ -931,7 +971,8 @@ namespace MDIDemo.PublicClass
                     }
                     if (!FieldName.Equals(class_Field.ParaName))
                     {
-                        FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
+                        if (class_Main.ResultType > 0)
+                            FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
                     }
                     if (Counter++ > 0)
                         stringBuilder.AppendFormat("{1},{0}<!-- {2} -->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
@@ -968,6 +1009,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("/**\r\n");
             stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.AppendFormat("public class {0} implements Serializable ", class_Main.NameSpace);
             stringBuilder.Append(" {\r\n");
@@ -1018,11 +1060,12 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("/**\r\n");
             stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.Append(string.Format("public interface {0}Service ", class_Main.NameSpace) + "{\r\n");
 
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Main.MethodContent);
             class_WhereFields = _GetParameterType(class_Main);
             if (class_WhereFields != null)

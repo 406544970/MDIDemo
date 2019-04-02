@@ -438,6 +438,7 @@ namespace MDIDemo.PublicClass
                 MethodSite = "粘子层";
                 HttpRequestType = "Post";
                 ReadOnly = false;
+                SwaggerSign = true;
             }
             [Browsable(true)]
             [Category("生成配置")]
@@ -499,11 +500,20 @@ namespace MDIDemo.PublicClass
             }
             [Browsable(true)]
             [Category("生成配置")]
+            [DisplayName("生成Swagger2文档")]
+            [Description("true:生成注释文档，false:不生成注释文档；")]
+            [ReadOnly(false)]
+            [DefaultValue(true)]
+            public bool SwaggerSign
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
             [DisplayName("生成英文版")]
             [Description("true:生成中英文，false:仅生成中文；")]
             [ReadOnly(false)]
             [DefaultValue(true)]
-            //[Editor(typeof(CheckboxPro), typeof(System.Drawing.Design.UITypeEditor))]
             public bool EnglishSign
             {
                 get; set;
@@ -791,6 +801,8 @@ namespace MDIDemo.PublicClass
             public string ControlContent { get; set; }
             public string ResultMapId { get; set; }
             public string ResultMapType { get; set; }
+            public string ControlSwaggerValue { get; set; }
+            public string ControlSwaggerDescription { get; set; }
             /// <summary>
             /// 0：join、1：assosication；2：
             /// </summary>

@@ -129,6 +129,8 @@ namespace MDIDemo.vou
             this.textEdit24.Text = class_SelectAllModel.class_Main.ResultMapType;
             this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
             this.textEdit20.Text = class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark;
+            this.textEdit47.Text = class_SelectAllModel.class_Main.ControlSwaggerValue;
+            this.textEdit46.Text = class_SelectAllModel.class_Main.ControlSwaggerDescription;
             this.radioGroup9.SelectedIndex = class_SelectAllModel.class_Main.ServiceInterFaceReturnCount;
             #endregion
 
@@ -149,6 +151,8 @@ namespace MDIDemo.vou
             this.memoEdit21.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_Subs.ControlContent);
             this.textEdit29.Text = class_SelectAllModel.class_Subs.ResultMapId;
             this.textEdit28.Text = class_SelectAllModel.class_Subs.ResultMapType;
+            this.textEdit49.Text = class_SelectAllModel.class_Subs.ControlSwaggerValue;
+            this.textEdit48.Text = class_SelectAllModel.class_Subs.ControlSwaggerDescription;
             this.radioGroup5.SelectedIndex = class_SelectAllModel.class_Subs.JoinType;
             this.radioGroup1.SelectedIndex = class_SelectAllModel.class_Subs.InnerType;
             this.radioGroup3.SelectedIndex = class_SelectAllModel.class_Subs.OneToMult;
@@ -175,6 +179,8 @@ namespace MDIDemo.vou
             this.textEdit39.Text = class_SelectAllModel.class_SubSubs.ResultMapId;
             this.textEdit38.Text = class_SelectAllModel.class_SubSubs.ResultMapType;
             this.textEdit45.Text = class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnRemark;
+            this.textEdit51.Text = class_SelectAllModel.class_SubSubs.ControlSwaggerValue;
+            this.textEdit50.Text = class_SelectAllModel.class_SubSubs.ControlSwaggerDescription;
             this.radioGroup15.SelectedIndex = class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnCount;
             this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubSubs.JoinType;
             this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubSubs.InnerType;
@@ -303,6 +309,12 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit43, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit44, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit45, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit46, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit47, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit48, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit49, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit50, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit51, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit1, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit2, true, Color.GreenYellow);
@@ -812,6 +824,8 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_Main.ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
             class_SelectAllModel.class_Main.ResultMapId = this.textEdit22.Text;
             class_SelectAllModel.class_Main.ResultMapType = this.textEdit24.Text;
+            class_SelectAllModel.class_Main.ControlSwaggerValue = this.textEdit47.Text;
+            class_SelectAllModel.class_Main.ControlSwaggerDescription = this.textEdit46.Text;
             class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark = this.textEdit20.Text;
             class_SelectAllModel.class_Main.ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
             #endregion
@@ -833,6 +847,8 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_Subs.ControlContent = Class_Tool.EscapeCharacter(this.memoEdit21.Text);
             class_SelectAllModel.class_Subs.ResultMapId = this.textEdit29.Text;
             class_SelectAllModel.class_Subs.ResultMapType = this.textEdit28.Text;
+            class_SelectAllModel.class_Subs.ControlSwaggerValue = this.textEdit49.Text;
+            class_SelectAllModel.class_Subs.ControlSwaggerDescription = this.textEdit48.Text;
             class_SelectAllModel.class_Subs.ServiceInterFaceReturnRemark = this.textEdit35.Text;
             class_SelectAllModel.class_Subs.ServiceInterFaceReturnCount = this.radioGroup12.SelectedIndex;
             class_SelectAllModel.class_Subs.JoinType = this.radioGroup5.SelectedIndex;
@@ -857,6 +873,8 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_SubSubs.ControlContent = Class_Tool.EscapeCharacter(this.memoEdit30.Text);
             class_SelectAllModel.class_SubSubs.ResultMapId = this.textEdit39.Text;
             class_SelectAllModel.class_SubSubs.ResultMapType = this.textEdit38.Text;
+            class_SelectAllModel.class_SubSubs.ControlSwaggerValue = this.textEdit51.Text;
+            class_SelectAllModel.class_SubSubs.ControlSwaggerDescription = this.textEdit50.Text;
             class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnRemark = this.textEdit45.Text;
             class_SelectAllModel.class_SubSubs.ServiceInterFaceReturnCount = this.radioGroup15.SelectedIndex;
             class_SelectAllModel.class_SubSubs.JoinType = this.radioGroup6.SelectedIndex;
