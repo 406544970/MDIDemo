@@ -74,7 +74,7 @@ namespace MDIDemo.PublicClass
                     , class_Main.ControlSwaggerDescription);
             stringBuilder.Append(string.Format("public class {0}Controller ", class_Main.NameSpace) + "{\r\n");
 
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@Value(\"${server.port}\"\r\n");
+            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@Value(\"${server.port}\")\r\n");
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "String myPort;\r\n\r\n");
 
             stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -172,13 +172,13 @@ namespace MDIDemo.PublicClass
             {
                 if (Index > 0)
                 {
-                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"false\") bool {0}"
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
                     , "englishSign"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"false\") bool {0}"
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
                     , "englishSign"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
