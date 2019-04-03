@@ -244,6 +244,7 @@ namespace MDIDemo.vou
             radioGroup3.SelectedIndex = 0;
             radioGroup4.SelectedIndex = 0;
 
+            #region MemoEdit
             Class_SetMemoEdit class_SetMemoEdit = new Class_SetMemoEdit();
             class_SetMemoEdit.SetMemoEdit(this.memoEdit1);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit2);
@@ -273,7 +274,9 @@ namespace MDIDemo.vou
             class_SetMemoEdit.SetMemoEdit(this.memoEdit28);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit29);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit30);
+            #endregion
 
+            #region TextEdit
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
             class_SetTextEdit.SetTextEdit(this.textEdit18);
             class_SetTextEdit.SetTextEdit(this.textEdit25);
@@ -325,6 +328,7 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit7, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit8, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit9, true, Color.GreenYellow);
+            #endregion
 
             this.xtraTabControl8.Images = this.xtraTabControl5.Images;
             for (int index = 0; index < this.xtraTabControl8.TabPages.Count; index++)
