@@ -998,9 +998,9 @@ namespace MDIDemo.PublicClass
                             FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
                     }
                     if (Counter++ > 0)
-                        stringBuilder.AppendFormat("{1},{0}<!-- {2} -->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
+                        stringBuilder.AppendFormat("{1},{0}\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3));
                     else
-                        stringBuilder.AppendFormat("{1}{0}<!-- {2} -->\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3), class_Field.FieldRemark);
+                        stringBuilder.AppendFormat("{1}{0}\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3));
                 }
                 #endregion
             }
