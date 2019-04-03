@@ -702,5 +702,35 @@ namespace MDIDemo.PublicClass
                 throw e;
             }
         }
+
+        /// <summary>
+        /// 返回Like查询条件字符串
+        /// </summary>
+        /// <param name="FieldName"></param>
+        /// <param name="Type">-1：左LIKE，0：全LIKE，1：右LIKE</param>
+        /// <returns></returns>
+        public string GetLikeString(string FieldName, int Type)
+        {
+            String ResultValue = null;
+            if (FieldName != null)
+            {
+                switch (Type)
+                {
+                    case -1:
+                        ResultValue = String.Format("\'%\' + {0}", FieldName);
+                        break;
+                    case 0:
+                        ResultValue = String.Format("\'%\' + {0} + \'%\'", FieldName);
+                        break;
+                    case 1:
+                        ResultValue = String.Format("{0} + \'%\'", FieldName);
+                        break;
+                    default:
+                        ResultValue = String.Format("\'%\' + {0}", FieldName);
+                        break;
+                }
+            }
+            return ResultValue;
+        }
     }
 }

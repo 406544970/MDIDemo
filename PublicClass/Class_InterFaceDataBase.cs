@@ -48,5 +48,7 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         string GetDataBaseContent();
 
+        string GetLikeString(String FieldName, int Type);
+
     }
 }

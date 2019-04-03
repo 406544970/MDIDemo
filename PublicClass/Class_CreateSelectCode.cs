@@ -507,52 +507,13 @@ namespace MDIDemo.PublicClass
                         NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
                         if (class_Field.WhereValue == "参数")
                         {
-                            if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
-                                NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
+                            String XmlFieldString = "#{" + string.Format("{0},jdbcType={1}"
                                 , class_Field.ParaName
                                 , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
+                            if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
+                                NowWhere = NowWhere + XmlFieldString;
                             else
-                            {
-                                switch (LikeType)
-                                {
-                                    case -1://CONCAT('%',#{id,jdbcType=VARCHAR},'%')
-                                        if (class_SelectAllModel.class_SelectDataBase.databaseType == "MySql")
-                                            NowWhere = NowWhere + "CONCAT(\'%\',#{" + string.Format("{0},jdbcType={1}"
-                                            , class_Field.ParaName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "})";
-                                        else
-                                            NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                            , class_Field.ParaName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
-                                        break;
-                                    case 0:
-                                        if (class_SelectAllModel.class_SelectDataBase.databaseType == "MySql")
-                                            NowWhere = NowWhere + "CONCAT(\'%\',#{" + string.Format("{0},jdbcType={1}"
-                                            , class_Field.ParaName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "},\'%\')";
-                                        else
-                                            NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                            , class_Field.ParaName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}%";
-                                        break;
-                                    case 1:
-                                        if (class_SelectAllModel.class_SelectDataBase.databaseType == "MySql")
-                                            NowWhere = NowWhere + "CONCAT(#{" + string.Format("{0},jdbcType={1}"
-                                            , class_Field.ParaName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "},\'%\')";
-                                        else
-                                            NowWhere = NowWhere + "#{" + string.Format("{0},jdbcType={1}"
-                                            , class_Field.ParaName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "} + \'%\'";
-                                        break;
-                                    default:
-                                        if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
-                                            NowWhere = NowWhere + "%#{" + string.Format("{0},jdbcType={1}"
-                                        , class_Field.ParaName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
-                                        break;
-                                }
-                            }
+                                NowWhere = NowWhere + class_InterFaceDataBase.GetLikeString(XmlFieldString, LikeType);
                         }
                         else
                         {
