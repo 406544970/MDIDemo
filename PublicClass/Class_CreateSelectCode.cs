@@ -861,8 +861,8 @@ namespace MDIDemo.PublicClass
                 IClass_InterFaceDataBase class_InterFaceDataBase;
                 if (class_Main.IsAddXmlHead)
                 {
-                    stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF - 8\" ?>\r\n");
-                    stringBuilder.Append("< !DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
+                    stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
+                    stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
                 }
                 stringBuilder.AppendFormat("<mapper namespace=\"{0}.dao.{1}Mapper\">\r\n"
                     , class_SelectAllModel.AllPackerName
@@ -1034,7 +1034,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
-            stringBuilder.AppendFormat("public class {0} implements Serializable ", class_Main.NameSpace);
+            stringBuilder.AppendFormat("public class {0} ", class_Main.NameSpace);
             stringBuilder.Append(" {\r\n");
             //加入字段
             foreach (Class_Field row in class_Main.class_Fields)
