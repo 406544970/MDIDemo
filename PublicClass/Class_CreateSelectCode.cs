@@ -653,7 +653,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" {\r\n");
 
             stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}{1}Mapper {2}Dao;\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            stringBuilder.AppendFormat("{0}{1}Mapper {2}Mapper;\r\n", class_ToolSpace.GetSetSpaceCount(1)
             , class_Main.NameSpace
             , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
