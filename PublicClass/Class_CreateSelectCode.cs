@@ -627,6 +627,7 @@ namespace MDIDemo.PublicClass
         }
         private string _GetMainServiceImpl(Class_Main class_Main)
         {
+            string MapAfterString = "Mapper";
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
@@ -653,9 +654,10 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" {\r\n");
 
             stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}{1}Mapper {2}Mapper;\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            stringBuilder.AppendFormat("{0}{1}{3} {2}{3};\r\n", class_ToolSpace.GetSetSpaceCount(1)
             , class_Main.NameSpace
-            , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
+            , Class_Tool.GetFirstCodeLow(class_Main.NameSpace)
+            , MapAfterString);
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Main.MethodContent);
@@ -705,9 +707,10 @@ namespace MDIDemo.PublicClass
                         , class_Main.MethodId);
                 stringBuilder.Append(" {\r\n");
             }
-            stringBuilder.AppendFormat("{0}return {1}Dao."
+            stringBuilder.AppendFormat("{0}return {1}{2}."
     , class_ToolSpace.GetSetSpaceCount(2)
-    , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
+    , Class_Tool.GetFirstCodeLow(class_Main.NameSpace)
+    , MapAfterString);
 
             if (class_WhereFields != null)
             {
