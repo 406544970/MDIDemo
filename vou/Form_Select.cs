@@ -125,6 +125,7 @@ namespace MDIDemo.vou
             this.memoEdit9.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_Main.DTOContent);
             this.memoEdit10.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_Main.DAOContent);
             this.memoEdit11.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_Main.ControlContent);
+            this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_Main.PolyControlContent);
             this.textEdit22.Text = class_SelectAllModel.class_Main.ResultMapId;
             this.textEdit24.Text = class_SelectAllModel.class_Main.ResultMapType;
             this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
@@ -132,6 +133,7 @@ namespace MDIDemo.vou
             this.textEdit47.Text = class_SelectAllModel.class_Main.ControlSwaggerValue;
             this.textEdit46.Text = class_SelectAllModel.class_Main.ControlSwaggerDescription;
             this.radioGroup9.SelectedIndex = class_SelectAllModel.class_Main.ServiceInterFaceReturnCount;
+            this.radioGroup16.SelectedIndex = class_SelectAllModel.class_Main.DtoType;
             #endregion
 
             #region 表一
@@ -835,12 +837,14 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_Main.DTOContent = Class_Tool.EscapeCharacter(this.memoEdit9.Text);
                 class_SelectAllModel.class_Main.DAOContent = Class_Tool.EscapeCharacter(this.memoEdit10.Text);
                 class_SelectAllModel.class_Main.ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
+                class_SelectAllModel.class_Main.PolyControlContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
                 class_SelectAllModel.class_Main.ResultMapId = this.textEdit22.Text;
                 class_SelectAllModel.class_Main.ResultMapType = this.textEdit24.Text;
                 class_SelectAllModel.class_Main.ControlSwaggerValue = this.textEdit47.Text;
                 class_SelectAllModel.class_Main.ControlSwaggerDescription = this.textEdit46.Text;
                 class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark = this.textEdit20.Text;
                 class_SelectAllModel.class_Main.ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
+                class_SelectAllModel.class_Main.DtoType = this.radioGroup16.SelectedIndex;
             }
             #endregion
 

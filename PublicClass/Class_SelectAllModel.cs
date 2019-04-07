@@ -735,6 +735,7 @@ namespace MDIDemo.PublicClass
             {
                 class_Fields = new List<Class_Field>();
                 ResultType = 1;
+                DtoType = 0;
                 IsAddXmlHead = true;
                 ParameterType = 0;
             }
@@ -798,11 +799,22 @@ namespace MDIDemo.PublicClass
             public string ModelContent { get; set; }
             public string DTOContent { get; set; }
             public string DAOContent { get; set; }
+            /// <summary>
+            /// Controller内容
+            /// </summary>
             public string ControlContent { get; set; }
+            /// <summary>
+            /// 聚合Controller内容
+            /// </summary>
+            public string PolyControlContent { get; set; }
             public string ResultMapId { get; set; }
             public string ResultMapType { get; set; }
             public string ControlSwaggerValue { get; set; }
             public string ControlSwaggerDescription { get; set; }
+            /// <summary>
+            /// 0：线性方式，1：对象方式
+            /// </summary>
+            public int DtoType { get; set; }
             /// <summary>
             /// 0：join、1：assosication；2：
             /// </summary>
