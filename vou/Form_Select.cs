@@ -134,7 +134,7 @@ namespace MDIDemo.vou
             this.radioGroup9.SelectedIndex = class_SelectAllModel.class_Main.ServiceInterFaceReturnCount;
             #endregion
 
-            #region 从表一
+            #region 表一
             this.textEdit33.Text = class_SelectAllModel.class_Subs.MethodId;
             this.textEdit32.Text = class_SelectAllModel.class_Subs.MethodContent;
             this.radioGroup11.SelectedIndex = class_SelectAllModel.class_Subs.ResultType;
@@ -161,7 +161,7 @@ namespace MDIDemo.vou
             this.radioGroup12.SelectedIndex = class_SelectAllModel.class_Subs.ServiceInterFaceReturnCount;
             #endregion
 
-            #region 从表二
+            #region 表二
             this.textEdit43.Text = class_SelectAllModel.class_SubSubs.MethodId;
             this.textEdit42.Text = class_SelectAllModel.class_SubSubs.MethodContent;
             this.radioGroup14.SelectedIndex = class_SelectAllModel.class_SubSubs.ResultType;
@@ -445,8 +445,8 @@ namespace MDIDemo.vou
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox15, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
-                        this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("从表一：{0}", TableName);
-                        this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("从表一：{0}", TableName);
+                        this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表一：{0}", TableName);
+                        this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("表一：{0}", TableName);
                     }
                     break;
                 case 2:
@@ -473,8 +473,8 @@ namespace MDIDemo.vou
                         this.comboBoxEdit2.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
-                        this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("从表二：{0}", TableName);
-                        this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("从表二：{0}", TableName);
+                        this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表二：{0}", TableName);
+                        this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("表二：{0}", TableName);
                     }
                     break;
                 default:
@@ -834,7 +834,7 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_Main.ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
             #endregion
 
-            #region 从表一
+            #region 表一
             class_SelectAllModel.class_Subs.MethodId = this.textEdit33.Text;
             class_SelectAllModel.class_Subs.MethodContent = this.textEdit32.Text;
             class_SelectAllModel.class_Subs.ResultType = this.radioGroup11.SelectedIndex;
@@ -860,7 +860,7 @@ namespace MDIDemo.vou
             class_SelectAllModel.class_Subs.OneToMult = this.radioGroup3.SelectedIndex;
             #endregion
 
-            #region 从表二
+            #region 表二
             class_SelectAllModel.class_SubSubs.MethodId = this.textEdit43.Text;
             class_SelectAllModel.class_SubSubs.MethodContent = this.textEdit42.Text;
             class_SelectAllModel.class_SubSubs.ResultType = this.radioGroup14.SelectedIndex;
@@ -1023,11 +1023,11 @@ namespace MDIDemo.vou
                     break;
                 case 1:
                     ToSub(class_SelectAllModel.class_Subs.TableName);
-                    DisplayText("从表导入完成!");
+                    DisplayText("表导入完成!");
                     break;
                 case 2:
                     ToSubSub(class_SelectAllModel.class_SubSubs.TableName);
-                    DisplayText("从从表导入完成!");
+                    DisplayText("从表导入完成!");
                     break;
                 default:
                     break;
@@ -1063,12 +1063,18 @@ namespace MDIDemo.vou
             {
                 case 0:
                     this.gridControl1.DataSource = null;
+                    this.xtraTabControl5.TabPages[PageIndex].Text = "主表";
+                    this.xtraTabControl8.TabPages[PageIndex].Text = "主表";
                     break;
                 case 1:
                     this.gridControl2.DataSource = null;
+                    this.xtraTabControl5.TabPages[PageIndex].Text = "表";
+                    this.xtraTabControl8.TabPages[PageIndex].Text = "表";
                     break;
                 case 2:
                     this.gridControl3.DataSource = null;
+                    this.xtraTabControl5.TabPages[PageIndex].Text = "表";
+                    this.xtraTabControl8.TabPages[PageIndex].Text = "表";
                     break;
                 default:
                     break;
@@ -1161,7 +1167,7 @@ namespace MDIDemo.vou
                 this.memoEdit11.Text = class_InterFaceCreateCode.GetMainControl();
                 #endregion
 
-                #region 从表一
+                #region 表一
                 //MAP
                 this.memoEdit13.Text = class_InterFaceCreateCode.GetSubOneMap();
                 // Select标签
@@ -1180,7 +1186,7 @@ namespace MDIDemo.vou
                 this.memoEdit21.Text = class_InterFaceCreateCode.GetSubOneControl();
                 #endregion
 
-                #region 从表二
+                #region 表二
                 //MAP
                 this.memoEdit22.Text = class_InterFaceCreateCode.GetSubTwoMap();
                 // Select标签

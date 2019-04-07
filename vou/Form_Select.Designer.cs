@@ -6051,7 +6051,7 @@
             this.xtraTabPage31.Controls.Add(this.memoEdit14);
             this.xtraTabPage31.Controls.Add(this.panelControl19);
             this.xtraTabPage31.Name = "xtraTabPage31";
-            this.xtraTabPage31.Size = new System.Drawing.Size(873, 351);
+            this.xtraTabPage31.Size = new System.Drawing.Size(873, 382);
             this.xtraTabPage31.Text = "Select标签";
             // 
             // memoEdit14
@@ -6060,7 +6060,7 @@
             this.memoEdit14.Location = new System.Drawing.Point(0, 74);
             this.memoEdit14.MenuManager = this.barManager1;
             this.memoEdit14.Name = "memoEdit14";
-            this.memoEdit14.Size = new System.Drawing.Size(873, 277);
+            this.memoEdit14.Size = new System.Drawing.Size(873, 308);
             this.memoEdit14.TabIndex = 3;
             // 
             // panelControl19
@@ -6585,7 +6585,7 @@
             this.xtraTabPage41.Controls.Add(this.memoEdit23);
             this.xtraTabPage41.Controls.Add(this.panelControl30);
             this.xtraTabPage41.Name = "xtraTabPage41";
-            this.xtraTabPage41.Size = new System.Drawing.Size(873, 351);
+            this.xtraTabPage41.Size = new System.Drawing.Size(873, 382);
             this.xtraTabPage41.Text = "Select标签";
             // 
             // memoEdit23
@@ -6594,7 +6594,7 @@
             this.memoEdit23.Location = new System.Drawing.Point(0, 74);
             this.memoEdit23.MenuManager = this.barManager1;
             this.memoEdit23.Name = "memoEdit23";
-            this.memoEdit23.Size = new System.Drawing.Size(873, 277);
+            this.memoEdit23.Size = new System.Drawing.Size(873, 308);
             this.memoEdit23.TabIndex = 3;
             // 
             // panelControl30
