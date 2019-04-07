@@ -294,7 +294,6 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit14, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit15, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit16, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit19, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit20, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit22, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit24, Color.SkyBlue);
