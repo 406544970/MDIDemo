@@ -840,9 +840,13 @@ namespace MDIDemo.PublicClass
                 CountToCount = 0;
             }
             /// <summary>
-            /// 外键
+            /// 本表的主键
             /// </summary>
             public string OutFieldName { get; set; }
+            /// <summary>
+            /// 主表的外键
+            /// </summary>
+            public string MainTableFieldName { get; set; }
             /// <summary>
             /// 连接类型，0:Left Join，1:Inner Join
             /// </summary>

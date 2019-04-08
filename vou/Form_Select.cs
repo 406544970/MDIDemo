@@ -161,6 +161,8 @@ namespace MDIDemo.vou
             //this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
             this.textEdit35.Text = class_SelectAllModel.class_Subs.ServiceInterFaceReturnRemark;
             this.radioGroup12.SelectedIndex = class_SelectAllModel.class_Subs.ServiceInterFaceReturnCount;
+            this.comboBoxEdit3.Text = class_SelectAllModel.class_Subs.OutFieldName;
+            this.comboBoxEdit1.Text = class_SelectAllModel.class_Subs.MainTableFieldName;
             #endregion
 
             #region 表二
@@ -187,6 +189,8 @@ namespace MDIDemo.vou
             this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubSubs.JoinType;
             this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubSubs.InnerType;
             this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubSubs.OneToMult;
+            this.comboBoxEdit4.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
+            this.comboBoxEdit2.Text = class_SelectAllModel.class_SubSubs.MainTableFieldName;
             #endregion
 
             if (class_SelectAllModel != null)
@@ -284,6 +288,7 @@ namespace MDIDemo.vou
             #region TextEdit
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
             class_SetTextEdit.SetTextEdit(this.textEdit18);
+            class_SetTextEdit.SetTextEdit(this.textEdit19);
             class_SetTextEdit.SetTextEdit(this.textEdit25);
             class_SetTextEdit.SetTextEdit(this.textEdit23);
             class_SetTextEdit.SetTextEdit(this.textEdit26);
@@ -307,6 +312,7 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit31, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit32, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit33, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit34, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit35, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit38, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit39, Color.SkyBlue);
@@ -378,12 +384,16 @@ namespace MDIDemo.vou
         }
         private void AddComumnCombox(ComboBoxEdit comboBoxEdit, List<string> vs)
         {
+            String Text = comboBoxEdit.Text;
             comboBoxEdit.Properties.Items.Clear();
             foreach (string item in vs)
             {
                 comboBoxEdit.Properties.Items.Add(item);
             }
-            comboBoxEdit.SelectedIndex = -1;
+            if (Text == null && Text.Equals(""))
+                comboBoxEdit.SelectedIndex = -1;
+            else
+                comboBoxEdit.Text = Text;
         }
         private void AddColumnRepositoryCombox(RepositoryItemComboBox repositoryItemComboBox)
         {
@@ -401,6 +411,7 @@ namespace MDIDemo.vou
                     {
                         this.gridControl1.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
                         int KeyIndex = 0;
+                        List<string> vs = new List<string>();
                         while (KeyIndex < this.bandedGridView1.RowCount)
                         {
                             DataRow row = this.bandedGridView1.GetDataRow(KeyIndex++);
@@ -408,8 +419,14 @@ namespace MDIDemo.vou
                             {
                                 if (this.MainKeyFieldName != null)
                                     this.MainKeyFieldName = row["FieldName"].ToString();
-                                break;
+                                //break;
                             }
+                            vs.Add(row["ParaName"].ToString());
+                        }
+                        if (vs != null)
+                        {
+                            AddComumnCombox(this.comboBoxEdit3, vs);
+                            AddComumnCombox(this.comboBoxEdit4, vs);
                         }
                         textEdit1.Text = TableName;
                         if (class_SelectAllModel.class_Main.AliasName != null)
@@ -431,7 +448,7 @@ namespace MDIDemo.vou
                         while (KeyIndex < this.bandedGridView2.RowCount)
                         {
                             DataRow row = this.bandedGridView2.GetDataRow(KeyIndex++);
-                            vs.Add(row["FieldName"].ToString());
+                            vs.Add(row["ParaName"].ToString());
                         }
                         if (vs != null)
                             AddComumnCombox(this.comboBoxEdit1, vs);
@@ -443,7 +460,7 @@ namespace MDIDemo.vou
                             textEdit11.Text = "sub";
                         this.radioGroup1.SelectedIndex = class_SelectAllModel.class_Subs.LinkType;
                         this.radioGroup3.SelectedIndex = class_SelectAllModel.class_Subs.CountToCount;
-                        this.comboBoxEdit1.Text = class_SelectAllModel.class_Subs.OutFieldName;
+                        //this.comboBoxEdit1.Text = class_SelectAllModel.class_Subs.OutFieldName;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox15, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
@@ -459,7 +476,7 @@ namespace MDIDemo.vou
                         while (KeyIndex < this.bandedGridView3.RowCount)
                         {
                             DataRow row = this.bandedGridView3.GetDataRow(KeyIndex++);
-                            vs.Add(row["FieldName"].ToString());
+                            vs.Add(row["ParaName"].ToString());
                         }
                         if (vs != null)
                             AddComumnCombox(this.comboBoxEdit2, vs);
@@ -472,7 +489,7 @@ namespace MDIDemo.vou
 
                         this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubSubs.LinkType;
                         this.radioGroup4.SelectedIndex = class_SelectAllModel.class_Subs.CountToCount;
-                        this.comboBoxEdit2.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
+                        //this.comboBoxEdit2.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
                         this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表二：{0}", TableName);
@@ -874,6 +891,8 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_Subs.JoinType = this.radioGroup5.SelectedIndex;
                 class_SelectAllModel.class_Subs.InnerType = this.radioGroup1.SelectedIndex;
                 class_SelectAllModel.class_Subs.OneToMult = this.radioGroup3.SelectedIndex;
+                class_SelectAllModel.class_Subs.OutFieldName = this.comboBoxEdit3.SelectedIndex > -1 ? this.comboBoxEdit3.Text : null;
+                class_SelectAllModel.class_Subs.MainTableFieldName = this.comboBoxEdit1.SelectedIndex > -1 ? this.comboBoxEdit1.Text : null; ;
             }
             #endregion
 
@@ -903,6 +922,8 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_SubSubs.JoinType = this.radioGroup6.SelectedIndex;
                 class_SelectAllModel.class_SubSubs.InnerType = this.radioGroup2.SelectedIndex;
                 class_SelectAllModel.class_SubSubs.OneToMult = this.radioGroup4.SelectedIndex;
+                class_SelectAllModel.class_SubSubs.OutFieldName = this.comboBoxEdit4.SelectedIndex > -1 ? this.comboBoxEdit4.Text : null;
+                class_SelectAllModel.class_SubSubs.MainTableFieldName = this.comboBoxEdit2.SelectedIndex > -1 ? this.comboBoxEdit2.Text : null; ;
             }
             #endregion
 
@@ -1144,6 +1165,7 @@ namespace MDIDemo.vou
         {
             this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
             this.textEdit24.Text = (sender as TextEdit).Text;
+            this.textEdit34.Text = (sender as TextEdit).Text;
         }
 
         private void textEdit13_EditValueChanged(object sender, EventArgs e)
@@ -1320,6 +1342,11 @@ namespace MDIDemo.vou
         {
             this.radioGroup2.Enabled = radioGroup6.SelectedIndex > 0 ? false : true;
             this.radioGroup4.Enabled = !this.radioGroup2.Enabled;
+        }
+
+        private void textEdit34_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit19.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
         }
     }
 }
