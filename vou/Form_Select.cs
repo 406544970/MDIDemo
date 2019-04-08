@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static MDIDemo.PublicClass.Class_SelectAllModel;
 
 namespace MDIDemo.vou
 {
@@ -164,8 +165,8 @@ namespace MDIDemo.vou
             //this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
             this.textEdit35.Text = class_SelectAllModel.class_Subs.ServiceInterFaceReturnRemark;
             this.radioGroup12.SelectedIndex = class_SelectAllModel.class_Subs.ServiceInterFaceReturnCount;
-            this.comboBoxEdit3.Text = class_SelectAllModel.class_Subs.OutFieldName;
-            this.comboBoxEdit1.Text = class_SelectAllModel.class_Subs.MainTableFieldName;
+            this.buttonEdit1.Text = class_SelectAllModel.class_Subs.OutFieldName;
+            this.buttonEdit2.Text = class_SelectAllModel.class_Subs.MainTableFieldName;
             #endregion
 
             #region 表二
@@ -192,8 +193,8 @@ namespace MDIDemo.vou
             this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubSubs.JoinType;
             this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubSubs.InnerType;
             this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubSubs.OneToMult;
-            this.comboBoxEdit4.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
-            this.comboBoxEdit2.Text = class_SelectAllModel.class_SubSubs.MainTableFieldName;
+            this.buttonEdit4.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
+            this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.MainTableFieldName;
             #endregion
 
             if (class_SelectAllModel != null)
@@ -413,24 +414,6 @@ namespace MDIDemo.vou
                 case 0:
                     {
                         this.gridControl1.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
-                        int KeyIndex = 0;
-                        List<string> vs = new List<string>();
-                        while (KeyIndex < this.bandedGridView1.RowCount)
-                        {
-                            DataRow row = this.bandedGridView1.GetDataRow(KeyIndex++);
-                            if (Convert.ToBoolean(row["FieldIsKey"]))
-                            {
-                                if (this.MainKeyFieldName != null)
-                                    this.MainKeyFieldName = row["FieldName"].ToString();
-                                //break;
-                            }
-                            vs.Add(row["ParaName"].ToString());
-                        }
-                        if (vs != null)
-                        {
-                            AddComumnCombox(this.comboBoxEdit3, vs);
-                            AddComumnCombox(this.comboBoxEdit4, vs);
-                        }
                         textEdit1.Text = TableName;
                         if (class_SelectAllModel.class_Main.AliasName != null)
                             textEdit10.Text = class_SelectAllModel.class_Main.AliasName;
@@ -446,16 +429,6 @@ namespace MDIDemo.vou
                 case 1:
                     {
                         this.gridControl2.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
-                        int KeyIndex = 0;
-                        List<string> vs = new List<string>();
-                        while (KeyIndex < this.bandedGridView2.RowCount)
-                        {
-                            DataRow row = this.bandedGridView2.GetDataRow(KeyIndex++);
-                            vs.Add(row["ParaName"].ToString());
-                        }
-                        if (vs != null)
-                            AddComumnCombox(this.comboBoxEdit1, vs);
-                        vs.Clear();
                         textEdit6.Text = TableName;
                         if (class_SelectAllModel.class_Subs.AliasName != null)
                             textEdit11.Text = class_SelectAllModel.class_Subs.AliasName;
@@ -463,7 +436,7 @@ namespace MDIDemo.vou
                             textEdit11.Text = "sub";
                         this.radioGroup1.SelectedIndex = class_SelectAllModel.class_Subs.LinkType;
                         this.radioGroup3.SelectedIndex = class_SelectAllModel.class_Subs.CountToCount;
-                        //this.comboBoxEdit1.Text = class_SelectAllModel.class_Subs.OutFieldName;
+                        //this.buttonEdit2.Text = class_SelectAllModel.class_Subs.OutFieldName;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox15, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
@@ -474,16 +447,6 @@ namespace MDIDemo.vou
                 case 2:
                     {
                         this.gridControl3.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
-                        int KeyIndex = 0;
-                        List<string> vs = new List<string>();
-                        while (KeyIndex < this.bandedGridView3.RowCount)
-                        {
-                            DataRow row = this.bandedGridView3.GetDataRow(KeyIndex++);
-                            vs.Add(row["ParaName"].ToString());
-                        }
-                        if (vs != null)
-                            AddComumnCombox(this.comboBoxEdit2, vs);
-                        vs.Clear();
                         textEdit9.Text = TableName;
                         if (class_SelectAllModel.class_SubSubs.AliasName != null)
                             textEdit12.Text = class_SelectAllModel.class_SubSubs.AliasName;
@@ -492,7 +455,7 @@ namespace MDIDemo.vou
 
                         this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubSubs.LinkType;
                         this.radioGroup4.SelectedIndex = class_SelectAllModel.class_Subs.CountToCount;
-                        //this.comboBoxEdit2.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
+                        //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
                         this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表二：{0}", TableName);
@@ -806,14 +769,14 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_Main = new Class_SelectAllModel.Class_Main();
             if (this.gridControl2.MainView.RowCount > 0)
                 class_SelectAllModel.class_Subs = DataViewIntoClass((BandedGridView)this.gridControl2.MainView
-                    , comboBoxEdit1.Text, this.radioGroup1.SelectedIndex, this.radioGroup3.SelectedIndex, this.textEdit6.Text
+                    , buttonEdit2.Text, this.radioGroup1.SelectedIndex, this.radioGroup3.SelectedIndex, this.textEdit6.Text
                     , null, false, this.textEdit11.Text);
             else
                 class_SelectAllModel.class_Subs = new Class_SelectAllModel.Class_Sub();
 
             if (this.gridControl3.MainView.RowCount > 0)
                 class_SelectAllModel.class_SubSubs = DataViewIntoClass((BandedGridView)this.gridControl3.MainView
-                    , comboBoxEdit2.Text, this.radioGroup2.SelectedIndex, this.radioGroup4.SelectedIndex, this.textEdit9.Text
+                    , buttonEdit3.Text, this.radioGroup2.SelectedIndex, this.radioGroup4.SelectedIndex, this.textEdit9.Text
                     , null, false, this.textEdit12.Text);
             else
                 class_SelectAllModel.class_SubSubs = new Class_SelectAllModel.Class_Sub();
@@ -897,8 +860,8 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_Subs.JoinType = this.radioGroup5.SelectedIndex;
                 class_SelectAllModel.class_Subs.InnerType = this.radioGroup1.SelectedIndex;
                 class_SelectAllModel.class_Subs.OneToMult = this.radioGroup3.SelectedIndex;
-                class_SelectAllModel.class_Subs.OutFieldName = this.comboBoxEdit3.SelectedIndex > -1 ? this.comboBoxEdit3.Text : null;
-                class_SelectAllModel.class_Subs.MainTableFieldName = this.comboBoxEdit1.SelectedIndex > -1 ? this.comboBoxEdit1.Text : null; ;
+                class_SelectAllModel.class_Subs.OutFieldName = this.buttonEdit1.Text;
+                class_SelectAllModel.class_Subs.MainTableFieldName = this.buttonEdit2.Text;
             }
             #endregion
 
@@ -928,8 +891,8 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_SubSubs.JoinType = this.radioGroup6.SelectedIndex;
                 class_SelectAllModel.class_SubSubs.InnerType = this.radioGroup2.SelectedIndex;
                 class_SelectAllModel.class_SubSubs.OneToMult = this.radioGroup4.SelectedIndex;
-                class_SelectAllModel.class_SubSubs.OutFieldName = this.comboBoxEdit4.SelectedIndex > -1 ? this.comboBoxEdit4.Text : null;
-                class_SelectAllModel.class_SubSubs.MainTableFieldName = this.comboBoxEdit2.SelectedIndex > -1 ? this.comboBoxEdit2.Text : null; ;
+                class_SelectAllModel.class_SubSubs.OutFieldName = this.buttonEdit4.Text;
+                class_SelectAllModel.class_SubSubs.MainTableFieldName = this.buttonEdit3.Text;
             }
             #endregion
 
@@ -1356,6 +1319,42 @@ namespace MDIDemo.vou
         private void textEdit34_EditValueChanged(object sender, EventArgs e)
         {
             this.textEdit19.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
+        }
+        private void GetLinkField(GridView gridView,object sender)
+        {
+            List<Class_LinkField> class_LinkFields = new List<Class_LinkField>();
+            for (int index = 0; index < gridView.RowCount; index++)
+            {
+                DataRow dataRow = gridView.GetDataRow(index);
+                Class_LinkField class_LinkField = new Class_LinkField();
+                class_LinkField.ParaName = dataRow["ParaName"].ToString();
+                class_LinkField.ReturnType = dataRow["ReturnType"].ToString();
+                class_LinkField.FieldRemark = dataRow["FieldRemark"].ToString();
+                class_LinkFields.Add(class_LinkField);
+            }
+            Form_SelectField form_SelectField = new Form_SelectField(publicSkinName);
+            form_SelectField.class_LinkFields = class_LinkFields;
+            form_SelectField.GetData();
+            if (form_SelectField.ShowDialog() == DialogResult.OK)
+            {
+                (sender as ButtonEdit).Text = form_SelectField.ParaName;
+                (sender as ButtonEdit).Tag = form_SelectField.ReturnType;
+            }
+            form_SelectField.Dispose();
+        }
+        private void buttonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            GetLinkField(this.bandedGridView1, sender);
+        }
+
+        private void buttonEdit3_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            GetLinkField(this.bandedGridView3, sender);
+        }
+
+        private void buttonEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            GetLinkField(this.bandedGridView2, sender);
         }
     }
 }

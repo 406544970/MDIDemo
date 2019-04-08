@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    public class Class_LinkField
+    {
+        public string ParaName;
+        public string ReturnType;
+        public string FieldRemark;
+    }
     public class Class_EnglishField
     {
         public string FieldChinaName;

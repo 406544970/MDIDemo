@@ -254,6 +254,12 @@
     <Compile Include="vou\Form_SelectCaseWhen.Designer.cs">
       <DependentUpon>Form_SelectCaseWhen.cs</DependentUpon>
     </Compile>
+    <Compile Include="vou\Form_SelectField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vou\Form_SelectField.Designer.cs">
+      <DependentUpon>Form_SelectField.cs</DependentUpon>
+    </Compile>
     <Compile Include="vou\Form_test.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="vou\Form_SelectCaseWhen.resx">
       <DependentUpon>Form_SelectCaseWhen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vou\Form_SelectField.resx">
+      <DependentUpon>Form_SelectField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vou\Form_test.resx">
       <DependentUpon>Form_test.cs</DependentUpon>

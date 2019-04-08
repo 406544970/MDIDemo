@@ -1389,6 +1389,8 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("List<{0}>", class_Main.DtoClassName);
             stringBuilder.AppendFormat(" {0}Dto", class_Main.MethodId);
             stringBuilder.Append("(@RequestBody CommonQuery commonQuery) {\r\n");
+            //1、载入所有关联字段信息
+            //2、载入所有从表类名信息
 
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
             stringBuilder.Append("\r\n");
