@@ -1141,7 +1141,80 @@ namespace MDIDemo.PublicClass
         }
         public string GetMainDTO()
         {
-            return null;
+            return _GetMainDTO(class_SelectAllModel.class_Main);
+        }
+        private string _GetMainDTO(Class_Main class_Main)
+        {
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.AppendFormat("public final class {0}", class_Main.DtoClassName);
+            if (class_Main.ExtendsSign)
+            {
+                stringBuilder.AppendFormat(" extends {0}", class_Main.NameSpace);
+            }
+            stringBuilder.Append(" {\r\n");
+
+            //1、得到从表一、从表二、等已选择字段
+            List<List<Class_Field>> class_Fields = new List<List<Class_Field>>();
+            if (!class_Main.ExtendsSign)
+            {
+                List<Class_Field> Main = new List<Class_Field>();
+                Main = class_SelectAllModel.class_Main.class_Fields;
+                class_Fields.Add(Main);
+            }
+
+            List<Class_Field> Sub1 = new List<Class_Field>();
+            Sub1 = class_SelectAllModel.class_Subs.class_Fields;
+            List<Class_Field> Sub2 = new List<Class_Field>();
+            Sub2 = class_SelectAllModel.class_SubSubs.class_Fields;
+            class_Fields.Add(Sub1);
+            class_Fields.Add(Sub2);
+            foreach (List<Class_Field> row in class_Fields)
+            {
+                foreach (Class_Field sub in row)
+                {
+                    if (sub.SelectSelect)
+                    {
+                        stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), sub.FieldRemark);
+                        stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(sub.ParaName))
+                            stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(sub.ReturnType))
+                                , sub.ParaName);
+                        else
+                            stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(sub.ReturnType))
+                                , sub.ParaName);
+
+                    }
+                }
+            }
+            stringBuilder.Append("}\r\n");
+            Sub1.Clear();
+            Sub1.Clear();
+            class_Fields.Clear();
+            return stringBuilder.ToString();
         }
         public string GetMainDAO()
         {
@@ -1232,6 +1305,96 @@ namespace MDIDemo.PublicClass
         public string GetSubTwoTestUnit()
         {
             return null;
+        }
+
+        public string GetMainFeignControl()
+        {
+            return _GetMainFeignControl(class_SelectAllModel.class_Main);
+        }
+        private string _GetMainFeignControl(Class_Main class_Main)
+        {
+            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.Append("@RestController\r\n");
+            stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n", class_SelectAllModel.class_Create.MicroServiceName);
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+                stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
+                    , class_Main.ControlSwaggerValue
+                    , class_Main.ControlSwaggerDescription);
+            stringBuilder.Append(string.Format("public class {0}Controller ", class_Main.NameSpace) + "{\r\n");
+
+            stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Main.NameSpace
+                , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
+
+            stringBuilder.Append("\r\n");
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_Main.MethodContent);
+            class_WhereFields = _GetParameterType(class_Main);
+            if (class_WhereFields != null)
+            {
+                foreach (Class_WhereField row in class_WhereFields)
+                {
+                    if (class_WhereFields.Count > 0)
+                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1)
+                    , Class_Tool.GetFirstCodeLow(row.FieldName)
+                    , row.FieldRemark);
+                }
+            }
+
+            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            , class_Main.ServiceInterFaceReturnRemark);
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            #region Swagger
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+            {
+                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Main.MethodContent
+                , class_Main.ServiceInterFaceReturnRemark);
+            }
+            #endregion
+            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}Dto\")\r\n"
+            , class_ToolSpace.GetSetSpaceCount(1)
+            , class_SelectAllModel.class_Create.HttpRequestType
+            , class_Main.MethodId);
+            stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
+
+            if (class_Main.ServiceInterFaceReturnCount == 0)
+                stringBuilder.AppendFormat("{0}", class_Main.DtoClassName);
+            else
+                stringBuilder.AppendFormat("List<{0}>", class_Main.DtoClassName);
+            stringBuilder.AppendFormat(" {0}Dto", class_Main.MethodId);
+            stringBuilder.Append("(@RequestBody CommonQuery commonQuery) {\r\n");
+
+            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
+            stringBuilder.Append("\r\n");
+
+            stringBuilder.Append("}\r\n");
+            return stringBuilder.ToString();
         }
         #endregion
 

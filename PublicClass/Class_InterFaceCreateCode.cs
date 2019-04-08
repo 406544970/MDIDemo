@@ -19,6 +19,7 @@ namespace MDIDemo.PublicClass
         string GetMainDTO();
         string GetMainDAO();
         string GetMainControl();
+        string GetMainFeignControl();
         string GetMainTestUnit();
         #endregion
 

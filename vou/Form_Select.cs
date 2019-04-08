@@ -134,6 +134,9 @@ namespace MDIDemo.vou
             this.textEdit46.Text = class_SelectAllModel.class_Main.ControlSwaggerDescription;
             this.radioGroup9.SelectedIndex = class_SelectAllModel.class_Main.ServiceInterFaceReturnCount;
             this.radioGroup16.SelectedIndex = class_SelectAllModel.class_Main.DtoType;
+            this.textEdit34.Text = class_SelectAllModel.class_Main.DtoIniClassName;
+            this.textEdit19.Text = class_SelectAllModel.class_Main.DtoClassName;
+            this.checkEdit5.Checked = class_SelectAllModel.class_Main.ExtendsSign;
             #endregion
 
             #region 表一
@@ -862,6 +865,9 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_Main.ServiceInterFaceReturnRemark = this.textEdit20.Text;
                 class_SelectAllModel.class_Main.ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
                 class_SelectAllModel.class_Main.DtoType = this.radioGroup16.SelectedIndex;
+                class_SelectAllModel.class_Main.DtoIniClassName = this.textEdit34.Text;
+                class_SelectAllModel.class_Main.DtoClassName = this.textEdit19.Text;
+                class_SelectAllModel.class_Main.ExtendsSign = this.checkEdit5.Checked;
             }
             #endregion
 
@@ -1210,6 +1216,9 @@ namespace MDIDemo.vou
                 this.memoEdit10.Text = class_InterFaceCreateCode.GetMainDAO();
                 // Control
                 this.memoEdit11.Text = class_InterFaceCreateCode.GetMainControl();
+                // FeignControl
+                this.memoEdit31.Text = class_InterFaceCreateCode.GetMainFeignControl();
+
                 #endregion
 
                 #region 表一
@@ -1224,7 +1233,7 @@ namespace MDIDemo.vou
                 // Model
                 this.memoEdit17.Text = class_InterFaceCreateCode.GetSubOneModel();
                 //DTO
-                this.memoEdit19.Text = class_InterFaceCreateCode.GetMainDTO();
+                //this.memoEdit19.Text = class_InterFaceCreateCode.GetMainDTO();
                 // DAO
                 this.memoEdit20.Text = class_InterFaceCreateCode.GetSubOneDAO();
                 // Control
@@ -1243,7 +1252,7 @@ namespace MDIDemo.vou
                 // Model
                 this.memoEdit26.Text = class_InterFaceCreateCode.GetSubTwoModel();
                 //DTO
-                this.memoEdit28.Text = class_InterFaceCreateCode.GetMainDTO();
+                //this.memoEdit28.Text = class_InterFaceCreateCode.GetMainDTO();
                 // DAO
                 this.memoEdit29.Text = class_InterFaceCreateCode.GetSubTwoDAO();
                 // Control

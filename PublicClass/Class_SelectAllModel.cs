@@ -738,6 +738,7 @@ namespace MDIDemo.PublicClass
                 DtoType = 0;
                 IsAddXmlHead = true;
                 ParameterType = 0;
+                ExtendsSign = true;
             }
             ~Class_Main()
             {
@@ -827,6 +828,18 @@ namespace MDIDemo.PublicClass
             /// 数据对应关系：0：一对一；2：一对多；3：三对三；
             /// </summary>
             public int OneToMult { get; set; }
+            /// <summary>
+            /// 原始DTO类名
+            /// </summary>
+            public string DtoIniClassName { get; set; }
+            /// <summary>
+            /// DTO类名
+            /// </summary>
+            public string DtoClassName { get; set; }
+            /// <summary>
+            /// 是否用继承方式
+            /// </summary>
+            public bool ExtendsSign { get; set; }
 
         }
         #endregion
@@ -847,6 +860,7 @@ namespace MDIDemo.PublicClass
             /// 主表的外键
             /// </summary>
             public string MainTableFieldName { get; set; }
+
             /// <summary>
             /// 连接类型，0:Left Join，1:Inner Join
             /// </summary>
