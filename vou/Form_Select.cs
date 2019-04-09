@@ -331,6 +331,9 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit50, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit51, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit44, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit52, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit53, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit1, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit2, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit3, true, Color.GreenYellow);
@@ -1135,6 +1138,7 @@ namespace MDIDemo.vou
             this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
             this.textEdit24.Text = (sender as TextEdit).Text;
             this.textEdit34.Text = (sender as TextEdit).Text;
+            this.textEdit44.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
         }
 
         private void textEdit13_EditValueChanged(object sender, EventArgs e)
@@ -1276,6 +1280,7 @@ namespace MDIDemo.vou
         {
             this.textEdit30.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit31.Text);
             this.textEdit28.Text = (sender as TextEdit).Text;
+            this.textEdit52.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
         }
 
         private void textEdit29_EditValueChanged(object sender, EventArgs e)
@@ -1292,6 +1297,7 @@ namespace MDIDemo.vou
         {
             this.textEdit40.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit41.Text);
             this.textEdit38.Text = (sender as TextEdit).Text;
+            this.textEdit53.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
         }
 
         private void textEdit39_EditValueChanged(object sender, EventArgs e)
