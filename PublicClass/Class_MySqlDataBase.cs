@@ -401,21 +401,9 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             break;
                     }
                     int Counter = 1;
-                    Class_Sub class_Mains = new Class_Sub();
-                    switch (PageSelectIndex)
-                    {
-                        case 0:
-                            class_Mains = mySelect.class_Main as Class_Sub;
-                            break;
-                        case 1:
-                            class_Mains = mySelect.class_Subs;
-                            break;
-                        case 2:
-                            class_Mains = mySelect.class_SubSubs;
-                            break;
-                        default:
-                            break;
-                    }
+                    Class_Sub class_CurrentPage = new Class_Sub();
+                    if (mySelect.class_SubList.Count > PageSelectIndex)
+                        class_CurrentPage = mySelect.class_SubList[PageSelectIndex];
                     foreach (DataRow row in dataTable.Rows)
                     {
                         string myFieldName = row["FieldName"].ToString();
@@ -427,32 +415,32 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             {
                                 case "select":
                                     {
-                                        if (mySelect.class_Main.class_Fields.Count > 0)
+                                        if (mySelect.class_SubList.Count > PageSelectIndex && mySelect.class_SubList[PageSelectIndex].class_Fields.Count > 0)
                                         {
-                                            int FindIndex = class_Mains.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
+                                            int FindIndex = class_CurrentPage.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
                                             if (FindIndex > -1)
                                             {
-                                                row["SelectSelect"] = class_Mains.class_Fields[FindIndex].SelectSelect;
-                                                row["ParaName"] = class_Mains.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_Mains.class_Fields[FindIndex].ParaName;
-                                                row["MaxLegth"] = class_Mains.class_Fields[FindIndex].MaxLegth;
-                                                row["CaseWhen"] = class_Mains.class_Fields[FindIndex].CaseWhen;
-                                                row["ReturnType"] = class_Mains.class_Fields[FindIndex].ReturnType;
-                                                row["TrimSign"] = class_Mains.class_Fields[FindIndex].TrimSign;
-                                                row["FunctionName"] = class_Mains.class_Fields[FindIndex].FunctionName;
-                                                row["WhereSelect"] = class_Mains.class_Fields[FindIndex].WhereSelect;
-                                                row["WhereType"] = class_Mains.class_Fields[FindIndex].WhereType;
-                                                row["LogType"] = class_Mains.class_Fields[FindIndex].LogType;
-                                                row["WhereValue"] = class_Mains.class_Fields[FindIndex].WhereValue;
-                                                row["WhereTrim"] = class_Mains.class_Fields[FindIndex].WhereTrim;
-                                                row["WhereIsNull"] = class_Mains.class_Fields[FindIndex].WhereIsNull;
-                                                row["OrderSelect"] = class_Mains.class_Fields[FindIndex].OrderSelect;
-                                                row["SortType"] = class_Mains.class_Fields[FindIndex].SortType;
-                                                row["SortNo"] = class_Mains.class_Fields[FindIndex].SortNo;
-                                                row["GroupSelect"] = class_Mains.class_Fields[FindIndex].GroupSelect;
-                                                row["HavingSelect"] = class_Mains.class_Fields[FindIndex].HavingSelect;
-                                                row["HavingFunction"] = class_Mains.class_Fields[FindIndex].HavingFunction;
-                                                row["HavingCondition"] = class_Mains.class_Fields[FindIndex].HavingCondition;
-                                                row["HavingValue"] = class_Mains.class_Fields[FindIndex].HavingValue;
+                                                row["SelectSelect"] = class_CurrentPage.class_Fields[FindIndex].SelectSelect;
+                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
+                                                row["MaxLegth"] = class_CurrentPage.class_Fields[FindIndex].MaxLegth;
+                                                row["CaseWhen"] = class_CurrentPage.class_Fields[FindIndex].CaseWhen;
+                                                row["ReturnType"] = class_CurrentPage.class_Fields[FindIndex].ReturnType;
+                                                row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
+                                                row["FunctionName"] = class_CurrentPage.class_Fields[FindIndex].FunctionName;
+                                                row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
+                                                row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
+                                                row["LogType"] = class_CurrentPage.class_Fields[FindIndex].LogType;
+                                                row["WhereValue"] = class_CurrentPage.class_Fields[FindIndex].WhereValue;
+                                                row["WhereTrim"] = class_CurrentPage.class_Fields[FindIndex].WhereTrim;
+                                                row["WhereIsNull"] = class_CurrentPage.class_Fields[FindIndex].WhereIsNull;
+                                                row["OrderSelect"] = class_CurrentPage.class_Fields[FindIndex].OrderSelect;
+                                                row["SortType"] = class_CurrentPage.class_Fields[FindIndex].SortType;
+                                                row["SortNo"] = class_CurrentPage.class_Fields[FindIndex].SortNo;
+                                                row["GroupSelect"] = class_CurrentPage.class_Fields[FindIndex].GroupSelect;
+                                                row["HavingSelect"] = class_CurrentPage.class_Fields[FindIndex].HavingSelect;
+                                                row["HavingFunction"] = class_CurrentPage.class_Fields[FindIndex].HavingFunction;
+                                                row["HavingCondition"] = class_CurrentPage.class_Fields[FindIndex].HavingCondition;
+                                                row["HavingValue"] = class_CurrentPage.class_Fields[FindIndex].HavingValue;
                                                 IsDefault = false;
                                             }
                                         }

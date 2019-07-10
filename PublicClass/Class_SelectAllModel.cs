@@ -14,9 +14,7 @@ namespace MDIDemo.PublicClass
             class_MyBatisMap = new Class_MyBatisMap();
             class_SelectDataBase = new Class_SelectDataBase();
             class_Create = new Class_Create();
-            class_Main = new Class_Main();
-            class_Subs = new Class_Sub();
-            class_SubSubs = new Class_Sub();
+            class_SubList = new List<Class_Sub>();
             class_WindowLastState = new Class_WindowLastState();
             LastSelectTableName = null;
             classType = "select";
@@ -36,9 +34,7 @@ namespace MDIDemo.PublicClass
         /// </summary>
         public Class_SelectDataBase class_SelectDataBase { get; set; }
         public Class_Create class_Create { get; set; }
-        public Class_Main class_Main { get; set; }
-        public Class_Sub class_Subs { get; set; }
-        public Class_Sub class_SubSubs { get; set; }
+        public List<Class_Sub> class_SubList { get; set; }
         public string LastSelectTableName { get; set; }
         public string classType { get; set; }
         public bool IsAutoWard { get; set; }

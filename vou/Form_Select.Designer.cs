@@ -298,6 +298,150 @@
             this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit8 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit9 = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabPage52 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl4 = new DevExpress.XtraGrid.GridControl();
+            this.bandedGridView4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand22 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn88 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand23 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn89 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn90 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn91 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn92 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn93 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit37 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn94 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit38 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn95 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit39 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridBand24 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn96 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit40 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn97 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn98 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemSpinEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.bandedGridColumn99 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemButtonEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.bandedGridColumn100 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox25 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn101 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit41 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn102 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox26 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridBand25 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn103 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit42 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn104 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox27 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn105 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox28 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn106 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox29 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn107 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit43 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn108 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit44 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridBand26 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn109 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit45 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn110 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox30 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn111 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemSpinEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.gridBand27 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn112 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit46 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridBand28 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn113 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit47 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn114 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox31 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn115 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox32 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn116 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit48 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.panelControl42 = new DevExpress.XtraEditors.PanelControl();
+            this.buttonEdit5 = new DevExpress.XtraEditors.ButtonEdit();
+            this.buttonEdit6 = new DevExpress.XtraEditors.ButtonEdit();
+            this.radioGroup17 = new DevExpress.XtraEditors.RadioGroup();
+            this.radioGroup18 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit57 = new DevExpress.XtraEditors.TextEdit();
+            this.radioGroup19 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit58 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit59 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit60 = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabPage53 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl5 = new DevExpress.XtraGrid.GridControl();
+            this.bandedGridView5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand29 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn117 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand30 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn118 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn119 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn120 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn121 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn122 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit49 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn123 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit50 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn124 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit51 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridBand31 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn125 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit52 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn126 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn127 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemSpinEdit9 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.bandedGridColumn128 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemButtonEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.bandedGridColumn129 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox33 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn130 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit53 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn131 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox34 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.gridBand32 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn132 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit54 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn133 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox35 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn134 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox36 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn135 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox37 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn136 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit55 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn137 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit56 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridBand33 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn138 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit57 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn139 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox38 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn140 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemSpinEdit10 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.gridBand34 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn141 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit58 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridBand35 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn142 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit59 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bandedGridColumn143 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox39 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn144 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox40 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn145 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemCheckEdit60 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.panelControl43 = new DevExpress.XtraEditors.PanelControl();
+            this.buttonEdit7 = new DevExpress.XtraEditors.ButtonEdit();
+            this.buttonEdit8 = new DevExpress.XtraEditors.ButtonEdit();
+            this.radioGroup20 = new DevExpress.XtraEditors.RadioGroup();
+            this.radioGroup21 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit61 = new DevExpress.XtraEditors.TextEdit();
+            this.radioGroup22 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit62 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit63 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit64 = new DevExpress.XtraEditors.TextEdit();
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.dockPanel2 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -522,6 +666,130 @@
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.radioGroup14 = new DevExpress.XtraEditors.RadioGroup();
+            this.xtraTabPage54 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl16 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage56 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl17 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage57 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit34 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl46 = new DevExpress.XtraEditors.PanelControl();
+            this.textEdit83 = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabPage58 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit35 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl47 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl48 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage59 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit36 = new DevExpress.XtraEditors.MemoEdit();
+            this.memoEdit37 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl49 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage60 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit38 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl50 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage61 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl18 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage62 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit39 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl51 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage63 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit40 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl52 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl53 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage64 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit41 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl54 = new DevExpress.XtraEditors.PanelControl();
+            this.textEdit84 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl41 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit85 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit86 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl42 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPage65 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit42 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl55 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage66 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit43 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl56 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl44 = new DevExpress.XtraEditors.PanelControl();
+            this.radioGroup23 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit65 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
+            this.radioGroup24 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit66 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit67 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit68 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit69 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit70 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit71 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit72 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit73 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl34 = new DevExpress.XtraEditors.LabelControl();
+            this.checkEdit6 = new DevExpress.XtraEditors.CheckEdit();
+            this.radioGroup25 = new DevExpress.XtraEditors.RadioGroup();
+            this.xtraTabPage55 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl19 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage67 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl20 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage68 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit44 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl57 = new DevExpress.XtraEditors.PanelControl();
+            this.textEdit87 = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabPage69 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit45 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl58 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl59 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage70 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit46 = new DevExpress.XtraEditors.MemoEdit();
+            this.memoEdit47 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl60 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage71 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit48 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl61 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage72 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl21 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage73 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit49 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl62 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage74 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit50 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl63 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl64 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage75 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit51 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl65 = new DevExpress.XtraEditors.PanelControl();
+            this.textEdit88 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl43 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit89 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit90 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl44 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPage76 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit52 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl66 = new DevExpress.XtraEditors.PanelControl();
+            this.xtraTabPage77 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit53 = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl67 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl45 = new DevExpress.XtraEditors.PanelControl();
+            this.radioGroup26 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit74 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
+            this.radioGroup27 = new DevExpress.XtraEditors.RadioGroup();
+            this.textEdit75 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl36 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit76 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl37 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit77 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit78 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit79 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl38 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit80 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl39 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit81 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit82 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl40 = new DevExpress.XtraEditors.LabelControl();
+            this.checkEdit7 = new DevExpress.XtraEditors.CheckEdit();
+            this.radioGroup28 = new DevExpress.XtraEditors.RadioGroup();
             this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit12 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl16 = new DevExpress.XtraEditors.PanelControl();
@@ -659,6 +927,80 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit9.Properties)).BeginInit();
+            this.xtraTabPage52.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit37)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit38)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit39)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit43)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox30)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit46)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit47)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit48)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl42)).BeginInit();
+            this.panelControl42.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup17.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup18.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit57.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup19.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit58.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit59.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit60.Properties)).BeginInit();
+            this.xtraTabPage53.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit49)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit50)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit51)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit52)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox33)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit53)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox34)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit54)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox36)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox37)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit55)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit56)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox38)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit59)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox39)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit60)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl43)).BeginInit();
+            this.panelControl43.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit7.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit8.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup20.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup21.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit61.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup22.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit62.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit63.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit64.Properties)).BeginInit();
             this.dockPanel2.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -870,6 +1212,126 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit41.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup14.Properties)).BeginInit();
+            this.xtraTabPage54.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl16)).BeginInit();
+            this.xtraTabControl16.SuspendLayout();
+            this.xtraTabPage56.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl17)).BeginInit();
+            this.xtraTabControl17.SuspendLayout();
+            this.xtraTabPage57.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit34.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl46)).BeginInit();
+            this.panelControl46.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit83.Properties)).BeginInit();
+            this.xtraTabPage58.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit35.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl47)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl48)).BeginInit();
+            this.xtraTabPage59.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit36.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit37.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl49)).BeginInit();
+            this.xtraTabPage60.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit38.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl50)).BeginInit();
+            this.xtraTabPage61.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl18)).BeginInit();
+            this.xtraTabControl18.SuspendLayout();
+            this.xtraTabPage62.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit39.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl51)).BeginInit();
+            this.xtraTabPage63.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit40.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl52)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl53)).BeginInit();
+            this.xtraTabPage64.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit41.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl54)).BeginInit();
+            this.panelControl54.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit84.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit85.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit86.Properties)).BeginInit();
+            this.xtraTabPage65.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit42.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl55)).BeginInit();
+            this.xtraTabPage66.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit43.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl56)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl44)).BeginInit();
+            this.panelControl44.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup23.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit65.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup24.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit66.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit67.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit68.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit69.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit70.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit71.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit72.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit73.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup25.Properties)).BeginInit();
+            this.xtraTabPage55.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl19)).BeginInit();
+            this.xtraTabControl19.SuspendLayout();
+            this.xtraTabPage67.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl20)).BeginInit();
+            this.xtraTabControl20.SuspendLayout();
+            this.xtraTabPage68.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit44.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl57)).BeginInit();
+            this.panelControl57.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit87.Properties)).BeginInit();
+            this.xtraTabPage69.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit45.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl59)).BeginInit();
+            this.xtraTabPage70.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit46.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit47.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl60)).BeginInit();
+            this.xtraTabPage71.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit48.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl61)).BeginInit();
+            this.xtraTabPage72.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl21)).BeginInit();
+            this.xtraTabControl21.SuspendLayout();
+            this.xtraTabPage73.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit49.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl62)).BeginInit();
+            this.xtraTabPage74.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit50.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl63)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl64)).BeginInit();
+            this.xtraTabPage75.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit51.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl65)).BeginInit();
+            this.panelControl65.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit88.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit89.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit90.Properties)).BeginInit();
+            this.xtraTabPage76.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit52.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl66)).BeginInit();
+            this.xtraTabPage77.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit53.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl67)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl45)).BeginInit();
+            this.panelControl45.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup26.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit74.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup27.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit75.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit76.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit77.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit78.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit79.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit80.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit81.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit82.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup28.Properties)).BeginInit();
             this.xtraTabPage28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).BeginInit();
@@ -1053,7 +1515,9 @@
             this.xtraTabControl5.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage10,
             this.xtraTabPage12,
-            this.xtraTabPage14});
+            this.xtraTabPage14,
+            this.xtraTabPage52,
+            this.xtraTabPage53});
             this.xtraTabControl5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.xtraTabControl5_MouseUp);
             // 
             // imageList2
@@ -3286,7 +3750,7 @@
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
             this.xtraTabPage12.Size = new System.Drawing.Size(885, 527);
-            this.xtraTabPage12.Text = "从表一";
+            this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
             // 
@@ -4161,7 +4625,7 @@
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
             this.xtraTabPage14.Size = new System.Drawing.Size(885, 527);
-            this.xtraTabPage14.Text = "从表二";
+            this.xtraTabPage14.Text = "表";
             // 
             // gridControl3
             // 
@@ -5029,6 +5493,1748 @@
             this.textEdit9.Size = new System.Drawing.Size(208, 20);
             this.textEdit9.TabIndex = 0;
             // 
+            // xtraTabPage52
+            // 
+            this.xtraTabPage52.Controls.Add(this.gridControl4);
+            this.xtraTabPage52.Controls.Add(this.panelControl42);
+            this.xtraTabPage52.ImageIndex = 610;
+            this.xtraTabPage52.Name = "xtraTabPage52";
+            this.xtraTabPage52.Size = new System.Drawing.Size(885, 527);
+            this.xtraTabPage52.Text = "表";
+            // 
+            // gridControl4
+            // 
+            this.gridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl4.Location = new System.Drawing.Point(0, 91);
+            this.gridControl4.LookAndFeel.SkinName = "Metropolis Dark";
+            this.gridControl4.MainView = this.bandedGridView4;
+            this.gridControl4.MenuManager = this.barManager2;
+            this.gridControl4.Name = "gridControl4";
+            this.gridControl4.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit37,
+            this.repositoryItemCheckEdit38,
+            this.repositoryItemCheckEdit39,
+            this.repositoryItemCheckEdit40,
+            this.repositoryItemCheckEdit45,
+            this.repositoryItemSpinEdit8,
+            this.repositoryItemCheckEdit41,
+            this.repositoryItemComboBox26,
+            this.repositoryItemComboBox25,
+            this.repositoryItemCheckEdit48,
+            this.repositoryItemSpinEdit7,
+            this.repositoryItemCheckEdit42,
+            this.repositoryItemComboBox27,
+            this.repositoryItemComboBox28,
+            this.repositoryItemComboBox29,
+            this.repositoryItemCheckEdit43,
+            this.repositoryItemCheckEdit44,
+            this.repositoryItemButtonEdit4,
+            this.repositoryItemComboBox30,
+            this.repositoryItemCheckEdit46,
+            this.repositoryItemCheckEdit47,
+            this.repositoryItemComboBox31,
+            this.repositoryItemComboBox32});
+            this.gridControl4.Size = new System.Drawing.Size(885, 436);
+            this.gridControl4.TabIndex = 3;
+            this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.bandedGridView4});
+            // 
+            // bandedGridView4
+            // 
+            this.bandedGridView4.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand22,
+            this.gridBand23,
+            this.gridBand24,
+            this.gridBand25,
+            this.gridBand26,
+            this.gridBand27,
+            this.gridBand28});
+            this.bandedGridView4.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.bandedGridColumn88,
+            this.bandedGridColumn89,
+            this.bandedGridColumn90,
+            this.bandedGridColumn91,
+            this.bandedGridColumn92,
+            this.bandedGridColumn93,
+            this.bandedGridColumn94,
+            this.bandedGridColumn95,
+            this.bandedGridColumn96,
+            this.bandedGridColumn97,
+            this.bandedGridColumn98,
+            this.bandedGridColumn99,
+            this.bandedGridColumn100,
+            this.bandedGridColumn101,
+            this.bandedGridColumn102,
+            this.bandedGridColumn103,
+            this.bandedGridColumn104,
+            this.bandedGridColumn105,
+            this.bandedGridColumn106,
+            this.bandedGridColumn107,
+            this.bandedGridColumn108,
+            this.bandedGridColumn109,
+            this.bandedGridColumn110,
+            this.bandedGridColumn111,
+            this.bandedGridColumn112,
+            this.bandedGridColumn113,
+            this.bandedGridColumn114,
+            this.bandedGridColumn115,
+            this.bandedGridColumn116});
+            this.bandedGridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.bandedGridView4.GridControl = this.gridControl4;
+            this.bandedGridView4.Name = "bandedGridView4";
+            this.bandedGridView4.OptionsCustomization.AllowColumnMoving = false;
+            this.bandedGridView4.OptionsCustomization.AllowSort = false;
+            this.bandedGridView4.OptionsMenu.EnableColumnMenu = false;
+            this.bandedGridView4.OptionsMenu.EnableFooterMenu = false;
+            this.bandedGridView4.OptionsMenu.EnableGroupPanelMenu = false;
+            this.bandedGridView4.OptionsMenu.ShowAutoFilterRowItem = false;
+            this.bandedGridView4.OptionsMenu.ShowGroupSortSummaryItems = false;
+            this.bandedGridView4.OptionsMenu.ShowSplitItem = false;
+            this.bandedGridView4.OptionsView.ColumnAutoWidth = false;
+            this.bandedGridView4.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridBand22
+            // 
+            this.gridBand22.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand22.AppearanceHeader.Options.UseFont = true;
+            this.gridBand22.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand22.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand22.Caption = "字段";
+            this.gridBand22.Columns.Add(this.bandedGridColumn88);
+            this.gridBand22.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.gridBand22.MinWidth = 200;
+            this.gridBand22.Name = "gridBand22";
+            this.gridBand22.OptionsBand.AllowMove = false;
+            this.gridBand22.OptionsBand.AllowSize = false;
+            this.gridBand22.OptionsBand.FixedWidth = true;
+            this.gridBand22.RowCount = 2;
+            this.gridBand22.VisibleIndex = 0;
+            this.gridBand22.Width = 200;
+            // 
+            // bandedGridColumn88
+            // 
+            this.bandedGridColumn88.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn88.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn88.Caption = "名称";
+            this.bandedGridColumn88.FieldName = "FieldName";
+            this.bandedGridColumn88.Name = "bandedGridColumn88";
+            this.bandedGridColumn88.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn88.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn88.Visible = true;
+            this.bandedGridColumn88.Width = 100;
+            // 
+            // gridBand23
+            // 
+            this.gridBand23.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand23.AppearanceHeader.Options.UseFont = true;
+            this.gridBand23.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand23.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand23.Caption = "字段属性";
+            this.gridBand23.Columns.Add(this.bandedGridColumn89);
+            this.gridBand23.Columns.Add(this.bandedGridColumn90);
+            this.gridBand23.Columns.Add(this.bandedGridColumn91);
+            this.gridBand23.Columns.Add(this.bandedGridColumn92);
+            this.gridBand23.Columns.Add(this.bandedGridColumn93);
+            this.gridBand23.Columns.Add(this.bandedGridColumn94);
+            this.gridBand23.Columns.Add(this.bandedGridColumn95);
+            this.gridBand23.CustomizationCaption = "从数据库中来";
+            this.gridBand23.Name = "gridBand23";
+            this.gridBand23.OptionsBand.AllowMove = false;
+            this.gridBand23.OptionsBand.FixedWidth = true;
+            this.gridBand23.RowCount = 2;
+            this.gridBand23.VisibleIndex = 1;
+            this.gridBand23.Width = 600;
+            // 
+            // bandedGridColumn89
+            // 
+            this.bandedGridColumn89.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn89.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn89.Caption = "注释";
+            this.bandedGridColumn89.FieldName = "FieldRemark";
+            this.bandedGridColumn89.Name = "bandedGridColumn89";
+            this.bandedGridColumn89.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn89.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn89.Visible = true;
+            this.bandedGridColumn89.Width = 120;
+            // 
+            // bandedGridColumn90
+            // 
+            this.bandedGridColumn90.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn90.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn90.Caption = "类型";
+            this.bandedGridColumn90.FieldName = "FieldType";
+            this.bandedGridColumn90.Name = "bandedGridColumn90";
+            this.bandedGridColumn90.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn90.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn90.Visible = true;
+            this.bandedGridColumn90.Width = 80;
+            // 
+            // bandedGridColumn91
+            // 
+            this.bandedGridColumn91.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn91.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn91.Caption = "长度";
+            this.bandedGridColumn91.FieldName = "FieldLength";
+            this.bandedGridColumn91.Name = "bandedGridColumn91";
+            this.bandedGridColumn91.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn91.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn91.Visible = true;
+            this.bandedGridColumn91.Width = 80;
+            // 
+            // bandedGridColumn92
+            // 
+            this.bandedGridColumn92.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn92.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn92.Caption = "默认值";
+            this.bandedGridColumn92.FieldName = "FieldDefaultValue";
+            this.bandedGridColumn92.Name = "bandedGridColumn92";
+            this.bandedGridColumn92.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn92.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn92.Visible = true;
+            this.bandedGridColumn92.Width = 80;
+            // 
+            // bandedGridColumn93
+            // 
+            this.bandedGridColumn93.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn93.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn93.Caption = "是否可为空";
+            this.bandedGridColumn93.ColumnEdit = this.repositoryItemCheckEdit37;
+            this.bandedGridColumn93.FieldName = "FieldIsNull";
+            this.bandedGridColumn93.Name = "bandedGridColumn93";
+            this.bandedGridColumn93.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn93.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn93.Visible = true;
+            this.bandedGridColumn93.Width = 80;
+            // 
+            // repositoryItemCheckEdit37
+            // 
+            this.repositoryItemCheckEdit37.AutoHeight = false;
+            this.repositoryItemCheckEdit37.Name = "repositoryItemCheckEdit37";
+            // 
+            // bandedGridColumn94
+            // 
+            this.bandedGridColumn94.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn94.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn94.Caption = "是否为主键";
+            this.bandedGridColumn94.ColumnEdit = this.repositoryItemCheckEdit38;
+            this.bandedGridColumn94.FieldName = "FieldIsKey";
+            this.bandedGridColumn94.Name = "bandedGridColumn94";
+            this.bandedGridColumn94.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn94.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn94.Visible = true;
+            this.bandedGridColumn94.Width = 80;
+            // 
+            // repositoryItemCheckEdit38
+            // 
+            this.repositoryItemCheckEdit38.AutoHeight = false;
+            this.repositoryItemCheckEdit38.Name = "repositoryItemCheckEdit38";
+            // 
+            // bandedGridColumn95
+            // 
+            this.bandedGridColumn95.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn95.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn95.Caption = "是否为自增";
+            this.bandedGridColumn95.ColumnEdit = this.repositoryItemCheckEdit39;
+            this.bandedGridColumn95.FieldName = "FieldIsAutoAdd";
+            this.bandedGridColumn95.Name = "bandedGridColumn95";
+            this.bandedGridColumn95.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn95.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn95.Visible = true;
+            this.bandedGridColumn95.Width = 80;
+            // 
+            // repositoryItemCheckEdit39
+            // 
+            this.repositoryItemCheckEdit39.AutoHeight = false;
+            this.repositoryItemCheckEdit39.Name = "repositoryItemCheckEdit39";
+            // 
+            // gridBand24
+            // 
+            this.gridBand24.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand24.AppearanceHeader.Options.UseFont = true;
+            this.gridBand24.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand24.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand24.Caption = "SELECT";
+            this.gridBand24.Columns.Add(this.bandedGridColumn96);
+            this.gridBand24.Columns.Add(this.bandedGridColumn97);
+            this.gridBand24.Columns.Add(this.bandedGridColumn98);
+            this.gridBand24.Columns.Add(this.bandedGridColumn99);
+            this.gridBand24.Columns.Add(this.bandedGridColumn100);
+            this.gridBand24.Columns.Add(this.bandedGridColumn101);
+            this.gridBand24.Columns.Add(this.bandedGridColumn102);
+            this.gridBand24.Name = "gridBand24";
+            this.gridBand24.OptionsBand.AllowMove = false;
+            this.gridBand24.OptionsBand.FixedWidth = true;
+            this.gridBand24.RowCount = 2;
+            this.gridBand24.VisibleIndex = 2;
+            this.gridBand24.Width = 660;
+            // 
+            // bandedGridColumn96
+            // 
+            this.bandedGridColumn96.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn96.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn96.Caption = "选择";
+            this.bandedGridColumn96.ColumnEdit = this.repositoryItemCheckEdit40;
+            this.bandedGridColumn96.FieldName = "SelectSelect";
+            this.bandedGridColumn96.Name = "bandedGridColumn96";
+            this.bandedGridColumn96.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn96.Visible = true;
+            this.bandedGridColumn96.Width = 60;
+            // 
+            // repositoryItemCheckEdit40
+            // 
+            this.repositoryItemCheckEdit40.AutoHeight = false;
+            this.repositoryItemCheckEdit40.Name = "repositoryItemCheckEdit40";
+            // 
+            // bandedGridColumn97
+            // 
+            this.bandedGridColumn97.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn97.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn97.Caption = "映射参数名";
+            this.bandedGridColumn97.FieldName = "ParaName";
+            this.bandedGridColumn97.Name = "bandedGridColumn97";
+            this.bandedGridColumn97.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn97.Visible = true;
+            this.bandedGridColumn97.Width = 100;
+            // 
+            // bandedGridColumn98
+            // 
+            this.bandedGridColumn98.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn98.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn98.Caption = "长度限制";
+            this.bandedGridColumn98.ColumnEdit = this.repositoryItemSpinEdit7;
+            this.bandedGridColumn98.FieldName = "MaxLegth";
+            this.bandedGridColumn98.Name = "bandedGridColumn98";
+            this.bandedGridColumn98.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn98.Visible = true;
+            this.bandedGridColumn98.Width = 100;
+            // 
+            // repositoryItemSpinEdit7
+            // 
+            this.repositoryItemSpinEdit7.AutoHeight = false;
+            this.repositoryItemSpinEdit7.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit7.IsFloatValue = false;
+            this.repositoryItemSpinEdit7.Mask.EditMask = "N00";
+            this.repositoryItemSpinEdit7.MaxValue = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit7.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit7.Name = "repositoryItemSpinEdit7";
+            // 
+            // bandedGridColumn99
+            // 
+            this.bandedGridColumn99.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn99.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn99.Caption = "Case when";
+            this.bandedGridColumn99.ColumnEdit = this.repositoryItemButtonEdit4;
+            this.bandedGridColumn99.FieldName = "CaseWhen";
+            this.bandedGridColumn99.Name = "bandedGridColumn99";
+            this.bandedGridColumn99.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn99.Visible = true;
+            this.bandedGridColumn99.Width = 100;
+            // 
+            // repositoryItemButtonEdit4
+            // 
+            this.repositoryItemButtonEdit4.AutoHeight = false;
+            this.repositoryItemButtonEdit4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit4.Name = "repositoryItemButtonEdit4";
+            // 
+            // bandedGridColumn100
+            // 
+            this.bandedGridColumn100.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn100.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn100.Caption = "返回类型";
+            this.bandedGridColumn100.ColumnEdit = this.repositoryItemComboBox25;
+            this.bandedGridColumn100.FieldName = "ReturnType";
+            this.bandedGridColumn100.Name = "bandedGridColumn100";
+            this.bandedGridColumn100.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn100.Visible = true;
+            this.bandedGridColumn100.Width = 100;
+            // 
+            // repositoryItemComboBox25
+            // 
+            this.repositoryItemComboBox25.AutoHeight = false;
+            this.repositoryItemComboBox25.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox25.Name = "repositoryItemComboBox25";
+            this.repositoryItemComboBox25.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn101
+            // 
+            this.bandedGridColumn101.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn101.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn101.Caption = "去空格";
+            this.bandedGridColumn101.ColumnEdit = this.repositoryItemCheckEdit41;
+            this.bandedGridColumn101.FieldName = "TrimSign";
+            this.bandedGridColumn101.Name = "bandedGridColumn101";
+            this.bandedGridColumn101.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn101.Visible = true;
+            this.bandedGridColumn101.Width = 100;
+            // 
+            // repositoryItemCheckEdit41
+            // 
+            this.repositoryItemCheckEdit41.AutoHeight = false;
+            this.repositoryItemCheckEdit41.Name = "repositoryItemCheckEdit41";
+            // 
+            // bandedGridColumn102
+            // 
+            this.bandedGridColumn102.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn102.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn102.Caption = "函数";
+            this.bandedGridColumn102.ColumnEdit = this.repositoryItemComboBox26;
+            this.bandedGridColumn102.FieldName = "FunctionName";
+            this.bandedGridColumn102.Name = "bandedGridColumn102";
+            this.bandedGridColumn102.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn102.Visible = true;
+            this.bandedGridColumn102.Width = 100;
+            // 
+            // repositoryItemComboBox26
+            // 
+            this.repositoryItemComboBox26.AutoHeight = false;
+            this.repositoryItemComboBox26.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox26.Name = "repositoryItemComboBox26";
+            // 
+            // gridBand25
+            // 
+            this.gridBand25.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand25.AppearanceHeader.Options.UseFont = true;
+            this.gridBand25.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand25.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand25.Caption = "WHERE";
+            this.gridBand25.Columns.Add(this.bandedGridColumn103);
+            this.gridBand25.Columns.Add(this.bandedGridColumn104);
+            this.gridBand25.Columns.Add(this.bandedGridColumn105);
+            this.gridBand25.Columns.Add(this.bandedGridColumn106);
+            this.gridBand25.Columns.Add(this.bandedGridColumn107);
+            this.gridBand25.Columns.Add(this.bandedGridColumn108);
+            this.gridBand25.Name = "gridBand25";
+            this.gridBand25.OptionsBand.AllowMove = false;
+            this.gridBand25.OptionsBand.FixedWidth = true;
+            this.gridBand25.RowCount = 2;
+            this.gridBand25.VisibleIndex = 3;
+            this.gridBand25.Width = 480;
+            // 
+            // bandedGridColumn103
+            // 
+            this.bandedGridColumn103.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn103.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn103.Caption = "选择";
+            this.bandedGridColumn103.ColumnEdit = this.repositoryItemCheckEdit42;
+            this.bandedGridColumn103.FieldName = "WhereSelect";
+            this.bandedGridColumn103.Name = "bandedGridColumn103";
+            this.bandedGridColumn103.Visible = true;
+            this.bandedGridColumn103.Width = 80;
+            // 
+            // repositoryItemCheckEdit42
+            // 
+            this.repositoryItemCheckEdit42.AutoHeight = false;
+            this.repositoryItemCheckEdit42.Name = "repositoryItemCheckEdit42";
+            // 
+            // bandedGridColumn104
+            // 
+            this.bandedGridColumn104.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn104.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn104.Caption = "方式";
+            this.bandedGridColumn104.ColumnEdit = this.repositoryItemComboBox27;
+            this.bandedGridColumn104.FieldName = "WhereType";
+            this.bandedGridColumn104.Name = "bandedGridColumn104";
+            this.bandedGridColumn104.Visible = true;
+            this.bandedGridColumn104.Width = 80;
+            // 
+            // repositoryItemComboBox27
+            // 
+            this.repositoryItemComboBox27.AutoHeight = false;
+            this.repositoryItemComboBox27.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox27.Items.AddRange(new object[] {
+            "AND",
+            "OR"});
+            this.repositoryItemComboBox27.Name = "repositoryItemComboBox27";
+            this.repositoryItemComboBox27.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn105
+            // 
+            this.bandedGridColumn105.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn105.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn105.Caption = "逻辑";
+            this.bandedGridColumn105.ColumnEdit = this.repositoryItemComboBox28;
+            this.bandedGridColumn105.FieldName = "LogType";
+            this.bandedGridColumn105.Name = "bandedGridColumn105";
+            this.bandedGridColumn105.Visible = true;
+            this.bandedGridColumn105.Width = 80;
+            // 
+            // repositoryItemComboBox28
+            // 
+            this.repositoryItemComboBox28.AutoHeight = false;
+            this.repositoryItemComboBox28.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox28.Items.AddRange(new object[] {
+            "=",
+            "!=",
+            "右Like",
+            "全Like",
+            "左Like",
+            "IN",
+            "NOT IN",
+            "BETWEEN",
+            ">",
+            "<",
+            ">=",
+            "<=",
+            "IS NULL",
+            "IS NOT NULL"});
+            this.repositoryItemComboBox28.Name = "repositoryItemComboBox28";
+            this.repositoryItemComboBox28.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn106
+            // 
+            this.bandedGridColumn106.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn106.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn106.Caption = "数值";
+            this.bandedGridColumn106.ColumnEdit = this.repositoryItemComboBox29;
+            this.bandedGridColumn106.FieldName = "WhereValue";
+            this.bandedGridColumn106.Name = "bandedGridColumn106";
+            this.bandedGridColumn106.Visible = true;
+            this.bandedGridColumn106.Width = 80;
+            // 
+            // repositoryItemComboBox29
+            // 
+            this.repositoryItemComboBox29.AutoHeight = false;
+            this.repositoryItemComboBox29.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox29.Items.AddRange(new object[] {
+            "参数",
+            "固定值"});
+            this.repositoryItemComboBox29.Name = "repositoryItemComboBox29";
+            // 
+            // bandedGridColumn107
+            // 
+            this.bandedGridColumn107.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn107.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn107.Caption = "去空格";
+            this.bandedGridColumn107.ColumnEdit = this.repositoryItemCheckEdit43;
+            this.bandedGridColumn107.FieldName = "WhereTrim";
+            this.bandedGridColumn107.Name = "bandedGridColumn107";
+            this.bandedGridColumn107.Visible = true;
+            this.bandedGridColumn107.Width = 80;
+            // 
+            // repositoryItemCheckEdit43
+            // 
+            this.repositoryItemCheckEdit43.AutoHeight = false;
+            this.repositoryItemCheckEdit43.Name = "repositoryItemCheckEdit43";
+            // 
+            // bandedGridColumn108
+            // 
+            this.bandedGridColumn108.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn108.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn108.Caption = "是否可为空";
+            this.bandedGridColumn108.ColumnEdit = this.repositoryItemCheckEdit44;
+            this.bandedGridColumn108.FieldName = "WhereIsNull";
+            this.bandedGridColumn108.Name = "bandedGridColumn108";
+            this.bandedGridColumn108.Visible = true;
+            this.bandedGridColumn108.Width = 80;
+            // 
+            // repositoryItemCheckEdit44
+            // 
+            this.repositoryItemCheckEdit44.AutoHeight = false;
+            this.repositoryItemCheckEdit44.Name = "repositoryItemCheckEdit44";
+            // 
+            // gridBand26
+            // 
+            this.gridBand26.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand26.AppearanceHeader.Options.UseFont = true;
+            this.gridBand26.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand26.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand26.Caption = "ORDER BY";
+            this.gridBand26.Columns.Add(this.bandedGridColumn109);
+            this.gridBand26.Columns.Add(this.bandedGridColumn110);
+            this.gridBand26.Columns.Add(this.bandedGridColumn111);
+            this.gridBand26.Name = "gridBand26";
+            this.gridBand26.OptionsBand.AllowMove = false;
+            this.gridBand26.OptionsBand.AllowSize = false;
+            this.gridBand26.OptionsBand.FixedWidth = true;
+            this.gridBand26.RowCount = 2;
+            this.gridBand26.VisibleIndex = 4;
+            this.gridBand26.Width = 260;
+            // 
+            // bandedGridColumn109
+            // 
+            this.bandedGridColumn109.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn109.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn109.Caption = "选择";
+            this.bandedGridColumn109.ColumnEdit = this.repositoryItemCheckEdit45;
+            this.bandedGridColumn109.FieldName = "OrderSelect";
+            this.bandedGridColumn109.Name = "bandedGridColumn109";
+            this.bandedGridColumn109.Visible = true;
+            this.bandedGridColumn109.Width = 80;
+            // 
+            // repositoryItemCheckEdit45
+            // 
+            this.repositoryItemCheckEdit45.AutoHeight = false;
+            this.repositoryItemCheckEdit45.Name = "repositoryItemCheckEdit45";
+            // 
+            // bandedGridColumn110
+            // 
+            this.bandedGridColumn110.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn110.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn110.Caption = "排序方式";
+            this.bandedGridColumn110.ColumnEdit = this.repositoryItemComboBox30;
+            this.bandedGridColumn110.FieldName = "SortType";
+            this.bandedGridColumn110.Name = "bandedGridColumn110";
+            this.bandedGridColumn110.Visible = true;
+            this.bandedGridColumn110.Width = 100;
+            // 
+            // repositoryItemComboBox30
+            // 
+            this.repositoryItemComboBox30.AutoHeight = false;
+            this.repositoryItemComboBox30.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox30.Items.AddRange(new object[] {
+            "升序",
+            "降序"});
+            this.repositoryItemComboBox30.Name = "repositoryItemComboBox30";
+            this.repositoryItemComboBox30.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn111
+            // 
+            this.bandedGridColumn111.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn111.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn111.Caption = "出现顺序";
+            this.bandedGridColumn111.ColumnEdit = this.repositoryItemSpinEdit8;
+            this.bandedGridColumn111.FieldName = "SortNo";
+            this.bandedGridColumn111.Name = "bandedGridColumn111";
+            this.bandedGridColumn111.Visible = true;
+            this.bandedGridColumn111.Width = 80;
+            // 
+            // repositoryItemSpinEdit8
+            // 
+            this.repositoryItemSpinEdit8.AutoHeight = false;
+            this.repositoryItemSpinEdit8.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit8.IsFloatValue = false;
+            this.repositoryItemSpinEdit8.Mask.EditMask = "N00";
+            this.repositoryItemSpinEdit8.MaxValue = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit8.Name = "repositoryItemSpinEdit8";
+            // 
+            // gridBand27
+            // 
+            this.gridBand27.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand27.AppearanceHeader.Options.UseFont = true;
+            this.gridBand27.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand27.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand27.Caption = "GROUP BY";
+            this.gridBand27.Columns.Add(this.bandedGridColumn112);
+            this.gridBand27.Name = "gridBand27";
+            this.gridBand27.OptionsBand.AllowMove = false;
+            this.gridBand27.OptionsBand.AllowSize = false;
+            this.gridBand27.OptionsBand.FixedWidth = true;
+            this.gridBand27.RowCount = 2;
+            this.gridBand27.VisibleIndex = 5;
+            this.gridBand27.Width = 80;
+            // 
+            // bandedGridColumn112
+            // 
+            this.bandedGridColumn112.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn112.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn112.Caption = "选择";
+            this.bandedGridColumn112.ColumnEdit = this.repositoryItemCheckEdit46;
+            this.bandedGridColumn112.FieldName = "GroupSelect";
+            this.bandedGridColumn112.Name = "bandedGridColumn112";
+            this.bandedGridColumn112.Visible = true;
+            this.bandedGridColumn112.Width = 80;
+            // 
+            // repositoryItemCheckEdit46
+            // 
+            this.repositoryItemCheckEdit46.AutoHeight = false;
+            this.repositoryItemCheckEdit46.Name = "repositoryItemCheckEdit46";
+            // 
+            // gridBand28
+            // 
+            this.gridBand28.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand28.AppearanceHeader.Options.UseFont = true;
+            this.gridBand28.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand28.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand28.Caption = "HAVING";
+            this.gridBand28.Columns.Add(this.bandedGridColumn113);
+            this.gridBand28.Columns.Add(this.bandedGridColumn114);
+            this.gridBand28.Columns.Add(this.bandedGridColumn115);
+            this.gridBand28.Columns.Add(this.bandedGridColumn116);
+            this.gridBand28.Name = "gridBand28";
+            this.gridBand28.OptionsBand.AllowMove = false;
+            this.gridBand28.OptionsBand.AllowSize = false;
+            this.gridBand28.OptionsBand.FixedWidth = true;
+            this.gridBand28.RowCount = 2;
+            this.gridBand28.VisibleIndex = 6;
+            this.gridBand28.Width = 360;
+            // 
+            // bandedGridColumn113
+            // 
+            this.bandedGridColumn113.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn113.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn113.Caption = "选择";
+            this.bandedGridColumn113.ColumnEdit = this.repositoryItemCheckEdit47;
+            this.bandedGridColumn113.FieldName = "HavingSelect";
+            this.bandedGridColumn113.Name = "bandedGridColumn113";
+            this.bandedGridColumn113.Visible = true;
+            this.bandedGridColumn113.Width = 60;
+            // 
+            // repositoryItemCheckEdit47
+            // 
+            this.repositoryItemCheckEdit47.AutoHeight = false;
+            this.repositoryItemCheckEdit47.Name = "repositoryItemCheckEdit47";
+            // 
+            // bandedGridColumn114
+            // 
+            this.bandedGridColumn114.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn114.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn114.Caption = "函数";
+            this.bandedGridColumn114.ColumnEdit = this.repositoryItemComboBox31;
+            this.bandedGridColumn114.FieldName = "HavingFunction";
+            this.bandedGridColumn114.Name = "bandedGridColumn114";
+            this.bandedGridColumn114.Visible = true;
+            this.bandedGridColumn114.Width = 100;
+            // 
+            // repositoryItemComboBox31
+            // 
+            this.repositoryItemComboBox31.AutoHeight = false;
+            this.repositoryItemComboBox31.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox31.Name = "repositoryItemComboBox31";
+            // 
+            // bandedGridColumn115
+            // 
+            this.bandedGridColumn115.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn115.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn115.Caption = "条件";
+            this.bandedGridColumn115.ColumnEdit = this.repositoryItemComboBox32;
+            this.bandedGridColumn115.FieldName = "HavingCondition";
+            this.bandedGridColumn115.Name = "bandedGridColumn115";
+            this.bandedGridColumn115.Visible = true;
+            this.bandedGridColumn115.Width = 100;
+            // 
+            // repositoryItemComboBox32
+            // 
+            this.repositoryItemComboBox32.AutoHeight = false;
+            this.repositoryItemComboBox32.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox32.Items.AddRange(new object[] {
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "=",
+            "<>"});
+            this.repositoryItemComboBox32.Name = "repositoryItemComboBox32";
+            this.repositoryItemComboBox32.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn116
+            // 
+            this.bandedGridColumn116.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn116.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn116.Caption = "值";
+            this.bandedGridColumn116.FieldName = "HavingValue";
+            this.bandedGridColumn116.Name = "bandedGridColumn116";
+            this.bandedGridColumn116.Visible = true;
+            this.bandedGridColumn116.Width = 100;
+            // 
+            // repositoryItemCheckEdit48
+            // 
+            this.repositoryItemCheckEdit48.AutoHeight = false;
+            this.repositoryItemCheckEdit48.Name = "repositoryItemCheckEdit48";
+            // 
+            // panelControl42
+            // 
+            this.panelControl42.Controls.Add(this.buttonEdit5);
+            this.panelControl42.Controls.Add(this.buttonEdit6);
+            this.panelControl42.Controls.Add(this.radioGroup17);
+            this.panelControl42.Controls.Add(this.radioGroup18);
+            this.panelControl42.Controls.Add(this.textEdit57);
+            this.panelControl42.Controls.Add(this.radioGroup19);
+            this.panelControl42.Controls.Add(this.textEdit58);
+            this.panelControl42.Controls.Add(this.textEdit59);
+            this.panelControl42.Controls.Add(this.textEdit60);
+            this.panelControl42.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl42.Location = new System.Drawing.Point(0, 0);
+            this.panelControl42.Name = "panelControl42";
+            this.panelControl42.Size = new System.Drawing.Size(885, 91);
+            this.panelControl42.TabIndex = 2;
+            // 
+            // buttonEdit5
+            // 
+            this.buttonEdit5.Location = new System.Drawing.Point(273, 39);
+            this.buttonEdit5.MenuManager = this.barManager3;
+            this.buttonEdit5.Name = "buttonEdit5";
+            this.buttonEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.buttonEdit5.Size = new System.Drawing.Size(127, 20);
+            this.buttonEdit5.TabIndex = 13;
+            // 
+            // buttonEdit6
+            // 
+            this.buttonEdit6.Location = new System.Drawing.Point(126, 39);
+            this.buttonEdit6.MenuManager = this.barManager3;
+            this.buttonEdit6.Name = "buttonEdit6";
+            this.buttonEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.buttonEdit6.Size = new System.Drawing.Size(127, 20);
+            this.buttonEdit6.TabIndex = 12;
+            // 
+            // radioGroup17
+            // 
+            this.radioGroup17.Location = new System.Drawing.Point(5, 5);
+            this.radioGroup17.MenuManager = this.barManager1;
+            this.radioGroup17.Name = "radioGroup17";
+            this.radioGroup17.Properties.Columns = 3;
+            this.radioGroup17.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "JOIN方式"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "association"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "collection")});
+            this.radioGroup17.Size = new System.Drawing.Size(248, 28);
+            this.radioGroup17.TabIndex = 10;
+            // 
+            // radioGroup18
+            // 
+            this.radioGroup18.Location = new System.Drawing.Point(406, 5);
+            this.radioGroup18.MenuManager = this.barManager1;
+            this.radioGroup18.Name = "radioGroup18";
+            this.radioGroup18.Properties.Columns = 3;
+            this.radioGroup18.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对一"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对多"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "多对多")});
+            this.radioGroup18.Size = new System.Drawing.Size(208, 28);
+            this.radioGroup18.TabIndex = 9;
+            // 
+            // textEdit57
+            // 
+            this.textEdit57.Location = new System.Drawing.Point(567, 65);
+            this.textEdit57.MenuManager = this.barManager2;
+            this.textEdit57.Name = "textEdit57";
+            this.textEdit57.Size = new System.Drawing.Size(129, 20);
+            this.textEdit57.TabIndex = 8;
+            // 
+            // radioGroup19
+            // 
+            this.radioGroup19.Location = new System.Drawing.Point(273, 5);
+            this.radioGroup19.MenuManager = this.barManager1;
+            this.radioGroup19.Name = "radioGroup19";
+            this.radioGroup19.Properties.Columns = 2;
+            this.radioGroup19.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "左链接"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "内链接")});
+            this.radioGroup19.Size = new System.Drawing.Size(127, 28);
+            this.radioGroup19.TabIndex = 4;
+            // 
+            // textEdit58
+            // 
+            this.textEdit58.Location = new System.Drawing.Point(353, 65);
+            this.textEdit58.MenuManager = this.barManager2;
+            this.textEdit58.Name = "textEdit58";
+            this.textEdit58.Properties.ReadOnly = true;
+            this.textEdit58.Size = new System.Drawing.Size(208, 20);
+            this.textEdit58.TabIndex = 3;
+            // 
+            // textEdit59
+            // 
+            this.textEdit59.Location = new System.Drawing.Point(220, 65);
+            this.textEdit59.MenuManager = this.barManager2;
+            this.textEdit59.Name = "textEdit59";
+            this.textEdit59.Properties.ReadOnly = true;
+            this.textEdit59.Size = new System.Drawing.Size(127, 20);
+            this.textEdit59.TabIndex = 2;
+            // 
+            // textEdit60
+            // 
+            this.textEdit60.Location = new System.Drawing.Point(6, 65);
+            this.textEdit60.MenuManager = this.barManager2;
+            this.textEdit60.Name = "textEdit60";
+            this.textEdit60.Properties.ReadOnly = true;
+            this.textEdit60.Size = new System.Drawing.Size(208, 20);
+            this.textEdit60.TabIndex = 0;
+            // 
+            // xtraTabPage53
+            // 
+            this.xtraTabPage53.Controls.Add(this.gridControl5);
+            this.xtraTabPage53.Controls.Add(this.panelControl43);
+            this.xtraTabPage53.ImageIndex = 612;
+            this.xtraTabPage53.Name = "xtraTabPage53";
+            this.xtraTabPage53.Size = new System.Drawing.Size(885, 527);
+            this.xtraTabPage53.Text = "表";
+            // 
+            // gridControl5
+            // 
+            this.gridControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl5.Location = new System.Drawing.Point(0, 91);
+            this.gridControl5.LookAndFeel.SkinName = "Metropolis Dark";
+            this.gridControl5.MainView = this.bandedGridView5;
+            this.gridControl5.MenuManager = this.barManager2;
+            this.gridControl5.Name = "gridControl5";
+            this.gridControl5.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit49,
+            this.repositoryItemCheckEdit50,
+            this.repositoryItemCheckEdit51,
+            this.repositoryItemCheckEdit52,
+            this.repositoryItemCheckEdit57,
+            this.repositoryItemSpinEdit10,
+            this.repositoryItemCheckEdit53,
+            this.repositoryItemComboBox34,
+            this.repositoryItemComboBox33,
+            this.repositoryItemCheckEdit60,
+            this.repositoryItemSpinEdit9,
+            this.repositoryItemCheckEdit54,
+            this.repositoryItemComboBox35,
+            this.repositoryItemComboBox36,
+            this.repositoryItemComboBox37,
+            this.repositoryItemCheckEdit55,
+            this.repositoryItemCheckEdit56,
+            this.repositoryItemButtonEdit5,
+            this.repositoryItemComboBox38,
+            this.repositoryItemCheckEdit58,
+            this.repositoryItemCheckEdit59,
+            this.repositoryItemComboBox39,
+            this.repositoryItemComboBox40});
+            this.gridControl5.Size = new System.Drawing.Size(885, 436);
+            this.gridControl5.TabIndex = 3;
+            this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.bandedGridView5});
+            // 
+            // bandedGridView5
+            // 
+            this.bandedGridView5.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand29,
+            this.gridBand30,
+            this.gridBand31,
+            this.gridBand32,
+            this.gridBand33,
+            this.gridBand34,
+            this.gridBand35});
+            this.bandedGridView5.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.bandedGridColumn117,
+            this.bandedGridColumn118,
+            this.bandedGridColumn119,
+            this.bandedGridColumn120,
+            this.bandedGridColumn121,
+            this.bandedGridColumn122,
+            this.bandedGridColumn123,
+            this.bandedGridColumn124,
+            this.bandedGridColumn125,
+            this.bandedGridColumn126,
+            this.bandedGridColumn127,
+            this.bandedGridColumn128,
+            this.bandedGridColumn129,
+            this.bandedGridColumn130,
+            this.bandedGridColumn131,
+            this.bandedGridColumn132,
+            this.bandedGridColumn133,
+            this.bandedGridColumn134,
+            this.bandedGridColumn135,
+            this.bandedGridColumn136,
+            this.bandedGridColumn137,
+            this.bandedGridColumn138,
+            this.bandedGridColumn139,
+            this.bandedGridColumn140,
+            this.bandedGridColumn141,
+            this.bandedGridColumn142,
+            this.bandedGridColumn143,
+            this.bandedGridColumn144,
+            this.bandedGridColumn145});
+            this.bandedGridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.bandedGridView5.GridControl = this.gridControl5;
+            this.bandedGridView5.Name = "bandedGridView5";
+            this.bandedGridView5.OptionsCustomization.AllowColumnMoving = false;
+            this.bandedGridView5.OptionsCustomization.AllowSort = false;
+            this.bandedGridView5.OptionsMenu.EnableColumnMenu = false;
+            this.bandedGridView5.OptionsMenu.EnableFooterMenu = false;
+            this.bandedGridView5.OptionsMenu.EnableGroupPanelMenu = false;
+            this.bandedGridView5.OptionsMenu.ShowAutoFilterRowItem = false;
+            this.bandedGridView5.OptionsMenu.ShowGroupSortSummaryItems = false;
+            this.bandedGridView5.OptionsMenu.ShowSplitItem = false;
+            this.bandedGridView5.OptionsView.ColumnAutoWidth = false;
+            this.bandedGridView5.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridBand29
+            // 
+            this.gridBand29.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand29.AppearanceHeader.Options.UseFont = true;
+            this.gridBand29.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand29.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand29.Caption = "字段";
+            this.gridBand29.Columns.Add(this.bandedGridColumn117);
+            this.gridBand29.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.gridBand29.MinWidth = 200;
+            this.gridBand29.Name = "gridBand29";
+            this.gridBand29.OptionsBand.AllowMove = false;
+            this.gridBand29.OptionsBand.AllowSize = false;
+            this.gridBand29.OptionsBand.FixedWidth = true;
+            this.gridBand29.RowCount = 2;
+            this.gridBand29.VisibleIndex = 0;
+            this.gridBand29.Width = 200;
+            // 
+            // bandedGridColumn117
+            // 
+            this.bandedGridColumn117.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn117.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn117.Caption = "名称";
+            this.bandedGridColumn117.FieldName = "FieldName";
+            this.bandedGridColumn117.Name = "bandedGridColumn117";
+            this.bandedGridColumn117.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn117.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn117.Visible = true;
+            this.bandedGridColumn117.Width = 100;
+            // 
+            // gridBand30
+            // 
+            this.gridBand30.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand30.AppearanceHeader.Options.UseFont = true;
+            this.gridBand30.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand30.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand30.Caption = "字段属性";
+            this.gridBand30.Columns.Add(this.bandedGridColumn118);
+            this.gridBand30.Columns.Add(this.bandedGridColumn119);
+            this.gridBand30.Columns.Add(this.bandedGridColumn120);
+            this.gridBand30.Columns.Add(this.bandedGridColumn121);
+            this.gridBand30.Columns.Add(this.bandedGridColumn122);
+            this.gridBand30.Columns.Add(this.bandedGridColumn123);
+            this.gridBand30.Columns.Add(this.bandedGridColumn124);
+            this.gridBand30.CustomizationCaption = "从数据库中来";
+            this.gridBand30.Name = "gridBand30";
+            this.gridBand30.OptionsBand.AllowMove = false;
+            this.gridBand30.OptionsBand.FixedWidth = true;
+            this.gridBand30.RowCount = 2;
+            this.gridBand30.VisibleIndex = 1;
+            this.gridBand30.Width = 600;
+            // 
+            // bandedGridColumn118
+            // 
+            this.bandedGridColumn118.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn118.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn118.Caption = "注释";
+            this.bandedGridColumn118.FieldName = "FieldRemark";
+            this.bandedGridColumn118.Name = "bandedGridColumn118";
+            this.bandedGridColumn118.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn118.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn118.Visible = true;
+            this.bandedGridColumn118.Width = 120;
+            // 
+            // bandedGridColumn119
+            // 
+            this.bandedGridColumn119.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn119.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn119.Caption = "类型";
+            this.bandedGridColumn119.FieldName = "FieldType";
+            this.bandedGridColumn119.Name = "bandedGridColumn119";
+            this.bandedGridColumn119.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn119.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn119.Visible = true;
+            this.bandedGridColumn119.Width = 80;
+            // 
+            // bandedGridColumn120
+            // 
+            this.bandedGridColumn120.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn120.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn120.Caption = "长度";
+            this.bandedGridColumn120.FieldName = "FieldLength";
+            this.bandedGridColumn120.Name = "bandedGridColumn120";
+            this.bandedGridColumn120.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn120.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn120.Visible = true;
+            this.bandedGridColumn120.Width = 80;
+            // 
+            // bandedGridColumn121
+            // 
+            this.bandedGridColumn121.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn121.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn121.Caption = "默认值";
+            this.bandedGridColumn121.FieldName = "FieldDefaultValue";
+            this.bandedGridColumn121.Name = "bandedGridColumn121";
+            this.bandedGridColumn121.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn121.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn121.Visible = true;
+            this.bandedGridColumn121.Width = 80;
+            // 
+            // bandedGridColumn122
+            // 
+            this.bandedGridColumn122.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn122.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn122.Caption = "是否可为空";
+            this.bandedGridColumn122.ColumnEdit = this.repositoryItemCheckEdit49;
+            this.bandedGridColumn122.FieldName = "FieldIsNull";
+            this.bandedGridColumn122.Name = "bandedGridColumn122";
+            this.bandedGridColumn122.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn122.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn122.Visible = true;
+            this.bandedGridColumn122.Width = 80;
+            // 
+            // repositoryItemCheckEdit49
+            // 
+            this.repositoryItemCheckEdit49.AutoHeight = false;
+            this.repositoryItemCheckEdit49.Name = "repositoryItemCheckEdit49";
+            // 
+            // bandedGridColumn123
+            // 
+            this.bandedGridColumn123.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn123.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn123.Caption = "是否为主键";
+            this.bandedGridColumn123.ColumnEdit = this.repositoryItemCheckEdit50;
+            this.bandedGridColumn123.FieldName = "FieldIsKey";
+            this.bandedGridColumn123.Name = "bandedGridColumn123";
+            this.bandedGridColumn123.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn123.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn123.Visible = true;
+            this.bandedGridColumn123.Width = 80;
+            // 
+            // repositoryItemCheckEdit50
+            // 
+            this.repositoryItemCheckEdit50.AutoHeight = false;
+            this.repositoryItemCheckEdit50.Name = "repositoryItemCheckEdit50";
+            // 
+            // bandedGridColumn124
+            // 
+            this.bandedGridColumn124.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn124.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn124.Caption = "是否为自增";
+            this.bandedGridColumn124.ColumnEdit = this.repositoryItemCheckEdit51;
+            this.bandedGridColumn124.FieldName = "FieldIsAutoAdd";
+            this.bandedGridColumn124.Name = "bandedGridColumn124";
+            this.bandedGridColumn124.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn124.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn124.Visible = true;
+            this.bandedGridColumn124.Width = 80;
+            // 
+            // repositoryItemCheckEdit51
+            // 
+            this.repositoryItemCheckEdit51.AutoHeight = false;
+            this.repositoryItemCheckEdit51.Name = "repositoryItemCheckEdit51";
+            // 
+            // gridBand31
+            // 
+            this.gridBand31.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand31.AppearanceHeader.Options.UseFont = true;
+            this.gridBand31.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand31.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand31.Caption = "SELECT";
+            this.gridBand31.Columns.Add(this.bandedGridColumn125);
+            this.gridBand31.Columns.Add(this.bandedGridColumn126);
+            this.gridBand31.Columns.Add(this.bandedGridColumn127);
+            this.gridBand31.Columns.Add(this.bandedGridColumn128);
+            this.gridBand31.Columns.Add(this.bandedGridColumn129);
+            this.gridBand31.Columns.Add(this.bandedGridColumn130);
+            this.gridBand31.Columns.Add(this.bandedGridColumn131);
+            this.gridBand31.Name = "gridBand31";
+            this.gridBand31.OptionsBand.AllowMove = false;
+            this.gridBand31.OptionsBand.FixedWidth = true;
+            this.gridBand31.RowCount = 2;
+            this.gridBand31.VisibleIndex = 2;
+            this.gridBand31.Width = 660;
+            // 
+            // bandedGridColumn125
+            // 
+            this.bandedGridColumn125.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn125.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn125.Caption = "选择";
+            this.bandedGridColumn125.ColumnEdit = this.repositoryItemCheckEdit52;
+            this.bandedGridColumn125.FieldName = "SelectSelect";
+            this.bandedGridColumn125.Name = "bandedGridColumn125";
+            this.bandedGridColumn125.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn125.Visible = true;
+            this.bandedGridColumn125.Width = 60;
+            // 
+            // repositoryItemCheckEdit52
+            // 
+            this.repositoryItemCheckEdit52.AutoHeight = false;
+            this.repositoryItemCheckEdit52.Name = "repositoryItemCheckEdit52";
+            // 
+            // bandedGridColumn126
+            // 
+            this.bandedGridColumn126.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn126.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn126.Caption = "映射参数名";
+            this.bandedGridColumn126.FieldName = "ParaName";
+            this.bandedGridColumn126.Name = "bandedGridColumn126";
+            this.bandedGridColumn126.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn126.Visible = true;
+            this.bandedGridColumn126.Width = 100;
+            // 
+            // bandedGridColumn127
+            // 
+            this.bandedGridColumn127.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn127.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn127.Caption = "长度限制";
+            this.bandedGridColumn127.ColumnEdit = this.repositoryItemSpinEdit9;
+            this.bandedGridColumn127.FieldName = "MaxLegth";
+            this.bandedGridColumn127.Name = "bandedGridColumn127";
+            this.bandedGridColumn127.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn127.Visible = true;
+            this.bandedGridColumn127.Width = 100;
+            // 
+            // repositoryItemSpinEdit9
+            // 
+            this.repositoryItemSpinEdit9.AutoHeight = false;
+            this.repositoryItemSpinEdit9.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit9.IsFloatValue = false;
+            this.repositoryItemSpinEdit9.Mask.EditMask = "N00";
+            this.repositoryItemSpinEdit9.MaxValue = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit9.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit9.Name = "repositoryItemSpinEdit9";
+            // 
+            // bandedGridColumn128
+            // 
+            this.bandedGridColumn128.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn128.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn128.Caption = "Case when";
+            this.bandedGridColumn128.ColumnEdit = this.repositoryItemButtonEdit5;
+            this.bandedGridColumn128.FieldName = "CaseWhen";
+            this.bandedGridColumn128.Name = "bandedGridColumn128";
+            this.bandedGridColumn128.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn128.Visible = true;
+            this.bandedGridColumn128.Width = 100;
+            // 
+            // repositoryItemButtonEdit5
+            // 
+            this.repositoryItemButtonEdit5.AutoHeight = false;
+            this.repositoryItemButtonEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit5.Name = "repositoryItemButtonEdit5";
+            // 
+            // bandedGridColumn129
+            // 
+            this.bandedGridColumn129.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn129.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn129.Caption = "返回类型";
+            this.bandedGridColumn129.ColumnEdit = this.repositoryItemComboBox33;
+            this.bandedGridColumn129.FieldName = "ReturnType";
+            this.bandedGridColumn129.Name = "bandedGridColumn129";
+            this.bandedGridColumn129.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn129.Visible = true;
+            this.bandedGridColumn129.Width = 100;
+            // 
+            // repositoryItemComboBox33
+            // 
+            this.repositoryItemComboBox33.AutoHeight = false;
+            this.repositoryItemComboBox33.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox33.Name = "repositoryItemComboBox33";
+            this.repositoryItemComboBox33.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn130
+            // 
+            this.bandedGridColumn130.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn130.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn130.Caption = "去空格";
+            this.bandedGridColumn130.ColumnEdit = this.repositoryItemCheckEdit53;
+            this.bandedGridColumn130.FieldName = "TrimSign";
+            this.bandedGridColumn130.Name = "bandedGridColumn130";
+            this.bandedGridColumn130.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn130.Visible = true;
+            this.bandedGridColumn130.Width = 100;
+            // 
+            // repositoryItemCheckEdit53
+            // 
+            this.repositoryItemCheckEdit53.AutoHeight = false;
+            this.repositoryItemCheckEdit53.Name = "repositoryItemCheckEdit53";
+            // 
+            // bandedGridColumn131
+            // 
+            this.bandedGridColumn131.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn131.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn131.Caption = "函数";
+            this.bandedGridColumn131.ColumnEdit = this.repositoryItemComboBox34;
+            this.bandedGridColumn131.FieldName = "FunctionName";
+            this.bandedGridColumn131.Name = "bandedGridColumn131";
+            this.bandedGridColumn131.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn131.Visible = true;
+            this.bandedGridColumn131.Width = 100;
+            // 
+            // repositoryItemComboBox34
+            // 
+            this.repositoryItemComboBox34.AutoHeight = false;
+            this.repositoryItemComboBox34.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox34.Name = "repositoryItemComboBox34";
+            // 
+            // gridBand32
+            // 
+            this.gridBand32.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand32.AppearanceHeader.Options.UseFont = true;
+            this.gridBand32.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand32.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand32.Caption = "WHERE";
+            this.gridBand32.Columns.Add(this.bandedGridColumn132);
+            this.gridBand32.Columns.Add(this.bandedGridColumn133);
+            this.gridBand32.Columns.Add(this.bandedGridColumn134);
+            this.gridBand32.Columns.Add(this.bandedGridColumn135);
+            this.gridBand32.Columns.Add(this.bandedGridColumn136);
+            this.gridBand32.Columns.Add(this.bandedGridColumn137);
+            this.gridBand32.Name = "gridBand32";
+            this.gridBand32.OptionsBand.AllowMove = false;
+            this.gridBand32.OptionsBand.FixedWidth = true;
+            this.gridBand32.RowCount = 2;
+            this.gridBand32.VisibleIndex = 3;
+            this.gridBand32.Width = 480;
+            // 
+            // bandedGridColumn132
+            // 
+            this.bandedGridColumn132.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn132.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn132.Caption = "选择";
+            this.bandedGridColumn132.ColumnEdit = this.repositoryItemCheckEdit54;
+            this.bandedGridColumn132.FieldName = "WhereSelect";
+            this.bandedGridColumn132.Name = "bandedGridColumn132";
+            this.bandedGridColumn132.Visible = true;
+            this.bandedGridColumn132.Width = 80;
+            // 
+            // repositoryItemCheckEdit54
+            // 
+            this.repositoryItemCheckEdit54.AutoHeight = false;
+            this.repositoryItemCheckEdit54.Name = "repositoryItemCheckEdit54";
+            // 
+            // bandedGridColumn133
+            // 
+            this.bandedGridColumn133.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn133.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn133.Caption = "方式";
+            this.bandedGridColumn133.ColumnEdit = this.repositoryItemComboBox35;
+            this.bandedGridColumn133.FieldName = "WhereType";
+            this.bandedGridColumn133.Name = "bandedGridColumn133";
+            this.bandedGridColumn133.Visible = true;
+            this.bandedGridColumn133.Width = 80;
+            // 
+            // repositoryItemComboBox35
+            // 
+            this.repositoryItemComboBox35.AutoHeight = false;
+            this.repositoryItemComboBox35.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox35.Items.AddRange(new object[] {
+            "AND",
+            "OR"});
+            this.repositoryItemComboBox35.Name = "repositoryItemComboBox35";
+            this.repositoryItemComboBox35.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn134
+            // 
+            this.bandedGridColumn134.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn134.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn134.Caption = "逻辑";
+            this.bandedGridColumn134.ColumnEdit = this.repositoryItemComboBox36;
+            this.bandedGridColumn134.FieldName = "LogType";
+            this.bandedGridColumn134.Name = "bandedGridColumn134";
+            this.bandedGridColumn134.Visible = true;
+            this.bandedGridColumn134.Width = 80;
+            // 
+            // repositoryItemComboBox36
+            // 
+            this.repositoryItemComboBox36.AutoHeight = false;
+            this.repositoryItemComboBox36.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox36.Items.AddRange(new object[] {
+            "=",
+            "!=",
+            "右Like",
+            "全Like",
+            "左Like",
+            "IN",
+            "NOT IN",
+            "BETWEEN",
+            ">",
+            "<",
+            ">=",
+            "<=",
+            "IS NULL",
+            "IS NOT NULL"});
+            this.repositoryItemComboBox36.Name = "repositoryItemComboBox36";
+            this.repositoryItemComboBox36.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn135
+            // 
+            this.bandedGridColumn135.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn135.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn135.Caption = "数值";
+            this.bandedGridColumn135.ColumnEdit = this.repositoryItemComboBox37;
+            this.bandedGridColumn135.FieldName = "WhereValue";
+            this.bandedGridColumn135.Name = "bandedGridColumn135";
+            this.bandedGridColumn135.Visible = true;
+            this.bandedGridColumn135.Width = 80;
+            // 
+            // repositoryItemComboBox37
+            // 
+            this.repositoryItemComboBox37.AutoHeight = false;
+            this.repositoryItemComboBox37.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox37.Items.AddRange(new object[] {
+            "参数",
+            "固定值"});
+            this.repositoryItemComboBox37.Name = "repositoryItemComboBox37";
+            // 
+            // bandedGridColumn136
+            // 
+            this.bandedGridColumn136.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn136.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn136.Caption = "去空格";
+            this.bandedGridColumn136.ColumnEdit = this.repositoryItemCheckEdit55;
+            this.bandedGridColumn136.FieldName = "WhereTrim";
+            this.bandedGridColumn136.Name = "bandedGridColumn136";
+            this.bandedGridColumn136.Visible = true;
+            this.bandedGridColumn136.Width = 80;
+            // 
+            // repositoryItemCheckEdit55
+            // 
+            this.repositoryItemCheckEdit55.AutoHeight = false;
+            this.repositoryItemCheckEdit55.Name = "repositoryItemCheckEdit55";
+            // 
+            // bandedGridColumn137
+            // 
+            this.bandedGridColumn137.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn137.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn137.Caption = "是否可为空";
+            this.bandedGridColumn137.ColumnEdit = this.repositoryItemCheckEdit56;
+            this.bandedGridColumn137.FieldName = "WhereIsNull";
+            this.bandedGridColumn137.Name = "bandedGridColumn137";
+            this.bandedGridColumn137.Visible = true;
+            this.bandedGridColumn137.Width = 80;
+            // 
+            // repositoryItemCheckEdit56
+            // 
+            this.repositoryItemCheckEdit56.AutoHeight = false;
+            this.repositoryItemCheckEdit56.Name = "repositoryItemCheckEdit56";
+            // 
+            // gridBand33
+            // 
+            this.gridBand33.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand33.AppearanceHeader.Options.UseFont = true;
+            this.gridBand33.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand33.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand33.Caption = "ORDER BY";
+            this.gridBand33.Columns.Add(this.bandedGridColumn138);
+            this.gridBand33.Columns.Add(this.bandedGridColumn139);
+            this.gridBand33.Columns.Add(this.bandedGridColumn140);
+            this.gridBand33.Name = "gridBand33";
+            this.gridBand33.OptionsBand.AllowMove = false;
+            this.gridBand33.OptionsBand.AllowSize = false;
+            this.gridBand33.OptionsBand.FixedWidth = true;
+            this.gridBand33.RowCount = 2;
+            this.gridBand33.VisibleIndex = 4;
+            this.gridBand33.Width = 260;
+            // 
+            // bandedGridColumn138
+            // 
+            this.bandedGridColumn138.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn138.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn138.Caption = "选择";
+            this.bandedGridColumn138.ColumnEdit = this.repositoryItemCheckEdit57;
+            this.bandedGridColumn138.FieldName = "OrderSelect";
+            this.bandedGridColumn138.Name = "bandedGridColumn138";
+            this.bandedGridColumn138.Visible = true;
+            this.bandedGridColumn138.Width = 80;
+            // 
+            // repositoryItemCheckEdit57
+            // 
+            this.repositoryItemCheckEdit57.AutoHeight = false;
+            this.repositoryItemCheckEdit57.Name = "repositoryItemCheckEdit57";
+            // 
+            // bandedGridColumn139
+            // 
+            this.bandedGridColumn139.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn139.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn139.Caption = "排序方式";
+            this.bandedGridColumn139.ColumnEdit = this.repositoryItemComboBox38;
+            this.bandedGridColumn139.FieldName = "SortType";
+            this.bandedGridColumn139.Name = "bandedGridColumn139";
+            this.bandedGridColumn139.Visible = true;
+            this.bandedGridColumn139.Width = 100;
+            // 
+            // repositoryItemComboBox38
+            // 
+            this.repositoryItemComboBox38.AutoHeight = false;
+            this.repositoryItemComboBox38.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox38.Items.AddRange(new object[] {
+            "升序",
+            "降序"});
+            this.repositoryItemComboBox38.Name = "repositoryItemComboBox38";
+            this.repositoryItemComboBox38.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn140
+            // 
+            this.bandedGridColumn140.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn140.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn140.Caption = "出现顺序";
+            this.bandedGridColumn140.ColumnEdit = this.repositoryItemSpinEdit10;
+            this.bandedGridColumn140.FieldName = "SortNo";
+            this.bandedGridColumn140.Name = "bandedGridColumn140";
+            this.bandedGridColumn140.Visible = true;
+            this.bandedGridColumn140.Width = 80;
+            // 
+            // repositoryItemSpinEdit10
+            // 
+            this.repositoryItemSpinEdit10.AutoHeight = false;
+            this.repositoryItemSpinEdit10.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit10.IsFloatValue = false;
+            this.repositoryItemSpinEdit10.Mask.EditMask = "N00";
+            this.repositoryItemSpinEdit10.MaxValue = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit10.Name = "repositoryItemSpinEdit10";
+            // 
+            // gridBand34
+            // 
+            this.gridBand34.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand34.AppearanceHeader.Options.UseFont = true;
+            this.gridBand34.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand34.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand34.Caption = "GROUP BY";
+            this.gridBand34.Columns.Add(this.bandedGridColumn141);
+            this.gridBand34.Name = "gridBand34";
+            this.gridBand34.OptionsBand.AllowMove = false;
+            this.gridBand34.OptionsBand.AllowSize = false;
+            this.gridBand34.OptionsBand.FixedWidth = true;
+            this.gridBand34.RowCount = 2;
+            this.gridBand34.VisibleIndex = 5;
+            this.gridBand34.Width = 80;
+            // 
+            // bandedGridColumn141
+            // 
+            this.bandedGridColumn141.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn141.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn141.Caption = "选择";
+            this.bandedGridColumn141.ColumnEdit = this.repositoryItemCheckEdit58;
+            this.bandedGridColumn141.FieldName = "GroupSelect";
+            this.bandedGridColumn141.Name = "bandedGridColumn141";
+            this.bandedGridColumn141.Visible = true;
+            this.bandedGridColumn141.Width = 80;
+            // 
+            // repositoryItemCheckEdit58
+            // 
+            this.repositoryItemCheckEdit58.AutoHeight = false;
+            this.repositoryItemCheckEdit58.Name = "repositoryItemCheckEdit58";
+            // 
+            // gridBand35
+            // 
+            this.gridBand35.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridBand35.AppearanceHeader.Options.UseFont = true;
+            this.gridBand35.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand35.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand35.Caption = "HAVING";
+            this.gridBand35.Columns.Add(this.bandedGridColumn142);
+            this.gridBand35.Columns.Add(this.bandedGridColumn143);
+            this.gridBand35.Columns.Add(this.bandedGridColumn144);
+            this.gridBand35.Columns.Add(this.bandedGridColumn145);
+            this.gridBand35.Name = "gridBand35";
+            this.gridBand35.OptionsBand.AllowMove = false;
+            this.gridBand35.OptionsBand.AllowSize = false;
+            this.gridBand35.OptionsBand.FixedWidth = true;
+            this.gridBand35.RowCount = 2;
+            this.gridBand35.VisibleIndex = 6;
+            this.gridBand35.Width = 360;
+            // 
+            // bandedGridColumn142
+            // 
+            this.bandedGridColumn142.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn142.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn142.Caption = "选择";
+            this.bandedGridColumn142.ColumnEdit = this.repositoryItemCheckEdit59;
+            this.bandedGridColumn142.FieldName = "HavingSelect";
+            this.bandedGridColumn142.Name = "bandedGridColumn142";
+            this.bandedGridColumn142.Visible = true;
+            this.bandedGridColumn142.Width = 60;
+            // 
+            // repositoryItemCheckEdit59
+            // 
+            this.repositoryItemCheckEdit59.AutoHeight = false;
+            this.repositoryItemCheckEdit59.Name = "repositoryItemCheckEdit59";
+            // 
+            // bandedGridColumn143
+            // 
+            this.bandedGridColumn143.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn143.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn143.Caption = "函数";
+            this.bandedGridColumn143.ColumnEdit = this.repositoryItemComboBox39;
+            this.bandedGridColumn143.FieldName = "HavingFunction";
+            this.bandedGridColumn143.Name = "bandedGridColumn143";
+            this.bandedGridColumn143.Visible = true;
+            this.bandedGridColumn143.Width = 100;
+            // 
+            // repositoryItemComboBox39
+            // 
+            this.repositoryItemComboBox39.AutoHeight = false;
+            this.repositoryItemComboBox39.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox39.Name = "repositoryItemComboBox39";
+            // 
+            // bandedGridColumn144
+            // 
+            this.bandedGridColumn144.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn144.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn144.Caption = "条件";
+            this.bandedGridColumn144.ColumnEdit = this.repositoryItemComboBox40;
+            this.bandedGridColumn144.FieldName = "HavingCondition";
+            this.bandedGridColumn144.Name = "bandedGridColumn144";
+            this.bandedGridColumn144.Visible = true;
+            this.bandedGridColumn144.Width = 100;
+            // 
+            // repositoryItemComboBox40
+            // 
+            this.repositoryItemComboBox40.AutoHeight = false;
+            this.repositoryItemComboBox40.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox40.Items.AddRange(new object[] {
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "=",
+            "<>"});
+            this.repositoryItemComboBox40.Name = "repositoryItemComboBox40";
+            this.repositoryItemComboBox40.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // bandedGridColumn145
+            // 
+            this.bandedGridColumn145.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn145.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn145.Caption = "值";
+            this.bandedGridColumn145.FieldName = "HavingValue";
+            this.bandedGridColumn145.Name = "bandedGridColumn145";
+            this.bandedGridColumn145.Visible = true;
+            this.bandedGridColumn145.Width = 100;
+            // 
+            // repositoryItemCheckEdit60
+            // 
+            this.repositoryItemCheckEdit60.AutoHeight = false;
+            this.repositoryItemCheckEdit60.Name = "repositoryItemCheckEdit60";
+            // 
+            // panelControl43
+            // 
+            this.panelControl43.Controls.Add(this.buttonEdit7);
+            this.panelControl43.Controls.Add(this.buttonEdit8);
+            this.panelControl43.Controls.Add(this.radioGroup20);
+            this.panelControl43.Controls.Add(this.radioGroup21);
+            this.panelControl43.Controls.Add(this.textEdit61);
+            this.panelControl43.Controls.Add(this.radioGroup22);
+            this.panelControl43.Controls.Add(this.textEdit62);
+            this.panelControl43.Controls.Add(this.textEdit63);
+            this.panelControl43.Controls.Add(this.textEdit64);
+            this.panelControl43.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl43.Location = new System.Drawing.Point(0, 0);
+            this.panelControl43.Name = "panelControl43";
+            this.panelControl43.Size = new System.Drawing.Size(885, 91);
+            this.panelControl43.TabIndex = 2;
+            // 
+            // buttonEdit7
+            // 
+            this.buttonEdit7.Location = new System.Drawing.Point(273, 39);
+            this.buttonEdit7.MenuManager = this.barManager3;
+            this.buttonEdit7.Name = "buttonEdit7";
+            this.buttonEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.buttonEdit7.Size = new System.Drawing.Size(127, 20);
+            this.buttonEdit7.TabIndex = 13;
+            // 
+            // buttonEdit8
+            // 
+            this.buttonEdit8.Location = new System.Drawing.Point(126, 39);
+            this.buttonEdit8.MenuManager = this.barManager3;
+            this.buttonEdit8.Name = "buttonEdit8";
+            this.buttonEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.buttonEdit8.Size = new System.Drawing.Size(127, 20);
+            this.buttonEdit8.TabIndex = 12;
+            // 
+            // radioGroup20
+            // 
+            this.radioGroup20.Location = new System.Drawing.Point(5, 5);
+            this.radioGroup20.MenuManager = this.barManager1;
+            this.radioGroup20.Name = "radioGroup20";
+            this.radioGroup20.Properties.Columns = 3;
+            this.radioGroup20.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "JOIN方式"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "association"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "collection")});
+            this.radioGroup20.Size = new System.Drawing.Size(248, 28);
+            this.radioGroup20.TabIndex = 10;
+            // 
+            // radioGroup21
+            // 
+            this.radioGroup21.Location = new System.Drawing.Point(406, 5);
+            this.radioGroup21.MenuManager = this.barManager1;
+            this.radioGroup21.Name = "radioGroup21";
+            this.radioGroup21.Properties.Columns = 3;
+            this.radioGroup21.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对一"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对多"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "多对多")});
+            this.radioGroup21.Size = new System.Drawing.Size(208, 28);
+            this.radioGroup21.TabIndex = 9;
+            // 
+            // textEdit61
+            // 
+            this.textEdit61.Location = new System.Drawing.Point(567, 65);
+            this.textEdit61.MenuManager = this.barManager2;
+            this.textEdit61.Name = "textEdit61";
+            this.textEdit61.Size = new System.Drawing.Size(129, 20);
+            this.textEdit61.TabIndex = 8;
+            // 
+            // radioGroup22
+            // 
+            this.radioGroup22.Location = new System.Drawing.Point(273, 5);
+            this.radioGroup22.MenuManager = this.barManager1;
+            this.radioGroup22.Name = "radioGroup22";
+            this.radioGroup22.Properties.Columns = 2;
+            this.radioGroup22.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "左链接"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "内链接")});
+            this.radioGroup22.Size = new System.Drawing.Size(127, 28);
+            this.radioGroup22.TabIndex = 4;
+            // 
+            // textEdit62
+            // 
+            this.textEdit62.Location = new System.Drawing.Point(353, 65);
+            this.textEdit62.MenuManager = this.barManager2;
+            this.textEdit62.Name = "textEdit62";
+            this.textEdit62.Properties.ReadOnly = true;
+            this.textEdit62.Size = new System.Drawing.Size(208, 20);
+            this.textEdit62.TabIndex = 3;
+            // 
+            // textEdit63
+            // 
+            this.textEdit63.Location = new System.Drawing.Point(220, 65);
+            this.textEdit63.MenuManager = this.barManager2;
+            this.textEdit63.Name = "textEdit63";
+            this.textEdit63.Properties.ReadOnly = true;
+            this.textEdit63.Size = new System.Drawing.Size(127, 20);
+            this.textEdit63.TabIndex = 2;
+            // 
+            // textEdit64
+            // 
+            this.textEdit64.Location = new System.Drawing.Point(6, 65);
+            this.textEdit64.MenuManager = this.barManager2;
+            this.textEdit64.Name = "textEdit64";
+            this.textEdit64.Properties.ReadOnly = true;
+            this.textEdit64.Size = new System.Drawing.Size(208, 20);
+            this.textEdit64.TabIndex = 0;
+            // 
             // barDockControl5
             // 
             this.barDockControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -5400,6 +7606,8 @@
             this.xtraTabPage23,
             this.xtraTabPage24,
             this.xtraTabPage25,
+            this.xtraTabPage54,
+            this.xtraTabPage55,
             this.xtraTabPage28});
             // 
             // xtraTabPage23
@@ -6033,8 +8241,8 @@
             this.xtraTabPage24.Controls.Add(this.xtraTabControl10);
             this.xtraTabPage24.Controls.Add(this.panelControl17);
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(885, 462);
-            this.xtraTabPage24.Text = "从表一";
+            this.xtraTabPage24.Size = new System.Drawing.Size(885, 493);
+            this.xtraTabPage24.Text = "表";
             // 
             // xtraTabControl10
             // 
@@ -6042,7 +8250,7 @@
             this.xtraTabControl10.Location = new System.Drawing.Point(0, 196);
             this.xtraTabControl10.Name = "xtraTabControl10";
             this.xtraTabControl10.SelectedTabPage = this.xtraTabPage29;
-            this.xtraTabControl10.Size = new System.Drawing.Size(885, 266);
+            this.xtraTabControl10.Size = new System.Drawing.Size(885, 297);
             this.xtraTabControl10.TabIndex = 7;
             this.xtraTabControl10.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage35,
@@ -6058,7 +8266,7 @@
             this.xtraTabPage29.Controls.Add(this.xtraTabControl11);
             this.xtraTabPage29.Controls.Add(this.panelControl20);
             this.xtraTabPage29.Name = "xtraTabPage29";
-            this.xtraTabPage29.Size = new System.Drawing.Size(879, 237);
+            this.xtraTabPage29.Size = new System.Drawing.Size(879, 268);
             this.xtraTabPage29.Text = "XML";
             // 
             // xtraTabControl11
@@ -6067,7 +8275,7 @@
             this.xtraTabControl11.Location = new System.Drawing.Point(0, 5);
             this.xtraTabControl11.Name = "xtraTabControl11";
             this.xtraTabControl11.SelectedTabPage = this.xtraTabPage30;
-            this.xtraTabControl11.Size = new System.Drawing.Size(879, 232);
+            this.xtraTabControl11.Size = new System.Drawing.Size(879, 263);
             this.xtraTabControl11.TabIndex = 2;
             this.xtraTabControl11.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage30,
@@ -6078,7 +8286,7 @@
             this.xtraTabPage30.Controls.Add(this.memoEdit13);
             this.xtraTabPage30.Controls.Add(this.panelControl18);
             this.xtraTabPage30.Name = "xtraTabPage30";
-            this.xtraTabPage30.Size = new System.Drawing.Size(873, 203);
+            this.xtraTabPage30.Size = new System.Drawing.Size(873, 234);
             this.xtraTabPage30.Text = "Map";
             // 
             // memoEdit13
@@ -6087,7 +8295,7 @@
             this.memoEdit13.Location = new System.Drawing.Point(0, 30);
             this.memoEdit13.MenuManager = this.barManager1;
             this.memoEdit13.Name = "memoEdit13";
-            this.memoEdit13.Size = new System.Drawing.Size(873, 173);
+            this.memoEdit13.Size = new System.Drawing.Size(873, 204);
             this.memoEdit13.TabIndex = 0;
             // 
             // panelControl18
@@ -6283,7 +8491,7 @@
             this.xtraTabPage38.Controls.Add(this.memoEdit21);
             this.xtraTabPage38.Controls.Add(this.panelControl27);
             this.xtraTabPage38.Name = "xtraTabPage38";
-            this.xtraTabPage38.Size = new System.Drawing.Size(879, 237);
+            this.xtraTabPage38.Size = new System.Drawing.Size(879, 268);
             this.xtraTabPage38.Text = "Controller";
             // 
             // memoEdit21
@@ -6292,7 +8500,7 @@
             this.memoEdit21.Location = new System.Drawing.Point(0, 63);
             this.memoEdit21.MenuManager = this.barManager1;
             this.memoEdit21.Name = "memoEdit21";
-            this.memoEdit21.Size = new System.Drawing.Size(879, 174);
+            this.memoEdit21.Size = new System.Drawing.Size(879, 205);
             this.memoEdit21.TabIndex = 4;
             // 
             // panelControl27
@@ -6602,8 +8810,8 @@
             this.xtraTabPage25.Controls.Add(this.xtraTabControl13);
             this.xtraTabPage25.Controls.Add(this.panelControl28);
             this.xtraTabPage25.Name = "xtraTabPage25";
-            this.xtraTabPage25.Size = new System.Drawing.Size(885, 462);
-            this.xtraTabPage25.Text = "从表二";
+            this.xtraTabPage25.Size = new System.Drawing.Size(885, 493);
+            this.xtraTabPage25.Text = "表";
             // 
             // xtraTabControl13
             // 
@@ -6611,7 +8819,7 @@
             this.xtraTabControl13.Location = new System.Drawing.Point(0, 199);
             this.xtraTabControl13.Name = "xtraTabControl13";
             this.xtraTabControl13.SelectedTabPage = this.xtraTabPage39;
-            this.xtraTabControl13.Size = new System.Drawing.Size(885, 263);
+            this.xtraTabControl13.Size = new System.Drawing.Size(885, 294);
             this.xtraTabControl13.TabIndex = 8;
             this.xtraTabControl13.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage45,
@@ -6627,7 +8835,7 @@
             this.xtraTabPage39.Controls.Add(this.xtraTabControl14);
             this.xtraTabPage39.Controls.Add(this.panelControl31);
             this.xtraTabPage39.Name = "xtraTabPage39";
-            this.xtraTabPage39.Size = new System.Drawing.Size(879, 234);
+            this.xtraTabPage39.Size = new System.Drawing.Size(879, 265);
             this.xtraTabPage39.Text = "XML";
             // 
             // xtraTabControl14
@@ -6636,7 +8844,7 @@
             this.xtraTabControl14.Location = new System.Drawing.Point(0, 5);
             this.xtraTabControl14.Name = "xtraTabControl14";
             this.xtraTabControl14.SelectedTabPage = this.xtraTabPage40;
-            this.xtraTabControl14.Size = new System.Drawing.Size(879, 229);
+            this.xtraTabControl14.Size = new System.Drawing.Size(879, 260);
             this.xtraTabControl14.TabIndex = 2;
             this.xtraTabControl14.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage40,
@@ -6647,7 +8855,7 @@
             this.xtraTabPage40.Controls.Add(this.memoEdit22);
             this.xtraTabPage40.Controls.Add(this.panelControl29);
             this.xtraTabPage40.Name = "xtraTabPage40";
-            this.xtraTabPage40.Size = new System.Drawing.Size(873, 200);
+            this.xtraTabPage40.Size = new System.Drawing.Size(873, 231);
             this.xtraTabPage40.Text = "Map";
             // 
             // memoEdit22
@@ -6656,7 +8864,7 @@
             this.memoEdit22.Location = new System.Drawing.Point(0, 30);
             this.memoEdit22.MenuManager = this.barManager1;
             this.memoEdit22.Name = "memoEdit22";
-            this.memoEdit22.Size = new System.Drawing.Size(873, 170);
+            this.memoEdit22.Size = new System.Drawing.Size(873, 201);
             this.memoEdit22.TabIndex = 0;
             // 
             // panelControl29
@@ -7166,6 +9374,1138 @@
             this.radioGroup14.Size = new System.Drawing.Size(175, 28);
             this.radioGroup14.TabIndex = 12;
             // 
+            // xtraTabPage54
+            // 
+            this.xtraTabPage54.Controls.Add(this.xtraTabControl16);
+            this.xtraTabPage54.Controls.Add(this.panelControl44);
+            this.xtraTabPage54.Name = "xtraTabPage54";
+            this.xtraTabPage54.Size = new System.Drawing.Size(885, 493);
+            this.xtraTabPage54.Text = "xtraTabPage54";
+            // 
+            // xtraTabControl16
+            // 
+            this.xtraTabControl16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl16.Location = new System.Drawing.Point(0, 199);
+            this.xtraTabControl16.Name = "xtraTabControl16";
+            this.xtraTabControl16.SelectedTabPage = this.xtraTabPage56;
+            this.xtraTabControl16.Size = new System.Drawing.Size(885, 294);
+            this.xtraTabControl16.TabIndex = 9;
+            this.xtraTabControl16.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage59,
+            this.xtraTabPage60,
+            this.xtraTabPage56,
+            this.xtraTabPage61,
+            this.xtraTabPage64,
+            this.xtraTabPage65,
+            this.xtraTabPage66});
+            // 
+            // xtraTabPage56
+            // 
+            this.xtraTabPage56.Controls.Add(this.xtraTabControl17);
+            this.xtraTabPage56.Controls.Add(this.panelControl48);
+            this.xtraTabPage56.Name = "xtraTabPage56";
+            this.xtraTabPage56.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage56.Text = "XML";
+            // 
+            // xtraTabControl17
+            // 
+            this.xtraTabControl17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl17.Location = new System.Drawing.Point(0, 5);
+            this.xtraTabControl17.Name = "xtraTabControl17";
+            this.xtraTabControl17.SelectedTabPage = this.xtraTabPage57;
+            this.xtraTabControl17.Size = new System.Drawing.Size(879, 260);
+            this.xtraTabControl17.TabIndex = 2;
+            this.xtraTabControl17.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage57,
+            this.xtraTabPage58});
+            // 
+            // xtraTabPage57
+            // 
+            this.xtraTabPage57.Controls.Add(this.memoEdit34);
+            this.xtraTabPage57.Controls.Add(this.panelControl46);
+            this.xtraTabPage57.Name = "xtraTabPage57";
+            this.xtraTabPage57.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage57.Text = "Map";
+            // 
+            // memoEdit34
+            // 
+            this.memoEdit34.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit34.Location = new System.Drawing.Point(0, 30);
+            this.memoEdit34.MenuManager = this.barManager1;
+            this.memoEdit34.Name = "memoEdit34";
+            this.memoEdit34.Size = new System.Drawing.Size(873, 201);
+            this.memoEdit34.TabIndex = 0;
+            // 
+            // panelControl46
+            // 
+            this.panelControl46.Controls.Add(this.textEdit83);
+            this.panelControl46.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl46.Location = new System.Drawing.Point(0, 0);
+            this.panelControl46.Name = "panelControl46";
+            this.panelControl46.Size = new System.Drawing.Size(873, 30);
+            this.panelControl46.TabIndex = 1;
+            // 
+            // textEdit83
+            // 
+            this.textEdit83.Location = new System.Drawing.Point(98, 5);
+            this.textEdit83.MenuManager = this.barManager1;
+            this.textEdit83.Name = "textEdit83";
+            this.textEdit83.Size = new System.Drawing.Size(213, 20);
+            this.textEdit83.TabIndex = 18;
+            // 
+            // xtraTabPage58
+            // 
+            this.xtraTabPage58.Controls.Add(this.memoEdit35);
+            this.xtraTabPage58.Controls.Add(this.panelControl47);
+            this.xtraTabPage58.Name = "xtraTabPage58";
+            this.xtraTabPage58.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage58.Text = "Select标签";
+            // 
+            // memoEdit35
+            // 
+            this.memoEdit35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit35.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit35.MenuManager = this.barManager1;
+            this.memoEdit35.Name = "memoEdit35";
+            this.memoEdit35.Size = new System.Drawing.Size(873, 226);
+            this.memoEdit35.TabIndex = 3;
+            // 
+            // panelControl47
+            // 
+            this.panelControl47.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl47.Location = new System.Drawing.Point(0, 0);
+            this.panelControl47.Name = "panelControl47";
+            this.panelControl47.Size = new System.Drawing.Size(873, 5);
+            this.panelControl47.TabIndex = 2;
+            // 
+            // panelControl48
+            // 
+            this.panelControl48.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl48.Location = new System.Drawing.Point(0, 0);
+            this.panelControl48.Name = "panelControl48";
+            this.panelControl48.Size = new System.Drawing.Size(879, 5);
+            this.panelControl48.TabIndex = 1;
+            // 
+            // xtraTabPage59
+            // 
+            this.xtraTabPage59.Controls.Add(this.memoEdit36);
+            this.xtraTabPage59.Controls.Add(this.memoEdit37);
+            this.xtraTabPage59.Controls.Add(this.panelControl49);
+            this.xtraTabPage59.Name = "xtraTabPage59";
+            this.xtraTabPage59.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage59.Text = "Model";
+            // 
+            // memoEdit36
+            // 
+            this.memoEdit36.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit36.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit36.MenuManager = this.barManager1;
+            this.memoEdit36.Name = "memoEdit36";
+            this.memoEdit36.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit36.TabIndex = 5;
+            // 
+            // memoEdit37
+            // 
+            this.memoEdit37.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit37.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit37.MenuManager = this.barManager1;
+            this.memoEdit37.Name = "memoEdit37";
+            this.memoEdit37.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit37.TabIndex = 4;
+            // 
+            // panelControl49
+            // 
+            this.panelControl49.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl49.Location = new System.Drawing.Point(0, 0);
+            this.panelControl49.Name = "panelControl49";
+            this.panelControl49.Size = new System.Drawing.Size(879, 5);
+            this.panelControl49.TabIndex = 0;
+            // 
+            // xtraTabPage60
+            // 
+            this.xtraTabPage60.Controls.Add(this.memoEdit38);
+            this.xtraTabPage60.Controls.Add(this.panelControl50);
+            this.xtraTabPage60.Name = "xtraTabPage60";
+            this.xtraTabPage60.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage60.Text = "DAO";
+            // 
+            // memoEdit38
+            // 
+            this.memoEdit38.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit38.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit38.MenuManager = this.barManager1;
+            this.memoEdit38.Name = "memoEdit38";
+            this.memoEdit38.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit38.TabIndex = 4;
+            // 
+            // panelControl50
+            // 
+            this.panelControl50.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl50.Location = new System.Drawing.Point(0, 0);
+            this.panelControl50.Name = "panelControl50";
+            this.panelControl50.Size = new System.Drawing.Size(879, 5);
+            this.panelControl50.TabIndex = 0;
+            // 
+            // xtraTabPage61
+            // 
+            this.xtraTabPage61.Controls.Add(this.xtraTabControl18);
+            this.xtraTabPage61.Controls.Add(this.panelControl53);
+            this.xtraTabPage61.Name = "xtraTabPage61";
+            this.xtraTabPage61.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage61.Text = "Service";
+            // 
+            // xtraTabControl18
+            // 
+            this.xtraTabControl18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl18.Location = new System.Drawing.Point(0, 5);
+            this.xtraTabControl18.Name = "xtraTabControl18";
+            this.xtraTabControl18.SelectedTabPage = this.xtraTabPage62;
+            this.xtraTabControl18.Size = new System.Drawing.Size(879, 260);
+            this.xtraTabControl18.TabIndex = 3;
+            this.xtraTabControl18.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage62,
+            this.xtraTabPage63});
+            // 
+            // xtraTabPage62
+            // 
+            this.xtraTabPage62.Controls.Add(this.memoEdit39);
+            this.xtraTabPage62.Controls.Add(this.panelControl51);
+            this.xtraTabPage62.Name = "xtraTabPage62";
+            this.xtraTabPage62.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage62.Text = "InterFace";
+            // 
+            // memoEdit39
+            // 
+            this.memoEdit39.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit39.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit39.MenuManager = this.barManager1;
+            this.memoEdit39.Name = "memoEdit39";
+            this.memoEdit39.Size = new System.Drawing.Size(873, 226);
+            this.memoEdit39.TabIndex = 0;
+            // 
+            // panelControl51
+            // 
+            this.panelControl51.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl51.Location = new System.Drawing.Point(0, 0);
+            this.panelControl51.Name = "panelControl51";
+            this.panelControl51.Size = new System.Drawing.Size(873, 5);
+            this.panelControl51.TabIndex = 1;
+            // 
+            // xtraTabPage63
+            // 
+            this.xtraTabPage63.Controls.Add(this.memoEdit40);
+            this.xtraTabPage63.Controls.Add(this.panelControl52);
+            this.xtraTabPage63.Name = "xtraTabPage63";
+            this.xtraTabPage63.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage63.Text = "Impl";
+            // 
+            // memoEdit40
+            // 
+            this.memoEdit40.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit40.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit40.MenuManager = this.barManager1;
+            this.memoEdit40.Name = "memoEdit40";
+            this.memoEdit40.Size = new System.Drawing.Size(873, 226);
+            this.memoEdit40.TabIndex = 3;
+            // 
+            // panelControl52
+            // 
+            this.panelControl52.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl52.Location = new System.Drawing.Point(0, 0);
+            this.panelControl52.Name = "panelControl52";
+            this.panelControl52.Size = new System.Drawing.Size(873, 5);
+            this.panelControl52.TabIndex = 2;
+            // 
+            // panelControl53
+            // 
+            this.panelControl53.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl53.Location = new System.Drawing.Point(0, 0);
+            this.panelControl53.Name = "panelControl53";
+            this.panelControl53.Size = new System.Drawing.Size(879, 5);
+            this.panelControl53.TabIndex = 0;
+            // 
+            // xtraTabPage64
+            // 
+            this.xtraTabPage64.Controls.Add(this.memoEdit41);
+            this.xtraTabPage64.Controls.Add(this.panelControl54);
+            this.xtraTabPage64.Name = "xtraTabPage64";
+            this.xtraTabPage64.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage64.Text = "Controller";
+            // 
+            // memoEdit41
+            // 
+            this.memoEdit41.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit41.Location = new System.Drawing.Point(0, 56);
+            this.memoEdit41.MenuManager = this.barManager1;
+            this.memoEdit41.Name = "memoEdit41";
+            this.memoEdit41.Size = new System.Drawing.Size(879, 209);
+            this.memoEdit41.TabIndex = 4;
+            // 
+            // panelControl54
+            // 
+            this.panelControl54.Controls.Add(this.textEdit84);
+            this.panelControl54.Controls.Add(this.labelControl41);
+            this.panelControl54.Controls.Add(this.textEdit85);
+            this.panelControl54.Controls.Add(this.textEdit86);
+            this.panelControl54.Controls.Add(this.labelControl42);
+            this.panelControl54.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl54.Location = new System.Drawing.Point(0, 0);
+            this.panelControl54.Name = "panelControl54";
+            this.panelControl54.Size = new System.Drawing.Size(879, 56);
+            this.panelControl54.TabIndex = 0;
+            // 
+            // textEdit84
+            // 
+            this.textEdit84.Location = new System.Drawing.Point(511, 5);
+            this.textEdit84.MenuManager = this.barManager1;
+            this.textEdit84.Name = "textEdit84";
+            this.textEdit84.Size = new System.Drawing.Size(213, 20);
+            this.textEdit84.TabIndex = 19;
+            // 
+            // labelControl41
+            // 
+            this.labelControl41.Location = new System.Drawing.Point(18, 33);
+            this.labelControl41.Name = "labelControl41";
+            this.labelControl41.Size = new System.Drawing.Size(76, 14);
+            this.labelControl41.TabIndex = 18;
+            this.labelControl41.Text = "Swagger描述:";
+            // 
+            // textEdit85
+            // 
+            this.textEdit85.Location = new System.Drawing.Point(99, 30);
+            this.textEdit85.MenuManager = this.barManager1;
+            this.textEdit85.Name = "textEdit85";
+            this.textEdit85.Size = new System.Drawing.Size(406, 20);
+            this.textEdit85.TabIndex = 17;
+            // 
+            // textEdit86
+            // 
+            this.textEdit86.Location = new System.Drawing.Point(99, 5);
+            this.textEdit86.MenuManager = this.barManager1;
+            this.textEdit86.Name = "textEdit86";
+            this.textEdit86.Size = new System.Drawing.Size(406, 20);
+            this.textEdit86.TabIndex = 16;
+            // 
+            // labelControl42
+            // 
+            this.labelControl42.Location = new System.Drawing.Point(19, 8);
+            this.labelControl42.Name = "labelControl42";
+            this.labelControl42.Size = new System.Drawing.Size(76, 14);
+            this.labelControl42.TabIndex = 15;
+            this.labelControl42.Text = "Swagger说明:";
+            // 
+            // xtraTabPage65
+            // 
+            this.xtraTabPage65.Controls.Add(this.memoEdit42);
+            this.xtraTabPage65.Controls.Add(this.panelControl55);
+            this.xtraTabPage65.Name = "xtraTabPage65";
+            this.xtraTabPage65.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage65.Text = "DTO";
+            // 
+            // memoEdit42
+            // 
+            this.memoEdit42.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit42.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit42.MenuManager = this.barManager1;
+            this.memoEdit42.Name = "memoEdit42";
+            this.memoEdit42.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit42.TabIndex = 4;
+            // 
+            // panelControl55
+            // 
+            this.panelControl55.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl55.Location = new System.Drawing.Point(0, 0);
+            this.panelControl55.Name = "panelControl55";
+            this.panelControl55.Size = new System.Drawing.Size(879, 5);
+            this.panelControl55.TabIndex = 0;
+            // 
+            // xtraTabPage66
+            // 
+            this.xtraTabPage66.Controls.Add(this.memoEdit43);
+            this.xtraTabPage66.Controls.Add(this.panelControl56);
+            this.xtraTabPage66.Name = "xtraTabPage66";
+            this.xtraTabPage66.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage66.Text = "聚合Controller";
+            // 
+            // memoEdit43
+            // 
+            this.memoEdit43.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit43.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit43.MenuManager = this.barManager1;
+            this.memoEdit43.Name = "memoEdit43";
+            this.memoEdit43.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit43.TabIndex = 6;
+            // 
+            // panelControl56
+            // 
+            this.panelControl56.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl56.Location = new System.Drawing.Point(0, 0);
+            this.panelControl56.Name = "panelControl56";
+            this.panelControl56.Size = new System.Drawing.Size(879, 5);
+            this.panelControl56.TabIndex = 5;
+            // 
+            // panelControl44
+            // 
+            this.panelControl44.Controls.Add(this.radioGroup23);
+            this.panelControl44.Controls.Add(this.textEdit65);
+            this.panelControl44.Controls.Add(this.labelControl29);
+            this.panelControl44.Controls.Add(this.radioGroup24);
+            this.panelControl44.Controls.Add(this.textEdit66);
+            this.panelControl44.Controls.Add(this.labelControl30);
+            this.panelControl44.Controls.Add(this.textEdit67);
+            this.panelControl44.Controls.Add(this.labelControl31);
+            this.panelControl44.Controls.Add(this.textEdit68);
+            this.panelControl44.Controls.Add(this.textEdit69);
+            this.panelControl44.Controls.Add(this.textEdit70);
+            this.panelControl44.Controls.Add(this.labelControl32);
+            this.panelControl44.Controls.Add(this.textEdit71);
+            this.panelControl44.Controls.Add(this.labelControl33);
+            this.panelControl44.Controls.Add(this.textEdit72);
+            this.panelControl44.Controls.Add(this.textEdit73);
+            this.panelControl44.Controls.Add(this.labelControl34);
+            this.panelControl44.Controls.Add(this.checkEdit6);
+            this.panelControl44.Controls.Add(this.radioGroup25);
+            this.panelControl44.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl44.Location = new System.Drawing.Point(0, 0);
+            this.panelControl44.Name = "panelControl44";
+            this.panelControl44.Size = new System.Drawing.Size(885, 199);
+            this.panelControl44.TabIndex = 8;
+            // 
+            // radioGroup23
+            // 
+            this.radioGroup23.EditValue = 1;
+            this.radioGroup23.Location = new System.Drawing.Point(555, 143);
+            this.radioGroup23.MenuManager = this.barManager1;
+            this.radioGroup23.Name = "radioGroup23";
+            this.radioGroup23.Properties.Columns = 2;
+            this.radioGroup23.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "单条"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "多条")});
+            this.radioGroup23.Size = new System.Drawing.Size(110, 28);
+            this.radioGroup23.TabIndex = 32;
+            // 
+            // textEdit65
+            // 
+            this.textEdit65.Location = new System.Drawing.Point(100, 169);
+            this.textEdit65.MenuManager = this.barManager1;
+            this.textEdit65.Name = "textEdit65";
+            this.textEdit65.Size = new System.Drawing.Size(449, 20);
+            this.textEdit65.TabIndex = 31;
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Location = new System.Drawing.Point(32, 172);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(64, 14);
+            this.labelControl29.TabIndex = 30;
+            this.labelControl29.Text = "返回值说明:";
+            // 
+            // radioGroup24
+            // 
+            this.radioGroup24.Location = new System.Drawing.Point(555, 112);
+            this.radioGroup24.MenuManager = this.barManager1;
+            this.radioGroup24.Name = "radioGroup24";
+            this.radioGroup24.Properties.Columns = 4;
+            this.radioGroup24.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "参数"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "对象"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "集合"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "列表")});
+            this.radioGroup24.Size = new System.Drawing.Size(230, 28);
+            this.radioGroup24.TabIndex = 29;
+            // 
+            // textEdit66
+            // 
+            this.textEdit66.Location = new System.Drawing.Point(100, 143);
+            this.textEdit66.MenuManager = this.barManager1;
+            this.textEdit66.Name = "textEdit66";
+            this.textEdit66.Size = new System.Drawing.Size(449, 20);
+            this.textEdit66.TabIndex = 28;
+            // 
+            // labelControl30
+            // 
+            this.labelControl30.Location = new System.Drawing.Point(44, 146);
+            this.labelControl30.Name = "labelControl30";
+            this.labelControl30.Size = new System.Drawing.Size(52, 14);
+            this.labelControl30.TabIndex = 27;
+            this.labelControl30.Text = "方法描述:";
+            // 
+            // textEdit67
+            // 
+            this.textEdit67.Location = new System.Drawing.Point(100, 117);
+            this.textEdit67.MenuManager = this.barManager1;
+            this.textEdit67.Name = "textEdit67";
+            this.textEdit67.Size = new System.Drawing.Size(449, 20);
+            this.textEdit67.TabIndex = 26;
+            // 
+            // labelControl31
+            // 
+            this.labelControl31.Location = new System.Drawing.Point(54, 120);
+            this.labelControl31.Name = "labelControl31";
+            this.labelControl31.Size = new System.Drawing.Size(40, 14);
+            this.labelControl31.TabIndex = 25;
+            this.labelControl31.Text = "方法名:";
+            // 
+            // textEdit68
+            // 
+            this.textEdit68.Location = new System.Drawing.Point(228, 65);
+            this.textEdit68.MenuManager = this.barManager1;
+            this.textEdit68.Name = "textEdit68";
+            this.textEdit68.Size = new System.Drawing.Size(321, 20);
+            this.textEdit68.TabIndex = 24;
+            // 
+            // textEdit69
+            // 
+            this.textEdit69.Location = new System.Drawing.Point(228, 91);
+            this.textEdit69.MenuManager = this.barManager1;
+            this.textEdit69.Name = "textEdit69";
+            this.textEdit69.Size = new System.Drawing.Size(321, 20);
+            this.textEdit69.TabIndex = 23;
+            // 
+            // textEdit70
+            // 
+            this.textEdit70.Location = new System.Drawing.Point(100, 91);
+            this.textEdit70.MenuManager = this.barManager1;
+            this.textEdit70.Name = "textEdit70";
+            this.textEdit70.Size = new System.Drawing.Size(122, 20);
+            this.textEdit70.TabIndex = 22;
+            // 
+            // labelControl32
+            // 
+            this.labelControl32.Location = new System.Drawing.Point(8, 92);
+            this.labelControl32.Name = "labelControl32";
+            this.labelControl32.Size = new System.Drawing.Size(87, 14);
+            this.labelControl32.TabIndex = 21;
+            this.labelControl32.Text = "ResultMapType:";
+            // 
+            // textEdit71
+            // 
+            this.textEdit71.Location = new System.Drawing.Point(100, 65);
+            this.textEdit71.MenuManager = this.barManager1;
+            this.textEdit71.Name = "textEdit71";
+            this.textEdit71.Size = new System.Drawing.Size(122, 20);
+            this.textEdit71.TabIndex = 20;
+            // 
+            // labelControl33
+            // 
+            this.labelControl33.Location = new System.Drawing.Point(26, 66);
+            this.labelControl33.Name = "labelControl33";
+            this.labelControl33.Size = new System.Drawing.Size(70, 14);
+            this.labelControl33.TabIndex = 19;
+            this.labelControl33.Text = "ResultMapId:";
+            // 
+            // textEdit72
+            // 
+            this.textEdit72.Location = new System.Drawing.Point(228, 39);
+            this.textEdit72.MenuManager = this.barManager1;
+            this.textEdit72.Name = "textEdit72";
+            this.textEdit72.Size = new System.Drawing.Size(321, 20);
+            this.textEdit72.TabIndex = 18;
+            // 
+            // textEdit73
+            // 
+            this.textEdit73.Location = new System.Drawing.Point(100, 39);
+            this.textEdit73.MenuManager = this.barManager1;
+            this.textEdit73.Name = "textEdit73";
+            this.textEdit73.Size = new System.Drawing.Size(122, 20);
+            this.textEdit73.TabIndex = 17;
+            // 
+            // labelControl34
+            // 
+            this.labelControl34.Location = new System.Drawing.Point(26, 40);
+            this.labelControl34.Name = "labelControl34";
+            this.labelControl34.Size = new System.Drawing.Size(68, 14);
+            this.labelControl34.TabIndex = 16;
+            this.labelControl34.Text = "NameSpace:";
+            // 
+            // checkEdit6
+            // 
+            this.checkEdit6.EditValue = true;
+            this.checkEdit6.Location = new System.Drawing.Point(281, 9);
+            this.checkEdit6.MenuManager = this.barManager1;
+            this.checkEdit6.Name = "checkEdit6";
+            this.checkEdit6.Properties.Caption = "生成MybaitsXml文件头";
+            this.checkEdit6.Size = new System.Drawing.Size(146, 19);
+            this.checkEdit6.TabIndex = 15;
+            // 
+            // radioGroup25
+            // 
+            this.radioGroup25.Location = new System.Drawing.Point(100, 5);
+            this.radioGroup25.MenuManager = this.barManager1;
+            this.radioGroup25.Name = "radioGroup25";
+            this.radioGroup25.Properties.Columns = 2;
+            this.radioGroup25.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "resultMap"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "resultType")});
+            this.radioGroup25.Size = new System.Drawing.Size(175, 28);
+            this.radioGroup25.TabIndex = 12;
+            // 
+            // xtraTabPage55
+            // 
+            this.xtraTabPage55.Controls.Add(this.xtraTabControl19);
+            this.xtraTabPage55.Controls.Add(this.panelControl45);
+            this.xtraTabPage55.Name = "xtraTabPage55";
+            this.xtraTabPage55.Size = new System.Drawing.Size(885, 493);
+            this.xtraTabPage55.Text = "xtraTabPage55";
+            // 
+            // xtraTabControl19
+            // 
+            this.xtraTabControl19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl19.Location = new System.Drawing.Point(0, 199);
+            this.xtraTabControl19.Name = "xtraTabControl19";
+            this.xtraTabControl19.SelectedTabPage = this.xtraTabPage67;
+            this.xtraTabControl19.Size = new System.Drawing.Size(885, 294);
+            this.xtraTabControl19.TabIndex = 9;
+            this.xtraTabControl19.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage70,
+            this.xtraTabPage71,
+            this.xtraTabPage67,
+            this.xtraTabPage72,
+            this.xtraTabPage75,
+            this.xtraTabPage76,
+            this.xtraTabPage77});
+            // 
+            // xtraTabPage67
+            // 
+            this.xtraTabPage67.Controls.Add(this.xtraTabControl20);
+            this.xtraTabPage67.Controls.Add(this.panelControl59);
+            this.xtraTabPage67.Name = "xtraTabPage67";
+            this.xtraTabPage67.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage67.Text = "XML";
+            // 
+            // xtraTabControl20
+            // 
+            this.xtraTabControl20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl20.Location = new System.Drawing.Point(0, 5);
+            this.xtraTabControl20.Name = "xtraTabControl20";
+            this.xtraTabControl20.SelectedTabPage = this.xtraTabPage68;
+            this.xtraTabControl20.Size = new System.Drawing.Size(879, 260);
+            this.xtraTabControl20.TabIndex = 2;
+            this.xtraTabControl20.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage68,
+            this.xtraTabPage69});
+            // 
+            // xtraTabPage68
+            // 
+            this.xtraTabPage68.Controls.Add(this.memoEdit44);
+            this.xtraTabPage68.Controls.Add(this.panelControl57);
+            this.xtraTabPage68.Name = "xtraTabPage68";
+            this.xtraTabPage68.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage68.Text = "Map";
+            // 
+            // memoEdit44
+            // 
+            this.memoEdit44.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit44.Location = new System.Drawing.Point(0, 30);
+            this.memoEdit44.MenuManager = this.barManager1;
+            this.memoEdit44.Name = "memoEdit44";
+            this.memoEdit44.Size = new System.Drawing.Size(873, 201);
+            this.memoEdit44.TabIndex = 0;
+            // 
+            // panelControl57
+            // 
+            this.panelControl57.Controls.Add(this.textEdit87);
+            this.panelControl57.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl57.Location = new System.Drawing.Point(0, 0);
+            this.panelControl57.Name = "panelControl57";
+            this.panelControl57.Size = new System.Drawing.Size(873, 30);
+            this.panelControl57.TabIndex = 1;
+            // 
+            // textEdit87
+            // 
+            this.textEdit87.Location = new System.Drawing.Point(98, 5);
+            this.textEdit87.MenuManager = this.barManager1;
+            this.textEdit87.Name = "textEdit87";
+            this.textEdit87.Size = new System.Drawing.Size(213, 20);
+            this.textEdit87.TabIndex = 18;
+            // 
+            // xtraTabPage69
+            // 
+            this.xtraTabPage69.Controls.Add(this.memoEdit45);
+            this.xtraTabPage69.Controls.Add(this.panelControl58);
+            this.xtraTabPage69.Name = "xtraTabPage69";
+            this.xtraTabPage69.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage69.Text = "Select标签";
+            // 
+            // memoEdit45
+            // 
+            this.memoEdit45.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit45.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit45.MenuManager = this.barManager1;
+            this.memoEdit45.Name = "memoEdit45";
+            this.memoEdit45.Size = new System.Drawing.Size(873, 226);
+            this.memoEdit45.TabIndex = 3;
+            // 
+            // panelControl58
+            // 
+            this.panelControl58.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl58.Location = new System.Drawing.Point(0, 0);
+            this.panelControl58.Name = "panelControl58";
+            this.panelControl58.Size = new System.Drawing.Size(873, 5);
+            this.panelControl58.TabIndex = 2;
+            // 
+            // panelControl59
+            // 
+            this.panelControl59.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl59.Location = new System.Drawing.Point(0, 0);
+            this.panelControl59.Name = "panelControl59";
+            this.panelControl59.Size = new System.Drawing.Size(879, 5);
+            this.panelControl59.TabIndex = 1;
+            // 
+            // xtraTabPage70
+            // 
+            this.xtraTabPage70.Controls.Add(this.memoEdit46);
+            this.xtraTabPage70.Controls.Add(this.memoEdit47);
+            this.xtraTabPage70.Controls.Add(this.panelControl60);
+            this.xtraTabPage70.Name = "xtraTabPage70";
+            this.xtraTabPage70.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage70.Text = "Model";
+            // 
+            // memoEdit46
+            // 
+            this.memoEdit46.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit46.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit46.MenuManager = this.barManager1;
+            this.memoEdit46.Name = "memoEdit46";
+            this.memoEdit46.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit46.TabIndex = 5;
+            // 
+            // memoEdit47
+            // 
+            this.memoEdit47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit47.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit47.MenuManager = this.barManager1;
+            this.memoEdit47.Name = "memoEdit47";
+            this.memoEdit47.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit47.TabIndex = 4;
+            // 
+            // panelControl60
+            // 
+            this.panelControl60.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl60.Location = new System.Drawing.Point(0, 0);
+            this.panelControl60.Name = "panelControl60";
+            this.panelControl60.Size = new System.Drawing.Size(879, 5);
+            this.panelControl60.TabIndex = 0;
+            // 
+            // xtraTabPage71
+            // 
+            this.xtraTabPage71.Controls.Add(this.memoEdit48);
+            this.xtraTabPage71.Controls.Add(this.panelControl61);
+            this.xtraTabPage71.Name = "xtraTabPage71";
+            this.xtraTabPage71.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage71.Text = "DAO";
+            // 
+            // memoEdit48
+            // 
+            this.memoEdit48.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit48.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit48.MenuManager = this.barManager1;
+            this.memoEdit48.Name = "memoEdit48";
+            this.memoEdit48.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit48.TabIndex = 4;
+            // 
+            // panelControl61
+            // 
+            this.panelControl61.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl61.Location = new System.Drawing.Point(0, 0);
+            this.panelControl61.Name = "panelControl61";
+            this.panelControl61.Size = new System.Drawing.Size(879, 5);
+            this.panelControl61.TabIndex = 0;
+            // 
+            // xtraTabPage72
+            // 
+            this.xtraTabPage72.Controls.Add(this.xtraTabControl21);
+            this.xtraTabPage72.Controls.Add(this.panelControl64);
+            this.xtraTabPage72.Name = "xtraTabPage72";
+            this.xtraTabPage72.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage72.Text = "Service";
+            // 
+            // xtraTabControl21
+            // 
+            this.xtraTabControl21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl21.Location = new System.Drawing.Point(0, 5);
+            this.xtraTabControl21.Name = "xtraTabControl21";
+            this.xtraTabControl21.SelectedTabPage = this.xtraTabPage73;
+            this.xtraTabControl21.Size = new System.Drawing.Size(879, 260);
+            this.xtraTabControl21.TabIndex = 3;
+            this.xtraTabControl21.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage73,
+            this.xtraTabPage74});
+            // 
+            // xtraTabPage73
+            // 
+            this.xtraTabPage73.Controls.Add(this.memoEdit49);
+            this.xtraTabPage73.Controls.Add(this.panelControl62);
+            this.xtraTabPage73.Name = "xtraTabPage73";
+            this.xtraTabPage73.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage73.Text = "InterFace";
+            // 
+            // memoEdit49
+            // 
+            this.memoEdit49.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit49.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit49.MenuManager = this.barManager1;
+            this.memoEdit49.Name = "memoEdit49";
+            this.memoEdit49.Size = new System.Drawing.Size(873, 226);
+            this.memoEdit49.TabIndex = 0;
+            // 
+            // panelControl62
+            // 
+            this.panelControl62.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl62.Location = new System.Drawing.Point(0, 0);
+            this.panelControl62.Name = "panelControl62";
+            this.panelControl62.Size = new System.Drawing.Size(873, 5);
+            this.panelControl62.TabIndex = 1;
+            // 
+            // xtraTabPage74
+            // 
+            this.xtraTabPage74.Controls.Add(this.memoEdit50);
+            this.xtraTabPage74.Controls.Add(this.panelControl63);
+            this.xtraTabPage74.Name = "xtraTabPage74";
+            this.xtraTabPage74.Size = new System.Drawing.Size(873, 231);
+            this.xtraTabPage74.Text = "Impl";
+            // 
+            // memoEdit50
+            // 
+            this.memoEdit50.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit50.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit50.MenuManager = this.barManager1;
+            this.memoEdit50.Name = "memoEdit50";
+            this.memoEdit50.Size = new System.Drawing.Size(873, 226);
+            this.memoEdit50.TabIndex = 3;
+            // 
+            // panelControl63
+            // 
+            this.panelControl63.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl63.Location = new System.Drawing.Point(0, 0);
+            this.panelControl63.Name = "panelControl63";
+            this.panelControl63.Size = new System.Drawing.Size(873, 5);
+            this.panelControl63.TabIndex = 2;
+            // 
+            // panelControl64
+            // 
+            this.panelControl64.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl64.Location = new System.Drawing.Point(0, 0);
+            this.panelControl64.Name = "panelControl64";
+            this.panelControl64.Size = new System.Drawing.Size(879, 5);
+            this.panelControl64.TabIndex = 0;
+            // 
+            // xtraTabPage75
+            // 
+            this.xtraTabPage75.Controls.Add(this.memoEdit51);
+            this.xtraTabPage75.Controls.Add(this.panelControl65);
+            this.xtraTabPage75.Name = "xtraTabPage75";
+            this.xtraTabPage75.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage75.Text = "Controller";
+            // 
+            // memoEdit51
+            // 
+            this.memoEdit51.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit51.Location = new System.Drawing.Point(0, 56);
+            this.memoEdit51.MenuManager = this.barManager1;
+            this.memoEdit51.Name = "memoEdit51";
+            this.memoEdit51.Size = new System.Drawing.Size(879, 209);
+            this.memoEdit51.TabIndex = 4;
+            // 
+            // panelControl65
+            // 
+            this.panelControl65.Controls.Add(this.textEdit88);
+            this.panelControl65.Controls.Add(this.labelControl43);
+            this.panelControl65.Controls.Add(this.textEdit89);
+            this.panelControl65.Controls.Add(this.textEdit90);
+            this.panelControl65.Controls.Add(this.labelControl44);
+            this.panelControl65.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl65.Location = new System.Drawing.Point(0, 0);
+            this.panelControl65.Name = "panelControl65";
+            this.panelControl65.Size = new System.Drawing.Size(879, 56);
+            this.panelControl65.TabIndex = 0;
+            // 
+            // textEdit88
+            // 
+            this.textEdit88.Location = new System.Drawing.Point(511, 5);
+            this.textEdit88.MenuManager = this.barManager1;
+            this.textEdit88.Name = "textEdit88";
+            this.textEdit88.Size = new System.Drawing.Size(213, 20);
+            this.textEdit88.TabIndex = 19;
+            // 
+            // labelControl43
+            // 
+            this.labelControl43.Location = new System.Drawing.Point(18, 33);
+            this.labelControl43.Name = "labelControl43";
+            this.labelControl43.Size = new System.Drawing.Size(76, 14);
+            this.labelControl43.TabIndex = 18;
+            this.labelControl43.Text = "Swagger描述:";
+            // 
+            // textEdit89
+            // 
+            this.textEdit89.Location = new System.Drawing.Point(99, 30);
+            this.textEdit89.MenuManager = this.barManager1;
+            this.textEdit89.Name = "textEdit89";
+            this.textEdit89.Size = new System.Drawing.Size(406, 20);
+            this.textEdit89.TabIndex = 17;
+            // 
+            // textEdit90
+            // 
+            this.textEdit90.Location = new System.Drawing.Point(99, 5);
+            this.textEdit90.MenuManager = this.barManager1;
+            this.textEdit90.Name = "textEdit90";
+            this.textEdit90.Size = new System.Drawing.Size(406, 20);
+            this.textEdit90.TabIndex = 16;
+            // 
+            // labelControl44
+            // 
+            this.labelControl44.Location = new System.Drawing.Point(19, 8);
+            this.labelControl44.Name = "labelControl44";
+            this.labelControl44.Size = new System.Drawing.Size(76, 14);
+            this.labelControl44.TabIndex = 15;
+            this.labelControl44.Text = "Swagger说明:";
+            // 
+            // xtraTabPage76
+            // 
+            this.xtraTabPage76.Controls.Add(this.memoEdit52);
+            this.xtraTabPage76.Controls.Add(this.panelControl66);
+            this.xtraTabPage76.Name = "xtraTabPage76";
+            this.xtraTabPage76.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage76.Text = "DTO";
+            // 
+            // memoEdit52
+            // 
+            this.memoEdit52.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit52.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit52.MenuManager = this.barManager1;
+            this.memoEdit52.Name = "memoEdit52";
+            this.memoEdit52.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit52.TabIndex = 4;
+            // 
+            // panelControl66
+            // 
+            this.panelControl66.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl66.Location = new System.Drawing.Point(0, 0);
+            this.panelControl66.Name = "panelControl66";
+            this.panelControl66.Size = new System.Drawing.Size(879, 5);
+            this.panelControl66.TabIndex = 0;
+            // 
+            // xtraTabPage77
+            // 
+            this.xtraTabPage77.Controls.Add(this.memoEdit53);
+            this.xtraTabPage77.Controls.Add(this.panelControl67);
+            this.xtraTabPage77.Name = "xtraTabPage77";
+            this.xtraTabPage77.Size = new System.Drawing.Size(879, 265);
+            this.xtraTabPage77.Text = "聚合Controller";
+            // 
+            // memoEdit53
+            // 
+            this.memoEdit53.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit53.Location = new System.Drawing.Point(0, 5);
+            this.memoEdit53.MenuManager = this.barManager1;
+            this.memoEdit53.Name = "memoEdit53";
+            this.memoEdit53.Size = new System.Drawing.Size(879, 260);
+            this.memoEdit53.TabIndex = 6;
+            // 
+            // panelControl67
+            // 
+            this.panelControl67.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl67.Location = new System.Drawing.Point(0, 0);
+            this.panelControl67.Name = "panelControl67";
+            this.panelControl67.Size = new System.Drawing.Size(879, 5);
+            this.panelControl67.TabIndex = 5;
+            // 
+            // panelControl45
+            // 
+            this.panelControl45.Controls.Add(this.radioGroup26);
+            this.panelControl45.Controls.Add(this.textEdit74);
+            this.panelControl45.Controls.Add(this.labelControl35);
+            this.panelControl45.Controls.Add(this.radioGroup27);
+            this.panelControl45.Controls.Add(this.textEdit75);
+            this.panelControl45.Controls.Add(this.labelControl36);
+            this.panelControl45.Controls.Add(this.textEdit76);
+            this.panelControl45.Controls.Add(this.labelControl37);
+            this.panelControl45.Controls.Add(this.textEdit77);
+            this.panelControl45.Controls.Add(this.textEdit78);
+            this.panelControl45.Controls.Add(this.textEdit79);
+            this.panelControl45.Controls.Add(this.labelControl38);
+            this.panelControl45.Controls.Add(this.textEdit80);
+            this.panelControl45.Controls.Add(this.labelControl39);
+            this.panelControl45.Controls.Add(this.textEdit81);
+            this.panelControl45.Controls.Add(this.textEdit82);
+            this.panelControl45.Controls.Add(this.labelControl40);
+            this.panelControl45.Controls.Add(this.checkEdit7);
+            this.panelControl45.Controls.Add(this.radioGroup28);
+            this.panelControl45.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl45.Location = new System.Drawing.Point(0, 0);
+            this.panelControl45.Name = "panelControl45";
+            this.panelControl45.Size = new System.Drawing.Size(885, 199);
+            this.panelControl45.TabIndex = 8;
+            // 
+            // radioGroup26
+            // 
+            this.radioGroup26.EditValue = 1;
+            this.radioGroup26.Location = new System.Drawing.Point(555, 143);
+            this.radioGroup26.MenuManager = this.barManager1;
+            this.radioGroup26.Name = "radioGroup26";
+            this.radioGroup26.Properties.Columns = 2;
+            this.radioGroup26.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "单条"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "多条")});
+            this.radioGroup26.Size = new System.Drawing.Size(110, 28);
+            this.radioGroup26.TabIndex = 32;
+            // 
+            // textEdit74
+            // 
+            this.textEdit74.Location = new System.Drawing.Point(100, 169);
+            this.textEdit74.MenuManager = this.barManager1;
+            this.textEdit74.Name = "textEdit74";
+            this.textEdit74.Size = new System.Drawing.Size(449, 20);
+            this.textEdit74.TabIndex = 31;
+            // 
+            // labelControl35
+            // 
+            this.labelControl35.Location = new System.Drawing.Point(32, 172);
+            this.labelControl35.Name = "labelControl35";
+            this.labelControl35.Size = new System.Drawing.Size(64, 14);
+            this.labelControl35.TabIndex = 30;
+            this.labelControl35.Text = "返回值说明:";
+            // 
+            // radioGroup27
+            // 
+            this.radioGroup27.Location = new System.Drawing.Point(555, 112);
+            this.radioGroup27.MenuManager = this.barManager1;
+            this.radioGroup27.Name = "radioGroup27";
+            this.radioGroup27.Properties.Columns = 4;
+            this.radioGroup27.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "参数"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "对象"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "集合"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "列表")});
+            this.radioGroup27.Size = new System.Drawing.Size(230, 28);
+            this.radioGroup27.TabIndex = 29;
+            // 
+            // textEdit75
+            // 
+            this.textEdit75.Location = new System.Drawing.Point(100, 143);
+            this.textEdit75.MenuManager = this.barManager1;
+            this.textEdit75.Name = "textEdit75";
+            this.textEdit75.Size = new System.Drawing.Size(449, 20);
+            this.textEdit75.TabIndex = 28;
+            // 
+            // labelControl36
+            // 
+            this.labelControl36.Location = new System.Drawing.Point(44, 146);
+            this.labelControl36.Name = "labelControl36";
+            this.labelControl36.Size = new System.Drawing.Size(52, 14);
+            this.labelControl36.TabIndex = 27;
+            this.labelControl36.Text = "方法描述:";
+            // 
+            // textEdit76
+            // 
+            this.textEdit76.Location = new System.Drawing.Point(100, 117);
+            this.textEdit76.MenuManager = this.barManager1;
+            this.textEdit76.Name = "textEdit76";
+            this.textEdit76.Size = new System.Drawing.Size(449, 20);
+            this.textEdit76.TabIndex = 26;
+            // 
+            // labelControl37
+            // 
+            this.labelControl37.Location = new System.Drawing.Point(54, 120);
+            this.labelControl37.Name = "labelControl37";
+            this.labelControl37.Size = new System.Drawing.Size(40, 14);
+            this.labelControl37.TabIndex = 25;
+            this.labelControl37.Text = "方法名:";
+            // 
+            // textEdit77
+            // 
+            this.textEdit77.Location = new System.Drawing.Point(228, 65);
+            this.textEdit77.MenuManager = this.barManager1;
+            this.textEdit77.Name = "textEdit77";
+            this.textEdit77.Size = new System.Drawing.Size(321, 20);
+            this.textEdit77.TabIndex = 24;
+            // 
+            // textEdit78
+            // 
+            this.textEdit78.Location = new System.Drawing.Point(228, 91);
+            this.textEdit78.MenuManager = this.barManager1;
+            this.textEdit78.Name = "textEdit78";
+            this.textEdit78.Size = new System.Drawing.Size(321, 20);
+            this.textEdit78.TabIndex = 23;
+            // 
+            // textEdit79
+            // 
+            this.textEdit79.Location = new System.Drawing.Point(100, 91);
+            this.textEdit79.MenuManager = this.barManager1;
+            this.textEdit79.Name = "textEdit79";
+            this.textEdit79.Size = new System.Drawing.Size(122, 20);
+            this.textEdit79.TabIndex = 22;
+            // 
+            // labelControl38
+            // 
+            this.labelControl38.Location = new System.Drawing.Point(8, 92);
+            this.labelControl38.Name = "labelControl38";
+            this.labelControl38.Size = new System.Drawing.Size(87, 14);
+            this.labelControl38.TabIndex = 21;
+            this.labelControl38.Text = "ResultMapType:";
+            // 
+            // textEdit80
+            // 
+            this.textEdit80.Location = new System.Drawing.Point(100, 65);
+            this.textEdit80.MenuManager = this.barManager1;
+            this.textEdit80.Name = "textEdit80";
+            this.textEdit80.Size = new System.Drawing.Size(122, 20);
+            this.textEdit80.TabIndex = 20;
+            // 
+            // labelControl39
+            // 
+            this.labelControl39.Location = new System.Drawing.Point(26, 66);
+            this.labelControl39.Name = "labelControl39";
+            this.labelControl39.Size = new System.Drawing.Size(70, 14);
+            this.labelControl39.TabIndex = 19;
+            this.labelControl39.Text = "ResultMapId:";
+            // 
+            // textEdit81
+            // 
+            this.textEdit81.Location = new System.Drawing.Point(228, 39);
+            this.textEdit81.MenuManager = this.barManager1;
+            this.textEdit81.Name = "textEdit81";
+            this.textEdit81.Size = new System.Drawing.Size(321, 20);
+            this.textEdit81.TabIndex = 18;
+            // 
+            // textEdit82
+            // 
+            this.textEdit82.Location = new System.Drawing.Point(100, 39);
+            this.textEdit82.MenuManager = this.barManager1;
+            this.textEdit82.Name = "textEdit82";
+            this.textEdit82.Size = new System.Drawing.Size(122, 20);
+            this.textEdit82.TabIndex = 17;
+            // 
+            // labelControl40
+            // 
+            this.labelControl40.Location = new System.Drawing.Point(26, 40);
+            this.labelControl40.Name = "labelControl40";
+            this.labelControl40.Size = new System.Drawing.Size(68, 14);
+            this.labelControl40.TabIndex = 16;
+            this.labelControl40.Text = "NameSpace:";
+            // 
+            // checkEdit7
+            // 
+            this.checkEdit7.EditValue = true;
+            this.checkEdit7.Location = new System.Drawing.Point(281, 9);
+            this.checkEdit7.MenuManager = this.barManager1;
+            this.checkEdit7.Name = "checkEdit7";
+            this.checkEdit7.Properties.Caption = "生成MybaitsXml文件头";
+            this.checkEdit7.Size = new System.Drawing.Size(146, 19);
+            this.checkEdit7.TabIndex = 15;
+            // 
+            // radioGroup28
+            // 
+            this.radioGroup28.Location = new System.Drawing.Point(100, 5);
+            this.radioGroup28.MenuManager = this.barManager1;
+            this.radioGroup28.Name = "radioGroup28";
+            this.radioGroup28.Properties.Columns = 2;
+            this.radioGroup28.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "resultMap"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "resultType")});
+            this.radioGroup28.Size = new System.Drawing.Size(175, 28);
+            this.radioGroup28.TabIndex = 12;
+            // 
             // xtraTabPage28
             // 
             this.xtraTabPage28.Controls.Add(this.memoEdit12);
@@ -7449,6 +10789,80 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit9.Properties)).EndInit();
+            this.xtraTabPage52.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit37)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit38)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit39)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit43)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox30)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit46)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit47)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit48)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl42)).EndInit();
+            this.panelControl42.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup17.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup18.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit57.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup19.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit58.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit59.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit60.Properties)).EndInit();
+            this.xtraTabPage53.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit49)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit50)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit51)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit52)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox33)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit53)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox34)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit54)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox36)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox37)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit55)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit56)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox38)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit59)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox39)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit60)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl43)).EndInit();
+            this.panelControl43.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit7.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit8.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup20.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup21.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit61.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup22.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit62.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit63.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit64.Properties)).EndInit();
             this.dockPanel2.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
@@ -7668,6 +11082,130 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit41.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup14.Properties)).EndInit();
+            this.xtraTabPage54.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl16)).EndInit();
+            this.xtraTabControl16.ResumeLayout(false);
+            this.xtraTabPage56.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl17)).EndInit();
+            this.xtraTabControl17.ResumeLayout(false);
+            this.xtraTabPage57.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit34.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl46)).EndInit();
+            this.panelControl46.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit83.Properties)).EndInit();
+            this.xtraTabPage58.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit35.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl47)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl48)).EndInit();
+            this.xtraTabPage59.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit36.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit37.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl49)).EndInit();
+            this.xtraTabPage60.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit38.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl50)).EndInit();
+            this.xtraTabPage61.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl18)).EndInit();
+            this.xtraTabControl18.ResumeLayout(false);
+            this.xtraTabPage62.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit39.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl51)).EndInit();
+            this.xtraTabPage63.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit40.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl52)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl53)).EndInit();
+            this.xtraTabPage64.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit41.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl54)).EndInit();
+            this.panelControl54.ResumeLayout(false);
+            this.panelControl54.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit84.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit85.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit86.Properties)).EndInit();
+            this.xtraTabPage65.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit42.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl55)).EndInit();
+            this.xtraTabPage66.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit43.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl56)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl44)).EndInit();
+            this.panelControl44.ResumeLayout(false);
+            this.panelControl44.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup23.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit65.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup24.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit66.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit67.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit68.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit69.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit70.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit71.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit72.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit73.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup25.Properties)).EndInit();
+            this.xtraTabPage55.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl19)).EndInit();
+            this.xtraTabControl19.ResumeLayout(false);
+            this.xtraTabPage67.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl20)).EndInit();
+            this.xtraTabControl20.ResumeLayout(false);
+            this.xtraTabPage68.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit44.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl57)).EndInit();
+            this.panelControl57.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit87.Properties)).EndInit();
+            this.xtraTabPage69.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit45.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl59)).EndInit();
+            this.xtraTabPage70.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit46.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit47.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl60)).EndInit();
+            this.xtraTabPage71.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit48.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl61)).EndInit();
+            this.xtraTabPage72.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl21)).EndInit();
+            this.xtraTabControl21.ResumeLayout(false);
+            this.xtraTabPage73.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit49.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl62)).EndInit();
+            this.xtraTabPage74.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit50.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl63)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl64)).EndInit();
+            this.xtraTabPage75.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit51.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl65)).EndInit();
+            this.panelControl65.ResumeLayout(false);
+            this.panelControl65.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit88.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit89.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit90.Properties)).EndInit();
+            this.xtraTabPage76.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit52.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl66)).EndInit();
+            this.xtraTabPage77.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit53.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl67)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl45)).EndInit();
+            this.panelControl45.ResumeLayout(false);
+            this.panelControl45.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup26.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit74.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup27.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit75.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit76.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit77.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit78.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit79.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit80.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit81.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit82.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup28.Properties)).EndInit();
             this.xtraTabPage28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).EndInit();
@@ -8198,5 +11736,273 @@
         private DevExpress.XtraEditors.TextEdit textEdit54;
         private DevExpress.XtraEditors.TextEdit textEdit55;
         private DevExpress.XtraEditors.TextEdit textEdit56;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage52;
+        private DevExpress.XtraGrid.GridControl gridControl4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand22;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn88;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand23;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn89;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn90;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn91;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn92;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn93;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit37;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn94;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit38;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn95;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit39;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand24;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn96;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit40;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn97;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn98;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit7;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn99;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn100;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox25;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn101;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit41;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn102;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox26;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand25;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn103;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit42;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn104;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox27;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn105;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox28;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn106;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox29;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn107;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit43;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn108;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit44;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand26;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn109;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit45;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn110;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox30;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn111;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit8;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand27;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn112;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit46;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand28;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn113;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit47;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn114;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox31;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn115;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox32;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn116;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit48;
+        private DevExpress.XtraEditors.PanelControl panelControl42;
+        private DevExpress.XtraEditors.ButtonEdit buttonEdit5;
+        private DevExpress.XtraEditors.ButtonEdit buttonEdit6;
+        private DevExpress.XtraEditors.RadioGroup radioGroup17;
+        private DevExpress.XtraEditors.RadioGroup radioGroup18;
+        private DevExpress.XtraEditors.TextEdit textEdit57;
+        private DevExpress.XtraEditors.RadioGroup radioGroup19;
+        private DevExpress.XtraEditors.TextEdit textEdit58;
+        private DevExpress.XtraEditors.TextEdit textEdit59;
+        private DevExpress.XtraEditors.TextEdit textEdit60;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage53;
+        private DevExpress.XtraGrid.GridControl gridControl5;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView5;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand29;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn117;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand30;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn118;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn119;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn120;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn121;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn122;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit49;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn123;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit50;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn124;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit51;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand31;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn125;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit52;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn126;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn127;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit9;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn128;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit5;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn129;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox33;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn130;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit53;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn131;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox34;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand32;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn132;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit54;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn133;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox35;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn134;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox36;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn135;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox37;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn136;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit55;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn137;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit56;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand33;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn138;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit57;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn139;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox38;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn140;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit10;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand34;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn141;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit58;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand35;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn142;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit59;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn143;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox39;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn144;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox40;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn145;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit60;
+        private DevExpress.XtraEditors.PanelControl panelControl43;
+        private DevExpress.XtraEditors.ButtonEdit buttonEdit7;
+        private DevExpress.XtraEditors.ButtonEdit buttonEdit8;
+        private DevExpress.XtraEditors.RadioGroup radioGroup20;
+        private DevExpress.XtraEditors.RadioGroup radioGroup21;
+        private DevExpress.XtraEditors.TextEdit textEdit61;
+        private DevExpress.XtraEditors.RadioGroup radioGroup22;
+        private DevExpress.XtraEditors.TextEdit textEdit62;
+        private DevExpress.XtraEditors.TextEdit textEdit63;
+        private DevExpress.XtraEditors.TextEdit textEdit64;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage54;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl16;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage56;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl17;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage57;
+        private DevExpress.XtraEditors.MemoEdit memoEdit34;
+        private DevExpress.XtraEditors.PanelControl panelControl46;
+        private DevExpress.XtraEditors.TextEdit textEdit83;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage58;
+        private DevExpress.XtraEditors.MemoEdit memoEdit35;
+        private DevExpress.XtraEditors.PanelControl panelControl47;
+        private DevExpress.XtraEditors.PanelControl panelControl48;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage59;
+        private DevExpress.XtraEditors.MemoEdit memoEdit36;
+        private DevExpress.XtraEditors.MemoEdit memoEdit37;
+        private DevExpress.XtraEditors.PanelControl panelControl49;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage60;
+        private DevExpress.XtraEditors.MemoEdit memoEdit38;
+        private DevExpress.XtraEditors.PanelControl panelControl50;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage61;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl18;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage62;
+        private DevExpress.XtraEditors.MemoEdit memoEdit39;
+        private DevExpress.XtraEditors.PanelControl panelControl51;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage63;
+        private DevExpress.XtraEditors.MemoEdit memoEdit40;
+        private DevExpress.XtraEditors.PanelControl panelControl52;
+        private DevExpress.XtraEditors.PanelControl panelControl53;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage64;
+        private DevExpress.XtraEditors.MemoEdit memoEdit41;
+        private DevExpress.XtraEditors.PanelControl panelControl54;
+        private DevExpress.XtraEditors.TextEdit textEdit84;
+        private DevExpress.XtraEditors.LabelControl labelControl41;
+        private DevExpress.XtraEditors.TextEdit textEdit85;
+        private DevExpress.XtraEditors.TextEdit textEdit86;
+        private DevExpress.XtraEditors.LabelControl labelControl42;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage65;
+        private DevExpress.XtraEditors.MemoEdit memoEdit42;
+        private DevExpress.XtraEditors.PanelControl panelControl55;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage66;
+        private DevExpress.XtraEditors.MemoEdit memoEdit43;
+        private DevExpress.XtraEditors.PanelControl panelControl56;
+        private DevExpress.XtraEditors.PanelControl panelControl44;
+        private DevExpress.XtraEditors.RadioGroup radioGroup23;
+        private DevExpress.XtraEditors.TextEdit textEdit65;
+        private DevExpress.XtraEditors.LabelControl labelControl29;
+        private DevExpress.XtraEditors.RadioGroup radioGroup24;
+        private DevExpress.XtraEditors.TextEdit textEdit66;
+        private DevExpress.XtraEditors.LabelControl labelControl30;
+        private DevExpress.XtraEditors.TextEdit textEdit67;
+        private DevExpress.XtraEditors.LabelControl labelControl31;
+        private DevExpress.XtraEditors.TextEdit textEdit68;
+        private DevExpress.XtraEditors.TextEdit textEdit69;
+        private DevExpress.XtraEditors.TextEdit textEdit70;
+        private DevExpress.XtraEditors.LabelControl labelControl32;
+        private DevExpress.XtraEditors.TextEdit textEdit71;
+        private DevExpress.XtraEditors.LabelControl labelControl33;
+        private DevExpress.XtraEditors.TextEdit textEdit72;
+        private DevExpress.XtraEditors.TextEdit textEdit73;
+        private DevExpress.XtraEditors.LabelControl labelControl34;
+        private DevExpress.XtraEditors.CheckEdit checkEdit6;
+        private DevExpress.XtraEditors.RadioGroup radioGroup25;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage55;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl19;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage67;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl20;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage68;
+        private DevExpress.XtraEditors.MemoEdit memoEdit44;
+        private DevExpress.XtraEditors.PanelControl panelControl57;
+        private DevExpress.XtraEditors.TextEdit textEdit87;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage69;
+        private DevExpress.XtraEditors.MemoEdit memoEdit45;
+        private DevExpress.XtraEditors.PanelControl panelControl58;
+        private DevExpress.XtraEditors.PanelControl panelControl59;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage70;
+        private DevExpress.XtraEditors.MemoEdit memoEdit46;
+        private DevExpress.XtraEditors.MemoEdit memoEdit47;
+        private DevExpress.XtraEditors.PanelControl panelControl60;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage71;
+        private DevExpress.XtraEditors.MemoEdit memoEdit48;
+        private DevExpress.XtraEditors.PanelControl panelControl61;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage72;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl21;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage73;
+        private DevExpress.XtraEditors.MemoEdit memoEdit49;
+        private DevExpress.XtraEditors.PanelControl panelControl62;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage74;
+        private DevExpress.XtraEditors.MemoEdit memoEdit50;
+        private DevExpress.XtraEditors.PanelControl panelControl63;
+        private DevExpress.XtraEditors.PanelControl panelControl64;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage75;
+        private DevExpress.XtraEditors.MemoEdit memoEdit51;
+        private DevExpress.XtraEditors.PanelControl panelControl65;
+        private DevExpress.XtraEditors.TextEdit textEdit88;
+        private DevExpress.XtraEditors.LabelControl labelControl43;
+        private DevExpress.XtraEditors.TextEdit textEdit89;
+        private DevExpress.XtraEditors.TextEdit textEdit90;
+        private DevExpress.XtraEditors.LabelControl labelControl44;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage76;
+        private DevExpress.XtraEditors.MemoEdit memoEdit52;
+        private DevExpress.XtraEditors.PanelControl panelControl66;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage77;
+        private DevExpress.XtraEditors.MemoEdit memoEdit53;
+        private DevExpress.XtraEditors.PanelControl panelControl67;
+        private DevExpress.XtraEditors.PanelControl panelControl45;
+        private DevExpress.XtraEditors.RadioGroup radioGroup26;
+        private DevExpress.XtraEditors.TextEdit textEdit74;
+        private DevExpress.XtraEditors.LabelControl labelControl35;
+        private DevExpress.XtraEditors.RadioGroup radioGroup27;
+        private DevExpress.XtraEditors.TextEdit textEdit75;
+        private DevExpress.XtraEditors.LabelControl labelControl36;
+        private DevExpress.XtraEditors.TextEdit textEdit76;
+        private DevExpress.XtraEditors.LabelControl labelControl37;
+        private DevExpress.XtraEditors.TextEdit textEdit77;
+        private DevExpress.XtraEditors.TextEdit textEdit78;
+        private DevExpress.XtraEditors.TextEdit textEdit79;
+        private DevExpress.XtraEditors.LabelControl labelControl38;
+        private DevExpress.XtraEditors.TextEdit textEdit80;
+        private DevExpress.XtraEditors.LabelControl labelControl39;
+        private DevExpress.XtraEditors.TextEdit textEdit81;
+        private DevExpress.XtraEditors.TextEdit textEdit82;
+        private DevExpress.XtraEditors.LabelControl labelControl40;
+        private DevExpress.XtraEditors.CheckEdit checkEdit7;
+        private DevExpress.XtraEditors.RadioGroup radioGroup28;
     }
 }

@@ -312,20 +312,7 @@ namespace MDIDemo.PublicClass
                     }
                     int Counter = 1;
                     Class_Sub class_Mains = new Class_Sub();
-                    switch (PageSelectIndex)
-                    {
-                        case 0:
-                            class_Mains = mySelect.class_Main as Class_Sub;
-                            break;
-                        case 1:
-                            class_Mains = mySelect.class_Subs;
-                            break;
-                        case 2:
-                            class_Mains = mySelect.class_SubSubs;
-                            break;
-                        default:
-                            break;
-                    }
+                    class_Mains = mySelect.class_SubList[PageSelectIndex];
                     foreach (DataRow row in dataTable.Rows)
                     {
                         string myFieldName = row["FieldName"].ToString();
@@ -337,7 +324,7 @@ namespace MDIDemo.PublicClass
                             {
                                 case "select":
                                     {
-                                        if (mySelect.class_Main.class_Fields.Count > 0)
+                                        if (mySelect.class_SubList[PageSelectIndex].class_Fields.Count > 0)
                                         {
                                             int FindIndex = class_Mains.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
                                             if (FindIndex > -1)

@@ -1117,7 +1117,10 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public string GetMainMap()
         {
-            return _GetMainMap(class_SelectAllModel.class_Main);
+            if (class_SelectAllModel.class_SubList.Count > 0)
+                return _GetMainMap(class_SelectAllModel.class_SubList[0]);
+            else
+                return null;
         }
         /// <summary>
         /// 得到MapXml
@@ -1125,23 +1128,23 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public string GetMainMapLable()
         {
-            return _GetMainMapLable(class_SelectAllModel.class_Main);
+            return _GetMainMapLable(class_SelectAllModel.class_SubList[0]);
         }
         public string GetMainServiceInterFace()
         {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_Main);
+            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[0]);
         }
         public string GetMainServiceImpl()
         {
-            return _GetMainServiceImpl(class_SelectAllModel.class_Main);
+            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[0]);
         }
         public string GetMainModel()
         {
-            return _GetMainModel(class_SelectAllModel.class_Main);
+            return _GetMainModel(class_SelectAllModel.class_SubList[0]);
         }
         public string GetMainDTO()
         {
-            return _GetMainDTO(class_SelectAllModel.class_Main);
+            return _GetMainDTO(class_SelectAllModel.class_SubList[0]);
         }
         private string _GetMainDTO(Class_Main class_Main)
         {
@@ -1176,17 +1179,26 @@ namespace MDIDemo.PublicClass
             List<List<Class_Field>> class_Fields = new List<List<Class_Field>>();
             if (!class_Main.ExtendsSign)
             {
-                List<Class_Field> Main = new List<Class_Field>();
-                Main = class_SelectAllModel.class_Main.class_Fields;
-                class_Fields.Add(Main);
+                if (class_SelectAllModel.class_SubList.Count > 0)
+                {
+                    List<Class_Field> Main = new List<Class_Field>();
+                    Main = class_SelectAllModel.class_SubList[0].class_Fields;
+                    class_Fields.Add(Main);
+                    if (class_SelectAllModel.class_SubList.Count > 1)
+                    {
+                        List<Class_Field> Sub1 = new List<Class_Field>();
+                        Sub1 = class_SelectAllModel.class_SubList[1].class_Fields;
+                        class_Fields.Add(Sub1);
+                        if (class_SelectAllModel.class_SubList.Count > 2)
+                        {
+                            List<Class_Field> Sub2 = new List<Class_Field>();
+                            Sub2 = class_SelectAllModel.class_SubList[2].class_Fields;
+                            class_Fields.Add(Sub2);
+                        }
+                    }
+                }
             }
 
-            List<Class_Field> Sub1 = new List<Class_Field>();
-            Sub1 = class_SelectAllModel.class_Subs.class_Fields;
-            List<Class_Field> Sub2 = new List<Class_Field>();
-            Sub2 = class_SelectAllModel.class_SubSubs.class_Fields;
-            class_Fields.Add(Sub1);
-            class_Fields.Add(Sub2);
             foreach (List<Class_Field> row in class_Fields)
             {
                 foreach (Class_Field sub in row)
@@ -1211,18 +1223,16 @@ namespace MDIDemo.PublicClass
                 }
             }
             stringBuilder.Append("}\r\n");
-            Sub1.Clear();
-            Sub1.Clear();
             class_Fields.Clear();
             return stringBuilder.ToString();
         }
         public string GetMainDAO()
         {
-            return _GetMainDAO(class_SelectAllModel.class_Main);
+            return _GetMainDAO(class_SelectAllModel.class_SubList[0]);
         }
         public string GetMainControl()
         {
-            return _GetMainControl(class_SelectAllModel.class_Main);
+            return _GetMainControl(class_SelectAllModel.class_SubList[0]);
         }
         public string GetMainTestUnit()
         {
@@ -1233,23 +1243,26 @@ namespace MDIDemo.PublicClass
         #region 从表一
         public string GetSubOneMap()
         {
-            return _GetMainMap(class_SelectAllModel.class_Subs);
+            if (class_SelectAllModel.class_SubList.Count > 1)
+                return _GetMainMap(class_SelectAllModel.class_SubList[1]);
+            else
+                return null;
         }
         public string GetSubOneMapLable()
         {
-            return _GetMainMapLable(class_SelectAllModel.class_Subs);
+            return _GetMainMapLable(class_SelectAllModel.class_SubList[1]);
         }
         public string GetSubOneServiceInterFace()
         {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_Subs);
+            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[1]);
         }
         public string GetSubOneServiceImpl()
         {
-            return _GetMainServiceImpl(class_SelectAllModel.class_Subs);
+            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[1]);
         }
         public string GetSubOneModel()
         {
-            return _GetMainModel(class_SelectAllModel.class_Subs);
+            return _GetMainModel(class_SelectAllModel.class_SubList[1]);
         }
         public string GetSubOneDTO()
         {
@@ -1257,11 +1270,11 @@ namespace MDIDemo.PublicClass
         }
         public string GetSubOneDAO()
         {
-            return _GetMainDAO(class_SelectAllModel.class_Subs);
+            return _GetMainDAO(class_SelectAllModel.class_SubList[1]);
         }
         public string GetSubOneControl()
         {
-            return _GetMainControl(class_SelectAllModel.class_Subs);
+            return _GetMainControl(class_SelectAllModel.class_SubList[1]);
         }
         public string GetSubOneTestUnit()
         {
@@ -1272,23 +1285,26 @@ namespace MDIDemo.PublicClass
         #region 从表二
         public string GetSubTwoMap()
         {
-            return _GetMainMap(class_SelectAllModel.class_SubSubs);
+            if (class_SelectAllModel.class_SubList.Count > 2)
+                return _GetMainMap(class_SelectAllModel.class_SubList[2]);
+            else
+                return null;
         }
         public string GetSubTwoMapLable()
         {
-            return _GetMainMapLable(class_SelectAllModel.class_SubSubs);
+            return _GetMainMapLable(class_SelectAllModel.class_SubList[2]);
         }
         public string GetSubTwoServiceInterFace()
         {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_SubSubs);
+            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[2]);
         }
         public string GetSubTwoServiceImpl()
         {
-            return _GetMainServiceImpl(class_SelectAllModel.class_SubSubs);
+            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[2]);
         }
         public string GetSubTwoModel()
         {
-            return _GetMainModel(class_SelectAllModel.class_SubSubs);
+            return _GetMainModel(class_SelectAllModel.class_SubList[2]);
         }
         public string GetSubTwoDTO()
         {
@@ -1296,11 +1312,11 @@ namespace MDIDemo.PublicClass
         }
         public string GetSubTwoDAO()
         {
-            return _GetMainDAO(class_SelectAllModel.class_SubSubs);
+            return _GetMainDAO(class_SelectAllModel.class_SubList[2]);
         }
         public string GetSubTwoControl()
         {
-            return _GetMainControl(class_SelectAllModel.class_SubSubs);
+            return _GetMainControl(class_SelectAllModel.class_SubList[2]);
         }
         public string GetSubTwoTestUnit()
         {
@@ -1309,7 +1325,7 @@ namespace MDIDemo.PublicClass
 
         public string GetMainFeignControl()
         {
-            return _GetMainFeignControl(class_SelectAllModel.class_Main);
+            return _GetMainFeignControl(class_SelectAllModel.class_SubList[0]);
         }
         private string _GetMainFeignControl(Class_Main class_Main)
         {
