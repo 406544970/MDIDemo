@@ -218,7 +218,7 @@ namespace MDIDemo.vou
                     for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
                     {
                         if (class_SelectAllModel.class_SubList[i] != null)
-                            this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, 0);
+                            this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, i);
                     }
                 }
             }
@@ -840,10 +840,11 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl1.MainView
                     , null, 0, -1, this.textEdit1.Text
                     , this.MainKeyFieldName, false, this.textEdit10.Text);
-                if (class_SelectAllModel.class_SubList.Count > index++ + 1)
+                if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
                     class_SelectAllModel.class_SubList.Add(class_Sub);
+                index++;
             }
             if (this.gridControl2.MainView.RowCount > 0)
             {
@@ -851,10 +852,11 @@ namespace MDIDemo.vou
                     , buttonEdit2.Text, this.radioGroup1.SelectedIndex, this.radioGroup3.SelectedIndex, this.textEdit6.Text
                     , null, false, this.textEdit11.Text);
                 OkSign = true;
-                if (class_SelectAllModel.class_SubList.Count > index++ + 1)
+                if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
                     class_SelectAllModel.class_SubList.Add(class_Sub);
+                index++;
             }
 
             if (this.gridControl3.MainView.RowCount > 0)
@@ -863,10 +865,11 @@ namespace MDIDemo.vou
                     , buttonEdit3.Text, this.radioGroup2.SelectedIndex, this.radioGroup4.SelectedIndex, this.textEdit9.Text
                     , null, false, this.textEdit12.Text);
                 OkSign = true;
-                if (class_SelectAllModel.class_SubList.Count > index++ + 1)
+                if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
                     class_SelectAllModel.class_SubList.Add(class_Sub);
+                index++;
             }
             class_SelectAllModel.AllPackerName = this.textEdit13.Text;
             class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
@@ -1177,19 +1180,30 @@ namespace MDIDemo.vou
         }
         private void ClearDate(int PageIndex)
         {
+            int PageMaxIndex = class_SelectAllModel.class_SubList.Count;
             switch (PageIndex)
             {
                 case 0:
                     this.gridControl1.DataSource = null;
+                    this.gridControl2.DataSource = null;
+                    this.gridControl3.DataSource = null;
+                    this.gridControl4.DataSource = null;
+                    this.gridControl5.DataSource = null;
                     break;
                 case 1:
                     this.gridControl2.DataSource = null;
+                    this.gridControl3.DataSource = null;
+                    this.gridControl4.DataSource = null;
+                    this.gridControl5.DataSource = null;
                     break;
                 case 2:
                     this.gridControl3.DataSource = null;
+                    this.gridControl4.DataSource = null;
+                    this.gridControl5.DataSource = null;
                     break;
                 case 3:
                     this.gridControl4.DataSource = null;
+                    this.gridControl5.DataSource = null;
                     break;
                 case 4:
                     this.gridControl5.DataSource = null;
@@ -1199,8 +1213,12 @@ namespace MDIDemo.vou
             }
             this.xtraTabControl5.TabPages[PageIndex].Text = "表";
             this.xtraTabControl8.TabPages[PageIndex].Text = "表";
-            if (class_SelectAllModel.class_SubList.Count > PageIndex)
-                class_SelectAllModel.class_SubList[PageIndex] = new Class_SelectAllModel.Class_Sub();
+            for (int i = PageMaxIndex - 1; i > PageIndex - 1; i--)
+            {
+                class_SelectAllModel.class_SubList.RemoveAt(i);
+            }
+            //if (class_SelectAllModel.class_SubList.Count > PageIndex)
+            //    class_SelectAllModel.class_SubList[PageIndex] = new Class_SelectAllModel.Class_Sub();
         }
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
