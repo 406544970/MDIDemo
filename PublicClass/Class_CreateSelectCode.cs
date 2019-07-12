@@ -21,7 +21,13 @@ namespace MDIDemo.PublicClass
                 class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
             }
         }
-        private List<Class_EnglishField> _GetEnglishFieldList(Class_Main class_Main)
+        public bool IsCheckOk()
+        {
+            return true;
+        }
+
+        #region 私有
+        private List<Class_EnglishField> _GetEnglishFieldList(Class_Sub class_Main)
         {
             List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
             if (class_SelectAllModel.class_Create.EnglishSign)
@@ -43,7 +49,7 @@ namespace MDIDemo.PublicClass
             return class_EnglishFields;
         }
         private Class_SelectAllModel class_SelectAllModel;
-        private string _GetMainControl(Class_Main class_Main)
+        private string _GetMainControl(Class_Sub class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -361,7 +367,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
-        private string _GetSelectType(Class_Main class_Main)
+        private string _GetSelectType(Class_Sub class_Main)
         {
             string ResultValue = null;
             int Index = 0;
@@ -382,7 +388,7 @@ namespace MDIDemo.PublicClass
                 ResultValue = "mult";
             return ResultValue;
         }
-        private List<Class_WhereField> _GetParameterType(Class_Main class_Main)
+        private List<Class_WhereField> _GetParameterType(Class_Sub class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             foreach (Class_Field row in class_Main.class_Fields)
@@ -402,7 +408,7 @@ namespace MDIDemo.PublicClass
             }
             return class_WhereFields;
         }
-        private string _GetServiceReturnType(Class_Main class_Main, bool HavePackageName = true)
+        private string _GetServiceReturnType(Class_Sub class_Main, bool HavePackageName = true)
         {
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
@@ -433,7 +439,7 @@ namespace MDIDemo.PublicClass
                 , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(ResultType)));
             return stringBuilder.ToString();
         }
-        private string _GetMainWhereLable(Class_Main class_Main)
+        private string _GetMainWhereLable(Class_Sub class_Main)
         {
             bool HaveGroup = false;
             bool HaveHaving = false;
@@ -625,7 +631,7 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        private string _GetMainServiceImpl(Class_Main class_Main)
+        private string _GetMainServiceImpl(Class_Sub class_Main)
         {
             string MapAfterString = "Mapper";
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
@@ -736,7 +742,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
-        private string _GetMainDAO(Class_Main class_Main)
+        private string _GetMainDAO(Class_Sub class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -816,7 +822,7 @@ namespace MDIDemo.PublicClass
 
             return stringBuilder.ToString();
         }
-        private string _GetMainMap(Class_Main class_Main)
+        private string _GetMainMap(Class_Sub class_Main)
         {
             if (class_Main.ResultType == 0)
             {
@@ -882,7 +888,7 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        private string _GetMainMapLable(Class_Main class_Main)
+        private string _GetMainMapLable(Class_Sub class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -976,7 +982,7 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        private string _GetMainModel(Class_Main class_Main)
+        private string _GetMainModel(Class_Sub class_Main)
         {
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
@@ -1026,7 +1032,7 @@ namespace MDIDemo.PublicClass
 
             return stringBuilder.ToString();
         }
-        private string _GetMainServiceInterFace(Class_Main class_Main)
+        private string _GetMainServiceInterFace(Class_Sub class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -1104,49 +1110,94 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
-
-        public bool IsCheckOk()
+        private string _GetMainFeignControl(Class_Sub class_Main)
         {
-            return true;
-        }
+            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.Append("/**\r\n");
+            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
+            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+            stringBuilder.Append(" */\r\n");
+            stringBuilder.Append("@RestController\r\n");
+            stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n", class_SelectAllModel.class_Create.MicroServiceName);
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+                stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
+                    , class_Main.ControlSwaggerValue
+                    , class_Main.ControlSwaggerDescription);
+            stringBuilder.Append(string.Format("public class {0}Controller ", class_Main.NameSpace) + "{\r\n");
 
-        #region 主表
-        /// <summary>
-        /// 得到Map
-        /// </summary>
-        /// <returns></returns>
-        public string GetMainMap()
-        {
-            if (class_SelectAllModel.class_SubList.Count > 0)
-                return _GetMainMap(class_SelectAllModel.class_SubList[0]);
+            stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Main.NameSpace
+                , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
+
+            stringBuilder.Append("\r\n");
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_Main.MethodContent);
+            class_WhereFields = _GetParameterType(class_Main);
+            if (class_WhereFields != null)
+            {
+                foreach (Class_WhereField row in class_WhereFields)
+                {
+                    if (class_WhereFields.Count > 0)
+                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1)
+                    , Class_Tool.GetFirstCodeLow(row.FieldName)
+                    , row.FieldRemark);
+                }
+            }
+
+            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            , class_Main.ServiceInterFaceReturnRemark);
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            #region Swagger
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+            {
+                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Main.MethodContent
+                , class_Main.ServiceInterFaceReturnRemark);
+            }
+            #endregion
+            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}Dto\")\r\n"
+            , class_ToolSpace.GetSetSpaceCount(1)
+            , class_SelectAllModel.class_Create.HttpRequestType
+            , class_Main.MethodId);
+            stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
+
+            if (class_Main.ServiceInterFaceReturnCount == 0)
+                stringBuilder.AppendFormat("{0}", class_Main.DtoClassName);
             else
-                return null;
+                stringBuilder.AppendFormat("List<{0}>", class_Main.DtoClassName);
+            stringBuilder.AppendFormat(" {0}Dto", class_Main.MethodId);
+            stringBuilder.Append("(@RequestBody CommonQuery commonQuery) {\r\n");
+            //1、载入所有关联字段信息
+            //2、载入所有从表类名信息
+
+            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
+            stringBuilder.Append("\r\n");
+
+            stringBuilder.Append("}\r\n");
+            return stringBuilder.ToString();
         }
-        /// <summary>
-        /// 得到MapXml
-        /// </summary>
-        /// <returns></returns>
-        public string GetMainMapLable()
-        {
-            return _GetMainMapLable(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainServiceInterFace()
-        {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainServiceImpl()
-        {
-            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainModel()
-        {
-            return _GetMainModel(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainDTO()
-        {
-            return _GetMainDTO(class_SelectAllModel.class_SubList[0]);
-        }
-        private string _GetMainDTO(Class_Main class_Main)
+        private string _GetMainDTO(Class_Sub class_Main)
         {
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
@@ -1225,6 +1276,44 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
             class_Fields.Clear();
             return stringBuilder.ToString();
+        }
+        #endregion
+
+        #region 主表
+        /// <summary>
+        /// 得到Map
+        /// </summary>
+        /// <returns></returns>
+        public string GetMainMap()
+        { 
+            if (class_SelectAllModel.class_SubList.Count > 0)
+                return _GetMainMap(class_SelectAllModel.class_SubList[0]);
+            else
+                return null;
+        }
+        /// <summary>
+        /// 得到MapXml
+        /// </summary>
+        /// <returns></returns>
+        public string GetMainMapLable()
+        {
+            return _GetMainMapLable(class_SelectAllModel.class_SubList[0]);
+        }
+        public string GetMainServiceInterFace()
+        {
+            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[0]);
+        }
+        public string GetMainServiceImpl()
+        {
+            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[0]);
+        }
+        public string GetMainModel()
+        {
+            return _GetMainModel(class_SelectAllModel.class_SubList[0]);
+        }
+        public string GetMainDTO()
+        {
+            return _GetMainDTO(class_SelectAllModel.class_SubList[0]);
         }
         public string GetMainDAO()
         {
@@ -1322,97 +1411,56 @@ namespace MDIDemo.PublicClass
         {
             return null;
         }
-
         public string GetMainFeignControl()
         {
             return _GetMainFeignControl(class_SelectAllModel.class_SubList[0]);
         }
-        private string _GetMainFeignControl(Class_Main class_Main)
+        #endregion
+
+        #region New
+        public string GetMap(int Index)
         {
-            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
-            Class_Tool class_ToolSpace = new Class_Tool();
-            StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
-            stringBuilder.Append("/**\r\n");
-            stringBuilder.AppendFormat(" * @author {0}\r\n", Class_UseInfo.UserName);
-            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
-            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
-            stringBuilder.Append(" */\r\n");
-            stringBuilder.Append("@RestController\r\n");
-            stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n", class_SelectAllModel.class_Create.MicroServiceName);
-            if (class_SelectAllModel.class_Create.SwaggerSign)
-                stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
-                    , class_Main.ControlSwaggerValue
-                    , class_Main.ControlSwaggerDescription);
-            stringBuilder.Append(string.Format("public class {0}Controller ", class_Main.NameSpace) + "{\r\n");
-
-            stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
-                , class_ToolSpace.GetSetSpaceCount(1)
-                , class_Main.NameSpace
-                , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
-
-            stringBuilder.Append("\r\n");
-            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
-                , class_Main.MethodContent);
-            class_WhereFields = _GetParameterType(class_Main);
-            if (class_WhereFields != null)
-            {
-                foreach (Class_WhereField row in class_WhereFields)
-                {
-                    if (class_WhereFields.Count > 0)
-                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeLow(row.FieldName)
-                    , row.FieldRemark);
-                }
-            }
-
-            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
-            , class_Main.ServiceInterFaceReturnRemark);
-            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            #region Swagger
-            if (class_SelectAllModel.class_Create.SwaggerSign)
-            {
-                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
-                , class_ToolSpace.GetSetSpaceCount(1)
-                , class_Main.MethodContent
-                , class_Main.ServiceInterFaceReturnRemark);
-            }
-            #endregion
-            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}Dto\")\r\n"
-            , class_ToolSpace.GetSetSpaceCount(1)
-            , class_SelectAllModel.class_Create.HttpRequestType
-            , class_Main.MethodId);
-            stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
-
-            if (class_Main.ServiceInterFaceReturnCount == 0)
-                stringBuilder.AppendFormat("{0}", class_Main.DtoClassName);
+            if (class_SelectAllModel.class_SubList.Count > Index)
+                return _GetMainMap(class_SelectAllModel.class_SubList[Index]);
             else
-                stringBuilder.AppendFormat("List<{0}>", class_Main.DtoClassName);
-            stringBuilder.AppendFormat(" {0}Dto", class_Main.MethodId);
-            stringBuilder.Append("(@RequestBody CommonQuery commonQuery) {\r\n");
-            //1、载入所有关联字段信息
-            //2、载入所有从表类名信息
+                return null;
 
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
-            stringBuilder.Append("\r\n");
-
-            stringBuilder.Append("}\r\n");
-            return stringBuilder.ToString();
+        }
+        public string GetMapLable(int Index)
+        {
+            return _GetMainMapLable(class_SelectAllModel.class_SubList[Index]);
+        }
+        public string GetServiceInterFace(int Index)
+        {
+            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[Index]);
+        }
+        public string GetServiceImpl(int Index)
+        {
+            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[Index]);
+        }
+        public string GetModel(int Index)
+        {
+            return _GetMainModel(class_SelectAllModel.class_SubList[Index]);
+        }
+        public string GetDTO(int Index)
+        {
+            return _GetMainDTO(class_SelectAllModel.class_SubList[Index]);
+        }
+        public string GetDAO(int Index)
+        {
+            return _GetMainDAO(class_SelectAllModel.class_SubList[Index]);
+        }
+        public string GetControl(int Index)
+        {
+            return _GetMainControl(class_SelectAllModel.class_SubList[Index]);
+        }
+        public string GetFeignControl(int Index)
+        {
+            throw new NotImplementedException();
+        }
+        public string GetTestUnit(int Index)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
