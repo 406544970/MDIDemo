@@ -1290,72 +1290,75 @@ namespace MDIDemo.vou
             //4：验证合法性
             if (class_InterFaceCreateCode.IsCheckOk())
             {
+                int PageIndex = 0;
                 //5：生成代码
                 #region 主表
-                if (class_SelectAllModel.class_SubList.Count > 0)
+                if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
                     // MAP
-                    this.memoEdit3.Text = class_InterFaceCreateCode.GetMainMap();
+                    this.memoEdit3.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit4.Text = class_InterFaceCreateCode.GetMainMapLable();
+                    this.memoEdit4.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
                     // ServiceInterFace
-                    this.memoEdit5.Text = class_InterFaceCreateCode.GetMainServiceInterFace();
+                    this.memoEdit5.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl
-                    this.memoEdit6.Text = class_InterFaceCreateCode.GetMainServiceImpl();
+                    this.memoEdit6.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
-                    this.memoEdit8.Text = class_InterFaceCreateCode.GetMainModel();
+                    this.memoEdit8.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    this.memoEdit9.Text = class_InterFaceCreateCode.GetMainDTO();
+                    this.memoEdit9.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
                     // DAO
-                    this.memoEdit10.Text = class_InterFaceCreateCode.GetMainDAO();
+                    this.memoEdit10.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    this.memoEdit11.Text = class_InterFaceCreateCode.GetMainControl();
+                    this.memoEdit11.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                     // FeignControl
-                    this.memoEdit31.Text = class_InterFaceCreateCode.GetMainFeignControl();
+                    this.memoEdit31.Text = class_InterFaceCreateCode.GetFeignControl(PageIndex);
                 }
                 #endregion
 
-                #region 表一
-                if (class_SelectAllModel.class_SubList.Count > 1)
+                #region 从表1
+                PageIndex++;
+                if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
                     //MAP
-                    this.memoEdit13.Text = class_InterFaceCreateCode.GetSubOneMap();
+                    this.memoEdit13.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit14.Text = class_InterFaceCreateCode.GetSubOneMapLable();
+                    this.memoEdit14.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
                     // ServiceInterFace
-                    this.memoEdit15.Text = class_InterFaceCreateCode.GetSubOneServiceInterFace();
+                    this.memoEdit15.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl
-                    this.memoEdit16.Text = class_InterFaceCreateCode.GetSubOneServiceImpl();
+                    this.memoEdit16.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
-                    this.memoEdit17.Text = class_InterFaceCreateCode.GetSubOneModel();
+                    this.memoEdit17.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    //this.memoEdit19.Text = class_InterFaceCreateCode.GetMainDTO();
+                    //this.memoEdit19.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
                     // DAO
-                    this.memoEdit20.Text = class_InterFaceCreateCode.GetSubOneDAO();
+                    this.memoEdit20.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    this.memoEdit21.Text = class_InterFaceCreateCode.GetSubOneControl();
+                    this.memoEdit21.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
-                #region 表二
-                if (class_SelectAllModel.class_SubList.Count > 2)
+                #region 从表2
+                PageIndex++;
+                if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
                     //MAP
-                    this.memoEdit22.Text = class_InterFaceCreateCode.GetSubTwoMap();
+                    this.memoEdit22.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit23.Text = class_InterFaceCreateCode.GetSubTwoMapLable();
+                    this.memoEdit23.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
                     // ServiceInterFace
-                    this.memoEdit24.Text = class_InterFaceCreateCode.GetSubTwoServiceInterFace();
+                    this.memoEdit24.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl
-                    this.memoEdit25.Text = class_InterFaceCreateCode.GetSubTwoServiceImpl();
+                    this.memoEdit25.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
-                    this.memoEdit26.Text = class_InterFaceCreateCode.GetSubTwoModel();
+                    this.memoEdit26.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    //this.memoEdit28.Text = class_InterFaceCreateCode.GetMainDTO();
+                    //this.memoEdit28.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
                     // DAO
-                    this.memoEdit29.Text = class_InterFaceCreateCode.GetSubTwoDAO();
+                    this.memoEdit29.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    this.memoEdit30.Text = class_InterFaceCreateCode.GetSubTwoControl();
+                    this.memoEdit30.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 

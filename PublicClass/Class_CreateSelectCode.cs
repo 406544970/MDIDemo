@@ -1279,145 +1279,8 @@ namespace MDIDemo.PublicClass
         }
         #endregion
 
-        #region 主表
-        /// <summary>
-        /// 得到Map
-        /// </summary>
-        /// <returns></returns>
-        public string GetMainMap()
-        { 
-            if (class_SelectAllModel.class_SubList.Count > 0)
-                return _GetMainMap(class_SelectAllModel.class_SubList[0]);
-            else
-                return null;
-        }
-        /// <summary>
-        /// 得到MapXml
-        /// </summary>
-        /// <returns></returns>
-        public string GetMainMapLable()
-        {
-            return _GetMainMapLable(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainServiceInterFace()
-        {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainServiceImpl()
-        {
-            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainModel()
-        {
-            return _GetMainModel(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainDTO()
-        {
-            return _GetMainDTO(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainDAO()
-        {
-            return _GetMainDAO(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainControl()
-        {
-            return _GetMainControl(class_SelectAllModel.class_SubList[0]);
-        }
-        public string GetMainTestUnit()
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
 
-        #region 从表一
-        public string GetSubOneMap()
-        {
-            if (class_SelectAllModel.class_SubList.Count > 1)
-                return _GetMainMap(class_SelectAllModel.class_SubList[1]);
-            else
-                return null;
-        }
-        public string GetSubOneMapLable()
-        {
-            return _GetMainMapLable(class_SelectAllModel.class_SubList[1]);
-        }
-        public string GetSubOneServiceInterFace()
-        {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[1]);
-        }
-        public string GetSubOneServiceImpl()
-        {
-            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[1]);
-        }
-        public string GetSubOneModel()
-        {
-            return _GetMainModel(class_SelectAllModel.class_SubList[1]);
-        }
-        public string GetSubOneDTO()
-        {
-            return null;
-        }
-        public string GetSubOneDAO()
-        {
-            return _GetMainDAO(class_SelectAllModel.class_SubList[1]);
-        }
-        public string GetSubOneControl()
-        {
-            return _GetMainControl(class_SelectAllModel.class_SubList[1]);
-        }
-        public string GetSubOneTestUnit()
-        {
-            return null;
-        }
-        #endregion
-
-        #region 从表二
-        public string GetSubTwoMap()
-        {
-            if (class_SelectAllModel.class_SubList.Count > 2)
-                return _GetMainMap(class_SelectAllModel.class_SubList[2]);
-            else
-                return null;
-        }
-        public string GetSubTwoMapLable()
-        {
-            return _GetMainMapLable(class_SelectAllModel.class_SubList[2]);
-        }
-        public string GetSubTwoServiceInterFace()
-        {
-            return _GetMainServiceInterFace(class_SelectAllModel.class_SubList[2]);
-        }
-        public string GetSubTwoServiceImpl()
-        {
-            return _GetMainServiceImpl(class_SelectAllModel.class_SubList[2]);
-        }
-        public string GetSubTwoModel()
-        {
-            return _GetMainModel(class_SelectAllModel.class_SubList[2]);
-        }
-        public string GetSubTwoDTO()
-        {
-            return null;
-        }
-        public string GetSubTwoDAO()
-        {
-            return _GetMainDAO(class_SelectAllModel.class_SubList[2]);
-        }
-        public string GetSubTwoControl()
-        {
-            return _GetMainControl(class_SelectAllModel.class_SubList[2]);
-        }
-        public string GetSubTwoTestUnit()
-        {
-            return null;
-        }
-        public string GetMainFeignControl()
-        {
-            return _GetMainFeignControl(class_SelectAllModel.class_SubList[0]);
-        }
-        #endregion
-
-        #region New
+        #region
         public string GetMap(int Index)
         {
             if (class_SelectAllModel.class_SubList.Count > Index)
@@ -1456,7 +1319,7 @@ namespace MDIDemo.PublicClass
         }
         public string GetFeignControl(int Index)
         {
-            throw new NotImplementedException();
+            return _GetMainFeignControl(class_SelectAllModel.class_SubList[Index]);
         }
         public string GetTestUnit(int Index)
         {
