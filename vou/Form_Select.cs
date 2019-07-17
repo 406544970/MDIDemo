@@ -417,6 +417,9 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit10, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit11, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit12, Color.Yellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit61, Color.Yellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit57, Color.Yellow);
+
             class_SetTextEdit.SetTextEdit(this.textEdit14, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit15, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit16, Color.SkyBlue);
@@ -458,6 +461,12 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit7, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit8, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit9, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit60, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit58, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit59, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit62, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit63, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit64, true, Color.GreenYellow);
             #endregion
 
             this.xtraTabControl8.Images = this.xtraTabControl5.Images;
@@ -536,7 +545,7 @@ namespace MDIDemo.vou
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                             textEdit10.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                         else
-                            textEdit10.Text = "";
+                            textEdit10.Text = "main";
                         AddColumnRepositoryCombox(this.repositoryItemComboBox2);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
@@ -553,7 +562,7 @@ namespace MDIDemo.vou
                             this.radioGroup3.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
-                            textEdit11.Text = "sub";
+                            textEdit11.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
                         //this.buttonEdit2.Text = class_SelectAllModel.class_Subs.OutFieldName;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox15, "");
@@ -571,7 +580,7 @@ namespace MDIDemo.vou
                             this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
-                            textEdit12.Text = "subsub";
+                            textEdit12.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
                         //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
@@ -589,7 +598,7 @@ namespace MDIDemo.vou
                             this.radioGroup18.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
-                            textEdit57.Text = "subsub";
+                            textEdit57.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
                         //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
@@ -607,7 +616,7 @@ namespace MDIDemo.vou
                             this.radioGroup21.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
-                            textEdit61.Text = "subsub";
+                            textEdit61.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
                         //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
@@ -617,45 +626,48 @@ namespace MDIDemo.vou
                 default:
                     break;
             }
-            this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表：{0}", TableName);
-            this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("表：{0}", TableName);
+            if (PageSelectIndex > 0)
+            {
+                this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表{1}：{0}", TableName, PageSelectIndex.ToString());
+                this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("表{1}：{0}", TableName, PageSelectIndex);
+            }
+            else
+            {
+                this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("主表：{0}", TableName);
+                this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("主表：{0}", TableName);
+            }
             //if (PageSelectIndex > -1)
             //    this.xtraTabControl5.SelectedTabPageIndex = PageSelectIndex;
         }
-        //private void ToMain()
-        //{
-        //    ToMain(null);
-        //}
-        //private void ToSub(string TableName)
-        //{
-        //    try
-        //    {
-        //        this.xtraTabControl5.SelectedTabPageIndex = 1;
-        //        //labelControl1.Visible = false;
-        //        if (TableName == null)
-        //        {
-        //            int Index = this.listBoxControl1.SelectedIndex;
-        //            if (Index > -1)
-        //            {
-        //                AddUseTableData(this.listBoxControl1.Text, 1);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            AddUseTableData(TableName, 1);
-        //        }
-        //    }
-        //    catch (Exception error)
-        //    {
-        //        MessageBox.Show(error.Message);
-        //    }
-        //}
+
         private void ToPage(string TableName, int PageIndex)
         {
             try
             {
                 this.xtraTabControl5.SelectedTabPageIndex = PageIndex;
                 //labelControl1.Visible = false;
+                if (TableName == null)
+                {
+                    int Index = this.listBoxControl1.SelectedIndex;
+                    if (Index > -1)
+                    {
+                        AddUseTableData(this.listBoxControl1.Text, PageIndex);
+                    }
+                }
+                else
+                {
+                    AddUseTableData(TableName, PageIndex);
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+        private void ToTableInfoByTableName(string TableName, int PageIndex)
+        {
+            try
+            {
                 if (TableName == null)
                 {
                     int Index = this.listBoxControl1.SelectedIndex;
@@ -1329,17 +1341,17 @@ namespace MDIDemo.vou
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //ToMain();
+            ToTableInfoByTableName(null, 0);
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //ToSub();
+            ToTableInfoByTableName(null, 1);
         }
 
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //ToSubSub();
+            ToTableInfoByTableName(null, 2);
         }
 
         private void bandedGridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -1780,6 +1792,44 @@ namespace MDIDemo.vou
         private void buttonEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             GetLinkField(this.bandedGridView2, sender);
+        }
+
+        private void bandedGridView4_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            int Index = e.FocusedRowHandle;
+            if (Index > -1)
+            {
+                DataRow row = (sender as BandedGridView).GetDataRow(Index);
+                if (row != null)
+                {
+                    this.textEdit59.Text = row["FieldName"].ToString();
+                    this.textEdit58.Text = row["FieldRemark"].ToString();
+                }
+            }
+        }
+
+        private void bandedGridView5_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            int Index = e.FocusedRowHandle;
+            if (Index > -1)
+            {
+                DataRow row = (sender as BandedGridView).GetDataRow(Index);
+                if (row != null)
+                {
+                    this.textEdit63.Text = row["FieldName"].ToString();
+                    this.textEdit62.Text = row["FieldRemark"].ToString();
+                }
+            }
+        }
+
+        private void barButtonItem27_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ToTableInfoByTableName(null, 3);
+        }
+
+        private void barButtonItem28_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ToTableInfoByTableName(null, 4);
         }
     }
 }
