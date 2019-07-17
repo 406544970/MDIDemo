@@ -628,7 +628,7 @@ namespace MDIDemo.vou
             }
             if (PageSelectIndex > 0)
             {
-                this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表{1}：{0}", TableName, PageSelectIndex.ToString());
+                this.xtraTabControl5.TabPages[PageSelectIndex].Text = string.Format("表{1}：{0}", TableName, PageSelectIndex);
                 this.xtraTabControl8.TabPages[PageSelectIndex].Text = string.Format("表{1}：{0}", TableName, PageSelectIndex);
             }
             else
@@ -664,82 +664,6 @@ namespace MDIDemo.vou
                 MessageBox.Show(error.Message);
             }
         }
-        private void ToTableInfoByTableName(string TableName, int PageIndex)
-        {
-            try
-            {
-                if (TableName == null)
-                {
-                    int Index = this.listBoxControl1.SelectedIndex;
-                    if (Index > -1)
-                    {
-                        AddUseTableData(this.listBoxControl1.Text, PageIndex);
-                    }
-                }
-                else
-                {
-                    AddUseTableData(TableName, PageIndex);
-                }
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
-        }
-        //private void ToMain(string TableName)
-        //{
-        //    try
-        //    {
-        //        if (TableName == null)
-        //        {
-        //            int Index = this.listBoxControl1.SelectedIndex;
-        //            if (Index > -1)
-        //            {
-        //                AddUseTableData(this.listBoxControl1.Text, 0);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            AddUseTableData(TableName, 0);
-        //        }
-        //    }
-        //    catch (Exception error)
-        //    {
-        //        MessageBox.Show(error.Message);
-        //    }
-        //}
-        //private void ToSub()
-        //{
-        //    ToSub(null);
-        //}
-        //private void ToSubSub()
-        //{
-        //    ToSubSub(null);
-        //}
-        //private void ToSubSub(string TableName)
-        //{
-        //    try
-        //    {
-        //        this.xtraTabControl5.SelectedTabPageIndex = 2;
-        //        //labelControl1.Visible = false;
-        //        if (TableName == null)
-        //        {
-        //            int Index = this.listBoxControl1.SelectedIndex;
-        //            if (Index > -1)
-        //            {
-        //                AddUseTableData(this.listBoxControl1.Text, 2);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            AddUseTableData(TableName, 1);
-        //        }
-        //    }
-        //    catch (Exception error)
-        //    {
-        //        MessageBox.Show(error.Message);
-        //    }
-        //}
         private void ToUseTable()
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命加载中......", "温馨提示");
@@ -1341,17 +1265,17 @@ namespace MDIDemo.vou
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ToTableInfoByTableName(null, 0);
+            ToPage(null, 0);
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ToTableInfoByTableName(null, 1);
+            ToPage(null, 1);
         }
 
         private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ToTableInfoByTableName(null, 2);
+            ToPage(null, 2);
         }
 
         private void bandedGridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -1824,12 +1748,12 @@ namespace MDIDemo.vou
 
         private void barButtonItem27_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ToTableInfoByTableName(null, 3);
+            ToPage(null, 3);
         }
 
         private void barButtonItem28_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ToTableInfoByTableName(null, 4);
+            ToPage(null, 4);
         }
     }
 }
