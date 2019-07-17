@@ -821,10 +821,6 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public int InnerType { get; set; }
             /// <summary>
-            /// 数据对应关系：0：一对一；2：一对多；3：三对三；
-            /// </summary>
-            public int OneToMult { get; set; }
-            /// <summary>
             /// 原始DTO类名
             /// </summary>
             public string DtoIniClassName { get; set; }
@@ -847,6 +843,7 @@ namespace MDIDemo.PublicClass
             {
                 LinkType = 1;
                 CountToCount = 0;
+                TableNo = -1;
             }
             /// <summary>
             /// 本表的主键
@@ -865,6 +862,10 @@ namespace MDIDemo.PublicClass
             /// 0：一对一；1：一对多；2：多对多；
             /// </summary>
             public int CountToCount { get; set; }
+            /// <summary>
+            /// 关联表的序号，主表：0，从表依次变大，-1：没有关联，默认值为：-1
+            /// </summary>
+            public int TableNo { get; set; }
         }
         #endregion
 

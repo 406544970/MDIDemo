@@ -167,7 +167,6 @@ namespace MDIDemo.vou
                 this.textEdit48.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 this.radioGroup5.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                this.radioGroup3.SelectedIndex = class_SelectAllModel.class_SubList[index].OneToMult;
                 //this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
                 this.textEdit35.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 this.radioGroup12.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
@@ -203,9 +202,9 @@ namespace MDIDemo.vou
                 this.radioGroup15.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
                 this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubList[index].OneToMult;
                 this.buttonEdit4.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 this.buttonEdit3.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+                this.radioGroup29.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
             }
             #endregion
 
@@ -244,12 +243,11 @@ namespace MDIDemo.vou
                 this.radioGroup17.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 //左链接、右链接
                 this.radioGroup19.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                //一对一、一对多、多对多
-                this.radioGroup18.SelectedIndex = class_SelectAllModel.class_SubList[index].OneToMult;
                 //外键字段名称
                 this.buttonEdit6.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 //关联字段名称
                 this.buttonEdit5.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+                this.radioGroup30.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
             }
             #endregion
 
@@ -288,12 +286,11 @@ namespace MDIDemo.vou
                 this.radioGroup20.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 //左链接、右链接
                 this.radioGroup22.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                //一对一、一对多、多对多
-                this.radioGroup21.SelectedIndex = class_SelectAllModel.class_SubList[index].OneToMult;
                 //外键字段名称
                 this.buttonEdit8.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 //关联字段名称
                 this.buttonEdit7.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+                this.radioGroup31.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
             }
             #endregion
 
@@ -325,6 +322,9 @@ namespace MDIDemo.vou
 
             radioGroup5.SelectedIndex = 0;
             radioGroup6.SelectedIndex = 0;
+            radioGroup29.SelectedIndex = 1;
+            radioGroup30.SelectedIndex = 2;
+            radioGroup31.SelectedIndex = 3;
 
             setIniSkin(publicSkinName);
             xtraTabControl3.SelectedTabPageIndex = 0;
@@ -348,8 +348,6 @@ namespace MDIDemo.vou
             gridC.SetGridBar(this.gridControl5);
             radioGroup1.SelectedIndex = 0;
             radioGroup2.SelectedIndex = 0;
-            radioGroup3.SelectedIndex = 0;
-            radioGroup4.SelectedIndex = 0;
 
             #region MemoEdit
             Class_SetMemoEdit class_SetMemoEdit = new Class_SetMemoEdit();
@@ -559,7 +557,6 @@ namespace MDIDemo.vou
                         {
                             textEdit11.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                             this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
-                            this.radioGroup3.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
                             textEdit11.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
@@ -577,7 +574,6 @@ namespace MDIDemo.vou
                         {
                             textEdit12.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                             this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
-                            this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
                             textEdit12.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
@@ -595,7 +591,6 @@ namespace MDIDemo.vou
                         {
                             textEdit57.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                             this.radioGroup19.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
-                            this.radioGroup18.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
                             textEdit57.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
@@ -613,7 +608,6 @@ namespace MDIDemo.vou
                         {
                             textEdit61.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                             this.radioGroup22.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
-                            this.radioGroup21.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].CountToCount;
                         }
                         else
                             textEdit61.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
@@ -778,17 +772,19 @@ namespace MDIDemo.vou
         /// 
         /// </summary>
         /// <param name="bandedGridView">GRIDVIEW数据集</param>
-        /// <param name="OutFieldName"></param>
+        /// <param name="OutFieldName">从表关联字段</param>
         /// <param name="LinkType"></param>
         /// <param name="CountToCount"></param>
         /// <param name="TableName"></param>
-        /// <param name="MainFieldName"></param>
+        /// <param name="MainFieldName">主表关联字段</param>
         /// <param name="AddPoint"></param>
         /// <param name="AliasName">别名</param>
+        /// <param name="TableNo">关系表的序号</param>
         /// <returns></returns>
         private Class_SelectAllModel.Class_Sub DataViewIntoClass(BandedGridView bandedGridView,
             string OutFieldName, int LinkType, int CountToCount, string TableName,
-            string MainFieldName, bool AddPoint, string AliasName)
+            string MainFieldName, bool AddPoint, string AliasName,
+            int TableNo)
         {
             Class_SelectAllModel.Class_Sub class_Sub = new Class_SelectAllModel.Class_Sub();
             List<Class_SelectAllModel.Class_Field> class_Fields = new List<Class_SelectAllModel.Class_Field>();
@@ -848,14 +844,17 @@ namespace MDIDemo.vou
             class_Sub.TableName = TableName;
             class_Sub.AddPoint = false;
             class_Sub.AliasName = AliasName;
-            class_Sub.OutFieldName = OutFieldName;
             class_Sub.LinkType = LinkType;
+            class_Sub.OutFieldName = OutFieldName;
+            class_Sub.MainFieldName = MainFieldName;
+
+            if (TableNo > -1)
+                class_Sub.TableNo = TableNo;
+
             if (CountToCount > -1)
             {
                 class_Sub.CountToCount = CountToCount;
             }
-            class_Sub.MainFieldName = MainFieldName;
-
 
             return class_Sub;
         }
@@ -893,7 +892,8 @@ namespace MDIDemo.vou
             {
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl1.MainView
                     , null, 0, -1, this.textEdit1.Text
-                    , this.MainKeyFieldName, false, this.textEdit10.Text);
+                    , this.MainKeyFieldName, false, this.textEdit10.Text
+                    , -1);
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
@@ -903,8 +903,9 @@ namespace MDIDemo.vou
             if (this.gridControl2.MainView.RowCount > 0)
             {
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl2.MainView
-                    , buttonEdit2.Text, this.radioGroup1.SelectedIndex, this.radioGroup3.SelectedIndex, this.textEdit6.Text
-                    , null, false, this.textEdit11.Text);
+                    , buttonEdit2.Text, this.radioGroup1.SelectedIndex, -1, this.textEdit6.Text
+                    , buttonEdit1.Text, false, this.textEdit11.Text
+                    , 0);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -918,8 +919,9 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass(
                     (BandedGridView)this.gridControl3.MainView
                     , buttonEdit3.Text, this.radioGroup2.SelectedIndex
-                    , this.radioGroup4.SelectedIndex, this.textEdit9.Text
-                    , null, false, this.textEdit12.Text);
+                    , -1, this.textEdit9.Text
+                    , this.buttonEdit4.Text, false, this.textEdit12.Text
+                    , this.radioGroup29.SelectedIndex);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -932,8 +934,9 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass(
                     (BandedGridView)this.gridControl4.MainView
                     , buttonEdit5.Text, this.radioGroup19.SelectedIndex
-                    , this.radioGroup18.SelectedIndex, this.textEdit60.Text
-                    , null, false, this.textEdit57.Text);
+                    , -1, this.textEdit60.Text
+                    , buttonEdit6.Text, false, this.textEdit57.Text
+                    , this.radioGroup30.SelectedIndex);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -946,8 +949,9 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass(
                     (BandedGridView)this.gridControl5.MainView
                     , buttonEdit7.Text, this.radioGroup22.SelectedIndex
-                    , this.radioGroup21.SelectedIndex, this.textEdit64.Text
-                    , null, false, this.textEdit61.Text);
+                    , -1, this.textEdit64.Text
+                    , buttonEdit8.Text, false, this.textEdit61.Text
+                    , this.radioGroup31.SelectedIndex);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -1037,7 +1041,6 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup12.SelectedIndex;
                 class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup5.SelectedIndex;
                 class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup1.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].OneToMult = this.radioGroup3.SelectedIndex;
                 class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit1.Text;
                 class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit2.Text;
             }
@@ -1069,7 +1072,6 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup15.SelectedIndex;
                 class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup6.SelectedIndex;
                 class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup2.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].OneToMult = this.radioGroup4.SelectedIndex;
                 class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit4.Text;
                 class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit3.Text;
             }
@@ -1105,8 +1107,6 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup17.SelectedIndex;
                 //左链接、右链接
                 class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup19.SelectedIndex;
-                //一对一、一对多、多对多
-                class_SelectAllModel.class_SubList[index].OneToMult = this.radioGroup18.SelectedIndex;
                 //外键字段名称
                 class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit6.Text;
                 //关联字段名称
@@ -1149,8 +1149,6 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup20.SelectedIndex;
                 //左链接、右链接
                 class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup22.SelectedIndex;
-                //一对一、一对多、多对多
-                class_SelectAllModel.class_SubList[index].OneToMult = this.radioGroup21.SelectedIndex;
                 //外键字段名称
                 class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit8.Text;
                 //关联字段名称
@@ -1292,7 +1290,10 @@ namespace MDIDemo.vou
             }
         }
 
-        private void bandedGridView3_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        private void FocusedRowChanged(object sender,
+            DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e
+            , DevExpress.XtraEditors.TextEdit textEdit_FieldName
+            , DevExpress.XtraEditors.TextEdit textEdit_FieldRemark)
         {
             int Index = e.FocusedRowHandle;
             if (Index > -1)
@@ -1300,10 +1301,14 @@ namespace MDIDemo.vou
                 DataRow row = (sender as BandedGridView).GetDataRow(Index);
                 if (row != null)
                 {
-                    this.textEdit8.Text = row["FieldName"].ToString();
-                    this.textEdit7.Text = row["FieldRemark"].ToString();
+                    textEdit_FieldName.Text = row["FieldName"].ToString();
+                    textEdit_FieldRemark.Text = row["FieldRemark"].ToString();
                 }
             }
+        }
+        private void bandedGridView3_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            FocusedRowChanged(sender, e, this.textEdit8, this.textEdit7);
         }
 
         private void listBoxControl1_KeyDown(object sender, KeyEventArgs e)
@@ -1668,13 +1673,11 @@ namespace MDIDemo.vou
         private void radioGroup5_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.radioGroup1.Enabled = radioGroup5.SelectedIndex > 0 ? false : true;
-            this.radioGroup3.Enabled = !this.radioGroup1.Enabled;
         }
 
         private void radioGroup6_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.radioGroup2.Enabled = radioGroup6.SelectedIndex > 0 ? false : true;
-            this.radioGroup4.Enabled = !this.radioGroup2.Enabled;
         }
 
         private void textEdit34_EditValueChanged(object sender, EventArgs e)
@@ -1755,5 +1758,47 @@ namespace MDIDemo.vou
         {
             ToPage(null, 4);
         }
+
+        private void buttonEdit4_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (this.radioGroup29.SelectedIndex == 0)
+                GetLinkField(this.bandedGridView1, sender);
+            if (this.radioGroup29.SelectedIndex == 1)
+                GetLinkField(this.bandedGridView2, sender);
+
+        }
+
+        private void buttonEdit6_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (this.radioGroup30.SelectedIndex == 0)
+                GetLinkField(this.bandedGridView1, sender);
+            if (this.radioGroup30.SelectedIndex == 1)
+                GetLinkField(this.bandedGridView2, sender);
+            if (this.radioGroup30.SelectedIndex == 2)
+                GetLinkField(this.bandedGridView3, sender);
+        }
+
+        private void buttonEdit8_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (this.radioGroup31.SelectedIndex == 0)
+                GetLinkField(this.bandedGridView1, sender);
+            if (this.radioGroup31.SelectedIndex == 1)
+                GetLinkField(this.bandedGridView2, sender);
+            if (this.radioGroup31.SelectedIndex == 2)
+                GetLinkField(this.bandedGridView3, sender);
+            if (this.radioGroup31.SelectedIndex == 3)
+                GetLinkField(this.bandedGridView4, sender);
+        }
+
+        private void buttonEdit5_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            GetLinkField(this.bandedGridView4, sender);
+        }
+
+        private void buttonEdit7_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            GetLinkField(this.bandedGridView5, sender);
+        }
+
     }
 }

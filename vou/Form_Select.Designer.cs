@@ -222,7 +222,6 @@
             this.buttonEdit2 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
             this.radioGroup5 = new DevExpress.XtraEditors.RadioGroup();
-            this.radioGroup3 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit11 = new DevExpress.XtraEditors.TextEdit();
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
@@ -291,10 +290,10 @@
             this.bandedGridColumn84 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit36 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.radioGroup29 = new DevExpress.XtraEditors.RadioGroup();
             this.buttonEdit3 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit4 = new DevExpress.XtraEditors.ButtonEdit();
             this.radioGroup6 = new DevExpress.XtraEditors.RadioGroup();
-            this.radioGroup4 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit12 = new DevExpress.XtraEditors.TextEdit();
             this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit7 = new DevExpress.XtraEditors.TextEdit();
@@ -363,10 +362,10 @@
             this.bandedGridColumn116 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit48 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl42 = new DevExpress.XtraEditors.PanelControl();
+            this.radioGroup30 = new DevExpress.XtraEditors.RadioGroup();
             this.buttonEdit5 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit6 = new DevExpress.XtraEditors.ButtonEdit();
             this.radioGroup17 = new DevExpress.XtraEditors.RadioGroup();
-            this.radioGroup18 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit57 = new DevExpress.XtraEditors.TextEdit();
             this.radioGroup19 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit58 = new DevExpress.XtraEditors.TextEdit();
@@ -435,10 +434,10 @@
             this.bandedGridColumn145 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit60 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl43 = new DevExpress.XtraEditors.PanelControl();
+            this.radioGroup31 = new DevExpress.XtraEditors.RadioGroup();
             this.buttonEdit7 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit8 = new DevExpress.XtraEditors.ButtonEdit();
             this.radioGroup20 = new DevExpress.XtraEditors.RadioGroup();
-            this.radioGroup21 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit61 = new DevExpress.XtraEditors.TextEdit();
             this.radioGroup22 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit62 = new DevExpress.XtraEditors.TextEdit();
@@ -886,7 +885,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
@@ -920,10 +918,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit36)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup29.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup6.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).BeginInit();
@@ -957,10 +955,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit48)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl42)).BeginInit();
             this.panelControl42.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup30.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup17.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup18.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit57.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup19.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit58.Properties)).BeginInit();
@@ -994,10 +992,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit60)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl43)).BeginInit();
             this.panelControl43.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup31.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit7.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup20.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup21.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit61.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup22.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit62.Properties)).BeginInit();
@@ -3769,7 +3767,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(885, 527);
+            this.xtraTabPage12.Size = new System.Drawing.Size(885, 496);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -3804,7 +3802,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(885, 436);
+            this.gridControl2.Size = new System.Drawing.Size(885, 405);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -4530,7 +4528,6 @@
             this.panelControl2.Controls.Add(this.buttonEdit2);
             this.panelControl2.Controls.Add(this.buttonEdit1);
             this.panelControl2.Controls.Add(this.radioGroup5);
-            this.panelControl2.Controls.Add(this.radioGroup3);
             this.panelControl2.Controls.Add(this.textEdit11);
             this.panelControl2.Controls.Add(this.radioGroup1);
             this.panelControl2.Controls.Add(this.textEdit4);
@@ -4544,7 +4541,7 @@
             // 
             // buttonEdit2
             // 
-            this.buttonEdit2.Location = new System.Drawing.Point(273, 39);
+            this.buttonEdit2.Location = new System.Drawing.Point(406, 39);
             this.buttonEdit2.MenuManager = this.barManager3;
             this.buttonEdit2.Name = "buttonEdit2";
             this.buttonEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -4555,7 +4552,7 @@
             // 
             // buttonEdit1
             // 
-            this.buttonEdit1.Location = new System.Drawing.Point(126, 39);
+            this.buttonEdit1.Location = new System.Drawing.Point(273, 39);
             this.buttonEdit1.MenuManager = this.barManager3;
             this.buttonEdit1.Name = "buttonEdit1";
             this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -4571,25 +4568,12 @@
             this.radioGroup5.Name = "radioGroup5";
             this.radioGroup5.Properties.Columns = 3;
             this.radioGroup5.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "JOIN方式"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "association"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "collection")});
-            this.radioGroup5.Size = new System.Drawing.Size(248, 28);
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "线性方式"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对一"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对多")});
+            this.radioGroup5.Size = new System.Drawing.Size(265, 28);
             this.radioGroup5.TabIndex = 10;
             this.radioGroup5.SelectedIndexChanged += new System.EventHandler(this.radioGroup5_SelectedIndexChanged);
-            // 
-            // radioGroup3
-            // 
-            this.radioGroup3.Location = new System.Drawing.Point(406, 5);
-            this.radioGroup3.MenuManager = this.barManager1;
-            this.radioGroup3.Name = "radioGroup3";
-            this.radioGroup3.Properties.Columns = 3;
-            this.radioGroup3.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对一"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对多"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "多对多")});
-            this.radioGroup3.Size = new System.Drawing.Size(208, 28);
-            this.radioGroup3.TabIndex = 9;
             // 
             // textEdit11
             // 
@@ -4644,7 +4628,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(885, 527);
+            this.xtraTabPage14.Size = new System.Drawing.Size(885, 496);
             this.xtraTabPage14.Text = "表";
             // 
             // gridControl3
@@ -4679,7 +4663,7 @@
             this.repositoryItemCheckEdit35,
             this.repositoryItemComboBox23,
             this.repositoryItemComboBox24});
-            this.gridControl3.Size = new System.Drawing.Size(885, 434);
+            this.gridControl3.Size = new System.Drawing.Size(885, 403);
             this.gridControl3.TabIndex = 2;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});
@@ -5402,10 +5386,10 @@
             // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(this.radioGroup29);
             this.panelControl3.Controls.Add(this.buttonEdit3);
             this.panelControl3.Controls.Add(this.buttonEdit4);
             this.panelControl3.Controls.Add(this.radioGroup6);
-            this.panelControl3.Controls.Add(this.radioGroup4);
             this.panelControl3.Controls.Add(this.textEdit12);
             this.panelControl3.Controls.Add(this.radioGroup2);
             this.panelControl3.Controls.Add(this.textEdit7);
@@ -5417,9 +5401,21 @@
             this.panelControl3.Size = new System.Drawing.Size(885, 93);
             this.panelControl3.TabIndex = 1;
             // 
+            // radioGroup29
+            // 
+            this.radioGroup29.Location = new System.Drawing.Point(407, 8);
+            this.radioGroup29.MenuManager = this.barManager1;
+            this.radioGroup29.Name = "radioGroup29";
+            this.radioGroup29.Properties.Columns = 2;
+            this.radioGroup29.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "主表"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "表1")});
+            this.radioGroup29.Size = new System.Drawing.Size(260, 28);
+            this.radioGroup29.TabIndex = 16;
+            // 
             // buttonEdit3
             // 
-            this.buttonEdit3.Location = new System.Drawing.Point(274, 42);
+            this.buttonEdit3.Location = new System.Drawing.Point(540, 42);
             this.buttonEdit3.MenuManager = this.barManager3;
             this.buttonEdit3.Name = "buttonEdit3";
             this.buttonEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -5430,14 +5426,14 @@
             // 
             // buttonEdit4
             // 
-            this.buttonEdit4.Location = new System.Drawing.Point(126, 42);
+            this.buttonEdit4.Location = new System.Drawing.Point(407, 42);
             this.buttonEdit4.MenuManager = this.barManager3;
             this.buttonEdit4.Name = "buttonEdit4";
             this.buttonEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.buttonEdit4.Size = new System.Drawing.Size(127, 20);
             this.buttonEdit4.TabIndex = 14;
-            this.buttonEdit4.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
+            this.buttonEdit4.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit4_ButtonClick);
             // 
             // radioGroup6
             // 
@@ -5446,25 +5442,12 @@
             this.radioGroup6.Name = "radioGroup6";
             this.radioGroup6.Properties.Columns = 3;
             this.radioGroup6.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "JOIN方式"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "association"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "collection")});
-            this.radioGroup6.Size = new System.Drawing.Size(248, 28);
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "线性方式"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对一"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对多")});
+            this.radioGroup6.Size = new System.Drawing.Size(265, 28);
             this.radioGroup6.TabIndex = 11;
             this.radioGroup6.SelectedIndexChanged += new System.EventHandler(this.radioGroup6_SelectedIndexChanged);
-            // 
-            // radioGroup4
-            // 
-            this.radioGroup4.Location = new System.Drawing.Point(407, 8);
-            this.radioGroup4.MenuManager = this.barManager1;
-            this.radioGroup4.Name = "radioGroup4";
-            this.radioGroup4.Properties.Columns = 3;
-            this.radioGroup4.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对一"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对多"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "多对多")});
-            this.radioGroup4.Size = new System.Drawing.Size(208, 28);
-            this.radioGroup4.TabIndex = 10;
             // 
             // textEdit12
             // 
@@ -5519,7 +5502,7 @@
             this.xtraTabPage52.Controls.Add(this.panelControl42);
             this.xtraTabPage52.ImageIndex = 610;
             this.xtraTabPage52.Name = "xtraTabPage52";
-            this.xtraTabPage52.Size = new System.Drawing.Size(885, 527);
+            this.xtraTabPage52.Size = new System.Drawing.Size(885, 496);
             this.xtraTabPage52.Text = "表";
             // 
             // gridControl4
@@ -5554,7 +5537,7 @@
             this.repositoryItemCheckEdit47,
             this.repositoryItemComboBox31,
             this.repositoryItemComboBox32});
-            this.gridControl4.Size = new System.Drawing.Size(885, 436);
+            this.gridControl4.Size = new System.Drawing.Size(885, 405);
             this.gridControl4.TabIndex = 3;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView4});
@@ -6277,10 +6260,10 @@
             // 
             // panelControl42
             // 
+            this.panelControl42.Controls.Add(this.radioGroup30);
             this.panelControl42.Controls.Add(this.buttonEdit5);
             this.panelControl42.Controls.Add(this.buttonEdit6);
             this.panelControl42.Controls.Add(this.radioGroup17);
-            this.panelControl42.Controls.Add(this.radioGroup18);
             this.panelControl42.Controls.Add(this.textEdit57);
             this.panelControl42.Controls.Add(this.radioGroup19);
             this.panelControl42.Controls.Add(this.textEdit58);
@@ -6292,25 +6275,40 @@
             this.panelControl42.Size = new System.Drawing.Size(885, 91);
             this.panelControl42.TabIndex = 2;
             // 
+            // radioGroup30
+            // 
+            this.radioGroup30.Location = new System.Drawing.Point(406, 5);
+            this.radioGroup30.MenuManager = this.barManager1;
+            this.radioGroup30.Name = "radioGroup30";
+            this.radioGroup30.Properties.Columns = 3;
+            this.radioGroup30.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "主表"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "表1"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "表2")});
+            this.radioGroup30.Size = new System.Drawing.Size(248, 28);
+            this.radioGroup30.TabIndex = 17;
+            // 
             // buttonEdit5
             // 
-            this.buttonEdit5.Location = new System.Drawing.Point(273, 39);
+            this.buttonEdit5.Location = new System.Drawing.Point(527, 39);
             this.buttonEdit5.MenuManager = this.barManager3;
             this.buttonEdit5.Name = "buttonEdit5";
             this.buttonEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.buttonEdit5.Size = new System.Drawing.Size(127, 20);
             this.buttonEdit5.TabIndex = 13;
+            this.buttonEdit5.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit5_ButtonClick);
             // 
             // buttonEdit6
             // 
-            this.buttonEdit6.Location = new System.Drawing.Point(126, 39);
+            this.buttonEdit6.Location = new System.Drawing.Point(406, 39);
             this.buttonEdit6.MenuManager = this.barManager3;
             this.buttonEdit6.Name = "buttonEdit6";
             this.buttonEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit6.Size = new System.Drawing.Size(127, 20);
+            this.buttonEdit6.Size = new System.Drawing.Size(115, 20);
             this.buttonEdit6.TabIndex = 12;
+            this.buttonEdit6.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit6_ButtonClick);
             // 
             // radioGroup17
             // 
@@ -6319,24 +6317,11 @@
             this.radioGroup17.Name = "radioGroup17";
             this.radioGroup17.Properties.Columns = 3;
             this.radioGroup17.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "JOIN方式"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "association"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "collection")});
-            this.radioGroup17.Size = new System.Drawing.Size(248, 28);
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "线性方式"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对一"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对多")});
+            this.radioGroup17.Size = new System.Drawing.Size(265, 28);
             this.radioGroup17.TabIndex = 10;
-            // 
-            // radioGroup18
-            // 
-            this.radioGroup18.Location = new System.Drawing.Point(406, 5);
-            this.radioGroup18.MenuManager = this.barManager1;
-            this.radioGroup18.Name = "radioGroup18";
-            this.radioGroup18.Properties.Columns = 3;
-            this.radioGroup18.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对一"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对多"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "多对多")});
-            this.radioGroup18.Size = new System.Drawing.Size(208, 28);
-            this.radioGroup18.TabIndex = 9;
             // 
             // textEdit57
             // 
@@ -6391,7 +6376,7 @@
             this.xtraTabPage53.Controls.Add(this.panelControl43);
             this.xtraTabPage53.ImageIndex = 612;
             this.xtraTabPage53.Name = "xtraTabPage53";
-            this.xtraTabPage53.Size = new System.Drawing.Size(885, 527);
+            this.xtraTabPage53.Size = new System.Drawing.Size(885, 496);
             this.xtraTabPage53.Text = "表";
             // 
             // gridControl5
@@ -6426,7 +6411,7 @@
             this.repositoryItemCheckEdit59,
             this.repositoryItemComboBox39,
             this.repositoryItemComboBox40});
-            this.gridControl5.Size = new System.Drawing.Size(885, 436);
+            this.gridControl5.Size = new System.Drawing.Size(885, 405);
             this.gridControl5.TabIndex = 3;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView5});
@@ -7149,10 +7134,10 @@
             // 
             // panelControl43
             // 
+            this.panelControl43.Controls.Add(this.radioGroup31);
             this.panelControl43.Controls.Add(this.buttonEdit7);
             this.panelControl43.Controls.Add(this.buttonEdit8);
             this.panelControl43.Controls.Add(this.radioGroup20);
-            this.panelControl43.Controls.Add(this.radioGroup21);
             this.panelControl43.Controls.Add(this.textEdit61);
             this.panelControl43.Controls.Add(this.radioGroup22);
             this.panelControl43.Controls.Add(this.textEdit62);
@@ -7164,25 +7149,41 @@
             this.panelControl43.Size = new System.Drawing.Size(885, 91);
             this.panelControl43.TabIndex = 2;
             // 
+            // radioGroup31
+            // 
+            this.radioGroup31.Location = new System.Drawing.Point(406, 5);
+            this.radioGroup31.MenuManager = this.barManager1;
+            this.radioGroup31.Name = "radioGroup31";
+            this.radioGroup31.Properties.Columns = 4;
+            this.radioGroup31.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "主表"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "表1"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "表2"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "表3")});
+            this.radioGroup31.Size = new System.Drawing.Size(260, 28);
+            this.radioGroup31.TabIndex = 18;
+            // 
             // buttonEdit7
             // 
-            this.buttonEdit7.Location = new System.Drawing.Point(273, 39);
+            this.buttonEdit7.Location = new System.Drawing.Point(539, 39);
             this.buttonEdit7.MenuManager = this.barManager3;
             this.buttonEdit7.Name = "buttonEdit7";
             this.buttonEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.buttonEdit7.Size = new System.Drawing.Size(127, 20);
             this.buttonEdit7.TabIndex = 13;
+            this.buttonEdit7.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit7_ButtonClick);
             // 
             // buttonEdit8
             // 
-            this.buttonEdit8.Location = new System.Drawing.Point(126, 39);
+            this.buttonEdit8.Location = new System.Drawing.Point(406, 39);
             this.buttonEdit8.MenuManager = this.barManager3;
             this.buttonEdit8.Name = "buttonEdit8";
             this.buttonEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.buttonEdit8.Size = new System.Drawing.Size(127, 20);
             this.buttonEdit8.TabIndex = 12;
+            this.buttonEdit8.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit8_ButtonClick);
             // 
             // radioGroup20
             // 
@@ -7191,28 +7192,15 @@
             this.radioGroup20.Name = "radioGroup20";
             this.radioGroup20.Properties.Columns = 3;
             this.radioGroup20.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "JOIN方式"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "association"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "collection")});
-            this.radioGroup20.Size = new System.Drawing.Size(248, 28);
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "线性方式"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对一"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对多")});
+            this.radioGroup20.Size = new System.Drawing.Size(265, 28);
             this.radioGroup20.TabIndex = 10;
-            // 
-            // radioGroup21
-            // 
-            this.radioGroup21.Location = new System.Drawing.Point(406, 5);
-            this.radioGroup21.MenuManager = this.barManager1;
-            this.radioGroup21.Name = "radioGroup21";
-            this.radioGroup21.Properties.Columns = 3;
-            this.radioGroup21.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对一"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "一对多"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "多对多")});
-            this.radioGroup21.Size = new System.Drawing.Size(208, 28);
-            this.radioGroup21.TabIndex = 9;
             // 
             // textEdit61
             // 
-            this.textEdit61.Location = new System.Drawing.Point(567, 65);
+            this.textEdit61.Location = new System.Drawing.Point(567, 67);
             this.textEdit61.MenuManager = this.barManager2;
             this.textEdit61.Name = "textEdit61";
             this.textEdit61.Size = new System.Drawing.Size(129, 20);
@@ -7232,7 +7220,7 @@
             // 
             // textEdit62
             // 
-            this.textEdit62.Location = new System.Drawing.Point(353, 65);
+            this.textEdit62.Location = new System.Drawing.Point(353, 67);
             this.textEdit62.MenuManager = this.barManager2;
             this.textEdit62.Name = "textEdit62";
             this.textEdit62.Properties.ReadOnly = true;
@@ -7241,7 +7229,7 @@
             // 
             // textEdit63
             // 
-            this.textEdit63.Location = new System.Drawing.Point(220, 65);
+            this.textEdit63.Location = new System.Drawing.Point(220, 67);
             this.textEdit63.MenuManager = this.barManager2;
             this.textEdit63.Name = "textEdit63";
             this.textEdit63.Properties.ReadOnly = true;
@@ -7250,7 +7238,7 @@
             // 
             // textEdit64
             // 
-            this.textEdit64.Location = new System.Drawing.Point(6, 65);
+            this.textEdit64.Location = new System.Drawing.Point(6, 67);
             this.textEdit64.MenuManager = this.barManager2;
             this.textEdit64.Name = "textEdit64";
             this.textEdit64.Properties.ReadOnly = true;
@@ -10770,7 +10758,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
@@ -10804,10 +10791,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit36)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup29.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup6.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit12.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit7.Properties)).EndInit();
@@ -10841,10 +10828,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit48)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl42)).EndInit();
             this.panelControl42.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup30.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup17.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup18.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit57.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup19.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit58.Properties)).EndInit();
@@ -10878,10 +10865,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit60)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl43)).EndInit();
             this.panelControl43.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup31.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit7.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup20.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radioGroup21.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit61.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup22.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit62.Properties)).EndInit();
@@ -11520,8 +11507,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem19;
         private DevExpress.XtraBars.PopupMenu popupMenu3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
-        private DevExpress.XtraEditors.RadioGroup radioGroup3;
-        private DevExpress.XtraEditors.RadioGroup radioGroup4;
         private DevExpress.XtraEditors.RadioGroup radioGroup5;
         private DevExpress.XtraEditors.RadioGroup radioGroup6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem21;
@@ -11826,7 +11811,6 @@
         private DevExpress.XtraEditors.ButtonEdit buttonEdit5;
         private DevExpress.XtraEditors.ButtonEdit buttonEdit6;
         private DevExpress.XtraEditors.RadioGroup radioGroup17;
-        private DevExpress.XtraEditors.RadioGroup radioGroup18;
         private DevExpress.XtraEditors.TextEdit textEdit57;
         private DevExpress.XtraEditors.RadioGroup radioGroup19;
         private DevExpress.XtraEditors.TextEdit textEdit58;
@@ -11898,7 +11882,6 @@
         private DevExpress.XtraEditors.ButtonEdit buttonEdit7;
         private DevExpress.XtraEditors.ButtonEdit buttonEdit8;
         private DevExpress.XtraEditors.RadioGroup radioGroup20;
-        private DevExpress.XtraEditors.RadioGroup radioGroup21;
         private DevExpress.XtraEditors.TextEdit textEdit61;
         private DevExpress.XtraEditors.RadioGroup radioGroup22;
         private DevExpress.XtraEditors.TextEdit textEdit62;
@@ -12030,5 +12013,8 @@
         private DevExpress.XtraEditors.RadioGroup radioGroup28;
         private DevExpress.XtraBars.BarButtonItem barButtonItem27;
         private DevExpress.XtraBars.BarButtonItem barButtonItem28;
+        private DevExpress.XtraEditors.RadioGroup radioGroup29;
+        private DevExpress.XtraEditors.RadioGroup radioGroup30;
+        private DevExpress.XtraEditors.RadioGroup radioGroup31;
     }
 }
