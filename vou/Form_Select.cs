@@ -92,6 +92,7 @@ namespace MDIDemo.vou
             this.checkEdit2.Checked = class_SelectAllModel.IsAutoWard;
             this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.TestUnit);
             this.textEdit21.Text = class_SelectAllModel.TestClassName;
+            this.checkEdit8.Checked = class_SelectAllModel.PageSign;
 
             #region 设置上次打开的Tab
             this.xtraTabControl1.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl1;
@@ -964,6 +965,7 @@ namespace MDIDemo.vou
             class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
             class_SelectAllModel.TestUnit = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
             class_SelectAllModel.TestClassName = this.textEdit21.Text;
+            class_SelectAllModel.PageSign = this.checkEdit8.Checked;
 
             #region 保存上次打开的Tab
             class_SelectAllModel.class_WindowLastState.xtraTabControl1 = this.xtraTabControl1.SelectedTabPageIndex;
