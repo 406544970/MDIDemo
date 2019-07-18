@@ -529,6 +529,24 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit88, true, Color.GreenYellow);
             #endregion
 
+            #region
+            this.radioGroup7.SelectedIndex = 0;
+            this.radioGroup8.SelectedIndex = 0;
+            this.radioGroup9.SelectedIndex = 0;
+            this.radioGroup10.SelectedIndex = 0;
+            this.radioGroup11.SelectedIndex = 0;
+            this.radioGroup12.SelectedIndex = 0;
+            this.radioGroup13.SelectedIndex = 0;
+            this.radioGroup14.SelectedIndex = 0;
+            this.radioGroup15.SelectedIndex = 0;
+            this.radioGroup23.SelectedIndex = 0;
+            this.radioGroup24.SelectedIndex = 0;
+            this.radioGroup25.SelectedIndex = 0;
+            this.radioGroup26.SelectedIndex = 0;
+            this.radioGroup27.SelectedIndex = 0;
+            this.radioGroup28.SelectedIndex = 0;
+            #endregion
+
             this.xtraTabControl8.Images = this.xtraTabControl5.Images;
             for (int index = 0; index < this.xtraTabControl8.TabPages.Count; index++)
             {
