@@ -443,6 +443,10 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit77);
             class_SetTextEdit.SetTextEdit(this.textEdit78);
             class_SetTextEdit.SetTextEdit(this.textEdit81);
+            class_SetTextEdit.SetTextEdit(this.textEdit91);
+            class_SetTextEdit.SetTextEdit(this.textEdit93);
+            class_SetTextEdit.SetTextEdit(this.textEdit95);
+            class_SetTextEdit.SetTextEdit(this.textEdit97);
 
             class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit10, Color.Yellow);
@@ -492,6 +496,10 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit86, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit89, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit90, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit92, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit94, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit96, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit98, Color.SkyBlue);
 
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit44, true, Color.GreenYellow);
@@ -1721,6 +1729,7 @@ namespace MDIDemo.vou
         {
             this.textEdit30.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit31.Text);
             this.textEdit28.Text = (sender as TextEdit).Text;
+            this.textEdit98.Text = (sender as TextEdit).Text;
             this.textEdit52.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
             this.textEdit55.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
         }
@@ -1739,6 +1748,7 @@ namespace MDIDemo.vou
         {
             this.textEdit40.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit41.Text);
             this.textEdit38.Text = (sender as TextEdit).Text;
+            this.textEdit96.Text = (sender as TextEdit).Text;
             this.textEdit53.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
             this.textEdit56.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
         }
@@ -1874,5 +1884,62 @@ namespace MDIDemo.vou
             GetLinkField(this.bandedGridView5, sender);
         }
 
+        private void textEdit73_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit72.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit73.Text);
+            this.textEdit70.Text = (sender as TextEdit).Text;
+            this.textEdit92.Text = (sender as TextEdit).Text;//DTO
+            this.textEdit83.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);//Map
+            this.textEdit84.Text = string.Format("{0}Controller", (sender as TextEdit).Text);//Control
+        }
+
+        private void textEdit82_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit81.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit82.Text);
+            this.textEdit79.Text = (sender as TextEdit).Text;//ResultMapType
+            this.textEdit94.Text = (sender as TextEdit).Text;//DTO
+            this.textEdit87.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);//Map
+            this.textEdit88.Text = string.Format("{0}Controller", (sender as TextEdit).Text);//Control
+        }
+
+        private void textEdit71_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit68.Text = string.Format("{0}Map", this.textEdit71.Text);
+        }
+
+        private void textEdit80_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit77.Text = string.Format("{0}Map", this.textEdit80.Text);
+        }
+
+        private void textEdit70_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit69.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit70.Text);
+        }
+
+        private void textEdit79_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit78.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit79.Text);
+        }
+
+        private void textEdit98_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit97.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
+        }
+
+        private void textEdit96_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit95.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
+        }
+
+        private void textEdit92_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit91.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
+        }
+
+        private void textEdit94_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit93.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
+        }
     }
 }
