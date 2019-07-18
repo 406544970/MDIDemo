@@ -237,6 +237,7 @@
     <Compile Include="PublicClass\Class_Tool.cs" />
     <Compile Include="PublicClass\Class_UseInfo.cs" />
     <Compile Include="PublicClass\GenderItem.cs" />
+    <Compile Include="PublicSetUp\Class_SetButtonEdit.cs" />
     <Compile Include="PublicSetUp\Class_SetLabelControl.cs" />
     <Compile Include="PublicSetUp\Class_SetMemoEdit.cs" />
     <Compile Include="PublicSetUp\Class_SetTextEdit.cs" />

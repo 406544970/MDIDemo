@@ -152,6 +152,7 @@
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemCheckEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
@@ -806,7 +807,6 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
@@ -851,6 +851,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
@@ -1348,7 +1349,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -3729,6 +3729,16 @@
             this.panelControl1.Size = new System.Drawing.Size(885, 72);
             this.panelControl1.TabIndex = 0;
             // 
+            // checkEdit8
+            // 
+            this.checkEdit8.EditValue = true;
+            this.checkEdit8.Location = new System.Drawing.Point(701, 43);
+            this.checkEdit8.MenuManager = this.barManager3;
+            this.checkEdit8.Name = "checkEdit8";
+            this.checkEdit8.Properties.Caption = "是否分页";
+            this.checkEdit8.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit8.TabIndex = 5;
+            // 
             // textEdit10
             // 
             this.textEdit10.Location = new System.Drawing.Point(566, 42);
@@ -3770,7 +3780,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(885, 527);
+            this.xtraTabPage12.Size = new System.Drawing.Size(885, 496);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -3805,7 +3815,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(885, 436);
+            this.gridControl2.Size = new System.Drawing.Size(885, 405);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -4576,7 +4586,6 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对多")});
             this.radioGroup5.Size = new System.Drawing.Size(265, 28);
             this.radioGroup5.TabIndex = 10;
-            this.radioGroup5.SelectedIndexChanged += new System.EventHandler(this.radioGroup5_SelectedIndexChanged);
             // 
             // textEdit11
             // 
@@ -5450,7 +5459,6 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "对象一对多")});
             this.radioGroup6.Size = new System.Drawing.Size(265, 28);
             this.radioGroup6.TabIndex = 11;
-            this.radioGroup6.SelectedIndexChanged += new System.EventHandler(this.radioGroup6_SelectedIndexChanged);
             // 
             // textEdit12
             // 
@@ -10667,16 +10675,6 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
-            // checkEdit8
-            // 
-            this.checkEdit8.EditValue = true;
-            this.checkEdit8.Location = new System.Drawing.Point(701, 43);
-            this.checkEdit8.MenuManager = this.barManager3;
-            this.checkEdit8.Name = "checkEdit8";
-            this.checkEdit8.Properties.Caption = "是否分页";
-            this.checkEdit8.Size = new System.Drawing.Size(75, 19);
-            this.checkEdit8.TabIndex = 5;
-            // 
             // Form_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -10736,6 +10734,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
@@ -11247,7 +11246,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

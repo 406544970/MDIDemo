@@ -315,17 +315,13 @@ namespace MDIDemo.vou
         public string publicSkinName;
         private void SetCompoment()
         {
-            Class_SetUpBar class_SetUpBar = new Class_SetUpBar();
-            class_SetUpBar.setBar(this.bar2, "提示操作");
-            class_SetUpBar.setBar(this.bar1, "提示操作");
-            class_SetUpBar.setBar(this.bar3, "提示操作");
-            class_SetUpBar.setBar(this.bar4, "提示操作");
-
             radioGroup5.SelectedIndex = 0;
             radioGroup6.SelectedIndex = 0;
             radioGroup29.SelectedIndex = 1;
             radioGroup30.SelectedIndex = 2;
             radioGroup31.SelectedIndex = 3;
+            radioGroup1.SelectedIndex = 0;
+            radioGroup2.SelectedIndex = 0;
 
             setIniSkin(publicSkinName);
             xtraTabControl3.SelectedTabPageIndex = 0;
@@ -336,6 +332,19 @@ namespace MDIDemo.vou
             myTableNameList = new List<string>();
             myTableContentList = new List<string>();
 
+            #region ButtonEdit
+            Class_SetButtonEdit class_SetButtonEdit = new Class_SetButtonEdit();
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit1);
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit2);
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit3);
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit4);
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit5);
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit6);
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit7);
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit8);
+            #endregion
+
+            #region Grid
             GridC gridC = new GridC();
             gridC.pub_SetBandedGridViewStyle(this.bandedGridView1);
             gridC.pub_SetBandedGridViewStyle(this.bandedGridView2);
@@ -347,8 +356,15 @@ namespace MDIDemo.vou
             gridC.SetGridBar(this.gridControl3);
             gridC.SetGridBar(this.gridControl4);
             gridC.SetGridBar(this.gridControl5);
-            radioGroup1.SelectedIndex = 0;
-            radioGroup2.SelectedIndex = 0;
+            #endregion
+
+            #region Bar
+            Class_SetUpBar class_SetUpBar = new Class_SetUpBar();
+            class_SetUpBar.setBar(this.bar2, "提示操作");
+            class_SetUpBar.setBar(this.bar1, "提示操作");
+            class_SetUpBar.setBar(this.bar3, "提示操作");
+            class_SetUpBar.setBar(this.bar4, "提示操作");
+            #endregion
 
             #region MemoEdit
             Class_SetMemoEdit class_SetMemoEdit = new Class_SetMemoEdit();
@@ -1672,15 +1688,6 @@ namespace MDIDemo.vou
             this.textEdit37.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit38.Text);
         }
 
-        private void radioGroup5_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.radioGroup1.Enabled = radioGroup5.SelectedIndex > 0 ? false : true;
-        }
-
-        private void radioGroup6_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.radioGroup2.Enabled = radioGroup6.SelectedIndex > 0 ? false : true;
-        }
 
         private void textEdit34_EditValueChanged(object sender, EventArgs e)
         {

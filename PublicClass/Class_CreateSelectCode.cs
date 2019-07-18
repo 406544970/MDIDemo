@@ -80,8 +80,8 @@ namespace MDIDemo.PublicClass
                     , class_Main.ControlSwaggerDescription);
             stringBuilder.Append(string.Format("public class {0}Controller ", class_Main.NameSpace) + "{\r\n");
 
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@Value(\"${server.port}\")\r\n");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "String myPort;\r\n\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@Value(\"${server.port}\")\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "String myPort;\r\n\r\n");
 
             stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
@@ -345,26 +345,26 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
             stringBuilder.Append("\r\n");
-            if (class_SelectAllModel.class_Create.SwaggerSign)
-                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
-                , class_ToolSpace.GetSetSpaceCount(1)
-                , "查看该站点端口"
-                , "以便观察负载均衡");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@PostMapping(value = \"/myPort\")\r\n");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "public String myPort(){\r\n");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return \"myPort: \" + this.myPort;\r\n");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
-            stringBuilder.Append("\r\n");
-            if (class_SelectAllModel.class_Create.SwaggerSign)
-                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
-                , class_ToolSpace.GetSetSpaceCount(1)
-                , "手动下线该站点功能"
-                , "通过此方法，主动向注册中心提出下线");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@GetMapping(value = \"/downLine\")\r\n");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "public void downLine(){\r\n");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "getInstance().shutdownComponent();\r\n");
-            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
-            stringBuilder.Append("}\r\n");
+            //if (class_SelectAllModel.class_Create.SwaggerSign)
+            //    stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
+            //    , class_ToolSpace.GetSetSpaceCount(1)
+            //    , "查看该站点端口"
+            //    , "以便观察负载均衡");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@PostMapping(value = \"/myPort\")\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "public String myPort(){\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return \"myPort: \" + this.myPort;\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
+            //stringBuilder.Append("\r\n");
+            //if (class_SelectAllModel.class_Create.SwaggerSign)
+            //    stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
+            //    , class_ToolSpace.GetSetSpaceCount(1)
+            //    , "手动下线该站点功能"
+            //    , "通过此方法，主动向注册中心提出下线");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@GetMapping(value = \"/downLine\")\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "public void downLine(){\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "getInstance().shutdownComponent();\r\n");
+            //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
+            //stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
         private string _GetSelectType(Class_Sub class_Main)
