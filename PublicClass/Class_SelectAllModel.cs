@@ -436,7 +436,7 @@ namespace MDIDemo.PublicClass
         {
             public Class_Create()
             {
-                EnglishSign = true;
+                EnglishSign = false;
                 MethodSite = "粘子层";
                 HttpRequestType = "Post";
                 ReadOnly = false;
@@ -515,7 +515,7 @@ namespace MDIDemo.PublicClass
             [DisplayName("生成英文版")]
             [Description("true:生成中英文，false:仅生成中文；")]
             [ReadOnly(false)]
-            [DefaultValue(true)]
+            [DefaultValue(false)]
             public bool EnglishSign
             {
                 get; set;
