@@ -419,6 +419,11 @@ namespace MDIDemo.vou
             class_SetMemoEdit.SetMemoEdit(this.memoEdit46);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit47);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit48);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit49);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit50);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit51);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit52);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit53);
             #endregion
 
             #region TextEdit
@@ -433,6 +438,13 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit36);
             class_SetTextEdit.SetTextEdit(this.textEdit37);
             class_SetTextEdit.SetTextEdit(this.textEdit40);
+            class_SetTextEdit.SetTextEdit(this.textEdit68);
+            class_SetTextEdit.SetTextEdit(this.textEdit69);
+            class_SetTextEdit.SetTextEdit(this.textEdit72);
+            class_SetTextEdit.SetTextEdit(this.textEdit77);
+            class_SetTextEdit.SetTextEdit(this.textEdit78);
+            class_SetTextEdit.SetTextEdit(this.textEdit81);
+
             class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit10, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit11, Color.Yellow);
@@ -465,6 +477,23 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit49, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit50, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit51, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit65, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit66, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit67, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit70, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit71, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit73, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit74, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit75, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit76, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit79, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit80, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit82, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit85, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit86, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit89, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit90, Color.SkyBlue);
+
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit44, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit52, true, Color.GreenYellow);
@@ -487,6 +516,10 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit62, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit63, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit64, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit83, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit84, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit87, true, Color.GreenYellow);
+            class_SetTextEdit.SetTextEdit(this.textEdit88, true, Color.GreenYellow);
             #endregion
 
             this.xtraTabControl8.Images = this.xtraTabControl5.Images;
@@ -808,7 +841,7 @@ namespace MDIDemo.vou
         private Class_SelectAllModel.Class_Sub DataViewIntoClass(BandedGridView bandedGridView,
             string OutFieldName, int LinkType, int CountToCount, string TableName,
             string MainFieldName, bool AddPoint, string AliasName,
-            int TableNo,bool ControlMainCode)
+            int TableNo, bool ControlMainCode)
         {
             Class_SelectAllModel.Class_Sub class_Sub = new Class_SelectAllModel.Class_Sub();
             List<Class_SelectAllModel.Class_Field> class_Fields = new List<Class_SelectAllModel.Class_Field>();
@@ -919,7 +952,7 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl1.MainView
                     , null, 0, -1, this.textEdit1.Text
                     , this.MainKeyFieldName, false, this.textEdit10.Text
-                    , -1,this.checkEdit10.Checked);
+                    , -1, this.checkEdit10.Checked);
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
@@ -1483,7 +1516,25 @@ namespace MDIDemo.vou
         {
             this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
         }
-
+        private void AddLinkFieldInfo()
+        {
+            class_SelectAllModel.IniLinkFieldInfos();
+            for (int i = 1; i < class_SelectAllModel.class_SubList.Count; i++)
+            {
+                Class_Sub class_Sub = class_SelectAllModel.class_SubList[i];
+                if (class_Sub.OutFieldName != null && class_Sub.MainTableFieldName != null)
+                {
+                    Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
+                    class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
+                    class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
+                    class_LinkFieldInfo.LinkType = class_Sub.LinkType;
+                    class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
+                    class_LinkFieldInfo.CurTableNo = i;
+                    class_LinkFieldInfo.TableNo = class_Sub.TableNo;
+                    class_SelectAllModel.AddLinkFieldInfosCount(class_LinkFieldInfo);
+                }
+            }
+        }
         private void CreateCode()
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
@@ -1496,6 +1547,9 @@ namespace MDIDemo.vou
             //4：验证合法性
             if (class_InterFaceCreateCode.IsCheckOk())
             {
+                //加入关联信息
+                AddLinkFieldInfo();
+
                 int PageIndex = 0;
                 //5：生成代码
                 #region 主表

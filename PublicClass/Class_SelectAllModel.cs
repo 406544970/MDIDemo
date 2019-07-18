@@ -23,10 +23,16 @@ namespace MDIDemo.PublicClass
         }
         ~Class_SelectAllModel()
         {
+            if (class_LinkFieldInfos != null)
+                class_LinkFieldInfos.Clear();
+            if (class_SubList != null)
+                class_SubList.Clear();
         }
         #endregion
 
         #region 属性
+        [NonSerialized]
+        private List<Class_LinkFieldInfo> class_LinkFieldInfos;
         public string AllPackerName { get; set; }
         public Class_WindowLastState class_WindowLastState { get; set; }
         public Class_MyBatisMap class_MyBatisMap { get; set; }
@@ -570,6 +576,41 @@ namespace MDIDemo.PublicClass
         }
         #endregion
 
+        #region 外键关联类
+        public partial class Class_LinkFieldInfo
+        {
+            public Class_LinkFieldInfo()
+            {
+                LinkType = 1;
+                CountToCount = 0;
+            }
+            /// <summary>
+            /// 当前表序号
+            /// </summary>
+            public int CurTableNo { get; set; }
+            /// <summary>
+            /// 关联表序号
+            /// </summary>
+            public int TableNo { get; set; }
+            /// <summary>
+            /// 外键字段
+            /// </summary>
+            public string MainFieldName { get; set; }
+            /// <summary>
+            /// 当前字段
+            /// </summary>
+            public string OutFieldName { get; set; }
+            /// <summary>
+            /// 连接类型，0:Left Join，1:Inner Join
+            /// </summary>
+            public int LinkType { get; set; }
+            /// <summary>
+            /// 0：线性;1:一对一；2：一对多；
+            /// </summary>
+            public int CountToCount { get; set; }
+        }
+        #endregion
+
         #region 数据库链接属性
         public partial class Class_SelectDataBase
         {
@@ -866,7 +907,7 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public int LinkType { get; set; }
             /// <summary>
-            /// 0：一对一；1：一对多；2：多对多；
+            /// 0：线性;1:一对一；2：一对多；
             /// </summary>
             public int CountToCount { get; set; }
             /// <summary>
@@ -881,6 +922,49 @@ namespace MDIDemo.PublicClass
         }
         #endregion
 
+        #endregion
+
+        #region 外键列表操作
+        public Class_LinkFieldInfo GetOneClass_LinkFieldInfo(int index)
+        {
+            if (this.class_LinkFieldInfos == null || this.class_LinkFieldInfos.Count == 0)
+                return null;
+            return this.class_LinkFieldInfos[index];
+        }
+        public int GetRowNumberLinkFieldInfo(string MainFieldName, string OutFieldName)
+        {
+            int finder = -1;
+            if (this.class_LinkFieldInfos != null && this.class_LinkFieldInfos.Count > 0)
+            {
+                for (int i = 0; i < this.class_LinkFieldInfos.Count; i++)
+                {
+                    Class_LinkFieldInfo class_LinkFieldInfo = this.class_LinkFieldInfos[i];
+                    if (class_LinkFieldInfo.MainFieldName.Equals(MainFieldName) && class_LinkFieldInfo.OutFieldName.Equals(OutFieldName))
+                        finder = i;
+                }
+            }
+            return finder;
+        }
+        public void IniLinkFieldInfos()
+        {
+            if (this.class_LinkFieldInfos == null)
+                class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
+            else
+                class_LinkFieldInfos.Clear();
+        }
+        public void AddLinkFieldInfosCount(Class_LinkFieldInfo class_LinkFieldInfo)
+        {
+            if (this.class_LinkFieldInfos == null)
+                class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
+            if (class_LinkFieldInfo.MainFieldName.Length > 0 && class_LinkFieldInfo.OutFieldName.Length > 0)
+                class_LinkFieldInfos.Add(class_LinkFieldInfo);
+        }
+        public int GetLinkFieldInfosCount()
+        {
+            if (this.class_LinkFieldInfos == null)
+                return 0;
+            return class_LinkFieldInfos.Count;
+        }
         #endregion
     }
 }
