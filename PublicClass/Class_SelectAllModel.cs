@@ -876,8 +876,5 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #endregion
-
-
-
     }
 }
