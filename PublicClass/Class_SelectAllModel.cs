@@ -850,6 +850,7 @@ namespace MDIDemo.PublicClass
                 LinkType = 1;
                 CountToCount = 0;
                 TableNo = -1;
+                ControlMainCode = true;
             }
             /// <summary>
             /// 本表的主键
@@ -872,6 +873,11 @@ namespace MDIDemo.PublicClass
             /// 关联表的序号，主表：0，从表依次变大，-1：没有关联，默认值为：-1
             /// </summary>
             public int TableNo { get; set; }
+            /// <summary>
+            /// 仅生成主体代码Control
+            /// </summary>
+            public bool ControlMainCode { get; set; }
+
         }
         #endregion
 

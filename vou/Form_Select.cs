@@ -141,6 +141,7 @@ namespace MDIDemo.vou
                 this.textEdit34.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit19.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit5.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
+                this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
             }
             #endregion
 
@@ -173,6 +174,7 @@ namespace MDIDemo.vou
                 this.radioGroup12.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
                 this.buttonEdit1.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 this.buttonEdit2.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+                this.checkEdit12.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
             }
             #endregion
 
@@ -206,6 +208,7 @@ namespace MDIDemo.vou
                 this.buttonEdit4.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 this.buttonEdit3.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.radioGroup29.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
+                this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
             }
             #endregion
 
@@ -249,6 +252,7 @@ namespace MDIDemo.vou
                 //关联字段名称
                 this.buttonEdit5.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.radioGroup30.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
+                this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
             }
             #endregion
 
@@ -292,6 +296,7 @@ namespace MDIDemo.vou
                 //关联字段名称
                 this.buttonEdit7.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.radioGroup31.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
+                this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
             }
             #endregion
 
@@ -797,11 +802,13 @@ namespace MDIDemo.vou
         /// <param name="AddPoint"></param>
         /// <param name="AliasName">别名</param>
         /// <param name="TableNo">关系表的序号</param>
+        /// <param name="MapMainCode">仅生成Map层主体代码</param>
+        /// <param name="ControlMainCode">仅生成Control层主体代码</param>
         /// <returns></returns>
         private Class_SelectAllModel.Class_Sub DataViewIntoClass(BandedGridView bandedGridView,
             string OutFieldName, int LinkType, int CountToCount, string TableName,
             string MainFieldName, bool AddPoint, string AliasName,
-            int TableNo)
+            int TableNo,bool ControlMainCode)
         {
             Class_SelectAllModel.Class_Sub class_Sub = new Class_SelectAllModel.Class_Sub();
             List<Class_SelectAllModel.Class_Field> class_Fields = new List<Class_SelectAllModel.Class_Field>();
@@ -864,6 +871,7 @@ namespace MDIDemo.vou
             class_Sub.LinkType = LinkType;
             class_Sub.OutFieldName = OutFieldName;
             class_Sub.MainFieldName = MainFieldName;
+            class_Sub.ControlMainCode = ControlMainCode;
 
             if (TableNo > -1)
                 class_Sub.TableNo = TableNo;
@@ -903,6 +911,7 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
                 this.Text = string.Format("SELECT：{0}", class_SelectAllModel.class_Create.MethodId);
                 this.Tag = class_SelectAllModel.class_Create.MethodId;
+                this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
             }
             class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
             if (this.gridControl1.MainView.RowCount > 0)
@@ -910,7 +919,7 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl1.MainView
                     , null, 0, -1, this.textEdit1.Text
                     , this.MainKeyFieldName, false, this.textEdit10.Text
-                    , -1);
+                    , -1,this.checkEdit10.Checked);
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
@@ -922,7 +931,7 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl2.MainView
                     , buttonEdit2.Text, this.radioGroup1.SelectedIndex, -1, this.textEdit6.Text
                     , buttonEdit1.Text, false, this.textEdit11.Text
-                    , 0);
+                    , 0, this.checkEdit12.Checked);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -938,7 +947,8 @@ namespace MDIDemo.vou
                     , buttonEdit3.Text, this.radioGroup2.SelectedIndex
                     , -1, this.textEdit9.Text
                     , this.buttonEdit4.Text, false, this.textEdit12.Text
-                    , this.radioGroup29.SelectedIndex);
+                    , this.radioGroup29.SelectedIndex
+                    , this.checkEdit14.Checked);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -953,7 +963,8 @@ namespace MDIDemo.vou
                     , buttonEdit5.Text, this.radioGroup19.SelectedIndex
                     , -1, this.textEdit60.Text
                     , buttonEdit6.Text, false, this.textEdit57.Text
-                    , this.radioGroup30.SelectedIndex);
+                    , this.radioGroup30.SelectedIndex
+                    , this.checkEdit16.Checked);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -968,7 +979,8 @@ namespace MDIDemo.vou
                     , buttonEdit7.Text, this.radioGroup22.SelectedIndex
                     , -1, this.textEdit64.Text
                     , buttonEdit8.Text, false, this.textEdit61.Text
-                    , this.radioGroup31.SelectedIndex);
+                    , this.radioGroup31.SelectedIndex
+                    , this.checkEdit18.Checked);
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
