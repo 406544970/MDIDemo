@@ -34,7 +34,6 @@ namespace MDIDemo.vou
         private List<string> myTableNameList;
         private List<string> myTableContentList;
         private Class_PublicMethod class_PublicMethod;
-        private string MainKeyFieldName;
 
         private void _iniSelect(string skinName, string xmlFileName)
         {
@@ -951,7 +950,7 @@ namespace MDIDemo.vou
             {
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl1.MainView
                     , null, 0, -1, this.textEdit1.Text
-                    , this.MainKeyFieldName, false, this.textEdit10.Text
+                    , null, false, this.textEdit10.Text
                     , -1, this.checkEdit10.Checked);
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
