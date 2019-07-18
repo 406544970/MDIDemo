@@ -806,6 +806,7 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
@@ -1347,6 +1348,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -3716,6 +3718,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.checkEdit8);
             this.panelControl1.Controls.Add(this.textEdit10);
             this.panelControl1.Controls.Add(this.textEdit3);
             this.panelControl1.Controls.Add(this.textEdit2);
@@ -10664,6 +10667,16 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // checkEdit8
+            // 
+            this.checkEdit8.EditValue = true;
+            this.checkEdit8.Location = new System.Drawing.Point(701, 43);
+            this.checkEdit8.MenuManager = this.barManager3;
+            this.checkEdit8.Name = "checkEdit8";
+            this.checkEdit8.Properties.Caption = "是否分页";
+            this.checkEdit8.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit8.TabIndex = 5;
+            // 
             // Form_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -11234,6 +11247,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -12016,5 +12030,6 @@
         private DevExpress.XtraEditors.RadioGroup radioGroup29;
         private DevExpress.XtraEditors.RadioGroup radioGroup30;
         private DevExpress.XtraEditors.RadioGroup radioGroup31;
+        private DevExpress.XtraEditors.CheckEdit checkEdit8;
     }
 }

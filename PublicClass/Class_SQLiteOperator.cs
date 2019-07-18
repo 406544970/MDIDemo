@@ -76,16 +76,19 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
             List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
             List<string> vs = new List<string>();
             vs = mySqlite3.ExecuteReadList("Select XmlFileName,WindowType,ActiveSign From vou_CurrentOpenWin order by SortNo");
-            foreach (string row in vs)
+            if (vs != null)
             {
-                string[] rowList = row.Split(';');
-                Class_WindowType class_WindowType = new Class_WindowType()
+                foreach (string row in vs)
                 {
-                    XmlFileName = rowList[0],
-                    WindowType = rowList[1],
-                    ActiveSign = Convert.ToInt32(rowList[2]) == 1 ? true : false
-                };
-                class_WindowTypes.Add(class_WindowType);
+                    string[] rowList = row.Split(';');
+                    Class_WindowType class_WindowType = new Class_WindowType()
+                    {
+                        XmlFileName = rowList[0],
+                        WindowType = rowList[1],
+                        ActiveSign = Convert.ToInt32(rowList[2]) == 1 ? true : false
+                    };
+                    class_WindowTypes.Add(class_WindowType);
+                }
             }
             return class_WindowTypes;
         }

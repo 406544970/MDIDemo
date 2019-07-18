@@ -19,6 +19,7 @@ namespace MDIDemo.PublicClass
             LastSelectTableName = null;
             classType = "select";
             IsAutoWard = true;
+            PageSign = true;
         }
         ~Class_SelectAllModel()
         {
@@ -40,6 +41,11 @@ namespace MDIDemo.PublicClass
         public bool IsAutoWard { get; set; }
         public string TestClassName { get; set; }
         public string TestUnit { get; set; }
+        /// <summary>
+        /// 是否分页
+        /// </summary>
+        public bool PageSign { get; set; }
+
         #endregion
 
         #region 子类
@@ -836,7 +842,7 @@ namespace MDIDemo.PublicClass
         }
         #endregion
 
-        #region 从表、从从表字段类
+        #region 表字段类
         public partial class Class_Sub : Class_Main
         {
             public Class_Sub()
