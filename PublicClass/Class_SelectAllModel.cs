@@ -968,7 +968,7 @@ namespace MDIDemo.PublicClass
         {
             if (this.class_LinkFieldInfos == null)
                 class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
-            if (class_LinkFieldInfo.MainFieldName.Length > 0 && class_LinkFieldInfo.OutFieldName.Length > 0)
+            //if (class_LinkFieldInfo.MainFieldName.Length > 0 && class_LinkFieldInfo.OutFieldName.Length > 0)
                 class_LinkFieldInfos.Add(class_LinkFieldInfo);
         }
         public int GetLinkFieldInfosCount()

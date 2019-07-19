@@ -977,14 +977,14 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl1.MainView
                     , null, 0, -1, this.textEdit1.Text
                     , null, false, this.textEdit10.Text
-                    , 0, this.checkEdit10.Checked);
+                    , -1, this.checkEdit10.Checked);
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
                     class_SelectAllModel.class_SubList.Add(class_Sub);
                 index++;
             }
-            if (this.gridControl2.MainView.RowCount > 0)
+            if (index > 0 && this.gridControl2.MainView.RowCount > 0)
             {
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl2.MainView
                     , buttonEdit2.Text, this.radioGroup1.SelectedIndex, -1, this.textEdit6.Text
@@ -998,7 +998,7 @@ namespace MDIDemo.vou
                 index++;
             }
 
-            if (this.gridControl3.MainView.RowCount > 0)
+            if (index > 1 && this.gridControl3.MainView.RowCount > 0)
             {
                 Class_Sub class_Sub = DataViewIntoClass(
                     (BandedGridView)this.gridControl3.MainView
@@ -1014,7 +1014,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList.Add(class_Sub);
                 index++;
             }
-            if (this.gridControl4.MainView.RowCount > 0)
+            if (index > 2 && this.gridControl4.MainView.RowCount > 0)
             {
                 Class_Sub class_Sub = DataViewIntoClass(
                     (BandedGridView)this.gridControl4.MainView
@@ -1030,7 +1030,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList.Add(class_Sub);
                 index++;
             }
-            if (this.gridControl5.MainView.RowCount > 0)
+            if (index > 3 && this.gridControl5.MainView.RowCount > 0)
             {
                 Class_Sub class_Sub = DataViewIntoClass(
                     (BandedGridView)this.gridControl5.MainView
@@ -1046,208 +1046,215 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList.Add(class_Sub);
                 index++;
             }
-
-            class_SelectAllModel.AllPackerName = this.textEdit13.Text;
-            class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
-            class_SelectAllModel.TestUnit = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
-            class_SelectAllModel.TestClassName = this.textEdit21.Text;
-            class_SelectAllModel.PageSign = this.checkEdit8.Checked;
-
-            #region 保存上次打开的Tab
-            class_SelectAllModel.class_WindowLastState.xtraTabControl1 = this.xtraTabControl1.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl2 = this.xtraTabControl2.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl3 = this.xtraTabControl3.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl4 = this.xtraTabControl4.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl5 = this.xtraTabControl5.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl6 = this.xtraTabControl6.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl7 = this.xtraTabControl7.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl8 = this.xtraTabControl8.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl9 = this.xtraTabControl9.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl10 = this.xtraTabControl10.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl11 = this.xtraTabControl11.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl12 = this.xtraTabControl12.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl13 = this.xtraTabControl13.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl14 = this.xtraTabControl14.SelectedTabPageIndex;
-            class_SelectAllModel.class_WindowLastState.xtraTabControl15 = this.xtraTabControl15.SelectedTabPageIndex;
-            #endregion
-
-            #region 主表
-            index = 0;
-            if (this.gridControl1.MainView.RowCount > 0)
+            if (index > 0)
             {
-                class_SelectAllModel.class_SubList[index].MethodId = this.textEdit14.Text;
-                class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit15.Text;
-                class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup7.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup8.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit1.Checked;
-                class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit16.Text;
-                class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit3.Text);
-                class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit4.Text);
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit5.Text);
-                class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit6.Text);
-                class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit8.Text);
-                class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit9.Text);
-                class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit10.Text);
-                class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
-                class_SelectAllModel.class_SubList[index].PolyControlContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
-                class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit22.Text;
-                class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit24.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit47.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit46.Text;
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit20.Text;
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup16.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit34.Text;
-                class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit19.Text;
-                class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit5.Checked;
-            }
-            #endregion
+                class_SelectAllModel.AllPackerName = this.textEdit13.Text;
+                class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
+                class_SelectAllModel.TestUnit = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
+                class_SelectAllModel.TestClassName = this.textEdit21.Text;
+                class_SelectAllModel.PageSign = this.checkEdit8.Checked;
 
-            #region 表一
-            index++;
-            if (this.gridControl2.MainView.RowCount > 0)
-            {
-                class_SelectAllModel.class_SubList[index].MethodId = this.textEdit33.Text;
-                class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit32.Text;
-                class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup11.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup10.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit3.Checked;
-                class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit31.Text;
-                class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit13.Text);
-                class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit14.Text);
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit15.Text);
-                class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit16.Text);
-                class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit17.Text);
-                class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit19.Text);
-                class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit20.Text);
-                class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit21.Text);
-                class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit29.Text;
-                class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit28.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit49.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit48.Text;
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit35.Text;
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup12.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup5.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup1.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit1.Text;
-                class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit2.Text;
-            }
-            #endregion
+                #region 保存上次打开的Tab
+                class_SelectAllModel.class_WindowLastState.xtraTabControl1 = this.xtraTabControl1.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl2 = this.xtraTabControl2.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl3 = this.xtraTabControl3.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl4 = this.xtraTabControl4.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl5 = this.xtraTabControl5.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl6 = this.xtraTabControl6.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl7 = this.xtraTabControl7.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl8 = this.xtraTabControl8.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl9 = this.xtraTabControl9.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl10 = this.xtraTabControl10.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl11 = this.xtraTabControl11.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl12 = this.xtraTabControl12.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl13 = this.xtraTabControl13.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl14 = this.xtraTabControl14.SelectedTabPageIndex;
+                class_SelectAllModel.class_WindowLastState.xtraTabControl15 = this.xtraTabControl15.SelectedTabPageIndex;
+                #endregion
 
-            #region 表二
-            index++;
-            if (this.gridControl3.MainView.RowCount > 0)
-            {
-                class_SelectAllModel.class_SubList[index].MethodId = this.textEdit43.Text;
-                class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit42.Text;
-                class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup14.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup13.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit4.Checked;
-                class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit41.Text;
-                class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit22.Text);
-                class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit23.Text);
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit24.Text);
-                class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit25.Text);
-                class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit26.Text);
-                class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit28.Text);
-                class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit29.Text);
-                class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit30.Text);
-                class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit39.Text;
-                class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit38.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit51.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit50.Text;
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit45.Text;
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup15.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup6.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup2.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit4.Text;
-                class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit3.Text;
-            }
-            #endregion
+                #region 主表
+                index = 0;
+                if (this.gridControl1.MainView.RowCount > 0)
+                {
+                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit14.Text;
+                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit15.Text;
+                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup7.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup8.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit1.Checked;
+                    class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit16.Text;
+                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit3.Text);
+                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit4.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit5.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit6.Text);
+                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit8.Text);
+                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit9.Text);
+                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit10.Text);
+                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
+                    class_SelectAllModel.class_SubList[index].PolyControlContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
+                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit22.Text;
+                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit24.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit47.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit46.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit20.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup16.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit34.Text;
+                    class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit19.Text;
+                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit5.Checked;
+                }
+                #endregion
 
-            #region 表三
-            index++;
-            if (this.gridControl4.MainView.RowCount > 0)
-            {
-                class_SelectAllModel.class_SubList[index].MethodId = this.textEdit67.Text;
-                class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit66.Text;
-                class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup25.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup24.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit6.Checked;
-                class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit73.Text;
-                class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit34.Text);
-                class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit35.Text);
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit34.Text);
-                class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit35.Text);
-                class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit36.Text);
-                class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit42.Text);
-                class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit38.Text);
-                //Controller
-                class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit41.Text);
-                class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit71.Text;
-                class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit70.Text;
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit65.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit86.Text;
-                class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit85.Text;
-                //单条、多条
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup23.SelectedIndex;
-                //Join方式、association、collection
-                class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup17.SelectedIndex;
-                //左链接、右链接
-                class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup19.SelectedIndex;
-                //外键字段名称
-                class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit6.Text;
-                //关联字段名称
-                class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit5.Text;
-            }
-            #endregion
+                #region 表一
+                index++;
+                if (this.gridControl2.MainView.RowCount > 0)
+                {
+                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit33.Text;
+                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit32.Text;
+                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup11.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup10.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit3.Checked;
+                    class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit31.Text;
+                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit13.Text);
+                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit14.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit15.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit16.Text);
+                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit17.Text);
+                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit19.Text);
+                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit20.Text);
+                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit21.Text);
+                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit29.Text;
+                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit28.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit49.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit48.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit35.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup12.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup5.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup1.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit1.Text;
+                    class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit2.Text;
+                }
+                #endregion
 
-            #region 表四
-            index++;
-            if (this.gridControl5.MainView.RowCount > 0)
-            {
-                class_SelectAllModel.class_SubList[index].MethodId = this.textEdit76.Text;
-                class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit75.Text;
-                class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup28.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup27.SelectedIndex;
-                class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit7.Checked;
-                class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit82.Text;
-                class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit44.Text);
-                class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit45.Text);
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit44.Text);
-                class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit45.Text);
-                class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit46.Text);
-                class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit52.Text);
-                class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit48.Text);
-                //Controller
-                class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit51.Text);
-                //ResultMapId
-                class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit80.Text;
-                //ResultMapType
-                class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit79.Text;
-                //返回值说明
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit74.Text;
-                //Swagger说明
-                class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit90.Text;
-                //Swagger描述
-                class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit89.Text;
-                //单条、多条
-                class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup26.SelectedIndex;
-                //Join方式、association、collection
-                class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup20.SelectedIndex;
-                //左链接、右链接
-                class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup22.SelectedIndex;
-                //外键字段名称
-                class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit8.Text;
-                //关联字段名称
-                class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit7.Text;
-            }
-            #endregion
+                #region 表二
+                index++;
+                if (this.gridControl3.MainView.RowCount > 0)
+                {
+                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit43.Text;
+                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit42.Text;
+                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup14.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup13.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit4.Checked;
+                    class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit41.Text;
+                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit22.Text);
+                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit23.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit24.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit25.Text);
+                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit26.Text);
+                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit28.Text);
+                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit29.Text);
+                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit30.Text);
+                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit39.Text;
+                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit38.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit51.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit50.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit45.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup15.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup6.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup2.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit4.Text;
+                    class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit3.Text;
+                }
+                #endregion
 
-            if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
+                #region 表三
+                index++;
+                if (this.gridControl4.MainView.RowCount > 0)
+                {
+                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit67.Text;
+                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit66.Text;
+                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup25.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup24.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit6.Checked;
+                    class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit73.Text;
+                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit34.Text);
+                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit35.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit34.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit35.Text);
+                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit36.Text);
+                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit42.Text);
+                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit38.Text);
+                    //Controller
+                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit41.Text);
+                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit71.Text;
+                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit70.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit65.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit86.Text;
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit85.Text;
+                    //单条、多条
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup23.SelectedIndex;
+                    //Join方式、association、collection
+                    class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup17.SelectedIndex;
+                    //左链接、右链接
+                    class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup19.SelectedIndex;
+                    //外键字段名称
+                    class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit6.Text;
+                    //关联字段名称
+                    class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit5.Text;
+                }
+                #endregion
+
+                #region 表四
+                index++;
+                if (this.gridControl5.MainView.RowCount > 0)
+                {
+                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit76.Text;
+                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit75.Text;
+                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup28.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup27.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit7.Checked;
+                    class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit82.Text;
+                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit44.Text);
+                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit45.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit44.Text);
+                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit45.Text);
+                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit46.Text);
+                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit52.Text);
+                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit48.Text);
+                    //Controller
+                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit51.Text);
+                    //ResultMapId
+                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit80.Text;
+                    //ResultMapType
+                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit79.Text;
+                    //返回值说明
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit74.Text;
+                    //Swagger说明
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit90.Text;
+                    //Swagger描述
+                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit89.Text;
+                    //单条、多条
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup26.SelectedIndex;
+                    //Join方式、association、collection
+                    class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup20.SelectedIndex;
+                    //左链接、右链接
+                    class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup22.SelectedIndex;
+                    //外键字段名称
+                    class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit8.Text;
+                    //关联字段名称
+                    class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit7.Text;
+                }
+                #endregion
+
+                if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
+                {
+                    if (IsDisplayLog)
+                        this.DisplayText(string.Format("已将{0}方法【{1}】，保存到本地。", class_SelectAllModel.classType, class_SelectAllModel.class_Create.MethodId));
+                }
+            }
+            else
             {
                 if (IsDisplayLog)
-                    this.DisplayText(string.Format("已将{0}方法【{1}】，保存到本地。", class_SelectAllModel.classType, class_SelectAllModel.class_Create.MethodId));
+                    this.DisplayText("失败，请完成主表设置。");
             }
         }
         private bool CountOk(int[] vs)
@@ -1545,7 +1552,7 @@ namespace MDIDemo.vou
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
             //1：保存到XML
-            _SaveSelectToXml(false);
+            _SaveSelectToXml(true);
             //2：得到XML文件名
             string MethodId = class_SelectAllModel.class_Create.MethodId;
             //3：初始化生成类
