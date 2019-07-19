@@ -1550,35 +1550,37 @@ namespace MDIDemo.vou
         }
         private void AddAllOutFieldName()
         {
-            class_SelectAllModel.IniClass_OutFields();
-            if (class_SelectAllModel.class_SubList != null)
+            if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
             {
-                foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+                class_SelectAllModel.IniClass_OutFields();
+                if (class_SelectAllModel.class_SubList != null)
                 {
-                    int index = 0;
-                    if (item.class_Fields.Count > 0)
+                    foreach (Class_Sub item in class_SelectAllModel.class_SubList)
                     {
-                        foreach (Class_Field class_Field in item.class_Fields)
+                        int index = 0;
+                        if (item.class_Fields.Count > 0)
                         {
-                            if (class_Field.SelectSelect)
+                            foreach (Class_Field class_Field in item.class_Fields)
                             {
-                                Class_OutField class_OutField = new Class_OutField()
+                                if (class_Field.SelectSelect)
                                 {
-                                    PageIndex = index,
-                                    FieldName = class_Field.FieldName,
-                                    TableSimplificationName = item.DtoClassName,
-                                    FieldRemark = class_Field.FieldRemark,
-                                    FieldType = class_Field.FieldType
-                                };
-                                class_SelectAllModel.AddClass_OutField(class_OutField);
+                                    Class_OutField class_OutField = new Class_OutField()
+                                    {
+                                        PageIndex = index,
+                                        FieldName = class_Field.FieldName,
+                                        TableSimplificationName = item.DtoClassName,
+                                        FieldRemark = class_Field.FieldRemark,
+                                        FieldType = class_Field.FieldType
+                                    };
+                                    class_SelectAllModel.AddClass_OutField(class_OutField);
+                                }
                             }
                         }
+                        index++;
                     }
-                    index++;
+                    class_SelectAllModel.GetUpdateOutFieldName();
                 }
-                class_SelectAllModel.GetUpdateOutFieldName();
             }
-
         }
         private void CreateCode()
         {
