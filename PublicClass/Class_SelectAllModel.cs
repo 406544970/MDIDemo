@@ -32,6 +32,8 @@ namespace MDIDemo.PublicClass
 
         #region 属性
         [NonSerialized]
+        private List<Class_OutField> class_OutFields;
+        [NonSerialized]
         private List<Class_LinkFieldInfo> class_LinkFieldInfos;
         public string AllPackerName { get; set; }
         public Class_WindowLastState class_WindowLastState { get; set; }
@@ -576,6 +578,18 @@ namespace MDIDemo.PublicClass
         }
         #endregion
 
+        #region DTO字段类
+        public partial class Class_OutField
+        {
+            public int PageIndex { get; set; }
+            public string TableSimplificationName { get; set; }
+            public string FieldName { get; set; }
+            public string OutFieldName { get; set; }
+            public string FieldRemark { get; set; }
+            public string FieldType { get; set; }
+        }
+        #endregion
+
         #region 外键关联类
         public partial class Class_LinkFieldInfo
         {
@@ -610,6 +624,22 @@ namespace MDIDemo.PublicClass
             /// 0：线性;1:一对一；2：一对多；
             /// </summary>
             public int CountToCount { get; set; }
+            /// <summary>
+            /// DTO类名
+            /// </summary>
+            public string DtoClassName { get; set; }
+            /// <summary>
+            /// Model类名
+            /// </summary>
+            public string ResultMapType { get; set; }
+            /// <summary>
+            /// 0：join、1：assosication；2：collection
+            /// </summary>
+            public int JoinType { get; set; }
+            /// <summary>
+            /// 0:左连接、1:内连接
+            /// </summary>
+            public int InnerType { get; set; }
         }
         #endregion
 
@@ -854,6 +884,9 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public string PolyControlContent { get; set; }
             public string ResultMapId { get; set; }
+            /// <summary>
+            /// Model类名
+            /// </summary>
             public string ResultMapType { get; set; }
             public string ControlSwaggerValue { get; set; }
             public string ControlSwaggerDescription { get; set; }
@@ -862,11 +895,11 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public int DtoType { get; set; }
             /// <summary>
-            /// 0：join、1：assosication；2：
+            /// 0：join、1：assosication；2：collection
             /// </summary>
             public int JoinType { get; set; }
             /// <summary>
-            /// 0:内连接、1:左连接
+            /// 0:左连接、1:内连接
             /// </summary>
             public int InnerType { get; set; }
             /// <summary>
@@ -926,6 +959,62 @@ namespace MDIDemo.PublicClass
 
         #endregion
 
+        #region 字段列表操作
+        public List<Class_OutField> GetClass_OutFields()
+        {
+            return this.class_OutFields;
+        }
+        public Class_OutField GetOneClass_OutField(int index)
+        {
+            if (this.class_OutFields == null || this.class_OutFields.Count == 0)
+                return null;
+            return this.class_OutFields[index];
+        }
+        public void IniClass_OutFields()
+        {
+            if (this.class_OutFields == null)
+                class_OutFields = new List<Class_OutField>();
+            else
+                class_OutFields.Clear();
+        }
+        public void AddClass_OutField(Class_OutField class_OutField)
+        {
+            if (this.class_OutFields == null)
+                class_OutFields = new List<Class_OutField>();
+            class_OutFields.Add(class_OutField);
+        }
+        public int GetIndexFromClass_OutField(int CurTableNo, string FieldName)
+        {
+            int index = -1;
+            if (class_OutFields != null && class_OutFields.Count > 0)
+                index = class_OutFields.FindIndex(a => !a.PageIndex.Equals(CurTableNo) && a.FieldName.Equals(FieldName));
+            return index;
+        }
+        public void GetUpdateOutFieldName()
+        {
+            if (this.class_OutFields != null && this.class_OutFields.Count > 0)
+            {
+                foreach (Class_OutField item in this.class_OutFields)
+                {
+                    item.OutFieldName = GetDTOFieldName(item.PageIndex, item.FieldName);
+                }
+            }
+        }
+        private string GetDTOFieldName(int CurTableNo,string FieldName)
+        {
+            string OutFieldName = null;
+            int index = GetIndexFromClass_OutField(CurTableNo, FieldName);
+            if (index > -1)
+            {
+                Class_OutField class_OutField = GetOneClass_OutField(index);
+                OutFieldName = class_OutField.FieldName + class_OutField.TableSimplificationName;
+            }
+            else
+                OutFieldName = FieldName;
+            return OutFieldName;
+        }
+        #endregion
+
         #region 外键列表操作
         public List<Class_LinkFieldInfo> GetClass_LinkFieldInfos()
         {
@@ -962,8 +1051,7 @@ namespace MDIDemo.PublicClass
         {
             if (this.class_LinkFieldInfos == null)
                 class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
-            //if (class_LinkFieldInfo.MainFieldName.Length > 0 && class_LinkFieldInfo.OutFieldName.Length > 0)
-                class_LinkFieldInfos.Add(class_LinkFieldInfo);
+            class_LinkFieldInfos.Add(class_LinkFieldInfo);
         }
         public int GetLinkFieldInfosCount()
         {

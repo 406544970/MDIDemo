@@ -34,12 +34,16 @@ namespace MDIDemo.PublicClass
             {
                 Class_Sub class_Sub = class_SelectAllModel.class_SubList[i];
                 Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
+                class_LinkFieldInfo.CurTableNo = i;
                 class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
                 class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
                 class_LinkFieldInfo.LinkType = class_Sub.LinkType;
                 class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
-                class_LinkFieldInfo.CurTableNo = i;
                 class_LinkFieldInfo.TableNo = class_Sub.TableNo;
+                class_LinkFieldInfo.InnerType = class_Sub.InnerType;
+                class_LinkFieldInfo.JoinType = class_Sub.JoinType;
+                class_LinkFieldInfo.DtoClassName = class_Sub.DtoClassName;
+                class_LinkFieldInfo.ResultMapType = class_Sub.ResultMapType;
                 class_SelectAllModel.AddLinkFieldInfosCount(class_LinkFieldInfo);
             }
             return class_SelectAllModel.GetLinkFieldInfosCount();

@@ -1548,6 +1548,38 @@ namespace MDIDemo.vou
         {
             this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
         }
+        private void AddAllOutFieldName()
+        {
+            class_SelectAllModel.IniClass_OutFields();
+            if (class_SelectAllModel.class_SubList != null)
+            {
+                foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+                {
+                    int index = 0;
+                    if (item.class_Fields.Count > 0)
+                    {
+                        foreach (Class_Field class_Field in item.class_Fields)
+                        {
+                            if (class_Field.SelectSelect)
+                            {
+                                Class_OutField class_OutField = new Class_OutField()
+                                {
+                                    PageIndex = index,
+                                    FieldName = class_Field.FieldName,
+                                    TableSimplificationName = item.DtoClassName,
+                                    FieldRemark = class_Field.FieldRemark,
+                                    FieldType = class_Field.FieldType
+                                };
+                                class_SelectAllModel.AddClass_OutField(class_OutField);
+                            }
+                        }
+                    }
+                    index++;
+                }
+                class_SelectAllModel.GetUpdateOutFieldName();
+            }
+
+        }
         private void CreateCode()
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
@@ -1561,6 +1593,8 @@ namespace MDIDemo.vou
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
             {
+                //加入所有外键信息
+                AddAllOutFieldName();
                 int PageIndex = 0;
                 //5：生成代码
                 #region 主表
