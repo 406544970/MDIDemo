@@ -1679,6 +1679,8 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
+                _SaveSelectToXml(false);
+
                 this.DisplayText("代码已重新生成!");
             }
             else
@@ -1689,7 +1691,6 @@ namespace MDIDemo.vou
                 }
             }
             outMessage.Clear();
-            _SaveSelectToXml(false);
             waitDialogForm.Close();
         }
         private void barButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -12,8 +12,6 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public class Class_CreateSelectCode : IClass_InterFaceCreateCode
     {
-        private List<Class_LinkFieldInfoCheck> class_LinkFieldInfoChecks;
-
         public bool IsCheckOk(ref List<string> outMessage)
         {
             bool OkSign = true;
@@ -35,32 +33,28 @@ namespace MDIDemo.PublicClass
             for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
             {
                 Class_Sub class_Sub = class_SelectAllModel.class_SubList[i];
-                if (class_Sub.OutFieldName != null && class_Sub.MainTableFieldName != null)
-                {
-                    Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
-                    class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
-                    class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
-                    class_LinkFieldInfo.LinkType = class_Sub.LinkType;
-                    class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
-                    class_LinkFieldInfo.CurTableNo = i;
-                    class_LinkFieldInfo.TableNo = class_Sub.TableNo;
-                    class_SelectAllModel.AddLinkFieldInfosCount(class_LinkFieldInfo);
-                }
+                Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
+                class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
+                class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
+                class_LinkFieldInfo.LinkType = class_Sub.LinkType;
+                class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
+                class_LinkFieldInfo.CurTableNo = i;
+                class_LinkFieldInfo.TableNo = class_Sub.TableNo;
+                class_SelectAllModel.AddLinkFieldInfosCount(class_LinkFieldInfo);
             }
             return class_SelectAllModel.GetLinkFieldInfosCount();
         }
-        private void ChangeCheck(int TableNo)
+        private void ChangeCheck(int CurTableNo)
         {
-            List<Class_LinkFieldInfoCheck> class_LinkFieldInfoChecks = this.class_LinkFieldInfoChecks.FindAll(a => a.CurTableNo.Equals(TableNo));
+            List<Class_LinkFieldInfo> class_LinkFieldInfoChecks = class_SelectAllModel.GetClass_LinkFieldInfos().FindAll(a => a.TableNo.Equals(CurTableNo));
             if (class_LinkFieldInfoChecks != null && class_LinkFieldInfoChecks.Count > 0)
             {
-                foreach (Class_LinkFieldInfoCheck item in class_LinkFieldInfoChecks)
+                foreach (Class_LinkFieldInfo item in class_LinkFieldInfoChecks)
                 {
                     item.CheckOk = true;
-                    ChangeCheck(item.TableNo);
+                    ChangeCheck(item.CurTableNo);
                 }
                 class_LinkFieldInfoChecks.Clear();
-
             }
         }
         private bool CheckClassLinkField(ref List<string> outMessage)
@@ -68,27 +62,11 @@ namespace MDIDemo.PublicClass
             bool ReturnValue = true;
             if (class_SelectAllModel.GetLinkFieldInfosCount() > 0)
             {
-                if (class_LinkFieldInfoChecks == null)
-                    class_LinkFieldInfoChecks = new List<Class_LinkFieldInfoCheck>();
-                else
-                    class_LinkFieldInfoChecks.Clear();
+                ChangeCheck(-1);
                 foreach (Class_LinkFieldInfo item in class_SelectAllModel.GetClass_LinkFieldInfos())
-                {
-                    Class_LinkFieldInfoCheck class_LinkFieldInfoCheck = new Class_LinkFieldInfoCheck();
-                    class_LinkFieldInfoCheck.CountToCount = item.CountToCount;
-                    class_LinkFieldInfoCheck.CurTableNo = item.CurTableNo;
-                    class_LinkFieldInfoCheck.LinkType = item.LinkType;
-                    class_LinkFieldInfoCheck.MainFieldName = item.MainFieldName;
-                    class_LinkFieldInfoCheck.OutFieldName = item.OutFieldName;
-                    class_LinkFieldInfoCheck.TableNo = item.TableNo;
-                    class_LinkFieldInfoChecks.Add(class_LinkFieldInfoCheck);
-                }
-                ChangeCheck(0);
-                foreach (Class_LinkFieldInfoCheck item in class_LinkFieldInfoChecks)
                 {
                     ReturnValue = ReturnValue && item.CheckOk;
                 }
-                class_LinkFieldInfoChecks.Clear();
             }
             return ReturnValue;
         }

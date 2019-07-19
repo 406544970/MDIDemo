@@ -30,12 +30,32 @@ namespace MDIDemo
             setIniSkin("Metropolis Dark");
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void LogOk()
         {
             Class_UseInfo.UserId = "No1";
             Class_UseInfo.UserName = "梁昊";
             Class_UseInfo.UserClass = 3;
             this.DialogResult = DialogResult.OK;
+        }
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            LogOk();
+        }
+
+        private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                this.textEdit2.Focus();
+            }
+        }
+
+        private void textEdit2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char) Keys.Enter)
+            {
+                LogOk();
+            }
         }
     }
 }

@@ -577,21 +577,15 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 外键关联类
-        public partial class Class_LinkFieldInfoCheck : Class_LinkFieldInfo
-        {
-            public Class_LinkFieldInfoCheck()
-            {
-                CheckOk = false;
-            }
-            public bool CheckOk { get; set; }
-        }
         public partial class Class_LinkFieldInfo
         {
             public Class_LinkFieldInfo()
             {
                 LinkType = 1;
                 CountToCount = 0;
+                CheckOk = false;
             }
+            public bool CheckOk { get; set; }
             /// <summary>
             /// 当前表序号
             /// </summary>

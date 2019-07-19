@@ -95,6 +95,7 @@
             this.textEdit2.Properties.PasswordChar = '*';
             this.textEdit2.Size = new System.Drawing.Size(279, 20);
             this.textEdit2.TabIndex = 2;
+            this.textEdit2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit2_KeyPress);
             // 
             // textEdit1
             // 
@@ -104,6 +105,7 @@
             this.textEdit1.Properties.Appearance.Options.UseFont = true;
             this.textEdit1.Size = new System.Drawing.Size(279, 22);
             this.textEdit1.TabIndex = 1;
+            this.textEdit1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textEdit1_KeyPress);
             // 
             // pictureEdit1
             // 
