@@ -12,21 +12,86 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public class Class_CreateSelectCode : IClass_InterFaceCreateCode
     {
-        public Class_CreateSelectCode(string xmlFileName)
+        private List<Class_LinkFieldInfoCheck> class_LinkFieldInfoChecks;
+
+        public bool IsCheckOk(ref List<string> outMessage)
         {
-            if (xmlFileName != null)
+            bool OkSign = true;
+
+            #region 认证关联性
+            if (OkSign && AddLinkFieldInfo() > 0)
             {
-                Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-                class_SelectAllModel = new Class_SelectAllModel();
-                class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                OkSign = CheckClassLinkField(ref outMessage);
             }
-        }
-        public bool IsCheckOk()
-        {
-            return true;
+            #endregion
+
+            return OkSign;
         }
 
         #region 私有
+        private int AddLinkFieldInfo()
+        {
+            class_SelectAllModel.IniLinkFieldInfos();
+            for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
+            {
+                Class_Sub class_Sub = class_SelectAllModel.class_SubList[i];
+                if (class_Sub.OutFieldName != null && class_Sub.MainTableFieldName != null)
+                {
+                    Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
+                    class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
+                    class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
+                    class_LinkFieldInfo.LinkType = class_Sub.LinkType;
+                    class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
+                    class_LinkFieldInfo.CurTableNo = i;
+                    class_LinkFieldInfo.TableNo = class_Sub.TableNo;
+                    class_SelectAllModel.AddLinkFieldInfosCount(class_LinkFieldInfo);
+                }
+            }
+            return class_SelectAllModel.GetLinkFieldInfosCount();
+        }
+        private void ChangeCheck(int TableNo)
+        {
+            List<Class_LinkFieldInfoCheck> class_LinkFieldInfoChecks = this.class_LinkFieldInfoChecks.FindAll(a => a.CurTableNo.Equals(TableNo));
+            if (class_LinkFieldInfoChecks != null && class_LinkFieldInfoChecks.Count > 0)
+            {
+                foreach (Class_LinkFieldInfoCheck item in class_LinkFieldInfoChecks)
+                {
+                    item.CheckOk = true;
+                    ChangeCheck(item.TableNo);
+                }
+                class_LinkFieldInfoChecks.Clear();
+
+            }
+        }
+        private bool CheckClassLinkField(ref List<string> outMessage)
+        {
+            bool ReturnValue = true;
+            if (class_SelectAllModel.GetLinkFieldInfosCount() > 0)
+            {
+                if (class_LinkFieldInfoChecks == null)
+                    class_LinkFieldInfoChecks = new List<Class_LinkFieldInfoCheck>();
+                else
+                    class_LinkFieldInfoChecks.Clear();
+                foreach (Class_LinkFieldInfo item in class_SelectAllModel.GetClass_LinkFieldInfos())
+                {
+                    Class_LinkFieldInfoCheck class_LinkFieldInfoCheck = new Class_LinkFieldInfoCheck();
+                    class_LinkFieldInfoCheck.CountToCount = item.CountToCount;
+                    class_LinkFieldInfoCheck.CurTableNo = item.CurTableNo;
+                    class_LinkFieldInfoCheck.LinkType = item.LinkType;
+                    class_LinkFieldInfoCheck.MainFieldName = item.MainFieldName;
+                    class_LinkFieldInfoCheck.OutFieldName = item.OutFieldName;
+                    class_LinkFieldInfoCheck.TableNo = item.TableNo;
+                    class_LinkFieldInfoChecks.Add(class_LinkFieldInfoCheck);
+                }
+                ChangeCheck(0);
+                foreach (Class_LinkFieldInfoCheck item in class_LinkFieldInfoChecks)
+                {
+                    ReturnValue = ReturnValue && item.CheckOk;
+                }
+                class_LinkFieldInfoChecks.Clear();
+            }
+            return ReturnValue;
+        }
         private string _GetAuthor()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -1299,8 +1364,16 @@ namespace MDIDemo.PublicClass
         }
         #endregion
 
-
-        #region
+        #region 公共方法
+        public Class_CreateSelectCode(string xmlFileName)
+        {
+            if (xmlFileName != null)
+            {
+                Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                class_SelectAllModel = new Class_SelectAllModel();
+                class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+            }
+        }
         public string GetMap(int Index)
         {
             if (class_SelectAllModel.class_SubList.Count > Index)

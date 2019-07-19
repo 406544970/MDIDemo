@@ -577,6 +577,14 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 外键关联类
+        public partial class Class_LinkFieldInfoCheck : Class_LinkFieldInfo
+        {
+            public Class_LinkFieldInfoCheck()
+            {
+                CheckOk = false;
+            }
+            public bool CheckOk { get; set; }
+        }
         public partial class Class_LinkFieldInfo
         {
             public Class_LinkFieldInfo()
@@ -925,6 +933,10 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 外键列表操作
+        public List<Class_LinkFieldInfo> GetClass_LinkFieldInfos()
+        {
+            return this.class_LinkFieldInfos;
+        }
         public Class_LinkFieldInfo GetOneClass_LinkFieldInfo(int index)
         {
             if (this.class_LinkFieldInfos == null || this.class_LinkFieldInfos.Count == 0)

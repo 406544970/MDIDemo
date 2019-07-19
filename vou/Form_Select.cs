@@ -529,7 +529,7 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit88, true, Color.GreenYellow);
             #endregion
 
-            #region
+            #region radioGroup
             this.radioGroup7.SelectedIndex = 0;
             this.radioGroup8.SelectedIndex = 0;
             this.radioGroup9.SelectedIndex = 0;
@@ -977,7 +977,7 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl1.MainView
                     , null, 0, -1, this.textEdit1.Text
                     , null, false, this.textEdit10.Text
-                    , -1, this.checkEdit10.Checked);
+                    , 0, this.checkEdit10.Checked);
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
                 else
@@ -1541,25 +1541,6 @@ namespace MDIDemo.vou
         {
             this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
         }
-        private void AddLinkFieldInfo()
-        {
-            class_SelectAllModel.IniLinkFieldInfos();
-            for (int i = 1; i < class_SelectAllModel.class_SubList.Count; i++)
-            {
-                Class_Sub class_Sub = class_SelectAllModel.class_SubList[i];
-                if (class_Sub.OutFieldName != null && class_Sub.MainTableFieldName != null)
-                {
-                    Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
-                    class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
-                    class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
-                    class_LinkFieldInfo.LinkType = class_Sub.LinkType;
-                    class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
-                    class_LinkFieldInfo.CurTableNo = i;
-                    class_LinkFieldInfo.TableNo = class_Sub.TableNo;
-                    class_SelectAllModel.AddLinkFieldInfosCount(class_LinkFieldInfo);
-                }
-            }
-        }
         private void CreateCode()
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
@@ -1570,11 +1551,9 @@ namespace MDIDemo.vou
             //3：初始化生成类
             IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(MethodId);
             //4：验证合法性
-            if (class_InterFaceCreateCode.IsCheckOk())
+            List<string> outMessage = new List<string>();
+            if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
             {
-                //加入关联信息
-                AddLinkFieldInfo();
-
                 int PageIndex = 0;
                 //5：生成代码
                 #region 主表
@@ -1695,6 +1674,14 @@ namespace MDIDemo.vou
 
                 this.DisplayText("代码已重新生成!");
             }
+            else
+            {
+                if (outMessage != null && outMessage.Count > 0)
+                {
+                    outMessage.ForEach(a => this.DisplayText(a));
+                }
+            }
+            outMessage.Clear();
             _SaveSelectToXml(false);
             waitDialogForm.Close();
         }
