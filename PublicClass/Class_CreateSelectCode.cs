@@ -12,20 +12,6 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public class Class_CreateSelectCode : IClass_InterFaceCreateCode
     {
-        public bool IsCheckOk(ref List<string> outMessage)
-        {
-            bool OkSign = true;
-
-            #region 认证关联性
-            if (OkSign && AddLinkFieldInfo() > 0)
-            {
-                OkSign = CheckClassLinkField(ref outMessage);
-            }
-            #endregion
-
-            return OkSign;
-        }
-
         #region 私有
         private int AddLinkFieldInfo()
         {
@@ -50,7 +36,8 @@ namespace MDIDemo.PublicClass
         }
         private void ChangeCheck(int CurTableNo)
         {
-            List<Class_LinkFieldInfo> class_LinkFieldInfoChecks = class_SelectAllModel.GetClass_LinkFieldInfos().FindAll(a => a.TableNo.Equals(CurTableNo));
+            List<Class_LinkFieldInfo> class_LinkFieldInfoChecks = new List<Class_LinkFieldInfo>();
+            class_LinkFieldInfoChecks = class_SelectAllModel.GetClass_LinkFieldInfos().FindAll(a => a.TableNo.Equals(CurTableNo));
             if (class_LinkFieldInfoChecks != null && class_LinkFieldInfoChecks.Count > 0)
             {
                 foreach (Class_LinkFieldInfo item in class_LinkFieldInfoChecks)
@@ -58,8 +45,8 @@ namespace MDIDemo.PublicClass
                     item.CheckOk = true;
                     ChangeCheck(item.CurTableNo);
                 }
-                class_LinkFieldInfoChecks.Clear();
             }
+            class_LinkFieldInfoChecks.Clear();
         }
         private bool CheckClassLinkField(ref List<string> outMessage)
         {
@@ -1347,6 +1334,53 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 公共方法
+        public void AddAllOutFieldName()
+        {
+            if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
+            {
+                class_SelectAllModel.IniClass_OutFields();
+                if (class_SelectAllModel.class_SubList != null)
+                {
+                    foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+                    {
+                        int index = 0;
+                        if (item.class_Fields.Count > 0)
+                        {
+                            foreach (Class_Field class_Field in item.class_Fields)
+                            {
+                                if (class_Field.SelectSelect)
+                                {
+                                    Class_OutField class_OutField = new Class_OutField()
+                                    {
+                                        PageIndex = index,
+                                        FieldName = class_Field.FieldName,
+                                        TableSimplificationName = item.DtoClassName,
+                                        FieldRemark = class_Field.FieldRemark,
+                                        FieldType = class_Field.FieldType
+                                    };
+                                    class_SelectAllModel.AddClass_OutField(class_OutField);
+                                }
+                            }
+                        }
+                        index++;
+                    }
+                    class_SelectAllModel.GetUpdateOutFieldName();
+                }
+            }
+        }
+        public bool IsCheckOk(ref List<string> outMessage)
+        {
+            bool OkSign = true;
+
+            #region 认证关联性
+            if (OkSign && AddLinkFieldInfo() > 0)
+            {
+                OkSign = CheckClassLinkField(ref outMessage);
+            }
+            #endregion
+
+            return OkSign;
+        }
         public Class_CreateSelectCode(string xmlFileName)
         {
             if (xmlFileName != null)
@@ -1400,7 +1434,16 @@ namespace MDIDemo.PublicClass
         {
             throw new NotImplementedException();
         }
-        #endregion
 
+        public void IniClass_OutFields()
+        {
+            AddLinkFieldInfo();
+        }
+
+        public int GetLinkFieldInfosCount()
+        {
+            return class_SelectAllModel.GetLinkFieldInfosCount();
+        }
+        #endregion
     }
 }

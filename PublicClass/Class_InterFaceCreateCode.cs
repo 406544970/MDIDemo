@@ -8,7 +8,10 @@ namespace MDIDemo.PublicClass
 {
     public interface IClass_InterFaceCreateCode
     {
+        #region
         bool IsCheckOk(ref List<string> outMessage);
+        void AddAllOutFieldName();
+        #endregion
 
         #region 
         string GetMap(int Index);

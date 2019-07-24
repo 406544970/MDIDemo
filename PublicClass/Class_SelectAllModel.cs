@@ -979,7 +979,7 @@ namespace MDIDemo.PublicClass
         }
         public void AddClass_OutField(Class_OutField class_OutField)
         {
-            if (this.class_OutFields == null)
+            if (class_OutFields == null)
                 class_OutFields = new List<Class_OutField>();
             class_OutFields.Add(class_OutField);
         }
@@ -1042,20 +1042,20 @@ namespace MDIDemo.PublicClass
         }
         public void IniLinkFieldInfos()
         {
-            if (this.class_LinkFieldInfos == null)
+            if (class_LinkFieldInfos == null)
                 class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
             else
                 class_LinkFieldInfos.Clear();
         }
         public void AddLinkFieldInfosCount(Class_LinkFieldInfo class_LinkFieldInfo)
         {
-            if (this.class_LinkFieldInfos == null)
+            if (class_LinkFieldInfos == null)
                 class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
             class_LinkFieldInfos.Add(class_LinkFieldInfo);
         }
         public int GetLinkFieldInfosCount()
         {
-            if (this.class_LinkFieldInfos == null)
+            if (class_LinkFieldInfos == null)
                 return 0;
             return class_LinkFieldInfos.Count;
         }
