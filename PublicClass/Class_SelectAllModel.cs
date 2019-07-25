@@ -1000,7 +1000,7 @@ namespace MDIDemo.PublicClass
                 }
             }
         }
-        private string GetDTOFieldName(int CurTableNo,string FieldName)
+        private string GetDTOFieldName(int CurTableNo, string FieldName)
         {
             string OutFieldName = null;
             int index = GetIndexFromClass_OutField(CurTableNo, FieldName);
@@ -1016,6 +1016,32 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 外键列表操作
+        public bool GetHaveSameFieldName(string FieldName, int PageIndex)
+        {
+            bool finder = false;
+            for (int i = 0; i < this.class_SubList.Count; i++)
+            {
+                if (i != PageIndex && !finder)
+                {
+                    Class_Sub class_Sub = class_SubList[i];
+                    if (class_Sub != null)
+                    {
+                        for (int j = 0; j < class_Sub.class_Fields.Count; j++)
+                        {
+                            if (class_Sub.class_Fields[j].SelectSelect)
+                            {
+                                if (class_Sub.class_Fields[j].ParaName.Equals(FieldName))
+                                {
+                                    finder = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return finder;
+        }
         public List<Class_LinkFieldInfo> GetClass_LinkFieldInfos()
         {
             return this.class_LinkFieldInfos;

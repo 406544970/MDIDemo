@@ -719,6 +719,7 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.AppendFormat("{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
             int Counter = 0;
+            int CurPageIndex = 0;
             foreach (Class_Sub item in class_SelectAllModel.class_SubList)
             {
                 string AliasName = item.AliasName;
@@ -728,23 +729,42 @@ namespace MDIDemo.PublicClass
                     if (class_Field.SelectSelect)
                     {
                         string FieldName = class_Field.FieldName;
+                        string MyFieldName = null;
+                        if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                        {
+                            MyFieldName = string.Format("{0}{1}", AliasName, FieldName);
+                        }
                         if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
                         {
                             FieldName = AliasName + "." + FieldName;
                         }
+
                         if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
                         {
                             Class_CaseWhen class_CaseWhen = new Class_CaseWhen();
                             FieldName = class_CaseWhen.GetCaseWhenContent(class_Field.CaseWhen, FieldName, class_ToolSpace.GetSetSpaceCount(3));
+                            if (MyFieldName != null)
+                                FieldName = FieldName + " AS " + MyFieldName;
                         }
                         if ((class_Field.FunctionName != null) && (class_Field.FunctionName.Length > 0))
                         {
-                            FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}") + " AS {1}", FieldName, class_Field.ParaName);
+                            if (MyFieldName != null)
+                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}") + " AS {1}", FieldName, MyFieldName);
+                            else
+                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}") + " AS {1}", FieldName, class_Field.ParaName);
                         }
-                        if (!FieldName.Equals(class_Field.ParaName))
+                        if (MyFieldName != null)
                         {
                             if (class_Main.ResultType > 0)
-                                FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
+                                FieldName = string.Format(FieldName + " AS {0}", MyFieldName);
+                        }
+                        else
+                        {
+                            if (!FieldName.Equals(class_Field.ParaName))
+                            {
+                                if (class_Main.ResultType > 0)
+                                    FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
+                            }
                         }
                         if (Counter++ > 0)
                             stringBuilder.AppendFormat("{1},{0}\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3));
@@ -753,6 +773,7 @@ namespace MDIDemo.PublicClass
                     }
                     #endregion
                 }
+                CurPageIndex++;
             }
 
             #region FROM
