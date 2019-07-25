@@ -755,15 +755,14 @@ namespace MDIDemo.PublicClass
                         }
                         if (MyFieldName != null)
                         {
-                            if (class_Main.ResultType > 0)
-                                FieldName = string.Format(FieldName + " AS {0}", MyFieldName);
+                            FieldName = string.Format(FieldName + " AS {0}", MyFieldName);
                         }
                         else
                         {
-                            if (!FieldName.Equals(class_Field.ParaName))
+                            if (!class_Field.FieldName.Equals(class_Field.ParaName))
                             {
                                 if (class_Main.ResultType > 0)
-                                    FieldName = string.Format(FieldName + " AS {0}", class_Field.ParaName);
+                                    FieldName = string.Format(class_Field.FieldName + " AS {0}", class_Field.ParaName);
                             }
                         }
                         if (Counter++ > 0)
