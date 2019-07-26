@@ -563,8 +563,13 @@ namespace MDIDemo.PublicClass
 
             return stringBuilder.ToString();
         }
-        private string _GetMainMap(Class_Sub class_Main)
+        private string _GetMap(int PageIndex)
         {
+            if (class_SelectAllModel.class_SubList.Count < PageIndex)
+                return null;
+            Class_Sub class_Main = class_SelectAllModel.class_SubList[PageIndex];
+            if (class_Main == null)
+                return null;
             if (class_Main.ResultType == 0)
             {
                 Class_Tool class_ToolSpace = new Class_Tool();
@@ -600,30 +605,19 @@ namespace MDIDemo.PublicClass
                         class_InterFaceDataBase = new Class_MySqlDataBase();
                         break;
                 }
-                foreach (Class_Field class_Field in class_Main.class_Fields)
-                {
-                    if (class_Field.SelectSelect)
-                    {
-                        if (class_Field.FieldIsKey)
-                        {
-                            stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(2)
-                                , class_Field.FieldName
-                                , class_Field.ParaName
-                                , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
-                                , class_Field.FieldRemark);
-                        }
-                        else
-                        {
-                            stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(2)
-                                , class_Field.FieldName
-                                , class_Field.ParaName
-                                , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
-                                , class_Field.FieldRemark);
-                        }
-                    }
-                }
+
+                stringBuilder.Append(_GetMyAllMap(PageIndex, class_SelectAllModel.IsMultTable, 0));
+
+                //List<Class_LinkFieldInfo> class_LinkFieldInfos = class_SelectAllModel.GetClass_LinkFieldInfos()
+                //    .FindAll(a => a.TableNo.Equals(PageIndex));
+                //if (class_LinkFieldInfos != null)
+                //{
+                //    foreach (Class_LinkFieldInfo item in class_LinkFieldInfos)
+                //    {
+                //        stringBuilder.Append(_GetMyMap(item.CurTableNo, class_SelectAllModel.IsMultTable, item.JoinType));
+                //    }
+                //}
+                //class_LinkFieldInfos.Clear();
                 stringBuilder.AppendFormat("{0}</resultMap>\r\n", class_ToolSpace.GetSetSpaceCount(1));
                 if (!class_Main.IsAddXmlHead)
                     stringBuilder.Append("</mapper>\r\n");
@@ -637,6 +631,8 @@ namespace MDIDemo.PublicClass
         }
         private string _GetMainMapLable(int PageIndex)
         {
+            if (class_SelectAllModel.class_SubList.Count < PageIndex)
+                return null;
             Class_Sub class_Main = class_SelectAllModel.class_SubList[PageIndex];
             if (class_Main == null)
                 return null;
@@ -1094,6 +1090,191 @@ namespace MDIDemo.PublicClass
             class_LinkFieldInfos.Clear();
             return stringBuilder.ToString();
         }
+        private string _GetMyAllMap(int PageIndex, bool IsMultTable, int JoinType)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append(_GetMyMap(PageIndex, class_SelectAllModel.IsMultTable, 0, 2));
+
+            List<Class_LinkFieldInfo> class_LinkFieldInfos = class_SelectAllModel.GetClass_LinkFieldInfos()
+                .FindAll(a => a.TableNo.Equals(PageIndex));
+            if (class_LinkFieldInfos != null)
+            {
+                foreach (Class_LinkFieldInfo item in class_LinkFieldInfos)
+                {
+                    stringBuilder.Append(_GetMyMap(item.CurTableNo, class_SelectAllModel.IsMultTable, item.JoinType, 2));
+                }
+            }
+            return stringBuilder.ToString();
+        }
+        private string _GetMyMap(int PageIndex, bool IsMultTable, int JoinType, int SpaceCounter)
+        {
+            if (class_SelectAllModel.class_SubList == null)
+                return null;
+            if (PageIndex > class_SelectAllModel.class_SubList.Count)
+                return null;
+            Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
+            if (class_Sub == null)
+                return null;
+
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            switch (JoinType)
+            {
+                case 0:
+                    {
+                        foreach (Class_Field class_Field in class_Sub.class_Fields)
+                        {
+                            if (class_Field.SelectSelect)
+                            {
+                                string MyFieldName = class_Field.ParaName;
+                                if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
+                                    MyFieldName = class_Field.MultFieldName;
+                                if (class_Field.FieldIsKey)
+                                {
+                                    if (PageIndex > 0)
+                                    {
+                                        stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
+                                            , MyFieldName
+                                            , MyFieldName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , class_Field.FieldRemark);
+                                    }
+                                    else
+                                        stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
+                                            , MyFieldName
+                                            , MyFieldName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , class_Field.FieldRemark);
+                                }
+                                else
+                                {
+                                    stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
+                                        , MyFieldName
+                                        , MyFieldName
+                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , class_Field.FieldRemark);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    {
+                        stringBuilder.AppendFormat("{0}<association property=\"{1}\" column=\"{2}\" javaType=\"{3}.dto.{4}\">\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
+                            , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName)
+                            , "idtest"
+                            , class_SelectAllModel.AllPackerName
+                            , Class_Tool.GetFirstCodeUpper(class_Sub.DtoClassName));
+                        foreach (Class_Field class_Field in class_Sub.class_Fields)
+                        {
+                            if (class_Field.SelectSelect)
+                            {
+                                string MyFieldName = class_Field.ParaName;
+                                if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
+                                    MyFieldName = class_Field.MultFieldName;
+                                if (class_Field.FieldIsKey)
+                                {
+                                    if (PageIndex > 0)
+                                    {
+                                        stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
+                                            , MyFieldName
+                                            , MyFieldName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , class_Field.FieldRemark);
+                                    }
+                                    else
+                                        stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
+                                            , MyFieldName
+                                            , MyFieldName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , class_Field.FieldRemark);
+                                }
+                                else
+                                {
+                                    stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
+                                        , MyFieldName
+                                        , MyFieldName
+                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , class_Field.FieldRemark);
+                                }
+                            }
+                        }
+                        stringBuilder.AppendFormat("{0}</association>\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter));
+                    }
+                    break;
+                default:
+                    {
+                        stringBuilder.AppendFormat("{0}<collection property = \"{1}s\" ofType = \"{2}.dto.{3}\" >\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
+                            , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName)
+                            , class_SelectAllModel.AllPackerName
+                            , Class_Tool.GetFirstCodeUpper(class_Sub.DtoClassName));
+                        foreach (Class_Field class_Field in class_Sub.class_Fields)
+                        {
+                            if (class_Field.SelectSelect)
+                            {
+                                string MyFieldName = class_Field.ParaName;
+                                if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
+                                    MyFieldName = class_Field.MultFieldName;
+                                if (class_Field.FieldIsKey)
+                                {
+                                    if (PageIndex > 0)
+                                    {
+                                        stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
+                                            , MyFieldName
+                                            , MyFieldName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , class_Field.FieldRemark);
+                                    }
+                                    else
+                                        stringBuilder.AppendFormat("{0}<id column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
+                                            , MyFieldName
+                                            , MyFieldName
+                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , class_Field.FieldRemark);
+                                }
+                                else
+                                {
+                                    stringBuilder.AppendFormat("{0}<result column=\"{1}\" property=\"{2}\" jdbcType=\"{3}\"/><!-- {4} -->\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
+                                        , MyFieldName
+                                        , MyFieldName
+                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , class_Field.FieldRemark);
+                                }
+                            }
+                        }
+                        stringBuilder.AppendFormat("{0}</collection>\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter));
+
+                    }
+                    break;
+            }
+            return stringBuilder.ToString();
+        }
         private string _GetMyDto(int PageIndex, bool IsMultTable, int JoinType)
         {
             if (class_SelectAllModel.class_SubList == null)
@@ -1521,7 +1702,7 @@ namespace MDIDemo.PublicClass
         public string GetMap(int Index)
         {
             if (class_SelectAllModel.class_SubList.Count > Index)
-                return _GetMainMap(class_SelectAllModel.class_SubList[Index]);
+                return _GetMap(Index);
             else
                 return null;
 
