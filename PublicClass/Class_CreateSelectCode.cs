@@ -1043,8 +1043,11 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
-        private string _GetMainDTO(Class_Sub class_Main)
+        private string _GetMainDTO(int PageIndex)
         {
+            if (class_SelectAllModel.class_SubList == null)
+                return null;
+
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
@@ -1065,62 +1068,107 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
-            stringBuilder.AppendFormat("public final class {0}", class_Main.DtoClassName);
-            if (class_Main.ExtendsSign)
+            stringBuilder.AppendFormat("public final class {0}"
+                , class_SelectAllModel.class_SubList[PageIndex].DtoClassName);
+            if (!class_SelectAllModel.IsMultTable)
             {
-                stringBuilder.AppendFormat(" extends {0}", class_Main.NameSpace);
+                if (class_SelectAllModel.class_SubList[PageIndex].ExtendsSign)
+                {
+                    stringBuilder.AppendFormat(" extends {0}", class_SelectAllModel.class_SubList[PageIndex].NameSpace);
+                }
             }
             stringBuilder.Append(" {\r\n");
 
-            //1、得到从表一、从表二、等已选择字段
-            List<List<Class_Field>> class_Fields = new List<List<Class_Field>>();
-            if (!class_Main.ExtendsSign)
-            {
-                if (class_SelectAllModel.class_SubList.Count > 0)
-                {
-                    List<Class_Field> Main = new List<Class_Field>();
-                    Main = class_SelectAllModel.class_SubList[0].class_Fields;
-                    class_Fields.Add(Main);
-                    if (class_SelectAllModel.class_SubList.Count > 1)
-                    {
-                        List<Class_Field> Sub1 = new List<Class_Field>();
-                        Sub1 = class_SelectAllModel.class_SubList[1].class_Fields;
-                        class_Fields.Add(Sub1);
-                        if (class_SelectAllModel.class_SubList.Count > 2)
-                        {
-                            List<Class_Field> Sub2 = new List<Class_Field>();
-                            Sub2 = class_SelectAllModel.class_SubList[2].class_Fields;
-                            class_Fields.Add(Sub2);
-                        }
-                    }
-                }
-            }
+            stringBuilder.Append(_GetMyDto(PageIndex, class_SelectAllModel.IsMultTable, 0));
 
-            foreach (List<Class_Field> row in class_Fields)
+            List<Class_LinkFieldInfo> class_LinkFieldInfos = class_SelectAllModel.GetClass_LinkFieldInfos()
+                .FindAll(a => a.TableNo.Equals(PageIndex));
+            if (class_LinkFieldInfos != null)
             {
-                foreach (Class_Field sub in row)
+                foreach (Class_LinkFieldInfo item in class_LinkFieldInfos)
                 {
-                    if (sub.SelectSelect)
-                    {
-                        stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                        stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), sub.FieldRemark);
-                        stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                        if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(sub.ParaName))
-                            stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(1)
-                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(sub.ReturnType))
-                                , sub.ParaName);
-                        else
-                            stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(1)
-                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(sub.ReturnType))
-                                , sub.ParaName);
-
-                    }
+                    stringBuilder.Append(_GetMyDto(item.CurTableNo, class_SelectAllModel.IsMultTable, item.JoinType));
                 }
             }
             stringBuilder.Append("}\r\n");
-            class_Fields.Clear();
+            class_LinkFieldInfos.Clear();
+            return stringBuilder.ToString();
+        }
+        private string _GetMyDto(int PageIndex, bool IsMultTable, int JoinType)
+        {
+            if (class_SelectAllModel.class_SubList == null)
+                return null;
+            if (PageIndex > class_SelectAllModel.class_SubList.Count)
+                return null;
+            Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
+            if (class_Sub == null)
+                return null;
+
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            switch (JoinType)
+            {
+                case 0:
+                    {
+                        foreach (Class_Field class_Field in class_Sub.class_Fields)
+                        {
+                            if (class_Field.SelectSelect)
+                            {
+                                string MyFieldName = class_Field.ParaName;
+                                if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
+                                    MyFieldName = class_Field.MultFieldName;
+
+                                stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), class_Field.FieldRemark);
+                                stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                                if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
+                                    stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(1)
+                                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , MyFieldName);
+                                else
+                                    stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(1)
+                                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , MyFieldName);
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    {
+                        stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), "关联外表");
+                        stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_SelectAllModel.class_SubList[PageIndex].DtoClassName
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                    }
+                    break;
+                default:
+                    {
+                        stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), "关联外表");
+                        stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.AppendFormat("{0}private List<{1}> {2}s;\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_SelectAllModel.class_SubList[PageIndex].DtoClassName
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                    }
+                    break;
+            }
             return stringBuilder.ToString();
         }
         private string _GetMainControl(Class_Sub class_Main)
@@ -1496,7 +1544,7 @@ namespace MDIDemo.PublicClass
         }
         public string GetDTO(int Index)
         {
-            return _GetMainDTO(class_SelectAllModel.class_SubList[Index]);
+            return _GetMainDTO(Index);
         }
         public string GetDAO(int Index)
         {
