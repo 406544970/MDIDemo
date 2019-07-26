@@ -1245,6 +1245,13 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
+                #region 更新多表字段名称
+                class_SelectAllModel.AddLinkFieldInfo();
+                class_SelectAllModel.AddAllOutFieldName();
+                class_SelectAllModel.UpdateIsMultTableSign();
+                class_SelectAllModel.UpdateMultFieldName();
+                #endregion
+
                 if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
                 {
                     if (IsDisplayLog)
@@ -1561,8 +1568,8 @@ namespace MDIDemo.vou
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
             {
-                //加入所有外键信息
-                class_InterFaceCreateCode.AddAllOutFieldName();
+                ////加入所有外键信息
+                //class_InterFaceCreateCode.AddAllOutFieldName();
                 int PageIndex = 0;
                 //5：生成代码
                 #region 主表

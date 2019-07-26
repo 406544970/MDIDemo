@@ -15,24 +15,7 @@ namespace MDIDemo.PublicClass
         #region 私有
         private int AddLinkFieldInfo()
         {
-            class_SelectAllModel.IniLinkFieldInfos();
-            for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
-            {
-                Class_Sub class_Sub = class_SelectAllModel.class_SubList[i];
-                Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
-                class_LinkFieldInfo.CurTableNo = i;
-                class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
-                class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
-                class_LinkFieldInfo.LinkType = class_Sub.LinkType;
-                class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
-                class_LinkFieldInfo.TableNo = class_Sub.TableNo;
-                class_LinkFieldInfo.InnerType = class_Sub.InnerType;
-                class_LinkFieldInfo.JoinType = class_Sub.JoinType;
-                class_LinkFieldInfo.DtoClassName = class_Sub.DtoClassName;
-                class_LinkFieldInfo.ResultMapType = class_Sub.ResultMapType;
-                class_SelectAllModel.AddLinkFieldInfosCount(class_LinkFieldInfo);
-            }
-            return class_SelectAllModel.GetLinkFieldInfosCount();
+            return class_SelectAllModel.AddLinkFieldInfo();
         }
         private void ChangeCheck(int CurTableNo)
         {
@@ -177,7 +160,7 @@ namespace MDIDemo.PublicClass
                 , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(ResultType)));
             return stringBuilder.ToString();
         }
-        private string _GetMainWhereLable(Class_Sub class_Main)
+        private string _GetMainWhereLable()
         {
             bool HaveGroup = false;
             bool HaveHaving = false;
@@ -201,16 +184,24 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
+            int CurPageIndex = 0;
             foreach (Class_Sub item in class_SelectAllModel.class_SubList)
             {
                 string AliasName = item.AliasName;
                 foreach (Class_Field class_Field in item.class_Fields)
                 {
                     string FieldName = class_Field.FieldName;
-                    if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
+                    string InParaFieldName = null;
+                    if (class_SelectAllModel.IsMultTable)
                     {
                         FieldName = AliasName + "." + FieldName;
+                        if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                            InParaFieldName = class_Field.MultFieldName;
+                        else
+                            InParaFieldName = class_Field.ParaName;
                     }
+                    else
+                        InParaFieldName = class_Field.ParaName;
                     #region Where
                     if (class_Field.WhereSelect)
                     {
@@ -221,13 +212,13 @@ namespace MDIDemo.PublicClass
                             if (class_Field.WhereIsNull)
                             {
                                 IfLabel = string.Format("{1}<if test=\"{0} != null\">\r\n"
-                                    , class_Field.ParaName, class_ToolSpace.GetSetSpaceCount(3));
+                                    , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
                             }
                         }
                         if (class_Field.WhereType == "OR")
                         {
                             IfLabel = string.Format("{1}<when test=\"{0} != null\">\r\n"
-                                , class_Field.ParaName, class_ToolSpace.GetSetSpaceCount(4));
+                                , InParaFieldName, class_ToolSpace.GetSetSpaceCount(4));
                         }
                         NowWhere = string.Format("{0} AND {1} "
                             , class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 4 : 5)
@@ -259,7 +250,7 @@ namespace MDIDemo.PublicClass
                             if (class_Field.WhereValue == "参数")
                             {
                                 String XmlFieldString = "#{" + string.Format("{0},jdbcType={1}"
-                                    , class_Field.ParaName
+                                    , InParaFieldName
                                     , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
                                 if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
                                     NowWhere = NowWhere + XmlFieldString;
@@ -337,6 +328,7 @@ namespace MDIDemo.PublicClass
                     }
                     #endregion
                 }
+                CurPageIndex++;
             }
             if (stringBuilderWhereOr.Length > 0)
             {
@@ -590,7 +582,7 @@ namespace MDIDemo.PublicClass
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Main.ResultMapId
                 , class_SelectAllModel.AllPackerName);
-                if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
+                if (class_SelectAllModel.IsMultTable)
                     stringBuilder.AppendFormat("dto.{0}\">\r\n"
                     , class_Main.DtoClassName);
                 else
@@ -682,9 +674,24 @@ namespace MDIDemo.PublicClass
             {
                 string ResultType = _GetSelectType(class_Main);
                 if (ResultType == "mult")
-                    stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
+                {
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("resultType=\"{0}.dto.{1}\""
+                        , class_SelectAllModel.AllPackerName
+                    , class_Main.DtoClassName);
+                    //if (class_WhereFields.Count > 1)
+                    //{
+                    //    else
+                    //        stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
+                    //    , class_SelectAllModel.AllPackerName
+                    //    , class_Main.ResultMapType);
+
+                    //}
+                    else
+                        stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
                     , class_SelectAllModel.AllPackerName
                     , class_Main.ResultMapType);
+                }
                 else
                     stringBuilder.AppendFormat("resultType=\"{0}\""
                     , class_InterFaceDataBase.GetJavaType(ResultType));
@@ -694,7 +701,7 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
+                    if (class_SelectAllModel.IsMultTable)
                     {
                         stringBuilder.AppendFormat(" parameterType=\"{0}.dto.{1}\">\r\n"
                         , class_SelectAllModel.AllPackerName
@@ -732,9 +739,9 @@ namespace MDIDemo.PublicClass
                         string MyFieldName = null;
                         if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
                         {
-                            MyFieldName = string.Format("{0}{1}", AliasName, FieldName);
+                            MyFieldName = class_Field.MultFieldName;
                         }
-                        if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
+                        if (class_SelectAllModel.IsMultTable)
                         {
                             FieldName = AliasName + "." + FieldName;
                         }
@@ -793,7 +800,7 @@ namespace MDIDemo.PublicClass
                     stringBuilder.AppendFormat("{0}FROM ", class_ToolSpace.GetSetSpaceCount(2));
                 }
 
-                if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
+                if (class_SelectAllModel.IsMultTable)
                 {
                     stringBuilder.AppendFormat("{0} AS {1} "
                         , item.TableName
@@ -812,7 +819,7 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region WHERE
-            stringBuilder.Append(_GetMainWhereLable(class_Main));
+            stringBuilder.Append(_GetMainWhereLable());
             #endregion
 
             stringBuilder.AppendFormat("{0}</select>\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -1441,46 +1448,12 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 公共方法
-        public void AddAllOutFieldName()
-        {
-            if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
-            {
-                class_SelectAllModel.IniClass_OutFields();
-                if (class_SelectAllModel.class_SubList != null)
-                {
-                    foreach (Class_Sub item in class_SelectAllModel.class_SubList)
-                    {
-                        int index = 0;
-                        if (item.class_Fields.Count > 0)
-                        {
-                            foreach (Class_Field class_Field in item.class_Fields)
-                            {
-                                if (class_Field.SelectSelect)
-                                {
-                                    Class_OutField class_OutField = new Class_OutField()
-                                    {
-                                        PageIndex = index,
-                                        FieldName = class_Field.FieldName,
-                                        TableSimplificationName = item.DtoClassName,
-                                        FieldRemark = class_Field.FieldRemark,
-                                        FieldType = class_Field.FieldType
-                                    };
-                                    class_SelectAllModel.AddClass_OutField(class_OutField);
-                                }
-                            }
-                        }
-                        index++;
-                    }
-                    class_SelectAllModel.GetUpdateOutFieldName();
-                }
-            }
-        }
         public bool IsCheckOk(ref List<string> outMessage)
         {
             bool OkSign = true;
 
             #region 认证关联性
-            if (OkSign && AddLinkFieldInfo() > 0)
+            if (OkSign && GetLinkFieldInfosCount() > 0)
             {
                 OkSign = CheckClassLinkField(ref outMessage);
             }
@@ -1550,6 +1523,11 @@ namespace MDIDemo.PublicClass
         public int GetLinkFieldInfosCount()
         {
             return class_SelectAllModel.GetLinkFieldInfosCount();
+        }
+
+        public void AddAllOutFieldName()
+        {
+            class_SelectAllModel.AddAllOutFieldName();
         }
         #endregion
     }
