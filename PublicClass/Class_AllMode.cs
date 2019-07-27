@@ -20,9 +20,14 @@ namespace MDIDemo.PublicClass
     }
     public class Class_WhereField
     {
+        public bool IsSame;
+        public int TableNo;
+        public string TableName;
         public string FieldName;
+        public string ParaName;
+        public string OutFieldName;
         public string FieldRemark;
-        public string FieldType;
+        public string LogType;
         public string FieldDefaultValue;
         public string FieldLogType;
     }

@@ -12,6 +12,7 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public class Class_CreateSelectCode : IClass_InterFaceCreateCode
     {
+        private static string InPutParamer = "InPutPara";
         #region 私有
         private int AddLinkFieldInfo()
         {
@@ -104,28 +105,40 @@ namespace MDIDemo.PublicClass
         }
         private List<Class_WhereField> _GetParameterType()
         {
-            //Class_Sub class_Main
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+            int Counter = 0;
             foreach (Class_Sub item in class_SelectAllModel.class_SubList)
             {
                 if (item != null)
                 {
-                    foreach (Class_Field row in item.class_Fields)
+                    foreach (Class_Field class_Field in item.class_Fields)
                     {
-                        if (row.WhereSelect)
+                        if (class_Field.WhereSelect && class_Field.WhereValue == "参数" && class_Field.LogType.IndexOf("NULL") < 0)
                         {
+                            string InParaFieldName = null;
+                            bool IsSame = class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, Counter);
+                            if (IsSame)
+                                InParaFieldName = class_Field.MultFieldName;
+                            else
+                                InParaFieldName = class_Field.ParaName;
                             Class_WhereField class_WhereField = new Class_WhereField()
                             {
-                                FieldName = row.ParaName,
-                                FieldRemark = row.FieldRemark,
-                                FieldType = row.ReturnType,
-                                FieldDefaultValue = row.FieldDefaultValue,
-                                FieldLogType = row.LogType
+                                FieldName = class_Field.FieldName,
+                                ParaName = class_Field.ParaName,
+                                FieldRemark = class_Field.FieldRemark,
+                                LogType = class_Field.ReturnType,
+                                FieldDefaultValue = class_Field.FieldDefaultValue,
+                                FieldLogType = class_Field.LogType,
+                                TableNo = Counter,
+                                IsSame = IsSame,
+                                OutFieldName = InParaFieldName,
+                                TableName = item.TableName
                             };
                             class_WhereFields.Add(class_WhereField);
                         }
                     }
                 }
+                Counter++;
             }
             return class_WhereFields;
         }
@@ -375,7 +388,6 @@ namespace MDIDemo.PublicClass
             if (class_Sub == null)
                 return null;
             string MapAfterString = "Mapper";
-            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
@@ -408,25 +420,55 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
+
+            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             class_WhereFields = _GetParameterType();
-            if (class_WhereFields != null)
+            if (class_WhereFields != null && class_WhereFields.Count > 0)
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                    , class_Sub.MethodContent);
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                        , class_Sub.MethodContent
+                        , InPutParamer);
+                    else
+                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                        , class_Sub.MethodContent);
                 }
                 else
                 {
-                    if (class_WhereFields.Count > 0)
-                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeLow(class_WhereFields[0].FieldName)
+                    , Class_Tool.GetFirstCodeLow(class_WhereFields[0].OutFieldName)
                     , class_WhereFields[0].FieldRemark);
                 }
+
             }
+
+            #region
+            //if (class_WhereFields != null)
+            //{
+            //    if (class_WhereFields.Count > 1)
+            //    {
+            //        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+            //        , class_ToolSpace.GetSetSpaceCount(1)
+            //        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+            //        , class_Sub.MethodContent);
+            //    }
+            //    else
+            //    {
+            //        if (class_WhereFields.Count > 0)
+            //            stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+            //        , class_ToolSpace.GetSetSpaceCount(1)
+            //        , Class_Tool.GetFirstCodeLow(class_WhereFields[0].FieldName)
+            //        , class_WhereFields[0].FieldRemark);
+            //    }
+            //}
+            #endregion
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -446,8 +488,8 @@ namespace MDIDemo.PublicClass
                 {
                     stringBuilder.AppendFormat(" {0}({1} {2})"
                         , class_Sub.MethodId
-                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].FieldType))
-                        , class_WhereFields[0].FieldName);
+                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                        , class_WhereFields[0].OutFieldName);
                 }
                 else
                     stringBuilder.AppendFormat(" {0}()"
@@ -483,6 +525,28 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
+        private string _GetAllWhereCount()
+        {
+            string WhereCount = null;
+            int Counter = 0;
+            if (class_SelectAllModel.class_SubList != null)
+            {
+                foreach (Class_Sub class_Sub in class_SelectAllModel.class_SubList)
+                {
+                    foreach (Class_Field class_Field in class_Sub.class_Fields)
+                    {
+                        if (class_Field.WhereSelect && class_Field.WhereValue == "参数" && class_Field.LogType.IndexOf("NULL") < 0)
+                        {
+                            WhereCount = class_Field.ReturnType;
+                            Counter++;
+                        }
+                    }
+                }
+            }
+            if (Counter > 1)
+                WhereCount = "mult";
+            return WhereCount;
+        }
         private string _GetMainDAO(Class_Sub class_Main)
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
@@ -515,12 +579,20 @@ namespace MDIDemo.PublicClass
             class_WhereFields = _GetParameterType();
             if (class_WhereFields != null)
             {
+                //_GetAllWhereCount()
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeLow(class_Main.NameSpace)
-                    , class_Main.MethodContent);
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeLow(class_Main.NameSpace)
+                        , class_Main.MethodContent
+                        , InPutParamer);
+                    else
+                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeLow(class_Main.NameSpace)
+                        , class_Main.MethodContent);
                 }
                 else
                 {
@@ -544,15 +616,24 @@ namespace MDIDemo.PublicClass
             if (class_WhereFields != null)
             {
                 if (class_WhereFields.Count > 1)
-                    stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
+                {
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat(" {0}({1}{3} {2}{3});\r\n"
+                            , class_Main.MethodId
+                            , class_Main.NameSpace
+                            , Class_Tool.GetFirstCodeLow(class_Main.NameSpace)
+                            , InPutParamer);
+                    else
+                        stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
                         , class_Main.MethodId
                         , class_Main.NameSpace
                         , Class_Tool.GetFirstCodeLow(class_Main.NameSpace));
+                }
                 else if (class_WhereFields.Count == 1)
                 {
                     stringBuilder.AppendFormat(" {0}(@Param(\"{2}\") {1} {2});\r\n"
                         , class_Main.MethodId
-                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].FieldType))
+                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
                         , class_WhereFields[0].FieldName);
                 }
                 else
@@ -606,18 +687,8 @@ namespace MDIDemo.PublicClass
                         break;
                 }
 
-                stringBuilder.Append(_GetMyAllMap(PageIndex, class_SelectAllModel.IsMultTable, 0));
+                stringBuilder.Append(_GetMyAllMap(PageIndex, class_SelectAllModel.IsMultTable, 0, 2));
 
-                //List<Class_LinkFieldInfo> class_LinkFieldInfos = class_SelectAllModel.GetClass_LinkFieldInfos()
-                //    .FindAll(a => a.TableNo.Equals(PageIndex));
-                //if (class_LinkFieldInfos != null)
-                //{
-                //    foreach (Class_LinkFieldInfo item in class_LinkFieldInfos)
-                //    {
-                //        stringBuilder.Append(_GetMyMap(item.CurTableNo, class_SelectAllModel.IsMultTable, item.JoinType));
-                //    }
-                //}
-                //class_LinkFieldInfos.Clear();
                 stringBuilder.AppendFormat("{0}</resultMap>\r\n", class_ToolSpace.GetSetSpaceCount(1));
                 if (!class_Main.IsAddXmlHead)
                     stringBuilder.Append("</mapper>\r\n");
@@ -662,31 +733,20 @@ namespace MDIDemo.PublicClass
             if (class_Main.ResultType == 0)
             {
                 stringBuilder.AppendFormat("resultMap=\"{0}Map\""
-                    , class_Main.ResultMapId
-                    , class_SelectAllModel.AllPackerName
-                    , class_Main.ResultMapType);
+                    , class_Main.ResultMapId);
             }
             else
             {
                 string ResultType = _GetSelectType(class_Main);
                 if (ResultType == "mult")
                 {
-                    if (class_SelectAllModel.IsMultTable)
-                        stringBuilder.AppendFormat("resultType=\"{0}.dto.{1}\""
-                        , class_SelectAllModel.AllPackerName
-                    , class_Main.DtoClassName);
-                    //if (class_WhereFields.Count > 1)
-                    //{
-                    //    else
-                    //        stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
-                    //    , class_SelectAllModel.AllPackerName
-                    //    , class_Main.ResultMapType);
-
-                    //}
-                    else
+                    if (class_WhereFields.Count > 1)
                         stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
-                    , class_SelectAllModel.AllPackerName
-                    , class_Main.ResultMapType);
+                        , class_SelectAllModel.AllPackerName
+                        , class_Main.ResultMapType);
+                    else
+                        stringBuilder.AppendFormat("resultType=\"{0}\""
+                        , class_InterFaceDataBase.GetJavaType(ResultType));
                 }
                 else
                     stringBuilder.AppendFormat("resultType=\"{0}\""
@@ -697,22 +757,14 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    if (class_SelectAllModel.IsMultTable)
-                    {
-                        stringBuilder.AppendFormat(" parameterType=\"{0}.dto.{1}\">\r\n"
-                        , class_SelectAllModel.AllPackerName
-                        , class_Main.DtoClassName);
-                    }
-                    else
-                    {
-                        stringBuilder.AppendFormat(" parameterType=\"{0}.model.{1}\">\r\n"
-                        , class_SelectAllModel.AllPackerName
-                        , class_Main.ResultMapType);
-                    }
+                    stringBuilder.AppendFormat(" parameterType=\"{0}.model.{1}{2}\">\r\n"
+                    , class_SelectAllModel.AllPackerName
+                    , class_Main.ResultMapType
+                    , InPutParamer);
                 }
                 else if (class_WhereFields.Count == 1)
                     stringBuilder.AppendFormat(" parameterType=\"{0}\">\r\n"
-                    , class_InterFaceDataBase.GetJavaType(class_WhereFields[0].FieldType));
+                    , class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType));
                 else
                     stringBuilder.Append(" >\r\n");
             }
@@ -824,7 +876,7 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        private string _GetMainModel(Class_Sub class_Main)
+        private string _GetMainModel(int PageIndex)
         {
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
@@ -846,28 +898,132 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
-            stringBuilder.AppendFormat("public class {0} ", class_Main.NameSpace);
+            if (class_SelectAllModel.IsMultTable)
+                stringBuilder.AppendFormat("public class {0}{1} "
+                    , class_SelectAllModel.class_SubList[PageIndex].NameSpace
+                    , InPutParamer);
+            else
+                stringBuilder.AppendFormat("public class {0} ", class_SelectAllModel.class_SubList[PageIndex].NameSpace);
             stringBuilder.Append(" {\r\n");
-            //加入字段
-            foreach (Class_Field row in class_Main.class_Fields)
-            {
-                if (row.SelectSelect)
-                {
-                    stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), row.FieldRemark);
-                    stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(row.ParaName))
-                        stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(1)
-                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(row.ReturnType))
-                            , row.ParaName);
-                    else
-                        stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(1)
-                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(row.ReturnType))
-                            , row.ParaName);
 
+            //加入字段
+            if (!class_SelectAllModel.IsMultTable)
+            {
+                foreach (Class_Field row in class_SelectAllModel.class_SubList[PageIndex].class_Fields)
+                {
+                    if (row.SelectSelect)
+                    {
+                        stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), row.FieldRemark);
+                        stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(row.ParaName))
+                            stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(row.ReturnType))
+                                , row.ParaName);
+                        else
+                            stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(row.ReturnType))
+                                , row.ParaName);
+
+                    }
                 }
+            }
+            else
+            {
+                List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+                class_WhereFields = _GetParameterType();
+                if (class_WhereFields != null)
+                {
+                    foreach (Class_WhereField class_Field in class_WhereFields)
+                    {
+                        string JaveType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.LogType));
+                        if (class_Field.LogType.IndexOf("IN") > -1)
+                        {
+                            JaveType = string.Format("List<{0}>", JaveType);
+                        }
+                        stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        if (class_Field.IsSame)
+                            stringBuilder.AppendFormat("{0} * 表{1},原字段名{2},现字段名{3}:{4}\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , class_Field.TableName
+                                , class_Field.FieldName
+                                , class_Field.OutFieldName
+                                , class_Field.FieldRemark);
+                        else
+                            stringBuilder.AppendFormat("{0} * 表{1},字段名{2}:{3}\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , class_Field.TableName
+                                , class_Field.OutFieldName
+                                , class_Field.FieldRemark);
+                        stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                        if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
+                            stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , JaveType
+                                , class_Field.OutFieldName);
+                        else
+                            stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(1)
+                                , JaveType
+                                , class_Field.OutFieldName);
+                    }
+                }
+                class_WhereFields.Clear();
+
+                #region
+                //int CurPageIndex = 0;
+                //foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+                //{
+                //    string AliasName = item.AliasName;
+                //    foreach (Class_Field class_Field in item.class_Fields)
+                //    {
+                //        #region Where
+                //        if (class_Field.WhereSelect && class_Field.WhereValue == "参数" && class_Field.LogType.IndexOf("NULL") < 0)
+                //        {
+                //            string InParaFieldName = null;
+                //            bool IsSame = class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex);
+                //            if (IsSame)
+                //                InParaFieldName = class_Field.MultFieldName;
+                //            else
+                //                InParaFieldName = class_Field.ParaName;
+                //            string JaveType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType));
+                //            if (class_Field.LogType.IndexOf("IN") > -1)
+                //            {
+                //                JaveType = string.Format("List<{0}>", JaveType);
+                //            }
+                //            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                //            if (IsSame)
+                //                stringBuilder.AppendFormat("{0} * 表{1},原字段名{2},现字段名{3}:{4}\r\n"
+                //                    , class_ToolSpace.GetSetSpaceCount(1)
+                //                    , item.TableName
+                //                    , class_Field.FieldName, InParaFieldName
+                //                    , class_Field.FieldRemark);
+                //            else
+                //                stringBuilder.AppendFormat("{0} * 表{1},字段名{2}:{3}\r\n"
+                //                    , class_ToolSpace.GetSetSpaceCount(1)
+                //                    , item.TableName
+                //                    , InParaFieldName
+                //                    , class_Field.FieldRemark);
+                //            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                //            if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
+                //                stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
+                //                    , class_ToolSpace.GetSetSpaceCount(1)
+                //                    , JaveType
+                //                    , InParaFieldName);
+                //            else
+                //                stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
+                //                    , class_ToolSpace.GetSetSpaceCount(1)
+                //                    , JaveType
+                //                    , InParaFieldName);
+
+                //        }
+                //        #endregion
+                //    }
+                //    CurPageIndex++;
+                //}
+                #endregion
             }
 
             stringBuilder.Append("}\r\n");
@@ -942,7 +1098,7 @@ namespace MDIDemo.PublicClass
                 {
                     stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
                         , class_Main.MethodId
-                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].FieldType))
+                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
                         , class_WhereFields[0].FieldName);
                 }
                 else
@@ -1090,10 +1246,11 @@ namespace MDIDemo.PublicClass
             class_LinkFieldInfos.Clear();
             return stringBuilder.ToString();
         }
-        private string _GetMyAllMap(int PageIndex, bool IsMultTable, int JoinType)
+        private string _GetMyAllMap(int PageIndex, bool IsMultTable, int JoinType, int SpaceCounter)
         {
+            Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append(_GetMyMap(PageIndex, class_SelectAllModel.IsMultTable, 0, 2));
+            stringBuilder.Append(_GetMyMap(PageIndex, class_SelectAllModel.IsMultTable, JoinType, SpaceCounter));
 
             List<Class_LinkFieldInfo> class_LinkFieldInfos = class_SelectAllModel.GetClass_LinkFieldInfos()
                 .FindAll(a => a.TableNo.Equals(PageIndex));
@@ -1101,9 +1258,15 @@ namespace MDIDemo.PublicClass
             {
                 foreach (Class_LinkFieldInfo item in class_LinkFieldInfos)
                 {
-                    stringBuilder.Append(_GetMyMap(item.CurTableNo, class_SelectAllModel.IsMultTable, item.JoinType, 2));
+                    stringBuilder.Append(_GetMyAllMap(item.CurTableNo, class_SelectAllModel.IsMultTable, item.JoinType, (JoinType == 0 ? SpaceCounter : SpaceCounter + 1)));
                 }
             }
+            if (JoinType == 1)
+                stringBuilder.AppendFormat("{0}</association>\r\n"
+                , class_ToolSpace.GetSetSpaceCount(SpaceCounter));
+            if (JoinType == 2)
+                stringBuilder.AppendFormat("{0}</collection>\r\n"
+                , class_ToolSpace.GetSetSpaceCount(SpaceCounter));
             return stringBuilder.ToString();
         }
         private string _GetMyMap(int PageIndex, bool IsMultTable, int JoinType, int SpaceCounter)
@@ -1219,8 +1382,6 @@ namespace MDIDemo.PublicClass
                                 }
                             }
                         }
-                        stringBuilder.AppendFormat("{0}</association>\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter));
                     }
                     break;
                 default:
@@ -1267,8 +1428,6 @@ namespace MDIDemo.PublicClass
                                 }
                             }
                         }
-                        stringBuilder.AppendFormat("{0}</collection>\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(SpaceCounter));
 
                     }
                     break;
@@ -1437,7 +1596,7 @@ namespace MDIDemo.PublicClass
                     , class_ToolSpace.GetSetSpaceCount(3)
                     , Class_Tool.GetFirstCodeLow(row.FieldName)
                     , row.FieldRemark
-                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                     if (index < class_WhereFields.Count - 1)
                         stringBuilder.Append(",");
                     if (index == class_WhereFields.Count - 1 && class_SelectAllModel.class_Create.EnglishSign)
@@ -1481,11 +1640,11 @@ namespace MDIDemo.PublicClass
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
                     stringBuilder.AppendFormat(" List<{0}>"
-                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                 }
                 else
                     stringBuilder.AppendFormat(" {0}"
-                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                 stringBuilder.AppendFormat(" {0}", row.FieldName);
             }
             if (class_SelectAllModel.class_Create.EnglishSign)
@@ -1721,7 +1880,7 @@ namespace MDIDemo.PublicClass
         }
         public string GetModel(int Index)
         {
-            return _GetMainModel(class_SelectAllModel.class_SubList[Index]);
+            return _GetMainModel(Index);
         }
         public string GetDTO(int Index)
         {

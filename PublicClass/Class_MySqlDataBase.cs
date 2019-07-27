@@ -23,6 +23,11 @@ namespace MDIDemo.PublicClass
         private string OperateType;
         private object class_AllModel;
         private List<Class_MySqlFieldAndJava> class_MySqlFieldAndJavas;
+        private List<string> FunctionList;
+        ~Class_MySqlDataBase()
+        {
+            FunctionList.Clear();
+        }
         public Class_MySqlDataBase()
         {
             IniFieldTypeChange();
@@ -175,6 +180,45 @@ namespace MDIDemo.PublicClass
             class_MySqlFieldAndJava.JavaType = "java.sql.Date";
             class_MySqlFieldAndJavas.Add(class_MySqlFieldAndJava);
             #endregion
+
+            FunctionList = new List<string>();
+            FunctionList.Add("COUNT(?)");
+            FunctionList.Add("COUNT(DISTINCT ?)");
+            FunctionList.Add("SUM(?)");
+            FunctionList.Add("MAX(?)");
+            FunctionList.Add("MIN(?)");
+            FunctionList.Add("AVG(?)");
+            FunctionList.Add("DATE_FORMAT(?,'%Y-%m-%d')");
+            FunctionList.Add("DATE_FORMAT(?, '%Y-%m-%d %H-%M-%S')");
+            
+        }
+        public string GetMySqlDataType(string FunctionName,string MySqlDataType)
+        {
+            if (FunctionName == null)
+                return MySqlDataType;
+
+            string ResultValue = null;
+            switch (FunctionName)
+            {
+                case "COUNT(?)":
+                case "COUNT(DISTINCT ?)":
+                    ResultValue = "int";
+                    break;
+                case "SUM(?)":
+                case "MAX(?)":
+                case "MIN(?)":
+                case "AVG(?)":
+                    ResultValue = MySqlDataType;
+                    break;
+                case "DATE_FORMAT(?,'%Y-%m-%d')":
+                case "DATE_FORMAT(?,'%Y-%m-%d %H-%M-%S')":
+                    ResultValue = "varchar";
+                    break;
+                default:
+                    ResultValue = "varchar";
+                    break;
+            }
+            return ResultValue;
         }
         public List<string> GetFunctionList(string FieldType)
         {
@@ -198,13 +242,7 @@ namespace MDIDemo.PublicClass
                     vs.Add("int");
                     break;
                 default:
-                    vs.Add("COUNT(?)");
-                    vs.Add("COUNT(DISTINCT ?)");
-                    vs.Add("SUM(?)");
-                    vs.Add("MAX(?)");
-                    vs.Add("MIN(?)");
-                    vs.Add("AVG(?)");
-                    vs.Add("DATE_FORMAT(?,'%Y-%m-%d')");
+                    vs = FunctionList;
                     break;
             }
             return vs;
