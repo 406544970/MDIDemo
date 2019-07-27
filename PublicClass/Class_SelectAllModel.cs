@@ -20,6 +20,7 @@ namespace MDIDemo.PublicClass
             classType = "select";
             IsAutoWard = true;
             PageSign = true;
+            IsMultTable = false;
         }
         ~Class_SelectAllModel()
         {
@@ -31,10 +32,10 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 属性
-        [NonSerialized]
-        private List<Class_OutField> class_OutFields;
-        [NonSerialized]
-        private List<Class_LinkFieldInfo> class_LinkFieldInfos;
+        //[NonSerialized]
+        public List<Class_OutField> class_OutFields;
+        //[NonSerialized]
+        public List<Class_LinkFieldInfo> class_LinkFieldInfos;
         public string AllPackerName { get; set; }
         public Class_WindowLastState class_WindowLastState { get; set; }
         public Class_MyBatisMap class_MyBatisMap { get; set; }
@@ -49,6 +50,7 @@ namespace MDIDemo.PublicClass
         public bool IsAutoWard { get; set; }
         public string TestClassName { get; set; }
         public string TestUnit { get; set; }
+        public bool IsMultTable { get; set; }
         /// <summary>
         /// 是否分页
         /// </summary>
@@ -763,6 +765,7 @@ namespace MDIDemo.PublicClass
             public bool FieldIsNull { get; set; }
             public bool FieldIsKey { get; set; }
             public bool FieldIsAutoAdd { get; set; }
+            public string MultFieldName { get; set; }
             #endregion
 
             #region Select
@@ -979,7 +982,7 @@ namespace MDIDemo.PublicClass
         }
         public void AddClass_OutField(Class_OutField class_OutField)
         {
-            if (this.class_OutFields == null)
+            if (class_OutFields == null)
                 class_OutFields = new List<Class_OutField>();
             class_OutFields.Add(class_OutField);
         }
@@ -1000,7 +1003,7 @@ namespace MDIDemo.PublicClass
                 }
             }
         }
-        private string GetDTOFieldName(int CurTableNo,string FieldName)
+        private string GetDTOFieldName(int CurTableNo, string FieldName)
         {
             string OutFieldName = null;
             int index = GetIndexFromClass_OutField(CurTableNo, FieldName);
@@ -1016,6 +1019,53 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region 外键列表操作
+        public void UpdateMultFieldName()
+        {
+            if (this.class_SubList != null)
+            {
+                foreach (Class_Sub item in class_SubList)
+                {
+                    if (item.class_Fields != null)
+                    {
+                        foreach (Class_Field class_Field in item.class_Fields)
+                        {
+                            if (IsMultTable)
+                                class_Field.MultFieldName = string.Format("{0}{1}"
+                                    , Class_Tool.GetFirstCodeLow(item.AliasName)
+                                    , Class_Tool.GetFirstCodeUpper(class_Field.ParaName));
+                            else
+                                class_Field.MultFieldName = class_Field.ParaName;
+                        }
+                    }
+                }
+            }
+        }
+        public bool GetHaveSameFieldName(string FieldName, int PageIndex)
+        {
+            bool finder = false;
+            for (int i = 0; i < this.class_SubList.Count; i++)
+            {
+                if (i != PageIndex && !finder)
+                {
+                    Class_Sub class_Sub = class_SubList[i];
+                    if (class_Sub != null)
+                    {
+                        for (int j = 0; j < class_Sub.class_Fields.Count; j++)
+                        {
+                            if (class_Sub.class_Fields[j].SelectSelect)
+                            {
+                                if (class_Sub.class_Fields[j].ParaName.Equals(FieldName))
+                                {
+                                    finder = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return finder;
+        }
         public List<Class_LinkFieldInfo> GetClass_LinkFieldInfos()
         {
             return this.class_LinkFieldInfos;
@@ -1042,23 +1092,87 @@ namespace MDIDemo.PublicClass
         }
         public void IniLinkFieldInfos()
         {
-            if (this.class_LinkFieldInfos == null)
+            if (class_LinkFieldInfos == null)
                 class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
             else
                 class_LinkFieldInfos.Clear();
         }
         public void AddLinkFieldInfosCount(Class_LinkFieldInfo class_LinkFieldInfo)
         {
-            if (this.class_LinkFieldInfos == null)
+            if (class_LinkFieldInfos == null)
                 class_LinkFieldInfos = new List<Class_LinkFieldInfo>();
             class_LinkFieldInfos.Add(class_LinkFieldInfo);
         }
         public int GetLinkFieldInfosCount()
         {
-            if (this.class_LinkFieldInfos == null)
+            if (class_LinkFieldInfos == null)
                 return 0;
-            return class_LinkFieldInfos.Count;
+            else
+                return class_LinkFieldInfos.Count;
         }
+        public void UpdateIsMultTableSign()
+        {
+            if (class_LinkFieldInfos == null)
+                IsMultTable = false;
+            else
+                IsMultTable = class_LinkFieldInfos.Count > 1 ? true : false;
+        }
+        public void AddAllOutFieldName()
+        {
+            if (GetLinkFieldInfosCount() > 1)
+            {
+                IniClass_OutFields();
+                if (class_SubList != null)
+                {
+                    foreach (Class_Sub item in class_SubList)
+                    {
+                        int index = 0;
+                        if (item.class_Fields.Count > 0)
+                        {
+                            foreach (Class_Field class_Field in item.class_Fields)
+                            {
+                                if (class_Field.SelectSelect)
+                                {
+                                    Class_OutField class_OutField = new Class_OutField()
+                                    {
+                                        PageIndex = index,
+                                        FieldName = class_Field.FieldName,
+                                        TableSimplificationName = item.DtoClassName,
+                                        FieldRemark = class_Field.FieldRemark,
+                                        FieldType = class_Field.FieldType
+                                    };
+                                    AddClass_OutField(class_OutField);
+                                }
+                            }
+                        }
+                        index++;
+                    }
+                    GetUpdateOutFieldName();
+                }
+            }
+        }
+        public int AddLinkFieldInfo()
+        {
+            IniLinkFieldInfos();
+            for (int i = 0; i < class_SubList.Count; i++)
+            {
+                Class_Sub class_Sub = class_SubList[i];
+                Class_LinkFieldInfo class_LinkFieldInfo = new Class_LinkFieldInfo();
+                class_LinkFieldInfo.CurTableNo = i;
+                class_LinkFieldInfo.MainFieldName = class_Sub.MainTableFieldName;
+                class_LinkFieldInfo.OutFieldName = class_Sub.OutFieldName;
+                class_LinkFieldInfo.LinkType = class_Sub.LinkType;
+                class_LinkFieldInfo.CountToCount = class_Sub.CountToCount;
+                class_LinkFieldInfo.TableNo = class_Sub.TableNo;
+                class_LinkFieldInfo.InnerType = class_Sub.InnerType;
+                class_LinkFieldInfo.JoinType = class_Sub.JoinType;
+                class_LinkFieldInfo.DtoClassName = class_Sub.DtoClassName;
+                class_LinkFieldInfo.ResultMapType = class_Sub.ResultMapType;
+                AddLinkFieldInfosCount(class_LinkFieldInfo);
+            }
+            return GetLinkFieldInfosCount();
+        }
+
         #endregion
     }
 }

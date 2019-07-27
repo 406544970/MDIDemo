@@ -3838,7 +3838,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(885, 496);
+            this.xtraTabPage12.Size = new System.Drawing.Size(885, 527);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -3873,7 +3873,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(885, 405);
+            this.gridControl2.Size = new System.Drawing.Size(885, 436);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});

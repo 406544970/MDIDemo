@@ -174,6 +174,11 @@ namespace MDIDemo.vou
                 this.buttonEdit1.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 this.buttonEdit2.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.checkEdit12.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+
+                this.radioGroup21.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
+                this.textEdit98.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
+                this.textEdit97.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                this.checkEdit15.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
             }
             #endregion
 
@@ -208,6 +213,11 @@ namespace MDIDemo.vou
                 this.buttonEdit3.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.radioGroup29.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
                 this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+
+                this.radioGroup18.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
+                this.textEdit96.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
+                this.textEdit95.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                this.checkEdit13.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
             }
             #endregion
 
@@ -252,6 +262,12 @@ namespace MDIDemo.vou
                 this.buttonEdit5.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.radioGroup30.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
                 this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+
+                this.radioGroup3.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
+                this.textEdit92.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
+                this.textEdit91.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                this.checkEdit9.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
+
             }
             #endregion
 
@@ -296,6 +312,11 @@ namespace MDIDemo.vou
                 this.buttonEdit7.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.radioGroup31.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
                 this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+
+                this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
+                this.textEdit94.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
+                this.textEdit93.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                this.checkEdit11.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
             }
             #endregion
 
@@ -1132,6 +1153,10 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup1.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit1.Text;
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit2.Text;
+                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup21.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit98.Text;
+                    class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit97.Text;
+                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit15.Checked;
                 }
                 #endregion
 
@@ -1163,6 +1188,10 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup2.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit4.Text;
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit3.Text;
+                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup18.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit96.Text;
+                    class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit95.Text;
+                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit13.Checked;
                 }
                 #endregion
 
@@ -1200,6 +1229,10 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit6.Text;
                     //关联字段名称
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit5.Text;
+                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup3.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit92.Text;
+                    class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit91.Text;
+                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit9.Checked;
                 }
                 #endregion
 
@@ -1242,7 +1275,18 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit8.Text;
                     //关联字段名称
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit7.Text;
+                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup4.SelectedIndex;
+                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit94.Text;
+                    class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit93.Text;
+                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit11.Checked;
                 }
+                #endregion
+
+                #region 更新多表字段名称
+                class_SelectAllModel.AddLinkFieldInfo();
+                class_SelectAllModel.AddAllOutFieldName();
+                class_SelectAllModel.UpdateIsMultTableSign();
+                class_SelectAllModel.UpdateMultFieldName();
                 #endregion
 
                 if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
@@ -1548,40 +1592,6 @@ namespace MDIDemo.vou
         {
             this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
         }
-        private void AddAllOutFieldName()
-        {
-            if (class_SelectAllModel.GetLinkFieldInfosCount() > 1)
-            {
-                class_SelectAllModel.IniClass_OutFields();
-                if (class_SelectAllModel.class_SubList != null)
-                {
-                    foreach (Class_Sub item in class_SelectAllModel.class_SubList)
-                    {
-                        int index = 0;
-                        if (item.class_Fields.Count > 0)
-                        {
-                            foreach (Class_Field class_Field in item.class_Fields)
-                            {
-                                if (class_Field.SelectSelect)
-                                {
-                                    Class_OutField class_OutField = new Class_OutField()
-                                    {
-                                        PageIndex = index,
-                                        FieldName = class_Field.FieldName,
-                                        TableSimplificationName = item.DtoClassName,
-                                        FieldRemark = class_Field.FieldRemark,
-                                        FieldType = class_Field.FieldType
-                                    };
-                                    class_SelectAllModel.AddClass_OutField(class_OutField);
-                                }
-                            }
-                        }
-                        index++;
-                    }
-                    class_SelectAllModel.GetUpdateOutFieldName();
-                }
-            }
-        }
         private void CreateCode()
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
@@ -1595,8 +1605,8 @@ namespace MDIDemo.vou
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
             {
-                //加入所有外键信息
-                AddAllOutFieldName();
+                ////加入所有外键信息
+                //class_InterFaceCreateCode.AddAllOutFieldName();
                 int PageIndex = 0;
                 //5：生成代码
                 #region 主表
@@ -1638,7 +1648,7 @@ namespace MDIDemo.vou
                     // Model
                     this.memoEdit17.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    //this.memoEdit19.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
+                    this.memoEdit19.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
                     // DAO
                     this.memoEdit20.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
