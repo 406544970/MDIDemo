@@ -817,11 +817,13 @@ namespace MDIDemo.PublicClass
                 IsAddXmlHead = true;
                 ParameterType = 0;
                 ExtendsSign = true;
+                PanelHeight = 197;
             }
             ~Class_Main()
             {
                 class_Fields.Clear();
             }
+            public int PanelHeight;
             public string TableName { get; set; }
             /// <summary>
             /// 主键名称

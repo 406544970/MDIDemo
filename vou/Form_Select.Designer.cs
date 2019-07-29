@@ -836,6 +836,7 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
@@ -8118,6 +8119,7 @@
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.simpleButton2);
             this.panelControl4.Controls.Add(this.checkEdit10);
             this.panelControl4.Controls.Add(this.radioGroup9);
             this.panelControl4.Controls.Add(this.textEdit20);
@@ -11042,6 +11044,15 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(807, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 34;
+            this.simpleButton2.Text = "Open";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
             // Form_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -12458,5 +12469,6 @@
         private DevExpress.XtraEditors.TextEdit textEdit96;
         private DevExpress.XtraEditors.LabelControl labelControl47;
         private DevExpress.XtraEditors.RadioGroup radioGroup18;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

@@ -141,6 +141,12 @@ namespace MDIDemo.vou
                 this.textEdit19.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit5.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+                this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
+                if (this.panelControl4.Height > this.simpleButton2.Height + 5)
+                    this.simpleButton2.Text = "折叠";
+                else
+                    this.simpleButton2.Text = "展开";
+
             }
             #endregion
 
@@ -583,6 +589,7 @@ namespace MDIDemo.vou
                 }
             }
 
+            this.simpleButton2.Text = "折叠";
         }
 
         private void setIniSkin(string skinName)
@@ -644,7 +651,7 @@ namespace MDIDemo.vou
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                             textEdit10.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                         else
-                            textEdit10.Text = "mTable";
+                            textEdit10.Text = "main";
                         AddColumnRepositoryCombox(this.repositoryItemComboBox2);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
@@ -660,7 +667,8 @@ namespace MDIDemo.vou
                             this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit11.Text = String.Format("sTable{0}", PageSelectIndex.ToString());
+                            textEdit11.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
+                        //this.buttonEdit2.Text = class_SelectAllModel.class_Subs.OutFieldName;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox15, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
@@ -676,7 +684,7 @@ namespace MDIDemo.vou
                             this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit12.Text = String.Format("sTable{0}", PageSelectIndex.ToString());
+                            textEdit12.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
                         //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
@@ -693,7 +701,7 @@ namespace MDIDemo.vou
                             this.radioGroup19.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit57.Text = String.Format("sTable{0}", PageSelectIndex.ToString());
+                            textEdit57.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
                         //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
@@ -710,7 +718,7 @@ namespace MDIDemo.vou
                             this.radioGroup22.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit61.Text = String.Format("sTable{0}", PageSelectIndex.ToString());
+                            textEdit61.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
                         //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
@@ -1121,6 +1129,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit34.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit19.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit5.Checked;
+                    class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl4.Height;
                 }
                 #endregion
 
@@ -1604,6 +1613,8 @@ namespace MDIDemo.vou
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
             {
+                ////加入所有外键信息
+                //class_InterFaceCreateCode.AddAllOutFieldName();
                 int PageIndex = 0;
                 //5：生成代码
                 #region 主表
@@ -1634,40 +1645,22 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
+                    //MAP
+                    this.memoEdit13.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    // Select标签
+                    this.memoEdit14.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    // ServiceInterFace
+                    this.memoEdit15.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    // ServiceImpl
+                    this.memoEdit16.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
                     this.memoEdit17.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
                     this.memoEdit19.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
-                    //MAP
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit13.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    else
-                        this.memoEdit13.Text = null;
-                    // Select标签
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit14.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
-                    else
-                        this.memoEdit14.Text = null;
-                    // ServiceInterFace
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit15.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    else
-                        this.memoEdit15.Text = null;
-                    // ServiceImpl
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit16.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    else
-                        this.memoEdit16.Text = null;
                     // DAO
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit20.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
-                    else
-                        this.memoEdit20.Text = null;
+                    this.memoEdit20.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit21.Text = class_InterFaceCreateCode.GetControl(PageIndex);
-                    else
-                        this.memoEdit21.Text = null;
+                    this.memoEdit21.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
@@ -1675,40 +1668,22 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
+                    //MAP
+                    this.memoEdit22.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    // Select标签
+                    this.memoEdit23.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    // ServiceInterFace
+                    this.memoEdit24.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    // ServiceImpl
+                    this.memoEdit25.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
                     this.memoEdit26.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    this.memoEdit28.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
-                    //MAP
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit22.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    else
-                        this.memoEdit22.Text = null;
-                    // Select标签
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit23.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
-                    else
-                        this.memoEdit23.Text = null;
-                    // ServiceInterFace
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit24.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    else
-                        this.memoEdit24.Text = null;
-                    // ServiceImpl
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit25.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    else
-                        this.memoEdit25.Text = null;
+                    //this.memoEdit28.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
                     // DAO
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit29.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
-                    else
-                        this.memoEdit29.Text = null;
+                    this.memoEdit29.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit30.Text = class_InterFaceCreateCode.GetControl(PageIndex);
-                    else
-                        this.memoEdit30.Text = null;
+                    this.memoEdit30.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
@@ -1716,40 +1691,22 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
+                    //MAP
+                    this.memoEdit34.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    // Select标签
+                    this.memoEdit35.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    // ServiceInterFace
+                    this.memoEdit39.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    // ServiceImpl
+                    this.memoEdit40.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
                     this.memoEdit36.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    this.memoEdit42.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
-                    //MAP
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit34.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    else
-                        this.memoEdit34.Text = null;
-                    // Select标签
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit35.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
-                    else
-                        this.memoEdit35.Text = null;
-                    // ServiceInterFace
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit39.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    else
-                        this.memoEdit39.Text = null;
-                    // ServiceImpl
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit40.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    else
-                        this.memoEdit40.Text = null;
+                    //this.memoEdit42.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
                     // DAO
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit38.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
-                    else
-                        this.memoEdit38.Text = null;
+                    this.memoEdit38.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit41.Text = class_InterFaceCreateCode.GetControl(PageIndex);
-                    else
-                        this.memoEdit41.Text = null;
+                    this.memoEdit41.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
@@ -1757,40 +1714,22 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
+                    //MAP
+                    this.memoEdit44.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    // Select标签
+                    this.memoEdit45.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    // ServiceInterFace
+                    this.memoEdit49.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    // ServiceImpl
+                    this.memoEdit50.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
                     this.memoEdit46.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    this.memoEdit52.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
-                    //MAP
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit44.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    else
-                        this.memoEdit44.Text = null;
-                    // Select标签
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit45.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
-                    else
-                        this.memoEdit45.Text = null;
-                    // ServiceInterFace
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit49.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    else
-                        this.memoEdit49.Text = null;
-                    // ServiceImpl
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit50.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    else
-                        this.memoEdit50.Text = null;
+                    //this.memoEdit52.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
                     // DAO
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit48.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
-                    else
-                        this.memoEdit48.Text = null;
+                    this.memoEdit48.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    if (!class_SelectAllModel.IsMultTable)
-                        this.memoEdit51.Text = class_InterFaceCreateCode.GetControl(PageIndex);
-                    else
-                        this.memoEdit51.Text = null;
+                    this.memoEdit51.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
@@ -2068,6 +2007,20 @@ namespace MDIDemo.vou
         private void textEdit94_EditValueChanged(object sender, EventArgs e)
         {
             this.textEdit93.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (this.panelControl4.Height > (sender as SimpleButton).Height + 5)
+            {
+                this.panelControl4.Height = (sender as SimpleButton).Height + 5;
+                (sender as SimpleButton).Text = "展开";
+            }
+            else
+            {
+                this.panelControl4.Height = 197;
+                (sender as SimpleButton).Text = "折叠";
+            }
         }
     }
 }
