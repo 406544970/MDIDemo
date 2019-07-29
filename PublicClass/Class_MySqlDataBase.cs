@@ -194,7 +194,7 @@ namespace MDIDemo.PublicClass
         }
         public string GetDataTypeByFunction(string FunctionName,string MySqlDataType)
         {
-            if (FunctionName == null)
+            if (FunctionName == null || FunctionName.Length == 0)
                 return MySqlDataType;
 
             string ResultValue = null;
