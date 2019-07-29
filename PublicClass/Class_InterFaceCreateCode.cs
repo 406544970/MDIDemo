@@ -23,7 +23,7 @@ namespace MDIDemo.PublicClass
         string GetDTO(int Index);
         string GetDAO(int Index);
         string GetControl(int Index);
-        string GetFeignControl(int Index);
+        string GetInPutParam(int Index);
         string GetTestUnit(int Index);
         #endregion
 

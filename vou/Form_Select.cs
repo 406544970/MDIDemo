@@ -128,7 +128,7 @@ namespace MDIDemo.vou
                 this.memoEdit9.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
                 this.memoEdit10.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
                 this.memoEdit11.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
-                this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].PolyControlContent);
+                this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].InPutParamContent);
                 this.textEdit22.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
                 this.textEdit24.Text = class_SelectAllModel.class_SubList[index].ResultMapType;
                 this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
@@ -1118,7 +1118,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit9.Text);
                     class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit10.Text);
                     class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
-                    class_SelectAllModel.class_SubList[index].PolyControlContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
+                    class_SelectAllModel.class_SubList[index].InPutParamContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
                     class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit22.Text;
                     class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit24.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit47.Text;
@@ -1637,7 +1637,7 @@ namespace MDIDemo.vou
                     // Control
                     this.memoEdit11.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                     // FeignControl
-                    this.memoEdit31.Text = class_InterFaceCreateCode.GetFeignControl(PageIndex);
+                    this.memoEdit31.Text = class_InterFaceCreateCode.GetInPutParam(PageIndex);
                 }
                 #endregion
 

@@ -589,6 +589,7 @@ namespace MDIDemo.PublicClass
             public string OutFieldName { get; set; }
             public string FieldRemark { get; set; }
             public string FieldType { get; set; }
+            public string FunctionName { get; set; }
         }
         #endregion
 
@@ -885,9 +886,9 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public string ControlContent { get; set; }
             /// <summary>
-            /// 聚合Controller内容
+            /// InPutParam
             /// </summary>
-            public string PolyControlContent { get; set; }
+            public string InPutParamContent { get; set; }
             public string ResultMapId { get; set; }
             /// <summary>
             /// Model类名
@@ -1135,14 +1136,13 @@ namespace MDIDemo.PublicClass
                             {
                                 if (class_Field.SelectSelect)
                                 {
-                                    Class_OutField class_OutField = new Class_OutField()
-                                    {
-                                        PageIndex = index,
-                                        FieldName = class_Field.FieldName,
-                                        TableSimplificationName = item.DtoClassName,
-                                        FieldRemark = class_Field.FieldRemark,
-                                        FieldType = class_Field.FieldType
-                                    };
+                                    Class_OutField class_OutField = new Class_OutField();
+                                    class_OutField.PageIndex = index;
+                                    class_OutField.FieldName = class_Field.FieldName;
+                                    class_OutField.TableSimplificationName = item.DtoClassName;
+                                    class_OutField.FieldRemark = class_Field.FieldRemark;
+                                    class_OutField.FieldType = class_Field.FieldType;
+                                    class_OutField.FunctionName = class_Field.FunctionName;
                                     AddClass_OutField(class_OutField);
                                 }
                             }

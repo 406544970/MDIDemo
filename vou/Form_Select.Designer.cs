@@ -525,6 +525,7 @@
             this.memoEdit31 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl39 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.checkEdit10 = new DevExpress.XtraEditors.CheckEdit();
             this.radioGroup9 = new DevExpress.XtraEditors.RadioGroup();
             this.textEdit20 = new DevExpress.XtraEditors.TextEdit();
@@ -836,7 +837,6 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barAndDockingController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
@@ -7707,13 +7707,13 @@
             this.xtraTabControl6.Size = new System.Drawing.Size(885, 265);
             this.xtraTabControl6.TabIndex = 6;
             this.xtraTabControl6.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage49,
             this.xtraTabPage17,
+            this.xtraTabPage18,
             this.xtraTabPage19,
             this.xtraTabPage15,
             this.xtraTabPage16,
-            this.xtraTabPage20,
-            this.xtraTabPage18,
-            this.xtraTabPage49});
+            this.xtraTabPage20});
             // 
             // xtraTabPage15
             // 
@@ -8098,7 +8098,7 @@
             this.xtraTabPage49.Controls.Add(this.panelControl39);
             this.xtraTabPage49.Name = "xtraTabPage49";
             this.xtraTabPage49.Size = new System.Drawing.Size(879, 236);
-            this.xtraTabPage49.Text = "聚合Controller";
+            this.xtraTabPage49.Text = "Model.InPutParam";
             // 
             // memoEdit31
             // 
@@ -8145,6 +8145,15 @@
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(885, 197);
             this.panelControl4.TabIndex = 5;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Location = new System.Drawing.Point(807, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton2.TabIndex = 34;
+            this.simpleButton2.Text = "Open";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // checkEdit10
             // 
@@ -11043,15 +11052,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20)});
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Location = new System.Drawing.Point(807, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 34;
-            this.simpleButton2.Text = "Open";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // Form_Select
             // 

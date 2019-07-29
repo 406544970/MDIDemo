@@ -719,5 +719,10 @@ namespace MDIDemo.PublicClass
             }
             return ResultValue;
         }
+
+        public string GetDataTypeByFunction(string FunctionName, string MySqlDataType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

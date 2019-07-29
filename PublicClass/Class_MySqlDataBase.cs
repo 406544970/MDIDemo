@@ -192,7 +192,7 @@ namespace MDIDemo.PublicClass
             FunctionList.Add("DATE_FORMAT(?, '%Y-%m-%d %H-%M-%S')");
             
         }
-        public string GetMySqlDataType(string FunctionName,string MySqlDataType)
+        public string GetDataTypeByFunction(string FunctionName,string MySqlDataType)
         {
             if (FunctionName == null)
                 return MySqlDataType;

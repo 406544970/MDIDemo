@@ -41,6 +41,7 @@ namespace MDIDemo.PublicClass
         bool IsAddPoint(string FieldType);
         void SetClass_AllModel<T>(T class_AllModel);
 
+        string GetDataTypeByFunction(string FunctionName, string MySqlDataType);
         /// <summary>
         /// 导出数据库说明书
         /// </summary>
