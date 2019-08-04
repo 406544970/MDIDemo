@@ -146,6 +146,37 @@ namespace MDIDemo.PublicClass
                 }
                 Counter++;
             }
+            if (class_SelectAllModel.PageSign)
+            {
+                Class_WhereField class_WhereFieldPageNo = new Class_WhereField()
+                {
+                    FieldName = "pageNo",
+                    ParaName = "pageNo",
+                    FieldRemark = "当前页数",
+                    LogType = "int",
+                    FieldDefaultValue = "1",
+                    FieldLogType = "参数",
+                    TableNo = 0,
+                    IsSame = false,
+                    OutFieldName = "pageNo",
+                    TableName = null
+                };
+                class_WhereFields.Add(class_WhereFieldPageNo);
+                Class_WhereField class_WhereFieldPageSize = new Class_WhereField()
+                {
+                    FieldName = "pageSize",
+                    ParaName = "pageSize",
+                    FieldRemark = "分页条数",
+                    LogType = "int",
+                    FieldDefaultValue = "10",
+                    FieldLogType = "参数",
+                    TableNo = 0,
+                    IsSame = false,
+                    OutFieldName = "pageSize",
+                    TableName = null
+                };
+                class_WhereFields.Add(class_WhereFieldPageSize);
+            }
             return class_WhereFields;
         }
         private string _GetServiceReturnType(Class_Sub class_Main, bool HavePackageName = true)

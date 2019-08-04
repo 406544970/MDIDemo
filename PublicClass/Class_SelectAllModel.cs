@@ -20,6 +20,8 @@ namespace MDIDemo.PublicClass
             classType = "select";
             IsAutoWard = true;
             PageSign = true;
+            ReturnStructure = false;
+            ReadWriteSeparation = true;
             IsMultTable = false;
         }
         ~Class_SelectAllModel()
@@ -55,6 +57,14 @@ namespace MDIDemo.PublicClass
         /// 是否分页
         /// </summary>
         public bool PageSign { get; set; }
+        /// <summary>
+        /// 是否返回固定结构体
+        /// </summary>
+        public bool ReturnStructure { get; set; }
+        /// <summary>
+        /// 是否读写分离
+        /// </summary>
+        public bool ReadWriteSeparation { get; set; }
 
         #endregion
 

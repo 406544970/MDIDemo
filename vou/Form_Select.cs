@@ -91,7 +91,9 @@ namespace MDIDemo.vou
             this.checkEdit2.Checked = class_SelectAllModel.IsAutoWard;
             this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.TestUnit);
             this.textEdit21.Text = class_SelectAllModel.TestClassName;
-            this.checkEdit8.Checked = class_SelectAllModel.PageSign;
+            this.checkEdit17.Checked = class_SelectAllModel.PageSign;
+            this.checkEdit19.Checked = class_SelectAllModel.ReturnStructure;
+            this.checkEdit20.Checked = class_SelectAllModel.ReadWriteSeparation;
 
             #region 设置上次打开的Tab
             this.xtraTabControl1.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl1;
@@ -1080,7 +1082,9 @@ namespace MDIDemo.vou
                 class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
                 class_SelectAllModel.TestUnit = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
                 class_SelectAllModel.TestClassName = this.textEdit21.Text;
-                class_SelectAllModel.PageSign = this.checkEdit8.Checked;
+                class_SelectAllModel.PageSign = this.checkEdit17.Checked;
+                class_SelectAllModel.ReturnStructure = this.checkEdit19.Checked;
+                class_SelectAllModel.ReadWriteSeparation = this.checkEdit20.Checked;
 
                 #region 保存上次打开的Tab
                 class_SelectAllModel.class_WindowLastState.xtraTabControl1 = this.xtraTabControl1.SelectedTabPageIndex;
@@ -2011,9 +2015,9 @@ namespace MDIDemo.vou
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            if (this.panelControl4.Height > (sender as SimpleButton).Height + 5)
+            if (this.panelControl4.Height > (sender as SimpleButton).Height + 10)
             {
-                this.panelControl4.Height = (sender as SimpleButton).Height + 5;
+                this.panelControl4.Height = (sender as SimpleButton).Height + 10;
                 (sender as SimpleButton).Text = "展开";
             }
             else
