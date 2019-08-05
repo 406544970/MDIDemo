@@ -1556,19 +1556,30 @@ namespace MDIDemo.PublicClass
                         JaveType = string.Format("List<{0}>", JaveType);
                     }
                     if (class_Field.IsSame)
-                        stringBuilder.AppendFormat("{0} * @param 表{1},原字段名{2},现字段名{3}:{4}\r\n"
+                        stringBuilder.AppendFormat("{0} * @param {3} 表{1},原字段名{2},现字段名{3}:{4}\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1)
                             , class_Field.TableName
                             , class_Field.FieldName
                             , class_Field.OutFieldName
                             , class_Field.FieldRemark);
                     else
-                        stringBuilder.AppendFormat("{0} * @param 表{1},字段名{2}:{3}\r\n"
+                        stringBuilder.AppendFormat("{0} * @param {2} 表{1},字段名{2}:{3}\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1)
                             , class_Field.TableName
                             , class_Field.OutFieldName
                             , class_Field.FieldRemark);
                 }
+            }
+            if (class_SelectAllModel.PageSign)
+            {
+                stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , "pageNo"
+                , "当前页数");
+                stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , "pageSize"
+                , "当前条数");
             }
             if (class_SelectAllModel.class_Create.EnglishSign)
             {
@@ -1601,23 +1612,25 @@ namespace MDIDemo.PublicClass
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                         if (index < class_WhereFields.Count - 1)
                             stringBuilder.Append(",");
-                        if (index == class_WhereFields.Count - 1 && class_SelectAllModel.class_Create.EnglishSign)
+                        if (index == class_WhereFields.Count - 1 && (class_SelectAllModel.class_Create.EnglishSign || class_SelectAllModel.PageSign))
                             stringBuilder.Append(",");
                         stringBuilder.Append("\r\n");
                         index++;
                     }
                     if (class_SelectAllModel.PageSign)
                     {
-                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\"),"
                         , class_ToolSpace.GetSetSpaceCount(3)
                         , "pageNo"
                         , "当前页数"
                         , "int");
+                        stringBuilder.Append("\r\n");
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
                         , class_ToolSpace.GetSetSpaceCount(3)
                         , "pageSize"
                         , "每页条数"
                         , "int");
+                        stringBuilder.Append("\r\n");
                     }
 
                     if (class_SelectAllModel.class_Create.EnglishSign)
@@ -1633,16 +1646,18 @@ namespace MDIDemo.PublicClass
                     {
                         stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
                         stringBuilder.Append("{\r\n");
-                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\"),"
                         , class_ToolSpace.GetSetSpaceCount(3)
                         , "pageNo"
                         , "当前页数"
                         , "int");
+                        stringBuilder.Append("\r\n");
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
                         , class_ToolSpace.GetSetSpaceCount(3)
                         , "pageSize"
                         , "每页条数"
                         , "int");
+                        stringBuilder.Append("\r\n");
                         stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
                         stringBuilder.Append("})\r\n");
                     }
@@ -1693,19 +1708,19 @@ namespace MDIDemo.PublicClass
             {
                 if (Index > 0)
                 {
-                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"1\") Integer {0}"
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0}"
                     , "pageNo"
                     , class_ToolSpace.GetSetSpaceCount(3));
-                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"10\") Integer {0}"
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
                     , "pageSize"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"1\") Integer {0}"
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0},"
                     , "pageNo"
                     , class_ToolSpace.GetSetSpaceCount(3));
-                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"10\") Integer {0}"
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
                     , "pageSize"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
