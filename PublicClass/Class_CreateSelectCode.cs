@@ -146,37 +146,41 @@ namespace MDIDemo.PublicClass
                 }
                 Counter++;
             }
-            if (class_SelectAllModel.PageSign)
-            {
-                Class_WhereField class_WhereFieldPageNo = new Class_WhereField()
-                {
-                    FieldName = "pageNo",
-                    ParaName = "pageNo",
-                    FieldRemark = "当前页数",
-                    LogType = "int",
-                    FieldDefaultValue = "1",
-                    FieldLogType = "参数",
-                    TableNo = 0,
-                    IsSame = false,
-                    OutFieldName = "pageNo",
-                    TableName = null
-                };
-                class_WhereFields.Add(class_WhereFieldPageNo);
-                Class_WhereField class_WhereFieldPageSize = new Class_WhereField()
-                {
-                    FieldName = "pageSize",
-                    ParaName = "pageSize",
-                    FieldRemark = "分页条数",
-                    LogType = "int",
-                    FieldDefaultValue = "10",
-                    FieldLogType = "参数",
-                    TableNo = 0,
-                    IsSame = false,
-                    OutFieldName = "pageSize",
-                    TableName = null
-                };
-                class_WhereFields.Add(class_WhereFieldPageSize);
-            }
+
+            #region
+            //if (class_SelectAllModel.PageSign)
+            //{
+            //    Class_WhereField class_WhereFieldPageNo = new Class_WhereField()
+            //    {
+            //        FieldName = "pageNo",
+            //        ParaName = "pageNo",
+            //        FieldRemark = "当前页数",
+            //        LogType = "int",
+            //        FieldDefaultValue = "1",
+            //        FieldLogType = "参数",
+            //        TableNo = 0,
+            //        IsSame = false,
+            //        OutFieldName = "pageNo",
+            //        TableName = null
+            //    };
+            //    class_WhereFields.Add(class_WhereFieldPageNo);
+            //    Class_WhereField class_WhereFieldPageSize = new Class_WhereField()
+            //    {
+            //        FieldName = "pageSize",
+            //        ParaName = "pageSize",
+            //        FieldRemark = "分页条数",
+            //        LogType = "int",
+            //        FieldDefaultValue = "10",
+            //        FieldLogType = "参数",
+            //        TableNo = 0,
+            //        IsSame = false,
+            //        OutFieldName = "pageSize",
+            //        TableName = null
+            //    };
+            //    class_WhereFields.Add(class_WhereFieldPageSize);
+            //}
+            #endregion
+
             return class_WhereFields;
         }
         private string _GetServiceReturnType(Class_Sub class_Main, bool HavePackageName = true)
@@ -1602,12 +1606,46 @@ namespace MDIDemo.PublicClass
                         stringBuilder.Append("\r\n");
                         index++;
                     }
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "pageNo"
+                        , "当前页数"
+                        , "int");
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "pageSize"
+                        , "每页条数"
+                        , "int");
+                    }
+
                     if (class_SelectAllModel.class_Create.EnglishSign)
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"englishSign\", value = \"是否生成英文\", required = true, dataType = \"Boolean\")\r\n"
                         , class_ToolSpace.GetSetSpaceCount(3));
 
                     stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.Append("})\r\n");
+                }
+                else
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "pageNo"
+                        , "当前页数"
+                        , "int");
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", required = true, dataType = \"{3}\")"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "pageSize"
+                        , "每页条数"
+                        , "int");
+                        stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("})\r\n");
+                    }
                 }
             }
             #endregion
@@ -1651,6 +1689,27 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                 stringBuilder.AppendFormat(" {0}", row.FieldName);
             }
+            if (class_SelectAllModel.PageSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"1\") Integer {0}"
+                    , "pageNo"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"10\") Integer {0}"
+                    , "pageSize"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"1\") Integer {0}"
+                    , "pageNo"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"10\") Integer {0}"
+                    , "pageSize"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
             if (class_SelectAllModel.class_Create.EnglishSign)
             {
                 if (Index > 0)
@@ -1686,6 +1745,11 @@ namespace MDIDemo.PublicClass
                         , InPutParamer);
                     }
                 }
+            }
+            if (class_SelectAllModel.PageSign)
+            {
+                stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(pageNo, pageSize);\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(2));
             }
             stringBuilder.Append("\r\n//      请在这里写逻辑代码\r\n\r\n");
 
