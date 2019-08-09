@@ -1664,7 +1664,7 @@ namespace MDIDemo.vou
                     // DAO
                     this.memoEdit20.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    //this.memoEdit21.Text = class_InterFaceCreateCode.GetControl(PageIndex);
+                    this.memoEdit21.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
@@ -1687,7 +1687,7 @@ namespace MDIDemo.vou
                     // DAO
                     this.memoEdit29.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    //this.memoEdit30.Text = class_InterFaceCreateCode.GetControl(PageIndex);
+                    this.memoEdit30.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
@@ -1710,7 +1710,7 @@ namespace MDIDemo.vou
                     // DAO
                     this.memoEdit38.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    //this.memoEdit41.Text = class_InterFaceCreateCode.GetControl(PageIndex);
+                    this.memoEdit41.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
@@ -1733,7 +1733,7 @@ namespace MDIDemo.vou
                     // DAO
                     this.memoEdit48.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
-                    //this.memoEdit51.Text = class_InterFaceCreateCode.GetControl(PageIndex);
+                    this.memoEdit51.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
                 #endregion
 
