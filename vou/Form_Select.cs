@@ -1846,7 +1846,7 @@ namespace MDIDemo.vou
             {
                 DataRow dataRow = gridView.GetDataRow(index);
                 Class_LinkField class_LinkField = new Class_LinkField();
-                class_LinkField.ParaName = dataRow["ParaName"].ToString();
+                class_LinkField.ParaName = dataRow["FieldName"].ToString();
                 class_LinkField.ReturnType = dataRow["ReturnType"].ToString();
                 class_LinkField.FieldRemark = dataRow["FieldRemark"].ToString();
                 class_LinkFields.Add(class_LinkField);

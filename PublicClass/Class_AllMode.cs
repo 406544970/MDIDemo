@@ -30,6 +30,7 @@ namespace MDIDemo.PublicClass
         public string LogType;
         public string FieldDefaultValue;
         public string FieldLogType;
+        public bool WhereIsNull;
     }
     /// <summary>
     /// 数据库说明书类
