@@ -119,7 +119,6 @@ namespace MDIDemo.vou
                 this.textEdit14.Text = class_SelectAllModel.class_SubList[index].MethodId;
                 this.textEdit15.Text = class_SelectAllModel.class_SubList[index].MethodContent;
                 this.radioGroup7.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.radioGroup8.SelectedIndex = class_SelectAllModel.class_SubList[index].ParameterType;
                 this.checkEdit1.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit16.Text = class_SelectAllModel.class_SubList[index].NameSpace;
                 this.memoEdit3.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
@@ -160,7 +159,6 @@ namespace MDIDemo.vou
                 this.textEdit33.Text = class_SelectAllModel.class_SubList[index].MethodId;
                 this.textEdit32.Text = class_SelectAllModel.class_SubList[index].MethodContent;
                 this.radioGroup11.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.radioGroup10.SelectedIndex = class_SelectAllModel.class_SubList[index].ParameterType;
                 this.checkEdit3.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit31.Text = class_SelectAllModel.class_SubList[index].NameSpace;
                 this.memoEdit13.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
@@ -179,7 +177,6 @@ namespace MDIDemo.vou
                 this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
                 //this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
                 this.textEdit35.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
-                this.radioGroup12.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
                 this.buttonEdit1.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 this.buttonEdit2.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                 this.checkEdit12.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
@@ -198,7 +195,6 @@ namespace MDIDemo.vou
                 this.textEdit43.Text = class_SelectAllModel.class_SubList[index].MethodId;
                 this.textEdit42.Text = class_SelectAllModel.class_SubList[index].MethodContent;
                 this.radioGroup14.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.radioGroup13.SelectedIndex = class_SelectAllModel.class_SubList[index].ParameterType;
                 this.checkEdit4.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit41.Text = class_SelectAllModel.class_SubList[index].NameSpace;
                 this.memoEdit22.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
@@ -215,7 +211,6 @@ namespace MDIDemo.vou
                 this.textEdit45.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 this.textEdit51.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                 this.textEdit50.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
-                this.radioGroup15.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
                 this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
                 this.buttonEdit4.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
@@ -237,7 +232,6 @@ namespace MDIDemo.vou
                 this.textEdit67.Text = class_SelectAllModel.class_SubList[index].MethodId;
                 this.textEdit66.Text = class_SelectAllModel.class_SubList[index].MethodContent;
                 this.radioGroup25.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.radioGroup24.SelectedIndex = class_SelectAllModel.class_SubList[index].ParameterType;
                 this.checkEdit6.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit73.Text = class_SelectAllModel.class_SubList[index].NameSpace;
                 this.memoEdit34.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
@@ -259,8 +253,6 @@ namespace MDIDemo.vou
                 this.textEdit65.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 this.textEdit86.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                 this.textEdit85.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
-                //单条、多条
-                this.radioGroup23.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
                 //Join方式、association、collection
                 this.radioGroup17.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 //左链接、右链接
@@ -287,7 +279,6 @@ namespace MDIDemo.vou
                 this.textEdit76.Text = class_SelectAllModel.class_SubList[index].MethodId;
                 this.textEdit75.Text = class_SelectAllModel.class_SubList[index].MethodContent;
                 this.radioGroup28.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.radioGroup27.SelectedIndex = class_SelectAllModel.class_SubList[index].ParameterType;
                 this.checkEdit7.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit82.Text = class_SelectAllModel.class_SubList[index].NameSpace;
                 this.memoEdit44.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
@@ -309,8 +300,6 @@ namespace MDIDemo.vou
                 this.textEdit90.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                 //Swagger描述
                 this.textEdit89.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
-                //单条、多条
-                this.radioGroup26.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
                 //Join方式、association、collection
                 this.radioGroup20.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 //左链接、右链接
@@ -561,19 +550,10 @@ namespace MDIDemo.vou
 
             #region radioGroup
             this.radioGroup7.SelectedIndex = 0;
-            this.radioGroup8.SelectedIndex = 0;
             this.radioGroup9.SelectedIndex = 0;
-            this.radioGroup10.SelectedIndex = 0;
             this.radioGroup11.SelectedIndex = 0;
-            this.radioGroup12.SelectedIndex = 0;
-            this.radioGroup13.SelectedIndex = 0;
             this.radioGroup14.SelectedIndex = 0;
-            this.radioGroup15.SelectedIndex = 0;
-            this.radioGroup23.SelectedIndex = 0;
-            this.radioGroup24.SelectedIndex = 0;
             this.radioGroup25.SelectedIndex = 0;
-            this.radioGroup26.SelectedIndex = 0;
-            this.radioGroup27.SelectedIndex = 0;
             this.radioGroup28.SelectedIndex = 0;
             #endregion
 
@@ -1112,7 +1092,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].MethodId = this.textEdit14.Text;
                     class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit15.Text;
                     class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup7.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup8.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit1.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit16.Text;
                     class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit3.Text);
@@ -1146,7 +1125,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].MethodId = this.textEdit33.Text;
                     class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit32.Text;
                     class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup11.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup10.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit3.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit31.Text;
                     class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit13.Text);
@@ -1162,7 +1140,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit49.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit48.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit35.Text;
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup12.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup5.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup1.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit1.Text;
@@ -1181,7 +1158,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].MethodId = this.textEdit43.Text;
                     class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit42.Text;
                     class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup14.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup13.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit4.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit41.Text;
                     class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit22.Text);
@@ -1197,7 +1173,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit51.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit50.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit45.Text;
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup15.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup6.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup2.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit4.Text;
@@ -1216,7 +1191,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].MethodId = this.textEdit67.Text;
                     class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit66.Text;
                     class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup25.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup24.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit6.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit73.Text;
                     class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit34.Text);
@@ -1234,7 +1208,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit86.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit85.Text;
                     //单条、多条
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup23.SelectedIndex;
                     //Join方式、association、collection
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup17.SelectedIndex;
                     //左链接、右链接
@@ -1257,7 +1230,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].MethodId = this.textEdit76.Text;
                     class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit75.Text;
                     class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup28.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].ParameterType = this.radioGroup27.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit7.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit82.Text;
                     class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit44.Text);
@@ -1279,8 +1251,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit90.Text;
                     //Swagger描述
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit89.Text;
-                    //单条、多条
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup26.SelectedIndex;
                     //Join方式、association、collection
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup20.SelectedIndex;
                     //左链接、右链接

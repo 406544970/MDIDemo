@@ -1560,7 +1560,7 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , "pageSize"
-                , "当前条数");
+                , "每页条数");
             }
             if (class_SelectAllModel.class_Create.EnglishSign)
             {
@@ -2345,9 +2345,13 @@ namespace MDIDemo.PublicClass
                         {
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2));
                             if (class_SelectAllModel.IsMultTable)
-                                stringBuilder.AppendFormat("List<{0}> {0}s = ", class_Sub.DtoClassName);
+                                stringBuilder.AppendFormat("List<{0}> {1}s = "
+                                    , class_Sub.DtoClassName
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             else
-                                stringBuilder.AppendFormat("List<{0}> {0}s = ", _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat("List<{0}> {0}s = "
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
 
                             stringBuilder.AppendFormat("{0}Service."
                                 , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
@@ -2373,13 +2377,13 @@ namespace MDIDemo.PublicClass
                             {
                                 stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , class_Sub.DtoClassName);
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             }
                             else
                             {
                                 stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , _GetServiceReturnType(class_Sub, false));
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
                             }
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return ");
                             if (class_SelectAllModel.ReturnStructure)

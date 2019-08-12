@@ -826,7 +826,6 @@ namespace MDIDemo.PublicClass
                 ResultType = 1;
                 DtoType = 0;
                 IsAddXmlHead = true;
-                ParameterType = 0;
                 ExtendsSign = true;
                 PanelHeight = 197;
             }
@@ -850,10 +849,6 @@ namespace MDIDemo.PublicClass
             /// Map命名空间
             /// </summary>
             public string NameSpace { get; set; }
-            /// <summary>
-            /// 参数类型：0:参数，1:对象，2：集合，3：列表
-            /// </summary>
-            public int ParameterType { get; set; }
             /// <summary>
             /// 方法说明
             /// </summary>
