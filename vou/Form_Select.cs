@@ -998,9 +998,9 @@ namespace MDIDemo.vou
             {
                 class_SelectAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
                 this.Text = string.Format("SELECT：{0}", class_SelectAllModel.class_Create.MethodId);
-                this.Tag = class_SelectAllModel.class_Create.MethodId;
                 this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
             }
+            this.Tag = class_SelectAllModel.class_Create.MethodId;
             class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
             if (this.gridControl1.MainView.RowCount > 0)
             {

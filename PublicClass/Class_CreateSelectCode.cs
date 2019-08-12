@@ -489,17 +489,11 @@ namespace MDIDemo.PublicClass
                 //_GetAllWhereCount()
                 if (class_WhereFields.Count > 1)
                 {
-                    if (class_SelectAllModel.IsMultTable)
-                        stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(1)
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                        , class_Sub.MethodContent
-                        , InPutParamer);
-                    else
-                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(1)
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                        , class_Sub.MethodContent);
+                    stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1)
+                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                    , "输入参数"
+                    , InPutParamer);
                 }
                 else
                 {
@@ -1084,7 +1078,7 @@ namespace MDIDemo.PublicClass
         {
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             class_WhereFields = _GetParameterType();
-            if (class_WhereFields == null || class_WhereFields.Count < 1)
+            if (class_WhereFields == null || class_WhereFields.Count < 2)
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();

@@ -30,7 +30,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         private string mySkinName;
         private const string _Text = "myBatis ´úÂëÉú³ÉÆ÷";
-        private const string _Version = "1.0";
+        private const string _Version = "1.1";
         bool IsTabbedMdi { get { return biTabbedMDI.Down; } }
         public static string Version => _Version;
 
@@ -504,11 +504,17 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
             foreach (XtraMdiTabPage xtra in xtraTabbedMdiManager1.Pages)
             {
-                Class_WindowType class_WindowType = new Class_WindowType();
-                class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
-                if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
-                    class_WindowType.ActiveSign = true;
-                class_WindowTypes.Add(class_WindowType);
+                if (ActiveMDIForm.Tag != null)
+                {
+                    Class_WindowType class_WindowType = new Class_WindowType();
+                    class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
+                    if (class_WindowType != null)
+                    {
+                        if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
+                            class_WindowType.ActiveSign = true;
+                        class_WindowTypes.Add(class_WindowType);
+                    }
+                }
             }
             Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
             class_SQLiteOperator.SaveCurrentOpenWin(class_WindowTypes);
