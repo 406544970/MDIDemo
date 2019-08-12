@@ -715,9 +715,9 @@ namespace MDIDemo.PublicClass
                         if ((class_Field.FunctionName != null) && (class_Field.FunctionName.Length > 0))
                         {
                             if (MyFieldName != null)
-                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}") + " AS {1}", FieldName, MyFieldName);
+                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}"), FieldName);
                             else
-                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}") + " AS {1}", FieldName, class_Field.ParaName);
+                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}"), FieldName);
                         }
                         if (!FieldName.Equals(MyFieldName))
                         {
@@ -835,18 +835,19 @@ namespace MDIDemo.PublicClass
             {
                 if (row.SelectSelect)
                 {
+                    string ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(row.FunctionName,row.ReturnType)));
                     stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), row.FieldRemark);
                     stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
                     if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(row.ParaName))
                         stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1)
-                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(row.ReturnType))
+                            , ReturnType
                             , row.ParaName);
                     else
                         stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1)
-                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(row.ReturnType))
+                            , ReturnType
                             , row.ParaName);
 
                 }
@@ -1424,6 +1425,7 @@ namespace MDIDemo.PublicClass
                         {
                             if (class_Field.SelectSelect)
                             {
+                                string ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, class_Field.ReturnType)));
                                 string MyFieldName = class_Field.ParaName;
                                 if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
                                     MyFieldName = class_Field.MultFieldName;
@@ -1434,12 +1436,12 @@ namespace MDIDemo.PublicClass
                                 if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
                                     stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(1)
-                                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , ReturnType
                                         , MyFieldName);
                                 else
                                     stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(1)
-                                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , ReturnType
                                         , MyFieldName);
                             }
                         }
