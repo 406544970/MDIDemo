@@ -486,7 +486,6 @@ namespace MDIDemo.PublicClass
             class_WhereFields = _GetParameterType();
             if (class_WhereFields != null)
             {
-                //_GetAllWhereCount()
                 if (class_WhereFields.Count > 1)
                 {
                     stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
@@ -1494,6 +1493,8 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
+
+            #region 注释
             if (!class_Sub.ControlMainCode)
             {
                 stringBuilder.Append("/**\r\n");
@@ -1509,9 +1510,6 @@ namespace MDIDemo.PublicClass
                         , class_Sub.ControlSwaggerDescription);
                 stringBuilder.Append(string.Format("public class {0}Controller "
                     , class_Sub.NameSpace) + "{\r\n");
-
-                //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "@Value(\"${server.port}\")\r\n");
-                //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "String myPort;\r\n\r\n");
 
                 stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
                 stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
@@ -1570,6 +1568,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
             , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            #endregion
+
             #region Swagger
             if (class_SelectAllModel.class_Create.SwaggerSign)
             {
@@ -1647,21 +1647,39 @@ namespace MDIDemo.PublicClass
                 }
             }
             #endregion
+
             stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}\")\r\n"
             , class_ToolSpace.GetSetSpaceCount(1)
             , class_SelectAllModel.class_Create.HttpRequestType
             , class_Sub.MethodId);
             stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
 
-            if (class_Sub.ServiceInterFaceReturnCount == 0)
-                stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+            #region
+            if (class_SelectAllModel.ReturnStructure)
+            {
+                stringBuilder.Append("ResultVO");
+            }
             else
             {
-                if (class_SelectAllModel.IsMultTable)
-                    stringBuilder.AppendFormat("List<{0}>", class_Sub.DtoClassName);
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                    stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
                 else
-                    stringBuilder.AppendFormat("List<{0}>", _GetServiceReturnType(class_Sub, false));
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.Append("PageInfo");
+                    }
+                    else
+                    {
+                        if (class_SelectAllModel.IsMultTable)
+                            stringBuilder.AppendFormat("List<{0}>", class_Sub.DtoClassName);
+                        else
+                            stringBuilder.AppendFormat("List<{0}>", _GetServiceReturnType(class_Sub, false));
+                    }
+                }
             }
+            #endregion
+
             stringBuilder.AppendFormat(" {0}", class_Sub.MethodId);
             stringBuilder.Append("(");
             int Index = 0;
@@ -1748,141 +1766,787 @@ namespace MDIDemo.PublicClass
                     }
                 }
             }
-            if (class_SelectAllModel.PageSign)
-            {
-                stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(pageNo, pageSize);\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(2));
-            }
-            stringBuilder.Append("\r\n//      请在这里写逻辑代码\r\n\r\n");
 
-            if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
+            if (class_SelectAllModel.ReturnStructure)
             {
                 if (class_Sub.ServiceInterFaceReturnCount == 0)
                 {
-                    stringBuilder.AppendFormat("{0}{1}"
-                        , class_ToolSpace.GetSetSpaceCount(2)
-                        , _GetServiceReturnType(class_Sub, false));
-                    stringBuilder.AppendFormat(" {1} = new {0}();\r\n"
-                        , _GetServiceReturnType(class_Sub, false)
-                        , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                        , class_ToolSpace.GetSetSpaceCount(2));
-                    stringBuilder.AppendFormat("{0}{1} = {2}Service."
-                            , class_ToolSpace.GetSetSpaceCount(2)
-                        , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                    stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}Service."
+                    , class_ToolSpace.GetSetSpaceCount(2)
+                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                    if (class_WhereFields != null)
+                    {
+                        if (class_WhereFields.Count > 1)
+                            stringBuilder.AppendFormat("{0}({1}{2})"
+                                , class_Sub.MethodId
+                                , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                , InPutParamer);
+                        else if (class_WhereFields.Count == 1)
+                        {
+                            stringBuilder.AppendFormat("{0}({1})"
+                                , class_Sub.MethodId
+                                , class_WhereFields[0].OutFieldName);
+                        }
+                        else
+                            stringBuilder.AppendFormat("{0}()"
+                                , class_Sub.MethodId);
+                    }
+                    stringBuilder.Append(");\r\n");
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("{0}List<{1}>"
-                        , class_ToolSpace.GetSetSpaceCount(2)
-                        , _GetServiceReturnType(class_Sub, false));
-                    stringBuilder.AppendFormat(" {1}s = new {0}();\r\n"
-                        , _GetServiceReturnType(class_Sub, false)
-                        , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                        , class_ToolSpace.GetSetSpaceCount(2));
-                    stringBuilder.AppendFormat("{0}{1}s = {2}Service."
-                            , class_ToolSpace.GetSetSpaceCount(2)
-                        , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
-                }
-
-                if (class_WhereFields != null)
-                {
-                    if (class_WhereFields.Count > 1)
-                        stringBuilder.AppendFormat("{0}({1}{2});\r\n"
-                            , class_Sub.MethodId
-                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                            , InPutParamer);
-                    else if (class_WhereFields.Count == 1)
+                    if (class_SelectAllModel.PageSign)
                     {
-                        stringBuilder.AppendFormat("{0}({1}{2});\r\n"
-                            , class_Sub.MethodId
-                            , class_WhereFields[0].FieldName
-                            , InPutParamer);
+                        stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(pageNo, pageSize);\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2));
+                        if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
+                        {
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat("{0}{1}"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1} = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}List<{1}>"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1}s = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
+
+                            if (class_WhereFields != null)
+                            {
+                                if (class_WhereFields.Count > 1)
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                        , InPutParamer);
+                                else if (class_WhereFields.Count == 1)
+                                {
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , class_WhereFields[0].FieldName
+                                        , InPutParamer);
+                                }
+                                else
+                                    stringBuilder.AppendFormat("{0}();\r\n"
+                                        , class_Sub.MethodId);
+                            }
+                            stringBuilder.AppendFormat("{0}if (englishSign) ", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("{\r\n");
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        stringBuilder.AppendFormat("{0}{3}.set{1}({3}.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(3)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName)
+                                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}{1}.forEach(item ->"
+                                    , class_ToolSpace.GetSetSpaceCount(3)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)) + "s");
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    stringBuilder.Append(" {\r\n");
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        //item.setName(item.getName());
+                                        stringBuilder.AppendFormat("{0}item.set{1}(item.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(4)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName));
+                                    }
+                                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "});\r\n");
+                                }
+                            }
+                            stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("}\r\n");
+                            stringBuilder.AppendFormat("{0}return "
+                                , class_ToolSpace.GetSetSpaceCount(2));
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat(" {0};\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat(" {0}s;\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+
+                            }
+                        }
+                        else
+                        {
+                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2));
+                            if (class_SelectAllModel.IsMultTable)
+                                stringBuilder.AppendFormat("List<{0}> {0}s = ", class_Sub.DtoClassName);
+                            else
+                                stringBuilder.AppendFormat("List<{0}> {0}s = ", _GetServiceReturnType(class_Sub, false));
+
+                            stringBuilder.AppendFormat("{0}Service."
+                                , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+
+                            if (class_WhereFields != null)
+                            {
+                                if (class_WhereFields.Count > 1)
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                        , InPutParamer);
+                                else if (class_WhereFields.Count == 1)
+                                {
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
+                                        , class_Sub.MethodId
+                                        , class_WhereFields[0].OutFieldName);
+                                }
+                                else
+                                    stringBuilder.AppendFormat("{0}();\r\n"
+                                        , class_Sub.MethodId);
+                            }
+                            if (class_SelectAllModel.IsMultTable)
+                            {
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , class_Sub.DtoClassName);
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                            }
+                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return ");
+                            if (class_SelectAllModel.ReturnStructure)
+                            {
+                                stringBuilder.Append("ResultUtils.success(pageInfo);\r\n");
+                            }
+                            else
+                            {
+                                stringBuilder.Append("PageInfo;\r\n");
+                            }
+                        }
                     }
                     else
-                        stringBuilder.AppendFormat("{0}();\r\n"
-                            , class_Sub.MethodId);
-                }
-                stringBuilder.AppendFormat("{0}if (englishSign) ", class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.Append("{\r\n");
-                if (class_Sub.ServiceInterFaceReturnCount == 0)
-                {
-                    List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
-                    class_EnglishFields = _GetEnglishFieldList(class_Sub);
-                    if (class_EnglishFields.Count > 0)
                     {
-                        foreach (Class_EnglishField row in class_EnglishFields)
+                        if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
                         {
-                            stringBuilder.AppendFormat("{0}{3}.set{1}({3}.get{2}());\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(3)
-                                , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
-                                , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName)
-                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
-                        }
-                    }
-                }
-                else
-                {
-                    stringBuilder.AppendFormat("{0}{1}.forEach(item ->"
-                        , class_ToolSpace.GetSetSpaceCount(3)
-                        , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)) + "s");
-                    List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
-                    class_EnglishFields = _GetEnglishFieldList(class_Sub);
-                    if (class_EnglishFields.Count > 0)
-                    {
-                        stringBuilder.Append(" {\r\n");
-                        foreach (Class_EnglishField row in class_EnglishFields)
-                        {
-                            //item.setName(item.getName());
-                            stringBuilder.AppendFormat("{0}item.set{1}(item.get{2}());\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(4)
-                                , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
-                                , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName));
-                        }
-                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "});\r\n");
-                    }
-                }
-                stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.Append("}\r\n");
-                stringBuilder.AppendFormat("{0}return "
-                    , class_ToolSpace.GetSetSpaceCount(2));
-                if (class_Sub.ServiceInterFaceReturnCount == 0)
-                {
-                    stringBuilder.AppendFormat(" {0};\r\n"
-                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
-                }
-                else
-                {
-                    stringBuilder.AppendFormat(" {0}s;\r\n"
-                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat("{0}{1}"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1} = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}List<{1}>"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1}s = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
 
+                            if (class_WhereFields != null)
+                            {
+                                if (class_WhereFields.Count > 1)
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                        , InPutParamer);
+                                else if (class_WhereFields.Count == 1)
+                                {
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , class_WhereFields[0].FieldName
+                                        , InPutParamer);
+                                }
+                                else
+                                    stringBuilder.AppendFormat("{0}();\r\n"
+                                        , class_Sub.MethodId);
+                            }
+                            stringBuilder.AppendFormat("{0}if (englishSign) ", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("{\r\n");
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        stringBuilder.AppendFormat("{0}{3}.set{1}({3}.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(3)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName)
+                                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}{1}.forEach(item ->"
+                                    , class_ToolSpace.GetSetSpaceCount(3)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)) + "s");
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    stringBuilder.Append(" {\r\n");
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        //item.setName(item.getName());
+                                        stringBuilder.AppendFormat("{0}item.set{1}(item.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(4)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName));
+                                    }
+                                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "});\r\n");
+                                }
+                            }
+                            stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("}\r\n");
+                            stringBuilder.AppendFormat("{0}return "
+                                , class_ToolSpace.GetSetSpaceCount(2));
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat(" {0};\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat(" {0}s;\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+
+                            }
+                        }
+                        else
+                        {
+                            if (class_SelectAllModel.ReturnStructure)
+                            {
+                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}Service."
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                if (class_WhereFields != null)
+                                {
+                                    if (class_WhereFields.Count > 1)
+                                        stringBuilder.AppendFormat("{0}({1}{2});"
+                                            , class_Sub.MethodId
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                            , InPutParamer);
+                                    else if (class_WhereFields.Count == 1)
+                                    {
+                                        stringBuilder.AppendFormat("{0}({1});"
+                                            , class_Sub.MethodId
+                                            , class_WhereFields[0].OutFieldName);
+                                    }
+                                    else
+                                        stringBuilder.AppendFormat("{0}();"
+                                            , class_Sub.MethodId);
+                                }
+                                stringBuilder.Append(")\r\n");
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("\r\n{0}return {1}Service."
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                if (class_WhereFields != null)
+                                {
+                                    if (class_WhereFields.Count > 1)
+                                        stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                            , class_Sub.MethodId
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                            , InPutParamer);
+                                    else if (class_WhereFields.Count == 1)
+                                    {
+                                        stringBuilder.AppendFormat("{0}({1});\r\n"
+                                            , class_Sub.MethodId
+                                            , class_WhereFields[0].OutFieldName);
+                                    }
+                                    else
+                                        stringBuilder.AppendFormat("{0}();\r\n"
+                                            , class_Sub.MethodId);
+                                }
+                            }
+                        }
+                    }
                 }
             }
             else
             {
-                stringBuilder.AppendFormat("{0}return {1}Service."
-                    , class_ToolSpace.GetSetSpaceCount(2)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
-                if (class_WhereFields != null)
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
                 {
-                    if (class_WhereFields.Count > 1)
-                        stringBuilder.AppendFormat("{0}({1}{2});\r\n"
-                            , class_Sub.MethodId
-                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                            , InPutParamer);
-                    else if (class_WhereFields.Count == 1)
+                    if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
                     {
-                        stringBuilder.AppendFormat("{0}({1});\r\n"
-                            , class_Sub.MethodId
-                            , class_WhereFields[0].OutFieldName);
+                        stringBuilder.AppendFormat("{0}{1}"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , _GetServiceReturnType(class_Sub, false));
+                        stringBuilder.AppendFormat(" {1} = new {0}();\r\n"
+                            , _GetServiceReturnType(class_Sub, false)
+                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                            , class_ToolSpace.GetSetSpaceCount(2));
+                        stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                        if (class_WhereFields != null)
+                        {
+                            if (class_WhereFields.Count > 1)
+                                stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    , class_Sub.MethodId
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                    , InPutParamer);
+                            else if (class_WhereFields.Count == 1)
+                            {
+                                stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    , class_Sub.MethodId
+                                    , class_WhereFields[0].FieldName
+                                    , InPutParamer);
+                            }
+                            else
+                                stringBuilder.AppendFormat("{0}();\r\n"
+                                    , class_Sub.MethodId);
+                        }
+                        stringBuilder.AppendFormat("{0}if (englishSign) ", class_ToolSpace.GetSetSpaceCount(2));
+                        stringBuilder.Append("{\r\n");
+                        if (class_Sub.ServiceInterFaceReturnCount == 0)
+                        {
+                            List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                            class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                            if (class_EnglishFields.Count > 0)
+                            {
+                                foreach (Class_EnglishField row in class_EnglishFields)
+                                {
+                                    stringBuilder.AppendFormat("{0}{3}.set{1}({3}.get{2}());\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(3)
+                                        , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                        , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName)
+                                        , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            stringBuilder.AppendFormat("{0}{1}.forEach(item ->"
+                                , class_ToolSpace.GetSetSpaceCount(3)
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)) + "s");
+                            List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                            class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                            if (class_EnglishFields.Count > 0)
+                            {
+                                stringBuilder.Append(" {\r\n");
+                                foreach (Class_EnglishField row in class_EnglishFields)
+                                {
+                                    //item.setName(item.getName());
+                                    stringBuilder.AppendFormat("{0}item.set{1}(item.get{2}());\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(4)
+                                        , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                        , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName));
+                                }
+                                stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "});\r\n");
+                            }
+                        }
+                        stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(2));
+                        stringBuilder.Append("}\r\n");
+                        stringBuilder.AppendFormat("{0}return "
+                            , class_ToolSpace.GetSetSpaceCount(2));
+                        if (class_Sub.ServiceInterFaceReturnCount == 0)
+                        {
+                            stringBuilder.AppendFormat(" {0};\r\n"
+                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                        }
+                        else
+                        {
+                            stringBuilder.AppendFormat(" {0}s;\r\n"
+                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+
+                        }
                     }
                     else
-                        stringBuilder.AppendFormat("{0}();\r\n"
-                            , class_Sub.MethodId);
+                    {
+                        stringBuilder.AppendFormat("\r\n{0}return {1}Service."
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                        if (class_WhereFields != null)
+                        {
+                            if (class_WhereFields.Count > 1)
+                                stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    , class_Sub.MethodId
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                    , InPutParamer);
+                            else if (class_WhereFields.Count == 1)
+                            {
+                                stringBuilder.AppendFormat("{0}({1});\r\n"
+                                    , class_Sub.MethodId
+                                    , class_WhereFields[0].OutFieldName);
+                            }
+                            else
+                                stringBuilder.AppendFormat("{0}();\r\n"
+                                    , class_Sub.MethodId);
+                        }
+                    }
+                }
+                else
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(pageNo, pageSize);\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2));
+                        if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
+                        {
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat("{0}{1}"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1} = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}List<{1}>"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1}s = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
+
+                            if (class_WhereFields != null)
+                            {
+                                if (class_WhereFields.Count > 1)
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                        , InPutParamer);
+                                else if (class_WhereFields.Count == 1)
+                                {
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , class_WhereFields[0].FieldName
+                                        , InPutParamer);
+                                }
+                                else
+                                    stringBuilder.AppendFormat("{0}();\r\n"
+                                        , class_Sub.MethodId);
+                            }
+                            stringBuilder.AppendFormat("{0}if (englishSign) ", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("{\r\n");
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        stringBuilder.AppendFormat("{0}{3}.set{1}({3}.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(3)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName)
+                                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}{1}.forEach(item ->"
+                                    , class_ToolSpace.GetSetSpaceCount(3)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)) + "s");
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    stringBuilder.Append(" {\r\n");
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        //item.setName(item.getName());
+                                        stringBuilder.AppendFormat("{0}item.set{1}(item.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(4)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName));
+                                    }
+                                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "});\r\n");
+                                }
+                            }
+                            stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("}\r\n");
+                            stringBuilder.AppendFormat("{0}return "
+                                , class_ToolSpace.GetSetSpaceCount(2));
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat(" {0};\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat(" {0}s;\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+
+                            }
+                        }
+                        else
+                        {
+                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2));
+                            if (class_SelectAllModel.IsMultTable)
+                                stringBuilder.AppendFormat("List<{0}> {0}s = ", class_Sub.DtoClassName);
+                            else
+                                stringBuilder.AppendFormat("List<{0}> {0}s = ", _GetServiceReturnType(class_Sub, false));
+
+                            stringBuilder.AppendFormat("{0}Service."
+                                , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+
+                            if (class_WhereFields != null)
+                            {
+                                if (class_WhereFields.Count > 1)
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                        , InPutParamer);
+                                else if (class_WhereFields.Count == 1)
+                                {
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
+                                        , class_Sub.MethodId
+                                        , class_WhereFields[0].OutFieldName);
+                                }
+                                else
+                                    stringBuilder.AppendFormat("{0}();\r\n"
+                                        , class_Sub.MethodId);
+                            }
+                            if (class_SelectAllModel.IsMultTable)
+                            {
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , class_Sub.DtoClassName);
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                            }
+                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return ");
+                            if (class_SelectAllModel.ReturnStructure)
+                            {
+                                stringBuilder.Append("ResultUtils.success(pageInfo);\r\n");
+                            }
+                            else
+                            {
+                                stringBuilder.Append("PageInfo;\r\n");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
+                        {
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat("{0}{1}"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1} = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}List<{1}>"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat(" {1}s = new {0}();\r\n"
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , class_ToolSpace.GetSetSpaceCount(2));
+                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                        , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            }
+
+                            if (class_WhereFields != null)
+                            {
+                                if (class_WhereFields.Count > 1)
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                        , InPutParamer);
+                                else if (class_WhereFields.Count == 1)
+                                {
+                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        , class_Sub.MethodId
+                                        , class_WhereFields[0].FieldName
+                                        , InPutParamer);
+                                }
+                                else
+                                    stringBuilder.AppendFormat("{0}();\r\n"
+                                        , class_Sub.MethodId);
+                            }
+                            stringBuilder.AppendFormat("{0}if (englishSign) ", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("{\r\n");
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        stringBuilder.AppendFormat("{0}{3}.set{1}({3}.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(3)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName)
+                                            , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("{0}{1}.forEach(item ->"
+                                    , class_ToolSpace.GetSetSpaceCount(3)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)) + "s");
+                                List<Class_EnglishField> class_EnglishFields = new List<Class_EnglishField>();
+                                class_EnglishFields = _GetEnglishFieldList(class_Sub);
+                                if (class_EnglishFields.Count > 0)
+                                {
+                                    stringBuilder.Append(" {\r\n");
+                                    foreach (Class_EnglishField row in class_EnglishFields)
+                                    {
+                                        //item.setName(item.getName());
+                                        stringBuilder.AppendFormat("{0}item.set{1}(item.get{2}());\r\n"
+                                            , class_ToolSpace.GetSetSpaceCount(4)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldChinaName)
+                                            , Class_Tool.GetFirstCodeUpper(row.FieldEnglishName));
+                                    }
+                                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "});\r\n");
+                                }
+                            }
+                            stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.Append("}\r\n");
+                            stringBuilder.AppendFormat("{0}return "
+                                , class_ToolSpace.GetSetSpaceCount(2));
+                            if (class_Sub.ServiceInterFaceReturnCount == 0)
+                            {
+                                stringBuilder.AppendFormat(" {0};\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat(" {0}s;\r\n"
+                                , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
+
+                            }
+                        }
+                        else
+                        {
+                            if (class_SelectAllModel.ReturnStructure)
+                            {
+                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}Service."
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                if (class_WhereFields != null)
+                                {
+                                    if (class_WhereFields.Count > 1)
+                                        stringBuilder.AppendFormat("{0}({1}{2});"
+                                            , class_Sub.MethodId
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                            , InPutParamer);
+                                    else if (class_WhereFields.Count == 1)
+                                    {
+                                        stringBuilder.AppendFormat("{0}({1});"
+                                            , class_Sub.MethodId
+                                            , class_WhereFields[0].OutFieldName);
+                                    }
+                                    else
+                                        stringBuilder.AppendFormat("{0}();"
+                                            , class_Sub.MethodId);
+                                }
+                                stringBuilder.Append(")\r\n");
+                            }
+                            else
+                            {
+                                stringBuilder.AppendFormat("\r\n{0}return {1}Service."
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                if (class_WhereFields != null)
+                                {
+                                    if (class_WhereFields.Count > 1)
+                                        stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                            , class_Sub.MethodId
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                                            , InPutParamer);
+                                    else if (class_WhereFields.Count == 1)
+                                    {
+                                        stringBuilder.AppendFormat("{0}({1});\r\n"
+                                            , class_Sub.MethodId
+                                            , class_WhereFields[0].OutFieldName);
+                                    }
+                                    else
+                                        stringBuilder.AppendFormat("{0}();\r\n"
+                                            , class_Sub.MethodId);
+                                }
+                            }
+                        }
+                    }
                 }
             }
-
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
             if (!class_Sub.ControlMainCode)
                 stringBuilder.Append("}");

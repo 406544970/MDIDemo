@@ -510,7 +510,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                     class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
                     if (class_WindowType != null)
                     {
-                        if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
+                        if (class_WindowType.XmlFileName == ActiveMDIForm.Tag.ToString())
                             class_WindowType.ActiveSign = true;
                         class_WindowTypes.Add(class_WindowType);
                     }
