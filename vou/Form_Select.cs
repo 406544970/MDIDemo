@@ -144,6 +144,7 @@ namespace MDIDemo.vou
                 this.checkEdit5.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
                 this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
+                this.textEdit54.Text = class_SelectAllModel.class_SubList[index].ControlRequestMapping;
                 if (this.panelControl4.Height > this.simpleButton2.Height + 5)
                     this.simpleButton2.Text = "折叠";
                 else
@@ -529,12 +530,12 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit94, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit96, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit98, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit54, Color.SkyBlue);
 
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit44, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit52, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit53, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit54, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit55, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit56, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit1, true, Color.GreenYellow);
@@ -1134,6 +1135,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit19.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit5.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl4.Height;
+                    class_SelectAllModel.class_SubList[index].ControlRequestMapping = this.textEdit54.Text;
                 }
                 #endregion
 
@@ -1590,7 +1592,7 @@ namespace MDIDemo.vou
             this.textEdit24.Text = (sender as TextEdit).Text;
             this.textEdit34.Text = (sender as TextEdit).Text;
             this.textEdit44.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
-            this.textEdit54.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
+            //this.textEdit54.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
         }
 
         private void textEdit13_EditValueChanged(object sender, EventArgs e)

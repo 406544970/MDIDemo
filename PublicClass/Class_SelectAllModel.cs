@@ -930,6 +930,10 @@ namespace MDIDemo.PublicClass
             /// 是否用继承方式
             /// </summary>
             public bool ExtendsSign { get; set; }
+            /// <summary>
+            /// RequestMapping
+            /// </summary>
+            public string ControlRequestMapping { get; set; }
 
         }
         #endregion

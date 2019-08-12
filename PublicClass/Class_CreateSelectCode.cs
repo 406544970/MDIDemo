@@ -1503,7 +1503,9 @@ namespace MDIDemo.PublicClass
                 stringBuilder.Append(" * @function\r\n * @editLog\r\n");
                 stringBuilder.Append(" */\r\n");
                 stringBuilder.Append("@RestController\r\n");
-                stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n", class_SelectAllModel.class_Create.MicroServiceName);
+                if (class_Sub.ControlRequestMapping != null)
+                    stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n", Class_Tool.GetFirstCodeLow(class_Sub.ControlRequestMapping));
+
                 if (class_SelectAllModel.class_Create.SwaggerSign)
                     stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
                         , class_Sub.ControlSwaggerValue
