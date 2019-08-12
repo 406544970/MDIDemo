@@ -1952,7 +1952,7 @@ namespace MDIDemo.PublicClass
                             }
                             else
                             {
-                                stringBuilder.Append("PageInfo;\r\n");
+                                stringBuilder.Append("pageInfo;\r\n");
                             }
                         }
                     }
@@ -2072,21 +2072,21 @@ namespace MDIDemo.PublicClass
                                 if (class_WhereFields != null)
                                 {
                                     if (class_WhereFields.Count > 1)
-                                        stringBuilder.AppendFormat("{0}({1}{2});"
+                                        stringBuilder.AppendFormat("{0}({1}{2})"
                                             , class_Sub.MethodId
                                             , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
                                             , InPutParamer);
                                     else if (class_WhereFields.Count == 1)
                                     {
-                                        stringBuilder.AppendFormat("{0}({1});"
+                                        stringBuilder.AppendFormat("{0}({1})"
                                             , class_Sub.MethodId
                                             , class_WhereFields[0].OutFieldName);
                                     }
                                     else
-                                        stringBuilder.AppendFormat("{0}();"
+                                        stringBuilder.AppendFormat("{0}()"
                                             , class_Sub.MethodId);
                                 }
-                                stringBuilder.Append(")\r\n");
+                                stringBuilder.Append(");\r\n");
                             }
                             else
                             {
@@ -2386,7 +2386,7 @@ namespace MDIDemo.PublicClass
                             }
                             else
                             {
-                                stringBuilder.Append("PageInfo;\r\n");
+                                stringBuilder.Append("pageInfo;\r\n");
                             }
                         }
                     }
