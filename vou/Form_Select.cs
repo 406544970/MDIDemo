@@ -1599,7 +1599,7 @@ namespace MDIDemo.vou
                     // MAP
                     this.memoEdit3.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit4.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    this.memoEdit4.Text = class_InterFaceCreateCode.GetSql(PageIndex);
                     // ServiceInterFace
                     this.memoEdit5.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl
@@ -1624,7 +1624,7 @@ namespace MDIDemo.vou
                     //MAP
                     this.memoEdit13.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit14.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    this.memoEdit14.Text = class_InterFaceCreateCode.GetSql(PageIndex);
                     // ServiceInterFace
                     this.memoEdit15.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl
@@ -1647,7 +1647,7 @@ namespace MDIDemo.vou
                     //MAP
                     this.memoEdit22.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit23.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    this.memoEdit23.Text = class_InterFaceCreateCode.GetSql(PageIndex);
                     // ServiceInterFace
                     this.memoEdit24.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl
@@ -1670,7 +1670,7 @@ namespace MDIDemo.vou
                     //MAP
                     this.memoEdit34.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit35.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    this.memoEdit35.Text = class_InterFaceCreateCode.GetSql(PageIndex);
                     // ServiceInterFace
                     this.memoEdit39.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl
@@ -1693,7 +1693,7 @@ namespace MDIDemo.vou
                     //MAP
                     this.memoEdit44.Text = class_InterFaceCreateCode.GetMap(PageIndex);
                     // Select标签
-                    this.memoEdit45.Text = class_InterFaceCreateCode.GetMapLable(PageIndex);
+                    this.memoEdit45.Text = class_InterFaceCreateCode.GetSql(PageIndex);
                     // ServiceInterFace
                     this.memoEdit49.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
                     // ServiceImpl

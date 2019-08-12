@@ -15,7 +15,7 @@ namespace MDIDemo.PublicClass
 
         #region 
         string GetMap(int Index);
-        string GetMapLable(int Index);
+        string GetSql(int Index);
         //string GetWhereLable(int Index);
         string GetServiceInterFace(int Index);
         string GetServiceImpl(int Index);

@@ -132,6 +132,7 @@ namespace MDIDemo.PublicClass
         public string FieldName { get; set; }
         public string SortType { get; set; }
         public int SortNo { get; set; }
+        public string FunctionName { get; set; }
     }
     public class Class_SqlServerAndJava: Class_MySqlFieldAndJava
     {

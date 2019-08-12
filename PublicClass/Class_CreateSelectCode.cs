@@ -382,6 +382,8 @@ namespace MDIDemo.PublicClass
                         class_OrderBy.FieldName = FieldName;
                         class_OrderBy.SortNo = class_Field.SortNo;
                         class_OrderBy.SortType = class_Field.SortType == "升序" ? "" : " DESC";
+                        if (class_Field.SelectSelect)
+                            class_OrderBy.FunctionName = class_Field.FunctionName;
                         class_OrderBies.Add(class_OrderBy);
                     }
                     #endregion
@@ -415,7 +417,12 @@ namespace MDIDemo.PublicClass
             class_OrderBies = class_OrderBies.OrderBy(a => a.SortNo).ToList();
             foreach (Class_OrderBy row in class_OrderBies)
             {
-                stringBuilderOrder.AppendFormat(",{0}{1}", row.FieldName, row.SortType);
+                if (row.FunctionName != null && row.FunctionName.Length > 0)
+                    stringBuilderOrder.AppendFormat(",{0}{1}"
+                        , string.Format(row.FunctionName.Replace("?", row.FieldName))
+                        , row.SortType);
+                else
+                    stringBuilderOrder.AppendFormat(",{0}{1}", row.FieldName, row.SortType);
             }
             if (class_OrderBies.Count > 0)
             {
@@ -607,7 +614,7 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        private string _GetMainMapLable(int PageIndex)
+        private string _GetSql(int PageIndex)
         {
             if (class_SelectAllModel.class_SubList.Count < PageIndex)
                 return null;
@@ -835,7 +842,7 @@ namespace MDIDemo.PublicClass
             {
                 if (row.SelectSelect)
                 {
-                    string ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(row.FunctionName,row.ReturnType)));
+                    string ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(row.FunctionName, row.ReturnType)));
                     stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), row.FieldRemark);
                     stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -2595,9 +2602,9 @@ namespace MDIDemo.PublicClass
                 return null;
 
         }
-        public string GetMapLable(int Index)
+        public string GetSql(int Index)
         {
-            return _GetMainMapLable(Index);
+            return _GetSql(Index);
         }
         public string GetServiceInterFace(int Index)
         {
