@@ -750,5 +750,28 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             }
             return ResultValue;
         }
+        /// <summary>
+        /// 是否为聚合函数
+        /// </summary>
+        /// <param name="FunctionName"></param>
+        /// <returns></returns>
+        public bool IsPolymerization(string FunctionName)
+        {
+            bool IsFinder = false;
+            if (FunctionName != null && FunctionName.Length > 0)
+            {
+                if (FunctionName.IndexOf("COUNT") > -1)
+                    IsFinder = true;
+                if (FunctionName.IndexOf("SUM") > -1)
+                    IsFinder = true;
+                if (FunctionName.IndexOf("AVG") > -1)
+                    IsFinder = true;
+                if (FunctionName.IndexOf("MAX") > -1)
+                    IsFinder = true;
+                if (FunctionName.IndexOf("MIN") > -1)
+                    IsFinder = true;
+            }
+            return IsFinder;
+        }
     }
 }

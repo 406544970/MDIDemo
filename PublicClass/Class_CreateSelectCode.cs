@@ -418,9 +418,12 @@ namespace MDIDemo.PublicClass
             foreach (Class_OrderBy row in class_OrderBies)
             {
                 if (row.FunctionName != null && row.FunctionName.Length > 0)
-                    stringBuilderOrder.AppendFormat(",{0}{1}"
-                        , string.Format(row.FunctionName.Replace("?", row.FieldName))
-                        , row.SortType);
+                {
+                    if (class_InterFaceDataBase.IsPolymerization(row.FunctionName))
+                        stringBuilderOrder.AppendFormat(",{0}{1}"
+                            , string.Format(row.FunctionName.Replace("?", row.FieldName))
+                            , row.SortType);
+                }
                 else
                     stringBuilderOrder.AppendFormat(",{0}{1}", row.FieldName, row.SortType);
             }

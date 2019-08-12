@@ -50,6 +50,12 @@ namespace MDIDemo.PublicClass
         string GetDataBaseContent();
 
         string GetLikeString(String FieldName, int Type);
+        /// <summary>
+        /// 是否为聚合函数
+        /// </summary>
+        /// <param name="FunctionName">函数名</param>
+        /// <returns></returns>
+        bool IsPolymerization(string FunctionName);
 
     }
 }
