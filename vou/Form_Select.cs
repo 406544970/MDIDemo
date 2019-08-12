@@ -671,9 +671,8 @@ namespace MDIDemo.vou
                         }
                         else
                             textEdit11.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
-                        //this.buttonEdit2.Text = class_SelectAllModel.class_Subs.OutFieldName;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
-                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox15, "");
+                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox10, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
                     }
                     break;
@@ -689,9 +688,8 @@ namespace MDIDemo.vou
                         else
                             textEdit12.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
-                        //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
-                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
+                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox18, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox23, "");
                     }
                     break;
                 case 3:
@@ -706,9 +704,8 @@ namespace MDIDemo.vou
                         else
                             textEdit57.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
-                        //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
-                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
+                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox26, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox31, "");
                     }
                     break;
                 case 4:
@@ -723,9 +720,8 @@ namespace MDIDemo.vou
                         else
                             textEdit61.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
 
-                        //this.buttonEdit3.Text = class_SelectAllModel.class_SubSubs.OutFieldName;
-                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
+                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox34, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox39, "");
                     }
                     break;
                 default:
