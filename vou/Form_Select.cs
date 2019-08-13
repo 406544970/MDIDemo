@@ -965,6 +965,7 @@ namespace MDIDemo.vou
             {
                 if (IsDisplayLog)
                     this.DisplayText("表是不连续的，保存失败。");
+                //jhkljkl
                 return;
             }
 
