@@ -144,6 +144,7 @@ namespace MDIDemo.vou
                 this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
                 this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
                 this.textEdit54.Text = class_SelectAllModel.class_SubList[index].ControlRequestMapping;
+                this.memoEdit54.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].TestSql);
                 if (this.panelControl4.Height > this.simpleButton2.Height + 5)
                     this.simpleButton2.Text = "折叠";
                 else
@@ -442,6 +443,7 @@ namespace MDIDemo.vou
             class_SetMemoEdit.SetMemoEdit(this.memoEdit51);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit52);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit53);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit54);
             #endregion
 
             #region TextEdit
@@ -1116,6 +1118,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit5.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl4.Height;
                     class_SelectAllModel.class_SubList[index].ControlRequestMapping = this.textEdit54.Text;
+                    class_SelectAllModel.class_SubList[index].TestSql = Class_Tool.EscapeCharacter(this.memoEdit54.Text);
                 }
                 #endregion
 
@@ -1615,6 +1618,8 @@ namespace MDIDemo.vou
                     this.memoEdit11.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                     // FeignControl
                     this.memoEdit31.Text = class_InterFaceCreateCode.GetInPutParam(PageIndex);
+                    //
+                    this.memoEdit54.Text = class_InterFaceCreateCode.GetTestSql(PageIndex);
                 }
                 #endregion
 

@@ -523,6 +523,22 @@
             this.textEdit47 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.textEdit103 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit102 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit101 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit100 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit99 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit44 = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit19 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl56 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl55 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl53 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl52 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl51 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl50 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl49 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit54 = new DevExpress.XtraEditors.TextEdit();
             this.checkEdit20 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit19 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit17 = new DevExpress.XtraEditors.CheckEdit();
@@ -829,22 +845,8 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.textEdit54 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl49 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl50 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl51 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl52 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl53 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl55 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl56 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit19 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit44 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit99 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit100 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit101 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit102 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit103 = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabPage78 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit54 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -1116,6 +1118,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit47.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit103.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit102.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit101.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit100.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit99.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit44.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit54.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit19.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).BeginInit();
@@ -1407,14 +1417,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit54.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit44.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit99.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit100.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit101.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit102.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit103.Properties)).BeginInit();
+            this.xtraTabPage78.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit54.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -7754,7 +7758,8 @@
             this.xtraTabControl7.TabIndex = 2;
             this.xtraTabControl7.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage21,
-            this.xtraTabPage22});
+            this.xtraTabPage22,
+            this.xtraTabPage78});
             // 
             // xtraTabPage21
             // 
@@ -8157,6 +8162,134 @@
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(1177, 197);
             this.panelControl4.TabIndex = 5;
+            // 
+            // textEdit103
+            // 
+            this.textEdit103.Location = new System.Drawing.Point(840, 69);
+            this.textEdit103.MenuManager = this.barManager1;
+            this.textEdit103.Name = "textEdit103";
+            this.textEdit103.Size = new System.Drawing.Size(125, 20);
+            this.textEdit103.TabIndex = 53;
+            // 
+            // textEdit102
+            // 
+            this.textEdit102.Location = new System.Drawing.Point(840, 44);
+            this.textEdit102.MenuManager = this.barManager1;
+            this.textEdit102.Name = "textEdit102";
+            this.textEdit102.Size = new System.Drawing.Size(125, 20);
+            this.textEdit102.TabIndex = 52;
+            // 
+            // textEdit101
+            // 
+            this.textEdit101.Location = new System.Drawing.Point(604, 118);
+            this.textEdit101.MenuManager = this.barManager1;
+            this.textEdit101.Name = "textEdit101";
+            this.textEdit101.Size = new System.Drawing.Size(125, 20);
+            this.textEdit101.TabIndex = 51;
+            // 
+            // textEdit100
+            // 
+            this.textEdit100.Location = new System.Drawing.Point(604, 64);
+            this.textEdit100.MenuManager = this.barManager1;
+            this.textEdit100.Name = "textEdit100";
+            this.textEdit100.Size = new System.Drawing.Size(125, 20);
+            this.textEdit100.TabIndex = 50;
+            // 
+            // textEdit99
+            // 
+            this.textEdit99.Location = new System.Drawing.Point(604, 42);
+            this.textEdit99.MenuManager = this.barManager1;
+            this.textEdit99.Name = "textEdit99";
+            this.textEdit99.Size = new System.Drawing.Size(125, 20);
+            this.textEdit99.TabIndex = 49;
+            // 
+            // textEdit44
+            // 
+            this.textEdit44.Location = new System.Drawing.Point(605, 143);
+            this.textEdit44.MenuManager = this.barManager1;
+            this.textEdit44.Name = "textEdit44";
+            this.textEdit44.Size = new System.Drawing.Size(125, 20);
+            this.textEdit44.TabIndex = 48;
+            // 
+            // textEdit19
+            // 
+            this.textEdit19.Location = new System.Drawing.Point(604, 91);
+            this.textEdit19.MenuManager = this.barManager1;
+            this.textEdit19.Name = "textEdit19";
+            this.textEdit19.Size = new System.Drawing.Size(125, 20);
+            this.textEdit19.TabIndex = 47;
+            // 
+            // labelControl56
+            // 
+            this.labelControl56.Location = new System.Drawing.Point(766, 71);
+            this.labelControl56.Name = "labelControl56";
+            this.labelControl56.Size = new System.Drawing.Size(68, 14);
+            this.labelControl56.TabIndex = 46;
+            this.labelControl56.Text = "Service impl:";
+            // 
+            // labelControl55
+            // 
+            this.labelControl55.Location = new System.Drawing.Point(735, 48);
+            this.labelControl55.Name = "labelControl55";
+            this.labelControl55.Size = new System.Drawing.Size(99, 14);
+            this.labelControl55.TabIndex = 45;
+            this.labelControl55.Text = "Service InterFace:";
+            // 
+            // labelControl54
+            // 
+            this.labelControl54.Location = new System.Drawing.Point(574, 146);
+            this.labelControl54.Name = "labelControl54";
+            this.labelControl54.Size = new System.Drawing.Size(22, 14);
+            this.labelControl54.TabIndex = 44;
+            this.labelControl54.Text = "xml:";
+            // 
+            // labelControl53
+            // 
+            this.labelControl53.Location = new System.Drawing.Point(572, 121);
+            this.labelControl53.Name = "labelControl53";
+            this.labelControl53.Size = new System.Drawing.Size(25, 14);
+            this.labelControl53.TabIndex = 43;
+            this.labelControl53.Text = "Dao:";
+            // 
+            // labelControl52
+            // 
+            this.labelControl52.Location = new System.Drawing.Point(573, 94);
+            this.labelControl52.Name = "labelControl52";
+            this.labelControl52.Size = new System.Drawing.Size(24, 14);
+            this.labelControl52.TabIndex = 42;
+            this.labelControl52.Text = "Dto:";
+            // 
+            // labelControl51
+            // 
+            this.labelControl51.Location = new System.Drawing.Point(561, 68);
+            this.labelControl51.Name = "labelControl51";
+            this.labelControl51.Size = new System.Drawing.Size(36, 14);
+            this.labelControl51.TabIndex = 41;
+            this.labelControl51.Text = "Model:";
+            // 
+            // labelControl50
+            // 
+            this.labelControl50.Location = new System.Drawing.Point(561, 42);
+            this.labelControl50.Name = "labelControl50";
+            this.labelControl50.Size = new System.Drawing.Size(37, 14);
+            this.labelControl50.TabIndex = 40;
+            this.labelControl50.Text = "Param:";
+            // 
+            // labelControl49
+            // 
+            this.labelControl49.Location = new System.Drawing.Point(553, 172);
+            this.labelControl49.Name = "labelControl49";
+            this.labelControl49.Size = new System.Drawing.Size(43, 14);
+            this.labelControl49.TabIndex = 39;
+            this.labelControl49.Text = "Control:";
+            // 
+            // textEdit54
+            // 
+            this.textEdit54.Location = new System.Drawing.Point(605, 169);
+            this.textEdit54.MenuManager = this.barManager1;
+            this.textEdit54.Name = "textEdit54";
+            this.textEdit54.Size = new System.Drawing.Size(125, 20);
+            this.textEdit54.TabIndex = 38;
             // 
             // checkEdit20
             // 
@@ -10965,133 +11098,21 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
-            // textEdit54
+            // xtraTabPage78
             // 
-            this.textEdit54.Location = new System.Drawing.Point(605, 169);
-            this.textEdit54.MenuManager = this.barManager1;
-            this.textEdit54.Name = "textEdit54";
-            this.textEdit54.Size = new System.Drawing.Size(125, 20);
-            this.textEdit54.TabIndex = 38;
+            this.xtraTabPage78.Controls.Add(this.memoEdit54);
+            this.xtraTabPage78.Name = "xtraTabPage78";
+            this.xtraTabPage78.Size = new System.Drawing.Size(1165, 313);
+            this.xtraTabPage78.Text = "Test Sql";
             // 
-            // labelControl49
+            // memoEdit54
             // 
-            this.labelControl49.Location = new System.Drawing.Point(553, 172);
-            this.labelControl49.Name = "labelControl49";
-            this.labelControl49.Size = new System.Drawing.Size(43, 14);
-            this.labelControl49.TabIndex = 39;
-            this.labelControl49.Text = "Control:";
-            // 
-            // labelControl50
-            // 
-            this.labelControl50.Location = new System.Drawing.Point(561, 42);
-            this.labelControl50.Name = "labelControl50";
-            this.labelControl50.Size = new System.Drawing.Size(37, 14);
-            this.labelControl50.TabIndex = 40;
-            this.labelControl50.Text = "Param:";
-            // 
-            // labelControl51
-            // 
-            this.labelControl51.Location = new System.Drawing.Point(561, 68);
-            this.labelControl51.Name = "labelControl51";
-            this.labelControl51.Size = new System.Drawing.Size(36, 14);
-            this.labelControl51.TabIndex = 41;
-            this.labelControl51.Text = "Model:";
-            // 
-            // labelControl52
-            // 
-            this.labelControl52.Location = new System.Drawing.Point(573, 94);
-            this.labelControl52.Name = "labelControl52";
-            this.labelControl52.Size = new System.Drawing.Size(24, 14);
-            this.labelControl52.TabIndex = 42;
-            this.labelControl52.Text = "Dto:";
-            // 
-            // labelControl53
-            // 
-            this.labelControl53.Location = new System.Drawing.Point(572, 121);
-            this.labelControl53.Name = "labelControl53";
-            this.labelControl53.Size = new System.Drawing.Size(25, 14);
-            this.labelControl53.TabIndex = 43;
-            this.labelControl53.Text = "Dao:";
-            // 
-            // labelControl54
-            // 
-            this.labelControl54.Location = new System.Drawing.Point(574, 146);
-            this.labelControl54.Name = "labelControl54";
-            this.labelControl54.Size = new System.Drawing.Size(22, 14);
-            this.labelControl54.TabIndex = 44;
-            this.labelControl54.Text = "xml:";
-            // 
-            // labelControl55
-            // 
-            this.labelControl55.Location = new System.Drawing.Point(735, 48);
-            this.labelControl55.Name = "labelControl55";
-            this.labelControl55.Size = new System.Drawing.Size(99, 14);
-            this.labelControl55.TabIndex = 45;
-            this.labelControl55.Text = "Service InterFace:";
-            // 
-            // labelControl56
-            // 
-            this.labelControl56.Location = new System.Drawing.Point(766, 71);
-            this.labelControl56.Name = "labelControl56";
-            this.labelControl56.Size = new System.Drawing.Size(68, 14);
-            this.labelControl56.TabIndex = 46;
-            this.labelControl56.Text = "Service impl:";
-            // 
-            // textEdit19
-            // 
-            this.textEdit19.Location = new System.Drawing.Point(604, 91);
-            this.textEdit19.MenuManager = this.barManager1;
-            this.textEdit19.Name = "textEdit19";
-            this.textEdit19.Size = new System.Drawing.Size(125, 20);
-            this.textEdit19.TabIndex = 47;
-            // 
-            // textEdit44
-            // 
-            this.textEdit44.Location = new System.Drawing.Point(605, 143);
-            this.textEdit44.MenuManager = this.barManager1;
-            this.textEdit44.Name = "textEdit44";
-            this.textEdit44.Size = new System.Drawing.Size(125, 20);
-            this.textEdit44.TabIndex = 48;
-            // 
-            // textEdit99
-            // 
-            this.textEdit99.Location = new System.Drawing.Point(604, 42);
-            this.textEdit99.MenuManager = this.barManager1;
-            this.textEdit99.Name = "textEdit99";
-            this.textEdit99.Size = new System.Drawing.Size(125, 20);
-            this.textEdit99.TabIndex = 49;
-            // 
-            // textEdit100
-            // 
-            this.textEdit100.Location = new System.Drawing.Point(604, 64);
-            this.textEdit100.MenuManager = this.barManager1;
-            this.textEdit100.Name = "textEdit100";
-            this.textEdit100.Size = new System.Drawing.Size(125, 20);
-            this.textEdit100.TabIndex = 50;
-            // 
-            // textEdit101
-            // 
-            this.textEdit101.Location = new System.Drawing.Point(604, 118);
-            this.textEdit101.MenuManager = this.barManager1;
-            this.textEdit101.Name = "textEdit101";
-            this.textEdit101.Size = new System.Drawing.Size(125, 20);
-            this.textEdit101.TabIndex = 51;
-            // 
-            // textEdit102
-            // 
-            this.textEdit102.Location = new System.Drawing.Point(840, 44);
-            this.textEdit102.MenuManager = this.barManager1;
-            this.textEdit102.Name = "textEdit102";
-            this.textEdit102.Size = new System.Drawing.Size(125, 20);
-            this.textEdit102.TabIndex = 52;
-            // 
-            // textEdit103
-            // 
-            this.textEdit103.Location = new System.Drawing.Point(840, 69);
-            this.textEdit103.MenuManager = this.barManager1;
-            this.textEdit103.Name = "textEdit103";
-            this.textEdit103.Size = new System.Drawing.Size(125, 20);
-            this.textEdit103.TabIndex = 53;
+            this.memoEdit54.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit54.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit54.MenuManager = this.barManager1;
+            this.memoEdit54.Name = "memoEdit54";
+            this.memoEdit54.Size = new System.Drawing.Size(1165, 313);
+            this.memoEdit54.TabIndex = 4;
             // 
             // Form_Select
             // 
@@ -11383,6 +11404,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit103.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit102.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit101.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit100.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit99.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit44.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit54.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit19.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit17.Properties)).EndInit();
@@ -11688,14 +11717,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit54.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit19.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit44.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit99.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit100.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit101.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit102.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit103.Properties)).EndInit();
+            this.xtraTabPage78.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit54.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -12517,5 +12540,7 @@
         private DevExpress.XtraEditors.TextEdit textEdit101;
         private DevExpress.XtraEditors.TextEdit textEdit100;
         private DevExpress.XtraEditors.TextEdit textEdit99;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage78;
+        private DevExpress.XtraEditors.MemoEdit memoEdit54;
     }
 }

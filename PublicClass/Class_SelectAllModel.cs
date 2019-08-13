@@ -929,6 +929,10 @@ namespace MDIDemo.PublicClass
             /// RequestMapping
             /// </summary>
             public string ControlRequestMapping { get; set; }
+            /// <summary>
+            /// 测试SQL
+            /// </summary>
+            public string TestSql { get; set; }
 
         }
         #endregion

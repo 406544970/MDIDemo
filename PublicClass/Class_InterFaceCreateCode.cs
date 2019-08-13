@@ -25,6 +25,7 @@ namespace MDIDemo.PublicClass
         string GetControl(int Index);
         string GetInPutParam(int Index);
         string GetTestUnit(int Index);
+        string GetTestSql(int Index);
         #endregion
 
     }

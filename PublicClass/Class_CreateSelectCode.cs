@@ -218,6 +218,177 @@ namespace MDIDemo.PublicClass
             }
             return stringBuilder.ToString();
         }
+        private string _GetTestWhereSql()
+        {
+            bool HaveGroup = false;
+            bool HaveHaving = false;
+            List<Class_OrderBy> class_OrderBies = new List<Class_OrderBy>();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilderWhereAnd = new StringBuilder();
+            StringBuilder stringBuilderWhereOr = new StringBuilder();
+            StringBuilder stringBuilderGroup = new StringBuilder();
+            StringBuilder stringBuilderHaving = new StringBuilder();
+            StringBuilder stringBuilderOrder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            int CurPageIndex = 0;
+            int WhereCounter = 0;
+            foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+            {
+                string AliasName = item.AliasName;
+                foreach (Class_Field class_Field in item.class_Fields)
+                {
+                    string FieldName = class_Field.FieldName;
+                    string InParaFieldName = null;
+                    if (class_SelectAllModel.IsMultTable)
+                    {
+                        FieldName = AliasName + "." + FieldName;
+                        if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                            InParaFieldName = class_Field.MultFieldName;
+                        else
+                            InParaFieldName = class_Field.ParaName;
+                    }
+                    else
+                        InParaFieldName = class_Field.ParaName;
+                    #region Where
+                    if (class_Field.WhereSelect)
+                    {
+                        string NowWhere = " ";
+                        if (WhereCounter++ > 0)
+                        {
+                            NowWhere += "\r\n" + class_ToolSpace.GetSetSpaceCount(2) + class_Field.WhereType;
+                        }
+                        NowWhere += " " + FieldName + " ";
+                        if (class_Field.LogType.IndexOf("IN") > -1)
+                        {
+                            NowWhere += string.Format(" {0} (\'\',\'\')", class_Field.LogType);
+                        }
+                        else
+                        {
+                            int LikeType = class_Field.LogType.IndexOf("Like") > -1 ? 1 : -100;
+                            if (class_Field.LogType.Equals("左Like"))
+                                LikeType = -1;
+                            if (class_Field.LogType.Equals("右Like"))
+                                LikeType = 1;
+                            if (class_Field.LogType.Equals("全Like"))
+                                LikeType = 0;
+                            NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
+                            if (class_Field.WhereValue == "参数")
+                            {
+                                NowWhere = NowWhere + class_InterFaceDataBase.GetLikeString("\"\"", LikeType);
+                            }
+                            else
+                            {
+                                if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType))
+                                    NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
+                                else
+                                    NowWhere = NowWhere + string.Format("{0}", class_Field.WhereValue);
+                            }
+                        }
+                        if (NowWhere != null)
+                        {
+                            if (stringBuilderWhereAnd.Length == 0)
+                                stringBuilderWhereAnd.AppendFormat("{0}WHERE", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilderWhereAnd.Append(" " + NowWhere);
+                        }
+                    }
+                    #endregion
+
+                    #region Group
+                    if (class_Field.GroupSelect)
+                    {
+                        if (!HaveGroup)
+                        {
+                            HaveGroup = true;
+                        }
+                        else
+                        {
+                            stringBuilderGroup.Append(",");
+                        }
+                        stringBuilderGroup.AppendFormat("{0}", FieldName);
+                    }
+                    #endregion
+                    #region Having
+                    if (class_Field.HavingSelect)
+                    {
+                        if (!HaveHaving)
+                        {
+                            HaveHaving = true;
+                        }
+                        else
+                        {
+                            stringBuilderHaving.Append(",");
+                        }
+                        stringBuilderHaving.AppendFormat("{0} {1} {2}"
+                            , class_Field.HavingFunction.Replace("?", FieldName)
+                            , class_Field.HavingCondition
+                            , class_Field.HavingValue);
+                    }
+                    #endregion
+                    #region Order
+                    if (class_Field.OrderSelect)
+                    {
+                        Class_OrderBy class_OrderBy = new Class_OrderBy();
+                        class_OrderBy.FieldName = FieldName;
+                        class_OrderBy.SortNo = class_Field.SortNo;
+                        class_OrderBy.SortType = class_Field.SortType == "升序" ? "" : " DESC";
+                        if (class_Field.SelectSelect)
+                            class_OrderBy.FunctionName = class_Field.FunctionName;
+                        class_OrderBies.Add(class_OrderBy);
+                    }
+                    #endregion
+                }
+                CurPageIndex++;
+            }
+            stringBuilderWhereAnd.Append("\r\n");
+            if (stringBuilderWhereOr.Length > 0)
+            {
+                stringBuilderWhereAnd.Append(stringBuilderWhereOr.ToString());
+            }
+            if (stringBuilderGroup.Length > 0)
+            {
+                stringBuilderWhereAnd.AppendFormat("{0}GROUP BY ", class_ToolSpace.GetSetSpaceCount(2));
+                stringBuilderWhereAnd.Append(stringBuilderGroup.ToString() + "\r\n");
+            }
+            if (stringBuilderHaving.Length > 0)
+            {
+                stringBuilderWhereAnd.AppendFormat("{0}HAVING ", class_ToolSpace.GetSetSpaceCount(2));
+                stringBuilderWhereAnd.Append(stringBuilderHaving.ToString() + "\r\n");
+            }
+            class_OrderBies = class_OrderBies.OrderBy(a => a.SortNo).ToList();
+            foreach (Class_OrderBy row in class_OrderBies)
+            {
+                if (row.FunctionName != null && row.FunctionName.Length > 0)
+                {
+                    if (class_InterFaceDataBase.IsPolymerization(row.FunctionName))
+                        stringBuilderOrder.AppendFormat(",{0}{1}"
+                            , string.Format(row.FunctionName.Replace("?", row.FieldName))
+                            , row.SortType);
+                }
+                else
+                    stringBuilderOrder.AppendFormat(",{0}{1}", row.FieldName, row.SortType);
+            }
+            if (class_OrderBies.Count > 0)
+            {
+                stringBuilderWhereAnd.AppendFormat("{0}ORDER BY ", class_ToolSpace.GetSetSpaceCount(2));
+                stringBuilderWhereAnd.Append(stringBuilderOrder.ToString().Substring(1) + "\r\n");
+            }
+            if (stringBuilderWhereAnd.Length > 0)
+                return stringBuilderWhereAnd.ToString();
+            else
+                return null;
+        }
         private string _GetMainWhereLable()
         {
             bool HaveGroup = false;
@@ -267,7 +438,7 @@ namespace MDIDemo.PublicClass
                         string NowWhere = null;
                         if (class_Field.WhereType == "AND")
                         {
-                            if (class_Field.WhereIsNull)
+                            if (class_Field.WhereIsNull && !class_Field.WhereValue.Equals("参数"))
                             {
                                 IfLabel = string.Format("{1}<if test=\"{0} != null\">\r\n"
                                     , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
@@ -286,7 +457,7 @@ namespace MDIDemo.PublicClass
                         {
                             NowWhere += string.Format("{2}\r\n{0}<foreach item = \"item\" index = \"index\" collection = \"{1}\" open = \"(\" separator = \", \" close = \")\" >\r\n"
                                 , class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 4 : 5)
-                                , FieldName
+                                , InParaFieldName
                                 , class_Field.LogType);
                             NowWhere += class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 5 : 6) + "#{item}\r\n";
                             NowWhere += string.Format("{0}</foreach>\r\n", class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 4 : 5));
@@ -614,6 +785,136 @@ namespace MDIDemo.PublicClass
                 else
                     return null;
             }
+            else
+                return null;
+        }
+        public string GetTestSql(int PageIndex)
+        {
+            return _GetTestSql(PageIndex);
+        }
+        private string _GetTestSql(int PageIndex)
+        {
+            if (class_SelectAllModel.class_SubList.Count < PageIndex)
+                return null;
+            Class_Sub class_Main = class_SelectAllModel.class_SubList[PageIndex];
+            if (class_Main == null)
+                return null;
+            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+
+            #region Select
+            stringBuilder.AppendFormat("{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            int Counter = 0;
+            int CurPageIndex = 0;
+            foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+            {
+                string AliasName = item.AliasName;
+                foreach (Class_Field class_Field in item.class_Fields)
+                {
+                    if (class_Field.SelectSelect)
+                    {
+                        string FieldName = class_Field.FieldName;
+                        string MyFieldName = null;
+                        if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                        {
+                            MyFieldName = class_Field.MultFieldName;
+                        }
+                        else
+                        {
+                            MyFieldName = class_Field.ParaName;
+                        }
+                        if (class_SelectAllModel.IsMultTable)
+                        {
+                            FieldName = AliasName + "." + FieldName;
+                        }
+
+                        if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                        {
+                            Class_CaseWhen class_CaseWhen = new Class_CaseWhen();
+                            FieldName = class_CaseWhen.GetCaseWhenContent(class_Field.CaseWhen, FieldName, class_ToolSpace.GetSetSpaceCount(3));
+                            if (MyFieldName != null)
+                                FieldName = FieldName + " AS " + MyFieldName;
+                        }
+                        if ((class_Field.FunctionName != null) && (class_Field.FunctionName.Length > 0))
+                        {
+                            if (MyFieldName != null)
+                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}"), FieldName);
+                            else
+                                FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}"), FieldName);
+                        }
+                        if (!FieldName.Equals(MyFieldName))
+                        {
+                            FieldName = string.Format(FieldName + " AS {0}", MyFieldName);
+                        }
+                        if (Counter++ > 0)
+                            stringBuilder.AppendFormat("{1},{0}\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3));
+                        else
+                            stringBuilder.AppendFormat("{1}{0}\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3));
+                    }
+                }
+                CurPageIndex++;
+            }
+            #endregion
+
+            #region FROM
+            Counter = 0;
+            foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+            {
+                string AliasName = item.AliasName;
+                if (Counter > 0)
+                {
+                    stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(2));
+                    if (item.InnerType == 0)
+                        stringBuilder.AppendFormat("LEFT JOIN ");
+                    else
+                        stringBuilder.AppendFormat("INNER JOIN ");
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("{0}FROM ", class_ToolSpace.GetSetSpaceCount(2));
+                }
+
+                if (class_SelectAllModel.IsMultTable)
+                {
+                    stringBuilder.AppendFormat("{0} AS {1} "
+                        , item.TableName
+                        , AliasName);
+                    if (Counter > 0)
+                        stringBuilder.AppendFormat("ON {0} = {1}\r\n"
+                            , class_SelectAllModel.class_SubList[item.TableNo].AliasName + "." + item.OutFieldName
+                            , AliasName + "." + item.MainTableFieldName);
+                    else
+                        stringBuilder.Append("\r\n");
+                }
+                else
+                    stringBuilder.AppendFormat(" {1}\r\n", class_ToolSpace.GetSetSpaceCount(2), item.TableName);
+                Counter++;
+            }
+            #endregion
+
+            #region WHERE
+            string TestSql = _GetTestWhereSql();
+            if (TestSql != null)
+                stringBuilder.Append(TestSql);
+            #endregion
+
+            if (stringBuilder.Length > 0)
+                return stringBuilder.ToString();
             else
                 return null;
         }
