@@ -724,5 +724,10 @@ namespace MDIDemo.PublicClass
         {
             throw new NotImplementedException();
         }
+
+        public bool IsPolymerization(string FunctionName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1510,7 +1510,7 @@ namespace MDIDemo.PublicClass
             if (!class_Sub.ControlMainCode)
             {
                 stringBuilder.Append("/**\r\n");
-                stringBuilder.AppendFormat(_GetAuthor());
+                stringBuilder.Append(_GetAuthor());
                 stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
                 stringBuilder.Append(" * @function\r\n * @editLog\r\n");
                 stringBuilder.Append(" */\r\n");
@@ -1534,8 +1534,10 @@ namespace MDIDemo.PublicClass
                 stringBuilder.Append("\r\n");
             }
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
-                , class_Sub.MethodContent);
+            stringBuilder.AppendFormat("{0} * {1}，方法ID：{2}\r\n{0} *\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.MethodContent
+                , class_SelectAllModel.class_Create.MethodId);
             class_WhereFields = _GetParameterType();
             if (class_WhereFields != null)
             {
