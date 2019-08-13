@@ -30,7 +30,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         private string mySkinName;
         private const string _Text = "myBatis ´úÂëÉú³ÉÆ÷";
-        private const string _Version = "1.1";
+        private const string _Version = "0.0";
         bool IsTabbedMdi { get { return biTabbedMDI.Down; } }
         public static string Version => _Version;
 
