@@ -1930,6 +1930,8 @@ namespace MDIDemo.PublicClass
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                         if (!row.WhereIsNull)
                             stringBuilder.Append(", required = true");
+                        if (row.FieldLogType.IndexOf("IN") > -1)
+                            stringBuilder.Append(", paramType = \"query\"");
                         stringBuilder.Append(")");
 
                         if (index < class_WhereFields.Count - 1)
