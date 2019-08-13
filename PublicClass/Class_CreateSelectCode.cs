@@ -438,10 +438,10 @@ namespace MDIDemo.PublicClass
                         string NowWhere = null;
                         if (class_Field.WhereType == "AND")
                         {
-                            if (class_Field.WhereIsNull && !class_Field.WhereValue.Equals("参数"))
+                            if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数"))
                             {
                                 IfLabel = string.Format("{1}<if test=\"{0} != null\">\r\n"
-                                    , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
+                                , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
                             }
                         }
                         if (class_Field.WhereType == "OR")
@@ -499,7 +499,7 @@ namespace MDIDemo.PublicClass
                                 NowWhere += "\r\n";
                             if (class_Field.WhereType == "AND")
                             {
-                                if (class_Field.WhereIsNull)
+                                if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数"))
                                 {
                                     NowWhere += string.Format("{0}</if>\r\n", class_ToolSpace.GetSetSpaceCount(3));
                                 }
@@ -719,7 +719,13 @@ namespace MDIDemo.PublicClass
                 }
                 else if (class_WhereFields.Count == 1)
                 {
-                    stringBuilder.AppendFormat(" {0}(@Param(\"{2}\") {1} {2});\r\n"
+                    if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" {0}(@Param(\"{2}\") List<{1}> {2});\r\n"
+                        , class_Sub.MethodId
+                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                        , class_WhereFields[0].OutFieldName);
+                    else
+                        stringBuilder.AppendFormat(" {0}(@Param(\"{2}\") {1} {2});\r\n"
                         , class_Sub.MethodId
                         , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
                         , class_WhereFields[0].OutFieldName);
@@ -1252,10 +1258,18 @@ namespace MDIDemo.PublicClass
                         , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
                         , InPutParamer);
                 else
-                    stringBuilder.AppendFormat(" {0}({1} {2})"
+                {
+                    if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" {0}(List<{1}> {2})"
                         , class_Sub.MethodId
                         , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
                         , class_WhereFields[0].OutFieldName);
+                    else
+                        stringBuilder.AppendFormat(" {0}({1} {2})"
+                        , class_Sub.MethodId
+                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                        , class_WhereFields[0].OutFieldName);
+                }
             }
             else
                 stringBuilder.AppendFormat(" {0}()"
@@ -1373,10 +1387,18 @@ namespace MDIDemo.PublicClass
                         , InPutParamer);
                 }
                 else
-                    stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
+                {
+                    if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" {0}(List<{1}> {2});\r\n"
                         , class_Sub.MethodId
                         , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
                         , class_WhereFields[0].OutFieldName);
+                    else
+                        stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
+                        , class_Sub.MethodId
+                        , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                        , class_WhereFields[0].OutFieldName);
+                }
             }
             else
                 stringBuilder.AppendFormat(" {0}();\r\n"
@@ -1424,7 +1446,7 @@ namespace MDIDemo.PublicClass
                 foreach (Class_WhereField class_Field in class_WhereFields)
                 {
                     string JaveType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.LogType));
-                    if (class_Field.LogType.IndexOf("IN") > -1)
+                    if (class_Field.FieldLogType.IndexOf("IN") > -1)
                     {
                         JaveType = string.Format("List<{0}>", JaveType);
                     }
