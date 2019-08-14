@@ -629,7 +629,7 @@ namespace MDIDemo.vou
                 repositoryItemComboBox.Items.Add(row);
             }
         }
-        private void AddUseTableData(string TableName, string TableAlias,int PageSelectIndex)
+        private void AddUseTableData(string TableName, string TableAlias, int PageSelectIndex)
         {
             switch (PageSelectIndex)
             {
@@ -799,8 +799,9 @@ namespace MDIDemo.vou
             foreach (string row in myTableNameList)
             {
                 this.listBoxControl1.Items.Add(row);
-                this.listBoxControl3.Items.Add(class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
-                    , class_SelectAllModel.class_SelectDataBase.dataBaseName, row));
+                string AliasName = class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
+                    , class_SelectAllModel.class_SelectDataBase.dataBaseName, row);
+                this.listBoxControl3.Items.Add(AliasName == null ? "" : AliasName);
             }
             foreach (string row in myTableContentList)
             {
