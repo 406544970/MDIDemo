@@ -1627,20 +1627,20 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
-                    //MAP
-                    this.memoEdit13.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    // Select标签
-                    this.memoEdit14.Text = class_InterFaceCreateCode.GetSql(PageIndex);
-                    // ServiceInterFace
-                    this.memoEdit15.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    // ServiceImpl
-                    this.memoEdit16.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    // Model
-                    this.memoEdit17.Text = class_InterFaceCreateCode.GetModel(PageIndex);
+                    ////MAP
+                    //this.memoEdit13.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    //// Select标签
+                    //this.memoEdit14.Text = class_InterFaceCreateCode.GetSql(PageIndex);
+                    //// ServiceInterFace
+                    //this.memoEdit15.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    //// ServiceImpl
+                    //this.memoEdit16.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
+                    //// Model
+                    //this.memoEdit17.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
                     this.memoEdit19.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
-                    // DAO
-                    this.memoEdit20.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
+                    //// DAO
+                    //this.memoEdit20.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
                     //this.memoEdit21.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
@@ -1650,20 +1650,20 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
-                    //MAP
-                    this.memoEdit22.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    // Select标签
-                    this.memoEdit23.Text = class_InterFaceCreateCode.GetSql(PageIndex);
-                    // ServiceInterFace
-                    this.memoEdit24.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    // ServiceImpl
-                    this.memoEdit25.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    // Model
-                    this.memoEdit26.Text = class_InterFaceCreateCode.GetModel(PageIndex);
+                    ////MAP
+                    //this.memoEdit22.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    //// Select标签
+                    //this.memoEdit23.Text = class_InterFaceCreateCode.GetSql(PageIndex);
+                    //// ServiceInterFace
+                    //this.memoEdit24.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    //// ServiceImpl
+                    //this.memoEdit25.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
+                    //// Model
+                    //this.memoEdit26.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    //this.memoEdit28.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
-                    // DAO
-                    this.memoEdit29.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
+                    this.memoEdit28.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
+                    //// DAO
+                    //this.memoEdit29.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
                     //this.memoEdit30.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
@@ -1673,20 +1673,20 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
-                    //MAP
-                    this.memoEdit34.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    // Select标签
-                    this.memoEdit35.Text = class_InterFaceCreateCode.GetSql(PageIndex);
-                    // ServiceInterFace
-                    this.memoEdit39.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    // ServiceImpl
-                    this.memoEdit40.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    // Model
-                    this.memoEdit36.Text = class_InterFaceCreateCode.GetModel(PageIndex);
+                    ////MAP
+                    //this.memoEdit34.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    //// Select标签
+                    //this.memoEdit35.Text = class_InterFaceCreateCode.GetSql(PageIndex);
+                    //// ServiceInterFace
+                    //this.memoEdit39.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    //// ServiceImpl
+                    //this.memoEdit40.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
+                    //// Model
+                    //this.memoEdit36.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    //this.memoEdit42.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
-                    // DAO
-                    this.memoEdit38.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
+                    this.memoEdit42.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
+                    //// DAO
+                    //this.memoEdit38.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
                     //this.memoEdit41.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
@@ -1696,20 +1696,20 @@ namespace MDIDemo.vou
                 PageIndex++;
                 if (class_SelectAllModel.class_SubList.Count > PageIndex)
                 {
-                    //MAP
-                    this.memoEdit44.Text = class_InterFaceCreateCode.GetMap(PageIndex);
-                    // Select标签
-                    this.memoEdit45.Text = class_InterFaceCreateCode.GetSql(PageIndex);
-                    // ServiceInterFace
-                    this.memoEdit49.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
-                    // ServiceImpl
-                    this.memoEdit50.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
-                    // Model
-                    this.memoEdit46.Text = class_InterFaceCreateCode.GetModel(PageIndex);
+                    ////MAP
+                    //this.memoEdit44.Text = class_InterFaceCreateCode.GetMap(PageIndex);
+                    //// Select标签
+                    //this.memoEdit45.Text = class_InterFaceCreateCode.GetSql(PageIndex);
+                    //// ServiceInterFace
+                    //this.memoEdit49.Text = class_InterFaceCreateCode.GetServiceInterFace(PageIndex);
+                    //// ServiceImpl
+                    //this.memoEdit50.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
+                    //// Model
+                    //this.memoEdit46.Text = class_InterFaceCreateCode.GetModel(PageIndex);
                     //DTO
-                    //this.memoEdit52.Text = class_InterFaceCreateCode.GetMainDTO(PageIndex);
-                    // DAO
-                    this.memoEdit48.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
+                    this.memoEdit52.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
+                    //// DAO
+                    //this.memoEdit48.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
                     // Control
                     //this.memoEdit51.Text = class_InterFaceCreateCode.GetControl(PageIndex);
                 }
