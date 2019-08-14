@@ -186,6 +186,7 @@ namespace MDIDemo.vou
                 this.textEdit98.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit97.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit15.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
+                this.panelControl17.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
 
@@ -223,6 +224,7 @@ namespace MDIDemo.vou
                 this.textEdit96.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit95.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit13.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
+                this.panelControl28.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
 
@@ -269,7 +271,7 @@ namespace MDIDemo.vou
                 this.textEdit92.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit91.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit9.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
-
+                this.panelControl44.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
 
@@ -316,6 +318,7 @@ namespace MDIDemo.vou
                 this.textEdit94.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit93.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit11.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
+                this.panelControl45.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
 
@@ -1152,6 +1155,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit98.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit97.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit15.Checked;
+                    class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl17.Height;
                 }
                 #endregion
 
@@ -1185,6 +1189,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit96.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit95.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit13.Checked;
+                    class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl28.Height;
                 }
                 #endregion
 
@@ -1224,6 +1229,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit92.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit91.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit9.Checked;
+                    class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl44.Height;
                 }
                 #endregion
 
@@ -1267,6 +1273,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit94.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit93.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit11.Checked;
+                    class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl45.Height;
                 }
                 #endregion
 
@@ -1991,18 +1998,42 @@ namespace MDIDemo.vou
             this.textEdit93.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
+        private void OpenClosePanel(object sender, PanelControl panelControl)
         {
-            if (this.panelControl4.Height > (sender as SimpleButton).Height + 10)
+            if (panelControl.Height > (sender as SimpleButton).Height + 10)
             {
-                this.panelControl4.Height = (sender as SimpleButton).Height + 10;
+                panelControl.Height = (sender as SimpleButton).Height + 10;
                 (sender as SimpleButton).Text = "展开";
             }
             else
             {
-                this.panelControl4.Height = 197;
+                panelControl.Height = 197;
                 (sender as SimpleButton).Text = "折叠";
             }
+        }
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            OpenClosePanel(sender, this.panelControl4);
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            OpenClosePanel(sender, this.panelControl17);
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            OpenClosePanel(sender, this.panelControl28);
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            OpenClosePanel(sender, this.panelControl44);
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            OpenClosePanel(sender, this.panelControl45);
         }
     }
 }
