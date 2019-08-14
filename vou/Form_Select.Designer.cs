@@ -475,8 +475,6 @@
             this.searchControl1 = new DevExpress.XtraEditors.SearchControl();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.listBoxControl2 = new DevExpress.XtraEditors.ListBoxControl();
-            this.xtraTabPage79 = new DevExpress.XtraTab.XtraTabPage();
-            this.listBoxControl3 = new DevExpress.XtraEditors.ListBoxControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl8 = new DevExpress.XtraTab.XtraTabControl();
@@ -853,6 +851,8 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage79 = new DevExpress.XtraTab.XtraTabPage();
+            this.listBoxControl3 = new DevExpress.XtraEditors.ListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -1073,8 +1073,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).BeginInit();
-            this.xtraTabPage79.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl8)).BeginInit();
             this.xtraTabControl8.SuspendLayout();
@@ -1427,6 +1425,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            this.xtraTabPage79.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -4064,7 +4064,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -4099,7 +4099,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(1177, 547);
+            this.gridControl2.Size = new System.Drawing.Size(1177, 516);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -4924,7 +4924,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage14.Text = "表";
             // 
             // gridControl3
@@ -4959,7 +4959,7 @@
             this.repositoryItemCheckEdit35,
             this.repositoryItemComboBox23,
             this.repositoryItemComboBox24});
-            this.gridControl3.Size = new System.Drawing.Size(1177, 545);
+            this.gridControl3.Size = new System.Drawing.Size(1177, 514);
             this.gridControl3.TabIndex = 2;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});
@@ -5797,7 +5797,7 @@
             this.xtraTabPage52.Controls.Add(this.panelControl42);
             this.xtraTabPage52.ImageIndex = 610;
             this.xtraTabPage52.Name = "xtraTabPage52";
-            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage52.Text = "表";
             // 
             // gridControl4
@@ -5832,7 +5832,7 @@
             this.repositoryItemCheckEdit47,
             this.repositoryItemComboBox31,
             this.repositoryItemComboBox32});
-            this.gridControl4.Size = new System.Drawing.Size(1177, 547);
+            this.gridControl4.Size = new System.Drawing.Size(1177, 516);
             this.gridControl4.TabIndex = 3;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView4});
@@ -6671,7 +6671,7 @@
             this.xtraTabPage53.Controls.Add(this.panelControl43);
             this.xtraTabPage53.ImageIndex = 612;
             this.xtraTabPage53.Name = "xtraTabPage53";
-            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage53.Text = "表";
             // 
             // gridControl5
@@ -6706,7 +6706,7 @@
             this.repositoryItemCheckEdit59,
             this.repositoryItemComboBox39,
             this.repositoryItemComboBox40});
-            this.gridControl5.Size = new System.Drawing.Size(1177, 547);
+            this.gridControl5.Size = new System.Drawing.Size(1177, 516);
             this.gridControl5.TabIndex = 3;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView5});
@@ -7656,27 +7656,6 @@
             this.listBoxControl2.Name = "listBoxControl2";
             this.listBoxControl2.Size = new System.Drawing.Size(135, 619);
             this.listBoxControl2.TabIndex = 1;
-            // 
-            // xtraTabPage79
-            // 
-            this.xtraTabPage79.Controls.Add(this.listBoxControl3);
-            this.xtraTabPage79.Name = "xtraTabPage79";
-            this.xtraTabPage79.Size = new System.Drawing.Size(135, 619);
-            this.xtraTabPage79.Text = "表别名";
-            // 
-            // listBoxControl3
-            // 
-            this.listBoxControl3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.listBoxControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxControl3.Items.AddRange(new object[] {
-            "dasfas",
-            "adsfsaf",
-            "adsfaf",
-            "asdfsaf"});
-            this.listBoxControl3.Location = new System.Drawing.Point(0, 0);
-            this.listBoxControl3.Name = "listBoxControl3";
-            this.listBoxControl3.Size = new System.Drawing.Size(135, 619);
-            this.listBoxControl3.TabIndex = 2;
             // 
             // imageList1
             // 
@@ -11184,6 +11163,27 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // xtraTabPage79
+            // 
+            this.xtraTabPage79.Controls.Add(this.listBoxControl3);
+            this.xtraTabPage79.Name = "xtraTabPage79";
+            this.xtraTabPage79.Size = new System.Drawing.Size(135, 619);
+            this.xtraTabPage79.Text = "表别名";
+            // 
+            // listBoxControl3
+            // 
+            this.listBoxControl3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxControl3.Items.AddRange(new object[] {
+            "dasfas",
+            "adsfsaf",
+            "adsfaf",
+            "asdfsaf"});
+            this.listBoxControl3.Location = new System.Drawing.Point(0, 0);
+            this.listBoxControl3.Name = "listBoxControl3";
+            this.listBoxControl3.Size = new System.Drawing.Size(135, 619);
+            this.listBoxControl3.TabIndex = 2;
+            // 
             // Form_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -11419,8 +11419,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.searchControl1.Properties)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl2)).EndInit();
-            this.xtraTabPage79.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
             this.xtraTabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl8)).EndInit();
@@ -11791,6 +11789,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            this.xtraTabPage79.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).EndInit();
             this.ResumeLayout(false);
 
         }
