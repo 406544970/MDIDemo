@@ -274,6 +274,10 @@ namespace MDIDemo.PublicClass
                         {
                             NowWhere += string.Format(" {0} (\'\',\'\')", class_Field.LogType);
                         }
+                        else if (class_Field.LogType.IndexOf("NULL") > -1)
+                        {
+                            NowWhere += string.Format(" {0}", class_Field.LogType);
+                        }
                         else
                         {
                             int LikeType = class_Field.LogType.IndexOf("Like") > -1 ? 1 : -100;
@@ -286,7 +290,17 @@ namespace MDIDemo.PublicClass
                             NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
                             if (class_Field.WhereValue == "参数")
                             {
-                                NowWhere = NowWhere + class_InterFaceDataBase.GetLikeString("\"\"", LikeType);
+                                if (LikeType != -100)
+                                {
+                                    NowWhere = NowWhere + class_InterFaceDataBase.GetLikeString("\"\"", LikeType);
+                                }
+                                else
+                                {
+                                    if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType))
+                                        NowWhere = NowWhere + "'{0}'";
+                                    else
+                                        NowWhere = NowWhere + "0";
+                                }
                             }
                             else
                             {
@@ -438,7 +452,7 @@ namespace MDIDemo.PublicClass
                         string NowWhere = null;
                         if (class_Field.WhereType == "AND")
                         {
-                            if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数"))
+                            if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数") && class_Field.LogType.IndexOf("NULL") == -1)
                             {
                                 IfLabel = string.Format("{1}<if test=\"{0} != null\">\r\n"
                                 , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
@@ -465,6 +479,10 @@ namespace MDIDemo.PublicClass
                             {
                                 NowWhere += string.Format("{0}</if>\r\n", class_ToolSpace.GetSetSpaceCount(3));
                             }
+                        }
+                        else if (class_Field.LogType.IndexOf("NULL") > -1)
+                        {
+                            NowWhere += class_Field.LogType + "\r\n";
                         }
                         else
                         {
@@ -499,7 +517,7 @@ namespace MDIDemo.PublicClass
                                 NowWhere += "\r\n";
                             if (class_Field.WhereType == "AND")
                             {
-                                if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数"))
+                                if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数") && class_Field.LogType.IndexOf("IN") == -1)
                                 {
                                     NowWhere += string.Format("{0}</if>\r\n", class_ToolSpace.GetSetSpaceCount(3));
                                 }
