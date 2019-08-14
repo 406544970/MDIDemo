@@ -799,9 +799,8 @@ namespace MDIDemo.vou
             foreach (string row in myTableNameList)
             {
                 this.listBoxControl1.Items.Add(row);
-                string AliasName = class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
-                    , class_SelectAllModel.class_SelectDataBase.dataBaseName, row);
-                this.listBoxControl3.Items.Add(AliasName == null ? "":AliasName);
+                this.listBoxControl3.Items.Add(class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
+                    , class_SelectAllModel.class_SelectDataBase.dataBaseName, row));
             }
             foreach (string row in myTableContentList)
             {
