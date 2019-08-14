@@ -43,6 +43,7 @@ namespace MDIDemo.vou
             class_PublicMethod = new Class_PublicMethod();
             SetCompoment();
             this.listBoxControl1.Items.Clear();
+            this.listBoxControl3.Items.Clear();
             #region mybatisMap文件配置
             this.propertyGridControl5.OptionsBehavior.UseDefaultEditorsCollection = true;
             this.propertyGridControl5.LayoutChanged();
@@ -334,7 +335,7 @@ namespace MDIDemo.vou
                     for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
                     {
                         if (class_SelectAllModel.class_SubList[i] != null)
-                            this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, i);
+                            this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, class_SelectAllModel.class_SubList[i].AliasName, i);
                     }
                 }
             }
@@ -628,7 +629,7 @@ namespace MDIDemo.vou
                 repositoryItemComboBox.Items.Add(row);
             }
         }
-        private void AddUseTableData(string TableName, int PageSelectIndex)
+        private void AddUseTableData(string TableName, string TableAlias,int PageSelectIndex)
         {
             switch (PageSelectIndex)
             {
@@ -639,7 +640,7 @@ namespace MDIDemo.vou
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                             textEdit10.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                         else
-                            textEdit10.Text = "main";
+                            textEdit10.Text = TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox2);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
@@ -655,7 +656,7 @@ namespace MDIDemo.vou
                             this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit11.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
+                            textEdit11.Text = TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox10, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
@@ -671,7 +672,7 @@ namespace MDIDemo.vou
                             this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit12.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
+                            textEdit12.Text = TableAlias;
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox18, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox23, "");
@@ -687,7 +688,7 @@ namespace MDIDemo.vou
                             this.radioGroup19.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit57.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
+                            textEdit57.Text = TableAlias;
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox26, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox31, "");
@@ -703,7 +704,7 @@ namespace MDIDemo.vou
                             this.radioGroup22.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit61.Text = String.Format("sub{0}", (PageSelectIndex + 1).ToString());
+                            textEdit61.Text = TableAlias;
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox34, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox39, "");
@@ -737,12 +738,12 @@ namespace MDIDemo.vou
                     int Index = this.listBoxControl1.SelectedIndex;
                     if (Index > -1)
                     {
-                        AddUseTableData(this.listBoxControl1.Text, PageIndex);
+                        AddUseTableData(this.listBoxControl1.Text, this.listBoxControl3.Text, PageIndex);
                     }
                 }
                 else
                 {
-                    AddUseTableData(TableName, PageIndex);
+                    AddUseTableData(TableName, this.listBoxControl3.Text, PageIndex);
                 }
             }
             catch (Exception error)
@@ -787,14 +788,19 @@ namespace MDIDemo.vou
                 listBoxControl1.Items.Clear();
             if (listBoxControl2.ItemCount > 0)
                 listBoxControl2.Items.Clear();
+            if (listBoxControl3.ItemCount > 0)
+                listBoxControl3.Items.Clear();
             myTableNameList.Clear();
             myTableContentList.Clear();
             class_TableInfos = class_InterFaceDataBase.GetUseTableList(null);
             myTableNameList = class_TableInfos.Select(a => a.TableName).ToList();
             myTableContentList = class_TableInfos.Select(a => a.TableComment).ToList();
+            Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
             foreach (string row in myTableNameList)
             {
                 this.listBoxControl1.Items.Add(row);
+                this.listBoxControl3.Items.Add(class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
+                    , class_SelectAllModel.class_SelectDataBase.dataBaseName, row));
             }
             foreach (string row in myTableContentList)
             {
@@ -1122,6 +1128,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl4.Height;
                     class_SelectAllModel.class_SubList[index].ControlRequestMapping = this.textEdit54.Text;
                     class_SelectAllModel.class_SubList[index].TestSql = Class_Tool.EscapeCharacter(this.memoEdit54.Text);
+                    class_SelectAllModel.class_SubList[index].AliasName = this.textEdit10.Text;
                 }
                 #endregion
 
@@ -1156,6 +1163,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit97.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit15.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl17.Height;
+                    class_SelectAllModel.class_SubList[index].AliasName = this.textEdit11.Text;
                 }
                 #endregion
 
@@ -1190,6 +1198,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit95.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit13.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl28.Height;
+                    class_SelectAllModel.class_SubList[index].AliasName = this.textEdit12.Text;
                 }
                 #endregion
 
@@ -1230,6 +1239,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit91.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit9.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl44.Height;
+                    class_SelectAllModel.class_SubList[index].AliasName = this.textEdit57.Text;
                 }
                 #endregion
 
@@ -1274,6 +1284,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit93.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit11.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl45.Height;
+                    class_SelectAllModel.class_SubList[index].AliasName = this.textEdit61.Text;
                 }
                 #endregion
 
@@ -1354,11 +1365,15 @@ namespace MDIDemo.vou
         {
             this.listBoxControl1.Items.Clear();
             this.listBoxControl2.Items.Clear();
+            this.listBoxControl3.Items.Clear();
             List<string> TableNameList = new List<string>();
+            Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
             foreach (string item in filterUseTable(this.searchControl1.Text.Length > 0 ? this.searchControl1.Text : null))
             {
                 this.listBoxControl1.Items.Add(item);
                 TableNameList.Add(item);
+                this.listBoxControl3.Items.Add(class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
+                    , class_SelectAllModel.class_SelectDataBase.dataBaseName, item));
             }
             foreach (string item in class_InterFaceDataBase.GetUseTableList(TableNameList).Select(a => a.TableComment).ToList())
             {
@@ -1779,6 +1794,7 @@ namespace MDIDemo.vou
         private void listBoxControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.listBoxControl2.SelectedIndex = this.listBoxControl1.SelectedIndex;
+            this.listBoxControl3.SelectedIndex = this.listBoxControl1.SelectedIndex;
         }
 
         private void textEdit31_EditValueChanged(object sender, EventArgs e)

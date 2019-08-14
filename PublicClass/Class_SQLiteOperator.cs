@@ -67,6 +67,27 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
             else
                 return -1;
         }
+        /// <summary>
+        /// 得到表别名
+        /// </summary>
+        /// <param name="Ip"></param>
+        /// <param name="DataBaseName"></param>
+        /// <param name="TableName"></param>
+        /// <returns></returns>
+        public string GetTableAlias(string Ip,string DataBaseName,string TableName)
+        {
+            string Sql = string.Format(@"SELECT tableAlias
+                From sys_dataBaseAlias
+                WHERE ip = '{0}'
+                AND dataBaseName = '{1}'
+                AND tableName = '{2}'
+                ", Ip, DataBaseName, TableName);
+            object ReturnValue = mySqlite3.GetSingle(Sql);
+            if (ReturnValue != null)
+                return ReturnValue.ToString();
+            else
+                return null;
+        }
         public bool DeleteByPageKey(string XmlFileKey)
         {
             return _DeleteByPageKey(XmlFileKey);

@@ -613,6 +613,7 @@
             this.memoEdit32 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl40 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl17 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.checkEdit12 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit35 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
@@ -680,6 +681,7 @@
             this.memoEdit33 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl41 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl28 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.checkEdit14 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit45 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
@@ -747,6 +749,7 @@
             this.memoEdit43 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl56 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl44 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.checkEdit16 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit65 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
@@ -814,6 +817,7 @@
             this.memoEdit53 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl67 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl45 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.checkEdit18 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit74 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
@@ -847,10 +851,8 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.xtraTabPage79 = new DevExpress.XtraTab.XtraTabPage();
+            this.listBoxControl3 = new DevExpress.XtraEditors.ListBoxControl();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -1423,6 +1425,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            this.xtraTabPage79.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -4060,7 +4064,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -4095,7 +4099,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(1177, 547);
+            this.gridControl2.Size = new System.Drawing.Size(1177, 516);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -4920,7 +4924,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage14.Text = "表";
             // 
             // gridControl3
@@ -4955,7 +4959,7 @@
             this.repositoryItemCheckEdit35,
             this.repositoryItemComboBox23,
             this.repositoryItemComboBox24});
-            this.gridControl3.Size = new System.Drawing.Size(1177, 545);
+            this.gridControl3.Size = new System.Drawing.Size(1177, 514);
             this.gridControl3.TabIndex = 2;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});
@@ -5793,7 +5797,7 @@
             this.xtraTabPage52.Controls.Add(this.panelControl42);
             this.xtraTabPage52.ImageIndex = 610;
             this.xtraTabPage52.Name = "xtraTabPage52";
-            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage52.Text = "表";
             // 
             // gridControl4
@@ -5828,7 +5832,7 @@
             this.repositoryItemCheckEdit47,
             this.repositoryItemComboBox31,
             this.repositoryItemComboBox32});
-            this.gridControl4.Size = new System.Drawing.Size(1177, 547);
+            this.gridControl4.Size = new System.Drawing.Size(1177, 516);
             this.gridControl4.TabIndex = 3;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView4});
@@ -6667,7 +6671,7 @@
             this.xtraTabPage53.Controls.Add(this.panelControl43);
             this.xtraTabPage53.ImageIndex = 612;
             this.xtraTabPage53.Name = "xtraTabPage53";
-            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage53.Text = "表";
             // 
             // gridControl5
@@ -6702,7 +6706,7 @@
             this.repositoryItemCheckEdit59,
             this.repositoryItemComboBox39,
             this.repositoryItemComboBox40});
-            this.gridControl5.Size = new System.Drawing.Size(1177, 547);
+            this.gridControl5.Size = new System.Drawing.Size(1177, 516);
             this.gridControl5.TabIndex = 3;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView5});
@@ -7576,7 +7580,8 @@
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage4,
-            this.xtraTabPage5});
+            this.xtraTabPage5,
+            this.xtraTabPage79});
             // 
             // xtraTabPage4
             // 
@@ -8523,7 +8528,7 @@
             this.xtraTabPage24.Controls.Add(this.xtraTabControl10);
             this.xtraTabPage24.Controls.Add(this.panelControl17);
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(1177, 573);
+            this.xtraTabPage24.Size = new System.Drawing.Size(1177, 604);
             this.xtraTabPage24.Text = "表";
             // 
             // xtraTabControl10
@@ -8532,7 +8537,7 @@
             this.xtraTabControl10.Location = new System.Drawing.Point(0, 196);
             this.xtraTabControl10.Name = "xtraTabControl10";
             this.xtraTabControl10.SelectedTabPage = this.xtraTabPage29;
-            this.xtraTabControl10.Size = new System.Drawing.Size(1177, 377);
+            this.xtraTabControl10.Size = new System.Drawing.Size(1177, 408);
             this.xtraTabControl10.TabIndex = 7;
             this.xtraTabControl10.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage35,
@@ -8548,7 +8553,7 @@
             this.xtraTabPage29.Controls.Add(this.xtraTabControl11);
             this.xtraTabPage29.Controls.Add(this.panelControl20);
             this.xtraTabPage29.Name = "xtraTabPage29";
-            this.xtraTabPage29.Size = new System.Drawing.Size(1171, 348);
+            this.xtraTabPage29.Size = new System.Drawing.Size(1171, 379);
             this.xtraTabPage29.Text = "XML";
             // 
             // xtraTabControl11
@@ -8557,7 +8562,7 @@
             this.xtraTabControl11.Location = new System.Drawing.Point(0, 5);
             this.xtraTabControl11.Name = "xtraTabControl11";
             this.xtraTabControl11.SelectedTabPage = this.xtraTabPage30;
-            this.xtraTabControl11.Size = new System.Drawing.Size(1171, 343);
+            this.xtraTabControl11.Size = new System.Drawing.Size(1171, 374);
             this.xtraTabControl11.TabIndex = 2;
             this.xtraTabControl11.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage30,
@@ -8568,7 +8573,7 @@
             this.xtraTabPage30.Controls.Add(this.memoEdit13);
             this.xtraTabPage30.Controls.Add(this.panelControl18);
             this.xtraTabPage30.Name = "xtraTabPage30";
-            this.xtraTabPage30.Size = new System.Drawing.Size(1165, 314);
+            this.xtraTabPage30.Size = new System.Drawing.Size(1165, 345);
             this.xtraTabPage30.Text = "Map";
             // 
             // memoEdit13
@@ -8577,7 +8582,7 @@
             this.memoEdit13.Location = new System.Drawing.Point(0, 30);
             this.memoEdit13.MenuManager = this.barManager1;
             this.memoEdit13.Name = "memoEdit13";
-            this.memoEdit13.Size = new System.Drawing.Size(1165, 284);
+            this.memoEdit13.Size = new System.Drawing.Size(1165, 315);
             this.memoEdit13.TabIndex = 0;
             // 
             // panelControl18
@@ -8977,6 +8982,15 @@
             this.panelControl17.Size = new System.Drawing.Size(1177, 196);
             this.panelControl17.TabIndex = 6;
             // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Location = new System.Drawing.Point(800, 7);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton3.TabIndex = 35;
+            this.simpleButton3.Text = "折叠";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
             // checkEdit12
             // 
             this.checkEdit12.EditValue = true;
@@ -9137,7 +9151,7 @@
             this.xtraTabPage25.Controls.Add(this.xtraTabControl13);
             this.xtraTabPage25.Controls.Add(this.panelControl28);
             this.xtraTabPage25.Name = "xtraTabPage25";
-            this.xtraTabPage25.Size = new System.Drawing.Size(1177, 573);
+            this.xtraTabPage25.Size = new System.Drawing.Size(1177, 604);
             this.xtraTabPage25.Text = "表";
             // 
             // xtraTabControl13
@@ -9146,7 +9160,7 @@
             this.xtraTabControl13.Location = new System.Drawing.Point(0, 199);
             this.xtraTabControl13.Name = "xtraTabControl13";
             this.xtraTabControl13.SelectedTabPage = this.xtraTabPage39;
-            this.xtraTabControl13.Size = new System.Drawing.Size(1177, 374);
+            this.xtraTabControl13.Size = new System.Drawing.Size(1177, 405);
             this.xtraTabControl13.TabIndex = 8;
             this.xtraTabControl13.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage45,
@@ -9162,7 +9176,7 @@
             this.xtraTabPage39.Controls.Add(this.xtraTabControl14);
             this.xtraTabPage39.Controls.Add(this.panelControl31);
             this.xtraTabPage39.Name = "xtraTabPage39";
-            this.xtraTabPage39.Size = new System.Drawing.Size(1171, 345);
+            this.xtraTabPage39.Size = new System.Drawing.Size(1171, 376);
             this.xtraTabPage39.Text = "XML";
             // 
             // xtraTabControl14
@@ -9171,7 +9185,7 @@
             this.xtraTabControl14.Location = new System.Drawing.Point(0, 5);
             this.xtraTabControl14.Name = "xtraTabControl14";
             this.xtraTabControl14.SelectedTabPage = this.xtraTabPage40;
-            this.xtraTabControl14.Size = new System.Drawing.Size(1171, 340);
+            this.xtraTabControl14.Size = new System.Drawing.Size(1171, 371);
             this.xtraTabControl14.TabIndex = 2;
             this.xtraTabControl14.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage40,
@@ -9182,7 +9196,7 @@
             this.xtraTabPage40.Controls.Add(this.memoEdit22);
             this.xtraTabPage40.Controls.Add(this.panelControl29);
             this.xtraTabPage40.Name = "xtraTabPage40";
-            this.xtraTabPage40.Size = new System.Drawing.Size(1165, 311);
+            this.xtraTabPage40.Size = new System.Drawing.Size(1165, 342);
             this.xtraTabPage40.Text = "Map";
             // 
             // memoEdit22
@@ -9191,7 +9205,7 @@
             this.memoEdit22.Location = new System.Drawing.Point(0, 30);
             this.memoEdit22.MenuManager = this.barManager1;
             this.memoEdit22.Name = "memoEdit22";
-            this.memoEdit22.Size = new System.Drawing.Size(1165, 281);
+            this.memoEdit22.Size = new System.Drawing.Size(1165, 312);
             this.memoEdit22.TabIndex = 0;
             // 
             // panelControl29
@@ -9591,6 +9605,15 @@
             this.panelControl28.Size = new System.Drawing.Size(1177, 199);
             this.panelControl28.TabIndex = 7;
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(800, 7);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton4.TabIndex = 36;
+            this.simpleButton4.Text = "折叠";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
             // checkEdit14
             // 
             this.checkEdit14.EditValue = true;
@@ -9751,7 +9774,7 @@
             this.xtraTabPage54.Controls.Add(this.xtraTabControl16);
             this.xtraTabPage54.Controls.Add(this.panelControl44);
             this.xtraTabPage54.Name = "xtraTabPage54";
-            this.xtraTabPage54.Size = new System.Drawing.Size(1177, 573);
+            this.xtraTabPage54.Size = new System.Drawing.Size(1177, 604);
             this.xtraTabPage54.Text = "xtraTabPage54";
             // 
             // xtraTabControl16
@@ -9760,7 +9783,7 @@
             this.xtraTabControl16.Location = new System.Drawing.Point(0, 199);
             this.xtraTabControl16.Name = "xtraTabControl16";
             this.xtraTabControl16.SelectedTabPage = this.xtraTabPage56;
-            this.xtraTabControl16.Size = new System.Drawing.Size(1177, 374);
+            this.xtraTabControl16.Size = new System.Drawing.Size(1177, 405);
             this.xtraTabControl16.TabIndex = 9;
             this.xtraTabControl16.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage59,
@@ -9776,7 +9799,7 @@
             this.xtraTabPage56.Controls.Add(this.xtraTabControl17);
             this.xtraTabPage56.Controls.Add(this.panelControl48);
             this.xtraTabPage56.Name = "xtraTabPage56";
-            this.xtraTabPage56.Size = new System.Drawing.Size(1171, 345);
+            this.xtraTabPage56.Size = new System.Drawing.Size(1171, 376);
             this.xtraTabPage56.Text = "XML";
             // 
             // xtraTabControl17
@@ -9785,7 +9808,7 @@
             this.xtraTabControl17.Location = new System.Drawing.Point(0, 5);
             this.xtraTabControl17.Name = "xtraTabControl17";
             this.xtraTabControl17.SelectedTabPage = this.xtraTabPage57;
-            this.xtraTabControl17.Size = new System.Drawing.Size(1171, 340);
+            this.xtraTabControl17.Size = new System.Drawing.Size(1171, 371);
             this.xtraTabControl17.TabIndex = 2;
             this.xtraTabControl17.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage57,
@@ -9796,7 +9819,7 @@
             this.xtraTabPage57.Controls.Add(this.memoEdit34);
             this.xtraTabPage57.Controls.Add(this.panelControl46);
             this.xtraTabPage57.Name = "xtraTabPage57";
-            this.xtraTabPage57.Size = new System.Drawing.Size(1165, 311);
+            this.xtraTabPage57.Size = new System.Drawing.Size(1165, 342);
             this.xtraTabPage57.Text = "Map";
             // 
             // memoEdit34
@@ -9805,7 +9828,7 @@
             this.memoEdit34.Location = new System.Drawing.Point(0, 30);
             this.memoEdit34.MenuManager = this.barManager1;
             this.memoEdit34.Name = "memoEdit34";
-            this.memoEdit34.Size = new System.Drawing.Size(1165, 281);
+            this.memoEdit34.Size = new System.Drawing.Size(1165, 312);
             this.memoEdit34.TabIndex = 0;
             // 
             // panelControl46
@@ -10205,6 +10228,15 @@
             this.panelControl44.Size = new System.Drawing.Size(1177, 199);
             this.panelControl44.TabIndex = 8;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Location = new System.Drawing.Point(800, 7);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton5.TabIndex = 36;
+            this.simpleButton5.Text = "折叠";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
             // checkEdit16
             // 
             this.checkEdit16.EditValue = true;
@@ -10365,7 +10397,7 @@
             this.xtraTabPage55.Controls.Add(this.xtraTabControl19);
             this.xtraTabPage55.Controls.Add(this.panelControl45);
             this.xtraTabPage55.Name = "xtraTabPage55";
-            this.xtraTabPage55.Size = new System.Drawing.Size(1177, 573);
+            this.xtraTabPage55.Size = new System.Drawing.Size(1177, 604);
             this.xtraTabPage55.Text = "xtraTabPage55";
             // 
             // xtraTabControl19
@@ -10374,7 +10406,7 @@
             this.xtraTabControl19.Location = new System.Drawing.Point(0, 199);
             this.xtraTabControl19.Name = "xtraTabControl19";
             this.xtraTabControl19.SelectedTabPage = this.xtraTabPage67;
-            this.xtraTabControl19.Size = new System.Drawing.Size(1177, 374);
+            this.xtraTabControl19.Size = new System.Drawing.Size(1177, 405);
             this.xtraTabControl19.TabIndex = 9;
             this.xtraTabControl19.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage70,
@@ -10390,7 +10422,7 @@
             this.xtraTabPage67.Controls.Add(this.xtraTabControl20);
             this.xtraTabPage67.Controls.Add(this.panelControl59);
             this.xtraTabPage67.Name = "xtraTabPage67";
-            this.xtraTabPage67.Size = new System.Drawing.Size(1171, 345);
+            this.xtraTabPage67.Size = new System.Drawing.Size(1171, 376);
             this.xtraTabPage67.Text = "XML";
             // 
             // xtraTabControl20
@@ -10399,7 +10431,7 @@
             this.xtraTabControl20.Location = new System.Drawing.Point(0, 5);
             this.xtraTabControl20.Name = "xtraTabControl20";
             this.xtraTabControl20.SelectedTabPage = this.xtraTabPage68;
-            this.xtraTabControl20.Size = new System.Drawing.Size(1171, 340);
+            this.xtraTabControl20.Size = new System.Drawing.Size(1171, 371);
             this.xtraTabControl20.TabIndex = 2;
             this.xtraTabControl20.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage68,
@@ -10410,7 +10442,7 @@
             this.xtraTabPage68.Controls.Add(this.memoEdit44);
             this.xtraTabPage68.Controls.Add(this.panelControl57);
             this.xtraTabPage68.Name = "xtraTabPage68";
-            this.xtraTabPage68.Size = new System.Drawing.Size(1165, 311);
+            this.xtraTabPage68.Size = new System.Drawing.Size(1165, 342);
             this.xtraTabPage68.Text = "Map";
             // 
             // memoEdit44
@@ -10419,7 +10451,7 @@
             this.memoEdit44.Location = new System.Drawing.Point(0, 30);
             this.memoEdit44.MenuManager = this.barManager1;
             this.memoEdit44.Name = "memoEdit44";
-            this.memoEdit44.Size = new System.Drawing.Size(1165, 281);
+            this.memoEdit44.Size = new System.Drawing.Size(1165, 312);
             this.memoEdit44.TabIndex = 0;
             // 
             // panelControl57
@@ -10819,6 +10851,15 @@
             this.panelControl45.Size = new System.Drawing.Size(1177, 199);
             this.panelControl45.TabIndex = 8;
             // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Location = new System.Drawing.Point(800, 7);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton6.TabIndex = 36;
+            this.simpleButton6.Text = "折叠";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            // 
             // checkEdit18
             // 
             this.checkEdit18.EditValue = true;
@@ -11122,41 +11163,26 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
-            // simpleButton3
+            // xtraTabPage79
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(800, 7);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton3.TabIndex = 35;
-            this.simpleButton3.Text = "折叠";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            this.xtraTabPage79.Controls.Add(this.listBoxControl3);
+            this.xtraTabPage79.Name = "xtraTabPage79";
+            this.xtraTabPage79.Size = new System.Drawing.Size(135, 619);
+            this.xtraTabPage79.Text = "表别名";
             // 
-            // simpleButton4
+            // listBoxControl3
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(800, 7);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton4.TabIndex = 36;
-            this.simpleButton4.Text = "折叠";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Location = new System.Drawing.Point(800, 7);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton5.TabIndex = 36;
-            this.simpleButton5.Text = "折叠";
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Location = new System.Drawing.Point(800, 7);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton6.TabIndex = 36;
-            this.simpleButton6.Text = "折叠";
-            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            this.listBoxControl3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.listBoxControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxControl3.Items.AddRange(new object[] {
+            "dasfas",
+            "adsfsaf",
+            "adsfaf",
+            "asdfsaf"});
+            this.listBoxControl3.Location = new System.Drawing.Point(0, 0);
+            this.listBoxControl3.Name = "listBoxControl3";
+            this.listBoxControl3.Size = new System.Drawing.Size(135, 619);
+            this.listBoxControl3.TabIndex = 2;
             // 
             // Form_Select
             // 
@@ -11763,6 +11789,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            this.xtraTabPage79.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -12590,5 +12618,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage79;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl3;
     }
 }
