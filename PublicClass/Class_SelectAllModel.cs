@@ -824,9 +824,7 @@ namespace MDIDemo.PublicClass
             {
                 class_Fields = new List<Class_Field>();
                 ResultType = 1;
-                DtoType = 0;
                 IsAddXmlHead = true;
-                ExtendsSign = true;
                 PanelHeight = 197;
             }
             ~Class_Main()
@@ -898,10 +896,6 @@ namespace MDIDemo.PublicClass
             public string ControlSwaggerValue { get; set; }
             public string ControlSwaggerDescription { get; set; }
             /// <summary>
-            /// 0：线性方式，1：对象方式
-            /// </summary>
-            public int DtoType { get; set; }
-            /// <summary>
             /// 0：join、1：assosication；2：collection
             /// </summary>
             public int JoinType { get; set; }
@@ -909,10 +903,6 @@ namespace MDIDemo.PublicClass
             /// 0:左连接、1:内连接
             /// </summary>
             public int InnerType { get; set; }
-            /// <summary>
-            /// 是否用继承方式
-            /// </summary>
-            public bool ExtendsSign { get; set; }
             /// <summary>
             /// 测试SQL
             /// </summary>

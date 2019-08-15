@@ -1528,13 +1528,6 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" */\r\n");
             stringBuilder.AppendFormat("public final class {0}"
                 , class_SelectAllModel.class_SubList[PageIndex].DtoClassName);
-            if (!class_SelectAllModel.IsMultTable)
-            {
-                if (class_SelectAllModel.class_SubList[PageIndex].ExtendsSign)
-                {
-                    stringBuilder.AppendFormat(" extends {0}", class_SelectAllModel.class_SubList[PageIndex].NameSpace);
-                }
-            }
             stringBuilder.Append(" {\r\n");
 
             stringBuilder.Append(_GetMyDto(PageIndex, class_SelectAllModel.IsMultTable, 0));

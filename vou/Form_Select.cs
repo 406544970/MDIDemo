@@ -107,11 +107,7 @@ namespace MDIDemo.vou
             this.xtraTabControl9.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl9;
             this.xtraTabControl8.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl8;
             this.xtraTabControl10.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl10;
-            this.xtraTabControl11.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl11;
-            this.xtraTabControl12.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl12;
             this.xtraTabControl13.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl13;
-            this.xtraTabControl14.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl14;
-            this.xtraTabControl15.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl15;
             #endregion
             int index = 0;
             #region 主表
@@ -138,8 +134,6 @@ namespace MDIDemo.vou
                 this.textEdit47.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                 this.textEdit46.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 this.radioGroup9.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
-                this.radioGroup16.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
-                this.checkEdit5.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
                 this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
                 this.memoEdit54.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].TestSql);
@@ -165,34 +159,14 @@ namespace MDIDemo.vou
             index++;
             if (class_SelectAllModel.class_SubList.Count > index)
             {
-                this.textEdit33.Text = class_SelectAllModel.class_SubList[index].MethodId;
-                this.textEdit32.Text = class_SelectAllModel.class_SubList[index].MethodContent;
-                this.radioGroup11.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.checkEdit3.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit31.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit13.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
-                this.memoEdit14.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].SelectContent);
-                this.memoEdit15.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceInterFaceContent);
-                this.memoEdit16.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceImplContent);
-                this.memoEdit17.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ModelContent);
                 this.memoEdit19.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-                this.memoEdit20.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
-                this.memoEdit21.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
-                this.textEdit29.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
-                this.textEdit28.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
-                this.textEdit49.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
-                this.textEdit48.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 this.radioGroup5.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                //this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
-                this.textEdit35.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 this.buttonEdit1.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                 this.buttonEdit2.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
-                this.checkEdit12.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
-                this.radioGroup21.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
                 this.textEdit97.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.checkEdit15.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl17.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
@@ -201,25 +175,9 @@ namespace MDIDemo.vou
             index++;
             if (class_SelectAllModel.class_SubList.Count > index)
             {
-                this.textEdit43.Text = class_SelectAllModel.class_SubList[index].MethodId;
-                this.textEdit42.Text = class_SelectAllModel.class_SubList[index].MethodContent;
-                this.radioGroup14.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.checkEdit4.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit41.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit22.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
-                this.memoEdit23.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].SelectContent);
-                this.memoEdit24.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceInterFaceContent);
-                this.memoEdit25.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceImplContent);
-                this.memoEdit26.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ModelContent);
                 this.memoEdit28.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-                this.memoEdit29.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
-                this.memoEdit30.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
-                this.textEdit39.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
 
-                this.textEdit38.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
-                this.textEdit45.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
-                this.textEdit51.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
-                this.textEdit50.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
                 this.buttonEdit4.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
@@ -227,9 +185,7 @@ namespace MDIDemo.vou
                 this.radioGroup29.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
                 this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
-                this.radioGroup18.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
                 this.textEdit95.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.checkEdit13.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl28.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
@@ -238,30 +194,8 @@ namespace MDIDemo.vou
             index++;
             if (class_SelectAllModel.class_SubList.Count > index)
             {
-                this.textEdit67.Text = class_SelectAllModel.class_SubList[index].MethodId;
-                this.textEdit66.Text = class_SelectAllModel.class_SubList[index].MethodContent;
-                this.radioGroup25.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.checkEdit6.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit73.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit34.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
-                this.memoEdit35.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].SelectContent);
-                this.memoEdit34.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceInterFaceContent);
-                this.memoEdit35.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceImplContent);
-
-                this.memoEdit36.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ModelContent);
-
                 this.memoEdit42.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-
-                this.memoEdit38.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
-                //Controller
-                this.memoEdit41.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
-
-                this.textEdit71.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
-
-                this.textEdit70.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
-                this.textEdit65.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
-                this.textEdit86.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
-                this.textEdit85.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 //Join方式、association、collection
                 this.radioGroup17.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 //左链接、右链接
@@ -273,9 +207,7 @@ namespace MDIDemo.vou
                 this.radioGroup30.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
                 this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
-                this.radioGroup3.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
                 this.textEdit91.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.checkEdit9.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl44.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
@@ -284,30 +216,8 @@ namespace MDIDemo.vou
             index++;
             if (class_SelectAllModel.class_SubList.Count > index)
             {
-                this.textEdit76.Text = class_SelectAllModel.class_SubList[index].MethodId;
-                this.textEdit75.Text = class_SelectAllModel.class_SubList[index].MethodContent;
-                this.radioGroup28.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.checkEdit7.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
                 this.textEdit82.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit44.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
-                this.memoEdit45.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].SelectContent);
-                this.memoEdit44.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceInterFaceContent);
-                this.memoEdit45.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceImplContent);
-                this.memoEdit46.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ModelContent);
                 this.memoEdit52.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-                this.memoEdit48.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
-                //Controller
-                this.memoEdit51.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
-                //ResultMapId
-                this.textEdit80.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
-                //ResultMapType
-                this.textEdit79.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
-                //返回值说明
-                this.textEdit74.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
-                //Swagger说明
-                this.textEdit90.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
-                //Swagger描述
-                this.textEdit89.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 //Join方式、association、collection
                 this.radioGroup20.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
                 //左链接、右链接
@@ -319,9 +229,7 @@ namespace MDIDemo.vou
                 this.radioGroup31.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
                 this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
-                this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
                 this.textEdit93.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.checkEdit11.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl45.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
             }
             #endregion
@@ -347,6 +255,11 @@ namespace MDIDemo.vou
         private void SetCompoment()
         {
             this.checkEdit8.Checked = false;
+            this.checkEdit3.Checked = false;
+            this.checkEdit14.Checked = false;
+            this.checkEdit16.Checked = false;
+            this.checkEdit18.Checked = false;
+
             radioGroup5.SelectedIndex = 0;
             radioGroup6.SelectedIndex = 0;
             radioGroup29.SelectedIndex = 1;
@@ -412,45 +325,11 @@ namespace MDIDemo.vou
             class_SetMemoEdit.SetMemoEdit(this.memoEdit10);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit11);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit12);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit13);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit14);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit15);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit16);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit17);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit19);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit20);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit21);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit22);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit23);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit24);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit25);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit26);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit28);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit29);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit30);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit31);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit32);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit33);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit34);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit35);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit36);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit37);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit38);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit39);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit40);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit41);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit42);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit43);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit44);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit45);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit46);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit47);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit48);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit49);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit50);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit51);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit52);
-            class_SetMemoEdit.SetMemoEdit(this.memoEdit53);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit54);
             #endregion
 
@@ -458,18 +337,6 @@ namespace MDIDemo.vou
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
             class_SetTextEdit.SetTextEdit(this.textEdit19);
             class_SetTextEdit.SetTextEdit(this.textEdit25);
-            class_SetTextEdit.SetTextEdit(this.textEdit26);
-            class_SetTextEdit.SetTextEdit(this.textEdit27);
-            class_SetTextEdit.SetTextEdit(this.textEdit30);
-            class_SetTextEdit.SetTextEdit(this.textEdit36);
-            class_SetTextEdit.SetTextEdit(this.textEdit37);
-            class_SetTextEdit.SetTextEdit(this.textEdit40);
-            class_SetTextEdit.SetTextEdit(this.textEdit68);
-            class_SetTextEdit.SetTextEdit(this.textEdit69);
-            class_SetTextEdit.SetTextEdit(this.textEdit72);
-            class_SetTextEdit.SetTextEdit(this.textEdit77);
-            class_SetTextEdit.SetTextEdit(this.textEdit78);
-            class_SetTextEdit.SetTextEdit(this.textEdit81);
             class_SetTextEdit.SetTextEdit(this.textEdit91);
             class_SetTextEdit.SetTextEdit(this.textEdit93);
             class_SetTextEdit.SetTextEdit(this.textEdit95);
@@ -489,44 +356,12 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit20, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit22, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit24, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit28, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit29, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit31, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit32, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit33, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit35, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit38, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit39, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit41, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit42, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit43, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit45, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit46, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit47, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit48, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit49, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit50, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit51, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit65, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit66, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit67, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit70, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit71, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit73, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit74, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit75, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit76, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit79, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit80, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit82, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit85, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit86, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit89, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit90, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit92, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit94, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit96, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit98, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit99, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit100, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit19, Color.SkyBlue);
@@ -534,12 +369,12 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit54, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit102, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit103, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit97, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit95, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit91, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit93, Color.SkyBlue);
 
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit52, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit53, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit55, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit56, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit1, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit2, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit3, true, Color.GreenYellow);
@@ -555,19 +390,11 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit62, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit63, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit64, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit83, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit84, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit87, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit88, true, Color.GreenYellow);
             #endregion
 
             #region radioGroup
             this.radioGroup7.SelectedIndex = 0;
             this.radioGroup9.SelectedIndex = 0;
-            this.radioGroup11.SelectedIndex = 0;
-            this.radioGroup14.SelectedIndex = 0;
-            this.radioGroup25.SelectedIndex = 0;
-            this.radioGroup28.SelectedIndex = 0;
             #endregion
 
             this.xtraTabControl8.Images = this.xtraTabControl5.Images;
@@ -1020,7 +847,7 @@ namespace MDIDemo.vou
                 Class_Sub class_Sub = DataViewIntoClass((BandedGridView)this.gridControl2.MainView
                     , buttonEdit2.Text, this.radioGroup1.SelectedIndex, -1, this.textEdit6.Text
                     , buttonEdit1.Text, false, this.textEdit11.Text
-                    , 0, this.checkEdit12.Checked);
+                    , 0, true);//??
                 OkSign = true;
                 if (class_SelectAllModel.class_SubList.Count > index)
                     class_SelectAllModel.class_SubList[index] = class_Sub;
@@ -1098,11 +925,7 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_WindowLastState.xtraTabControl8 = this.xtraTabControl8.SelectedTabPageIndex;
                 class_SelectAllModel.class_WindowLastState.xtraTabControl9 = this.xtraTabControl9.SelectedTabPageIndex;
                 class_SelectAllModel.class_WindowLastState.xtraTabControl10 = this.xtraTabControl10.SelectedTabPageIndex;
-                class_SelectAllModel.class_WindowLastState.xtraTabControl11 = this.xtraTabControl11.SelectedTabPageIndex;
-                class_SelectAllModel.class_WindowLastState.xtraTabControl12 = this.xtraTabControl12.SelectedTabPageIndex;
                 class_SelectAllModel.class_WindowLastState.xtraTabControl13 = this.xtraTabControl13.SelectedTabPageIndex;
-                class_SelectAllModel.class_WindowLastState.xtraTabControl14 = this.xtraTabControl14.SelectedTabPageIndex;
-                class_SelectAllModel.class_WindowLastState.xtraTabControl15 = this.xtraTabControl15.SelectedTabPageIndex;
                 #endregion
 
                 #region 主表
@@ -1129,8 +952,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit46.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit20.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup16.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit5.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl4.Height;
                     class_SelectAllModel.class_SubList[index].TestSql = Class_Tool.EscapeCharacter(this.memoEdit54.Text);
                     class_SelectAllModel.class_SubList[index].AliasName = this.textEdit10.Text;
@@ -1151,31 +972,13 @@ namespace MDIDemo.vou
                 index++;
                 if (this.gridControl2.MainView.RowCount > 0)
                 {
-                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit33.Text;
-                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit32.Text;
-                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup11.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit3.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit31.Text;
-                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit13.Text);
-                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit14.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit15.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit16.Text);
-                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit17.Text);
                     class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit19.Text);
-                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit20.Text);
-                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit21.Text);
-                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit29.Text;
-                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit28.Text;
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit49.Text;
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit48.Text;
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit35.Text;
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup5.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup1.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit1.Text;
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit2.Text;
-                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup21.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit97.Text;
-                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit15.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl17.Height;
                     class_SelectAllModel.class_SubList[index].AliasName = this.textEdit11.Text;
                 }
@@ -1185,31 +988,12 @@ namespace MDIDemo.vou
                 index++;
                 if (this.gridControl3.MainView.RowCount > 0)
                 {
-                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit43.Text;
-                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit42.Text;
-                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup14.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit4.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit41.Text;
-                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit22.Text);
-                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit23.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit24.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit25.Text);
-                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit26.Text);
-                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit28.Text);
-                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit29.Text);
-                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit30.Text);
-                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit39.Text;
-                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit38.Text;
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit51.Text;
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit50.Text;
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit45.Text;
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup6.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].InnerType = this.radioGroup2.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit4.Text;
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit3.Text;
-                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup18.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit95.Text;
-                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit13.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl28.Height;
                     class_SelectAllModel.class_SubList[index].AliasName = this.textEdit12.Text;
                 }
@@ -1219,25 +1003,7 @@ namespace MDIDemo.vou
                 index++;
                 if (this.gridControl4.MainView.RowCount > 0)
                 {
-                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit67.Text;
-                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit66.Text;
-                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup25.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit6.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit73.Text;
-                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit34.Text);
-                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit35.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit34.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit35.Text);
-                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit36.Text);
-                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit42.Text);
-                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit38.Text);
-                    //Controller
-                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit41.Text);
-                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit71.Text;
-                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit70.Text;
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit65.Text;
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit86.Text;
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit85.Text;
                     //单条、多条
                     //Join方式、association、collection
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup17.SelectedIndex;
@@ -1247,9 +1013,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit6.Text;
                     //关联字段名称
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit5.Text;
-                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup3.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit91.Text;
-                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit9.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl44.Height;
                     class_SelectAllModel.class_SubList[index].AliasName = this.textEdit57.Text;
                 }
@@ -1259,30 +1023,7 @@ namespace MDIDemo.vou
                 index++;
                 if (this.gridControl5.MainView.RowCount > 0)
                 {
-                    class_SelectAllModel.class_SubList[index].MethodId = this.textEdit76.Text;
-                    class_SelectAllModel.class_SubList[index].MethodContent = this.textEdit75.Text;
-                    class_SelectAllModel.class_SubList[index].ResultType = this.radioGroup28.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit7.Checked;
                     class_SelectAllModel.class_SubList[index].NameSpace = this.textEdit82.Text;
-                    class_SelectAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit44.Text);
-                    class_SelectAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit45.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit44.Text);
-                    class_SelectAllModel.class_SubList[index].ServiceImplContent = Class_Tool.EscapeCharacter(this.memoEdit45.Text);
-                    class_SelectAllModel.class_SubList[index].ModelContent = Class_Tool.EscapeCharacter(this.memoEdit46.Text);
-                    class_SelectAllModel.class_SubList[index].DTOContent = Class_Tool.EscapeCharacter(this.memoEdit52.Text);
-                    class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit48.Text);
-                    //Controller
-                    class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit51.Text);
-                    //ResultMapId
-                    class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit80.Text;
-                    //ModelClassName
-                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit79.Text;
-                    //返回值说明
-                    class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit74.Text;
-                    //Swagger说明
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit90.Text;
-                    //Swagger描述
-                    class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit89.Text;
                     //Join方式、association、collection
                     class_SelectAllModel.class_SubList[index].JoinType = this.radioGroup20.SelectedIndex;
                     //左链接、右链接
@@ -1291,9 +1032,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit8.Text;
                     //关联字段名称
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit7.Text;
-                    class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup4.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit93.Text;
-                    class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit11.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl45.Height;
                     class_SelectAllModel.class_SubList[index].AliasName = this.textEdit61.Text;
                 }
@@ -1804,44 +1543,6 @@ namespace MDIDemo.vou
             this.listBoxControl3.SelectedIndex = this.listBoxControl1.SelectedIndex;
         }
 
-        private void textEdit31_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit30.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit31.Text);
-            this.textEdit28.Text = (sender as TextEdit).Text;
-            this.textEdit98.Text = (sender as TextEdit).Text;
-            this.textEdit52.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
-            this.textEdit55.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
-        }
-
-        private void textEdit29_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit26.Text = string.Format("{0}Map", this.textEdit29.Text);
-        }
-
-        private void textEdit28_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit27.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit28.Text);
-        }
-
-        private void textEdit41_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit40.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit41.Text);
-            this.textEdit38.Text = (sender as TextEdit).Text;
-            this.textEdit96.Text = (sender as TextEdit).Text;
-            this.textEdit53.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
-            this.textEdit56.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
-        }
-
-        private void textEdit39_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit36.Text = string.Format("{0}Map", this.textEdit39.Text);
-        }
-
-        private void textEdit38_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit37.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit38.Text);
-        }
-
 
         private void GetLinkField(GridView gridView, object sender)
         {
@@ -1959,63 +1660,6 @@ namespace MDIDemo.vou
             GetLinkField(this.bandedGridView5, sender);
         }
 
-        private void textEdit73_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit72.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit73.Text);
-            this.textEdit70.Text = (sender as TextEdit).Text;
-            this.textEdit92.Text = (sender as TextEdit).Text;//DTO
-            this.textEdit83.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);//Map
-            this.textEdit84.Text = string.Format("{0}Controller", (sender as TextEdit).Text);//Control
-        }
-
-        private void textEdit82_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit81.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit82.Text);
-            this.textEdit79.Text = (sender as TextEdit).Text;//ResultMapType
-            this.textEdit94.Text = (sender as TextEdit).Text;//DTO
-            this.textEdit87.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);//Map
-            this.textEdit88.Text = string.Format("{0}Controller", (sender as TextEdit).Text);//Control
-        }
-
-        private void textEdit71_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit68.Text = string.Format("{0}Map", this.textEdit71.Text);
-        }
-
-        private void textEdit80_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit77.Text = string.Format("{0}Map", this.textEdit80.Text);
-        }
-
-        private void textEdit70_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit69.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit70.Text);
-        }
-
-        private void textEdit79_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit78.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit79.Text);
-        }
-
-        private void textEdit98_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit97.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
-        }
-
-        private void textEdit96_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit95.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
-        }
-
-        private void textEdit92_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit91.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
-        }
-
-        private void textEdit94_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit93.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
-        }
 
         private void OpenClosePanel(object sender, PanelControl panelControl)
         {
@@ -2035,29 +1679,33 @@ namespace MDIDemo.vou
             OpenClosePanel(sender, this.panelControl4);
         }
 
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-            OpenClosePanel(sender, this.panelControl17);
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-            OpenClosePanel(sender, this.panelControl28);
-        }
-
-        private void simpleButton5_Click(object sender, EventArgs e)
-        {
-            OpenClosePanel(sender, this.panelControl44);
-        }
-
-        private void simpleButton6_Click(object sender, EventArgs e)
-        {
-            OpenClosePanel(sender, this.panelControl45);
-        }
-
         private void textEdit101_EditValueChanged(object sender, EventArgs e)
         {
             this.textEdit44.Text = (sender as TextEdit).Text + ".xml";
+        }
+
+        private void textEdit31_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkEdit3.Checked)
+                this.textEdit97.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
+        }
+
+        private void textEdit41_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkEdit14.Checked)
+                this.textEdit95.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
+        }
+
+        private void textEdit73_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkEdit16.Checked)
+                this.textEdit91.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
+        }
+
+        private void textEdit82_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkEdit18.Checked)
+                this.textEdit93.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
         }
     }
 }
