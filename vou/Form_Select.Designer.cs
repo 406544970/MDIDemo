@@ -525,6 +525,7 @@
             this.textEdit47 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit103 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit102 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit101 = new DevExpress.XtraEditors.TextEdit();
@@ -555,12 +556,10 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit25 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit23 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit24 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit22 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit18 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.radioGroup7 = new DevExpress.XtraEditors.RadioGroup();
@@ -851,7 +850,6 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -1126,6 +1124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit47.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit103.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit102.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit101.Properties)).BeginInit();
@@ -1144,10 +1143,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit25.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit23.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit22.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup7.Properties)).BeginInit();
             this.xtraTabPage24.SuspendLayout();
@@ -1425,7 +1422,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -8175,12 +8171,10 @@
             this.panelControl4.Controls.Add(this.labelControl5);
             this.panelControl4.Controls.Add(this.checkEdit1);
             this.panelControl4.Controls.Add(this.textEdit25);
-            this.panelControl4.Controls.Add(this.textEdit23);
             this.panelControl4.Controls.Add(this.textEdit24);
             this.panelControl4.Controls.Add(this.labelControl11);
             this.panelControl4.Controls.Add(this.textEdit22);
             this.panelControl4.Controls.Add(this.labelControl10);
-            this.panelControl4.Controls.Add(this.textEdit18);
             this.panelControl4.Controls.Add(this.textEdit16);
             this.panelControl4.Controls.Add(this.labelControl7);
             this.panelControl4.Controls.Add(this.radioGroup7);
@@ -8190,9 +8184,19 @@
             this.panelControl4.Size = new System.Drawing.Size(1177, 197);
             this.panelControl4.TabIndex = 5;
             // 
+            // checkEdit8
+            // 
+            this.checkEdit8.EditValue = true;
+            this.checkEdit8.Location = new System.Drawing.Point(584, 9);
+            this.checkEdit8.MenuManager = this.barManager3;
+            this.checkEdit8.Name = "checkEdit8";
+            this.checkEdit8.Properties.Caption = "命名是否关联";
+            this.checkEdit8.Size = new System.Drawing.Size(96, 19);
+            this.checkEdit8.TabIndex = 54;
+            // 
             // textEdit103
             // 
-            this.textEdit103.Location = new System.Drawing.Point(840, 69);
+            this.textEdit103.Location = new System.Drawing.Point(658, 169);
             this.textEdit103.MenuManager = this.barManager1;
             this.textEdit103.Name = "textEdit103";
             this.textEdit103.Size = new System.Drawing.Size(125, 20);
@@ -8200,7 +8204,7 @@
             // 
             // textEdit102
             // 
-            this.textEdit102.Location = new System.Drawing.Point(840, 44);
+            this.textEdit102.Location = new System.Drawing.Point(658, 144);
             this.textEdit102.MenuManager = this.barManager1;
             this.textEdit102.Name = "textEdit102";
             this.textEdit102.Size = new System.Drawing.Size(125, 20);
@@ -8208,7 +8212,7 @@
             // 
             // textEdit101
             // 
-            this.textEdit101.Location = new System.Drawing.Point(604, 118);
+            this.textEdit101.Location = new System.Drawing.Point(658, 118);
             this.textEdit101.MenuManager = this.barManager1;
             this.textEdit101.Name = "textEdit101";
             this.textEdit101.Size = new System.Drawing.Size(125, 20);
@@ -8217,7 +8221,7 @@
             // 
             // textEdit100
             // 
-            this.textEdit100.Location = new System.Drawing.Point(604, 64);
+            this.textEdit100.Location = new System.Drawing.Point(658, 64);
             this.textEdit100.MenuManager = this.barManager1;
             this.textEdit100.Name = "textEdit100";
             this.textEdit100.Size = new System.Drawing.Size(125, 20);
@@ -8225,7 +8229,7 @@
             // 
             // textEdit99
             // 
-            this.textEdit99.Location = new System.Drawing.Point(604, 42);
+            this.textEdit99.Location = new System.Drawing.Point(658, 39);
             this.textEdit99.MenuManager = this.barManager1;
             this.textEdit99.Name = "textEdit99";
             this.textEdit99.Size = new System.Drawing.Size(125, 20);
@@ -8233,15 +8237,15 @@
             // 
             // textEdit44
             // 
-            this.textEdit44.Location = new System.Drawing.Point(605, 143);
+            this.textEdit44.Location = new System.Drawing.Point(282, 91);
             this.textEdit44.MenuManager = this.barManager1;
             this.textEdit44.Name = "textEdit44";
-            this.textEdit44.Size = new System.Drawing.Size(125, 20);
+            this.textEdit44.Size = new System.Drawing.Size(264, 20);
             this.textEdit44.TabIndex = 48;
             // 
             // textEdit19
             // 
-            this.textEdit19.Location = new System.Drawing.Point(604, 91);
+            this.textEdit19.Location = new System.Drawing.Point(658, 90);
             this.textEdit19.MenuManager = this.barManager1;
             this.textEdit19.Name = "textEdit19";
             this.textEdit19.Size = new System.Drawing.Size(125, 20);
@@ -8249,7 +8253,7 @@
             // 
             // labelControl56
             // 
-            this.labelControl56.Location = new System.Drawing.Point(766, 71);
+            this.labelControl56.Location = new System.Drawing.Point(584, 171);
             this.labelControl56.Name = "labelControl56";
             this.labelControl56.Size = new System.Drawing.Size(68, 14);
             this.labelControl56.TabIndex = 46;
@@ -8257,7 +8261,7 @@
             // 
             // labelControl55
             // 
-            this.labelControl55.Location = new System.Drawing.Point(735, 48);
+            this.labelControl55.Location = new System.Drawing.Point(553, 148);
             this.labelControl55.Name = "labelControl55";
             this.labelControl55.Size = new System.Drawing.Size(99, 14);
             this.labelControl55.TabIndex = 45;
@@ -8265,15 +8269,15 @@
             // 
             // labelControl54
             // 
-            this.labelControl54.Location = new System.Drawing.Point(574, 146);
+            this.labelControl54.Location = new System.Drawing.Point(232, 94);
             this.labelControl54.Name = "labelControl54";
-            this.labelControl54.Size = new System.Drawing.Size(22, 14);
+            this.labelControl54.Size = new System.Drawing.Size(39, 14);
             this.labelControl54.TabIndex = 44;
-            this.labelControl54.Text = "xml:";
+            this.labelControl54.Text = "xmlFile:";
             // 
             // labelControl53
             // 
-            this.labelControl53.Location = new System.Drawing.Point(572, 121);
+            this.labelControl53.Location = new System.Drawing.Point(626, 121);
             this.labelControl53.Name = "labelControl53";
             this.labelControl53.Size = new System.Drawing.Size(25, 14);
             this.labelControl53.TabIndex = 43;
@@ -8281,7 +8285,7 @@
             // 
             // labelControl52
             // 
-            this.labelControl52.Location = new System.Drawing.Point(573, 94);
+            this.labelControl52.Location = new System.Drawing.Point(627, 94);
             this.labelControl52.Name = "labelControl52";
             this.labelControl52.Size = new System.Drawing.Size(24, 14);
             this.labelControl52.TabIndex = 42;
@@ -8289,7 +8293,7 @@
             // 
             // labelControl51
             // 
-            this.labelControl51.Location = new System.Drawing.Point(561, 68);
+            this.labelControl51.Location = new System.Drawing.Point(615, 68);
             this.labelControl51.Name = "labelControl51";
             this.labelControl51.Size = new System.Drawing.Size(36, 14);
             this.labelControl51.TabIndex = 41;
@@ -8297,7 +8301,7 @@
             // 
             // labelControl50
             // 
-            this.labelControl50.Location = new System.Drawing.Point(561, 42);
+            this.labelControl50.Location = new System.Drawing.Point(615, 42);
             this.labelControl50.Name = "labelControl50";
             this.labelControl50.Size = new System.Drawing.Size(37, 14);
             this.labelControl50.TabIndex = 40;
@@ -8305,7 +8309,7 @@
             // 
             // labelControl49
             // 
-            this.labelControl49.Location = new System.Drawing.Point(553, 172);
+            this.labelControl49.Location = new System.Drawing.Point(230, 41);
             this.labelControl49.Name = "labelControl49";
             this.labelControl49.Size = new System.Drawing.Size(43, 14);
             this.labelControl49.TabIndex = 39;
@@ -8313,10 +8317,10 @@
             // 
             // textEdit54
             // 
-            this.textEdit54.Location = new System.Drawing.Point(605, 169);
+            this.textEdit54.Location = new System.Drawing.Point(282, 38);
             this.textEdit54.MenuManager = this.barManager1;
             this.textEdit54.Name = "textEdit54";
-            this.textEdit54.Size = new System.Drawing.Size(125, 20);
+            this.textEdit54.Size = new System.Drawing.Size(264, 20);
             this.textEdit54.TabIndex = 38;
             // 
             // checkEdit20
@@ -8371,7 +8375,7 @@
             // radioGroup9
             // 
             this.radioGroup9.EditValue = 1;
-            this.radioGroup9.Location = new System.Drawing.Point(437, 112);
+            this.radioGroup9.Location = new System.Drawing.Point(436, 112);
             this.radioGroup9.MenuManager = this.barManager1;
             this.radioGroup9.Name = "radioGroup9";
             this.radioGroup9.Properties.Columns = 2;
@@ -8447,14 +8451,6 @@
             this.textEdit25.Size = new System.Drawing.Size(153, 20);
             this.textEdit25.TabIndex = 23;
             // 
-            // textEdit23
-            // 
-            this.textEdit23.Location = new System.Drawing.Point(226, 91);
-            this.textEdit23.MenuManager = this.barManager1;
-            this.textEdit23.Name = "textEdit23";
-            this.textEdit23.Size = new System.Drawing.Size(321, 20);
-            this.textEdit23.TabIndex = 22;
-            // 
             // textEdit24
             // 
             this.textEdit24.Location = new System.Drawing.Point(98, 91);
@@ -8462,7 +8458,6 @@
             this.textEdit24.Name = "textEdit24";
             this.textEdit24.Size = new System.Drawing.Size(122, 20);
             this.textEdit24.TabIndex = 21;
-            this.textEdit24.EditValueChanged += new System.EventHandler(this.textEdit24_EditValueChanged);
             // 
             // labelControl11
             // 
@@ -8489,14 +8484,6 @@
             this.labelControl10.TabIndex = 18;
             this.labelControl10.Text = "ResultMapId:";
             // 
-            // textEdit18
-            // 
-            this.textEdit18.Location = new System.Drawing.Point(226, 39);
-            this.textEdit18.MenuManager = this.barManager1;
-            this.textEdit18.Name = "textEdit18";
-            this.textEdit18.Size = new System.Drawing.Size(321, 20);
-            this.textEdit18.TabIndex = 17;
-            // 
             // textEdit16
             // 
             this.textEdit16.Location = new System.Drawing.Point(98, 39);
@@ -8516,7 +8503,7 @@
             // 
             // radioGroup7
             // 
-            this.radioGroup7.Location = new System.Drawing.Point(385, 61);
+            this.radioGroup7.Location = new System.Drawing.Point(384, 61);
             this.radioGroup7.MenuManager = this.barManager1;
             this.radioGroup7.Name = "radioGroup7";
             this.radioGroup7.Properties.Columns = 2;
@@ -11110,7 +11097,6 @@
             this.textEdit13.Name = "textEdit13";
             this.textEdit13.Size = new System.Drawing.Size(201, 20);
             this.textEdit13.TabIndex = 3;
-            this.textEdit13.EditValueChanged += new System.EventHandler(this.textEdit13_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -11165,16 +11151,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20)});
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
-            // 
-            // checkEdit8
-            // 
-            this.checkEdit8.EditValue = true;
-            this.checkEdit8.Location = new System.Drawing.Point(584, 9);
-            this.checkEdit8.MenuManager = this.barManager3;
-            this.checkEdit8.Name = "checkEdit8";
-            this.checkEdit8.Properties.Caption = "命名是否关联";
-            this.checkEdit8.Size = new System.Drawing.Size(96, 19);
-            this.checkEdit8.TabIndex = 54;
             // 
             // Form_Select
             // 
@@ -11468,6 +11444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit103.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit102.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit101.Properties)).EndInit();
@@ -11486,10 +11463,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit25.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit23.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit22.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit18.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup7.Properties)).EndInit();
             this.xtraTabPage24.ResumeLayout(false);
@@ -11781,7 +11756,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -12221,12 +12195,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit25;
-        private DevExpress.XtraEditors.TextEdit textEdit23;
         private DevExpress.XtraEditors.TextEdit textEdit24;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.TextEdit textEdit22;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.TextEdit textEdit18;
         private DevExpress.XtraEditors.TextEdit textEdit16;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.RadioGroup radioGroup7;

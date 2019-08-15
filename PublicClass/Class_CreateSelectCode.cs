@@ -1193,7 +1193,6 @@ namespace MDIDemo.PublicClass
             Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
             if (class_Sub == null)
                 return null;
-            string MapAfterString = "Mapper";
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;

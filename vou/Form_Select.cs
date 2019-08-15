@@ -456,10 +456,8 @@ namespace MDIDemo.vou
 
             #region TextEdit
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
-            class_SetTextEdit.SetTextEdit(this.textEdit18);
             class_SetTextEdit.SetTextEdit(this.textEdit19);
             class_SetTextEdit.SetTextEdit(this.textEdit25);
-            class_SetTextEdit.SetTextEdit(this.textEdit23);
             class_SetTextEdit.SetTextEdit(this.textEdit26);
             class_SetTextEdit.SetTextEdit(this.textEdit27);
             class_SetTextEdit.SetTextEdit(this.textEdit30);
@@ -1597,7 +1595,6 @@ namespace MDIDemo.vou
 
         private void textEdit16_EditValueChanged(object sender, EventArgs e)
         {
-            this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
             this.textEdit24.Text = (sender as TextEdit).Text;
             if (checkEdit8.Checked)
             {
@@ -1608,21 +1605,10 @@ namespace MDIDemo.vou
                 this.textEdit44.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
                 this.textEdit54.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
                 this.textEdit102.Text = string.Format("{0}Service", (sender as TextEdit).Text);
-                this.textEdit103.Text = string.Format("{0}UseServiceImpl", (sender as TextEdit).Text);
+                this.textEdit103.Text = string.Format("{0}ServiceImpl", (sender as TextEdit).Text);
             }
         }
 
-        private void textEdit13_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
-            this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
-            //this.textEdit25.Text = string.Format("{0}.{1}Map", this.textEdit13.Text, this.textEdit22.Text);
-        }
-
-        private void textEdit24_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit23.Text = string.Format("{0}.model.{1}", this.textEdit13.Text, this.textEdit24.Text);
-        }
         private void CreateCode()
         {
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
