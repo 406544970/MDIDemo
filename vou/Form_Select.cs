@@ -139,13 +139,20 @@ namespace MDIDemo.vou
                 this.textEdit46.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 this.radioGroup9.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
                 this.radioGroup16.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
-                this.textEdit34.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
-                this.textEdit19.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit5.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
                 this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
-                this.textEdit54.Text = class_SelectAllModel.class_SubList[index].ControlRequestMapping;
                 this.memoEdit54.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].TestSql);
+
+                this.textEdit99.Text = class_SelectAllModel.class_SubList[index].ParamClassName;
+                this.textEdit100.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
+                this.textEdit19.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                this.textEdit101.Text = class_SelectAllModel.class_SubList[index].DaoClassName;
+                this.textEdit44.Text = class_SelectAllModel.class_SubList[index].XmlFileName;
+                this.textEdit54.Text = class_SelectAllModel.class_SubList[index].ControlRequestMapping;
+                this.textEdit102.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceName;
+                this.textEdit103.Text = class_SelectAllModel.class_SubList[index].ServiceClassName;
+
                 if (this.panelControl4.Height > this.simpleButton2.Height + 5)
                     this.simpleButton2.Text = "折叠";
                 else
@@ -184,7 +191,6 @@ namespace MDIDemo.vou
                 this.checkEdit12.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
                 this.radioGroup21.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
-                this.textEdit98.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit97.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit15.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl17.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
@@ -222,7 +228,6 @@ namespace MDIDemo.vou
                 this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
                 this.radioGroup18.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
-                this.textEdit96.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit95.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit13.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl28.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
@@ -269,7 +274,6 @@ namespace MDIDemo.vou
                 this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
                 this.radioGroup3.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
-                this.textEdit92.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit91.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit9.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl44.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
@@ -316,7 +320,6 @@ namespace MDIDemo.vou
                 this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
 
                 this.radioGroup4.SelectedIndex = class_SelectAllModel.class_SubList[index].DtoType;
-                this.textEdit94.Text = class_SelectAllModel.class_SubList[index].DtoIniClassName;
                 this.textEdit93.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                 this.checkEdit11.Checked = class_SelectAllModel.class_SubList[index].ExtendsSign;
                 this.panelControl45.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
@@ -343,6 +346,7 @@ namespace MDIDemo.vou
         public string publicSkinName;
         private void SetCompoment()
         {
+            this.checkEdit8.Checked = false;
             radioGroup5.SelectedIndex = 0;
             radioGroup6.SelectedIndex = 0;
             radioGroup29.SelectedIndex = 1;
@@ -491,7 +495,6 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit31, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit32, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit33, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit34, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit35, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit38, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit39, Color.SkyBlue);
@@ -1129,13 +1132,20 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit20.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount = this.radioGroup9.SelectedIndex;
                     class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup16.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit34.Text;
-                    class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit19.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit5.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl4.Height;
-                    class_SelectAllModel.class_SubList[index].ControlRequestMapping = this.textEdit54.Text;
                     class_SelectAllModel.class_SubList[index].TestSql = Class_Tool.EscapeCharacter(this.memoEdit54.Text);
                     class_SelectAllModel.class_SubList[index].AliasName = this.textEdit10.Text;
+
+                    class_SelectAllModel.class_SubList[index].ParamClassName = this.textEdit99.Text;
+                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit100.Text;
+                    class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit19.Text;
+                    class_SelectAllModel.class_SubList[index].DaoClassName = this.textEdit101.Text;
+                    class_SelectAllModel.class_SubList[index].XmlFileName = this.textEdit44.Text;
+                    class_SelectAllModel.class_SubList[index].ControlRequestMapping = this.textEdit54.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceInterFaceName = this.textEdit102.Text;
+                    class_SelectAllModel.class_SubList[index].ServiceClassName = this.textEdit103.Text;
+
                 }
                 #endregion
 
@@ -1166,7 +1176,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit1.Text;
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit2.Text;
                     class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup21.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit98.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit97.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit15.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl17.Height;
@@ -1201,7 +1210,6 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].OutFieldName = this.buttonEdit4.Text;
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit3.Text;
                     class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup18.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit96.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit95.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit13.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl28.Height;
@@ -1242,7 +1250,6 @@ namespace MDIDemo.vou
                     //关联字段名称
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit5.Text;
                     class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup3.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit92.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit91.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit9.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl44.Height;
@@ -1287,7 +1294,6 @@ namespace MDIDemo.vou
                     //关联字段名称
                     class_SelectAllModel.class_SubList[index].MainTableFieldName = this.buttonEdit7.Text;
                     class_SelectAllModel.class_SubList[index].DtoType = this.radioGroup4.SelectedIndex;
-                    class_SelectAllModel.class_SubList[index].DtoIniClassName = this.textEdit94.Text;
                     class_SelectAllModel.class_SubList[index].DtoClassName = this.textEdit93.Text;
                     class_SelectAllModel.class_SubList[index].ExtendsSign = this.checkEdit11.Checked;
                     class_SelectAllModel.class_SubList[index].PanelHeight = this.panelControl45.Height;
@@ -1593,24 +1599,17 @@ namespace MDIDemo.vou
         {
             this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
             this.textEdit24.Text = (sender as TextEdit).Text;
-            this.textEdit34.Text = (sender as TextEdit).Text;
-
-            if (this.textEdit99.Text == null || this.textEdit99.Text.Length == 0)//Param
+            if (checkEdit8.Checked)
+            {
                 this.textEdit99.Text = string.Format("{0}InPutParam", (sender as TextEdit).Text);
-            if (this.textEdit100.Text == null || this.textEdit100.Text.Length == 0)///Model
                 this.textEdit100.Text = (sender as TextEdit).Text;
-            if (this.textEdit19.Text == null || this.textEdit19.Text.Length == 0)//Dto
                 this.textEdit19.Text = string.Format("{0}Dto", (sender as TextEdit).Text);
-            if (this.textEdit101.Text == null || this.textEdit101.Text.Length == 0)///Dao
                 this.textEdit101.Text = string.Format("{0}Mapper", (sender as TextEdit).Text);
-            if (this.textEdit44.Text == null || this.textEdit44.Text.Length == 0)//xml
                 this.textEdit44.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
-            if (this.textEdit54.Text == null || this.textEdit54.Text.Length == 0)///Control
                 this.textEdit54.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
-            if (this.textEdit102.Text == null || this.textEdit102.Text.Length == 0)//Service InterFace
                 this.textEdit102.Text = string.Format("{0}Service", (sender as TextEdit).Text);
-            if (this.textEdit103.Text == null || this.textEdit103.Text.Length == 0)///Service impl
                 this.textEdit103.Text = string.Format("{0}UseServiceImpl", (sender as TextEdit).Text);
+            }
         }
 
         private void textEdit13_EditValueChanged(object sender, EventArgs e)
@@ -1858,10 +1857,6 @@ namespace MDIDemo.vou
         }
 
 
-        private void textEdit34_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit19.Text = String.Format("{0}Dto", (sender as TextEdit).Text);
-        }
         private void GetLinkField(GridView gridView, object sender)
         {
             List<Class_LinkField> class_LinkFields = new List<Class_LinkField>();

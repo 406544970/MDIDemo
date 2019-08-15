@@ -914,26 +914,22 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public int InnerType { get; set; }
             /// <summary>
-            /// 原始DTO类名
-            /// </summary>
-            public string DtoIniClassName { get; set; }
-            /// <summary>
-            /// DTO类名
-            /// </summary>
-            public string DtoClassName { get; set; }
-            /// <summary>
             /// 是否用继承方式
             /// </summary>
             public bool ExtendsSign { get; set; }
-            /// <summary>
-            /// RequestMapping
-            /// </summary>
-            public string ControlRequestMapping { get; set; }
             /// <summary>
             /// 测试SQL
             /// </summary>
             public string TestSql { get; set; }
 
+            public string ParamClassName { get; set; }
+            public string ModelClassName { get; set; }
+            public string DtoClassName { get; set; }
+            public string DaoClassName { get; set; }
+            public string XmlFileName { get; set; }
+            public string ControlRequestMapping { get; set; }
+            public string ServiceInterFaceName { get; set; }
+            public string ServiceClassName { get; set; }
         }
         #endregion
 

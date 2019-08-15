@@ -677,7 +677,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.Append("@Mapper\r\n");
-            stringBuilder.Append(string.Format("public interface {0}Mapper ", class_Sub.NameSpace) + "{\r\n");
+            stringBuilder.Append(string.Format("public interface {0}", class_Sub.DaoClassName));
+            stringBuilder.Append(" {\r\n");
 
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
@@ -1162,7 +1163,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
-            stringBuilder.AppendFormat("public class {0} ", class_SelectAllModel.class_SubList[PageIndex].NameSpace);
+            stringBuilder.AppendFormat("public class {0}", class_SelectAllModel.class_SubList[PageIndex].ModelClassName);
             stringBuilder.Append(" {\r\n");
 
             //加入字段
@@ -1191,7 +1192,7 @@ namespace MDIDemo.PublicClass
 
             return stringBuilder.ToString();
         }
-        private string _GetMainServiceImpl(int PageIndex)
+        private string _GetServiceImpl(int PageIndex)
         {
             Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
             if (class_Sub == null)
@@ -1218,7 +1219,9 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.Append("@SuppressWarnings(\"SpringJavaInjectionPointsAutowiringInspection\")\r\n@Service\r\n");
-            stringBuilder.AppendFormat("public class {0}ServiceImpl implements {0}Service", class_Sub.NameSpace);
+            stringBuilder.AppendFormat("public class {1} implements {0}"
+                , class_Sub.ServiceInterFaceName
+                , class_Sub.ServiceClassName);
             stringBuilder.Append(" {\r\n");
 
             stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -1352,7 +1355,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
-            stringBuilder.Append(string.Format("public interface {0}Service ", class_Sub.NameSpace) + "{\r\n");
+            stringBuilder.Append(string.Format("public interface {0} ", class_Sub.ServiceInterFaceName) + "{\r\n");
 
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
@@ -1451,9 +1454,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
-            stringBuilder.AppendFormat("public class {0}{1} "
-                , class_SelectAllModel.class_SubList[PageIndex].NameSpace
-                , InPutParamer);
+            stringBuilder.AppendFormat("public class {0}"
+                , class_SelectAllModel.class_SubList[PageIndex].ParamClassName);
             stringBuilder.Append(" {\r\n");
 
             //加入字段
@@ -1863,9 +1865,8 @@ namespace MDIDemo.PublicClass
                     stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
                         , class_Sub.ControlSwaggerValue
                         , class_Sub.ControlSwaggerDescription);
-                stringBuilder.Append(string.Format("public class {0}Controller "
-                    , class_Sub.NameSpace) + "{\r\n");
-
+                stringBuilder.AppendFormat("public class {0}", class_Sub.ControlRequestMapping);
+                stringBuilder.Append(" {\r\n");
                 stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
                 stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
@@ -2960,7 +2961,7 @@ namespace MDIDemo.PublicClass
         }
         public string GetServiceImpl(int Index)
         {
-            return _GetMainServiceImpl(Index);
+            return _GetServiceImpl(Index);
         }
         public string GetModel(int Index)
         {
