@@ -205,7 +205,7 @@ namespace MDIDemo.PublicClass
                 if (HavePackageName)
                     stringBuilder.AppendFormat("{0}.model.{1}"
                     , class_SelectAllModel.AllPackerName
-                    , class_Main.ResultMapType);
+                    , class_Main.ModelClassName);
                 else
                     stringBuilder.Append(class_Main.ModelClassName);
             }
@@ -1253,7 +1253,10 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}@Override\r\n{0}public ", class_ToolSpace.GetSetSpaceCount(1));
             if (class_Sub.ServiceInterFaceReturnCount == 0)
             {
-                stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+                if (class_SelectAllModel.IsMultTable)
+                    stringBuilder.AppendFormat("{0}", class_Sub.DtoClassName);
+                else
+                    stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
             }
             else
             {
@@ -1374,7 +1377,11 @@ namespace MDIDemo.PublicClass
 
             if (class_Sub.ServiceInterFaceReturnCount == 0)
             {
-                stringBuilder.AppendFormat("{0}{1}", class_ToolSpace.GetSetSpaceCount(1)
+                if (class_SelectAllModel.IsMultTable)
+                    stringBuilder.AppendFormat("{0} {1}", class_ToolSpace.GetSetSpaceCount(1)
+                    , class_Sub.DtoClassName);
+                else
+                    stringBuilder.AppendFormat("{0} {1}", class_ToolSpace.GetSetSpaceCount(1)
                     , _GetServiceReturnType(class_Sub, false));
             }
             else
@@ -2010,7 +2017,13 @@ namespace MDIDemo.PublicClass
             else
             {
                 if (class_Sub.ServiceInterFaceReturnCount == 0)
-                    stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+                {
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("{0}", class_Sub.DtoClassName);
+                    else
+                        stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+
+                }
                 else
                 {
                     if (class_SelectAllModel.PageSign)

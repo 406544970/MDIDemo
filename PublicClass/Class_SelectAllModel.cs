@@ -895,10 +895,6 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public string InPutParamContent { get; set; }
             public string ResultMapId { get; set; }
-            /// <summary>
-            /// Model类名
-            /// </summary>
-            public string ResultMapType { get; set; }
             public string ControlSwaggerValue { get; set; }
             public string ControlSwaggerDescription { get; set; }
             /// <summary>
@@ -1178,7 +1174,7 @@ namespace MDIDemo.PublicClass
                 class_LinkFieldInfo.InnerType = class_Sub.InnerType;
                 class_LinkFieldInfo.JoinType = class_Sub.JoinType;
                 class_LinkFieldInfo.DtoClassName = class_Sub.DtoClassName;
-                class_LinkFieldInfo.ResultMapType = class_Sub.ResultMapType;
+                class_LinkFieldInfo.ResultMapType = class_Sub.ModelClassName;
                 AddLinkFieldInfosCount(class_LinkFieldInfo);
             }
             return GetLinkFieldInfosCount();

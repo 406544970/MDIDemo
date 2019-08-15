@@ -132,7 +132,7 @@ namespace MDIDemo.vou
                 this.memoEdit11.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
                 this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].InPutParamContent);
                 this.textEdit22.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
-                this.textEdit24.Text = class_SelectAllModel.class_SubList[index].ResultMapType;
+                this.textEdit24.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
                 this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
                 this.textEdit20.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 this.textEdit47.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
@@ -179,7 +179,7 @@ namespace MDIDemo.vou
                 this.memoEdit20.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
                 this.memoEdit21.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
                 this.textEdit29.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
-                this.textEdit28.Text = class_SelectAllModel.class_SubList[index].ResultMapType;
+                this.textEdit28.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
                 this.textEdit49.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                 this.textEdit48.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                 this.radioGroup5.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
@@ -216,7 +216,7 @@ namespace MDIDemo.vou
                 this.memoEdit30.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
                 this.textEdit39.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
 
-                this.textEdit38.Text = class_SelectAllModel.class_SubList[index].ResultMapType;
+                this.textEdit38.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
                 this.textEdit45.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 this.textEdit51.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                 this.textEdit50.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
@@ -258,7 +258,7 @@ namespace MDIDemo.vou
 
                 this.textEdit71.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
 
-                this.textEdit70.Text = class_SelectAllModel.class_SubList[index].ResultMapType;
+                this.textEdit70.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
                 this.textEdit65.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 this.textEdit86.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                 this.textEdit85.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
@@ -301,7 +301,7 @@ namespace MDIDemo.vou
                 //ResultMapId
                 this.textEdit80.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
                 //ResultMapType
-                this.textEdit79.Text = class_SelectAllModel.class_SubList[index].ResultMapType;
+                this.textEdit79.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
                 //返回值说明
                 this.textEdit74.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                 //Swagger说明
@@ -1124,7 +1124,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
                     class_SelectAllModel.class_SubList[index].InPutParamContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
                     class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit22.Text;
-                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit24.Text;
+                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit24.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit47.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit46.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit20.Text;
@@ -1165,7 +1165,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit20.Text);
                     class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit21.Text);
                     class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit29.Text;
-                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit28.Text;
+                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit28.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit49.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit48.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit35.Text;
@@ -1199,7 +1199,7 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit29.Text);
                     class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit30.Text);
                     class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit39.Text;
-                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit38.Text;
+                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit38.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit51.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit50.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit45.Text;
@@ -1234,7 +1234,7 @@ namespace MDIDemo.vou
                     //Controller
                     class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit41.Text);
                     class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit71.Text;
-                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit70.Text;
+                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit70.Text;
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit65.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit86.Text;
                     class_SelectAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit85.Text;
@@ -1275,8 +1275,8 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit51.Text);
                     //ResultMapId
                     class_SelectAllModel.class_SubList[index].ResultMapId = this.textEdit80.Text;
-                    //ResultMapType
-                    class_SelectAllModel.class_SubList[index].ResultMapType = this.textEdit79.Text;
+                    //ModelClassName
+                    class_SelectAllModel.class_SubList[index].ModelClassName = this.textEdit79.Text;
                     //返回值说明
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit74.Text;
                     //Swagger说明
@@ -1598,14 +1598,14 @@ namespace MDIDemo.vou
             this.textEdit24.Text = (sender as TextEdit).Text;
             if (checkEdit8.Checked)
             {
-                this.textEdit99.Text = string.Format("{0}InPutParam", (sender as TextEdit).Text);
-                this.textEdit100.Text = (sender as TextEdit).Text;
-                this.textEdit19.Text = string.Format("{0}Dto", (sender as TextEdit).Text);
-                this.textEdit101.Text = string.Format("{0}Mapper", (sender as TextEdit).Text);
-                this.textEdit44.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
-                this.textEdit54.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
-                this.textEdit102.Text = string.Format("{0}Service", (sender as TextEdit).Text);
-                this.textEdit103.Text = string.Format("{0}ServiceImpl", (sender as TextEdit).Text);
+                this.textEdit99.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}InPutParam", (sender as TextEdit).Text));
+                this.textEdit100.Text = Class_Tool.GetFirstCodeUpper((sender as TextEdit).Text);
+                this.textEdit19.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
+                this.textEdit101.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Mapper", (sender as TextEdit).Text));
+                this.textEdit44.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Mapper.xml", (sender as TextEdit).Text));
+                this.textEdit54.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Controller", (sender as TextEdit).Text));
+                this.textEdit102.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Service", (sender as TextEdit).Text));
+                this.textEdit103.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}ServiceImpl", (sender as TextEdit).Text));
             }
         }
 
