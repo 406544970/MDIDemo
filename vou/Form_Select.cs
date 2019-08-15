@@ -525,10 +525,16 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit94, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit96, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit98, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit99, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit100, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit19, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit101, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit44, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit54, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit102, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit103, Color.SkyBlue);
 
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
-            class_SetTextEdit.SetTextEdit(this.textEdit44, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit52, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit53, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit55, true, Color.GreenYellow);
@@ -1588,8 +1594,23 @@ namespace MDIDemo.vou
             this.textEdit18.Text = string.Format("{0}.dao.{1}Mapper", this.textEdit13.Text, this.textEdit16.Text);
             this.textEdit24.Text = (sender as TextEdit).Text;
             this.textEdit34.Text = (sender as TextEdit).Text;
-            this.textEdit44.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
-            //this.textEdit54.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
+
+            if (this.textEdit99.Text == null || this.textEdit99.Text.Length == 0)//Param
+                this.textEdit99.Text = string.Format("{0}InPutParam", (sender as TextEdit).Text);
+            if (this.textEdit100.Text == null || this.textEdit100.Text.Length == 0)///Model
+                this.textEdit100.Text = (sender as TextEdit).Text;
+            if (this.textEdit19.Text == null || this.textEdit19.Text.Length == 0)//Dto
+                this.textEdit19.Text = string.Format("{0}Dto", (sender as TextEdit).Text);
+            if (this.textEdit101.Text == null || this.textEdit101.Text.Length == 0)///Dao
+                this.textEdit101.Text = string.Format("{0}Mapper", (sender as TextEdit).Text);
+            if (this.textEdit44.Text == null || this.textEdit44.Text.Length == 0)//xml
+                this.textEdit44.Text = string.Format("{0}Mapper.xml", (sender as TextEdit).Text);
+            if (this.textEdit54.Text == null || this.textEdit54.Text.Length == 0)///Control
+                this.textEdit54.Text = string.Format("{0}Controller", (sender as TextEdit).Text);
+            if (this.textEdit102.Text == null || this.textEdit102.Text.Length == 0)//Service InterFace
+                this.textEdit102.Text = string.Format("{0}Service", (sender as TextEdit).Text);
+            if (this.textEdit103.Text == null || this.textEdit103.Text.Length == 0)///Service impl
+                this.textEdit103.Text = string.Format("{0}UseServiceImpl", (sender as TextEdit).Text);
         }
 
         private void textEdit13_EditValueChanged(object sender, EventArgs e)
