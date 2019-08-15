@@ -8213,6 +8213,7 @@
             this.textEdit101.Name = "textEdit101";
             this.textEdit101.Size = new System.Drawing.Size(125, 20);
             this.textEdit101.TabIndex = 51;
+            this.textEdit101.EditValueChanged += new System.EventHandler(this.textEdit101_EditValueChanged);
             // 
             // textEdit100
             // 

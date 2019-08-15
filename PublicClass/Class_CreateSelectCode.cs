@@ -12,7 +12,6 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public class Class_CreateSelectCode : IClass_InterFaceCreateCode
     {
-        private static string InPutParamer = "InPutPara";
         #region 私有
         private int AddLinkFieldInfo()
         {
@@ -208,7 +207,7 @@ namespace MDIDemo.PublicClass
                     , class_SelectAllModel.AllPackerName
                     , class_Main.ResultMapType);
                 else
-                    stringBuilder.Append(class_Main.ResultMapType);
+                    stringBuilder.Append(class_Main.ModelClassName);
             }
             else
             {
@@ -688,11 +687,10 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
+                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                    , "输入参数"
-                    , InPutParamer);
+                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
+                    , "输入参数");
                 }
                 else
                 {
@@ -724,17 +722,16 @@ namespace MDIDemo.PublicClass
                     , class_Sub.DtoClassName);
                 else
                     stringBuilder.AppendFormat("{0}List<{1}>", class_ToolSpace.GetSetSpaceCount(1)
-                    , class_Sub.NameSpace);
+                    , class_Sub.ModelClassName);
             }
             if (class_WhereFields != null)
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat(" {0}({1}{3} {2}{3});\r\n"
+                    stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
                         , class_Sub.MethodId
-                        , class_Sub.NameSpace
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                        , InPutParamer);
+                        , class_Sub.ParamClassName
+                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                 }
                 else if (class_WhereFields.Count == 1)
                 {
@@ -773,9 +770,9 @@ namespace MDIDemo.PublicClass
                 {
                     stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                     stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
-                    stringBuilder.AppendFormat("<mapper namespace=\"{0}.dao.{1}Mapper\">\r\n"
+                    stringBuilder.AppendFormat("<mapper namespace=\"{0}.dao.{1}\">\r\n"
                         , class_SelectAllModel.AllPackerName
-                        , class_Main.NameSpace);
+                        , class_Main.DaoClassName);
                 }
                 stringBuilder.AppendFormat("{0}<resultMap id=\"{1}Map\" type=\"{2}."
                 , class_ToolSpace.GetSetSpaceCount(1)
@@ -786,7 +783,7 @@ namespace MDIDemo.PublicClass
                     , class_Main.DtoClassName);
                 else
                     stringBuilder.AppendFormat("model.{0}\">\r\n"
-                    , class_Main.ResultMapType);
+                    , class_Main.ModelClassName);
                 switch (class_SelectAllModel.class_SelectDataBase.databaseType)
                 {
                     case "MySql":
@@ -1000,10 +997,9 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat(" parameterType=\"{0}.model.InPutParam.{1}{2}\">\r\n"
+                    stringBuilder.AppendFormat(" parameterType=\"{0}.model.InPutParam.{1}\">\r\n"
                     , class_SelectAllModel.AllPackerName
-                    , class_Main.ResultMapType
-                    , InPutParamer);
+                    , class_Main.ParamClassName);
                 }
                 else if (class_WhereFields.Count == 1)
                     stringBuilder.AppendFormat(" parameterType=\"{0}\">\r\n"
@@ -1225,10 +1221,9 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" {\r\n");
 
             stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}{1}{3} {2}{3};\r\n", class_ToolSpace.GetSetSpaceCount(1)
-            , class_Sub.NameSpace
-            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-            , MapAfterString);
+            stringBuilder.AppendFormat("{0}{1} {2};\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            , class_Sub.DaoClassName
+            , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
@@ -1239,11 +1234,10 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
+                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                    , class_Sub.MethodContent
-                    , InPutParamer);
+                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
+                    , class_Sub.MethodContent);
                 }
                 else
                 {
@@ -1273,11 +1267,10 @@ namespace MDIDemo.PublicClass
             if (class_WhereFields != null && class_WhereFields.Count > 0)
             {
                 if (class_WhereFields.Count > 1)
-                    stringBuilder.AppendFormat(" {0}({1}{3} {2}{3})"
+                    stringBuilder.AppendFormat(" {0}({1} {2})"
                         , class_Sub.MethodId
-                        , class_Sub.NameSpace
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                        , InPutParamer);
+                        , class_Sub.ParamClassName
+                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                 else
                 {
                     if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
@@ -1297,19 +1290,17 @@ namespace MDIDemo.PublicClass
                     , class_Sub.MethodId);
 
             stringBuilder.Append(" {\r\n");
-            stringBuilder.AppendFormat("{0}return {1}{2}."
+            stringBuilder.AppendFormat("{0}return {1}."
             , class_ToolSpace.GetSetSpaceCount(2)
-            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-            , MapAfterString);
+            , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
 
             if (class_WhereFields != null && class_WhereFields.Count > 0)
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                    stringBuilder.AppendFormat("{0}({1});\r\n"
                         , class_Sub.MethodId
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                        , InPutParamer);
+                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                 }
                 else
                 {
@@ -1365,11 +1356,10 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat("{0} * @param {1}{3} {2}\r\n"
+                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                    , class_Sub.MethodContent
-                    , InPutParamer);
+                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
+                    , class_Sub.MethodContent);
                 }
                 else
                 {
@@ -1401,11 +1391,10 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat(" {0}({1}{3} {2}{3});\r\n"
+                    stringBuilder.AppendFormat(" {0}({1} {2});\r\n"
                         , class_Sub.MethodId
-                        , class_Sub.NameSpace
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                        , InPutParamer);
+                        , class_Sub.ParamClassName
+                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                 }
                 else
                 {
@@ -1868,10 +1857,10 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("public class {0}", class_Sub.ControlRequestMapping);
                 stringBuilder.Append(" {\r\n");
                 stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                stringBuilder.AppendFormat("{0}{1}Service {2}Service;\r\n"
+                stringBuilder.AppendFormat("{0}{1} {2};\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , class_Sub.NameSpace
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                    , class_Sub.ServiceInterFaceName
+                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
 
                 stringBuilder.Append("\r\n");
             }
@@ -2110,19 +2099,17 @@ namespace MDIDemo.PublicClass
             {
                 if (class_WhereFields.Count > 1)
                 {
-                    stringBuilder.AppendFormat("{0}{1}{3} {2}{3} = new {1}{3}();\r\n"
+                    stringBuilder.AppendFormat("{0}{1} {2} = new {1}();\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2)
-                    , class_Sub.NameSpace
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                    , InPutParamer);
+                    , class_Sub.ParamClassName
+                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                     foreach (Class_WhereField row in class_WhereFields)
                     {
-                        stringBuilder.AppendFormat("{0}{1}{4}.set{2}({3});\r\n"
+                        stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2)
-                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
+                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
                         , Class_Tool.GetFirstCodeUpper(row.OutFieldName)
-                        , row.OutFieldName
-                        , InPutParamer);
+                        , row.OutFieldName);
                     }
                 }
             }
@@ -2131,16 +2118,15 @@ namespace MDIDemo.PublicClass
             {
                 if (class_Sub.ServiceInterFaceReturnCount == 0)
                 {
-                    stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}Service."
+                    stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}."
                     , class_ToolSpace.GetSetSpaceCount(2)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                     if (class_WhereFields != null)
                     {
                         if (class_WhereFields.Count > 1)
-                            stringBuilder.AppendFormat("{0}({1}{2})"
+                            stringBuilder.AppendFormat("{0}({1})"
                                 , class_Sub.MethodId
-                                , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                , InPutParamer);
+                                , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                         else if (class_WhereFields.Count == 1)
                         {
                             stringBuilder.AppendFormat("{0}({1})"
@@ -2170,10 +2156,10 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1} = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
                             else
                             {
@@ -2184,25 +2170,23 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1}s = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
 
                             if (class_WhereFields != null)
                             {
                                 if (class_WhereFields.Count > 1)
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                        , InPutParamer);
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                 else if (class_WhereFields.Count == 1)
                                 {
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , class_WhereFields[0].FieldName
-                                        , InPutParamer);
+                                        , class_WhereFields[0].FieldName);
                                 }
                                 else
                                     stringBuilder.AppendFormat("{0}();\r\n"
@@ -2271,16 +2255,15 @@ namespace MDIDemo.PublicClass
                             else
                                 stringBuilder.AppendFormat("List<{0}> {0}s = ", _GetServiceReturnType(class_Sub, false));
 
-                            stringBuilder.AppendFormat("{0}Service."
-                                , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            stringBuilder.AppendFormat("{0}."
+                                , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
 
                             if (class_WhereFields != null)
                             {
                                 if (class_WhereFields.Count > 1)
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                        , InPutParamer);
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                 else if (class_WhereFields.Count == 1)
                                 {
                                     stringBuilder.AppendFormat("{0}({1});\r\n"
@@ -2327,10 +2310,10 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1} = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
                             else
                             {
@@ -2341,25 +2324,23 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1}s = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
 
                             if (class_WhereFields != null)
                             {
                                 if (class_WhereFields.Count > 1)
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                        , InPutParamer);
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                 else if (class_WhereFields.Count == 1)
                                 {
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , class_WhereFields[0].FieldName
-                                        , InPutParamer);
+                                        , class_WhereFields[0].FieldName);
                                 }
                                 else
                                     stringBuilder.AppendFormat("{0}();\r\n"
@@ -2424,16 +2405,15 @@ namespace MDIDemo.PublicClass
                         {
                             if (class_SelectAllModel.ReturnStructure)
                             {
-                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}Service."
+                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}."
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                                 if (class_WhereFields != null)
                                 {
                                     if (class_WhereFields.Count > 1)
-                                        stringBuilder.AppendFormat("{0}({1}{2})"
+                                        stringBuilder.AppendFormat("{0}({1})"
                                             , class_Sub.MethodId
-                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                            , InPutParamer);
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                     else if (class_WhereFields.Count == 1)
                                     {
                                         stringBuilder.AppendFormat("{0}({1})"
@@ -2448,16 +2428,15 @@ namespace MDIDemo.PublicClass
                             }
                             else
                             {
-                                stringBuilder.AppendFormat("\r\n{0}return {1}Service."
+                                stringBuilder.AppendFormat("\r\n{0}return {1}."
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                                 if (class_WhereFields != null)
                                 {
                                     if (class_WhereFields.Count > 1)
-                                        stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        stringBuilder.AppendFormat("{0}({1});\r\n"
                                             , class_Sub.MethodId
-                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                            , InPutParamer);
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                     else if (class_WhereFields.Count == 1)
                                     {
                                         stringBuilder.AppendFormat("{0}({1});\r\n"
@@ -2486,23 +2465,21 @@ namespace MDIDemo.PublicClass
                             , _GetServiceReturnType(class_Sub, false)
                             , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                             , class_ToolSpace.GetSetSpaceCount(2));
-                        stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                        stringBuilder.AppendFormat("{0}{1} = {2}."
                                 , class_ToolSpace.GetSetSpaceCount(2)
                             , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                         if (class_WhereFields != null)
                         {
                             if (class_WhereFields.Count > 1)
-                                stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                stringBuilder.AppendFormat("{0}({1});\r\n"
                                     , class_Sub.MethodId
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                    , InPutParamer);
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                             else if (class_WhereFields.Count == 1)
                             {
-                                stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                stringBuilder.AppendFormat("{0}({1});\r\n"
                                     , class_Sub.MethodId
-                                    , class_WhereFields[0].FieldName
-                                    , InPutParamer);
+                                    , class_WhereFields[0].FieldName);
                             }
                             else
                                 stringBuilder.AppendFormat("{0}();\r\n"
@@ -2565,16 +2542,15 @@ namespace MDIDemo.PublicClass
                     }
                     else
                     {
-                        stringBuilder.AppendFormat("\r\n{0}return {1}Service."
+                        stringBuilder.AppendFormat("\r\n{0}return {1}."
                             , class_ToolSpace.GetSetSpaceCount(2)
-                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
                         if (class_WhereFields != null)
                         {
                             if (class_WhereFields.Count > 1)
-                                stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                stringBuilder.AppendFormat("{0}({1});\r\n"
                                     , class_Sub.MethodId
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                    , InPutParamer);
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                             else if (class_WhereFields.Count == 1)
                             {
                                 stringBuilder.AppendFormat("{0}({1});\r\n"
@@ -2604,10 +2580,10 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1} = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
                             else
                             {
@@ -2618,25 +2594,23 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1}s = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
 
                             if (class_WhereFields != null)
                             {
                                 if (class_WhereFields.Count > 1)
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                        , InPutParamer);
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                 else if (class_WhereFields.Count == 1)
                                 {
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , class_WhereFields[0].FieldName
-                                        , InPutParamer);
+                                        , class_WhereFields[0].FieldName);
                                 }
                                 else
                                     stringBuilder.AppendFormat("{0}();\r\n"
@@ -2709,16 +2683,15 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
 
-                            stringBuilder.AppendFormat("{0}Service."
-                                , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                            stringBuilder.AppendFormat("{0}."
+                                , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
 
                             if (class_WhereFields != null)
                             {
                                 if (class_WhereFields.Count > 1)
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                        , InPutParamer);
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                 else if (class_WhereFields.Count == 1)
                                 {
                                     stringBuilder.AppendFormat("{0}({1});\r\n"
@@ -2765,10 +2738,10 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1} = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1} = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
                             else
                             {
@@ -2779,25 +2752,23 @@ namespace MDIDemo.PublicClass
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
                                     , class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}{1}s = {2}Service."
+                                stringBuilder.AppendFormat("{0}{1}s = {2}."
                                         , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false))
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                             }
 
                             if (class_WhereFields != null)
                             {
                                 if (class_WhereFields.Count > 1)
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                        , InPutParamer);
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                 else if (class_WhereFields.Count == 1)
                                 {
-                                    stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                    stringBuilder.AppendFormat("{0}({1});\r\n"
                                         , class_Sub.MethodId
-                                        , class_WhereFields[0].FieldName
-                                        , InPutParamer);
+                                        , class_WhereFields[0].FieldName);
                                 }
                                 else
                                     stringBuilder.AppendFormat("{0}();\r\n"
@@ -2862,16 +2833,15 @@ namespace MDIDemo.PublicClass
                         {
                             if (class_SelectAllModel.ReturnStructure)
                             {
-                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}Service."
+                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}."
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                                 if (class_WhereFields != null)
                                 {
                                     if (class_WhereFields.Count > 1)
-                                        stringBuilder.AppendFormat("{0}({1}{2});"
+                                        stringBuilder.AppendFormat("{0}({1});"
                                             , class_Sub.MethodId
-                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                            , InPutParamer);
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                     else if (class_WhereFields.Count == 1)
                                     {
                                         stringBuilder.AppendFormat("{0}({1});"
@@ -2886,16 +2856,15 @@ namespace MDIDemo.PublicClass
                             }
                             else
                             {
-                                stringBuilder.AppendFormat("\r\n{0}return {1}Service."
+                                stringBuilder.AppendFormat("\r\n{0}return {1}."
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace));
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                                 if (class_WhereFields != null)
                                 {
                                     if (class_WhereFields.Count > 1)
-                                        stringBuilder.AppendFormat("{0}({1}{2});\r\n"
+                                        stringBuilder.AppendFormat("{0}({1});\r\n"
                                             , class_Sub.MethodId
-                                            , Class_Tool.GetFirstCodeLow(class_Sub.NameSpace)
-                                            , InPutParamer);
+                                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                                     else if (class_WhereFields.Count == 1)
                                     {
                                         stringBuilder.AppendFormat("{0}({1});\r\n"

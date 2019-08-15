@@ -476,6 +476,7 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit93);
             class_SetTextEdit.SetTextEdit(this.textEdit95);
             class_SetTextEdit.SetTextEdit(this.textEdit97);
+            class_SetTextEdit.SetTextEdit(this.textEdit44);
 
             class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit10, Color.Yellow);
@@ -532,7 +533,6 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit100, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit19, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit101, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit44, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit54, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit102, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit103, Color.SkyBlue);
@@ -2067,6 +2067,11 @@ namespace MDIDemo.vou
         private void simpleButton6_Click(object sender, EventArgs e)
         {
             OpenClosePanel(sender, this.panelControl45);
+        }
+
+        private void textEdit101_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEdit44.Text = (sender as TextEdit).Text + ".xml";
         }
     }
 }
