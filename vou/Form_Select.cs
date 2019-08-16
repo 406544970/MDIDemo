@@ -474,7 +474,7 @@ namespace MDIDemo.vou
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                             textEdit10.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                         else
-                            textEdit10.Text = TableAlias;
+                            textEdit10.Text = TableAlias.Length == 0 ? "main": TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox2);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
@@ -490,7 +490,7 @@ namespace MDIDemo.vou
                             this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit11.Text = TableAlias;
+                            textEdit11.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString(): TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox10, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
@@ -506,7 +506,7 @@ namespace MDIDemo.vou
                             this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit12.Text = TableAlias;
+                            textEdit12.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox18, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox23, "");
@@ -522,7 +522,7 @@ namespace MDIDemo.vou
                             this.radioGroup19.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit57.Text = TableAlias;
+                            textEdit57.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox26, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox31, "");
@@ -538,7 +538,7 @@ namespace MDIDemo.vou
                             this.radioGroup22.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit61.Text = TableAlias;
+                            textEdit61.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox34, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox39, "");

@@ -2684,7 +2684,7 @@ namespace MDIDemo.PublicClass
                                     , class_Sub.DtoClassName
                                     , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             else
-                                stringBuilder.AppendFormat("List<{0}> {0}s = "
+                                stringBuilder.AppendFormat("List<{0}> {1}s = "
                                     , _GetServiceReturnType(class_Sub, false)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
 
