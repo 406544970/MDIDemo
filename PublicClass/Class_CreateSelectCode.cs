@@ -449,7 +449,7 @@ namespace MDIDemo.PublicClass
                     {
                         string IfLabel = null;
                         string NowWhere = null;
-                        if (class_Field.WhereType == "AND")
+                        if (class_Field.WhereType == "AND" || class_Field.WhereType == "OR")
                         {
                             if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数") && class_Field.LogType.IndexOf("NULL") == -1)
                             {
@@ -457,23 +457,18 @@ namespace MDIDemo.PublicClass
                                 , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
                             }
                         }
-                        if (class_Field.WhereType == "OR")
-                        {
-                            IfLabel = string.Format("{1}<when test=\"{0} != null\">\r\n"
-                                , InParaFieldName, class_ToolSpace.GetSetSpaceCount(4));
-                        }
-                        NowWhere = string.Format("{0} AND {1} "
-                            , class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 4 : 5)
+                        NowWhere = string.Format("{0} {2} {1} "
+                            , class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 4 : 5)
                             , FieldName
                             , class_Field.WhereType);
                         if (class_Field.LogType.IndexOf("IN") > -1)
                         {
                             NowWhere += string.Format("{2}\r\n{0}<foreach item = \"item\" index = \"index\" collection = \"{1}\" open = \"(\" separator = \", \" close = \")\" >\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 4 : 5)
+                                , class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 4 : 5)
                                 , InParaFieldName
                                 , class_Field.LogType);
-                            NowWhere += class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 5 : 6) + "#{item}\r\n";
-                            NowWhere += string.Format("{0}</foreach>\r\n", class_ToolSpace.GetSetSpaceCount(class_Field.WhereType == "AND" ? 4 : 5));
+                            NowWhere += class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 5 : 6) + "#{item}\r\n";
+                            NowWhere += string.Format("{0}</foreach>\r\n", class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 4 : 5));
                             if (class_Field.WhereIsNull)
                             {
                                 NowWhere += string.Format("{0}</if>\r\n", class_ToolSpace.GetSetSpaceCount(3));
@@ -514,16 +509,12 @@ namespace MDIDemo.PublicClass
                                 NowWhere = string.Format("{0}<![CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(4), NowWhere.Trim());
                             else
                                 NowWhere += "\r\n";
-                            if (class_Field.WhereType == "AND")
+                            if (class_Field.WhereType == "AND" || class_Field.WhereType == "OR")
                             {
                                 if (class_Field.WhereIsNull && class_Field.WhereValue.Equals("参数") && class_Field.LogType.IndexOf("IN") == -1)
                                 {
                                     NowWhere += string.Format("{0}</if>\r\n", class_ToolSpace.GetSetSpaceCount(3));
                                 }
-                            }
-                            if (class_Field.WhereType == "OR")
-                            {
-                                NowWhere += string.Format("{0}</when>\r\n", class_ToolSpace.GetSetSpaceCount(4));
                             }
                         }
                         if (class_Field.WhereType == "AND")
@@ -580,9 +571,7 @@ namespace MDIDemo.PublicClass
             }
             if (stringBuilderWhereOr.Length > 0)
             {
-                stringBuilderWhereAnd.AppendFormat("{0}<choose>\r\n", class_ToolSpace.GetSetSpaceCount(3));
                 stringBuilderWhereAnd.Append(stringBuilderWhereOr.ToString());
-                stringBuilderWhereAnd.AppendFormat("{0}</choose>\r\n", class_ToolSpace.GetSetSpaceCount(3));
             }
             if (stringBuilderWhereAnd.Length > 0)
             {
