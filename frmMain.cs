@@ -269,10 +269,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         private void iExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (MessageBox.Show("您确定要退出此系统吗？", "温馨提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                Close();
-            }
+            this.Close();
         }
 
         private void iCascade_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -500,26 +497,32 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            WaitDialogForm waitDialogForm = new WaitDialogForm("正在保存当前状态......", "温馨提示");
-            List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
-            foreach (XtraMdiTabPage xtra in xtraTabbedMdiManager1.Pages)
+            if (MessageBox.Show("您确定要退出此系统吗？", "温馨提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                if (ActiveMDIForm.Tag != null)
+                WaitDialogForm waitDialogForm = new WaitDialogForm("正在保存当前状态......", "温馨提示");
+                List<Class_WindowType> class_WindowTypes = new List<Class_WindowType>();
+                foreach (XtraMdiTabPage xtra in xtraTabbedMdiManager1.Pages)
                 {
-                    Class_WindowType class_WindowType = new Class_WindowType();
-                    class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
-                    if (class_WindowType != null)
+                    if (ActiveMDIForm.Tag != null)
                     {
-                        if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
-                            class_WindowType.ActiveSign = true;
-                        class_WindowTypes.Add(class_WindowType);
+                        Class_WindowType class_WindowType = new Class_WindowType();
+                        class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
+                        if (class_WindowType != null)
+                        {
+                            if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
+                                class_WindowType.ActiveSign = true;
+                            class_WindowTypes.Add(class_WindowType);
+                        }
                     }
                 }
+                Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
+                class_SQLiteOperator.SaveCurrentOpenWin(class_WindowTypes);
+                waitDialogForm.Close();
+                waitDialogForm.Dispose();
+                e.Cancel = false;
             }
-            Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
-            class_SQLiteOperator.SaveCurrentOpenWin(class_WindowTypes);
-            waitDialogForm.Close();
-            waitDialogForm.Dispose();
+            else
+                e.Cancel = true;
         }
 
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
