@@ -1303,11 +1303,13 @@ namespace MDIDemo.vou
 
         private void barButtonItem19_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //
+            class_SelectAllModel.class_SelectDataBase.GetDataBaseDefault();
+            propertyGridControl3.Refresh();
         }
 
         private void barButtonItem20_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //存入默认值
             Class_DataBaseConDefault class_DataBaseConDefault = new Class_DataBaseConDefault()
             {
                 dataBaseName = class_SelectAllModel.class_SelectDataBase.dataBaseName,

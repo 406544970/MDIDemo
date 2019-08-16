@@ -56,6 +56,5 @@ namespace MDIDemo.PublicClass
         /// <param name="FunctionName">函数名</param>
         /// <returns></returns>
         bool IsPolymerization(string FunctionName);
-
     }
 }

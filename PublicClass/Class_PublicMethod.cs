@@ -20,7 +20,10 @@ namespace MDIDemo.PublicClass
 
         private bool SaveToXml<T>(string xmlPath, string fileName, T t)
         {
+            bool SaveOk = false;
             string PathXmlSolutionName = string.Format("{0}\\{1}", Application.StartupPath, xmlPath);
+            if (!System.IO.Directory.Exists(PathXmlSolutionName))
+                System.IO.Directory.CreateDirectory(PathXmlSolutionName); 
             Class_PageInfomationMode class_PageInfomationMode = new Class_PageInfomationMode();
             Type type = t.GetType();
             switch (type.Name)
@@ -41,7 +44,11 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.finishCount = 0;
                         class_PageInfomationMode.methodRemark = class_SelectAllModel.class_Create.MethodRemark;
                         class_PageInfomationMode.readOnly = class_SelectAllModel.class_Create.ReadOnly;
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
+                    break;
+                case "Class_DataBaseConDefault":
+                    SaveOk = true;
                     break;
                 default:
                     {
@@ -59,10 +66,11 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.finishCount = 0;
                         class_PageInfomationMode.methodRemark = class_SelectAllModel.class_Create.MethodRemark;
                         class_PageInfomationMode.readOnly = class_SelectAllModel.class_Create.ReadOnly;
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
             }
-            if (class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode))
+            if (SaveOk)
                 return xmlUtil.ObjectSerialXml<T>(PathXmlSolutionName, fileName, t);
             else
                 return false;

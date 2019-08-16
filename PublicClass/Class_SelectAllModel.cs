@@ -659,7 +659,7 @@ namespace MDIDemo.PublicClass
         #region 数据库链接属性
         public partial class Class_SelectDataBase
         {
-            public Class_SelectDataBase()
+            public void GetDataBaseDefault()
             {
                 Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
                 Class_DataBaseConDefault class_DataBaseConDefault = new Class_DataBaseConDefault();
@@ -683,6 +683,10 @@ namespace MDIDemo.PublicClass
                     dataSourceUrl = class_DataBaseConDefault.dataSourceUrl;
                     Port = class_DataBaseConDefault.Port;
                 }
+            }
+            public Class_SelectDataBase()
+            {
+                GetDataBaseDefault();
             }
 
             [Browsable(true)]

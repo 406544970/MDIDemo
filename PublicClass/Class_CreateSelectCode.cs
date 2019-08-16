@@ -2256,7 +2256,9 @@ namespace MDIDemo.PublicClass
                         {
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2));
                             if (class_SelectAllModel.IsMultTable)
-                                stringBuilder.AppendFormat("List<{0}> {0}s = ", class_Sub.DtoClassName);
+                                stringBuilder.AppendFormat("List<{0}> {1}s = "
+                                    , class_Sub.DtoClassName
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             else
                                 stringBuilder.AppendFormat("List<{0}> {0}s = ", _GetServiceReturnType(class_Sub, false));
 
@@ -2283,7 +2285,7 @@ namespace MDIDemo.PublicClass
                             {
                                 stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , class_Sub.DtoClassName);
+                                    , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             }
                             else
                             {
