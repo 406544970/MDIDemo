@@ -390,7 +390,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             DataColumn HavingCondition = new DataColumn("HavingCondition", typeof(string));
                             DataColumn HavingValue = new DataColumn("HavingValue", typeof(string));
 
-                            SelectSelect.DefaultValue = false;
+                            SelectSelect.DefaultValue = true;
                             TrimSign.DefaultValue = true;
                             WhereSelect.DefaultValue = false;
                             WhereTrim.DefaultValue = true;

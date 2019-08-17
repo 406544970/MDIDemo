@@ -268,7 +268,7 @@ namespace MDIDemo.vou
             radioGroup1.SelectedIndex = 0;
             radioGroup2.SelectedIndex = 0;
 
-            setIniSkin(publicSkinName);
+            SetIniSkin(publicSkinName);
             xtraTabControl3.SelectedTabPageIndex = 0;
             xtraTabControl4.SelectedTabPageIndex = 0;
             xtraTabControl5.SelectedTabPageIndex = 0;
@@ -415,7 +415,7 @@ namespace MDIDemo.vou
             this.simpleButton2.Text = "折叠";
         }
 
-        private void setIniSkin(string skinName)
+        private void SetIniSkin(string skinName)
         {
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(skinName);
         }
@@ -797,27 +797,45 @@ namespace MDIDemo.vou
         /// <summary>
         /// 保存前的验证
         /// </summary>
-        /// <returns></returns>
-        private bool _CheckToXml()
-        {
-            return _CheckToXml(false);
-        }
-        /// <summary>
-        /// 保存前的验证
-        /// </summary>
-        /// <param name="IsMongodb">是否Mongodb同步</param>
+        /// <param name="IsMongodb">是否Mongodb读写分离</param>
         /// <returns></returns>
         private bool _CheckToXml(bool IsMongodb)
         {
+            WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命验证中......", "温馨提示");
+
+            #region 移动BandedGridView焦点
+            BandedGridView[] bandedGridViews = new BandedGridView[this.xtraTabControl5.TabPages.Count];
+            bandedGridViews[0] = gridControl1.MainView as BandedGridView;
+            bandedGridViews[1] = gridControl2.MainView as BandedGridView;
+            bandedGridViews[2] = gridControl3.MainView as BandedGridView;
+            bandedGridViews[3] = gridControl4.MainView as BandedGridView;
+            bandedGridViews[4] = gridControl5.MainView as BandedGridView;
+            for (int i = 0; i < bandedGridViews.Length; i++)
+            {
+                BandedGridView item = bandedGridViews[i];
+                if (item.RowCount > 0)
+                {
+                    int FocuedCount = item.FocusedRowHandle;
+                    if (FocuedCount == item.RowCount - 1)
+                        item.FocusedRowHandle = 0;
+                    if (FocuedCount == 0)
+                        item.FocusedRowHandle = item.RowCount - 1;
+                    if (FocuedCount > 0 && FocuedCount < item.RowCount - 1)
+                        item.FocusedRowHandle = 0;
+                }
+            }
+            #endregion
+
             bool IsOk = true;
-            #region 数据库参数验证
-            if (IsOk)
+
+            #region Mongodb参数验证----------?
+            if (IsOk && IsMongodb)
             {
                 IsOk = true;
             }
             #endregion
 
-            #region Mongodb参数验证
+            #region 数据库参数验证
             if (IsOk)
             {
                 IsOk = true;
@@ -846,9 +864,230 @@ namespace MDIDemo.vou
             }
             #endregion
 
+            int SelectCount = 0;
+            int WhereCount = 0;
+            #region Select字段非空验证
+            if (IsOk)
+            {
+                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
+                if (bandedGridView.RowCount > 0)
+                {
+                    for (int i = 0; i < bandedGridView.RowCount; i++)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(i);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                            SelectCount++;
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                            WhereCount++;
+                    }
+                }
+                bandedGridView = gridControl2.MainView as BandedGridView;
+                if (bandedGridView.RowCount > 0)
+                {
+                    for (int i = 0; i < bandedGridView.RowCount; i++)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(i);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                            SelectCount++;
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                            WhereCount++;
+                    }
+                }
+                bandedGridView = gridControl3.MainView as BandedGridView;
+                if (bandedGridView.RowCount > 0)
+                {
+                    for (int i = 0; i < bandedGridView.RowCount; i++)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(i);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                            SelectCount++;
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                            WhereCount++;
+                    }
+                }
+                bandedGridView = gridControl4.MainView as BandedGridView;
+                if (bandedGridView.RowCount > 0)
+                {
+                    for (int i = 0; i < bandedGridView.RowCount; i++)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(i);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                            SelectCount++;
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                            WhereCount++;
+                    }
+                }
+                bandedGridView = gridControl5.MainView as BandedGridView;
+                if (bandedGridView.RowCount > 0)
+                {
+                    for (int i = 0; i < bandedGridView.RowCount; i++)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(i);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                            SelectCount++;
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                            WhereCount++;
+                    }
+                }
+                IsOk = SelectCount > 0 ? true : false;
+                if (!IsOk)
+                {
+                    MessageBox.Show("请选择Select字段！"
+                        , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.xtraTabControl3.SelectedTabPageIndex = 0;
+                    this.xtraTabControl5.SelectedTabPageIndex = 0;
+                }
+            }
+            #endregion
+
+            #region 输入参数非空验证
+            if (IsOk)
+            {
+                int ActiveIndex = -1;
+                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string LogType = dataRow["LogType"].ToString();
+                            string WhereValue = dataRow["WhereValue"].ToString();
+                            if (LogType.IndexOf("NULL") < 0 && (WhereValue == null || WhereValue.Length == 0))
+                            {
+                                MessageBox.Show(string.Format("主表:\r\n   字段[{0}]的WHERE值不能为空！", FieldName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                                ActiveIndex = 0;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl2.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string LogType = dataRow["LogType"].ToString();
+                            string WhereValue = dataRow["WhereValue"].ToString();
+                            if (LogType.IndexOf("NULL") < 0 && (WhereValue == null || WhereValue.Length == 0))
+                            {
+                                ActiveIndex = 1;
+                                MessageBox.Show(string.Format("从表{1}:\r\n   字段[{0}]的WHERE值不能为空！"
+                                    , FieldName, ActiveIndex.ToString())
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl3.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string LogType = dataRow["LogType"].ToString();
+                            string WhereValue = dataRow["WhereValue"].ToString();
+                            if (LogType.IndexOf("NULL") < 0 && (WhereValue == null || WhereValue.Length == 0))
+                            {
+                                ActiveIndex = 2;
+                                MessageBox.Show(string.Format("从表{1}:\r\n   字段[{0}]的WHERE值不能为空！"
+                                    , FieldName, ActiveIndex.ToString())
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl4.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string LogType = dataRow["LogType"].ToString();
+                            string WhereValue = dataRow["WhereValue"].ToString();
+                            if (LogType.IndexOf("NULL") < 0 && (WhereValue == null || WhereValue.Length == 0))
+                            {
+                                ActiveIndex = 3;
+                                MessageBox.Show(string.Format("从表{1}:\r\n   字段[{0}]的WHERE值不能为空！"
+                                    , FieldName, ActiveIndex.ToString())
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl5.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string LogType = dataRow["LogType"].ToString();
+                            string WhereValue = dataRow["WhereValue"].ToString();
+                            if (LogType.IndexOf("NULL") < 0 && (WhereValue == null || WhereValue.Length == 0))
+                            {
+                                ActiveIndex = 4;
+                                MessageBox.Show(string.Format("从表{1}:\r\n   字段[{0}]的WHERE值不能为空！"
+                                    , FieldName, ActiveIndex.ToString())
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                if (!IsOk)
+                {
+                    this.xtraTabControl3.SelectedTabPageIndex = 0;
+                    this.xtraTabControl5.SelectedTabPageIndex = ActiveIndex;
+                }
+            }
+            #endregion
+
+            #region Param类名非空验证
+            if (IsOk && WhereCount > 1)
+            {
+                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
+                if (bandedGridView.RowCount > 0)
+                {
+                    if (this.textEdit99.Text == null || this.textEdit99.Text.Length == 0)
+                    {
+                        MessageBox.Show(string.Format("{0}类名不能为空！", "InPutParam")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                        this.xtraTabControl3.SelectedTabPageIndex = 1;
+                        this.xtraTabControl8.SelectedTabPageIndex = 0;
+                    }
+                }
+            }
+            #endregion
+
             #region 多表时的别名非空验证
             if (IsOk)
             {
+                int ActiveIndex = -1;
                 if (this.gridControl2.MainView.RowCount
                     + this.gridControl3.MainView.RowCount
                     + this.gridControl4.MainView.RowCount
@@ -860,6 +1099,7 @@ namespace MDIDemo.vou
                         {
                             MessageBox.Show("主表:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             IsOk = false;
+                            ActiveIndex = 1;
                         }
                     }
                     if (IsOk && this.gridControl2.MainView.RowCount > 0)
@@ -868,6 +1108,7 @@ namespace MDIDemo.vou
                         {
                             MessageBox.Show("从表1:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             IsOk = false;
+                            ActiveIndex = 2;
                         }
                     }
                     if (IsOk && this.gridControl3.MainView.RowCount > 0)
@@ -876,6 +1117,7 @@ namespace MDIDemo.vou
                         {
                             MessageBox.Show("从表2:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             IsOk = false;
+                            ActiveIndex = 3;
                         }
                     }
                     if (IsOk && this.gridControl4.MainView.RowCount > 0)
@@ -884,6 +1126,7 @@ namespace MDIDemo.vou
                         {
                             MessageBox.Show("从表3:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             IsOk = false;
+                            ActiveIndex = 4;
                         }
                     }
                     if (IsOk && this.gridControl5.MainView.RowCount > 0)
@@ -892,7 +1135,13 @@ namespace MDIDemo.vou
                         {
                             MessageBox.Show("从表4:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             IsOk = false;
+                            ActiveIndex = 5;
                         }
+                    }
+                    if (!IsOk)
+                    {
+                        this.xtraTabControl3.SelectedTabPageIndex = 1;
+                        this.xtraTabControl5.SelectedTabPageIndex = ActiveIndex;
                     }
                 }
             }
@@ -901,6 +1150,7 @@ namespace MDIDemo.vou
             #region 字段类型与函数合法性
             if (IsOk)
             {
+                int ActiveIndex = -1;
                 BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
                 if (IsOk && bandedGridView.RowCount > 0)
                 {
@@ -918,6 +1168,7 @@ namespace MDIDemo.vou
                                 MessageBox.Show(string.Format("主表:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
                                     , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 IsOk = false;
+                                ActiveIndex = 0;
                             }
                         }
                     }
@@ -939,6 +1190,7 @@ namespace MDIDemo.vou
                                 MessageBox.Show(string.Format("从表1:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
                                     , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 IsOk = false;
+                                ActiveIndex = 1;
                             }
                         }
                     }
@@ -960,6 +1212,7 @@ namespace MDIDemo.vou
                                 MessageBox.Show(string.Format("从表2:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
                                     , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 IsOk = false;
+                                ActiveIndex = 2;
                             }
                         }
                     }
@@ -981,6 +1234,7 @@ namespace MDIDemo.vou
                                 MessageBox.Show(string.Format("从表3:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
                                     , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 IsOk = false;
+                                ActiveIndex = 3;
                             }
                         }
                     }
@@ -1002,9 +1256,15 @@ namespace MDIDemo.vou
                                 MessageBox.Show(string.Format("从表4:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
                                     , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 IsOk = false;
+                                ActiveIndex = 4;
                             }
                         }
                     }
+                }
+                if (!IsOk)
+                {
+                    this.xtraTabControl3.SelectedTabPageIndex = 0;
+                    this.xtraTabControl5.SelectedTabPageIndex = ActiveIndex;
                 }
             }
             #endregion
@@ -1159,6 +1419,7 @@ namespace MDIDemo.vou
             if (IsOk)
             {
                 int index = 1;
+                int ActiveIndex = -1;
                 BandedGridView bandedGridView = gridControl2.MainView as BandedGridView;
                 if (IsOk && bandedGridView.RowCount > 0)
                 {
@@ -1168,6 +1429,7 @@ namespace MDIDemo.vou
                             , "主", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 1;
                     }
                     if (IsOk && (this.buttonEdit2.Text == null || this.buttonEdit2.Text.Length == 0))
                     {
@@ -1175,6 +1437,7 @@ namespace MDIDemo.vou
                             , "外", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 1;
                     }
                 }
                 index++;
@@ -1187,6 +1450,7 @@ namespace MDIDemo.vou
                             , "主", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 2;
                     }
                     if (IsOk && (this.buttonEdit3.Text == null || this.buttonEdit3.Text.Length == 0))
                     {
@@ -1194,6 +1458,7 @@ namespace MDIDemo.vou
                             , "外", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 2;
                     }
                 }
                 index++;
@@ -1206,6 +1471,7 @@ namespace MDIDemo.vou
                             , "主", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 3;
                     }
                     if (IsOk && (this.buttonEdit5.Text == null || this.buttonEdit5.Text.Length == 0))
                     {
@@ -1213,6 +1479,7 @@ namespace MDIDemo.vou
                             , "外", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 3;
                     }
                 }
                 index++;
@@ -1225,6 +1492,7 @@ namespace MDIDemo.vou
                             , "主", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 4;
                     }
                     if (IsOk && (this.buttonEdit7.Text == null || this.buttonEdit7.Text.Length == 0))
                     {
@@ -1232,7 +1500,13 @@ namespace MDIDemo.vou
                             , "外", index.ToString())
                             , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         IsOk = false;
+                        ActiveIndex = 4;
                     }
+                }
+                if (!IsOk)
+                {
+                    this.xtraTabControl3.SelectedTabPageIndex = 0;
+                    this.xtraTabControl5.SelectedTabPageIndex = ActiveIndex;
                 }
             }
             #endregion
@@ -1244,87 +1518,206 @@ namespace MDIDemo.vou
                 {
                     MessageBox.Show("全局包名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     IsOk = false;
+                    this.xtraTabControl3.SelectedTabPageIndex = 1;
                 }
             }
             #endregion
 
-            #region NameSpace合法性
+            #region NameSpace及Dto类名非空验证
             if (IsOk)
             {
-                IsOk = true;
+                int ActiveIndex = -1;
+                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (this.textEdit16.Text == null || this.textEdit16.Text.Length == 0)
+                    {
+                        MessageBox.Show(string.Format("{0}表:NameSpace不能为空！", "主")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit19.Text == null || this.textEdit19.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}表:Dto类名不能为空！", "主")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (!IsOk)
+                        ActiveIndex = 0;
+                }
+                bandedGridView = gridControl2.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (this.textEdit31.Text == null || this.textEdit31.Text.Length == 0)
+                    {
+                        ActiveIndex = 1;
+                        MessageBox.Show(string.Format("{0}表{1}:NameSpace不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit97.Text == null || this.textEdit97.Text.Length == 0))
+                    {
+                        ActiveIndex = 1;
+                        MessageBox.Show(string.Format("{0}表{1}:Dto类名不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (!IsOk)
+                        ActiveIndex = 1;
+                }
+                bandedGridView = gridControl3.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (this.textEdit41.Text == null || this.textEdit41.Text.Length == 0)
+                    {
+                        ActiveIndex = 2;
+                        MessageBox.Show(string.Format("{0}表{1}:NameSpace不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit95.Text == null || this.textEdit95.Text.Length == 0))
+                    {
+                        ActiveIndex = 2;
+                        MessageBox.Show(string.Format("{0}表{1}:Dto类名不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (!IsOk)
+                        ActiveIndex = 2;
+                }
+                bandedGridView = gridControl4.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (this.textEdit73.Text == null || this.textEdit73.Text.Length == 0)
+                    {
+                        ActiveIndex = 3;
+                        MessageBox.Show(string.Format("{0}表{1}:NameSpace不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit91.Text == null || this.textEdit91.Text.Length == 0))
+                    {
+                        ActiveIndex = 3;
+                        MessageBox.Show(string.Format("{0}表{1}:Dto类名不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (!IsOk)
+                        ActiveIndex = 3;
+                }
+                bandedGridView = gridControl5.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (this.textEdit82.Text == null || this.textEdit82.Text.Length == 0)
+                    {
+                        ActiveIndex = 4;
+                        MessageBox.Show(string.Format("{0}表{1}:NameSpace不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit93.Text == null || this.textEdit93.Text.Length == 0))
+                    {
+                        ActiveIndex = 4;
+                        MessageBox.Show(string.Format("{0}表{1}:Dto类名不能为空！", "从", ActiveIndex)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (!IsOk)
+                        ActiveIndex = 4;
+                }
+                if (!IsOk)
+                {
+                    this.xtraTabControl3.SelectedTabPageIndex = 1;
+                    this.xtraTabControl8.SelectedTabPageIndex = ActiveIndex;
+                }
             }
             #endregion
 
-            #region ResultMap合法性
+            #region ResultMapId、 Model、 Dao、 ServiceInterFace、 ServiceImpl、 Control、 Control层Swagger说明、 Control层Swagger描述、 方法名、方法说明、方法描述非空验证
             if (IsOk)
             {
-                IsOk = true;
+                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
+                if (bandedGridView.RowCount > 0)
+                {
+                    if (this.radioGroup7.SelectedIndex == 0)
+                    {
+                        if (this.textEdit22.Text == null || this.textEdit22.Text.Length == 0)
+                        {
+                            MessageBox.Show(string.Format("{0}名不能为空！", "ResultMapId")
+                                , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
+                    }
+                    if (IsOk && (this.textEdit100.Text == null || this.textEdit100.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}类名不能为空！", "Model")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit101.Text == null || this.textEdit101.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}类名不能为空！", "Dao")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit102.Text == null || this.textEdit102.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}类名不能为空！", "ServiceInterFace")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit103.Text == null || this.textEdit103.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}类名不能为空！", "ServiceImpl")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit54.Text == null || this.textEdit54.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}类名不能为空！", "Control")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit47.Text == null || this.textEdit47.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}不能为空！", "Control层Swagger说明")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit46.Text == null || this.textEdit46.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}不能为空！", "Control层Swagger描述")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit14.Text == null || this.textEdit14.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}不能为空！", "方法名")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit15.Text == null || this.textEdit15.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}不能为空！", "方法说明")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.textEdit20.Text == null || this.textEdit20.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("{0}不能为空！", "方法描述")
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (!IsOk)
+                    {
+                        this.xtraTabControl3.SelectedTabPageIndex = 1;
+                        this.xtraTabControl8.SelectedTabPageIndex = 0;
+                    }
+                }
             }
             #endregion
 
-            #region 输入参数非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region Model类名非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region Dao类名非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region Dto类名非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region Server InterFace类名非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region Service Impl类名非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region Control类名非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region 方法名、方法说明、方法描述非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
-            #region Select字段非空验证
-            if (IsOk)
-            {
-                IsOk = true;
-            }
-            #endregion
-
+            waitDialogForm.Close();
             return IsOk;
         }
         private void _SaveSelectToXml(bool IsDisplayLog)
@@ -1616,7 +2009,7 @@ namespace MDIDemo.vou
         }
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (_CheckToXml())
+            if (_CheckToXml(this.checkEdit20.Checked))
                 _SaveSelectToXml(true);
         }
 
@@ -1881,6 +2274,8 @@ namespace MDIDemo.vou
 
         private void CreateCode()
         {
+            if (!_CheckToXml(this.checkEdit20.Checked))
+                return;
             WaitDialogForm waitDialogForm = new WaitDialogForm("正在玩命生成中......", "温馨提示");
             //1：保存到XML
             _SaveSelectToXml(true);
@@ -2191,7 +2586,6 @@ namespace MDIDemo.vou
             GetLinkField(this.bandedGridView5, sender);
         }
 
-
         private void OpenClosePanel(object sender, PanelControl panelControl)
         {
             if (panelControl.Height > (sender as SimpleButton).Height + 10)
@@ -2201,7 +2595,7 @@ namespace MDIDemo.vou
             }
             else
             {
-                panelControl.Height = 197;
+                panelControl.Height = 245;
                 (sender as SimpleButton).Text = "折叠";
             }
         }
