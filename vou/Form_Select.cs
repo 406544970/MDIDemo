@@ -796,6 +796,15 @@ namespace MDIDemo.vou
         }
         private bool _CheckToXml()
         {
+            //多表时的别名非空验证
+            //字段类型与函数合法性
+            //字段类型与Having函数合法性
+            //Having函数与值合法性
+            //关联外键字段非空验证
+            //全包名合法性
+            //NameSpace合法性
+            //ResultMap合法性
+            //方法名、方法说明、方法描述非空验证
             return true;
         }
         private void _SaveSelectToXml(bool IsDisplayLog)

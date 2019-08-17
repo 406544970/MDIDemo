@@ -729,5 +729,10 @@ namespace MDIDemo.PublicClass
         {
             throw new NotImplementedException();
         }
+
+        public bool FieldTypeAndFunction(string FieldType, string FunctionName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

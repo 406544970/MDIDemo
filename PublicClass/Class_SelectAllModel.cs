@@ -692,7 +692,7 @@ namespace MDIDemo.PublicClass
             [Browsable(true)]
             [Category("数据库配置")]
             [DisplayName("数据库类型名")]
-            [Description("将支持Mysql、SqlServer 2017")]
+            [Description("将支持Mysql、SqlServer 2017\r\n右键菜单可设置为默认值")]
             [ReadOnly(false)]
             [TypeConverter(typeof(DataBaseTypeItem))] //使用自定义的属性下拉框MothedTypeItem
                                                       //[DefaultValue("SqlServer 2017")]
@@ -704,7 +704,7 @@ namespace MDIDemo.PublicClass
             [Browsable(true)]
             [Category("数据库配置")]
             [DisplayName("数据库名称")]
-            [Description("指定数据库名")]
+            [Description("指定数据库名\r\n右键菜单可设置为默认值")]
             [ReadOnly(false)]
             [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string dataBaseName
@@ -715,7 +715,7 @@ namespace MDIDemo.PublicClass
             [Browsable(true)]
             [Category("数据库配置")]
             [DisplayName("数据库链接地址")]
-            [Description("链接地址")]
+            [Description("链接地址\r\n右键菜单可设置为默认值")]
             [ReadOnly(false)]
             [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string dataSourceUrl
@@ -726,7 +726,7 @@ namespace MDIDemo.PublicClass
             [Browsable(true)]
             [Category("数据库配置")]
             [DisplayName("数据库链接端口号")]
-            [Description("此属性，MySql、Oracle数据库有效。")]
+            [Description("此属性，MySql、Oracle数据库有效\r\n右键菜单可设置为默认值")]
             [ReadOnly(false)]
             //[DefaultValue(3306)]
             public int Port
@@ -737,7 +737,7 @@ namespace MDIDemo.PublicClass
             [Browsable(true)]
             [Category("数据库配置")]
             [DisplayName("登录用户")]
-            [Description("用于数据库登录的用户名称")]
+            [Description("用于数据库登录的用户名称\r\n右键菜单可设置为默认值")]
             [ReadOnly(false)]
             [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string dataSourceUserName
@@ -748,7 +748,7 @@ namespace MDIDemo.PublicClass
             [Browsable(true)]
             [Category("数据库配置")]
             [DisplayName("登录密码")]
-            [Description("用于数据库登录的密码")]
+            [Description("用于数据库登录的密码\r\n右键菜单可设置为默认值")]
             [ReadOnly(false)]
             [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string dataSourcePassWord

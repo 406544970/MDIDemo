@@ -773,5 +773,58 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             }
             return IsFinder;
         }
+        /// <summary>
+        /// 字段类型合法性验证
+        /// </summary>
+        /// <param name="FieldType"></param>
+        /// <param name="FunctionName"></param>
+        /// <returns></returns>
+        public bool FieldTypeAndFunction(string FieldType, string FunctionName)
+        {
+            bool IsFinder = true;
+            if (FunctionName == null || FunctionName.Length == 0)
+                return IsFinder;
+
+            switch (FieldType)
+            {
+                case "bigint":
+                case "integer":
+                case "smallint":
+                case "int":
+                case "tinyint":
+                case "float":
+                case "decimal":
+                    if (FunctionName.IndexOf("DATE_FORMAT") > -1)
+                        IsFinder = false;
+                    break;
+                case "char":
+                case "text":
+                case "varchar":
+                    if (FunctionName.IndexOf("DATE_FORMAT") > -1)
+                        IsFinder = false;
+                    if (FunctionName.IndexOf("COUNT") > -1)
+                        IsFinder = false;
+                    if (FunctionName.IndexOf("SUM") > -1)
+                        IsFinder = false;
+                    if (FunctionName.IndexOf("AVG") > -1)
+                        IsFinder = false;
+                    if (FunctionName.IndexOf("MAX") > -1)
+                        IsFinder = false;
+                    if (FunctionName.IndexOf("MIN") > -1)
+                        IsFinder = false;
+                    break;
+                case "datetime":
+                case "date":
+                case "time":
+                    break;
+                case "bit":
+                    if (FunctionName.IndexOf("DATE_FORMAT") > -1)
+                        IsFinder = false;
+                    break;
+                default:
+                    break;
+            }
+            return IsFinder;
+        }
     }
 }
