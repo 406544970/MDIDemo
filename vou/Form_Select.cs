@@ -869,64 +869,19 @@ namespace MDIDemo.vou
             #region Select字段非空验证
             if (IsOk)
             {
-                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
-                if (bandedGridView.RowCount > 0)
+                for (int i = 0; i < bandedGridViews.Length; i++)
                 {
-                    for (int i = 0; i < bandedGridView.RowCount; i++)
+                    BandedGridView item = bandedGridViews[i];
+                    if (item.RowCount > 0)
                     {
-                        DataRow dataRow = bandedGridView.GetDataRow(i);
-                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
-                            SelectCount++;
-                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
-                            WhereCount++;
-                    }
-                }
-                bandedGridView = gridControl2.MainView as BandedGridView;
-                if (bandedGridView.RowCount > 0)
-                {
-                    for (int i = 0; i < bandedGridView.RowCount; i++)
-                    {
-                        DataRow dataRow = bandedGridView.GetDataRow(i);
-                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
-                            SelectCount++;
-                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
-                            WhereCount++;
-                    }
-                }
-                bandedGridView = gridControl3.MainView as BandedGridView;
-                if (bandedGridView.RowCount > 0)
-                {
-                    for (int i = 0; i < bandedGridView.RowCount; i++)
-                    {
-                        DataRow dataRow = bandedGridView.GetDataRow(i);
-                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
-                            SelectCount++;
-                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
-                            WhereCount++;
-                    }
-                }
-                bandedGridView = gridControl4.MainView as BandedGridView;
-                if (bandedGridView.RowCount > 0)
-                {
-                    for (int i = 0; i < bandedGridView.RowCount; i++)
-                    {
-                        DataRow dataRow = bandedGridView.GetDataRow(i);
-                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
-                            SelectCount++;
-                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
-                            WhereCount++;
-                    }
-                }
-                bandedGridView = gridControl5.MainView as BandedGridView;
-                if (bandedGridView.RowCount > 0)
-                {
-                    for (int i = 0; i < bandedGridView.RowCount; i++)
-                    {
-                        DataRow dataRow = bandedGridView.GetDataRow(i);
-                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
-                            SelectCount++;
-                        if (Convert.ToBoolean(dataRow["WhereSelect"]))
-                            WhereCount++;
+                        for (int j = 0; j < item.RowCount; j++)
+                        {
+                            DataRow dataRow = item.GetDataRow(j);
+                            if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                                SelectCount++;
+                            if (Convert.ToBoolean(dataRow["WhereSelect"]))
+                                WhereCount++;
+                        }
                     }
                 }
                 IsOk = SelectCount > 0 ? true : false;
