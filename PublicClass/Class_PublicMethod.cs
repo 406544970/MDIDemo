@@ -42,7 +42,6 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.doOperatorId = class_SelectAllModel.class_Create.CreateDo;
                         class_PageInfomationMode.frontOperatorId = class_SelectAllModel.class_Create.CreateFrontDo;
                         class_PageInfomationMode.finishCount = 0;
-                        class_PageInfomationMode.methodRemark = class_SelectAllModel.class_Create.MethodRemark;
                         class_PageInfomationMode.readOnly = class_SelectAllModel.class_Create.ReadOnly;
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
@@ -64,7 +63,6 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.doOperatorId = class_SelectAllModel.class_Create.CreateDo;
                         class_PageInfomationMode.frontOperatorId = class_SelectAllModel.class_Create.CreateFrontDo;
                         class_PageInfomationMode.finishCount = 0;
-                        class_PageInfomationMode.methodRemark = class_SelectAllModel.class_Create.MethodRemark;
                         class_PageInfomationMode.readOnly = class_SelectAllModel.class_Create.ReadOnly;
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }

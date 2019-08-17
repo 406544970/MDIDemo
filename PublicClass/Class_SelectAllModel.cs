@@ -512,16 +512,6 @@ namespace MDIDemo.PublicClass
             }
             [Browsable(true)]
             [Category("生成配置")]
-            [DisplayName("方法说明")]
-            [Description("详细说明")]
-            [ReadOnly(false)]
-            [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
-            public string MethodRemark
-            {
-                get; set;
-            }
-            [Browsable(true)]
-            [Category("生成配置")]
             [DisplayName("生成Swagger2文档")]
             [Description("true:生成注释文档，false:不生成注释文档；")]
             [ReadOnly(false)]

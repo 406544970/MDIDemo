@@ -474,7 +474,7 @@ namespace MDIDemo.vou
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                             textEdit10.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
                         else
-                            textEdit10.Text = TableAlias.Length == 0 ? "main": TableAlias;
+                            textEdit10.Text = TableAlias.Length == 0 ? "main" : TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox2);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
@@ -490,7 +490,7 @@ namespace MDIDemo.vou
                             this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[PageSelectIndex].LinkType;
                         }
                         else
-                            textEdit11.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString(): TableAlias;
+                            textEdit11.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox10, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
@@ -794,18 +794,538 @@ namespace MDIDemo.vou
 
             return class_Sub;
         }
+        /// <summary>
+        /// 保存前的验证
+        /// </summary>
+        /// <returns></returns>
         private bool _CheckToXml()
         {
-            //多表时的别名非空验证
-            //字段类型与函数合法性
-            //字段类型与Having函数合法性
-            //Having函数与值合法性
-            //关联外键字段非空验证
-            //全包名合法性
-            //NameSpace合法性
-            //ResultMap合法性
-            //方法名、方法说明、方法描述非空验证
-            return true;
+            return _CheckToXml(false);
+        }
+        /// <summary>
+        /// 保存前的验证
+        /// </summary>
+        /// <param name="IsMongodb">是否Mongodb同步</param>
+        /// <returns></returns>
+        private bool _CheckToXml(bool IsMongodb)
+        {
+            bool IsOk = true;
+            #region 数据库参数验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Mongodb参数验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region 微服务名非空验证
+            if (IsOk)
+            {
+                if (class_SelectAllModel.class_Create.MicroServiceName == null || class_SelectAllModel.class_Create.MicroServiceName.Length == 0)
+                {
+                    MessageBox.Show("属性->生成配置:\r\n   微服务名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    IsOk = false;
+                }
+            }
+            #endregion
+
+            #region 创建者名非空验证
+            if (IsOk)
+            {
+                if (class_SelectAllModel.class_Create.CreateMan == null || class_SelectAllModel.class_Create.CreateMan.Length == 0)
+                {
+                    MessageBox.Show("属性->生成配置:\r\n   创建者姓名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    IsOk = false;
+                }
+            }
+            #endregion
+
+            #region 多表时的别名非空验证
+            if (IsOk)
+            {
+                if (this.gridControl2.MainView.RowCount
+                    + this.gridControl3.MainView.RowCount
+                    + this.gridControl4.MainView.RowCount
+                    + this.gridControl5.MainView.RowCount > 0)
+                {
+                    if (IsOk && this.gridControl1.MainView.RowCount > 0)
+                    {
+                        if (textEdit10.Text == null || textEdit10.Text.Length == 0)
+                        {
+                            MessageBox.Show("主表:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
+                    }
+                    if (IsOk && this.gridControl2.MainView.RowCount > 0)
+                    {
+                        if (textEdit11.Text == null || textEdit11.Text.Length == 0)
+                        {
+                            MessageBox.Show("从表1:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
+                    }
+                    if (IsOk && this.gridControl3.MainView.RowCount > 0)
+                    {
+                        if (textEdit12.Text == null || textEdit12.Text.Length == 0)
+                        {
+                            MessageBox.Show("从表2:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
+                    }
+                    if (IsOk && this.gridControl4.MainView.RowCount > 0)
+                    {
+                        if (textEdit57.Text == null || textEdit57.Text.Length == 0)
+                        {
+                            MessageBox.Show("从表3:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
+                    }
+                    if (IsOk && this.gridControl5.MainView.RowCount > 0)
+                    {
+                        if (textEdit61.Text == null || textEdit61.Text.Length == 0)
+                        {
+                            MessageBox.Show("从表4:\r\n   表别名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #region 字段类型与函数合法性
+            if (IsOk)
+            {
+                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["FunctionName"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("主表:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl2.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["FunctionName"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表1:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl3.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["FunctionName"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表2:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl4.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["FunctionName"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表3:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl5.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["FunctionName"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表4:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #region 字段类型、Having函数与值合法性
+            if (IsOk)
+            {
+                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["HavingSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["HavingFunction"].ToString();
+                            string HavingValue = dataRow["HavingValue"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("主表:\r\n   字段[{0}]的类型[{1}],Having中不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                            if (IsOk && (HavingValue == null || HavingValue.Length == 0))
+                            {
+                                MessageBox.Show(string.Format("主表:\r\n   字段[{0}]的Having函数值不能这空！", FieldName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl2.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["HavingSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["HavingFunction"].ToString();
+                            string HavingValue = dataRow["HavingValue"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表1:\r\n   字段[{0}]的类型[{1}],Having中不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                            if (IsOk && (HavingValue == null || HavingValue.Length == 0))
+                            {
+                                MessageBox.Show(string.Format("从表1:\r\n   字段[{0}]的Having函数值不能这空！", FieldName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl3.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["HavingSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["HavingFunction"].ToString();
+                            string HavingValue = dataRow["HavingValue"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表2:\r\n   字段[{0}]的类型[{1}],Having中不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                            if (IsOk && (HavingValue == null || HavingValue.Length == 0))
+                            {
+                                MessageBox.Show(string.Format("从表2:\r\n   字段[{0}]的Having函数值不能这空！", FieldName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl4.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["HavingSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["HavingFunction"].ToString();
+                            string HavingValue = dataRow["HavingValue"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表3:\r\n   字段[{0}]的类型[{1}],Having中不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                            if (IsOk && (HavingValue == null || HavingValue.Length == 0))
+                            {
+                                MessageBox.Show(string.Format("从表3:\r\n   字段[{0}]的Having函数值不能这空！", FieldName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+                bandedGridView = gridControl5.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    int index = 0;
+                    while (IsOk && index < bandedGridView.RowCount)
+                    {
+                        DataRow dataRow = bandedGridView.GetDataRow(index++);
+                        if (Convert.ToBoolean(dataRow["HavingSelect"]))
+                        {
+                            string FieldName = dataRow["FieldName"].ToString();
+                            string FieldType = dataRow["FieldType"].ToString();
+                            string FunctionName = dataRow["HavingFunction"].ToString();
+                            string HavingValue = dataRow["HavingValue"].ToString();
+                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
+                            {
+                                MessageBox.Show(string.Format("从表4:\r\n   字段[{0}]的类型[{1}],Having中不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                            if (IsOk && (HavingValue == null || HavingValue.Length == 0))
+                            {
+                                MessageBox.Show(string.Format("从表4:\r\n   字段[{0}]的Having函数值不能这空！", FieldName)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #region 关联外键字段非空验证
+            if (IsOk)
+            {
+                int index = 1;
+                BandedGridView bandedGridView = gridControl2.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (IsOk && (this.buttonEdit1.Text == null || this.buttonEdit1.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "主", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.buttonEdit2.Text == null || this.buttonEdit2.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "外", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                }
+                index++;
+                bandedGridView = gridControl3.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (IsOk && (this.buttonEdit4.Text == null || this.buttonEdit4.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "主", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.buttonEdit3.Text == null || this.buttonEdit3.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "外", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                }
+                index++;
+                bandedGridView = gridControl4.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (IsOk && (this.buttonEdit6.Text == null || this.buttonEdit6.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "主", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.buttonEdit5.Text == null || this.buttonEdit5.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "外", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                }
+                index++;
+                bandedGridView = gridControl5.MainView as BandedGridView;
+                if (IsOk && bandedGridView.RowCount > 0)
+                {
+                    if (IsOk && (this.buttonEdit8.Text == null || this.buttonEdit8.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "主", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                    if (IsOk && (this.buttonEdit7.Text == null || this.buttonEdit7.Text.Length == 0))
+                    {
+                        MessageBox.Show(string.Format("从表{1}:\r\n   {0}键字段不能为空！"
+                            , "外", index.ToString())
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
+                    }
+                }
+            }
+            #endregion
+
+            #region 全包名合法性
+            if (IsOk)
+            {
+                if (this.textEdit13.Text == null || this.textEdit13.Text.Length == 0)
+                {
+                    MessageBox.Show("全局包名不能为空！", "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    IsOk = false;
+                }
+            }
+            #endregion
+
+            #region NameSpace合法性
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region ResultMap合法性
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region 输入参数非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Model类名非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Dao类名非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Dto类名非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Server InterFace类名非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Service Impl类名非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Control类名非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region 方法名、方法说明、方法描述非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            #region Select字段非空验证
+            if (IsOk)
+            {
+                IsOk = true;
+            }
+            #endregion
+
+            return IsOk;
         }
         private void _SaveSelectToXml(bool IsDisplayLog)
         {

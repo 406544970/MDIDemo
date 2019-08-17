@@ -262,7 +262,7 @@ namespace MDIDemo.PublicClass
                             DataColumn HavingCondition = new DataColumn("HavingCondition", typeof(string));
                             DataColumn HavingValue = new DataColumn("HavingValue", typeof(string));
 
-                            SelectSelect.DefaultValue = false;
+                            SelectSelect.DefaultValue = true;
                             TrimSign.DefaultValue = true;
                             WhereSelect.DefaultValue = false;
                             WhereTrim.DefaultValue = true;
