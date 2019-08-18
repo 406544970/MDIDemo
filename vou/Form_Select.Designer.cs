@@ -4477,7 +4477,6 @@
             this.textEdit5.Properties.ReadOnly = true;
             this.textEdit5.Size = new System.Drawing.Size(150, 20);
             this.textEdit5.TabIndex = 2;
-            this.textEdit5.EditValueChanged += new System.EventHandler(this.textEdit5_EditValueChanged);
             // 
             // textEdit6
             // 

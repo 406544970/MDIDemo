@@ -2587,10 +2587,5 @@ namespace MDIDemo.vou
             if (checkEdit18.Checked)
                 this.textEdit93.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
         }
-
-        private void textEdit5_EditValueChanged(object sender, EventArgs e)
-        {
-            //
-        }
     }
 }
