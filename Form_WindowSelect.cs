@@ -58,7 +58,6 @@ namespace MDIDemo
         }
         private void SelectPageKey()
         {
-            int Index = -1;
             GridView gridView;
             switch (this.xtraTabControl1.SelectedTabPageIndex)
             {
@@ -83,14 +82,19 @@ namespace MDIDemo
                     gridView = this.gridView1;
                     break;
             }
-            Index = gridView.GetSelectedRows()[0];
-            if (Index > -1)
+            if (gridView.RowCount > 0)
             {
-                PageKey = gridView.GetRowCellValue(Index, "pageKey").ToString();
-                this.DialogResult = DialogResult.OK;
+                int Index = gridView.FocusedRowHandle;
+                if (Index > -1)
+                {
+                    PageKey = gridView.GetRowCellValue(Index, "pageKey").ToString();
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                    MessageBox.Show("请选择一条数据", "警告信息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-                MessageBox.Show("请选择一条数据");
+                MessageBox.Show("无删除数据！", "警告信息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {

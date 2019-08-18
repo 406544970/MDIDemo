@@ -587,16 +587,28 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             {
                 if (class_PublicMethod.DeleteXml(form_WindowSelect.PageKey, form_WindowSelect.PageType))
                 {
-                    XtraMdiTabPage xtraMdiTabPage = null;
-                    foreach (XtraMdiTabPage xtra in xtraTabbedMdiManager1.Pages)
+                    if (IsTabbedMdi)
                     {
-                        Class_WindowType class_WindowType = new Class_WindowType();
-                        class_WindowType = xtra.MdiChild.Tag as Class_WindowType;
-                        if (class_WindowType.XmlFileName == (ActiveMDIForm.Tag as Class_WindowType).XmlFileName)
-                            xtraMdiTabPage = xtra;
+                        XtraMdiTabPage xtraMdiTabPage = null;
+                        foreach (XtraMdiTabPage xtra in xtraTabbedMdiManager1.Pages)
+                        {
+                            if ((xtra.MdiChild.Tag as Class_WindowType).XmlFileName == form_WindowSelect.PageKey)
+                                xtraMdiTabPage = xtra;
+                        }
+                        if (xtraMdiTabPage != null)
+                            xtraMdiTabPage.MdiChild.Close();
                     }
-                    if (xtraMdiTabPage != null)
-                        xtraMdiTabPage.MdiChild.Close();
+                    else
+                    {
+                        Form form = null;
+                        foreach (Form item in this.MdiChildren)
+                        {
+                            if ((item.Tag as Class_WindowType).XmlFileName == form_WindowSelect.PageKey)
+                                form = item;
+                        }
+                        if (form != null)
+                            form.Close();
+                    }
                     displayAlertMessage("温馨", "指定窗体已删除成功！", null, 3);
                 }
                 else
