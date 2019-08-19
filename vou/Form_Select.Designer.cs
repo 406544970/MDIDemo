@@ -506,7 +506,6 @@
             this.xtraTabControl7 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage21 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit3 = new DevExpress.XtraEditors.MemoEdit();
-            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabPage22 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit4 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
@@ -871,7 +870,6 @@
             this.xtraTabControl7.SuspendLayout();
             this.xtraTabPage21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.xtraTabPage22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
@@ -7535,7 +7533,6 @@
             // xtraTabPage21
             // 
             this.xtraTabPage21.Controls.Add(this.memoEdit3);
-            this.xtraTabPage21.Controls.Add(this.panelControl6);
             this.xtraTabPage21.Name = "xtraTabPage21";
             this.xtraTabPage21.Size = new System.Drawing.Size(1165, 265);
             this.xtraTabPage21.Text = "Map";
@@ -7543,20 +7540,12 @@
             // memoEdit3
             // 
             this.memoEdit3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit3.Location = new System.Drawing.Point(0, 30);
+            this.memoEdit3.Location = new System.Drawing.Point(0, 0);
             this.memoEdit3.MenuManager = this.barManager1;
             this.memoEdit3.Name = "memoEdit3";
-            this.memoEdit3.Size = new System.Drawing.Size(1165, 235);
+            this.memoEdit3.Size = new System.Drawing.Size(1165, 265);
             this.memoEdit3.TabIndex = 0;
             this.memoEdit3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memoEdit3_KeyDown);
-            // 
-            // panelControl6
-            // 
-            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl6.Location = new System.Drawing.Point(0, 0);
-            this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(1165, 30);
-            this.panelControl6.TabIndex = 1;
             // 
             // xtraTabPage22
             // 
@@ -9017,7 +9006,6 @@
             this.xtraTabControl7.ResumeLayout(false);
             this.xtraTabPage21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.xtraTabPage22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
@@ -9423,7 +9411,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage15;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage21;
-        private DevExpress.XtraEditors.PanelControl panelControl6;
         private DevExpress.XtraEditors.MemoEdit memoEdit3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage22;
         private DevExpress.XtraEditors.PanelControl panelControl7;

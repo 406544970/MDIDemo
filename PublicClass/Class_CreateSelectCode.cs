@@ -954,7 +954,14 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-
+            if (class_Main.ResultType > 0 && !class_Main.IsAddXmlHead)
+            {
+                stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
+                stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
+                stringBuilder.AppendFormat("<mapper namespace=\"{0}.dao.{1}\">\r\n"
+                    , class_SelectAllModel.AllPackerName
+                    , class_Main.DaoClassName);
+            }
             #region SelectId
             stringBuilder.AppendFormat("{1}<!-- 注释：{0} -->\r\n", class_Main.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0}<select id=\"{1}\" "
@@ -1096,6 +1103,10 @@ namespace MDIDemo.PublicClass
             #endregion
 
             stringBuilder.AppendFormat("{0}</select>\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            if (class_Main.ResultType > 0 && !class_Main.IsAddXmlHead)
+            {
+                stringBuilder.Append("</mapper>\r\n");
+            }
             if (stringBuilder.Length > 0)
                 return stringBuilder.ToString();
             else
