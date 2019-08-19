@@ -502,6 +502,16 @@ namespace MDIDemo.PublicClass
             }
             [Browsable(true)]
             [Category("生成配置")]
+            [DisplayName("系统名称")]
+            [Description("不同系统之间，微服务名、方法名等，可允许不同")]
+            [ReadOnly(false)]
+            [TypeConverter(typeof(ProjectNameTypeItem))] //使用自定义的属性下拉框
+            public string SystemName
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
             [DisplayName("微服务名")]
             [Description("微服务名,将放入Control层")]
             [ReadOnly(false)]

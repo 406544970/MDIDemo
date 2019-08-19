@@ -115,6 +115,15 @@ namespace MDIDemo.PublicClass
             myList[3] = "Put";
         }
     }
+    public sealed class ProjectNameTypeItem : ComboxItem
+    {
+        public ProjectNameTypeItem()
+        {
+            base.myList = new string[2];
+            myList[0] = "系统架构项目";
+            myList[1] = "万联易达";
+        }
+    }
     public sealed class MybatisXmlCreateType : ComboxItem
     {
         public MybatisXmlCreateType()

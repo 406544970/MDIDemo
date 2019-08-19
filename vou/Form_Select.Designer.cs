@@ -174,6 +174,10 @@
             this.bandedGridColumn28 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
@@ -241,6 +245,10 @@
             this.bandedGridColumn56 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit24 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.buttonEdit2 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
             this.radioGroup5 = new DevExpress.XtraEditors.RadioGroup();
@@ -312,6 +320,10 @@
             this.bandedGridColumn84 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit36 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.radioGroup29 = new DevExpress.XtraEditors.RadioGroup();
             this.buttonEdit3 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit4 = new DevExpress.XtraEditors.ButtonEdit();
@@ -384,6 +396,10 @@
             this.bandedGridColumn116 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit48 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl42 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
             this.radioGroup30 = new DevExpress.XtraEditors.RadioGroup();
             this.buttonEdit5 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit6 = new DevExpress.XtraEditors.ButtonEdit();
@@ -456,6 +472,10 @@
             this.bandedGridColumn145 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit60 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panelControl43 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl36 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl37 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl38 = new DevExpress.XtraEditors.LabelControl();
             this.radioGroup31 = new DevExpress.XtraEditors.RadioGroup();
             this.buttonEdit7 = new DevExpress.XtraEditors.ButtonEdit();
             this.buttonEdit8 = new DevExpress.XtraEditors.ButtonEdit();
@@ -618,26 +638,6 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl26 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl27 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl28 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl30 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl31 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl32 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl33 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl36 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl37 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl38 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -3588,6 +3588,38 @@
             this.panelControl1.Size = new System.Drawing.Size(1177, 30);
             this.panelControl1.TabIndex = 0;
             // 
+            // labelControl19
+            // 
+            this.labelControl19.Location = new System.Drawing.Point(206, 7);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(40, 14);
+            this.labelControl19.TabIndex = 22;
+            this.labelControl19.Text = "表别名:";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(531, 7);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(52, 14);
+            this.labelControl17.TabIndex = 21;
+            this.labelControl17.Text = "字段注释:";
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(330, 7);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(40, 14);
+            this.labelControl16.TabIndex = 20;
+            this.labelControl16.Text = "字段名:";
+            // 
+            // labelControl15
+            // 
+            this.labelControl15.Location = new System.Drawing.Point(24, 7);
+            this.labelControl15.Name = "labelControl15";
+            this.labelControl15.Size = new System.Drawing.Size(28, 14);
+            this.labelControl15.TabIndex = 19;
+            this.labelControl15.Text = "表名:";
+            // 
             // textEdit10
             // 
             this.textEdit10.Location = new System.Drawing.Point(252, 5);
@@ -3629,7 +3661,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 607);
+            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 638);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -3664,7 +3696,7 @@
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
             this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(1177, 541);
+            this.gridControl2.Size = new System.Drawing.Size(1177, 572);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -4405,6 +4437,38 @@
             this.panelControl2.Size = new System.Drawing.Size(1177, 66);
             this.panelControl2.TabIndex = 1;
             // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(206, 42);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(40, 14);
+            this.labelControl20.TabIndex = 26;
+            this.labelControl20.Text = "表别名:";
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Location = new System.Drawing.Point(532, 42);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(52, 14);
+            this.labelControl21.TabIndex = 25;
+            this.labelControl21.Text = "字段注释:";
+            // 
+            // labelControl24
+            // 
+            this.labelControl24.Location = new System.Drawing.Point(330, 42);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(40, 14);
+            this.labelControl24.TabIndex = 24;
+            this.labelControl24.Text = "字段名:";
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Location = new System.Drawing.Point(24, 42);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(28, 14);
+            this.labelControl25.TabIndex = 23;
+            this.labelControl25.Text = "表名:";
+            // 
             // buttonEdit2
             // 
             this.buttonEdit2.Location = new System.Drawing.Point(536, 8);
@@ -4493,7 +4557,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 607);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 638);
             this.xtraTabPage14.Text = "表";
             // 
             // gridControl3
@@ -4528,7 +4592,7 @@
             this.repositoryItemCheckEdit35,
             this.repositoryItemComboBox23,
             this.repositoryItemComboBox24});
-            this.gridControl3.Size = new System.Drawing.Size(1177, 541);
+            this.gridControl3.Size = new System.Drawing.Size(1177, 572);
             this.gridControl3.TabIndex = 2;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});
@@ -5270,6 +5334,38 @@
             this.panelControl3.Size = new System.Drawing.Size(1177, 66);
             this.panelControl3.TabIndex = 1;
             // 
+            // labelControl26
+            // 
+            this.labelControl26.Location = new System.Drawing.Point(206, 42);
+            this.labelControl26.Name = "labelControl26";
+            this.labelControl26.Size = new System.Drawing.Size(40, 14);
+            this.labelControl26.TabIndex = 26;
+            this.labelControl26.Text = "表别名:";
+            // 
+            // labelControl27
+            // 
+            this.labelControl27.Location = new System.Drawing.Point(532, 42);
+            this.labelControl27.Name = "labelControl27";
+            this.labelControl27.Size = new System.Drawing.Size(52, 14);
+            this.labelControl27.TabIndex = 25;
+            this.labelControl27.Text = "字段注释:";
+            // 
+            // labelControl28
+            // 
+            this.labelControl28.Location = new System.Drawing.Point(330, 42);
+            this.labelControl28.Name = "labelControl28";
+            this.labelControl28.Size = new System.Drawing.Size(40, 14);
+            this.labelControl28.TabIndex = 24;
+            this.labelControl28.Text = "字段名:";
+            // 
+            // labelControl29
+            // 
+            this.labelControl29.Location = new System.Drawing.Point(24, 42);
+            this.labelControl29.Name = "labelControl29";
+            this.labelControl29.Size = new System.Drawing.Size(28, 14);
+            this.labelControl29.TabIndex = 23;
+            this.labelControl29.Text = "表名:";
+            // 
             // radioGroup29
             // 
             this.radioGroup29.Location = new System.Drawing.Point(407, 8);
@@ -5370,7 +5466,7 @@
             this.xtraTabPage52.Controls.Add(this.panelControl42);
             this.xtraTabPage52.ImageIndex = 610;
             this.xtraTabPage52.Name = "xtraTabPage52";
-            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 607);
+            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 638);
             this.xtraTabPage52.Text = "表";
             // 
             // gridControl4
@@ -5405,7 +5501,7 @@
             this.repositoryItemCheckEdit47,
             this.repositoryItemComboBox31,
             this.repositoryItemComboBox32});
-            this.gridControl4.Size = new System.Drawing.Size(1177, 541);
+            this.gridControl4.Size = new System.Drawing.Size(1177, 572);
             this.gridControl4.TabIndex = 3;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView4});
@@ -6147,6 +6243,38 @@
             this.panelControl42.Size = new System.Drawing.Size(1177, 66);
             this.panelControl42.TabIndex = 2;
             // 
+            // labelControl30
+            // 
+            this.labelControl30.Location = new System.Drawing.Point(207, 42);
+            this.labelControl30.Name = "labelControl30";
+            this.labelControl30.Size = new System.Drawing.Size(40, 14);
+            this.labelControl30.TabIndex = 26;
+            this.labelControl30.Text = "表别名:";
+            // 
+            // labelControl31
+            // 
+            this.labelControl31.Location = new System.Drawing.Point(541, 42);
+            this.labelControl31.Name = "labelControl31";
+            this.labelControl31.Size = new System.Drawing.Size(52, 14);
+            this.labelControl31.TabIndex = 25;
+            this.labelControl31.Text = "字段注释:";
+            // 
+            // labelControl32
+            // 
+            this.labelControl32.Location = new System.Drawing.Point(336, 42);
+            this.labelControl32.Name = "labelControl32";
+            this.labelControl32.Size = new System.Drawing.Size(40, 14);
+            this.labelControl32.TabIndex = 24;
+            this.labelControl32.Text = "字段名:";
+            // 
+            // labelControl33
+            // 
+            this.labelControl33.Location = new System.Drawing.Point(24, 42);
+            this.labelControl33.Name = "labelControl33";
+            this.labelControl33.Size = new System.Drawing.Size(28, 14);
+            this.labelControl33.TabIndex = 23;
+            this.labelControl33.Text = "表名:";
+            // 
             // radioGroup30
             // 
             this.radioGroup30.Location = new System.Drawing.Point(406, 5);
@@ -6248,7 +6376,7 @@
             this.xtraTabPage53.Controls.Add(this.panelControl43);
             this.xtraTabPage53.ImageIndex = 612;
             this.xtraTabPage53.Name = "xtraTabPage53";
-            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 607);
+            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 638);
             this.xtraTabPage53.Text = "表";
             // 
             // gridControl5
@@ -6283,7 +6411,7 @@
             this.repositoryItemCheckEdit59,
             this.repositoryItemComboBox39,
             this.repositoryItemComboBox40});
-            this.gridControl5.Size = new System.Drawing.Size(1177, 541);
+            this.gridControl5.Size = new System.Drawing.Size(1177, 572);
             this.gridControl5.TabIndex = 3;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView5});
@@ -7024,6 +7152,38 @@
             this.panelControl43.Name = "panelControl43";
             this.panelControl43.Size = new System.Drawing.Size(1177, 66);
             this.panelControl43.TabIndex = 2;
+            // 
+            // labelControl35
+            // 
+            this.labelControl35.Location = new System.Drawing.Point(207, 42);
+            this.labelControl35.Name = "labelControl35";
+            this.labelControl35.Size = new System.Drawing.Size(40, 14);
+            this.labelControl35.TabIndex = 26;
+            this.labelControl35.Text = "表别名:";
+            // 
+            // labelControl36
+            // 
+            this.labelControl36.Location = new System.Drawing.Point(538, 42);
+            this.labelControl36.Name = "labelControl36";
+            this.labelControl36.Size = new System.Drawing.Size(52, 14);
+            this.labelControl36.TabIndex = 25;
+            this.labelControl36.Text = "字段注释:";
+            // 
+            // labelControl37
+            // 
+            this.labelControl37.Location = new System.Drawing.Point(336, 42);
+            this.labelControl37.Name = "labelControl37";
+            this.labelControl37.Size = new System.Drawing.Size(40, 14);
+            this.labelControl37.TabIndex = 24;
+            this.labelControl37.Text = "字段名:";
+            // 
+            // labelControl38
+            // 
+            this.labelControl38.Location = new System.Drawing.Point(24, 42);
+            this.labelControl38.Name = "labelControl38";
+            this.labelControl38.Size = new System.Drawing.Size(28, 14);
+            this.labelControl38.TabIndex = 23;
+            this.labelControl38.Text = "表名:";
             // 
             // radioGroup31
             // 
@@ -8061,7 +8221,7 @@
             this.xtraTabPage24.Controls.Add(this.xtraTabControl10);
             this.xtraTabPage24.Controls.Add(this.panelControl17);
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(1177, 573);
+            this.xtraTabPage24.Size = new System.Drawing.Size(1177, 604);
             this.xtraTabPage24.Text = "表";
             // 
             // xtraTabControl10
@@ -8070,7 +8230,7 @@
             this.xtraTabControl10.Location = new System.Drawing.Point(0, 33);
             this.xtraTabControl10.Name = "xtraTabControl10";
             this.xtraTabControl10.SelectedTabPage = this.xtraTabPage36;
-            this.xtraTabControl10.Size = new System.Drawing.Size(1177, 540);
+            this.xtraTabControl10.Size = new System.Drawing.Size(1177, 571);
             this.xtraTabControl10.TabIndex = 7;
             this.xtraTabControl10.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage36});
@@ -8080,7 +8240,7 @@
             this.xtraTabPage36.Controls.Add(this.memoEdit19);
             this.xtraTabPage36.Controls.Add(this.panelControl25);
             this.xtraTabPage36.Name = "xtraTabPage36";
-            this.xtraTabPage36.Size = new System.Drawing.Size(1171, 511);
+            this.xtraTabPage36.Size = new System.Drawing.Size(1171, 542);
             this.xtraTabPage36.Text = "DTO";
             // 
             // memoEdit19
@@ -8089,7 +8249,7 @@
             this.memoEdit19.Location = new System.Drawing.Point(0, 5);
             this.memoEdit19.MenuManager = this.barManager1;
             this.memoEdit19.Name = "memoEdit19";
-            this.memoEdit19.Size = new System.Drawing.Size(1171, 506);
+            this.memoEdit19.Size = new System.Drawing.Size(1171, 537);
             this.memoEdit19.TabIndex = 4;
             // 
             // panelControl25
@@ -8602,166 +8762,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20)});
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
-            // 
-            // labelControl15
-            // 
-            this.labelControl15.Location = new System.Drawing.Point(24, 7);
-            this.labelControl15.Name = "labelControl15";
-            this.labelControl15.Size = new System.Drawing.Size(28, 14);
-            this.labelControl15.TabIndex = 19;
-            this.labelControl15.Text = "表名:";
-            // 
-            // labelControl16
-            // 
-            this.labelControl16.Location = new System.Drawing.Point(330, 7);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(40, 14);
-            this.labelControl16.TabIndex = 20;
-            this.labelControl16.Text = "字段名:";
-            // 
-            // labelControl17
-            // 
-            this.labelControl17.Location = new System.Drawing.Point(531, 7);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(52, 14);
-            this.labelControl17.TabIndex = 21;
-            this.labelControl17.Text = "字段注释:";
-            // 
-            // labelControl19
-            // 
-            this.labelControl19.Location = new System.Drawing.Point(206, 7);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(40, 14);
-            this.labelControl19.TabIndex = 22;
-            this.labelControl19.Text = "表别名:";
-            // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(206, 42);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(40, 14);
-            this.labelControl20.TabIndex = 26;
-            this.labelControl20.Text = "表别名:";
-            // 
-            // labelControl21
-            // 
-            this.labelControl21.Location = new System.Drawing.Point(532, 42);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(52, 14);
-            this.labelControl21.TabIndex = 25;
-            this.labelControl21.Text = "字段注释:";
-            // 
-            // labelControl24
-            // 
-            this.labelControl24.Location = new System.Drawing.Point(330, 42);
-            this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(40, 14);
-            this.labelControl24.TabIndex = 24;
-            this.labelControl24.Text = "字段名:";
-            // 
-            // labelControl25
-            // 
-            this.labelControl25.Location = new System.Drawing.Point(24, 42);
-            this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(28, 14);
-            this.labelControl25.TabIndex = 23;
-            this.labelControl25.Text = "表名:";
-            // 
-            // labelControl26
-            // 
-            this.labelControl26.Location = new System.Drawing.Point(206, 42);
-            this.labelControl26.Name = "labelControl26";
-            this.labelControl26.Size = new System.Drawing.Size(40, 14);
-            this.labelControl26.TabIndex = 26;
-            this.labelControl26.Text = "表别名:";
-            // 
-            // labelControl27
-            // 
-            this.labelControl27.Location = new System.Drawing.Point(532, 42);
-            this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(52, 14);
-            this.labelControl27.TabIndex = 25;
-            this.labelControl27.Text = "字段注释:";
-            // 
-            // labelControl28
-            // 
-            this.labelControl28.Location = new System.Drawing.Point(330, 42);
-            this.labelControl28.Name = "labelControl28";
-            this.labelControl28.Size = new System.Drawing.Size(40, 14);
-            this.labelControl28.TabIndex = 24;
-            this.labelControl28.Text = "字段名:";
-            // 
-            // labelControl29
-            // 
-            this.labelControl29.Location = new System.Drawing.Point(24, 42);
-            this.labelControl29.Name = "labelControl29";
-            this.labelControl29.Size = new System.Drawing.Size(28, 14);
-            this.labelControl29.TabIndex = 23;
-            this.labelControl29.Text = "表名:";
-            // 
-            // labelControl30
-            // 
-            this.labelControl30.Location = new System.Drawing.Point(207, 42);
-            this.labelControl30.Name = "labelControl30";
-            this.labelControl30.Size = new System.Drawing.Size(40, 14);
-            this.labelControl30.TabIndex = 26;
-            this.labelControl30.Text = "表别名:";
-            // 
-            // labelControl31
-            // 
-            this.labelControl31.Location = new System.Drawing.Point(541, 42);
-            this.labelControl31.Name = "labelControl31";
-            this.labelControl31.Size = new System.Drawing.Size(52, 14);
-            this.labelControl31.TabIndex = 25;
-            this.labelControl31.Text = "字段注释:";
-            // 
-            // labelControl32
-            // 
-            this.labelControl32.Location = new System.Drawing.Point(336, 42);
-            this.labelControl32.Name = "labelControl32";
-            this.labelControl32.Size = new System.Drawing.Size(40, 14);
-            this.labelControl32.TabIndex = 24;
-            this.labelControl32.Text = "字段名:";
-            // 
-            // labelControl33
-            // 
-            this.labelControl33.Location = new System.Drawing.Point(24, 42);
-            this.labelControl33.Name = "labelControl33";
-            this.labelControl33.Size = new System.Drawing.Size(28, 14);
-            this.labelControl33.TabIndex = 23;
-            this.labelControl33.Text = "表名:";
-            // 
-            // labelControl35
-            // 
-            this.labelControl35.Location = new System.Drawing.Point(207, 42);
-            this.labelControl35.Name = "labelControl35";
-            this.labelControl35.Size = new System.Drawing.Size(40, 14);
-            this.labelControl35.TabIndex = 26;
-            this.labelControl35.Text = "表别名:";
-            // 
-            // labelControl36
-            // 
-            this.labelControl36.Location = new System.Drawing.Point(538, 42);
-            this.labelControl36.Name = "labelControl36";
-            this.labelControl36.Size = new System.Drawing.Size(52, 14);
-            this.labelControl36.TabIndex = 25;
-            this.labelControl36.Text = "字段注释:";
-            // 
-            // labelControl37
-            // 
-            this.labelControl37.Location = new System.Drawing.Point(336, 42);
-            this.labelControl37.Name = "labelControl37";
-            this.labelControl37.Size = new System.Drawing.Size(40, 14);
-            this.labelControl37.TabIndex = 24;
-            this.labelControl37.Text = "字段名:";
-            // 
-            // labelControl38
-            // 
-            this.labelControl38.Location = new System.Drawing.Point(24, 42);
-            this.labelControl38.Name = "labelControl38";
-            this.labelControl38.Size = new System.Drawing.Size(28, 14);
-            this.labelControl38.TabIndex = 23;
-            this.labelControl38.Text = "表名:";
             // 
             // Form_Select
             // 

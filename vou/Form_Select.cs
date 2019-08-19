@@ -565,19 +565,52 @@ namespace MDIDemo.vou
         {
             try
             {
-                this.xtraTabControl5.SelectedTabPageIndex = PageIndex;
-                //labelControl1.Visible = false;
-                if (TableName == null)
+                bool IsOk = true;
+                if (PageIndex > 0)
                 {
-                    int Index = this.listBoxControl1.SelectedIndex;
-                    if (Index > -1)
+                    BandedGridView bandedGridView;
+                    switch (PageIndex - 1)
                     {
-                        AddUseTableData(this.listBoxControl1.Text, this.listBoxControl3.Text, PageIndex);
+                        case 0:
+                            bandedGridView = gridControl1.MainView as BandedGridView;
+                            break;
+                        case 1:
+                            bandedGridView = gridControl2.MainView as BandedGridView;
+                            break;
+                        case 2:
+                            bandedGridView = gridControl3.MainView as BandedGridView;
+                            break;
+                        case 3:
+                            bandedGridView = gridControl4.MainView as BandedGridView;
+                            break;
+                        case 4:
+                            bandedGridView = gridControl5.MainView as BandedGridView;
+                            break;
+                        default:
+                            bandedGridView = gridControl1.MainView as BandedGridView;
+                            break;
                     }
+                    IsOk = bandedGridView.RowCount > 0 ? true : false;
+                }
+                if (IsOk)
+                {
+                    this.xtraTabControl5.SelectedTabPageIndex = PageIndex;
+                    if (TableName == null)
+                    {
+                        if (this.listBoxControl1.SelectedIndex > -1)
+                            AddUseTableData(this.listBoxControl1.Text, this.listBoxControl3.Text, PageIndex);
+                    }
+                    else
+                        AddUseTableData(TableName, this.listBoxControl3.Text, PageIndex);
                 }
                 else
                 {
-                    AddUseTableData(TableName, this.listBoxControl3.Text, PageIndex);
+                    if (PageIndex - 1 > 0)
+                        MessageBox.Show(string.Format("从表{0}为空时，不能选择此前表！", PageIndex - 1)
+                            , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        MessageBox.Show("主表为空时，不能选择此前表！"
+                            , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception error)
