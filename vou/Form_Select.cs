@@ -1150,6 +1150,9 @@ namespace MDIDemo.vou
                         {
                             string FieldName = dataRow["FieldName"].ToString();
                             string FieldType = dataRow["FieldType"].ToString();
+                            string CaseWhen = dataRow["CaseWhen"].ToString();
+                            if ((CaseWhen != null) && (CaseWhen.Length > 0))
+                                FieldType = "varchar";
                             string FunctionName = dataRow["FunctionName"].ToString();
                             if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
                             {

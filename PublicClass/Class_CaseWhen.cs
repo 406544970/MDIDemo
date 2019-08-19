@@ -14,6 +14,30 @@ namespace MDIDemo.PublicClass
             mySqlite3 = new MySqlite3();
         }
         private MySqlite3 mySqlite3;
+        public List<string> GetCaseWhenNameList()
+        {
+            string Sql = @"SELECT id
+                FROM vou_caseWhenMain
+                ORDER BY id";
+            return mySqlite3.ExecuteReadList(Sql);
+        }
+        public string GetCaseWhenName(string FieldName)
+        {
+            bool Finder = false;
+            if (FieldName == null || FieldName.Length == 0)
+                return null;
+            string Sql = @"SELECT id
+                FROM vou_caseWhenMain
+                ORDER BY id";
+            List<string> vs = new List<string>();
+            vs = mySqlite3.ExecuteReadList(Sql);
+            if (vs != null && vs.Count > 0)
+            {
+                Finder = vs.IndexOf(FieldName) > -1 ? true : false;
+            }
+            vs.Clear();
+            return Finder ? FieldName : null;
+        }
         /// <summary>
         /// 得到所有CASE列表（主表）
         /// </summary>
@@ -32,10 +56,12 @@ namespace MDIDemo.PublicClass
                 DataColumn whenTypeSign = new DataColumn("whenTypeSign", typeof(bool));
                 DataColumn thenTypeSign = new DataColumn("thenTypeSign", typeof(bool));
                 DataColumn logicSymbol = new DataColumn("logicSymbol", typeof(string));
+                DataColumn remark = new DataColumn("remark", typeof(string));
                 dataTable.Columns.Add(id);
                 dataTable.Columns.Add(whenTypeSign);
                 dataTable.Columns.Add(thenTypeSign);
                 dataTable.Columns.Add(logicSymbol);
+                dataTable.Columns.Add(remark);
                 foreach (string row in vs)
                 {
                     string[] rowArray = row.Split(';');
@@ -44,6 +70,7 @@ namespace MDIDemo.PublicClass
                     newRow["whenTypeSign"] = rowArray[1].Equals("1") ? true : false;
                     newRow["thenTypeSign"] = rowArray[2].Equals("1") ? true : false;
                     newRow["logicSymbol"] = rowArray[3];
+                    newRow["remark"] = rowArray[4];
                     dataTable.Rows.Add(newRow);
                 }
                 dataTable.AcceptChanges();

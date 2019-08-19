@@ -859,8 +859,8 @@ namespace MDIDemo.PublicClass
                         {
                             Class_CaseWhen class_CaseWhen = new Class_CaseWhen();
                             FieldName = class_CaseWhen.GetCaseWhenContent(class_Field.CaseWhen, FieldName, class_ToolSpace.GetSetSpaceCount(3));
-                            if (MyFieldName != null)
-                                FieldName = FieldName + " AS " + MyFieldName;
+                            //if (MyFieldName != null)
+                            //    FieldName = FieldName + " AS " + MyFieldName;
                         }
                         if ((class_Field.FunctionName != null) && (class_Field.FunctionName.Length > 0))
                         {
@@ -1038,8 +1038,8 @@ namespace MDIDemo.PublicClass
                         {
                             Class_CaseWhen class_CaseWhen = new Class_CaseWhen();
                             FieldName = class_CaseWhen.GetCaseWhenContent(class_Field.CaseWhen, FieldName, class_ToolSpace.GetSetSpaceCount(3));
-                            if (MyFieldName != null)
-                                FieldName = FieldName + " AS " + MyFieldName;
+                            //if (MyFieldName != null)
+                            //    FieldName = FieldName + " AS " + MyFieldName;
                         }
                         if ((class_Field.FunctionName != null) && (class_Field.FunctionName.Length > 0))
                         {
@@ -1164,25 +1164,23 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" {\r\n");
 
             //加入字段
-            foreach (Class_Field row in class_SelectAllModel.class_SubList[PageIndex].class_Fields)
+            foreach (Class_Field class_Field in class_SelectAllModel.class_SubList[PageIndex].class_Fields)
             {
-                if (row.SelectSelect)
+                if (class_Field.SelectSelect)
                 {
-                    string ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(row.FunctionName, row.ReturnType)));
+                    string ReturnType = class_Field.ReturnType;
+                    if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                        ReturnType = "varchar";
+                    ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, ReturnType)));
                     stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), row.FieldRemark);
+                    stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), class_Field.FieldRemark);
                     stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(row.ParaName))
-                        stringBuilder.AppendFormat("{0}private transient {1} {2};\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(1)
-                            , ReturnType
-                            , row.ParaName);
-                    else
-                        stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(1)
-                            , ReturnType
-                            , row.ParaName);
-
+                    stringBuilder.AppendFormat("{0}private", class_ToolSpace.GetSetSpaceCount(1));
+                    if (class_SelectAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
+                        stringBuilder.Append(" transient");
+                    stringBuilder.AppendFormat(" {0} {1};\r\n"
+                        , ReturnType
+                        , class_Field.ParaName);
                 }
             }
             stringBuilder.Append("}\r\n");
@@ -1506,7 +1504,8 @@ namespace MDIDemo.PublicClass
                 return null;
             if (!class_SelectAllModel.IsMultTable)
                 return null;
-
+            if (PageIndex > 0 && class_SelectAllModel.class_SubList[PageIndex].JoinType == 0)
+                return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
@@ -1605,6 +1604,10 @@ namespace MDIDemo.PublicClass
                                 string MyFieldName = class_Field.ParaName;
                                 if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
                                     MyFieldName = class_Field.MultFieldName;
+                                string ReturnType = class_Field.ReturnType;
+                                if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                                    ReturnType = "varchar";
+                                ReturnType = Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, ReturnType)));
                                 if (class_Field.FieldIsKey)
                                 {
                                     if (PageIndex > 0)
@@ -1613,7 +1616,7 @@ namespace MDIDemo.PublicClass
                                             , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
                                             , MyFieldName
                                             , MyFieldName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , ReturnType
                                             , class_Field.FieldRemark);
                                     }
                                     else
@@ -1621,7 +1624,7 @@ namespace MDIDemo.PublicClass
                                             , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
                                             , MyFieldName
                                             , MyFieldName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , ReturnType
                                             , class_Field.FieldRemark);
                                 }
                                 else
@@ -1630,7 +1633,7 @@ namespace MDIDemo.PublicClass
                                         , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
                                         , MyFieldName
                                         , MyFieldName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , ReturnType
                                         , class_Field.FieldRemark);
                                 }
                             }
@@ -1652,6 +1655,10 @@ namespace MDIDemo.PublicClass
                                 string MyFieldName = class_Field.ParaName;
                                 if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
                                     MyFieldName = class_Field.MultFieldName;
+                                string ReturnType = class_Field.ReturnType;
+                                if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                                    ReturnType = "varchar";
+                                ReturnType = Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, ReturnType)));
                                 if (class_Field.FieldIsKey)
                                 {
                                     if (PageIndex > 0)
@@ -1660,7 +1667,7 @@ namespace MDIDemo.PublicClass
                                             , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
                                             , MyFieldName
                                             , MyFieldName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , ReturnType
                                             , class_Field.FieldRemark);
                                     }
                                     else
@@ -1668,7 +1675,7 @@ namespace MDIDemo.PublicClass
                                             , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
                                             , MyFieldName
                                             , MyFieldName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , ReturnType
                                             , class_Field.FieldRemark);
                                 }
                                 else
@@ -1677,7 +1684,7 @@ namespace MDIDemo.PublicClass
                                         , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
                                         , MyFieldName
                                         , MyFieldName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , ReturnType
                                         , class_Field.FieldRemark);
                                 }
                             }
@@ -1698,6 +1705,10 @@ namespace MDIDemo.PublicClass
                                 string MyFieldName = class_Field.ParaName;
                                 if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
                                     MyFieldName = class_Field.MultFieldName;
+                                string ReturnType = class_Field.ReturnType;
+                                if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                                    ReturnType = "varchar";
+                                ReturnType = Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, ReturnType)));
                                 if (class_Field.FieldIsKey)
                                 {
                                     if (PageIndex > 0)
@@ -1706,7 +1717,7 @@ namespace MDIDemo.PublicClass
                                             , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
                                             , MyFieldName
                                             , MyFieldName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , ReturnType
                                             , class_Field.FieldRemark);
                                     }
                                     else
@@ -1714,7 +1725,7 @@ namespace MDIDemo.PublicClass
                                             , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
                                             , MyFieldName
                                             , MyFieldName
-                                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                            , ReturnType
                                             , class_Field.FieldRemark);
                                 }
                                 else
@@ -1723,7 +1734,7 @@ namespace MDIDemo.PublicClass
                                         , class_ToolSpace.GetSetSpaceCount(SpaceCounter + 1)
                                         , MyFieldName
                                         , MyFieldName
-                                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))
+                                        , ReturnType
                                         , class_Field.FieldRemark);
                                 }
                             }
@@ -1767,7 +1778,10 @@ namespace MDIDemo.PublicClass
                         {
                             if (class_Field.SelectSelect)
                             {
-                                string ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, class_Field.ReturnType)));
+                                string ReturnType = class_Field.ReturnType;
+                                if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                                    ReturnType = "varchar";
+                                ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, ReturnType)));
                                 string MyFieldName = class_Field.ParaName;
                                 if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
                                     MyFieldName = class_Field.MultFieldName;

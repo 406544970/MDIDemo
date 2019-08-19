@@ -189,7 +189,8 @@ namespace MDIDemo.PublicClass
             FunctionList.Add("MIN(?)");
             FunctionList.Add("AVG(?)");
             FunctionList.Add("DATE_FORMAT(?,'%Y-%m-%d')");
-            FunctionList.Add("DATE_FORMAT(?, '%Y-%m-%d %H-%M-%S')");
+            FunctionList.Add("DATE_FORMAT(?,'%Y-%m')");
+            FunctionList.Add("DATE_FORMAT(?,'%Y-%m-%d %H:%i:%S')");
             
         }
         public string GetDataTypeByFunction(string FunctionName,string MySqlDataType)
@@ -210,8 +211,9 @@ namespace MDIDemo.PublicClass
                 case "AVG(?)":
                     ResultValue = MySqlDataType;
                     break;
+                case "DATE_FORMAT(?,'%Y-%m')":
                 case "DATE_FORMAT(?,'%Y-%m-%d')":
-                case "DATE_FORMAT(?,'%Y-%m-%d %H-%M-%S')":
+                case "DATE_FORMAT(?,'%Y-%m-%d %H:%i:%S')":
                     ResultValue = "varchar";
                     break;
                 default:
@@ -356,6 +358,9 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             {
                 if (TableName != null)
                 {
+                    Class_CaseWhen class_CaseWhen = new Class_CaseWhen();
+                    List<string> vs = new List<string>();
+                    vs = class_CaseWhen.GetCaseWhenNameList();
                     dataTable = _GetTableStruct(TableName);
 
                     Class_SelectAllModel mySelect = new Class_SelectAllModel();
@@ -492,6 +497,20 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                             row["MaxLegth"] = row["FieldLength"];
                                             row["ReturnType"] = row["FieldType"];
                                             row["SortNo"] = Counter++;
+                                            if (vs != null && vs.Count > 0)
+                                            {
+                                                if (vs.IndexOf(row["FieldName"].ToString()) > -1)
+                                                    row["CaseWhen"] = row["FieldName"].ToString();
+                                            }
+                                            if (row["FieldName"].ToString().Equals("worktime"))
+                                                row["FunctionName"] = "DATE_FORMAT(?,'%Y-%m-%d')";
+                                            if (row["FieldName"].ToString().Equals("stopSign"))
+                                            {
+                                                row["WhereValue"] = "0";
+                                                row["WhereSelect"] = Convert.ToBoolean(true);
+                                                row["SelectSelect"] = Convert.ToBoolean(false);
+                                                row["WhereIsNull"] = Convert.ToBoolean(false);
+                                            }
                                         }
                                     }
                                     break;
@@ -514,6 +533,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                         }
                         row.EndEdit();
                     }
+                    vs.Clear();
                     if (dataTable.GetChanges() != null)
                         dataTable.AcceptChanges();
                     return dataTable;
