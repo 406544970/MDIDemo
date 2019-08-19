@@ -246,7 +246,7 @@ namespace MDIDemo.vou
                     for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
                     {
                         if (class_SelectAllModel.class_SubList[i] != null)
-                            this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, class_SelectAllModel.class_SubList[i].AliasName, i);
+                            this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, class_SelectAllModel.class_SubList[i].AliasName, i, false);
                     }
                 }
             }
@@ -463,13 +463,13 @@ namespace MDIDemo.vou
                 repositoryItemComboBox.Items.Add(row);
             }
         }
-        private void AddUseTableData(string TableName, string TableAlias, int PageSelectIndex)
+        private void AddUseTableData(string TableName, string TableAlias, int PageSelectIndex, bool SelectSelectDefault)
         {
             switch (PageSelectIndex)
             {
                 case 0:
                     {
-                        this.gridControl1.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
+                        this.gridControl1.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
                         textEdit1.Text = TableName;
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                             textEdit10.Text = class_SelectAllModel.class_SubList[PageSelectIndex].AliasName;
@@ -482,7 +482,7 @@ namespace MDIDemo.vou
                     break;
                 case 1:
                     {
-                        this.gridControl2.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
+                        this.gridControl2.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
                         textEdit6.Text = TableName;
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                         {
@@ -498,7 +498,7 @@ namespace MDIDemo.vou
                     break;
                 case 2:
                     {
-                        this.gridControl3.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
+                        this.gridControl3.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
                         textEdit9.Text = TableName;
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                         {
@@ -514,7 +514,7 @@ namespace MDIDemo.vou
                     break;
                 case 3:
                     {
-                        this.gridControl4.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
+                        this.gridControl4.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
                         textEdit60.Text = TableName;
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                         {
@@ -530,7 +530,7 @@ namespace MDIDemo.vou
                     break;
                 case 4:
                     {
-                        this.gridControl5.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex);
+                        this.gridControl5.DataSource = class_InterFaceDataBase.GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
                         textEdit64.Text = TableName;
                         if (class_SelectAllModel.class_SubList.Count > PageSelectIndex && class_SelectAllModel.class_SubList[PageSelectIndex].AliasName != null)
                         {
@@ -598,10 +598,10 @@ namespace MDIDemo.vou
                     if (TableName == null)
                     {
                         if (this.listBoxControl1.SelectedIndex > -1)
-                            AddUseTableData(this.listBoxControl1.Text, this.listBoxControl3.Text, PageIndex);
+                            AddUseTableData(this.listBoxControl1.Text, this.listBoxControl3.Text, PageIndex, true);
                     }
                     else
-                        AddUseTableData(TableName, this.listBoxControl3.Text, PageIndex);
+                        AddUseTableData(TableName, this.listBoxControl3.Text, PageIndex, false);
                 }
                 else
                 {

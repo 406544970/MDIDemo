@@ -221,7 +221,7 @@ namespace MDIDemo.PublicClass
             order by a.id,a.colorder", TableName);
             return mydb.GetDataTable(Sql);
         }
-        private DataTable _GetMainTableStruct(string TableName, int PageSelectIndex)
+        private DataTable _GetMainTableStruct(string TableName, int PageSelectIndex,bool SelectSelectDefault)
         {
             DataTable dataTable = new DataTable();
             try
@@ -399,9 +399,9 @@ namespace MDIDemo.PublicClass
         /// </summary>
         /// <param name="TableName">指定表名</param>
         /// <returns></returns>
-        public DataTable GetMainTableStruct(string TableName, int PageSelectIndex)
+        public DataTable GetMainTableStruct(string TableName, int PageSelectIndex, bool SelectSelectDefault)
         {
-            return _GetMainTableStruct(TableName, PageSelectIndex);
+            return _GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
         }
         /// <summary>
         /// 得到指定数据库所有用户表

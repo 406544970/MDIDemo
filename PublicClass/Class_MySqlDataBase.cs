@@ -281,9 +281,9 @@ namespace MDIDemo.PublicClass
             return vs;
         }
 
-        public DataTable GetMainTableStruct(string TableName, int PageSelectIndex)
+        public DataTable GetMainTableStruct(string TableName, int PageSelectIndex,bool SelectSelectDefault)
         {
-            return _GetMainTableStruct(TableName, PageSelectIndex);
+            return _GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
         }
         private DataTable _GetTableStruct(string TableName)
         {
@@ -347,7 +347,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             iniDataTable.Dispose();
             return dataTable;
         }
-        private DataTable _GetMainTableStruct(string TableName, int PageSelectIndex)
+        private DataTable _GetMainTableStruct(string TableName, int PageSelectIndex,bool SelectSelectDefault)
         {
             DataTable dataTable = new DataTable();
             //占用字节数 = a.length 
@@ -390,7 +390,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             DataColumn HavingCondition = new DataColumn("HavingCondition", typeof(string));
                             DataColumn HavingValue = new DataColumn("HavingValue", typeof(string));
 
-                            SelectSelect.DefaultValue = true;
+                            SelectSelect.DefaultValue = SelectSelectDefault;
                             TrimSign.DefaultValue = true;
                             WhereSelect.DefaultValue = false;
                             WhereTrim.DefaultValue = true;
