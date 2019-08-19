@@ -2400,6 +2400,10 @@ namespace MDIDemo.vou
                 _SaveSelectToXml(false);
 
                 this.DisplayText("代码已重新生成!");
+                this.xtraTabControl3.SelectedTabPageIndex = 1;
+                this.xtraTabControl8.SelectedTabPageIndex = 0;
+                this.xtraTabControl6.SelectedTabPageIndex = 4;
+                this.xtraTabControl7.SelectedTabPageIndex = 2;
             }
             else
             {
@@ -2410,6 +2414,7 @@ namespace MDIDemo.vou
             }
             outMessage.Clear();
             waitDialogForm.Close();
+
         }
         private void barButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

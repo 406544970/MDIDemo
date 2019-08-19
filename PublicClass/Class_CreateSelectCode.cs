@@ -364,7 +364,8 @@ namespace MDIDemo.PublicClass
                 }
                 CurPageIndex++;
             }
-            stringBuilderWhereAnd.Append("\r\n");
+            if (stringBuilderWhereAnd.Length > 0)
+                stringBuilderWhereAnd.Append("\r\n");
             if (stringBuilderWhereOr.Length > 0)
             {
                 stringBuilderWhereAnd.Append(stringBuilderWhereOr.ToString());

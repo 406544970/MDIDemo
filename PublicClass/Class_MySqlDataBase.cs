@@ -802,8 +802,6 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                 case "varchar":
                     if (FunctionName.IndexOf("DATE_FORMAT") > -1)
                         IsFinder = false;
-                    if (FunctionName.IndexOf("COUNT") > -1)
-                        IsFinder = false;
                     if (FunctionName.IndexOf("SUM") > -1)
                         IsFinder = false;
                     if (FunctionName.IndexOf("AVG") > -1)
