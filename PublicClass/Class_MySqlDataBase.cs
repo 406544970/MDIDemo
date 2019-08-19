@@ -191,9 +191,9 @@ namespace MDIDemo.PublicClass
             FunctionList.Add("DATE_FORMAT(?,'%Y-%m-%d')");
             FunctionList.Add("DATE_FORMAT(?,'%Y-%m')");
             FunctionList.Add("DATE_FORMAT(?,'%Y-%m-%d %H:%i:%S')");
-            
+
         }
-        public string GetDataTypeByFunction(string FunctionName,string MySqlDataType)
+        public string GetDataTypeByFunction(string FunctionName, string MySqlDataType)
         {
             if (FunctionName == null || FunctionName.Length == 0)
                 return MySqlDataType;
@@ -283,7 +283,7 @@ namespace MDIDemo.PublicClass
             return vs;
         }
 
-        public DataTable GetMainTableStruct(string TableName, int PageSelectIndex,bool SelectSelectDefault)
+        public DataTable GetMainTableStruct(string TableName, int PageSelectIndex, bool SelectSelectDefault)
         {
             return _GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
         }
@@ -349,7 +349,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             iniDataTable.Dispose();
             return dataTable;
         }
-        private DataTable _GetMainTableStruct(string TableName, int PageSelectIndex,bool SelectSelectDefault)
+        private DataTable _GetMainTableStruct(string TableName, int PageSelectIndex, bool SelectSelectDefault)
         {
             DataTable dataTable = new DataTable();
             //占用字节数 = a.length 
@@ -502,14 +502,23 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 if (vs.IndexOf(row["FieldName"].ToString()) > -1)
                                                     row["CaseWhen"] = row["FieldName"].ToString();
                                             }
-                                            if (row["FieldName"].ToString().Equals("worktime"))
-                                                row["FunctionName"] = "DATE_FORMAT(?,'%Y-%m-%d')";
-                                            if (row["FieldName"].ToString().Equals("stopSign"))
+                                            switch (row["FieldName"].ToString())
                                             {
-                                                row["WhereValue"] = "0";
-                                                row["WhereSelect"] = Convert.ToBoolean(true);
-                                                row["SelectSelect"] = Convert.ToBoolean(false);
-                                                row["WhereIsNull"] = Convert.ToBoolean(false);
+                                                case "worktime":
+                                                    row["FunctionName"] = "DATE_FORMAT(?,'%Y-%m-%d')";
+                                                    break;
+                                                case "stopSign":
+                                                    row["WhereValue"] = "0";
+                                                    row["WhereSelect"] = Convert.ToBoolean(true);
+                                                    row["SelectSelect"] = Convert.ToBoolean(false);
+                                                    row["WhereIsNull"] = Convert.ToBoolean(false);
+                                                    break;
+                                                case "sortNo":
+                                                    row["SelectSelect"] = Convert.ToBoolean(false);
+                                                    row["OrderSelect"] = Convert.ToBoolean(true);
+                                                    break;
+                                                default:
+                                                    break;
                                             }
                                         }
                                     }
