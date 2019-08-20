@@ -7858,7 +7858,7 @@
             this.textEdit46.MenuManager = this.barManager1;
             this.textEdit46.Name = "textEdit46";
             this.textEdit46.Size = new System.Drawing.Size(382, 20);
-            this.textEdit46.TabIndex = 57;
+            this.textEdit46.TabIndex = 8;
             // 
             // textEdit47
             // 
@@ -7866,7 +7866,7 @@
             this.textEdit47.MenuManager = this.barManager1;
             this.textEdit47.Name = "textEdit47";
             this.textEdit47.Size = new System.Drawing.Size(382, 20);
-            this.textEdit47.TabIndex = 56;
+            this.textEdit47.TabIndex = 7;
             // 
             // labelControl22
             // 
@@ -7884,7 +7884,7 @@
             this.checkEdit8.Name = "checkEdit8";
             this.checkEdit8.Properties.Caption = "命名是否关联";
             this.checkEdit8.Size = new System.Drawing.Size(96, 19);
-            this.checkEdit8.TabIndex = 54;
+            this.checkEdit8.TabIndex = 15;
             // 
             // textEdit103
             // 
@@ -7892,7 +7892,7 @@
             this.textEdit103.MenuManager = this.barManager1;
             this.textEdit103.Name = "textEdit103";
             this.textEdit103.Size = new System.Drawing.Size(125, 20);
-            this.textEdit103.TabIndex = 53;
+            this.textEdit103.TabIndex = 14;
             // 
             // textEdit102
             // 
@@ -7900,7 +7900,7 @@
             this.textEdit102.MenuManager = this.barManager1;
             this.textEdit102.Name = "textEdit102";
             this.textEdit102.Size = new System.Drawing.Size(125, 20);
-            this.textEdit102.TabIndex = 52;
+            this.textEdit102.TabIndex = 13;
             // 
             // textEdit101
             // 
@@ -7908,7 +7908,7 @@
             this.textEdit101.MenuManager = this.barManager1;
             this.textEdit101.Name = "textEdit101";
             this.textEdit101.Size = new System.Drawing.Size(125, 20);
-            this.textEdit101.TabIndex = 51;
+            this.textEdit101.TabIndex = 12;
             this.textEdit101.EditValueChanged += new System.EventHandler(this.textEdit101_EditValueChanged);
             // 
             // textEdit100
@@ -7917,7 +7917,7 @@
             this.textEdit100.MenuManager = this.barManager1;
             this.textEdit100.Name = "textEdit100";
             this.textEdit100.Size = new System.Drawing.Size(125, 20);
-            this.textEdit100.TabIndex = 50;
+            this.textEdit100.TabIndex = 10;
             // 
             // textEdit99
             // 
@@ -7925,7 +7925,7 @@
             this.textEdit99.MenuManager = this.barManager1;
             this.textEdit99.Name = "textEdit99";
             this.textEdit99.Size = new System.Drawing.Size(125, 20);
-            this.textEdit99.TabIndex = 49;
+            this.textEdit99.TabIndex = 9;
             // 
             // textEdit44
             // 
@@ -7941,7 +7941,7 @@
             this.textEdit19.MenuManager = this.barManager1;
             this.textEdit19.Name = "textEdit19";
             this.textEdit19.Size = new System.Drawing.Size(125, 20);
-            this.textEdit19.TabIndex = 47;
+            this.textEdit19.TabIndex = 11;
             // 
             // labelControl56
             // 
@@ -8023,7 +8023,7 @@
             this.checkEdit20.Name = "checkEdit20";
             this.checkEdit20.Properties.Caption = "是否读写分离";
             this.checkEdit20.Size = new System.Drawing.Size(100, 19);
-            this.checkEdit20.TabIndex = 37;
+            this.checkEdit20.TabIndex = 20;
             // 
             // checkEdit19
             // 
@@ -8033,7 +8033,7 @@
             this.checkEdit19.Name = "checkEdit19";
             this.checkEdit19.Properties.Caption = "是否返回固定结构体";
             this.checkEdit19.Size = new System.Drawing.Size(126, 19);
-            this.checkEdit19.TabIndex = 36;
+            this.checkEdit19.TabIndex = 19;
             // 
             // checkEdit17
             // 
@@ -8043,7 +8043,7 @@
             this.checkEdit17.Name = "checkEdit17";
             this.checkEdit17.Properties.Caption = "是否分页";
             this.checkEdit17.Size = new System.Drawing.Size(73, 19);
-            this.checkEdit17.TabIndex = 35;
+            this.checkEdit17.TabIndex = 18;
             // 
             // simpleButton2
             // 
@@ -8062,7 +8062,7 @@
             this.checkEdit10.Name = "checkEdit10";
             this.checkEdit10.Properties.Caption = "仅生成Control层主体代码";
             this.checkEdit10.Size = new System.Drawing.Size(160, 19);
-            this.checkEdit10.TabIndex = 19;
+            this.checkEdit10.TabIndex = 17;
             // 
             // radioGroup9
             // 
@@ -8075,7 +8075,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "单条"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "多条")});
             this.radioGroup9.Size = new System.Drawing.Size(110, 28);
-            this.radioGroup9.TabIndex = 33;
+            this.radioGroup9.TabIndex = 22;
             // 
             // textEdit20
             // 
@@ -8083,7 +8083,7 @@
             this.textEdit20.MenuManager = this.barManager1;
             this.textEdit20.Name = "textEdit20";
             this.textEdit20.Size = new System.Drawing.Size(448, 20);
-            this.textEdit20.TabIndex = 31;
+            this.textEdit20.TabIndex = 6;
             // 
             // labelControl8
             // 
@@ -8099,7 +8099,7 @@
             this.textEdit15.MenuManager = this.barManager1;
             this.textEdit15.Name = "textEdit15";
             this.textEdit15.Size = new System.Drawing.Size(448, 20);
-            this.textEdit15.TabIndex = 28;
+            this.textEdit15.TabIndex = 5;
             // 
             // labelControl6
             // 
@@ -8115,7 +8115,7 @@
             this.textEdit14.MenuManager = this.barManager1;
             this.textEdit14.Name = "textEdit14";
             this.textEdit14.Size = new System.Drawing.Size(333, 20);
-            this.textEdit14.TabIndex = 26;
+            this.textEdit14.TabIndex = 4;
             // 
             // labelControl5
             // 
@@ -8133,7 +8133,7 @@
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "不生成Xml头";
             this.checkEdit1.Size = new System.Drawing.Size(87, 19);
-            this.checkEdit1.TabIndex = 24;
+            this.checkEdit1.TabIndex = 16;
             // 
             // textEdit25
             // 
@@ -8149,7 +8149,7 @@
             this.textEdit24.MenuManager = this.barManager1;
             this.textEdit24.Name = "textEdit24";
             this.textEdit24.Size = new System.Drawing.Size(122, 20);
-            this.textEdit24.TabIndex = 21;
+            this.textEdit24.TabIndex = 3;
             // 
             // labelControl11
             // 
@@ -8165,7 +8165,7 @@
             this.textEdit22.MenuManager = this.barManager1;
             this.textEdit22.Name = "textEdit22";
             this.textEdit22.Size = new System.Drawing.Size(122, 20);
-            this.textEdit22.TabIndex = 19;
+            this.textEdit22.TabIndex = 2;
             this.textEdit22.EditValueChanged += new System.EventHandler(this.textEdit22_EditValueChanged);
             // 
             // labelControl10
@@ -8182,7 +8182,7 @@
             this.textEdit16.MenuManager = this.barManager1;
             this.textEdit16.Name = "textEdit16";
             this.textEdit16.Size = new System.Drawing.Size(122, 20);
-            this.textEdit16.TabIndex = 16;
+            this.textEdit16.TabIndex = 1;
             this.textEdit16.EditValueChanged += new System.EventHandler(this.textEdit16_EditValueChanged);
             // 
             // labelControl7
@@ -8203,7 +8203,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "resultMap"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "resultType")});
             this.radioGroup7.Size = new System.Drawing.Size(162, 28);
-            this.radioGroup7.TabIndex = 12;
+            this.radioGroup7.TabIndex = 21;
             // 
             // xtraTabPage24
             // 
