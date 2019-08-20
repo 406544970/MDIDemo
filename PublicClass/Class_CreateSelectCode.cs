@@ -2125,6 +2125,7 @@ namespace MDIDemo.PublicClass
                         , class_ToolSpace.GetSetSpaceCount(2), row.OutFieldName);
                 }
             }
+            stringBuilder.Append("\r\n");
             #endregion
             if (class_WhereFields != null)
             {

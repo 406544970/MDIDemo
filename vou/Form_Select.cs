@@ -72,183 +72,191 @@ namespace MDIDemo.vou
         /// <param name="xmlFileName"></param>
         public void SetSelectAllMode(string xmlFileName)
         {
-            if (xmlFileName != null)
-                class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
-            if (class_SelectAllModel == null)
-                class_SelectAllModel = new Class_SelectAllModel();
-            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            try
             {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
-                    break;
-                default:
-                    break;
-            }
-            class_InterFaceDataBase.SetClass_AllModel(class_SelectAllModel);
-            this.textEdit13.Text = class_SelectAllModel.AllPackerName;
-            this.checkEdit2.Checked = class_SelectAllModel.IsAutoWard;
-            this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.TestUnit);
-            this.textEdit21.Text = class_SelectAllModel.TestClassName;
-            this.checkEdit17.Checked = class_SelectAllModel.PageSign;
-            this.checkEdit19.Checked = class_SelectAllModel.ReturnStructure;
-            this.checkEdit20.Checked = class_SelectAllModel.ReadWriteSeparation;
-
-            #region 设置上次打开的Tab
-            this.xtraTabControl1.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl1;
-            this.xtraTabControl2.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl2;
-            this.xtraTabControl3.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl3;
-            this.xtraTabControl4.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl4;
-            this.xtraTabControl5.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl5;
-            this.xtraTabControl6.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl6;
-            this.xtraTabControl7.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl7;
-            this.xtraTabControl9.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl9;
-            this.xtraTabControl8.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl8;
-            this.xtraTabControl10.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl10;
-            this.xtraTabControl13.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl13;
-            #endregion
-            int index = 0;
-            #region 主表
-            if (class_SelectAllModel.class_SubList.Count > index)
-            {
-                this.textEdit14.Text = class_SelectAllModel.class_SubList[index].MethodId;
-                this.textEdit15.Text = class_SelectAllModel.class_SubList[index].MethodContent;
-                this.radioGroup7.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
-                this.checkEdit1.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
-                this.textEdit16.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit3.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
-                this.memoEdit4.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].SelectContent);
-                this.memoEdit5.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceInterFaceContent);
-                this.memoEdit6.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceImplContent);
-                this.memoEdit8.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ModelContent);
-                this.memoEdit9.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-                this.memoEdit10.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
-                this.memoEdit11.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
-                this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].InPutParamContent);
-                this.textEdit22.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
-                this.textEdit24.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
-                this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
-                this.textEdit20.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
-                this.textEdit47.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
-                this.textEdit46.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
-                this.radioGroup9.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
-                this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
-                this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
-                this.memoEdit54.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].TestSql);
-
-                this.textEdit99.Text = class_SelectAllModel.class_SubList[index].ParamClassName;
-                this.textEdit100.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
-                this.textEdit19.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.textEdit101.Text = class_SelectAllModel.class_SubList[index].DaoClassName;
-                this.textEdit44.Text = class_SelectAllModel.class_SubList[index].XmlFileName;
-                this.textEdit54.Text = class_SelectAllModel.class_SubList[index].ControlRequestMapping;
-                this.textEdit102.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceName;
-                this.textEdit103.Text = class_SelectAllModel.class_SubList[index].ServiceClassName;
-
-                if (this.panelControl4.Height > this.simpleButton2.Height + 5)
-                    this.simpleButton2.Text = "折叠";
-                else
-                    this.simpleButton2.Text = "展开";
-
-            }
-            #endregion
-
-            #region 表一
-            index++;
-            if (class_SelectAllModel.class_SubList.Count > index)
-            {
-                this.textEdit31.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit19.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-                this.radioGroup5.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
-                this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                this.buttonEdit1.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
-                this.buttonEdit2.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
-
-                this.textEdit97.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.panelControl17.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
-            }
-            #endregion
-
-            #region 表二
-            index++;
-            if (class_SelectAllModel.class_SubList.Count > index)
-            {
-                this.textEdit41.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit28.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-
-                this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
-                this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                this.buttonEdit4.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
-                this.buttonEdit3.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
-                this.radioGroup29.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
-                this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
-
-                this.textEdit95.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.panelControl28.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
-            }
-            #endregion
-
-            #region 表三
-            index++;
-            if (class_SelectAllModel.class_SubList.Count > index)
-            {
-                this.textEdit73.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit42.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-                //Join方式、association、collection
-                this.radioGroup17.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
-                //左链接、右链接
-                this.radioGroup19.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                //外键字段名称
-                this.buttonEdit6.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
-                //关联字段名称
-                this.buttonEdit5.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
-                this.radioGroup30.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
-                this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
-
-                this.textEdit91.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.panelControl44.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
-            }
-            #endregion
-
-            #region 表四
-            index++;
-            if (class_SelectAllModel.class_SubList.Count > index)
-            {
-                this.textEdit82.Text = class_SelectAllModel.class_SubList[index].NameSpace;
-                this.memoEdit52.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
-                //Join方式、association、collection
-                this.radioGroup20.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
-                //左链接、右链接
-                this.radioGroup22.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
-                //外键字段名称
-                this.buttonEdit8.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
-                //关联字段名称
-                this.buttonEdit7.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
-                this.radioGroup31.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
-                this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
-
-                this.textEdit93.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
-                this.panelControl45.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
-            }
-            #endregion
-
-            if (class_SelectAllModel != null)
-            {
-                this.propertyGridControl3.SelectedObject = class_SelectAllModel.class_SelectDataBase;
-                this.propertyGridControl4.SelectedObject = class_SelectAllModel.class_Create;
-                this.propertyGridControl5.SelectedObject = class_SelectAllModel.class_MyBatisMap;
-                this.textEdit13.Text = class_SelectAllModel.AllPackerName;
                 if (xmlFileName != null)
+                    class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                if (class_SelectAllModel == null)
+                    class_SelectAllModel = new Class_SelectAllModel();
+                switch (class_SelectAllModel.class_SelectDataBase.databaseType)
                 {
-                    _getUseTable(false);
-                    for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
+                    case "MySql":
+                        class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
+                        break;
+                    case "SqlServer 2017":
+                        class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
+                        break;
+                    default:
+                        break;
+                }
+                class_InterFaceDataBase.SetClass_AllModel(class_SelectAllModel);
+                this.textEdit13.Text = class_SelectAllModel.AllPackerName;
+                this.checkEdit2.Checked = class_SelectAllModel.IsAutoWard;
+                this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.TestUnit);
+                this.textEdit21.Text = class_SelectAllModel.TestClassName;
+                this.checkEdit17.Checked = class_SelectAllModel.PageSign;
+                this.checkEdit19.Checked = class_SelectAllModel.ReturnStructure;
+                this.checkEdit20.Checked = class_SelectAllModel.ReadWriteSeparation;
+
+                #region 设置上次打开的Tab
+                this.xtraTabControl1.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl1;
+                this.xtraTabControl2.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl2;
+                this.xtraTabControl3.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl3;
+                this.xtraTabControl4.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl4;
+                this.xtraTabControl5.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl5;
+                this.xtraTabControl6.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl6;
+                this.xtraTabControl7.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl7;
+                this.xtraTabControl9.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl9;
+                this.xtraTabControl8.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl8;
+                this.xtraTabControl10.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl10;
+                this.xtraTabControl13.SelectedTabPageIndex = class_SelectAllModel.class_WindowLastState.xtraTabControl13;
+                #endregion
+                int index = 0;
+                #region 主表
+                if (class_SelectAllModel.class_SubList.Count > index)
+                {
+                    this.textEdit14.Text = class_SelectAllModel.class_SubList[index].MethodId;
+                    this.textEdit15.Text = class_SelectAllModel.class_SubList[index].MethodContent;
+                    this.radioGroup7.SelectedIndex = class_SelectAllModel.class_SubList[index].ResultType;
+                    this.checkEdit1.Checked = class_SelectAllModel.class_SubList[index].IsAddXmlHead;
+                    this.textEdit16.Text = class_SelectAllModel.class_SubList[index].NameSpace;
+                    this.memoEdit3.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].MapContent);
+                    this.memoEdit4.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].SelectContent);
+                    this.memoEdit5.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceInterFaceContent);
+                    this.memoEdit6.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ServiceImplContent);
+                    this.memoEdit8.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ModelContent);
+                    this.memoEdit9.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
+                    this.memoEdit10.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DAOContent);
+                    this.memoEdit11.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].ControlContent);
+                    this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].InPutParamContent);
+                    this.textEdit22.Text = class_SelectAllModel.class_SubList[index].ResultMapId;
+                    this.textEdit24.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
+                    this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
+                    this.textEdit20.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
+                    this.textEdit47.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
+                    this.textEdit46.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
+                    this.radioGroup9.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
+                    this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+                    this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
+                    this.memoEdit54.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].TestSql);
+
+                    this.textEdit99.Text = class_SelectAllModel.class_SubList[index].ParamClassName;
+                    this.textEdit100.Text = class_SelectAllModel.class_SubList[index].ModelClassName;
+                    this.textEdit19.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                    this.textEdit101.Text = class_SelectAllModel.class_SubList[index].DaoClassName;
+                    this.textEdit44.Text = class_SelectAllModel.class_SubList[index].XmlFileName;
+                    this.textEdit54.Text = class_SelectAllModel.class_SubList[index].ControlRequestMapping;
+                    this.textEdit102.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceName;
+                    this.textEdit103.Text = class_SelectAllModel.class_SubList[index].ServiceClassName;
+
+                    if (this.panelControl4.Height > this.simpleButton2.Height + 5)
+                        this.simpleButton2.Text = "折叠";
+                    else
+                        this.simpleButton2.Text = "展开";
+
+                }
+                #endregion
+
+                #region 表一
+                index++;
+                if (class_SelectAllModel.class_SubList.Count > index)
+                {
+                    this.textEdit31.Text = class_SelectAllModel.class_SubList[index].NameSpace;
+                    this.memoEdit19.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
+                    this.radioGroup5.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
+                    this.radioGroup1.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
+                    this.buttonEdit1.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
+                    this.buttonEdit2.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+
+                    this.textEdit97.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                    this.panelControl17.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
+                }
+                #endregion
+
+                #region 表二
+                index++;
+                if (class_SelectAllModel.class_SubList.Count > index)
+                {
+                    this.textEdit41.Text = class_SelectAllModel.class_SubList[index].NameSpace;
+                    this.memoEdit28.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
+
+                    this.radioGroup6.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
+                    this.radioGroup2.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
+                    this.buttonEdit4.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
+                    this.buttonEdit3.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+                    this.radioGroup29.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
+                    this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+
+                    this.textEdit95.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                    this.panelControl28.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
+                }
+                #endregion
+
+                #region 表三
+                index++;
+                if (class_SelectAllModel.class_SubList.Count > index)
+                {
+                    this.textEdit73.Text = class_SelectAllModel.class_SubList[index].NameSpace;
+                    this.memoEdit42.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
+                    //Join方式、association、collection
+                    this.radioGroup17.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
+                    //左链接、右链接
+                    this.radioGroup19.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
+                    //外键字段名称
+                    this.buttonEdit6.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
+                    //关联字段名称
+                    this.buttonEdit5.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+                    this.radioGroup30.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
+                    this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+
+                    this.textEdit91.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                    this.panelControl44.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
+                }
+                #endregion
+
+                #region 表四
+                index++;
+                if (class_SelectAllModel.class_SubList.Count > index)
+                {
+                    this.textEdit82.Text = class_SelectAllModel.class_SubList[index].NameSpace;
+                    this.memoEdit52.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].DTOContent);
+                    //Join方式、association、collection
+                    this.radioGroup20.SelectedIndex = class_SelectAllModel.class_SubList[index].JoinType;
+                    //左链接、右链接
+                    this.radioGroup22.SelectedIndex = class_SelectAllModel.class_SubList[index].InnerType;
+                    //外键字段名称
+                    this.buttonEdit8.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
+                    //关联字段名称
+                    this.buttonEdit7.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
+                    this.radioGroup31.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
+                    this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+
+                    this.textEdit93.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
+                    this.panelControl45.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
+                }
+                #endregion
+
+                if (class_SelectAllModel != null)
+                {
+                    this.propertyGridControl3.SelectedObject = class_SelectAllModel.class_SelectDataBase;
+                    this.propertyGridControl4.SelectedObject = class_SelectAllModel.class_Create;
+                    this.propertyGridControl5.SelectedObject = class_SelectAllModel.class_MyBatisMap;
+                    this.textEdit13.Text = class_SelectAllModel.AllPackerName;
+                    if (xmlFileName != null)
                     {
-                        if (class_SelectAllModel.class_SubList[i] != null)
-                            this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, class_SelectAllModel.class_SubList[i].AliasName, i, false);
+                        _getUseTable(false);
+                        for (int i = 0; i < class_SelectAllModel.class_SubList.Count; i++)
+                        {
+                            if (class_SelectAllModel.class_SubList[i] != null)
+                                this.AddUseTableData(class_SelectAllModel.class_SubList[i].TableName, class_SelectAllModel.class_SubList[i].AliasName, i, false);
+                        }
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(string.Format("关系型数据库链接错误，请核对数据库链接参数！\r\n{0}", e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public string publicSkinName;
@@ -635,56 +643,64 @@ namespace MDIDemo.vou
         }
         private void _getUseTable(bool ReSet)
         {
-            List<Class_TableInfo> class_TableInfos = new List<Class_TableInfo>();
-            if (ReSet)
+            try
             {
-                switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+                List<Class_TableInfo> class_TableInfos = new List<Class_TableInfo>();
+                if (ReSet)
                 {
-                    case "MySql":
-                        class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
-                        break;
-                    case "SqlServer 2017":
-                        class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
-                        break;
-                    default:
-                        break;
+                    switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+                    {
+                        case "MySql":
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
+                            break;
+                        case "SqlServer 2017":
+                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
+                            break;
+                        default:
+                            break;
+                    }
+                    class_InterFaceDataBase.SetClass_AllModel(class_SelectAllModel);
                 }
-                class_InterFaceDataBase.SetClass_AllModel(class_SelectAllModel);
-            }
-            if (listBoxControl1.ItemCount > 0)
-                listBoxControl1.Items.Clear();
-            if (listBoxControl2.ItemCount > 0)
-                listBoxControl2.Items.Clear();
-            if (listBoxControl3.ItemCount > 0)
-                listBoxControl3.Items.Clear();
-            myTableNameList.Clear();
-            myTableContentList.Clear();
-            class_TableInfos = class_InterFaceDataBase.GetUseTableList(null);
-            myTableNameList = class_TableInfos.Select(a => a.TableName).ToList();
-            myTableContentList = class_TableInfos.Select(a => a.TableComment).ToList();
-            Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
-            foreach (string row in myTableNameList)
-            {
-                this.listBoxControl1.Items.Add(row);
-                string AliasName = class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
-                    , class_SelectAllModel.class_SelectDataBase.dataBaseName, row);
-                this.listBoxControl3.Items.Add(AliasName == null ? "" : AliasName);
-            }
-            foreach (string row in myTableContentList)
-            {
-                this.listBoxControl2.Items.Add(row);
-            }
+                if (listBoxControl1.ItemCount > 0)
+                    listBoxControl1.Items.Clear();
+                if (listBoxControl2.ItemCount > 0)
+                    listBoxControl2.Items.Clear();
+                if (listBoxControl3.ItemCount > 0)
+                    listBoxControl3.Items.Clear();
+                myTableNameList.Clear();
+                myTableContentList.Clear();
+                class_TableInfos = class_InterFaceDataBase.GetUseTableList(null);
+                myTableNameList = class_TableInfos.Select(a => a.TableName).ToList();
+                myTableContentList = class_TableInfos.Select(a => a.TableComment).ToList();
+                Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
+                foreach (string row in myTableNameList)
+                {
+                    this.listBoxControl1.Items.Add(row);
+                    string AliasName = class_SQLiteOperator.GetTableAlias(class_SelectAllModel.class_SelectDataBase.dataSourceUrl
+                        , class_SelectAllModel.class_SelectDataBase.dataBaseName, row);
+                    this.listBoxControl3.Items.Add(AliasName == null ? "" : AliasName);
+                }
+                foreach (string row in myTableContentList)
+                {
+                    this.listBoxControl2.Items.Add(row);
+                }
 
-            if (class_SelectAllModel.LastSelectTableName != null)
-            {
-                int LastIndex = myTableNameList.IndexOf(class_SelectAllModel.LastSelectTableName);
-                this.listBoxControl1.SelectedIndex = LastIndex;
-                this.listBoxControl2.SelectedIndex = LastIndex;
+                if (class_SelectAllModel.LastSelectTableName != null)
+                {
+                    int LastIndex = myTableNameList.IndexOf(class_SelectAllModel.LastSelectTableName);
+                    this.listBoxControl1.SelectedIndex = LastIndex;
+                    this.listBoxControl2.SelectedIndex = LastIndex;
+                }
+                else
+                {
+                    this.listBoxControl1.SelectedIndex = -1;
+                    this.listBoxControl2.SelectedIndex = -1;
+                }
             }
-            else
+            catch (Exception e)
             {
-                this.listBoxControl1.SelectedIndex = -1;
-                this.listBoxControl2.SelectedIndex = -1;
+                MessageBox.Show(string.Format("关系型数据库链接错误，请核对数据库链接参数！\r\n{0}",e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void simpleButton1_Click(object sender, EventArgs e)

@@ -34,48 +34,55 @@ namespace MDIDemo.PublicClass
         }
         public Class_MySqlDataBase(string ip, string dataBaseName, string userName, string passWord, int port)
         {
-            if (ip != null)
+            try
             {
-                this.Ip = ip;
-                this.DataBaseName = dataBaseName;
-                this.UserName = userName;
-                this.PassWord = passWord;
-                this.Port = port;
-            }
-            else
-            {
-                Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-                Class_DataBaseConDefault class_DataBaseConDefault = new Class_DataBaseConDefault();
-                class_DataBaseConDefault = class_PublicMethod.FromXmlToSelectObject<Class_DataBaseConDefault>("DataBaseDefaultValues");
-
-                if (class_DataBaseConDefault == null)
+                if (ip != null)
                 {
-                    this.Ip = "101.201.101.138";
-                    this.DataBaseName = "test01";
-                    this.UserName = "king";
-                    this.PassWord = "123456";
-                    this.Port = 10001;
+                    this.Ip = ip;
+                    this.DataBaseName = dataBaseName;
+                    this.UserName = userName;
+                    this.PassWord = passWord;
+                    this.Port = port;
                 }
                 else
                 {
-                    if (class_DataBaseConDefault.databaseType == "MySql")
+                    Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                    Class_DataBaseConDefault class_DataBaseConDefault = new Class_DataBaseConDefault();
+                    class_DataBaseConDefault = class_PublicMethod.FromXmlToSelectObject<Class_DataBaseConDefault>("DataBaseDefaultValues");
+
+                    if (class_DataBaseConDefault == null)
                     {
-                        this.Ip = class_DataBaseConDefault.dataSourceUrl;
-                        this.DataBaseName = class_DataBaseConDefault.dataBaseName;
-                        this.UserName = class_DataBaseConDefault.dataSourceUserName;
-                        this.PassWord = class_DataBaseConDefault.dataSourcePassWord;
-                        this.Port = class_DataBaseConDefault.Port;
+                        this.Ip = "101.201.101.138";
+                        this.DataBaseName = "test01";
+                        this.UserName = "king";
+                        this.PassWord = "123456";
+                        this.Port = 10001;
+                    }
+                    else
+                    {
+                        if (class_DataBaseConDefault.databaseType == "MySql")
+                        {
+                            this.Ip = class_DataBaseConDefault.dataSourceUrl;
+                            this.DataBaseName = class_DataBaseConDefault.dataBaseName;
+                            this.UserName = class_DataBaseConDefault.dataSourceUserName;
+                            this.PassWord = class_DataBaseConDefault.dataSourcePassWord;
+                            this.Port = class_DataBaseConDefault.Port;
+                        }
                     }
                 }
+                IniFieldTypeChange();
+                ConnectString = string.Format("server={0};port={4};user={2};password={3}; database={1};"
+                    , this.Ip
+                    , this.DataBaseName
+                    , this.UserName
+                    , this.PassWord
+                    , this.Port.ToString());
+                mySqlDb = new MySqlDb(ConnectString);
             }
-            IniFieldTypeChange();
-            ConnectString = string.Format("server={0};port={4};user={2};password={3}; database={1};"
-                , this.Ip
-                , this.DataBaseName
-                , this.UserName
-                , this.PassWord
-                , this.Port.ToString());
-            mySqlDb = new MySqlDb(ConnectString);
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         public List<string> GetDataType()
         {
