@@ -2578,7 +2578,7 @@ namespace MDIDemo.PublicClass
                     {
                         stringBuilder.AppendFormat("\r\n{0}return {1}."
                             , class_ToolSpace.GetSetSpaceCount(2)
-                            , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
+                            , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                         if (class_WhereFields != null)
                         {
                             if (class_WhereFields.Count > 1)
