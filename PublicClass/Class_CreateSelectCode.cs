@@ -138,7 +138,8 @@ namespace MDIDemo.PublicClass
                                 IsSame = IsSame,
                                 OutFieldName = InParaFieldName,
                                 WhereIsNull = class_Field.WhereIsNull,
-                                TableName = item.TableName
+                                TableName = item.TableName,
+                                WhereTrim = class_Field.WhereTrim
                             };
                             class_WhereFields.Add(class_WhereField);
                         }
@@ -1642,10 +1643,9 @@ namespace MDIDemo.PublicClass
                     break;
                 case 1:
                     {
-                        stringBuilder.AppendFormat("{0}<association property=\"{1}\" column=\"{2}\" javaType=\"{3}.dto.{4}\">\r\n"
+                        stringBuilder.AppendFormat("{0}<association property=\"{1}\" javaType=\"{2}.dto.{3}\">\r\n"
                             , class_ToolSpace.GetSetSpaceCount(SpaceCounter)
                             , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName)
-                            , "idtest"
                             , class_SelectAllModel.AllPackerName
                             , Class_Tool.GetFirstCodeUpper(class_Sub.DtoClassName));
                         foreach (Class_Field class_Field in class_Sub.class_Fields)
@@ -2115,6 +2115,17 @@ namespace MDIDemo.PublicClass
                 }
             }
             stringBuilder.Append(") {\r\n");
+
+            #region 去空格
+            foreach (Class_WhereField row in class_WhereFields)
+            {
+                if (row.LogType.Equals("varchar") && row.WhereTrim)
+                {
+                    stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(2), row.OutFieldName);
+                }
+            }
+            #endregion
             if (class_WhereFields != null)
             {
                 if (class_WhereFields.Count > 1)

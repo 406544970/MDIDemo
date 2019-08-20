@@ -520,6 +520,10 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 default:
                                                     break;
                                             }
+                                            if (row["FieldType"].Equals("varchar"))
+                                                row["WhereTrim"] = Convert.ToBoolean(true);
+                                            else
+                                                row["WhereTrim"] = Convert.ToBoolean(false);
                                         }
                                     }
                                     break;
