@@ -1165,6 +1165,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" {\r\n");
 
             //加入字段
+            int FieldCount = 0;
             foreach (Class_Field class_Field in class_SelectAllModel.class_SubList[PageIndex].class_Fields)
             {
                 if (class_Field.SelectSelect)
@@ -1182,6 +1183,48 @@ namespace MDIDemo.PublicClass
                     stringBuilder.AppendFormat(" {0} {1};\r\n"
                         , ReturnType
                         , class_Field.ParaName);
+                    FieldCount++;
+                }
+            }
+            if (FieldCount > 0)
+            {
+                //stringBuilder.Append("\r\n");
+                foreach (Class_Field class_Field in class_SelectAllModel.class_SubList[PageIndex].class_Fields)
+                {
+                    if (class_Field.SelectSelect)
+                    {
+                        string ReturnType = class_Field.ReturnType;
+                        if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                            ReturnType = "varchar";
+                        ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, ReturnType)));
+
+                        #region Get
+                        stringBuilder.AppendFormat("\r\n{0}public {2} get{1}()"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
+                            , ReturnType);
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}return {1};\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(class_Field.ParaName));
+                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("}\r\n\r\n");
+                        #endregion
+
+                        #region Set
+                        stringBuilder.AppendFormat("{0}public void set{1}({3} {2})"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
+                            , Class_Tool.GetFirstCodeLow(class_Field.ParaName)
+                            , ReturnType);
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}this.{1} = {1};\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(class_Field.ParaName));
+                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("}\r\n");
+                        #endregion
+                    }
                 }
             }
             stringBuilder.Append("}\r\n");
@@ -1801,28 +1844,125 @@ namespace MDIDemo.PublicClass
                                         , MyFieldName);
                             }
                         }
+                        foreach (Class_Field class_Field in class_Sub.class_Fields)
+                        {
+                            if (class_Field.SelectSelect)
+                            {
+                                string ReturnType = class_Field.ReturnType;
+                                if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
+                                    ReturnType = "varchar";
+                                ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_InterFaceDataBase.GetDataTypeByFunction(class_Field.FunctionName, ReturnType)));
+                                string MyFieldName = class_Field.ParaName;
+                                if (IsMultTable && class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, PageIndex))
+                                    MyFieldName = class_Field.MultFieldName;
+
+                                #region Get
+                                stringBuilder.AppendFormat("\r\n{0}public {2} get{1}()"
+                                    , class_ToolSpace.GetSetSpaceCount(1)
+                                    , Class_Tool.GetFirstCodeUpper(MyFieldName)
+                                    , ReturnType);
+                                stringBuilder.Append("{\r\n");
+                                stringBuilder.AppendFormat("{0}return {1};\r\n"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(MyFieldName));
+                                stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                                stringBuilder.Append("}\r\n\r\n");
+                                #endregion
+
+                                #region Set
+                                stringBuilder.AppendFormat("{0}public void set{1}({3} {2})"
+                                    , class_ToolSpace.GetSetSpaceCount(1)
+                                    , Class_Tool.GetFirstCodeUpper(MyFieldName)
+                                    , Class_Tool.GetFirstCodeLow(MyFieldName)
+                                    , ReturnType);
+                                stringBuilder.Append("{\r\n");
+                                stringBuilder.AppendFormat("{0}this.{1} = {1};\r\n"
+                                    , class_ToolSpace.GetSetSpaceCount(2)
+                                    , Class_Tool.GetFirstCodeLow(MyFieldName));
+                                stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                                stringBuilder.Append("}\r\n");
+                                #endregion
+                            }
+                        }
                     }
                     break;
                 case 1:
                     {
                         stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                        stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), "关联外表");
+                        stringBuilder.AppendFormat("{0} * 关联外表:{1}，一对一；\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_SelectAllModel.class_SubList[PageIndex].TableName);
                         stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
                         stringBuilder.AppendFormat("{0}private {1} {2};\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1)
                             , class_SelectAllModel.class_SubList[PageIndex].DtoClassName
                             , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+
+                        #region Get
+                        stringBuilder.AppendFormat("\r\n{0}public {2} get{1}()"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_SelectAllModel.class_SubList[PageIndex].DtoClassName
+                            , Class_Tool.GetFirstCodeUpper(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}return {1};\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("}\r\n\r\n");
+                        #endregion
+
+                        #region Set
+                        stringBuilder.AppendFormat("{0}public void set{1}({3} {2})"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , Class_Tool.GetFirstCodeUpper(class_SelectAllModel.class_SubList[PageIndex].DtoClassName)
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName)
+                            , class_SelectAllModel.class_SubList[PageIndex].DtoClassName);
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}this.{1} = {1};\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("}\r\n");
+                        #endregion
                     }
                     break;
                 default:
                     {
                         stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                        stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), "关联外表");
+                        stringBuilder.AppendFormat("{0} * 关联外表:{1}，一对多；\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_SelectAllModel.class_SubList[PageIndex].TableName);
                         stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
                         stringBuilder.AppendFormat("{0}private List<{1}> {2}s;\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1)
                             , class_SelectAllModel.class_SubList[PageIndex].DtoClassName
                             , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                        #region Get
+                        stringBuilder.AppendFormat("\r\n{0}public List<{2}> get{1}()"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_SelectAllModel.class_SubList[PageIndex].DtoClassName
+                            , Class_Tool.GetFirstCodeUpper(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}return {1};\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("}\r\n\r\n");
+                        #endregion
+
+                        #region Set
+                        stringBuilder.AppendFormat("{0}public void set{1}(List<{3}> {2})"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , Class_Tool.GetFirstCodeUpper(class_SelectAllModel.class_SubList[PageIndex].DtoClassName)
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName)
+                            , class_SelectAllModel.class_SubList[PageIndex].DtoClassName);
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}this.{1} = {1};\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
+                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("}\r\n");
+                        #endregion
                     }
                     break;
             }
