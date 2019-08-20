@@ -24,8 +24,8 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.mFile = new DevExpress.XtraBars.BarSubItem();
             this.iOpen = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.iClose = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
@@ -45,6 +45,11 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.iDocName = new DevExpress.XtraBars.BarStaticItem();
@@ -72,14 +77,15 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
+            this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.repositoryItemColorEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.alertControl1 = new DevExpress.XtraBars.Alerter.AlertControl(this.components);
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
             this.popupControlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -1213,7 +1219,6 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.barButtonItem4,
             this.barSubItem1,
             this.barButtonItem5,
             this.barButtonItem6,
@@ -1230,9 +1235,16 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem16,
             this.barButtonItem17,
             this.barButtonItem18,
-            this.barButtonItem19});
+            this.barButtonItem19,
+            this.barSubItem3,
+            this.skinBarSubItem1,
+            this.barSubItem4,
+            this.barButtonItem20,
+            this.barButtonItem21,
+            this.barButtonItem22,
+            this.barButtonItem23});
             this.barManager1.MainMenu = this.bar1;
-            this.barManager1.MaxItemId = 59;
+            this.barManager1.MaxItemId = 66;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemColorEdit1,
             this.repositoryItemImageComboBox1,
@@ -1266,7 +1278,6 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.mFile.Id = 0;
             this.mFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.iOpen),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
             new DevExpress.XtraBars.LinkPersistInfo(this.iClose),
@@ -1286,16 +1297,6 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.iOpen.Name = "iOpen";
             this.iOpen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.iOpen_ItemClick);
             // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "创建功能窗体";
-            this.barButtonItem4.Hint = "根据类型，创建新窗体";
-            this.barButtonItem4.Id = 40;
-            this.barButtonItem4.ImageOptions.ImageIndex = 627;
-            this.barButtonItem4.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N));
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
-            // 
             // barButtonItem12
             // 
             this.barButtonItem12.Caption = "效仿创建窗体";
@@ -1304,6 +1305,15 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem12.ImageOptions.ImageIndex = 630;
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
+            // barButtonItem18
+            // 
+            this.barButtonItem18.Caption = "删除现有窗体";
+            this.barButtonItem18.Hint = "删除指定窗体";
+            this.barButtonItem18.Id = 57;
+            this.barButtonItem18.ImageOptions.ImageIndex = 631;
+            this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
             // 
             // iClose
             // 
@@ -1472,7 +1482,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.bar2.FloatLocation = new System.Drawing.Point(143, 152);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.iOpen),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
             new DevExpress.XtraBars.LinkPersistInfo(this.iClose),
@@ -1482,6 +1492,51 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.bar2.Offset = 181;
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.Text = "File";
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "bbb";
+            this.barSubItem3.Id = 59;
+            this.barSubItem3.ImageOptions.ImageIndex = 627;
+            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem21),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem22),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23)});
+            this.barSubItem3.Name = "barSubItem3";
+            this.barSubItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // barButtonItem20
+            // 
+            this.barButtonItem20.Caption = "SELECT";
+            this.barButtonItem20.Id = 62;
+            this.barButtonItem20.ImageOptions.ImageIndex = 33;
+            this.barButtonItem20.Name = "barButtonItem20";
+            this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem20_ItemClick);
+            // 
+            // barButtonItem21
+            // 
+            this.barButtonItem21.Caption = "INSERT";
+            this.barButtonItem21.Id = 63;
+            this.barButtonItem21.ImageOptions.ImageIndex = 30;
+            this.barButtonItem21.Name = "barButtonItem21";
+            this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem21_ItemClick);
+            // 
+            // barButtonItem22
+            // 
+            this.barButtonItem22.Caption = "UPDATE";
+            this.barButtonItem22.Id = 64;
+            this.barButtonItem22.ImageOptions.ImageIndex = 27;
+            this.barButtonItem22.Name = "barButtonItem22";
+            this.barButtonItem22.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem22_ItemClick);
+            // 
+            // barButtonItem23
+            // 
+            this.barButtonItem23.Caption = "DELETE";
+            this.barButtonItem23.Id = 65;
+            this.barButtonItem23.ImageOptions.ImageIndex = 25;
+            this.barButtonItem23.Name = "barButtonItem23";
+            this.barButtonItem23.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem23_ItemClick);
             // 
             // bar3
             // 
@@ -1731,6 +1786,25 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
+            // barButtonItem19
+            // 
+            this.barButtonItem19.Caption = "删除现有窗体";
+            this.barButtonItem19.Hint = "删除指定窗体";
+            this.barButtonItem19.Id = 58;
+            this.barButtonItem19.ImageOptions.ImageIndex = 631;
+            this.barButtonItem19.Name = "barButtonItem19";
+            // 
+            // skinBarSubItem1
+            // 
+            this.skinBarSubItem1.Caption = "skinBarSubItem1";
+            this.skinBarSubItem1.Id = 60;
+            this.skinBarSubItem1.Name = "skinBarSubItem1";
+            // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Id = 61;
+            this.barSubItem4.Name = "barSubItem4";
+            // 
             // repositoryItemColorEdit1
             // 
             this.repositoryItemColorEdit1.AllowFocused = false;
@@ -1770,23 +1844,6 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             // 
             this.imageCollection1.ImageSize = new System.Drawing.Size(32, 32);
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            // 
-            // barButtonItem18
-            // 
-            this.barButtonItem18.Caption = "删除现有窗体";
-            this.barButtonItem18.Hint = "删除指定窗体";
-            this.barButtonItem18.Id = 57;
-            this.barButtonItem18.ImageOptions.ImageIndex = 631;
-            this.barButtonItem18.Name = "barButtonItem18";
-            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
-            // 
-            // barButtonItem19
-            // 
-            this.barButtonItem19.Caption = "删除现有窗体";
-            this.barButtonItem19.Hint = "删除指定窗体";
-            this.barButtonItem19.Id = 58;
-            this.barButtonItem19.ImageOptions.ImageIndex = 631;
-            this.barButtonItem19.Name = "barButtonItem19";
             // 
             // frmMain
             // 
@@ -1866,7 +1923,6 @@ private XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressB
 private BarButtonItem barButtonItem1;
 private BarButtonItem barButtonItem2;
 private BarButtonItem barButtonItem3;
-private BarButtonItem barButtonItem4;
         private BarSubItem barSubItem1;
         private BarButtonItem barButtonItem5;
         private BarButtonItem barButtonItem6;
@@ -1888,5 +1944,12 @@ private BarButtonItem barButtonItem4;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private BarButtonItem barButtonItem18;
         private BarButtonItem barButtonItem19;
+        private BarSubItem barSubItem3;
+        private BarButtonItem barButtonItem20;
+        private BarButtonItem barButtonItem21;
+        private BarButtonItem barButtonItem22;
+        private BarButtonItem barButtonItem23;
+        private SkinBarSubItem skinBarSubItem1;
+        private BarSubItem barSubItem4;
     }
 }

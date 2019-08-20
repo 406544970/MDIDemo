@@ -490,11 +490,6 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         }
 
-        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            OpenSelectWin(null);
-        }
-
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("您确定要退出此系统吗？", "温馨提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -615,6 +610,26 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                     displayAlertMessage("温馨", "指定窗体删除失败！", null, 3);
             }
             form_WindowSelect.Dispose();
+        }
+
+        private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenSelectWin(null);
+        }
+
+        private void barButtonItem21_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MessageBox.Show("正在玩命开发中！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void barButtonItem22_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MessageBox.Show("正在玩命开发中！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MessageBox.Show("正在玩命开发中！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
