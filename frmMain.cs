@@ -64,6 +64,26 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         {
             get { return this.ActiveMdiChild; }
         }
+        public void OpenInsertWin(string xmlFileName)
+        {
+            Class_WindowType class_WindowType = new Class_WindowType();
+            class_WindowType.WindowType = "Insert";
+            Form_Select form_Select;
+            if (xmlFileName == null)
+            {
+                form_Select = new Form_Select(mySkinName);
+                form_Select.Text = "新INSERT";
+                form_Select.Tag = class_WindowType;
+            }
+            else
+            {
+                class_WindowType.XmlFileName = xmlFileName;
+                form_Select = new Form_Select(mySkinName, xmlFileName);
+                form_Select.Text = string.Format("INSERT：{0}", xmlFileName);
+                form_Select.Tag = class_WindowType;
+            }
+            OpenSubForm(form_Select);
+        }
         public void OpenSelectWin(string xmlFileName)
         {
             Class_WindowType class_WindowType = new Class_WindowType();
@@ -110,6 +130,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                             OpenSelectWin(class_WindowType.XmlFileName);
                             break;
                         case "insert":
+                            OpenInsertWin(class_WindowType.XmlFileName);
                             break;
                         case "update":
                             break;
@@ -165,6 +186,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                             OpenSelectWin(PageKey);
                             break;
                         case "insert":
+                            OpenInsertWin(PageKey);
                             break;
                         case "update":
                             break;
@@ -555,6 +577,11 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                             }
                             break;
                         case "insert":
+                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
+                            if (PageKey != null)
+                            {
+                                OpenInsertWin(PageKey);
+                            }
                             break;
                         case "update":
                             break;
@@ -619,7 +646,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         private void barButtonItem21_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("正在玩命开发中！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenInsertWin(null);
         }
 
         private void barButtonItem22_ItemClick(object sender, ItemClickEventArgs e)
