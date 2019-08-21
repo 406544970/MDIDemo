@@ -225,6 +225,7 @@
     <Compile Include="PublicClass\Class_CaseWhen.cs" />
     <Compile Include="PublicClass\Class_CreateSelectCode.cs" />
     <Compile Include="PublicClass\Class_DataBaseConDefault.cs" />
+    <Compile Include="PublicClass\Class_InserAllModel.cs" />
     <Compile Include="PublicClass\Class_InterFaceCreateCode.cs" />
     <Compile Include="PublicClass\Class_Mydb.cs" />
     <Compile Include="PublicClass\Class_MySqlDataBase.cs" />

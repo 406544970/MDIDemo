@@ -27,10 +27,11 @@ namespace MDIDemo.PublicClass
         /// <summary>
         /// 得到指定表结构
         /// </summary>
+        /// <typeparam name="T">类型</typeparam>
         /// <param name="TableName">指定表名</param>
         /// <param name="SelectSelectDefault">Select选择默认值</param>
         /// <returns></returns>
-        DataTable GetMainTableStruct(string TableName,int PageSelectIndex,bool SelectSelectDefault);
+        DataTable GetMainTableStruct<T>(string TableName,int PageSelectIndex,bool SelectSelectDefault);
         List<string> GetDataType();
         List<string> GetFunctionList(string FieldType);
         List<string> GetHavingFuctionList(string FieldType);

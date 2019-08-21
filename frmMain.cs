@@ -68,21 +68,21 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         {
             Class_WindowType class_WindowType = new Class_WindowType();
             class_WindowType.WindowType = "Insert";
-            Form_Select form_Select;
+            Form_Insert form_Insert;
             if (xmlFileName == null)
             {
-                form_Select = new Form_Select(mySkinName);
-                form_Select.Text = "ÐÂINSERT";
-                form_Select.Tag = class_WindowType;
+                form_Insert = new Form_Insert(mySkinName);
+                form_Insert.Text = "ÐÂINSERT";
+                form_Insert.Tag = class_WindowType;
             }
             else
             {
                 class_WindowType.XmlFileName = xmlFileName;
-                form_Select = new Form_Select(mySkinName, xmlFileName);
-                form_Select.Text = string.Format("INSERT£º{0}", xmlFileName);
-                form_Select.Tag = class_WindowType;
+                form_Insert = new Form_Insert(mySkinName, xmlFileName);
+                form_Insert.Text = string.Format("INSERT£º{0}", xmlFileName);
+                form_Insert.Tag = class_WindowType;
             }
-            OpenSubForm(form_Select);
+            OpenSubForm(form_Insert);
         }
         public void OpenSelectWin(string xmlFileName)
         {
