@@ -438,7 +438,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             break;
                         case "insert":
                             {
-                                #region 加入自定义Select列
+                                #region 加入自定义Insert列
                                 DataColumn InsertSelect = new DataColumn("InsertSelect", typeof(bool));
                                 DataColumn ParaName = new DataColumn("ParaName", typeof(string));
                                 DataColumn MaxLegth = new DataColumn("MaxLegth", typeof(Int32));
