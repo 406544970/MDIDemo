@@ -7471,10 +7471,10 @@
             // xtraTabControl8
             // 
             this.xtraTabControl8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl8.Location = new System.Drawing.Point(0, 67);
+            this.xtraTabControl8.Location = new System.Drawing.Point(0, 61);
             this.xtraTabControl8.Name = "xtraTabControl8";
             this.xtraTabControl8.SelectedTabPage = this.xtraTabPage23;
-            this.xtraTabControl8.Size = new System.Drawing.Size(1183, 602);
+            this.xtraTabControl8.Size = new System.Drawing.Size(1183, 608);
             this.xtraTabControl8.TabIndex = 10;
             this.xtraTabControl8.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage23,
@@ -7489,7 +7489,7 @@
             this.xtraTabPage23.Controls.Add(this.xtraTabControl6);
             this.xtraTabPage23.Controls.Add(this.panelControl4);
             this.xtraTabPage23.Name = "xtraTabPage23";
-            this.xtraTabPage23.Size = new System.Drawing.Size(1177, 573);
+            this.xtraTabPage23.Size = new System.Drawing.Size(1177, 579);
             this.xtraTabPage23.Text = "主表";
             // 
             // xtraTabControl6
@@ -7498,7 +7498,7 @@
             this.xtraTabControl6.Location = new System.Drawing.Point(0, 245);
             this.xtraTabControl6.Name = "xtraTabControl6";
             this.xtraTabControl6.SelectedTabPage = this.xtraTabPage15;
-            this.xtraTabControl6.Size = new System.Drawing.Size(1177, 328);
+            this.xtraTabControl6.Size = new System.Drawing.Size(1177, 334);
             this.xtraTabControl6.TabIndex = 6;
             this.xtraTabControl6.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage49,
@@ -7514,7 +7514,7 @@
             this.xtraTabPage15.Controls.Add(this.xtraTabControl7);
             this.xtraTabPage15.Controls.Add(this.panelControl5);
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(1171, 299);
+            this.xtraTabPage15.Size = new System.Drawing.Size(1171, 305);
             this.xtraTabPage15.Text = "XML";
             // 
             // xtraTabControl7
@@ -7523,7 +7523,7 @@
             this.xtraTabControl7.Location = new System.Drawing.Point(0, 5);
             this.xtraTabControl7.Name = "xtraTabControl7";
             this.xtraTabControl7.SelectedTabPage = this.xtraTabPage21;
-            this.xtraTabControl7.Size = new System.Drawing.Size(1171, 294);
+            this.xtraTabControl7.Size = new System.Drawing.Size(1171, 300);
             this.xtraTabControl7.TabIndex = 2;
             this.xtraTabControl7.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage21,
@@ -7534,7 +7534,7 @@
             // 
             this.xtraTabPage21.Controls.Add(this.memoEdit3);
             this.xtraTabPage21.Name = "xtraTabPage21";
-            this.xtraTabPage21.Size = new System.Drawing.Size(1165, 265);
+            this.xtraTabPage21.Size = new System.Drawing.Size(1165, 271);
             this.xtraTabPage21.Text = "Map";
             // 
             // memoEdit3
@@ -7543,7 +7543,7 @@
             this.memoEdit3.Location = new System.Drawing.Point(0, 0);
             this.memoEdit3.MenuManager = this.barManager1;
             this.memoEdit3.Name = "memoEdit3";
-            this.memoEdit3.Size = new System.Drawing.Size(1165, 265);
+            this.memoEdit3.Size = new System.Drawing.Size(1165, 271);
             this.memoEdit3.TabIndex = 0;
             this.memoEdit3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memoEdit3_KeyDown);
             // 
@@ -8670,7 +8670,7 @@
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl8.Location = new System.Drawing.Point(0, 31);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(1183, 36);
+            this.panelControl8.Size = new System.Drawing.Size(1183, 30);
             this.panelControl8.TabIndex = 11;
             // 
             // textEdit17
