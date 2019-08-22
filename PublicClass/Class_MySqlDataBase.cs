@@ -451,16 +451,18 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 DataColumn WhereTrim = new DataColumn("WhereTrim", typeof(bool));
                                 DataColumn WhereIsNull = new DataColumn("WhereIsNull", typeof(bool));
 
-                                DataColumn FrontSelect = new DataColumn("FrontSelect", typeof(bool));
-                                DataColumn IsMust = new DataColumn("IsMust", typeof(bool));
-                                DataColumn LabelCaption = new DataColumn("LabelCaption", typeof(string));
-                                DataColumn CompomentType = new DataColumn("CompomentType", typeof(string));
-                                DataColumn Hint = new DataColumn("Hint", typeof(string));
-                                DataColumn DefaultValue = new DataColumn("DefaultValue", typeof(string));
-                                DataColumn SortNo = new DataColumn("SortNo", typeof(Int32));
-                                DataColumn ValueId = new DataColumn("ValueId", typeof(string));
-                                DataColumn ReadOnly = new DataColumn("ReadOnly", typeof(bool));
-                                DataColumn CheckType = new DataColumn("CheckType", typeof(string));
+                                DataColumn FrontSelect = new DataColumn("FrontSelect", typeof(bool));//是否页面显示
+                                DataColumn LabelCaption = new DataColumn("LabelCaption", typeof(string));//标签内容
+                                DataColumn IsMust = new DataColumn("IsMust", typeof(bool));//是否为必填项
+                                DataColumn CompomentType = new DataColumn("CompomentType", typeof(string));//控件类型
+                                DataColumn Hint = new DataColumn("Hint", typeof(string));//提示
+                                DataColumn DefaultValue = new DataColumn("DefaultValue", typeof(string));//默认值
+                                DataColumn SortNo = new DataColumn("SortNo", typeof(Int32));//出现顺序
+                                DataColumn ValueId = new DataColumn("ValueId", typeof(string));//值ID
+                                DataColumn ReadOnly = new DataColumn("ReadOnly", typeof(bool));//是否只读
+                                DataColumn CheckType = new DataColumn("CheckType", typeof(string));//校验类型
+                                DataColumn ClassTitle = new DataColumn("ClassTitle", typeof(string));//分类标题
+                                DataColumn CheckMult = new DataColumn("CheckMult", typeof(bool));//增加时是否校验重复：后端属性
 
                                 InsertSelect.DefaultValue = SelectSelectDefault;
                                 TrimSign.DefaultValue = true;
@@ -468,6 +470,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 WhereTrim.DefaultValue = true;
                                 WhereIsNull.DefaultValue = true;
                                 ReadOnly.DefaultValue = false;
+                                CheckMult.DefaultValue = false;
 
                                 dataTable.Columns.Add(InsertSelect);
                                 dataTable.Columns.Add(ParaName);
@@ -491,6 +494,8 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 dataTable.Columns.Add(ValueId);
                                 dataTable.Columns.Add(ReadOnly);
                                 dataTable.Columns.Add(CheckType);
+                                dataTable.Columns.Add(ClassTitle);
+                                dataTable.Columns.Add(CheckMult);
                                 #endregion
                             }
                             break;
@@ -621,6 +626,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 row["ValueId"] = class_CurrentPage.class_Fields[FindIndex].ValueId;
                                                 row["ReadOnly"] = class_CurrentPage.class_Fields[FindIndex].ReadOnly;
                                                 row["CheckType"] = class_CurrentPage.class_Fields[FindIndex].CheckType;
+                                                row["CheckMult"] = class_CurrentPage.class_Fields[FindIndex].CheckMult;
                                                 IsDefault = false;
                                             }
                                         }
@@ -658,13 +664,13 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                     break;
                             }
                         }
-                        else
-                        {
-                            row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
-                            row["MaxLegth"] = row["FieldLength"];
-                            row["ReturnType"] = row["FieldType"];
-                            row["SortNo"] = Counter++;
-                        }
+                        //else
+                        //{
+                        //    row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
+                        //    row["MaxLegth"] = row["FieldLength"];
+                        //    row["ReturnType"] = row["FieldType"];
+                        //    row["SortNo"] = Counter++;
+                        //}
                         row.EndEdit();
                     }
                     vs.Clear();

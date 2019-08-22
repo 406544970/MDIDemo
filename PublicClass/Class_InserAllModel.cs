@@ -737,6 +737,11 @@ namespace MDIDemo.PublicClass
             public string ValueId { get; set; }
             public bool ReadOnly { get; set; }
             public string CheckType { get; set; }
+            public string ClassTitle { get; set; }
+            /// <summary>
+            /// 是否校验重复
+            /// </summary>
+            public bool CheckMult { get; set; }
             #endregion
         }
         #endregion
@@ -841,11 +846,24 @@ namespace MDIDemo.PublicClass
             public Class_Sub()
             {
                 ControlMainCode = true;
+                CheckMult = true;
             }
             /// <summary>
             /// 仅生成主体代码Control
             /// </summary>
             public bool ControlMainCode { get; set; }
+            /// <summary>
+            /// 页面编号,写入Description标签
+            /// </summary>
+            public string PageId { get; set; }
+            /// <summary>
+            /// 页面标题
+            /// </summary>
+            public string PageTitleName { get; set; }
+            /// <summary>
+            /// 方法返回类型：0：影响行数，1：主键ID，2：结构体
+            /// </summary>
+            public int MethodReturyType { get; set; }
         }
         #endregion
 
