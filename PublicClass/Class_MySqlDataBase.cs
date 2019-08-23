@@ -290,9 +290,9 @@ namespace MDIDemo.PublicClass
             return vs;
         }
 
-        public DataTable GetMainTableStruct(string TableName, int PageSelectIndex, bool SelectSelectDefault)
+        public DataTable GetMainTableStruct<T>(string TableName, int PageSelectIndex, bool SelectSelectDefault)
         {
-            return _GetMainTableStruct(TableName, PageSelectIndex, SelectSelectDefault);
+            return _GetMainTableStruct<T>(TableName, PageSelectIndex, SelectSelectDefault);
         }
         private DataTable _GetTableStruct(string TableName)
         {
@@ -356,11 +356,9 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             iniDataTable.Dispose();
             return dataTable;
         }
-        private DataTable _GetMainTableStruct(string TableName, int PageSelectIndex, bool SelectSelectDefault)
+        private DataTable _GetMainTableStruct<T>(string TableName, int PageSelectIndex, bool SelectSelectDefault)
         {
             DataTable dataTable = new DataTable();
-            //占用字节数 = a.length 
-            //小数位数 = isnull(columnproperty(a.id, a.name, 'Scale'), 0) 
             try
             {
                 if (TableName != null)
@@ -369,77 +367,137 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     List<string> vs = new List<string>();
                     vs = class_CaseWhen.GetCaseWhenNameList();
                     dataTable = _GetTableStruct(TableName);
-
-                    Class_SelectAllModel mySelect = new Class_SelectAllModel();
+                    T mySelect = (T)this.class_AllModel;
                     switch (OperateType)
                     {
                         case "select":
-                            mySelect = this.class_AllModel as Class_SelectAllModel;
-                            #region 加入自定义Select列
-                            DataColumn SelectSelect = new DataColumn("SelectSelect", typeof(bool));
-                            DataColumn ParaName = new DataColumn("ParaName", typeof(string));
-                            DataColumn MaxLegth = new DataColumn("MaxLegth", typeof(Int32));
-                            DataColumn CaseWhen = new DataColumn("CaseWhen", typeof(string));
-                            DataColumn ReturnType = new DataColumn("ReturnType", typeof(string));
-                            DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));
-                            DataColumn FunctionName = new DataColumn("FunctionName", typeof(string));
+                            {
+                                #region 加入自定义Select列
+                                DataColumn SelectSelect = new DataColumn("SelectSelect", typeof(bool));
+                                DataColumn ParaName = new DataColumn("ParaName", typeof(string));
+                                DataColumn MaxLegth = new DataColumn("MaxLegth", typeof(Int32));
+                                DataColumn CaseWhen = new DataColumn("CaseWhen", typeof(string));
+                                DataColumn ReturnType = new DataColumn("ReturnType", typeof(string));
+                                DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));
+                                DataColumn FunctionName = new DataColumn("FunctionName", typeof(string));
 
-                            DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));
-                            DataColumn WhereType = new DataColumn("WhereType", typeof(string));
-                            DataColumn LogType = new DataColumn("LogType", typeof(string));
-                            DataColumn WhereValue = new DataColumn("WhereValue", typeof(string));
-                            DataColumn WhereTrim = new DataColumn("WhereTrim", typeof(bool));
-                            DataColumn WhereIsNull = new DataColumn("WhereIsNull", typeof(bool));
+                                DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));
+                                DataColumn WhereType = new DataColumn("WhereType", typeof(string));
+                                DataColumn LogType = new DataColumn("LogType", typeof(string));
+                                DataColumn WhereValue = new DataColumn("WhereValue", typeof(string));
+                                DataColumn WhereTrim = new DataColumn("WhereTrim", typeof(bool));
+                                DataColumn WhereIsNull = new DataColumn("WhereIsNull", typeof(bool));
 
-                            DataColumn OrderSelect = new DataColumn("OrderSelect", typeof(bool));
-                            DataColumn SortType = new DataColumn("SortType", typeof(string));
-                            DataColumn SortNo = new DataColumn("SortNo", typeof(Int32));
+                                DataColumn OrderSelect = new DataColumn("OrderSelect", typeof(bool));
+                                DataColumn SortType = new DataColumn("SortType", typeof(string));
+                                DataColumn SortNo = new DataColumn("SortNo", typeof(Int32));
 
-                            DataColumn GroupSelect = new DataColumn("GroupSelect", typeof(bool));
+                                DataColumn GroupSelect = new DataColumn("GroupSelect", typeof(bool));
 
-                            DataColumn HavingSelect = new DataColumn("HavingSelect", typeof(bool));
-                            DataColumn HavingFunction = new DataColumn("HavingFunction", typeof(string));
-                            DataColumn HavingCondition = new DataColumn("HavingCondition", typeof(string));
-                            DataColumn HavingValue = new DataColumn("HavingValue", typeof(string));
+                                DataColumn HavingSelect = new DataColumn("HavingSelect", typeof(bool));
+                                DataColumn HavingFunction = new DataColumn("HavingFunction", typeof(string));
+                                DataColumn HavingCondition = new DataColumn("HavingCondition", typeof(string));
+                                DataColumn HavingValue = new DataColumn("HavingValue", typeof(string));
 
-                            SelectSelect.DefaultValue = SelectSelectDefault;
-                            TrimSign.DefaultValue = true;
-                            WhereSelect.DefaultValue = false;
-                            WhereTrim.DefaultValue = true;
-                            WhereIsNull.DefaultValue = true;
-                            OrderSelect.DefaultValue = false;
-                            GroupSelect.DefaultValue = false;
-                            HavingSelect.DefaultValue = false;
+                                SelectSelect.DefaultValue = SelectSelectDefault;
+                                TrimSign.DefaultValue = true;
+                                WhereSelect.DefaultValue = false;
+                                WhereTrim.DefaultValue = true;
+                                WhereIsNull.DefaultValue = true;
+                                OrderSelect.DefaultValue = false;
+                                GroupSelect.DefaultValue = false;
+                                HavingSelect.DefaultValue = false;
 
-                            dataTable.Columns.Add(SelectSelect);
-                            dataTable.Columns.Add(ParaName);
-                            dataTable.Columns.Add(MaxLegth);
-                            dataTable.Columns.Add(CaseWhen);
-                            dataTable.Columns.Add(ReturnType);
-                            dataTable.Columns.Add(TrimSign);
-                            dataTable.Columns.Add(FunctionName);
+                                dataTable.Columns.Add(SelectSelect);
+                                dataTable.Columns.Add(ParaName);
+                                dataTable.Columns.Add(MaxLegth);
+                                dataTable.Columns.Add(CaseWhen);
+                                dataTable.Columns.Add(ReturnType);
+                                dataTable.Columns.Add(TrimSign);
+                                dataTable.Columns.Add(FunctionName);
 
-                            dataTable.Columns.Add(WhereSelect);
-                            dataTable.Columns.Add(WhereType);
-                            dataTable.Columns.Add(LogType);
-                            dataTable.Columns.Add(WhereValue);
-                            dataTable.Columns.Add(WhereTrim);
-                            dataTable.Columns.Add(WhereIsNull);
+                                dataTable.Columns.Add(WhereSelect);
+                                dataTable.Columns.Add(WhereType);
+                                dataTable.Columns.Add(LogType);
+                                dataTable.Columns.Add(WhereValue);
+                                dataTable.Columns.Add(WhereTrim);
+                                dataTable.Columns.Add(WhereIsNull);
 
-                            dataTable.Columns.Add(OrderSelect);
-                            dataTable.Columns.Add(SortType);
-                            dataTable.Columns.Add(SortNo);
+                                dataTable.Columns.Add(OrderSelect);
+                                dataTable.Columns.Add(SortType);
+                                dataTable.Columns.Add(SortNo);
 
-                            dataTable.Columns.Add(GroupSelect);
+                                dataTable.Columns.Add(GroupSelect);
 
-                            dataTable.Columns.Add(HavingSelect);
-                            dataTable.Columns.Add(HavingFunction);
-                            dataTable.Columns.Add(HavingCondition);
-                            dataTable.Columns.Add(HavingValue);
-                            #endregion
+                                dataTable.Columns.Add(HavingSelect);
+                                dataTable.Columns.Add(HavingFunction);
+                                dataTable.Columns.Add(HavingCondition);
+                                dataTable.Columns.Add(HavingValue);
+                                #endregion
+                            }
                             break;
                         case "insert":
-                            //mySelect = this.class_AllModel as Class_SelectAllModel;
+                            {
+                                #region 加入自定义Insert列
+                                DataColumn InsertSelect = new DataColumn("InsertSelect", typeof(bool));
+                                DataColumn ParaName = new DataColumn("ParaName", typeof(string));
+                                DataColumn MaxLegth = new DataColumn("MaxLegth", typeof(Int32));
+                                DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));
+
+                                DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));
+                                DataColumn WhereType = new DataColumn("WhereType", typeof(string));
+                                DataColumn LogType = new DataColumn("LogType", typeof(string));
+                                DataColumn WhereValue = new DataColumn("WhereValue", typeof(string));
+                                DataColumn WhereTrim = new DataColumn("WhereTrim", typeof(bool));
+                                DataColumn WhereIsNull = new DataColumn("WhereIsNull", typeof(bool));
+
+                                DataColumn FrontSelect = new DataColumn("FrontSelect", typeof(bool));//是否页面显示
+                                DataColumn LabelCaption = new DataColumn("LabelCaption", typeof(string));//标签内容
+                                DataColumn IsMust = new DataColumn("IsMust", typeof(bool));//是否为必填项
+                                DataColumn CompomentType = new DataColumn("CompomentType", typeof(string));//控件类型
+                                DataColumn Hint = new DataColumn("Hint", typeof(string));//提示
+                                DataColumn DefaultValue = new DataColumn("DefaultValue", typeof(string));//默认值
+                                DataColumn SortNo = new DataColumn("SortNo", typeof(Int32));//出现顺序
+                                DataColumn ValueId = new DataColumn("ValueId", typeof(string));//值ID
+                                DataColumn ReadOnly = new DataColumn("ReadOnly", typeof(bool));//是否只读
+                                DataColumn CheckType = new DataColumn("CheckType", typeof(string));//校验类型
+                                DataColumn ClassTitle = new DataColumn("ClassTitle", typeof(string));//分类标题
+                                DataColumn CheckMult = new DataColumn("CheckMult", typeof(bool));//增加时是否校验重复：后端属性
+
+                                InsertSelect.DefaultValue = SelectSelectDefault;
+                                TrimSign.DefaultValue = true;
+                                WhereSelect.DefaultValue = false;
+                                WhereTrim.DefaultValue = true;
+                                WhereIsNull.DefaultValue = true;
+                                ReadOnly.DefaultValue = false;
+                                CheckMult.DefaultValue = false;
+
+                                dataTable.Columns.Add(InsertSelect);
+                                dataTable.Columns.Add(ParaName);
+                                dataTable.Columns.Add(MaxLegth);
+                                dataTable.Columns.Add(TrimSign);
+
+                                dataTable.Columns.Add(WhereSelect);
+                                dataTable.Columns.Add(WhereType);
+                                dataTable.Columns.Add(LogType);
+                                dataTable.Columns.Add(WhereValue);
+                                dataTable.Columns.Add(WhereTrim);
+                                dataTable.Columns.Add(WhereIsNull);
+
+                                dataTable.Columns.Add(FrontSelect);
+                                dataTable.Columns.Add(IsMust);
+                                dataTable.Columns.Add(LabelCaption);
+                                dataTable.Columns.Add(CompomentType);
+                                dataTable.Columns.Add(Hint);
+                                dataTable.Columns.Add(DefaultValue);
+                                dataTable.Columns.Add(SortNo);
+                                dataTable.Columns.Add(ValueId);
+                                dataTable.Columns.Add(ReadOnly);
+                                dataTable.Columns.Add(CheckType);
+                                dataTable.Columns.Add(ClassTitle);
+                                dataTable.Columns.Add(CheckMult);
+                                #endregion
+                            }
                             break;
                         case "update":
                             //mySelect = this.class_AllModel as Class_SelectAllModel;
@@ -451,9 +509,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             break;
                     }
                     int Counter = 1;
-                    Class_Sub class_CurrentPage = new Class_Sub();
-                    if (mySelect.class_SubList.Count > PageSelectIndex)
-                        class_CurrentPage = mySelect.class_SubList[PageSelectIndex];
+
                     foreach (DataRow row in dataTable.Rows)
                     {
                         string myFieldName = row["FieldName"].ToString();
@@ -465,7 +521,10 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             {
                                 case "select":
                                     {
-                                        if (mySelect.class_SubList.Count > PageSelectIndex && mySelect.class_SubList[PageSelectIndex].class_Fields.Count > 0)
+                                        Class_SelectAllModel.Class_Sub class_CurrentPage = new Class_SelectAllModel.Class_Sub();
+                                        if ((mySelect as Class_SelectAllModel).class_SubList.Count > PageSelectIndex)
+                                            class_CurrentPage = (mySelect as Class_SelectAllModel).class_SubList[PageSelectIndex];
+                                        if ((mySelect as Class_SelectAllModel).class_SubList.Count > PageSelectIndex && (mySelect as Class_SelectAllModel).class_SubList[PageSelectIndex].class_Fields.Count > 0)
                                         {
                                             int FindIndex = class_CurrentPage.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
                                             if (FindIndex > -1)
@@ -535,6 +594,67 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                     }
                                     break;
                                 case "insert":
+                                    {
+                                        Class_InsertAllModel.Class_Sub class_CurrentPage = new Class_InsertAllModel.Class_Sub();
+                                        if ((mySelect as Class_InsertAllModel).class_SubList.Count > PageSelectIndex)
+                                            class_CurrentPage = (mySelect as Class_InsertAllModel).class_SubList[PageSelectIndex];
+                                        if ((mySelect as Class_InsertAllModel).class_SubList.Count > PageSelectIndex && (mySelect as Class_InsertAllModel).class_SubList[PageSelectIndex].class_Fields.Count > 0)
+                                        {
+                                            int FindIndex = class_CurrentPage.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
+                                            if (FindIndex > -1)
+                                            {
+                                                row["SelectSelect"] = class_CurrentPage.class_Fields[FindIndex].InsertSelect;
+                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
+                                                row["MaxLegth"] = class_CurrentPage.class_Fields[FindIndex].MaxLegth;
+                                                row["CaseWhen"] = class_CurrentPage.class_Fields[FindIndex].CaseWhen;
+                                                row["ReturnType"] = class_CurrentPage.class_Fields[FindIndex].ReturnType;
+                                                row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
+                                                row["FunctionName"] = class_CurrentPage.class_Fields[FindIndex].FunctionName;
+                                                row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
+                                                row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
+                                                row["LogType"] = class_CurrentPage.class_Fields[FindIndex].LogType;
+                                                row["WhereValue"] = class_CurrentPage.class_Fields[FindIndex].WhereValue;
+                                                row["WhereTrim"] = class_CurrentPage.class_Fields[FindIndex].WhereTrim;
+                                                row["WhereIsNull"] = class_CurrentPage.class_Fields[FindIndex].WhereIsNull;
+                                                row["FrontSelect"] = class_CurrentPage.class_Fields[FindIndex].FrontSelect;
+                                                row["IsMust"] = class_CurrentPage.class_Fields[FindIndex].IsMust;
+                                                row["LabelCaption"] = class_CurrentPage.class_Fields[FindIndex].LabelCaption;
+                                                row["CompomentType"] = class_CurrentPage.class_Fields[FindIndex].CompomentType;
+                                                row["Hint"] = class_CurrentPage.class_Fields[FindIndex].Hint;
+                                                row["DefaultValue"] = class_CurrentPage.class_Fields[FindIndex].DefaultValue;
+                                                row["SortNo"] = class_CurrentPage.class_Fields[FindIndex].SortNo;
+                                                row["ValueId"] = class_CurrentPage.class_Fields[FindIndex].ValueId;
+                                                row["ReadOnly"] = class_CurrentPage.class_Fields[FindIndex].ReadOnly;
+                                                row["CheckType"] = class_CurrentPage.class_Fields[FindIndex].CheckType;
+                                                row["CheckMult"] = class_CurrentPage.class_Fields[FindIndex].CheckMult;
+                                                IsDefault = false;
+                                            }
+                                        }
+                                        if (IsDefault)
+                                        {
+                                            row["LogType"] = "=";
+                                            row["WhereType"] = "AND";
+                                            row["WhereValue"] = "参数";
+                                            row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
+                                            row["MaxLegth"] = row["FieldLength"];
+                                            row["SortNo"] = Counter++;
+                                            switch (row["FieldName"].ToString())
+                                            {
+                                                case "worktime":
+                                                    break;
+                                                case "stopSign":
+                                                    break;
+                                                case "sortNo":
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                            if (row["FieldType"].Equals("varchar"))
+                                                row["WhereTrim"] = Convert.ToBoolean(true);
+                                            else
+                                                row["WhereTrim"] = Convert.ToBoolean(false);
+                                        }
+                                    }
                                     break;
                                 case "update":
                                     break;
@@ -544,13 +664,13 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                     break;
                             }
                         }
-                        else
-                        {
-                            row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
-                            row["MaxLegth"] = row["FieldLength"];
-                            row["ReturnType"] = row["FieldType"];
-                            row["SortNo"] = Counter++;
-                        }
+                        //else
+                        //{
+                        //    row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
+                        //    row["MaxLegth"] = row["FieldLength"];
+                        //    row["ReturnType"] = row["FieldType"];
+                        //    row["SortNo"] = Counter++;
+                        //}
                         row.EndEdit();
                     }
                     vs.Clear();

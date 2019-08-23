@@ -74,7 +74,7 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
         /// <param name="DataBaseName"></param>
         /// <param name="TableName"></param>
         /// <returns></returns>
-        public string GetTableAlias(string Ip,string DataBaseName,string TableName)
+        public string GetTableAlias(string Ip, string DataBaseName, string TableName)
         {
             string Sql = string.Format(@"SELECT tableAlias
                 From sys_dataBaseAlias
@@ -129,13 +129,16 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
                 //2：insert into
                 foreach (Class_WindowType class_WindowType in class_WindowTypes)
                 {
-                    string Sql = string.Format(@"Insert into vou_CurrentOpenWin(XmlFileName,WindowType,ActiveSign,SortNo)
+                    if (class_WindowType.XmlFileName != null && class_WindowType.XmlFileName.Length > 0)
+                    {
+                        string Sql = string.Format(@"Insert into vou_CurrentOpenWin(XmlFileName,WindowType,ActiveSign,SortNo)
                         values('{0}','{1}',{2},{3})"
-                        , class_WindowType.XmlFileName
-                        , class_WindowType.WindowType
-                        , class_WindowType.ActiveSign ? 1 : 0
-                        , Counter++);
-                    ResultCounter += mySqlite3.ExecuteSql(Sql);
+                            , class_WindowType.XmlFileName
+                            , class_WindowType.WindowType
+                            , class_WindowType.ActiveSign ? 1 : 0
+                            , Counter++);
+                        ResultCounter += mySqlite3.ExecuteSql(Sql);
+                    }
                 }
             }
             return ResultCounter;
