@@ -2259,10 +2259,13 @@ namespace MDIDemo.PublicClass
             #region 去空格
             foreach (Class_WhereField row in class_WhereFields)
             {
-                if (row.LogType.Equals("varchar") && row.WhereTrim)
+                if ((row.LogType.Equals("varchar") || row.LogType.Equals("char")) && row.WhereTrim)
                 {
-                    stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2), row.OutFieldName);
+                    if (row.FieldLogType.IndexOf("=") > -1 || row.FieldLogType.IndexOf("Like") > -1)
+                    {
+                        stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2), row.OutFieldName);
+                    }
                 }
             }
             stringBuilder.Append("\r\n");

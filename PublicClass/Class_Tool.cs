@@ -902,6 +902,8 @@ namespace MDIDemo.PublicClass
         {
             if ((Content == null) || Content.Length == 0)
                 return null;
+            if (!System.Text.RegularExpressions.Regex.IsMatch(Content.Substring(0, 1), "^[a-zA-Z]+$"))
+                return Content;
             return Content.Substring(0, 1).ToUpper() + Content.Substring(1);
         }
         /// <summary>
@@ -913,6 +915,8 @@ namespace MDIDemo.PublicClass
         {
             if ((Content == null) || Content.Length == 0)
                 return null;
+            if (!System.Text.RegularExpressions.Regex.IsMatch(Content.Substring(0, 1), "^[a-zA-Z]+$"))
+                return Content;
             string[] vs = Content.Split('_');
             if (vs.Length > 1)
             {
