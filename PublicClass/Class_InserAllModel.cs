@@ -694,6 +694,7 @@ namespace MDIDemo.PublicClass
                 WhereSelect = false;
                 WhereTrim = false;
                 WhereIsNull = false;
+                CheckMult = true;
             }
             #region 字段名称
             public string FieldName { get; set; }
@@ -846,7 +847,6 @@ namespace MDIDemo.PublicClass
             public Class_Sub()
             {
                 ControlMainCode = true;
-                CheckMult = true;
             }
             /// <summary>
             /// 仅生成主体代码Control
