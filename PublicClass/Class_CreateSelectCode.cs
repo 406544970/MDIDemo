@@ -151,34 +151,34 @@ namespace MDIDemo.PublicClass
             #region
             //if (class_SelectAllModel.PageSign)
             //{
-            //    Class_WhereField class_WhereFieldPageNo = new Class_WhereField()
+            //    Class_WhereField class_WhereFieldpage = new Class_WhereField()
             //    {
-            //        FieldName = "pageNo",
-            //        ParaName = "pageNo",
+            //        FieldName = "page",
+            //        ParaName = "page",
             //        FieldRemark = "当前页数",
             //        LogType = "int",
             //        FieldDefaultValue = "1",
             //        FieldLogType = "参数",
             //        TableNo = 0,
             //        IsSame = false,
-            //        OutFieldName = "pageNo",
+            //        OutFieldName = "page",
             //        TableName = null
             //    };
-            //    class_WhereFields.Add(class_WhereFieldPageNo);
-            //    Class_WhereField class_WhereFieldPageSize = new Class_WhereField()
+            //    class_WhereFields.Add(class_WhereFieldpage);
+            //    Class_WhereField class_WhereFieldlimit = new Class_WhereField()
             //    {
-            //        FieldName = "pageSize",
-            //        ParaName = "pageSize",
+            //        FieldName = "limit",
+            //        ParaName = "limit",
             //        FieldRemark = "分页条数",
             //        LogType = "int",
             //        FieldDefaultValue = "10",
             //        FieldLogType = "参数",
             //        TableNo = 0,
             //        IsSame = false,
-            //        OutFieldName = "pageSize",
+            //        OutFieldName = "limit",
             //        TableName = null
             //    };
-            //    class_WhereFields.Add(class_WhereFieldPageSize);
+            //    class_WhereFields.Add(class_WhereFieldlimit);
             //}
             #endregion
 
@@ -2052,11 +2052,11 @@ namespace MDIDemo.PublicClass
             {
                 stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , "pageNo"
+                , "page"
                 , "当前页数");
                 stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , "pageSize"
+                , "limit"
                 , "每页条数");
             }
             if (class_SelectAllModel.class_Create.EnglishSign)
@@ -2107,13 +2107,13 @@ namespace MDIDemo.PublicClass
                     {
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\"),"
                         , class_ToolSpace.GetSetSpaceCount(3)
-                        , "pageNo"
+                        , "page"
                         , "当前页数"
                         , "int");
                         stringBuilder.Append("\r\n");
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\")"
                         , class_ToolSpace.GetSetSpaceCount(3)
-                        , "pageSize"
+                        , "limit"
                         , "每页条数"
                         , "int");
                         stringBuilder.Append("\r\n");
@@ -2134,13 +2134,13 @@ namespace MDIDemo.PublicClass
                         stringBuilder.Append("{\r\n");
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\"),"
                         , class_ToolSpace.GetSetSpaceCount(3)
-                        , "pageNo"
+                        , "page"
                         , "当前页数"
                         , "int");
                         stringBuilder.Append("\r\n");
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\")"
                         , class_ToolSpace.GetSetSpaceCount(3)
-                        , "pageSize"
+                        , "limit"
                         , "每页条数"
                         , "int");
                         stringBuilder.Append("\r\n");
@@ -2223,19 +2223,19 @@ namespace MDIDemo.PublicClass
                 if (Index > 0)
                 {
                     stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0}"
-                    , "pageNo"
+                    , "page"
                     , class_ToolSpace.GetSetSpaceCount(3));
                     stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
-                    , "pageSize"
+                    , "limit"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
                 else
                 {
                     stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0},"
-                    , "pageNo"
+                    , "page"
                     , class_ToolSpace.GetSetSpaceCount(3));
                     stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
-                    , "pageSize"
+                    , "limit"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
             }
@@ -2318,7 +2318,7 @@ namespace MDIDemo.PublicClass
                 {
                     if (class_SelectAllModel.PageSign)
                     {
-                        stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(pageNo, pageSize);\r\n"
+                        stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(page, limit);\r\n"
                             , class_ToolSpace.GetSetSpaceCount(2));
                         if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
                         {
@@ -2453,13 +2453,13 @@ namespace MDIDemo.PublicClass
                             }
                             if (class_SelectAllModel.IsMultTable)
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             }
                             else
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , _GetServiceReturnType(class_Sub, false));
                             }
@@ -2744,7 +2744,7 @@ namespace MDIDemo.PublicClass
                 {
                     if (class_SelectAllModel.PageSign)
                     {
-                        stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(pageNo, pageSize);\r\n"
+                        stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(page, limit);\r\n"
                             , class_ToolSpace.GetSetSpaceCount(2));
                         if ((class_SelectAllModel.class_Create.EnglishSign) && (_GetEnglishFieldList(class_Sub).Count > 0))
                         {
@@ -2881,13 +2881,13 @@ namespace MDIDemo.PublicClass
                             }
                             if (class_SelectAllModel.IsMultTable)
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             }
                             else
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,pageSize);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
                             }
