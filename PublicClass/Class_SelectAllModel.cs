@@ -62,6 +62,11 @@ namespace MDIDemo.PublicClass
         /// </summary>
         public bool ReturnStructure { get; set; }
         /// <summary>
+        /// 结构体类型
+        /// 0:ReturnVO,1:ReturePage,2:ReturePageTotal,3:RetureTotal
+        /// </summary>
+        public int ReturnStructureType { get; set; }
+        /// <summary>
         /// 是否读写分离
         /// </summary>
         public bool ReadWriteSeparation { get; set; }

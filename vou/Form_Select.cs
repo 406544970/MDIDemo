@@ -96,6 +96,7 @@ namespace MDIDemo.vou
                 this.textEdit21.Text = class_SelectAllModel.TestClassName;
                 this.checkEdit17.Checked = class_SelectAllModel.PageSign;
                 this.checkEdit19.Checked = class_SelectAllModel.ReturnStructure;
+                this.comboBoxEdit1.SelectedIndex = class_SelectAllModel.ReturnStructureType;
                 this.checkEdit20.Checked = class_SelectAllModel.ReadWriteSeparation;
 
                 #region 设置上次打开的Tab
@@ -1841,6 +1842,7 @@ namespace MDIDemo.vou
                 class_SelectAllModel.TestClassName = this.textEdit21.Text;
                 class_SelectAllModel.PageSign = this.checkEdit17.Checked;
                 class_SelectAllModel.ReturnStructure = this.checkEdit19.Checked;
+                class_SelectAllModel.ReturnStructureType = this.comboBoxEdit1.SelectedIndex;
                 class_SelectAllModel.ReadWriteSeparation = this.checkEdit20.Checked;
 
                 #region 保存上次打开的Tab

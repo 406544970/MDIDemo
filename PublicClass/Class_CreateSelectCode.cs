@@ -2160,7 +2160,24 @@ namespace MDIDemo.PublicClass
             #region
             if (class_SelectAllModel.ReturnStructure)
             {
-                stringBuilder.Append("ResultVO");
+                switch (class_SelectAllModel.ReturnStructureType)
+                {
+                    case 0:
+                        stringBuilder.Append("ResultVO");
+                        break;
+                    case 1:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                    case 2:
+                        stringBuilder.Append("ResultVOPageTotal");
+                        break;
+                    case 3:
+                        stringBuilder.Append("ResultVOTotal");
+                        break;
+                    default:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                }
             }
             else
             {
@@ -2293,7 +2310,7 @@ namespace MDIDemo.PublicClass
             {
                 if (class_Sub.ServiceInterFaceReturnCount == 0)
                 {
-                    stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}."
+                    stringBuilder.AppendFormat("\r\n{0}return ResultStruct.success({1}."
                     , class_ToolSpace.GetSetSpaceCount(2)
                     , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                     if (class_WhereFields != null)
