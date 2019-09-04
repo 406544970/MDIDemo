@@ -536,6 +536,7 @@
             this.xtraTabPage20 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit11 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit46 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit47 = new DevExpress.XtraEditors.TextEdit();
@@ -637,7 +638,6 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -903,6 +903,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit46.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit47.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
@@ -987,7 +988,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -7847,6 +7847,22 @@
             this.panelControl4.Size = new System.Drawing.Size(1177, 245);
             this.panelControl4.TabIndex = 5;
             // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.EditValue = "ResultVOPage";
+            this.comboBoxEdit1.Location = new System.Drawing.Point(587, 195);
+            this.comboBoxEdit1.MenuManager = this.barManager1;
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            "ResultVO",
+            "ResultVOPage",
+            "ResultVOPageTotal",
+            "ResultVOTotal"});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(195, 20);
+            this.comboBoxEdit1.TabIndex = 59;
+            // 
             // labelControl23
             // 
             this.labelControl23.Location = new System.Drawing.Point(22, 223);
@@ -8755,22 +8771,6 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.EditValue = "ResultVOPage";
-            this.comboBoxEdit1.Location = new System.Drawing.Point(587, 195);
-            this.comboBoxEdit1.MenuManager = this.barManager1;
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
-            "ResultVO",
-            "ResultVOPage",
-            "ResultVOPageTotal",
-            "ResultVOTotal"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(195, 20);
-            this.comboBoxEdit1.TabIndex = 59;
-            // 
             // Form_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -9058,6 +9058,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit46.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit47.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
@@ -9148,7 +9149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

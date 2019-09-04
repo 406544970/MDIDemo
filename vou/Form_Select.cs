@@ -700,7 +700,7 @@ namespace MDIDemo.vou
             }
             catch (Exception e)
             {
-                MessageBox.Show(string.Format("关系型数据库链接错误，请核对数据库链接参数！\r\n{0}",e.Message)
+                MessageBox.Show(string.Format("关系型数据库链接错误，请核对数据库链接参数！\r\n{0}", e.Message)
                     , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -1720,6 +1720,23 @@ namespace MDIDemo.vou
                     {
                         this.xtraTabControl3.SelectedTabPageIndex = 1;
                         this.xtraTabControl8.SelectedTabPageIndex = 0;
+                    }
+                }
+            }
+            #endregion
+
+            #region Page与ResultStructure
+            if (IsOk)
+            {
+                if ((!this.checkEdit17.Checked) && this.checkEdit19.Checked)
+                {
+                    int index = this.comboBoxEdit1.SelectedIndex;
+                    if (index == 1 || index == 2)
+                    {
+                        MessageBox.Show(string.Format("未分页时，不能选择{0}返回结构体！"
+                             , this.comboBoxEdit1.SelectedText)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
                     }
                 }
             }

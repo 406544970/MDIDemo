@@ -2160,7 +2160,10 @@ namespace MDIDemo.PublicClass
             #region
             if (class_SelectAllModel.ReturnStructure)
             {
-                switch (class_SelectAllModel.ReturnStructureType)
+                int StructureType = class_SelectAllModel.ReturnStructureType;
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                    StructureType = 0;
+                switch (StructureType)
                 {
                     case 0:
                         stringBuilder.Append("ResultVO");
@@ -2480,10 +2483,85 @@ namespace MDIDemo.PublicClass
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , _GetServiceReturnType(class_Sub, false));
                             }
-                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return ");
                             if (class_SelectAllModel.ReturnStructure)
                             {
-                                stringBuilder.Append("ResultUtils.success(pageInfo);\r\n");
+                                string OutObjectName = null;
+                                if (class_SelectAllModel.IsMultTable)
+                                    OutObjectName = String.Format("{0}s", Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
+                                else
+                                    OutObjectName = string.Format("{0}s", _GetServiceReturnType(class_Sub, false));
+
+                                int StructureType = class_SelectAllModel.ReturnStructureType;
+                                #region 加入汇总代码
+                                if (StructureType == 2 || StructureType == 3)
+                                {
+                                    stringBuilder.AppendFormat("\r\n{3}LinkedHashMap {0}Total = {1}.{2}Total"
+                                        , OutObjectName
+                                        , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName)
+                                        , class_Sub.MethodId
+                                        , class_ToolSpace.GetSetSpaceCount(2));
+                                    if (class_WhereFields != null)
+                                    {
+                                        if (class_WhereFields.Count > 1)
+                                            stringBuilder.AppendFormat("({0});\r\n"
+                                                , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+                                        else if (class_WhereFields.Count == 1)
+                                        {
+                                            stringBuilder.AppendFormat("({0});\r\n"
+                                                , class_WhereFields[0].OutFieldName);
+                                        }
+                                        else
+                                            stringBuilder.Append("();\r\n");
+                                    }
+                                    stringBuilder.AppendFormat("{0}LinkedHashMap<String, TotalValueClass> linkedHashMap = new LinkedHashMap<>();\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(2));
+                                    stringBuilder.AppendFormat("{0}if ({1}Total != null)", class_ToolSpace.GetSetSpaceCount(2)
+                                        , OutObjectName);
+                                    stringBuilder.Append(" {\r\n");
+                                    stringBuilder.AppendFormat("{0}Iterator iterator = {1}Total.entrySet().iterator();\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(3)
+                                        , OutObjectName);
+                                    stringBuilder.AppendFormat("{0}byte i = 1;\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(3));
+                                    stringBuilder.AppendFormat("{0}while (iterator.hasNext()) "
+                                        , class_ToolSpace.GetSetSpaceCount(3));
+                                    stringBuilder.Append(" {\r\n");
+                                    stringBuilder.AppendFormat("{0}Map.Entry next = (Map.Entry) iterator.next();\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(4));
+                                    stringBuilder.AppendFormat("{0}TotalValueClass totalValueClass = new TotalValueClass();\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(4));
+                                    stringBuilder.AppendFormat("{0}totalValueClass.setValue(next.getValue() == null ? 0 : next.getValue().toString().replace(\", \", \"\"));\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(4));
+                                    stringBuilder.AppendFormat("{0}totalValueClass.setSite(i++);\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(4));
+                                    stringBuilder.AppendFormat("{0}linkedHashMap.put(next.getKey().toString(), totalValueClass);\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(4));
+                                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "}\r\n");
+                                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "}\r\n\r\n");
+                                }
+                                #endregion
+
+                                stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return ResultStruct.success");
+
+                                switch (StructureType)
+                                {
+                                    case 0:
+                                        stringBuilder.AppendFormat("({0}", OutObjectName);
+                                        break;
+                                    case 1:
+                                        stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", OutObjectName);
+                                        break;
+                                    case 2:
+                                        stringBuilder.AppendFormat("PageTotal({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal(), linkedHashMap", OutObjectName);
+                                        break;
+                                    case 3:
+                                        stringBuilder.AppendFormat("Total({0}, linkedHashMap", OutObjectName);
+                                        break;
+                                    default:
+                                        stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", OutObjectName);
+                                        break;
+                                }
+                                stringBuilder.Append(");\r\n");
                             }
                             else
                             {
@@ -2599,7 +2677,7 @@ namespace MDIDemo.PublicClass
                         {
                             if (class_SelectAllModel.ReturnStructure)
                             {
-                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}."
+                                stringBuilder.AppendFormat("\r\n{0}return ResultStruct.success({1}."
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                                 if (class_WhereFields != null)
@@ -2911,7 +2989,7 @@ namespace MDIDemo.PublicClass
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "return ");
                             if (class_SelectAllModel.ReturnStructure)
                             {
-                                stringBuilder.Append("ResultUtils.success(pageInfo);\r\n");
+                                stringBuilder.Append("ResultStruct.success(pageInfo);\r\n");
                             }
                             else
                             {
@@ -3027,7 +3105,7 @@ namespace MDIDemo.PublicClass
                         {
                             if (class_SelectAllModel.ReturnStructure)
                             {
-                                stringBuilder.AppendFormat("\r\n{0}return ResultUtils.success({1}."
+                                stringBuilder.AppendFormat("\r\n{0}return ResultStruct.success({1}."
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
                                 if (class_WhereFields != null)
