@@ -1462,6 +1462,66 @@ namespace MDIDemo.PublicClass
             else
                 stringBuilder.AppendFormat(" {0}();\r\n"
                     , class_Sub.MethodId);
+            #region 加入汇总代码
+            if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure)
+            {
+                if (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2)
+                {
+                    stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                        , class_Sub.MethodContent);
+                    class_WhereFields = _GetParameterType();
+                    if (class_WhereFields != null && class_WhereFields.Count > 0)
+                    {
+                        if (class_WhereFields.Count > 1)
+                        {
+                            stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
+                            , class_Sub.MethodContent);
+                        }
+                        else
+                        {
+                            stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , Class_Tool.GetFirstCodeLow(class_WhereFields[0].OutFieldName)
+                            , class_WhereFields[0].FieldRemark);
+                        }
+                    }
+                    stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                        , class_Sub.ServiceInterFaceReturnRemark);
+                    stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0}LinkedHashMap"
+                        , class_ToolSpace.GetSetSpaceCount(1));
+                    if (class_WhereFields != null && class_WhereFields.Count > 0)
+                    {
+                        if (class_WhereFields.Count > 1)
+                        {
+                            stringBuilder.AppendFormat(" {0}Total({1} {2});\r\n"
+                                , class_Sub.MethodId
+                                , class_Sub.ParamClassName
+                                , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+                        }
+                        else
+                        {
+                            if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
+                                stringBuilder.AppendFormat(" {0}Total(List<{1}> {2});\r\n"
+                                , class_Sub.MethodId
+                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                                , class_WhereFields[0].OutFieldName);
+                            else
+                                stringBuilder.AppendFormat(" {0}Total({1} {2});\r\n"
+                                , class_Sub.MethodId
+                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                                , class_WhereFields[0].OutFieldName);
+                        }
+                    }
+                    else
+                        stringBuilder.AppendFormat(" {0}Total();\r\n"
+                            , class_Sub.MethodId);
+                }
+            }
+            #endregion
 
             stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
