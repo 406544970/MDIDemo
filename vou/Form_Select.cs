@@ -435,6 +435,19 @@ namespace MDIDemo.vou
             this.dockPanel2.Size = new System.Drawing.Size(314, 288);
             //this.dockPanel3.Size = new System.Drawing.Size(552, 266);
         }
+        /// <summary>
+        /// 加入汇总函数
+        /// </summary>
+        /// <param name="repositoryItemComboBox"></param>
+        /// <param name="FieldType"></param>
+        private void AddColumnComboxTotalFunction(RepositoryItemComboBox repositoryItemComboBox, string FieldType)
+        {
+            repositoryItemComboBox.Items.Clear();
+            foreach (string row in class_InterFaceDataBase.GetTotalFunctionList(FieldType))
+            {
+                repositoryItemComboBox.Items.Add(row);
+            }
+        }
         private void AddColumnComboxHavingFunctionByDataType(RepositoryItemComboBox repositoryItemComboBox, string FieldType)
         {
             repositoryItemComboBox.Items.Clear();
@@ -487,6 +500,7 @@ namespace MDIDemo.vou
                         AddColumnRepositoryCombox(this.repositoryItemComboBox2);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox41, "");
                     }
                     break;
                 case 1:
@@ -503,6 +517,7 @@ namespace MDIDemo.vou
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox10, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox42, "");
                     }
                     break;
                 case 2:
@@ -519,6 +534,7 @@ namespace MDIDemo.vou
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox18, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox23, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox43, "");
                     }
                     break;
                 case 3:
@@ -535,6 +551,7 @@ namespace MDIDemo.vou
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox26, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox31, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox45, "");
                     }
                     break;
                 case 4:
@@ -551,6 +568,7 @@ namespace MDIDemo.vou
 
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox34, "");
                         AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox39, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox44, "");
                     }
                     break;
                 default:
@@ -807,6 +825,7 @@ namespace MDIDemo.vou
                     class_Field.ReturnType = dataRow["ReturnType"].ToString();
                     class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);
                     class_Field.FunctionName = dataRow["FunctionName"].ToString();
+                    class_Field.TotalFunctionName = dataRow["TotalFunctionName"].ToString();
                     class_Field.WhereSelect = WhereSelect;
                     class_Field.WhereType = dataRow["WhereType"].ToString();
                     class_Field.LogType = dataRow["LogType"].ToString();

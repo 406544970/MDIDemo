@@ -397,7 +397,7 @@ namespace MDIDemo.PublicClass
             if (class_OrderBies.Count > 0)
             {
                 stringBuilderWhereAnd.AppendFormat("{0}ORDER BY ", class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilderWhereAnd.Append(stringBuilderOrder.ToString().Substring(1) + "\r\n");
+                stringBuilderWhereAnd.Append(stringBuilderOrder.ToString().Substring(1));
             }
             if (stringBuilderWhereAnd.Length > 0)
                 return stringBuilderWhereAnd.ToString();
@@ -803,14 +803,14 @@ namespace MDIDemo.PublicClass
         }
         public string GetTestSql(int PageIndex)
         {
-            return _GetTestSql(PageIndex);
+            return _GetTestSql(PageIndex, true);
         }
-        private string _GetTestSql(int PageIndex)
+        private string _GetTestSql(int PageIndex, bool AddTotal)
         {
             if (class_SelectAllModel.class_SubList.Count < PageIndex)
                 return null;
-            Class_Sub class_Main = class_SelectAllModel.class_SubList[PageIndex];
-            if (class_Main == null)
+            Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
+            if (class_Sub == null)
                 return null;
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -926,6 +926,48 @@ namespace MDIDemo.PublicClass
                 stringBuilder.Append(TestSql);
             #endregion
 
+            #region 加入汇总
+            if (AddTotal)
+            {
+                if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2))
+                {
+                    stringBuilder.AppendFormat("\r\n\r\n{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
+
+                    Counter = 0;
+                    CurPageIndex = 0;
+                    foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+                    {
+                        string AliasName = item.AliasName;
+                        foreach (Class_Field class_Field in item.class_Fields)
+                        {
+                            if (class_Field.SelectSelect && !(class_Field.CaseWhen != null && class_Field.CaseWhen.Length > 0) && !(class_Field.FunctionName != null && class_Field.FunctionName.Length > 0) && class_Field.TotalFunctionName != null && class_Field.TotalFunctionName.Length > 0 && (class_Field.FieldType.Equals("int") || class_Field.FieldType.Equals("tinyint") || class_Field.FieldType.Equals("decimal") || class_Field.FieldType.Equals("date") || class_Field.FieldType.Equals("datetime")))
+                            {
+                                string MyFieldName = null;
+                                if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                                {
+                                    MyFieldName = class_Field.MultFieldName;
+                                }
+                                else
+                                {
+                                    MyFieldName = class_Field.ParaName;
+                                }
+                                MyFieldName = string.Format(class_Field.TotalFunctionName.Replace("?", MyFieldName) + " AS {0}", MyFieldName);
+
+                                stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
+                                if (Counter++ > 0)
+                                    stringBuilder.Append(",");
+                                stringBuilder.AppendFormat("{0}\r\n", MyFieldName);
+                            }
+                        }
+                        CurPageIndex++;
+                    }
+                    stringBuilder.AppendFormat("{0}FROM (\r\n", class_ToolSpace.GetSetSpaceCount(2));
+                    stringBuilder.Append(_GetTestSql(PageIndex, false));
+                    stringBuilder.AppendFormat("\r\n{0}) as TotalTable\r\n", class_ToolSpace.GetSetSpaceCount(2));
+                }
+
+            }
+            #endregion
             if (stringBuilder.Length > 0)
                 return stringBuilder.ToString();
             else
@@ -1113,7 +1155,7 @@ namespace MDIDemo.PublicClass
                     , class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.MethodId);
                 stringBuilder.AppendFormat("{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
-                
+
                 Counter = 0;
                 CurPageIndex = 0;
                 foreach (Class_Sub item in class_SelectAllModel.class_SubList)
@@ -1121,9 +1163,8 @@ namespace MDIDemo.PublicClass
                     string AliasName = item.AliasName;
                     foreach (Class_Field class_Field in item.class_Fields)
                     {
-                        if (class_Field.SelectSelect)
+                        if (class_Field.SelectSelect && !(class_Field.CaseWhen != null && class_Field.CaseWhen.Length > 0) && !(class_Field.FunctionName != null && class_Field.FunctionName.Length > 0) && class_Field.TotalFunctionName != null && class_Field.TotalFunctionName.Length > 0 && (class_Field.FieldType.Equals("int") || class_Field.FieldType.Equals("tinyint") || class_Field.FieldType.Equals("decimal") || class_Field.FieldType.Equals("date") || class_Field.FieldType.Equals("datetime")))
                         {
-                            string FieldName = class_Field.FieldName;
                             string MyFieldName = null;
                             if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
                             {
@@ -1133,40 +1174,19 @@ namespace MDIDemo.PublicClass
                             {
                                 MyFieldName = class_Field.ParaName;
                             }
-                            if (class_SelectAllModel.IsMultTable)
-                            {
-                                FieldName = AliasName + "." + FieldName;
-                            }
+                            MyFieldName = string.Format(class_Field.TotalFunctionName.Replace("?", MyFieldName) + " AS {0}", MyFieldName);
 
-                            if ((class_Field.CaseWhen != null) && (class_Field.CaseWhen.Length > 0))
-                            {
-                                Class_CaseWhen class_CaseWhen = new Class_CaseWhen();
-                                FieldName = class_CaseWhen.GetCaseWhenContent(class_Field.CaseWhen, FieldName, class_ToolSpace.GetSetSpaceCount(3));
-                                //if (MyFieldName != null)
-                                //    FieldName = FieldName + " AS " + MyFieldName;
-                            }
-                            if ((class_Field.FunctionName != null) && (class_Field.FunctionName.Length > 0))
-                            {
-                                if (MyFieldName != null)
-                                    FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}"), FieldName);
-                                else
-                                    FieldName = string.Format(class_Field.FunctionName.Replace("?", "{0}"), FieldName);
-                            }
-                            if (!FieldName.Equals(MyFieldName))
-                            {
-                                FieldName = string.Format(FieldName + " AS {0}", MyFieldName);
-                            }
+                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
                             if (Counter++ > 0)
-                                stringBuilder.AppendFormat("{1},{0}\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3));
-                            else
-                                stringBuilder.AppendFormat("{1}{0}\r\n", FieldName, class_ToolSpace.GetSetSpaceCount(3));
+                                stringBuilder.Append(",");
+                            stringBuilder.AppendFormat("{0}\r\n", MyFieldName);
                         }
                     }
                     CurPageIndex++;
                 }
 
                 stringBuilder.AppendFormat("{0}FROM (\r\n", class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.AppendFormat("{0}  ${{value}}\r\n", class_ToolSpace.GetSetSpaceCount(2));
+                stringBuilder.AppendFormat("{0}  ${{oldSql}}\r\n", class_ToolSpace.GetSetSpaceCount(2));
                 stringBuilder.AppendFormat("{0}) as TotalTable\r\n", class_ToolSpace.GetSetSpaceCount(2));
 
                 stringBuilder.AppendFormat("{0}</select>\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -1673,12 +1693,12 @@ namespace MDIDemo.PublicClass
                     stringBuilder.AppendFormat("\r\n{0}*\r\n", class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                         , class_Sub.MethodContent);
-                    stringBuilder.AppendFormat("{0} * @param value 原始SQL语句\r\n"
+                    stringBuilder.AppendFormat("{0} * @param oldSql 原始SQL语句\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                         , class_Sub.ServiceInterFaceReturnRemark);
                     stringBuilder.AppendFormat("{0} \r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0}LinkedHashMap {1}Total(@Param(\"value\") String value);\r\n"
+                    stringBuilder.AppendFormat("{0}LinkedHashMap {1}Total(@Param(\"oldSql\") String oldSql);\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , class_Sub.MethodId);
                 }

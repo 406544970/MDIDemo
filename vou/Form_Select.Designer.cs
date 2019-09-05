@@ -141,6 +141,8 @@
             this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn14 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn146 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox41 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn15 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -212,6 +214,8 @@
             this.repositoryItemCheckEdit17 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn42 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemComboBox10 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn147 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox42 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn43 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit18 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -287,6 +291,8 @@
             this.repositoryItemCheckEdit29 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn70 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemComboBox18 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn148 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox43 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridBand18 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn71 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit30 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -363,6 +369,8 @@
             this.repositoryItemCheckEdit41 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn102 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemComboBox26 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn149 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox45 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridBand25 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn103 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit42 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -439,6 +447,8 @@
             this.repositoryItemCheckEdit53 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn131 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemComboBox34 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.bandedGridColumn150 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemComboBox44 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridBand32 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn132 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit54 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -682,6 +692,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).BeginInit();
@@ -714,6 +725,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox12)).BeginInit();
@@ -750,6 +762,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox20)).BeginInit();
@@ -787,6 +800,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox45)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox28)).BeginInit();
@@ -824,6 +838,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit53)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox34)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit54)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox36)).BeginInit();
@@ -2847,7 +2862,8 @@
             this.repositoryItemCheckEdit11,
             this.repositoryItemCheckEdit12,
             this.repositoryItemComboBox7,
-            this.repositoryItemComboBox8});
+            this.repositoryItemComboBox8,
+            this.repositoryItemComboBox41});
             this.gridControl1.Size = new System.Drawing.Size(1177, 577);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -2894,7 +2910,8 @@
             this.bandedGridColumn25,
             this.bandedGridColumn26,
             this.bandedGridColumn27,
-            this.bandedGridColumn28});
+            this.bandedGridColumn28,
+            this.bandedGridColumn146});
             this.bandedGridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.bandedGridView1.GridControl = this.gridControl1;
             this.bandedGridView1.Name = "bandedGridView1";
@@ -3078,12 +3095,13 @@
             this.gridBand2.Columns.Add(this.bandedGridColumn12);
             this.gridBand2.Columns.Add(this.bandedGridColumn13);
             this.gridBand2.Columns.Add(this.bandedGridColumn14);
+            this.gridBand2.Columns.Add(this.bandedGridColumn146);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.OptionsBand.AllowMove = false;
             this.gridBand2.OptionsBand.FixedWidth = true;
             this.gridBand2.RowCount = 2;
             this.gridBand2.VisibleIndex = 2;
-            this.gridBand2.Width = 660;
+            this.gridBand2.Width = 760;
             // 
             // bandedGridColumn9
             // 
@@ -3219,6 +3237,25 @@
             this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
+            // bandedGridColumn146
+            // 
+            this.bandedGridColumn146.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn146.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn146.Caption = "汇总函数";
+            this.bandedGridColumn146.ColumnEdit = this.repositoryItemComboBox41;
+            this.bandedGridColumn146.FieldName = "TotalFunctionName";
+            this.bandedGridColumn146.Name = "bandedGridColumn146";
+            this.bandedGridColumn146.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn146.Visible = true;
+            this.bandedGridColumn146.Width = 100;
+            // 
+            // repositoryItemComboBox41
+            // 
+            this.repositoryItemComboBox41.AutoHeight = false;
+            this.repositoryItemComboBox41.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox41.Name = "repositoryItemComboBox41";
             // 
             // gridBand3
             // 
@@ -3661,7 +3698,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -3695,8 +3732,9 @@
             this.repositoryItemCheckEdit22,
             this.repositoryItemCheckEdit23,
             this.repositoryItemComboBox15,
-            this.repositoryItemComboBox16});
-            this.gridControl2.Size = new System.Drawing.Size(1177, 572);
+            this.repositoryItemComboBox16,
+            this.repositoryItemComboBox42});
+            this.gridControl2.Size = new System.Drawing.Size(1177, 541);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -3740,7 +3778,8 @@
             this.bandedGridColumn53,
             this.bandedGridColumn54,
             this.bandedGridColumn55,
-            this.bandedGridColumn56});
+            this.bandedGridColumn56,
+            this.bandedGridColumn147});
             this.bandedGridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.bandedGridView2.GridControl = this.gridControl2;
             this.bandedGridView2.Name = "bandedGridView2";
@@ -3924,12 +3963,13 @@
             this.gridBand10.Columns.Add(this.bandedGridColumn40);
             this.gridBand10.Columns.Add(this.bandedGridColumn41);
             this.gridBand10.Columns.Add(this.bandedGridColumn42);
+            this.gridBand10.Columns.Add(this.bandedGridColumn147);
             this.gridBand10.Name = "gridBand10";
             this.gridBand10.OptionsBand.AllowMove = false;
             this.gridBand10.OptionsBand.FixedWidth = true;
             this.gridBand10.RowCount = 2;
             this.gridBand10.VisibleIndex = 2;
-            this.gridBand10.Width = 660;
+            this.gridBand10.Width = 760;
             // 
             // bandedGridColumn37
             // 
@@ -4064,6 +4104,25 @@
             this.repositoryItemComboBox10.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox10.Name = "repositoryItemComboBox10";
+            // 
+            // bandedGridColumn147
+            // 
+            this.bandedGridColumn147.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn147.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn147.Caption = "汇总函数";
+            this.bandedGridColumn147.ColumnEdit = this.repositoryItemComboBox42;
+            this.bandedGridColumn147.FieldName = "TotalFunctionName";
+            this.bandedGridColumn147.Name = "bandedGridColumn147";
+            this.bandedGridColumn147.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn147.Visible = true;
+            this.bandedGridColumn147.Width = 100;
+            // 
+            // repositoryItemComboBox42
+            // 
+            this.repositoryItemComboBox42.AutoHeight = false;
+            this.repositoryItemComboBox42.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox42.Name = "repositoryItemComboBox42";
             // 
             // gridBand11
             // 
@@ -4557,7 +4616,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage14.Text = "表";
             // 
             // gridControl3
@@ -4591,8 +4650,9 @@
             this.repositoryItemCheckEdit34,
             this.repositoryItemCheckEdit35,
             this.repositoryItemComboBox23,
-            this.repositoryItemComboBox24});
-            this.gridControl3.Size = new System.Drawing.Size(1177, 572);
+            this.repositoryItemComboBox24,
+            this.repositoryItemComboBox43});
+            this.gridControl3.Size = new System.Drawing.Size(1177, 541);
             this.gridControl3.TabIndex = 2;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});
@@ -4636,7 +4696,8 @@
             this.bandedGridColumn81,
             this.bandedGridColumn82,
             this.bandedGridColumn83,
-            this.bandedGridColumn84});
+            this.bandedGridColumn84,
+            this.bandedGridColumn148});
             this.bandedGridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.bandedGridView3.GridControl = this.gridControl3;
             this.bandedGridView3.Name = "bandedGridView3";
@@ -4820,12 +4881,13 @@
             this.gridBand17.Columns.Add(this.bandedGridColumn68);
             this.gridBand17.Columns.Add(this.bandedGridColumn69);
             this.gridBand17.Columns.Add(this.bandedGridColumn70);
+            this.gridBand17.Columns.Add(this.bandedGridColumn148);
             this.gridBand17.Name = "gridBand17";
             this.gridBand17.OptionsBand.AllowMove = false;
             this.gridBand17.OptionsBand.FixedWidth = true;
             this.gridBand17.RowCount = 2;
             this.gridBand17.VisibleIndex = 2;
-            this.gridBand17.Width = 660;
+            this.gridBand17.Width = 760;
             // 
             // bandedGridColumn65
             // 
@@ -4960,6 +5022,25 @@
             this.repositoryItemComboBox18.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox18.Name = "repositoryItemComboBox18";
+            // 
+            // bandedGridColumn148
+            // 
+            this.bandedGridColumn148.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn148.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn148.Caption = "汇总函数";
+            this.bandedGridColumn148.ColumnEdit = this.repositoryItemComboBox43;
+            this.bandedGridColumn148.FieldName = "TotalFunctionName";
+            this.bandedGridColumn148.Name = "bandedGridColumn148";
+            this.bandedGridColumn148.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn148.Visible = true;
+            this.bandedGridColumn148.Width = 100;
+            // 
+            // repositoryItemComboBox43
+            // 
+            this.repositoryItemComboBox43.AutoHeight = false;
+            this.repositoryItemComboBox43.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox43.Name = "repositoryItemComboBox43";
             // 
             // gridBand18
             // 
@@ -5466,7 +5547,7 @@
             this.xtraTabPage52.Controls.Add(this.panelControl42);
             this.xtraTabPage52.ImageIndex = 610;
             this.xtraTabPage52.Name = "xtraTabPage52";
-            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage52.Text = "表";
             // 
             // gridControl4
@@ -5500,8 +5581,9 @@
             this.repositoryItemCheckEdit46,
             this.repositoryItemCheckEdit47,
             this.repositoryItemComboBox31,
-            this.repositoryItemComboBox32});
-            this.gridControl4.Size = new System.Drawing.Size(1177, 572);
+            this.repositoryItemComboBox32,
+            this.repositoryItemComboBox45});
+            this.gridControl4.Size = new System.Drawing.Size(1177, 541);
             this.gridControl4.TabIndex = 3;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView4});
@@ -5545,7 +5627,8 @@
             this.bandedGridColumn113,
             this.bandedGridColumn114,
             this.bandedGridColumn115,
-            this.bandedGridColumn116});
+            this.bandedGridColumn116,
+            this.bandedGridColumn149});
             this.bandedGridView4.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.bandedGridView4.GridControl = this.gridControl4;
             this.bandedGridView4.Name = "bandedGridView4";
@@ -5729,12 +5812,13 @@
             this.gridBand24.Columns.Add(this.bandedGridColumn100);
             this.gridBand24.Columns.Add(this.bandedGridColumn101);
             this.gridBand24.Columns.Add(this.bandedGridColumn102);
+            this.gridBand24.Columns.Add(this.bandedGridColumn149);
             this.gridBand24.Name = "gridBand24";
             this.gridBand24.OptionsBand.AllowMove = false;
             this.gridBand24.OptionsBand.FixedWidth = true;
             this.gridBand24.RowCount = 2;
             this.gridBand24.VisibleIndex = 2;
-            this.gridBand24.Width = 660;
+            this.gridBand24.Width = 760;
             // 
             // bandedGridColumn96
             // 
@@ -5869,6 +5953,25 @@
             this.repositoryItemComboBox26.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox26.Name = "repositoryItemComboBox26";
+            // 
+            // bandedGridColumn149
+            // 
+            this.bandedGridColumn149.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn149.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn149.Caption = "汇总函数";
+            this.bandedGridColumn149.ColumnEdit = this.repositoryItemComboBox45;
+            this.bandedGridColumn149.FieldName = "TotalFunctionName";
+            this.bandedGridColumn149.Name = "bandedGridColumn149";
+            this.bandedGridColumn149.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn149.Visible = true;
+            this.bandedGridColumn149.Width = 100;
+            // 
+            // repositoryItemComboBox45
+            // 
+            this.repositoryItemComboBox45.AutoHeight = false;
+            this.repositoryItemComboBox45.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox45.Name = "repositoryItemComboBox45";
             // 
             // gridBand25
             // 
@@ -6376,7 +6479,7 @@
             this.xtraTabPage53.Controls.Add(this.panelControl43);
             this.xtraTabPage53.ImageIndex = 612;
             this.xtraTabPage53.Name = "xtraTabPage53";
-            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 638);
+            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 607);
             this.xtraTabPage53.Text = "表";
             // 
             // gridControl5
@@ -6410,8 +6513,9 @@
             this.repositoryItemCheckEdit58,
             this.repositoryItemCheckEdit59,
             this.repositoryItemComboBox39,
-            this.repositoryItemComboBox40});
-            this.gridControl5.Size = new System.Drawing.Size(1177, 572);
+            this.repositoryItemComboBox40,
+            this.repositoryItemComboBox44});
+            this.gridControl5.Size = new System.Drawing.Size(1177, 541);
             this.gridControl5.TabIndex = 3;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView5});
@@ -6455,7 +6559,8 @@
             this.bandedGridColumn142,
             this.bandedGridColumn143,
             this.bandedGridColumn144,
-            this.bandedGridColumn145});
+            this.bandedGridColumn145,
+            this.bandedGridColumn150});
             this.bandedGridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.bandedGridView5.GridControl = this.gridControl5;
             this.bandedGridView5.Name = "bandedGridView5";
@@ -6639,12 +6744,13 @@
             this.gridBand31.Columns.Add(this.bandedGridColumn129);
             this.gridBand31.Columns.Add(this.bandedGridColumn130);
             this.gridBand31.Columns.Add(this.bandedGridColumn131);
+            this.gridBand31.Columns.Add(this.bandedGridColumn150);
             this.gridBand31.Name = "gridBand31";
             this.gridBand31.OptionsBand.AllowMove = false;
             this.gridBand31.OptionsBand.FixedWidth = true;
             this.gridBand31.RowCount = 2;
             this.gridBand31.VisibleIndex = 2;
-            this.gridBand31.Width = 660;
+            this.gridBand31.Width = 760;
             // 
             // bandedGridColumn125
             // 
@@ -6779,6 +6885,25 @@
             this.repositoryItemComboBox34.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox34.Name = "repositoryItemComboBox34";
+            // 
+            // bandedGridColumn150
+            // 
+            this.bandedGridColumn150.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumn150.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumn150.Caption = "汇总函数";
+            this.bandedGridColumn150.ColumnEdit = this.repositoryItemComboBox44;
+            this.bandedGridColumn150.FieldName = "TotalFunctionName";
+            this.bandedGridColumn150.Name = "bandedGridColumn150";
+            this.bandedGridColumn150.OptionsColumn.FixedWidth = true;
+            this.bandedGridColumn150.Visible = true;
+            this.bandedGridColumn150.Width = 100;
+            // 
+            // repositoryItemComboBox44
+            // 
+            this.repositoryItemComboBox44.AutoHeight = false;
+            this.repositoryItemComboBox44.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox44.Name = "repositoryItemComboBox44";
             // 
             // gridBand32
             // 
@@ -8830,6 +8955,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox4)).EndInit();
@@ -8863,6 +8989,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox12)).EndInit();
@@ -8900,6 +9027,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox20)).EndInit();
@@ -8938,6 +9066,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox45)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox28)).EndInit();
@@ -8976,6 +9105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit53)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox34)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit54)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox36)).EndInit();
@@ -9476,27 +9606,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem24;
         private DevExpress.XtraBars.BarButtonItem barButtonItem25;
         private DevExpress.XtraBars.BarButtonItem barButtonItem26;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand8;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand9;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand10;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand11;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand12;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand13;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand18;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand19;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand20;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand21;
         private DevExpress.XtraEditors.ListBoxControl listBoxControl2;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl10;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
@@ -9538,9 +9647,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage52;
         private DevExpress.XtraGrid.GridControl gridControl4;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand22;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn88;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand23;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn89;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn90;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn91;
@@ -9551,7 +9658,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit38;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn95;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit39;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand24;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn96;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit40;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn97;
@@ -9565,7 +9671,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit41;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn102;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox26;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand25;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn103;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit42;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn104;
@@ -9578,17 +9683,14 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit43;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn108;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit44;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand26;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn109;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit45;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn110;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox30;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn111;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit8;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand27;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn112;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit46;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand28;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn113;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit47;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn114;
@@ -9609,9 +9711,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage53;
         private DevExpress.XtraGrid.GridControl gridControl5;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView5;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand29;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn117;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand30;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn118;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn119;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn120;
@@ -9622,7 +9722,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit50;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn124;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit51;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand31;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn125;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit52;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn126;
@@ -9636,7 +9735,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit53;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn131;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox34;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand32;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn132;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit54;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn133;
@@ -9649,17 +9747,14 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit55;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn137;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit56;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand33;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn138;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit57;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn139;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox38;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn140;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit10;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand34;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn141;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit58;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand35;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn142;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit59;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn143;
@@ -9763,5 +9858,50 @@
         private DevExpress.XtraEditors.LabelControl labelControl37;
         private DevExpress.XtraEditors.LabelControl labelControl38;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn146;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox41;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand8;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand9;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand10;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn147;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox42;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand11;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand12;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand13;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand17;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn148;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox43;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand18;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand19;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand20;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand21;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand22;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand23;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand24;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn149;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand25;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand26;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand27;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand28;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand29;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand30;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand31;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn150;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox44;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand32;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand33;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand34;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand35;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox45;
     }
 }

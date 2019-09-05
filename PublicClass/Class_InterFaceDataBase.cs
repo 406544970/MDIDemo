@@ -35,6 +35,7 @@ namespace MDIDemo.PublicClass
         List<string> GetDataType();
         List<string> GetFunctionList(string FieldType);
         List<string> GetHavingFuctionList(string FieldType);
+        List<string> GetTotalFunctionList(string FieldType);
         /// <summary>
         /// 根据字段类型，得到是否加点
         /// </summary>

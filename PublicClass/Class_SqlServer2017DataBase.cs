@@ -734,5 +734,10 @@ namespace MDIDemo.PublicClass
         {
             throw new NotImplementedException();
         }
+
+        public List<string> GetTotalFunctionList(string FieldType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

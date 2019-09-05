@@ -796,6 +796,7 @@ namespace MDIDemo.PublicClass
             public string ReturnType { get; set; }
             public bool TrimSign { get; set; }
             public string FunctionName { get; set; }
+            public string TotalFunctionName { get; set; }
             #endregion
 
             #region Where

@@ -380,6 +380,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 DataColumn ReturnType = new DataColumn("ReturnType", typeof(string));
                                 DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));
                                 DataColumn FunctionName = new DataColumn("FunctionName", typeof(string));
+                                DataColumn TotalFunctionName = new DataColumn("TotalFunctionName", typeof(string));
 
                                 DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));
                                 DataColumn WhereType = new DataColumn("WhereType", typeof(string));
@@ -414,7 +415,8 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 dataTable.Columns.Add(CaseWhen);
                                 dataTable.Columns.Add(ReturnType);
                                 dataTable.Columns.Add(TrimSign);
-                                dataTable.Columns.Add(FunctionName);
+                                dataTable.Columns.Add(FunctionName); 
+                                dataTable.Columns.Add(TotalFunctionName);
 
                                 dataTable.Columns.Add(WhereSelect);
                                 dataTable.Columns.Add(WhereType);
@@ -536,6 +538,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 row["ReturnType"] = class_CurrentPage.class_Fields[FindIndex].ReturnType;
                                                 row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
                                                 row["FunctionName"] = class_CurrentPage.class_Fields[FindIndex].FunctionName;
+                                                row["TotalFunctionName"] = class_CurrentPage.class_Fields[FindIndex].TotalFunctionName;
                                                 row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
                                                 row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
                                                 row["LogType"] = class_CurrentPage.class_Fields[FindIndex].LogType;
@@ -983,6 +986,34 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     break;
             }
             return IsFinder;
+        }
+
+        public List<string> GetTotalFunctionList(string FieldType)
+        {
+            List<string> vs = new List<string>();
+            switch (FieldType)
+            {
+                case "int":
+                case "tinyint":
+                case "decimal":
+                    vs.Add("SUM(?)");
+                    vs.Add("MAX(?)");
+                    vs.Add("MIN(?)");
+                    vs.Add("AVG(?)");
+                    break;
+                case "date":
+                case "datetime":
+                    vs.Add("MAX(?)");
+                    vs.Add("MIN(?)");
+                    break;
+                default:
+                    vs.Add("SUM(?)");
+                    vs.Add("MAX(?)");
+                    vs.Add("MIN(?)");
+                    vs.Add("AVG(?)");
+                    break;
+            }
+            return vs;
         }
     }
 }
