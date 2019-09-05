@@ -1725,43 +1725,18 @@ namespace MDIDemo.vou
             }
             #endregion
 
-            #region 单条与分页
-            if (IsOk)
-            {
-                if (this.radioGroup9.SelectedIndex == 0 && this.checkEdit17.Checked)
-                {
-                    MessageBox.Show("返回单条数据时，不允许分页！"
-                        , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    IsOk = false;
-                }
-            }
-            #endregion
-
             #region Page与ResultStructure
             if (IsOk)
             {
                 if ((!this.checkEdit17.Checked) && this.checkEdit19.Checked)
                 {
                     int index = this.comboBoxEdit1.SelectedIndex;
-                    if (this.radioGroup9.SelectedIndex == 0)
+                    if (index == 1 || index == 2)
                     {
-                        if (index > 0)
-                        {
-                            MessageBox.Show(string.Format("返回单条数据时，不能选择{0}返回结构体！"
-                                 , this.comboBoxEdit1.SelectedText)
-                                , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            IsOk = false;
-                        }
-                    }
-                    else
-                    {
-                        if (index == 1 || index == 2)
-                        {
-                            MessageBox.Show(string.Format("未分页时，不能选择{0}返回结构体！"
-                                 , this.comboBoxEdit1.SelectedText)
-                                , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            IsOk = false;
-                        }
+                        MessageBox.Show(string.Format("未分页时，不能选择{0}返回结构体！"
+                             , this.comboBoxEdit1.SelectedText)
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        IsOk = false;
                     }
                 }
             }
