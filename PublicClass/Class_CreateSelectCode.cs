@@ -932,7 +932,6 @@ namespace MDIDemo.PublicClass
                 if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2))
                 {
                     stringBuilder.AppendFormat("\r\n\r\n{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
-
                     Counter = 0;
                     CurPageIndex = 0;
                     foreach (Class_Sub item in class_SelectAllModel.class_SubList)
@@ -962,10 +961,9 @@ namespace MDIDemo.PublicClass
                         CurPageIndex++;
                     }
                     stringBuilder.AppendFormat("{0}FROM (\r\n", class_ToolSpace.GetSetSpaceCount(2));
-                    stringBuilder.Append(_GetTestSql(PageIndex, false));
+                    stringBuilder.Append(_GetTestSql(PageIndex, false).Replace("        ", "            "));
                     stringBuilder.AppendFormat("\r\n{0}) as TotalTable\r\n", class_ToolSpace.GetSetSpaceCount(2));
                 }
-
             }
             #endregion
             if (stringBuilder.Length > 0)
