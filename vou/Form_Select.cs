@@ -1725,6 +1725,18 @@ namespace MDIDemo.vou
             }
             #endregion
 
+            #region 单条与分页
+            if (IsOk)
+            {
+                if (this.radioGroup9.SelectedIndex == 0 && this.checkEdit17.Checked)
+                {
+                    MessageBox.Show("返回单条数据时，不允许分页！"
+                        , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    IsOk = false;
+                }
+            }
+            #endregion
+
             #region Page与ResultStructure
             if (IsOk)
             {
