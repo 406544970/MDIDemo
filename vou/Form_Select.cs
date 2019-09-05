@@ -1743,12 +1743,25 @@ namespace MDIDemo.vou
                 if ((!this.checkEdit17.Checked) && this.checkEdit19.Checked)
                 {
                     int index = this.comboBoxEdit1.SelectedIndex;
-                    if (index == 1 || index == 2)
+                    if (this.radioGroup9.SelectedIndex == 0)
                     {
-                        MessageBox.Show(string.Format("未分页时，不能选择{0}返回结构体！"
-                             , this.comboBoxEdit1.SelectedText)
-                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        IsOk = false;
+                        if (index > 0)
+                        {
+                            MessageBox.Show(string.Format("返回单条数据时，不能选择{0}返回结构体！"
+                                 , this.comboBoxEdit1.SelectedText)
+                                , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
+                    }
+                    else
+                    {
+                        if (index == 1 || index == 2)
+                        {
+                            MessageBox.Show(string.Format("未分页时，不能选择{0}返回结构体！"
+                                 , this.comboBoxEdit1.SelectedText)
+                                , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            IsOk = false;
+                        }
                     }
                 }
             }
