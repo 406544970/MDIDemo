@@ -60,5 +60,7 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         bool IsPolymerization(string FunctionName);
         bool FieldTypeAndFunction(string FieldType, string FunctionName);
+
+        string GetAlign(string FieldType);
     }
 }

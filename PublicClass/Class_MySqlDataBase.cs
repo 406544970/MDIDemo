@@ -400,6 +400,20 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 DataColumn HavingCondition = new DataColumn("HavingCondition", typeof(string));
                                 DataColumn HavingValue = new DataColumn("HavingValue", typeof(string));
 
+                                DataColumn DisplaySort = new DataColumn("DisplaySort", typeof(Int32));
+                                DataColumn Title = new DataColumn("Title", typeof(string));
+                                DataColumn Width = new DataColumn("Width", typeof(Int32));
+                                DataColumn Type = new DataColumn("Type", typeof(string));
+                                DataColumn LayChecked = new DataColumn("LayChecked", typeof(bool));
+                                DataColumn Fixed = new DataColumn("Fixed", typeof(string));
+                                DataColumn Hide = new DataColumn("IsDisplay", typeof(bool));
+                                DataColumn Sort = new DataColumn("Sort", typeof(bool));
+                                DataColumn UnResize = new DataColumn("UnResize", typeof(bool));
+                                DataColumn Style = new DataColumn("Style", typeof(string));
+                                DataColumn Align = new DataColumn("Align", typeof(string));
+                                DataColumn ToolBar = new DataColumn("ToolBar", typeof(string));
+
+
                                 SelectSelect.DefaultValue = SelectSelectDefault;
                                 TrimSign.DefaultValue = true;
                                 WhereSelect.DefaultValue = false;
@@ -409,13 +423,18 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 GroupSelect.DefaultValue = false;
                                 HavingSelect.DefaultValue = false;
 
+                                LayChecked.DefaultValue = false;
+                                Hide.DefaultValue = false;
+                                UnResize.DefaultValue = false;
+                                Sort.DefaultValue = false;
+
                                 dataTable.Columns.Add(SelectSelect);
                                 dataTable.Columns.Add(ParaName);
                                 dataTable.Columns.Add(MaxLegth);
                                 dataTable.Columns.Add(CaseWhen);
                                 dataTable.Columns.Add(ReturnType);
                                 dataTable.Columns.Add(TrimSign);
-                                dataTable.Columns.Add(FunctionName); 
+                                dataTable.Columns.Add(FunctionName);
                                 dataTable.Columns.Add(TotalFunctionName);
 
                                 dataTable.Columns.Add(WhereSelect);
@@ -435,6 +454,19 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 dataTable.Columns.Add(HavingFunction);
                                 dataTable.Columns.Add(HavingCondition);
                                 dataTable.Columns.Add(HavingValue);
+
+                                dataTable.Columns.Add(DisplaySort);
+                                dataTable.Columns.Add(Title);
+                                dataTable.Columns.Add(Width);
+                                dataTable.Columns.Add(Type);
+                                dataTable.Columns.Add(LayChecked);
+                                dataTable.Columns.Add(Fixed);
+                                dataTable.Columns.Add(Hide);
+                                dataTable.Columns.Add(Sort);
+                                dataTable.Columns.Add(UnResize);
+                                dataTable.Columns.Add(Style);
+                                dataTable.Columns.Add(Align);
+                                dataTable.Columns.Add(ToolBar);
                                 #endregion
                             }
                             break;
@@ -553,11 +585,24 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 row["HavingFunction"] = class_CurrentPage.class_Fields[FindIndex].HavingFunction;
                                                 row["HavingCondition"] = class_CurrentPage.class_Fields[FindIndex].HavingCondition;
                                                 row["HavingValue"] = class_CurrentPage.class_Fields[FindIndex].HavingValue;
+
+                                                row["Title"] = class_CurrentPage.class_Fields[FindIndex].Title;
+                                                row["Width"] = class_CurrentPage.class_Fields[FindIndex].Width;
+                                                row["Type"] = class_CurrentPage.class_Fields[FindIndex].Type;
+                                                row["LayChecked"] = class_CurrentPage.class_Fields[FindIndex].LayChecked;
+                                                row["Fixed"] = class_CurrentPage.class_Fields[FindIndex].Fixed;
+                                                row["IsDisplay"] = class_CurrentPage.class_Fields[FindIndex].IsDisplay;
+                                                row["Sort"] = class_CurrentPage.class_Fields[FindIndex].Sort;
+                                                row["UnResize"] = class_CurrentPage.class_Fields[FindIndex].UnResize;
+                                                row["Style"] = class_CurrentPage.class_Fields[FindIndex].Style;
+                                                row["Align"] = class_CurrentPage.class_Fields[FindIndex].Align;
+                                                row["ToolBar"] = class_CurrentPage.class_Fields[FindIndex].ToolBar;
                                                 IsDefault = false;
                                             }
                                         }
                                         if (IsDefault)
                                         {
+
                                             row["SortType"] = "升序";
                                             row["LogType"] = "=";
                                             row["WhereType"] = "AND";
@@ -593,6 +638,16 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 row["WhereTrim"] = Convert.ToBoolean(true);
                                             else
                                                 row["WhereTrim"] = Convert.ToBoolean(false);
+
+                                            row["IsDisplay"] = row["SelectSelect"];
+                                            row["Title"] = Class_Tool.DeleteKuoHaoOther(row["FieldRemark"].ToString());
+                                            row["Align"] = GetAlign(row["FieldType"].ToString());
+                                            if (row["FieldName"].ToString().IndexOf("remark") > -1)
+                                                row["Align"] = "left";
+                                            row["DisplaySort"] = row["SortNo"];
+                                            row["Type"] = "normal";
+                                            row["Width"] = 80;
+                                            row["Fixed"] = "none";
                                         }
                                     }
                                     break;
@@ -1014,6 +1069,24 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     break;
             }
             return vs;
+        }
+
+        public string GetAlign(string FieldType)
+        {
+            string ResultValue = "center";
+            switch (FieldType)
+            {
+                case "int":
+                case "tinyint":
+                case "decimal":
+                case "float":
+                    ResultValue = "right";
+                    break;
+                default:
+                    ResultValue = "center";
+                    break;
+            }
+            return ResultValue;
         }
     }
 }

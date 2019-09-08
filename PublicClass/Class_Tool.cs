@@ -507,6 +507,18 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public class Class_Tool
     {
+        public static string DeleteKuoHaoOther(string Content)
+        {
+            Content = Content.Replace("（", "(").Replace("）", ")");
+            int BeginSite = Content.IndexOf("(");
+            int EndSite = Content.IndexOf(")");
+            if (BeginSite > -1 && EndSite > -1 && EndSite > BeginSite)
+            {
+                string SubString = Content.Substring(BeginSite, EndSite - BeginSite + 1);
+                Content = Content.Replace(SubString,"");
+            }
+            return Content.Replace("ID", "编号").Replace("id", "编号");
+        }
         /// <summary>
         /// 根据英文字段，得到对应的中文字段
         /// </summary>

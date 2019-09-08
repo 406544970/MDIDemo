@@ -739,5 +739,10 @@ namespace MDIDemo.PublicClass
         {
             throw new NotImplementedException();
         }
+
+        public string GetAlign(string FieldType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

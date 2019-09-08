@@ -775,6 +775,13 @@ namespace MDIDemo.PublicClass
                 WhereIsNull = false;
                 OrderSelect = false;
                 GroupSelect = false;
+
+                Width = 100;
+                Type = "normal";
+                LayChecked = false;
+                IsDisplay = true;
+                UnResize = false;
+                Sort = false;
             }
             #region 字段名称
             public string FieldName { get; set; }
@@ -823,6 +830,20 @@ namespace MDIDemo.PublicClass
             public string HavingFunction { get; set; }
             public string HavingCondition { get; set; }
             public string HavingValue { get; set; }
+            #endregion
+
+            #region 数据表格
+            public string Title { get; set; }
+            public int Width { get; set; }
+            public string Type { get; set; }
+            public bool LayChecked { get; set; }
+            public string Fixed { get; set; }
+            public bool IsDisplay { get; set; }
+            public bool Sort { get; set; }
+            public bool UnResize { get; set; }
+            public string Style { get; set; }
+            public string Align { get; set; }
+            public string ToolBar { get; set; }
             #endregion
         }
         #endregion
