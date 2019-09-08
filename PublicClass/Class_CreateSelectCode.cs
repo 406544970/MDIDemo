@@ -1025,7 +1025,7 @@ namespace MDIDemo.PublicClass
                 else
                     stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
                     , class_SelectAllModel.AllPackerName
-                    , class_SelectAllModel.class_SubList[PageIndex].NameSpace);
+                    , class_SelectAllModel.class_SubList[PageIndex].ModelClassName);
             }
             #endregion
 
@@ -2753,7 +2753,7 @@ namespace MDIDemo.PublicClass
                                         else
                                             stringBuilder.Append("();\r\n");
                                     }
-                                    stringBuilder.AppendFormat("{0}LinkedHashMap<String, TotalValueClass> linkedHashMap = new LinkedHashMap<>();\r\n"
+                                    stringBuilder.AppendFormat("{0}List<TotalValueClass> linkedHashMap = new ArrayList<>();\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(2));
                                     stringBuilder.AppendFormat("{0}if ({1}Total != null)", class_ToolSpace.GetSetSpaceCount(2)
                                         , OutObjectName);
