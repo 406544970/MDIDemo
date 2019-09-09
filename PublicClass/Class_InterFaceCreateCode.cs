@@ -20,7 +20,6 @@ namespace MDIDemo.PublicClass
         #region 
         string GetMap(int Index);
         string GetSql(int Index);
-        //string GetWhereLable(int Index);
         string GetServiceInterFace(int Index);
         string GetServiceImpl(int Index);
         string GetModel(int Index);
@@ -28,7 +27,6 @@ namespace MDIDemo.PublicClass
         string GetDAO(int Index);
         string GetControl(int Index);
         string GetInPutParam(int Index);
-        string GetTestUnit(int Index);
         string GetTestSql(int Index);
         string GetFrontPage();
         #endregion

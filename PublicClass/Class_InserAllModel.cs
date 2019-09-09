@@ -807,7 +807,7 @@ namespace MDIDemo.PublicClass
             /// </summary>
             public string ServiceInterFaceReturnRemark { get; set; }
             /// <summary>
-            /// Service 返回单条，还是多条
+            /// Service 0:返回数量，1：返回ID
             /// </summary>
             public int ServiceInterFaceReturnCount { get; set; }
             public string ServiceImplContent { get; set; }

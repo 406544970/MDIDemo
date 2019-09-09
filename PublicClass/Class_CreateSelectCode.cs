@@ -3643,11 +3643,6 @@ namespace MDIDemo.PublicClass
         {
             return _GetInPutParam(Index);
         }
-        public string GetTestUnit(int Index)
-        {
-            throw new NotImplementedException();
-        }
-
         public void IniClass_OutFields()
         {
             AddLinkFieldInfo();

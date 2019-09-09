@@ -223,6 +223,7 @@
     <Compile Include="PublicClass\Class_ MySqlite.cs" />
     <Compile Include="PublicClass\Class_AllMode.cs" />
     <Compile Include="PublicClass\Class_CaseWhen.cs" />
+    <Compile Include="PublicClass\Class_CreateInsertCode.cs" />
     <Compile Include="PublicClass\Class_CreateSelectCode.cs" />
     <Compile Include="PublicClass\Class_DataBaseConDefault.cs" />
     <Compile Include="PublicClass\Class_InserAllModel.cs" />
