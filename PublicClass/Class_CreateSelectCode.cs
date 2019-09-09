@@ -1065,11 +1065,11 @@ namespace MDIDemo.PublicClass
                         stringBuilder.AppendFormat("field:\'{0}\'", MyFieldName);
                         stringBuilder.AppendFormat(",title:\'{0}\'", class_Field.Title);
                         stringBuilder.AppendFormat(",width:{0}", class_Field.Width);
-                        if (!class_Field.Type.Equals("normal"))
+                        if (!class_Field.Type.Equals("normal") && class_Field.Type.Length > 0)
                             stringBuilder.AppendFormat(",type:\'{0}\'", class_Field.Type);
                         if (class_Field.LayChecked)
                             stringBuilder.Append(",LAY_CHECKED:true");
-                        if (!class_Field.Fixed.Equals("none"))
+                        if (!class_Field.Fixed.Equals("none") && class_Field.Fixed.Length > 0)
                             stringBuilder.AppendFormat(",fixed:\'{0}\'", class_Field.Fixed);
                         if (!class_Field.IsDisplay)
                             stringBuilder.Append(",hide:true");
@@ -1080,7 +1080,7 @@ namespace MDIDemo.PublicClass
 
                         if (class_Field.Style.Length > 0)
                             stringBuilder.AppendFormat(",style:\'{0}\'", class_Field.Style);
-                        stringBuilder.AppendFormat(",align:\'{0}\'", class_Field.Align);
+                        stringBuilder.AppendFormat(",align:\'{0}\'", class_Field.Align.Length == 0 ? "center" : class_Field.Align);
                         if (class_Field.ToolBar.Length > 0)
                             stringBuilder.AppendFormat(",toolBar:\'{0}\'", class_Field.ToolBar);
 
@@ -2860,6 +2860,7 @@ namespace MDIDemo.PublicClass
                                     OutObjectName = string.Format("{0}s", _GetServiceReturnType(class_Sub, false));
 
                                 int StructureType = class_SelectAllModel.ReturnStructureType;
+
                                 #region 加入汇总代码
                                 if (StructureType == 2 || StructureType == 3)
                                 {
@@ -2881,7 +2882,7 @@ namespace MDIDemo.PublicClass
                                         else
                                             stringBuilder.Append("();\r\n");
                                     }
-                                    stringBuilder.AppendFormat("{0}List<TotalValueClass> linkedHashMap = new ArrayList<>();\r\n"
+                                    stringBuilder.AppendFormat("{0}List<TotalValueClass> totalValueClassList = new ArrayList<>();\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(2));
                                     stringBuilder.AppendFormat("{0}if ({1}Total != null)", class_ToolSpace.GetSetSpaceCount(2)
                                         , OutObjectName);
@@ -2889,20 +2890,47 @@ namespace MDIDemo.PublicClass
                                     stringBuilder.AppendFormat("{0}Iterator iterator = {1}Total.entrySet().iterator();\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(3)
                                         , OutObjectName);
-                                    stringBuilder.AppendFormat("{0}byte i = 1;\r\n"
-                                        , class_ToolSpace.GetSetSpaceCount(3));
                                     stringBuilder.AppendFormat("{0}while (iterator.hasNext()) "
                                         , class_ToolSpace.GetSetSpaceCount(3));
                                     stringBuilder.Append(" {\r\n");
                                     stringBuilder.AppendFormat("{0}Map.Entry next = (Map.Entry) iterator.next();\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
-                                    stringBuilder.AppendFormat("{0}TotalValueClass totalValueClass = new TotalValueClass();\r\n"
+                                    stringBuilder.AppendFormat("{0}byte i;\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
-                                    stringBuilder.AppendFormat("{0}totalValueClass.setValue(next.getValue() == null ? 0 : next.getValue().toString().replace(\", \", \"\"));\r\n"
+                                    stringBuilder.AppendFormat("{0}switch (next.getKey().toString()) {{\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
-                                    stringBuilder.AppendFormat("{0}totalValueClass.setSite(i++);\r\n"
+
+                                    int TotalCounter = 0;
+                                    int CurPageIndex = 0;
+                                    foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+                                    {
+                                        string AliasName = item.AliasName;
+                                        foreach (Class_Field class_Field in item.class_Fields)
+                                        {
+                                            if (class_Field.SelectSelect && !(class_Field.CaseWhen != null && class_Field.CaseWhen.Length > 0) && !(class_Field.FunctionName != null && class_Field.FunctionName.Length > 0) && class_Field.TotalFunctionName != null && class_Field.TotalFunctionName.Length > 0 && (class_Field.FieldType.Equals("int") || class_Field.FieldType.Equals("tinyint") || class_Field.FieldType.Equals("decimal") || class_Field.FieldType.Equals("date") || class_Field.FieldType.Equals("datetime")))
+                                            {
+                                                string MyFieldName = null;
+                                                if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                                                    MyFieldName = class_Field.MultFieldName;
+                                                else
+                                                    MyFieldName = class_Field.ParaName;
+                                                stringBuilder.AppendFormat("{0}case \"{1}\":\r\n"
+                                                    , class_ToolSpace.GetSetSpaceCount(5), MyFieldName);
+                                                stringBuilder.AppendFormat("{0}i = {1};\r\n"
+                                                    , class_ToolSpace.GetSetSpaceCount(6), TotalCounter);
+
+                                                stringBuilder.AppendFormat("{0}break;\r\n", class_ToolSpace.GetSetSpaceCount(6));
+                                                TotalCounter++;
+                                            }
+                                        }
+                                        CurPageIndex++;
+                                    }
+                                    stringBuilder.AppendFormat("{0}default:\r\n", class_ToolSpace.GetSetSpaceCount(5));
+                                    stringBuilder.AppendFormat("{0}i = 0;\r\n", class_ToolSpace.GetSetSpaceCount(6));
+                                    stringBuilder.AppendFormat("{0}break;\r\n", class_ToolSpace.GetSetSpaceCount(6));
+                                    stringBuilder.AppendFormat("{0}}}\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
-                                    stringBuilder.AppendFormat("{0}linkedHashMap.put(next.getKey().toString(), totalValueClass);\r\n"
+                                    stringBuilder.AppendFormat("{0}AddTotal(next, totalValueClassList, i);\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
                                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "}\r\n");
                                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "}\r\n\r\n");
@@ -2920,10 +2948,10 @@ namespace MDIDemo.PublicClass
                                         stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", OutObjectName);
                                         break;
                                     case 2:
-                                        stringBuilder.AppendFormat("PageTotal({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal(), linkedHashMap", OutObjectName);
+                                        stringBuilder.AppendFormat("PageTotal({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal(), totalValueClassList", OutObjectName);
                                         break;
                                     case 3:
-                                        stringBuilder.AppendFormat("Total({0}, linkedHashMap", OutObjectName);
+                                        stringBuilder.AppendFormat("Total({0}, totalValueClassList", OutObjectName);
                                         break;
                                     default:
                                         stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", OutObjectName);

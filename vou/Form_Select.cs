@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -64,6 +65,13 @@ namespace MDIDemo.vou
 
             class_SelectAllModel = new Class_SelectAllModel();
             SetSelectAllMode(xmlFileName);
+
+            this.memoEdit13.Text = null;
+            string FunctionTxtFile = string.Format("{0}\\select\\{1}.txt"
+                , Application.StartupPath
+                , "SelectFuntion");
+            if (File.Exists(FunctionTxtFile))
+                this.memoEdit13.Text = Class_Tool.UnEscapeCharacter(File.ReadAllText(FunctionTxtFile));
         }
 
         /// <summary>
@@ -334,6 +342,7 @@ namespace MDIDemo.vou
             class_SetMemoEdit.SetMemoEdit(this.memoEdit10);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit11);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit12);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit13, true);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit19);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit28);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit31);
@@ -416,7 +425,6 @@ namespace MDIDemo.vou
                 }
                 else
                 {
-                    this.xtraTabControl8.TabPages[index].Text = "测试单元";
                     this.xtraTabControl8.TabPages[index].ImageIndex = 374;
                 }
             }
