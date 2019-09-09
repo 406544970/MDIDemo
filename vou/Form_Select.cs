@@ -92,7 +92,7 @@ namespace MDIDemo.vou
                 class_InterFaceDataBase.SetClass_AllModel(class_SelectAllModel);
                 this.textEdit13.Text = class_SelectAllModel.AllPackerName;
                 this.checkEdit2.Checked = class_SelectAllModel.IsAutoWard;
-                this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.TestUnit);
+                this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.FrontPage);
                 this.textEdit21.Text = class_SelectAllModel.TestClassName;
                 this.checkEdit17.Checked = class_SelectAllModel.PageSign;
                 this.checkEdit19.Checked = class_SelectAllModel.ReturnStructure;
@@ -840,6 +840,22 @@ namespace MDIDemo.vou
                     class_Field.HavingFunction = dataRow["HavingFunction"].ToString();
                     class_Field.HavingCondition = dataRow["HavingCondition"].ToString();
                     class_Field.HavingValue = dataRow["HavingValue"].ToString();
+
+                    class_Field.Title = dataRow["Title"].ToString();
+                    class_Field.Width = Convert.ToInt32(dataRow["Width"]);
+                    class_Field.Type = dataRow["Type"].ToString();
+                    class_Field.LayChecked = Convert.ToBoolean(dataRow["LayChecked"]);
+                    class_Field.Fixed = dataRow["Fixed"].ToString();
+                    class_Field.IsDisplay = Convert.ToBoolean(dataRow["IsDisplay"]);
+                    class_Field.Sort = Convert.ToBoolean(dataRow["Sort"]);
+                    class_Field.UnResize = Convert.ToBoolean(dataRow["UnResize"]);
+                    class_Field.Style = dataRow["Style"].ToString();
+                    class_Field.Align = dataRow["Align"].ToString();
+                    class_Field.ToolBar = dataRow["ToolBar"].ToString();
+                    if (dataRow["DisplaySort"] != null && dataRow["DisplaySort"].ToString().Length > 0)
+                        class_Field.DisplaySort = Convert.ToInt32(dataRow["DisplaySort"]);
+                    else
+                        class_Field.DisplaySort = 0;
 
                     class_Fields.Add(class_Field);
                 }
@@ -1874,7 +1890,7 @@ namespace MDIDemo.vou
             {
                 class_SelectAllModel.AllPackerName = this.textEdit13.Text;
                 class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
-                class_SelectAllModel.TestUnit = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
+                class_SelectAllModel.FrontPage = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
                 class_SelectAllModel.TestClassName = this.textEdit21.Text;
                 class_SelectAllModel.PageSign = this.checkEdit17.Checked;
                 class_SelectAllModel.ReturnStructure = this.checkEdit19.Checked;
@@ -2359,6 +2375,8 @@ namespace MDIDemo.vou
                     this.memoEdit31.Text = class_InterFaceCreateCode.GetInPutParam(PageIndex);
                     //
                     this.memoEdit54.Text = class_InterFaceCreateCode.GetTestSql(PageIndex);
+                    //前端
+                    this.memoEdit12.Text = class_InterFaceCreateCode.GetFrontPage();
                 }
                 #endregion
 

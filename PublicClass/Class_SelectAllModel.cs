@@ -51,7 +51,7 @@ namespace MDIDemo.PublicClass
         public string classType { get; set; }
         public bool IsAutoWard { get; set; }
         public string TestClassName { get; set; }
-        public string TestUnit { get; set; }
+        public string FrontPage { get; set; }
         public bool IsMultTable { get; set; }
         /// <summary>
         /// 是否分页
@@ -782,6 +782,7 @@ namespace MDIDemo.PublicClass
                 IsDisplay = true;
                 UnResize = false;
                 Sort = false;
+                DisplaySort = 0;
             }
             #region 字段名称
             public string FieldName { get; set; }
@@ -833,6 +834,7 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region 数据表格
+            public int DisplaySort { get; set; }
             public string Title { get; set; }
             public int Width { get; set; }
             public string Type { get; set; }

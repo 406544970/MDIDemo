@@ -971,6 +971,134 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
+        private string _GetWhereString()
+        {
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            int CurPageIndex = 0;
+            int FieldCounter = 0;
+            foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+            {
+                foreach (Class_Field class_Field in item.class_Fields)
+                {
+                    if (class_Field.WhereSelect)
+                    {
+                        //stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
+                        if (FieldCounter > 0)
+                            stringBuilder.Append(",");
+
+                        string MyFieldName = null;
+                        if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                            MyFieldName = class_Field.MultFieldName;
+                        else
+                            MyFieldName = class_Field.ParaName;
+
+                        stringBuilder.AppendFormat("{0}:\'{0}\'", MyFieldName);
+
+
+                        FieldCounter++;
+                    }
+                }
+                CurPageIndex++;
+            }
+            if (FieldCounter > 0)
+            {
+                return string.Format("{0}let myWhere = {{\r\n{1}{2}\r\n{0}}};\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(2)
+                    , class_ToolSpace.GetSetSpaceCount(3)
+                    , stringBuilder.ToString());
+            }
+            else
+                return null;
+        }
+        private string _GetFrontPage()
+        {
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+            int CurPageIndex = 0;
+            int FieldCounter = 0;
+            foreach (Class_Sub item in class_SelectAllModel.class_SubList)
+            {
+                foreach (Class_Field class_Field in item.class_Fields)
+                {
+                    if (class_Field.SelectSelect)
+                    {
+                        stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
+                        if (FieldCounter > 0)
+                            stringBuilder.Append(",");
+                        stringBuilder.Append("{");
+
+                        string MyFieldName = null;
+                        if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
+                            MyFieldName = class_Field.MultFieldName;
+                        else
+                            MyFieldName = class_Field.ParaName;
+
+                        stringBuilder.AppendFormat("field:\'{0}\'", MyFieldName);
+                        stringBuilder.AppendFormat(",title:\'{0}\'", class_Field.Title);
+                        stringBuilder.AppendFormat(",width:{0}", class_Field.Width);
+                        if (!class_Field.Type.Equals("normal"))
+                            stringBuilder.AppendFormat(",type:\'{0}\'", class_Field.Type);
+                        if (class_Field.LayChecked)
+                            stringBuilder.Append(",LAY_CHECKED:true");
+                        if (!class_Field.Fixed.Equals("none"))
+                            stringBuilder.AppendFormat(",fixed:\'{0}\'", class_Field.Fixed);
+                        if (!class_Field.IsDisplay)
+                            stringBuilder.Append(",hide:true");
+                        if (class_Field.Sort)
+                            stringBuilder.Append(",sort:true");
+                        if (class_Field.UnResize)
+                            stringBuilder.Append(",unresize:true");
+
+                        if (class_Field.Style.Length > 0)
+                            stringBuilder.AppendFormat(",style:\'{0}\'", class_Field.Style);
+                        stringBuilder.AppendFormat(",align:\'{0}\'", class_Field.Align);
+                        if (class_Field.ToolBar.Length > 0)
+                            stringBuilder.AppendFormat(",toolBar:\'{0}\'", class_Field.ToolBar);
+
+                        stringBuilder.Append("}\r\n");
+                        FieldCounter++;
+                    }
+                }
+                CurPageIndex++;
+            }
+            if (FieldCounter > 0)
+            {
+                return string.Format("{0}let myColos = [[\r\n{1}{0}]];\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(2)
+                    , stringBuilder.ToString());
+            }
+            else
+                return null;
+        }
         private string _GetSql(int PageIndex)
         {
             if (class_SelectAllModel.class_SubList.Count < PageIndex)
@@ -3482,6 +3610,11 @@ namespace MDIDemo.PublicClass
         public void AddAllOutFieldName()
         {
             class_SelectAllModel.AddAllOutFieldName();
+        }
+
+        public string GetFrontPage()
+        {
+            return _GetFrontPage() + _GetWhereString();
         }
         #endregion
     }
