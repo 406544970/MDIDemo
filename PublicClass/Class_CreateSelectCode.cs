@@ -2951,8 +2951,10 @@ namespace MDIDemo.PublicClass
                                     stringBuilder.AppendFormat("{0}break;\r\n", class_ToolSpace.GetSetSpaceCount(6));
                                     stringBuilder.AppendFormat("{0}}}\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
-                                    stringBuilder.AppendFormat("{0}addTotalSite(next, totalValueClassList, i);\r\n"
+                                    stringBuilder.AppendFormat("{0}if (i > 0)\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
+                                    stringBuilder.AppendFormat("{0}addTotalSite(next, totalValueClassList, i);\r\n"
+                                        , class_ToolSpace.GetSetSpaceCount(5));
                                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "}\r\n");
                                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "}\r\n\r\n");
                                 }
