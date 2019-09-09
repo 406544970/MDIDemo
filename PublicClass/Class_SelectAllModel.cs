@@ -18,7 +18,7 @@ namespace MDIDemo.PublicClass
             class_WindowLastState = new Class_WindowLastState();
             LastSelectTableName = null;
             classType = "select";
-            IsAutoWard = true;
+            FrontType = 0;
             PageSign = true;
             ReturnStructure = false;
             ReadWriteSeparation = true;
@@ -49,9 +49,9 @@ namespace MDIDemo.PublicClass
         public List<Class_Sub> class_SubList { get; set; }
         public string LastSelectTableName { get; set; }
         public string classType { get; set; }
-        public bool IsAutoWard { get; set; }
-        public string TestClassName { get; set; }
         public string FrontPage { get; set; }
+        public int FrontType { get; set; }
+        public string UsedMethod { get; set; }
         public bool IsMultTable { get; set; }
         /// <summary>
         /// 是否分页

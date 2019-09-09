@@ -726,9 +726,6 @@
             this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit12 = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl16 = new DevExpress.XtraEditors.PanelControl();
-            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
-            this.textEdit21 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.textEdit17 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
@@ -740,6 +737,7 @@
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage29 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit13 = new DevExpress.XtraEditors.MemoEdit();
+            this.radioGroup3 = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -1109,8 +1107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).BeginInit();
             this.panelControl16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit17.Properties)).BeginInit();
@@ -1122,6 +1118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
             this.xtraTabPage29.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit13.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup3.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -10003,50 +10000,22 @@
             // memoEdit12
             // 
             this.memoEdit12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit12.Location = new System.Drawing.Point(0, 82);
+            this.memoEdit12.Location = new System.Drawing.Point(0, 37);
             this.memoEdit12.MenuManager = this.barManager1;
             this.memoEdit12.Name = "memoEdit12";
             this.memoEdit12.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memoEdit12.Properties.Appearance.Options.UseFont = true;
-            this.memoEdit12.Size = new System.Drawing.Size(1177, 497);
+            this.memoEdit12.Size = new System.Drawing.Size(1177, 542);
             this.memoEdit12.TabIndex = 1;
             // 
             // panelControl16
             // 
-            this.panelControl16.Controls.Add(this.checkEdit2);
-            this.panelControl16.Controls.Add(this.textEdit21);
-            this.panelControl16.Controls.Add(this.labelControl12);
+            this.panelControl16.Controls.Add(this.radioGroup3);
             this.panelControl16.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl16.Location = new System.Drawing.Point(0, 0);
             this.panelControl16.Name = "panelControl16";
-            this.panelControl16.Size = new System.Drawing.Size(1177, 82);
+            this.panelControl16.Size = new System.Drawing.Size(1177, 37);
             this.panelControl16.TabIndex = 0;
-            // 
-            // checkEdit2
-            // 
-            this.checkEdit2.EditValue = true;
-            this.checkEdit2.Location = new System.Drawing.Point(3, 34);
-            this.checkEdit2.MenuManager = this.barManager1;
-            this.checkEdit2.Name = "checkEdit2";
-            this.checkEdit2.Properties.Caption = "生成@AutoWard";
-            this.checkEdit2.Size = new System.Drawing.Size(136, 19);
-            this.checkEdit2.TabIndex = 6;
-            // 
-            // textEdit21
-            // 
-            this.textEdit21.Location = new System.Drawing.Point(73, 8);
-            this.textEdit21.MenuManager = this.barManager1;
-            this.textEdit21.Name = "textEdit21";
-            this.textEdit21.Size = new System.Drawing.Size(319, 20);
-            this.textEdit21.TabIndex = 5;
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Location = new System.Drawing.Point(6, 10);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(52, 14);
-            this.labelControl12.TabIndex = 4;
-            this.labelControl12.Text = "测试类名:";
             // 
             // panelControl8
             // 
@@ -10156,6 +10125,19 @@
             this.memoEdit13.Properties.Appearance.Options.UseFont = true;
             this.memoEdit13.Size = new System.Drawing.Size(1177, 579);
             this.memoEdit13.TabIndex = 2;
+            // 
+            // radioGroup3
+            // 
+            this.radioGroup3.EditValue = 0;
+            this.radioGroup3.Location = new System.Drawing.Point(8, 5);
+            this.radioGroup3.MenuManager = this.barManager1;
+            this.radioGroup3.Name = "radioGroup3";
+            this.radioGroup3.Properties.Columns = 2;
+            this.radioGroup3.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "Lay UI"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "Element UI")});
+            this.radioGroup3.Size = new System.Drawing.Size(186, 28);
+            this.radioGroup3.TabIndex = 23;
             // 
             // Form_Select
             // 
@@ -10552,9 +10534,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl16)).EndInit();
             this.panelControl16.ResumeLayout(false);
-            this.panelControl16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit21.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
             this.panelControl8.PerformLayout();
@@ -10567,6 +10546,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
             this.xtraTabPage29.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit13.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup3.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -10777,9 +10757,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage28;
         private DevExpress.XtraEditors.MemoEdit memoEdit12;
         private DevExpress.XtraEditors.PanelControl panelControl16;
-        private DevExpress.XtraEditors.TextEdit textEdit21;
-        private DevExpress.XtraEditors.LabelControl labelControl12;
-        private DevExpress.XtraEditors.CheckEdit checkEdit2;
         private DevExpress.XtraBars.Bar bar4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem22;
         private DevExpress.XtraBars.BarButtonItem barButtonItem23;
@@ -11283,5 +11260,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit60;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage29;
         private DevExpress.XtraEditors.MemoEdit memoEdit13;
+        private DevExpress.XtraEditors.RadioGroup radioGroup3;
     }
 }

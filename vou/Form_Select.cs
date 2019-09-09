@@ -45,6 +45,7 @@ namespace MDIDemo.vou
             SetCompoment();
             this.listBoxControl1.Items.Clear();
             this.listBoxControl3.Items.Clear();
+            this.radioGroup3.Enabled = false;
             #region mybatisMap文件配置
             this.propertyGridControl5.OptionsBehavior.UseDefaultEditorsCollection = true;
             this.propertyGridControl5.LayoutChanged();
@@ -65,13 +66,6 @@ namespace MDIDemo.vou
 
             class_SelectAllModel = new Class_SelectAllModel();
             SetSelectAllMode(xmlFileName);
-
-            this.memoEdit13.Text = null;
-            string FunctionTxtFile = string.Format("{0}\\select\\{1}.txt"
-                , Application.StartupPath
-                , "SelectFuntion");
-            if (File.Exists(FunctionTxtFile))
-                this.memoEdit13.Text = Class_Tool.UnEscapeCharacter(File.ReadAllText(FunctionTxtFile));
         }
 
         /// <summary>
@@ -99,9 +93,9 @@ namespace MDIDemo.vou
                 }
                 class_InterFaceDataBase.SetClass_AllModel(class_SelectAllModel);
                 this.textEdit13.Text = class_SelectAllModel.AllPackerName;
-                this.checkEdit2.Checked = class_SelectAllModel.IsAutoWard;
                 this.memoEdit12.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.FrontPage);
-                this.textEdit21.Text = class_SelectAllModel.TestClassName;
+                this.memoEdit13.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.UsedMethod);
+                this.radioGroup3.SelectedIndex = class_SelectAllModel.FrontType;
                 this.checkEdit17.Checked = class_SelectAllModel.PageSign;
                 this.checkEdit19.Checked = class_SelectAllModel.ReturnStructure;
                 this.comboBoxEdit1.SelectedIndex = class_SelectAllModel.ReturnStructureType;
@@ -1897,9 +1891,9 @@ namespace MDIDemo.vou
             if (index > 0)
             {
                 class_SelectAllModel.AllPackerName = this.textEdit13.Text;
-                class_SelectAllModel.IsAutoWard = this.checkEdit2.Checked;
                 class_SelectAllModel.FrontPage = Class_Tool.EscapeCharacter(this.memoEdit12.Text);
-                class_SelectAllModel.TestClassName = this.textEdit21.Text;
+                class_SelectAllModel.UsedMethod = Class_Tool.EscapeCharacter(this.memoEdit13.Text);
+                class_SelectAllModel.FrontType = this.radioGroup3.SelectedIndex;
                 class_SelectAllModel.PageSign = this.checkEdit17.Checked;
                 class_SelectAllModel.ReturnStructure = this.checkEdit19.Checked;
                 class_SelectAllModel.ReturnStructureType = this.comboBoxEdit1.SelectedIndex;
@@ -2352,6 +2346,16 @@ namespace MDIDemo.vou
             string MethodId = class_SelectAllModel.class_Create.MethodId;
             //3：初始化生成类
             IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(MethodId);
+            IClass_CreateFrontPage class_CreateFrontPage;
+            switch (this.radioGroup3.SelectedIndex)
+            {
+                case 0:
+                    class_CreateFrontPage = new Class_CreateSelectCode(MethodId);
+                    break;
+                default:
+                    class_CreateFrontPage = new Class_CreateSelectCode(MethodId);
+                    break;
+            }
             //4：验证合法性
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
@@ -2385,6 +2389,8 @@ namespace MDIDemo.vou
                     this.memoEdit54.Text = class_InterFaceCreateCode.GetTestSql(PageIndex);
                     //前端
                     this.memoEdit12.Text = class_InterFaceCreateCode.GetFrontPage();
+                    //常用方法
+                    this.memoEdit13.Text = class_CreateFrontPage.GetUsedMethod();
                 }
                 #endregion
 

@@ -10,7 +10,7 @@ namespace MDIDemo.PublicClass
     /// <summary>
     /// 生成Select相关代码 2019-03-12
     /// </summary>
-    public class Class_CreateSelectCode : IClass_InterFaceCreateCode
+    public class Class_CreateSelectCode : IClass_InterFaceCreateCode, IClass_CreateFrontPage
     {
         #region 私有
         private int AddLinkFieldInfo()
@@ -970,6 +970,27 @@ namespace MDIDemo.PublicClass
                 return stringBuilder.ToString();
             else
                 return null;
+        }
+        private string _GetUsedMethod()
+        {
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            #region
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * 加入汇总数据位置\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * @param next                迭代器\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * @param totalValueClassList 目标list\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * @param i                   位置\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}private void addTotalSite(Map.Entry next, List<TotalValueClass> totalValueClassList, byte i) {{\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}TotalValueClass totalValueClass = new TotalValueClass();\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}totalValueClass.setValue(next.getValue() == null ? 0 : next.getValue().toString().replace(\", \", \"\"));\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}totalValueClass.setSite(i);\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}totalValueClassList.add(totalValueClass);\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}}}\r\n\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            #endregion
+            return stringBuilder.ToString();
         }
         private string _GetWhereString()
         {
@@ -2930,7 +2951,7 @@ namespace MDIDemo.PublicClass
                                     stringBuilder.AppendFormat("{0}break;\r\n", class_ToolSpace.GetSetSpaceCount(6));
                                     stringBuilder.AppendFormat("{0}}}\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
-                                    stringBuilder.AppendFormat("{0}AddTotal(next, totalValueClassList, i);\r\n"
+                                    stringBuilder.AppendFormat("{0}addTotalSite(next, totalValueClassList, i);\r\n"
                                         , class_ToolSpace.GetSetSpaceCount(4));
                                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3) + "}\r\n");
                                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "}\r\n\r\n");
@@ -3643,6 +3664,11 @@ namespace MDIDemo.PublicClass
         public string GetFrontPage()
         {
             return _GetFrontPage() + _GetWhereString();
+        }
+
+        public string GetUsedMethod()
+        {
+            return _GetUsedMethod();
         }
         #endregion
     }

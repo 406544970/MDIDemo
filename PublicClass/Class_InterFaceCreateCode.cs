@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MDIDemo.PublicClass
 {
+    public interface IClass_CreateFrontPage
+    {
+        string GetUsedMethod();
+    }
     public interface IClass_InterFaceCreateCode
     {
         #region
