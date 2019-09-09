@@ -516,8 +516,8 @@ namespace MDIDemo.vou
                             textEdit11.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox10);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox10, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox15, "");
-                        AddColumnComboxTotalFunction(this.repositoryItemComboBox42, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox16, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox11, "");
                     }
                     break;
                 case 2:
@@ -532,9 +532,9 @@ namespace MDIDemo.vou
                         else
                             textEdit12.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
 
-                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox18, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox23, "");
-                        AddColumnComboxTotalFunction(this.repositoryItemComboBox43, "");
+                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox22, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox28, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox23, "");
                     }
                     break;
                 case 3:
@@ -549,9 +549,9 @@ namespace MDIDemo.vou
                         else
                             textEdit57.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
 
-                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox26, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox31, "");
-                        AddColumnComboxTotalFunction(this.repositoryItemComboBox45, "");
+                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox34, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox40, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox35, "");
                     }
                     break;
                 case 4:
@@ -566,9 +566,9 @@ namespace MDIDemo.vou
                         else
                             textEdit61.Text = TableAlias.Length == 0 ? "Sub" + PageSelectIndex.ToString() : TableAlias;
 
-                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox34, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox39, "");
-                        AddColumnComboxTotalFunction(this.repositoryItemComboBox44, "");
+                        AddColumnComboxFunctionByDataType(this.repositoryItemComboBox50, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox56, "");
+                        AddColumnComboxTotalFunction(this.repositoryItemComboBox51, "");
                     }
                     break;
                 default:
