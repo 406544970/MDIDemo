@@ -67,7 +67,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         public void OpenInsertWin(string xmlFileName)
         {
             Class_WindowType class_WindowType = new Class_WindowType();
-            class_WindowType.WindowType = "Insert";
+            class_WindowType.WindowType = "insert";
             Form_Insert form_Insert;
             if (xmlFileName == null)
             {

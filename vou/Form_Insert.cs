@@ -75,7 +75,7 @@ namespace MDIDemo.vou
             try
             {
                 if (xmlFileName != null)
-                    class_InsertAllModel = class_PublicMethod.FromXmlToSelectObject<Class_InsertAllModel>(xmlFileName);
+                    class_InsertAllModel = class_PublicMethod.FromXmlInsertObject<Class_InsertAllModel>(xmlFileName);
                 if (class_InsertAllModel == null)
                     class_InsertAllModel = new Class_InsertAllModel();
                 switch (class_InsertAllModel.class_SelectDataBase.databaseType)
@@ -113,7 +113,6 @@ namespace MDIDemo.vou
                 {
                     this.textEdit14.Text = class_InsertAllModel.class_SubList[index].MethodId;
                     this.textEdit15.Text = class_InsertAllModel.class_SubList[index].MethodContent;
-                    this.radioGroup7.SelectedIndex = class_InsertAllModel.class_SubList[index].ResultType;
                     this.checkEdit1.Checked = class_InsertAllModel.class_SubList[index].IsAddXmlHead;
                     this.textEdit16.Text = class_InsertAllModel.class_SubList[index].NameSpace;
                     this.memoEdit3.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].MapContent);
@@ -125,7 +124,6 @@ namespace MDIDemo.vou
                     this.memoEdit10.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].DAOContent);
                     this.memoEdit11.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].ControlContent);
                     this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].InPutParamContent);
-                    this.textEdit22.Text = class_InsertAllModel.class_SubList[index].ResultMapId;
                     this.textEdit24.Text = class_InsertAllModel.class_SubList[index].ModelClassName;
                     this.textEdit17.Text = class_InsertAllModel.class_Create.MethodId;
                     this.textEdit20.Text = class_InsertAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
@@ -229,7 +227,6 @@ namespace MDIDemo.vou
             #region TextEdit
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
             class_SetTextEdit.SetTextEdit(this.textEdit19);
-            class_SetTextEdit.SetTextEdit(this.textEdit25);
             class_SetTextEdit.SetTextEdit(this.textEdit44);
 
             class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
@@ -239,7 +236,6 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit15, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit16, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit20, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit22, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit24, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit46, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit47, Color.SkyBlue);
@@ -258,7 +254,6 @@ namespace MDIDemo.vou
             #endregion
 
             #region radioGroup
-            this.radioGroup7.SelectedIndex = 0;
             this.radioGroup9.SelectedIndex = 0;
             #endregion
 
@@ -540,7 +535,7 @@ namespace MDIDemo.vou
                     class_Sub.MainFieldName = dataRow["FieldName"].ToString();
                     class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString());
                 }
-                bool InsertSelect = Convert.ToBoolean(dataRow["SelectSelect"]);
+                bool InsertSelect = Convert.ToBoolean(dataRow["InsertSelect"]);
                 bool WhereSelect = Convert.ToBoolean(dataRow["WhereSelect"]);
 
                 if (InsertSelect || WhereSelect)
@@ -555,13 +550,29 @@ namespace MDIDemo.vou
                     class_Field.FieldIsNull = Convert.ToBoolean(dataRow["FieldIsNull"]);
                     class_Field.FieldIsKey = Convert.ToBoolean(dataRow["FieldIsKey"]);
                     class_Field.FieldIsAutoAdd = Convert.ToBoolean(dataRow["FieldIsAutoAdd"]);
-                    class_Field.InsertSelect = InsertSelect;
-                    class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);
-                    class_Field.WhereSelect = WhereSelect;
-                    class_Field.WhereType = dataRow["WhereType"].ToString();
-                    class_Field.LogType = dataRow["LogType"].ToString();
+
+                    class_Field.InsertSelect = InsertSelect;//Insert/Values选择
+                    class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);//是否去空格
+
+                    class_Field.WhereSelect = WhereSelect;//重复判断选择
+                    class_Field.WhereType = dataRow["WhereType"].ToString();//And Or
+                    class_Field.LogType = dataRow["LogType"].ToString();// = >< like，固定值
                     class_Field.WhereValue = dataRow["WhereValue"].ToString();
-                    class_Field.WhereIsNull = Convert.ToBoolean(dataRow["WhereIsNull"]);
+                    class_Field.WhereIsNull = Convert.ToBoolean(dataRow["WhereIsNull"]);//Where条件是否可为空
+
+                    class_Field.FrontSelect = Convert.ToBoolean(dataRow["FrontSelect"]);//是否页面显示
+                    class_Field.LabelCaption = dataRow["LabelCaption"].ToString();//标签内容
+                    class_Field.IsMust = Convert.ToBoolean(dataRow["IsMust"]);//是否为必填项
+
+                    class_Field.CompomentType = dataRow["CompomentType"].ToString();//控件类型
+                    class_Field.Hint = dataRow["Hint"].ToString();//提示
+                    class_Field.DefaultValue = dataRow["DefaultValue"].ToString();//默认值
+                    class_Field.SortNo = Convert.ToInt32(dataRow["SortNo"]); ;//出现顺序
+                    class_Field.ValueId = dataRow["ValueId"].ToString();//值ID
+                    class_Field.ReadOnly = Convert.ToBoolean(dataRow["ReadOnly"]);//是否只读
+
+                    class_Field.CheckType = dataRow["CheckType"].ToString();//校验类型
+                    class_Field.ClassTitle = dataRow["ClassTitle"].ToString();//分类标题
 
                     class_Fields.Add(class_Field);
                 }
@@ -627,7 +638,7 @@ namespace MDIDemo.vou
             }
             #endregion
 
-            int SelectCount = 0;
+            int InsertCount = 0;
             int WhereCount = 0;
             #region Select字段非空验证
             if (IsOk)
@@ -640,14 +651,14 @@ namespace MDIDemo.vou
                         for (int j = 0; j < item.RowCount; j++)
                         {
                             DataRow dataRow = item.GetDataRow(j);
-                            if (Convert.ToBoolean(dataRow["SelectSelect"]))
-                                SelectCount++;
+                            if (Convert.ToBoolean(dataRow["InsertSelect"]))
+                                InsertCount++;
                             if (Convert.ToBoolean(dataRow["WhereSelect"]))
                                 WhereCount++;
                         }
                     }
                 }
-                IsOk = SelectCount > 0 ? true : false;
+                IsOk = InsertCount > 0 ? true : false;
                 if (!IsOk)
                 {
                     MessageBox.Show("请选择Select字段！"
@@ -706,74 +717,6 @@ namespace MDIDemo.vou
             }
             #endregion
 
-            #region 字段类型与函数合法性
-            if (IsOk)
-            {
-                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
-                if (IsOk && bandedGridView.RowCount > 0)
-                {
-                    int index = 0;
-                    while (IsOk && index < bandedGridView.RowCount)
-                    {
-                        DataRow dataRow = bandedGridView.GetDataRow(index++);
-                        if (Convert.ToBoolean(dataRow["SelectSelect"]))
-                        {
-                            string FieldName = dataRow["FieldName"].ToString();
-                            string FieldType = dataRow["FieldType"].ToString();
-                            string CaseWhen = dataRow["CaseWhen"].ToString();
-                            if ((CaseWhen != null) && (CaseWhen.Length > 0))
-                                FieldType = "varchar";
-                            string FunctionName = dataRow["FunctionName"].ToString();
-                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
-                            {
-                                MessageBox.Show(string.Format("表:\r\n   字段[{0}]的类型[{1}],不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
-                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                IsOk = false;
-                            }
-                        }
-                    }
-                }
-                if (!IsOk)
-                {
-                    this.xtraTabControl3.SelectedTabPageIndex = 0;
-                }
-            }
-            #endregion
-
-            #region 字段类型、Having函数与值合法性
-            if (IsOk)
-            {
-                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
-                if (IsOk && bandedGridView.RowCount > 0)
-                {
-                    int index = 0;
-                    while (IsOk && index < bandedGridView.RowCount)
-                    {
-                        DataRow dataRow = bandedGridView.GetDataRow(index++);
-                        if (Convert.ToBoolean(dataRow["HavingSelect"]))
-                        {
-                            string FieldName = dataRow["FieldName"].ToString();
-                            string FieldType = dataRow["FieldType"].ToString();
-                            string FunctionName = dataRow["HavingFunction"].ToString();
-                            string HavingValue = dataRow["HavingValue"].ToString();
-                            if (!class_InterFaceDataBase.FieldTypeAndFunction(FieldType, FunctionName))
-                            {
-                                MessageBox.Show(string.Format("表:\r\n   字段[{0}]的类型[{1}],Having中不用使用函数[{2}]！", FieldName, FieldType, FunctionName)
-                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                IsOk = false;
-                            }
-                            if (IsOk && (HavingValue == null || HavingValue.Length == 0))
-                            {
-                                MessageBox.Show(string.Format("表:\r\n   字段[{0}]的Having函数值不能这空！", FieldName)
-                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                IsOk = false;
-                            }
-                        }
-                    }
-                }
-            }
-            #endregion
-
             #region 全包名合法性
             if (IsOk)
             {
@@ -822,15 +765,6 @@ namespace MDIDemo.vou
                 BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
                 if (bandedGridView.RowCount > 0)
                 {
-                    if (this.radioGroup7.SelectedIndex == 0)
-                    {
-                        if (this.textEdit22.Text == null || this.textEdit22.Text.Length == 0)
-                        {
-                            MessageBox.Show(string.Format("{0}名不能为空！", "ResultMapId")
-                                , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            IsOk = false;
-                        }
-                    }
                     if (IsOk && (this.textEdit100.Text == null || this.textEdit100.Text.Length == 0))
                     {
                         MessageBox.Show(string.Format("{0}类名不能为空！", "Model")
@@ -954,11 +888,11 @@ namespace MDIDemo.vou
                 #endregion
 
                 #region 表
+                index = 0;
                 if (this.gridControl1.MainView.RowCount > 0)
                 {
                     class_InsertAllModel.class_SubList[index].MethodId = this.textEdit14.Text;
                     class_InsertAllModel.class_SubList[index].MethodContent = this.textEdit15.Text;
-                    class_InsertAllModel.class_SubList[index].ResultType = this.radioGroup7.SelectedIndex;
                     class_InsertAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit1.Checked;
                     class_InsertAllModel.class_SubList[index].NameSpace = this.textEdit16.Text;
                     class_InsertAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit3.Text);
@@ -970,7 +904,6 @@ namespace MDIDemo.vou
                     class_InsertAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit10.Text);
                     class_InsertAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
                     class_InsertAllModel.class_SubList[index].InPutParamContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
-                    class_InsertAllModel.class_SubList[index].ResultMapId = this.textEdit22.Text;
                     class_InsertAllModel.class_SubList[index].ModelClassName = this.textEdit24.Text;
                     class_InsertAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit47.Text;
                     class_InsertAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit46.Text;
@@ -1286,10 +1219,6 @@ namespace MDIDemo.vou
             }
         }
 
-        private void textEdit22_EditValueChanged(object sender, EventArgs e)
-        {
-            this.textEdit25.Text = string.Format("{0}Map", this.textEdit22.Text);
-        }
 
         private void barButtonItem26_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

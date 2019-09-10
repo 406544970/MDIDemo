@@ -46,6 +46,24 @@ namespace MDIDemo.PublicClass
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
+                case "Class_InsertAllModel":
+                    {
+                        Class_InsertAllModel class_InsertAllModel = new Class_InsertAllModel();
+                        class_InsertAllModel = t as Class_InsertAllModel;
+                        class_PageInfomationMode.pageKey = class_InsertAllModel.class_Create.MethodId;
+                        class_PageInfomationMode.projectId = "projectId";
+                        class_PageInfomationMode.pageType = "insert";
+                        class_PageInfomationMode.pageVersion = 0;
+                        class_PageInfomationMode.createTime = System.DateTime.Now;
+                        class_PageInfomationMode.lastUpdateTime = class_PageInfomationMode.createTime;
+                        class_PageInfomationMode.createOperatorId = class_InsertAllModel.class_Create.CreateMan;
+                        class_PageInfomationMode.doOperatorId = class_InsertAllModel.class_Create.CreateDo;
+                        class_PageInfomationMode.frontOperatorId = class_InsertAllModel.class_Create.CreateFrontDo;
+                        class_PageInfomationMode.finishCount = 0;
+                        class_PageInfomationMode.readOnly = class_InsertAllModel.class_Create.ReadOnly;
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                    }
+                    break;
                 case "Class_DataBaseConDefault":
                     SaveOk = true;
                     break;
