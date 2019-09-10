@@ -1147,7 +1147,7 @@ namespace MDIDemo.vou
             //2：得到XML文件名
             string MethodId = class_InsertAllModel.class_Create.MethodId;
             //3：初始化生成类
-            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(MethodId);
+            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateInsertCode(MethodId);
             //4：验证合法性
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))

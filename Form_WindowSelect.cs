@@ -98,7 +98,7 @@ namespace MDIDemo
                     PageKey = gridView.GetRowCellValue(Index, "pageKey").ToString();
                     Class_SystemDefault class_SystemDefault = new Class_SystemDefault();
                     class_SystemDefault.SelectOpenWindowIndex = this.xtraTabControl1.SelectedTabPageIndex;
-                    if (class_PublicMethod.SystemDefaultValueToXml<Class_SystemDefault>(FileFullName, class_SystemDefault))
+                    if (class_PublicMethod.SystemDefaultValueToXml(FileFullName, class_SystemDefault))
                         this.DialogResult = DialogResult.OK;
                 }
                 else

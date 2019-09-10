@@ -8,6 +8,16 @@ namespace MDIDemo.PublicClass
 {
     public class Class_CreateInsertCode : IClass_InterFaceCreateCode, IClass_CreateFrontPage
     {
+        public Class_CreateInsertCode(string xmlFileName)
+        {
+            if (xmlFileName != null)
+            {
+                Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                class_InsertAllModel = new Class_InsertAllModel();
+                class_InsertAllModel = class_PublicMethod.FromXmlToSelectObject<Class_InsertAllModel>(xmlFileName);
+            }
+        }
+        private Class_InsertAllModel class_InsertAllModel;
         public void AddAllOutFieldName()
         {
             throw new NotImplementedException();
@@ -15,67 +25,67 @@ namespace MDIDemo.PublicClass
 
         public string GetControl(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetDAO(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetDTO(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetFrontPage()
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetInPutParam(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetMap(int Index)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public string GetModel(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetServiceImpl(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetServiceInterFace(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetSql(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetTestSql(int Index)
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public string GetUsedMethod()
         {
-            throw new NotImplementedException();
+            return "没做";
         }
 
         public bool IsCheckOk(ref List<string> outMessage)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

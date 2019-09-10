@@ -261,8 +261,6 @@
             this.textEdit14 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.textEdit24 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
@@ -280,6 +278,8 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.textEdit24 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -420,7 +420,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
             this.xtraTabPage28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).BeginInit();
@@ -437,6 +436,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -3818,22 +3818,6 @@
             this.checkEdit1.Size = new System.Drawing.Size(87, 19);
             this.checkEdit1.TabIndex = 16;
             // 
-            // textEdit24
-            // 
-            this.textEdit24.Location = new System.Drawing.Point(98, 91);
-            this.textEdit24.MenuManager = this.barManager1;
-            this.textEdit24.Name = "textEdit24";
-            this.textEdit24.Size = new System.Drawing.Size(122, 20);
-            this.textEdit24.TabIndex = 3;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(6, 92);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(87, 14);
-            this.labelControl11.TabIndex = 20;
-            this.labelControl11.Text = "ResultMapType:";
-            // 
             // textEdit16
             // 
             this.textEdit16.Location = new System.Drawing.Point(98, 39);
@@ -3994,6 +3978,22 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(6, 92);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(87, 14);
+            this.labelControl11.TabIndex = 20;
+            this.labelControl11.Text = "ResultMapType:";
+            // 
+            // textEdit24
+            // 
+            this.textEdit24.Location = new System.Drawing.Point(98, 91);
+            this.textEdit24.MenuManager = this.barManager1;
+            this.textEdit24.Name = "textEdit24";
+            this.textEdit24.Size = new System.Drawing.Size(122, 20);
+            this.textEdit24.TabIndex = 3;
+            // 
             // Form_Insert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -4152,7 +4152,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
             this.xtraTabPage28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).EndInit();
@@ -4171,6 +4170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4318,8 +4318,6 @@
         private DevExpress.XtraEditors.TextEdit textEdit14;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit24;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.TextEdit textEdit16;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage49;
@@ -4427,5 +4425,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraEditors.TextEdit textEdit24;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
     }
 }
