@@ -535,47 +535,42 @@ namespace MDIDemo.vou
                     class_Sub.MainFieldName = dataRow["FieldName"].ToString();
                     class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString());
                 }
-                bool InsertSelect = Convert.ToBoolean(dataRow["InsertSelect"]);
-                bool WhereSelect = Convert.ToBoolean(dataRow["WhereSelect"]);
 
-                if (InsertSelect || WhereSelect)
-                {
-                    Class_InsertAllModel.Class_Field class_Field = new Class_InsertAllModel.Class_Field();
-                    class_Field.FieldName = dataRow["FieldName"].ToString();
-                    class_Field.FieldRemark = dataRow["FieldRemark"].ToString();
-                    class_Field.FieldType = dataRow["FieldType"].ToString();
-                    if ((dataRow["FieldLength"] != null) && (dataRow["FieldLength"].ToString().Length > 0))
-                        class_Field.FieldLength = Convert.ToInt32(dataRow["FieldLength"]);
-                    class_Field.FieldDefaultValue = dataRow["FieldDefaultValue"].ToString();
-                    class_Field.FieldIsNull = Convert.ToBoolean(dataRow["FieldIsNull"]);
-                    class_Field.FieldIsKey = Convert.ToBoolean(dataRow["FieldIsKey"]);
-                    class_Field.FieldIsAutoAdd = Convert.ToBoolean(dataRow["FieldIsAutoAdd"]);
+                Class_InsertAllModel.Class_Field class_Field = new Class_InsertAllModel.Class_Field();
+                class_Field.FieldName = dataRow["FieldName"].ToString();
+                class_Field.FieldRemark = dataRow["FieldRemark"].ToString();
+                class_Field.FieldType = dataRow["FieldType"].ToString();
+                if ((dataRow["FieldLength"] != null) && (dataRow["FieldLength"].ToString().Length > 0))
+                    class_Field.FieldLength = Convert.ToInt32(dataRow["FieldLength"]);
+                class_Field.FieldDefaultValue = dataRow["FieldDefaultValue"].ToString();
+                class_Field.FieldIsNull = Convert.ToBoolean(dataRow["FieldIsNull"]);
+                class_Field.FieldIsKey = Convert.ToBoolean(dataRow["FieldIsKey"]);
+                class_Field.FieldIsAutoAdd = Convert.ToBoolean(dataRow["FieldIsAutoAdd"]);
 
-                    class_Field.InsertSelect = InsertSelect;//Insert/Values选择
-                    class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);//是否去空格
+                class_Field.InsertSelect = Convert.ToBoolean(dataRow["InsertSelect"]);//Insert/Values选择
+                class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);//是否去空格
 
-                    class_Field.WhereSelect = WhereSelect;//重复判断选择
-                    class_Field.WhereType = dataRow["WhereType"].ToString();//And Or
-                    class_Field.LogType = dataRow["LogType"].ToString();// = >< like，固定值
-                    class_Field.WhereValue = dataRow["WhereValue"].ToString();
-                    class_Field.WhereIsNull = Convert.ToBoolean(dataRow["WhereIsNull"]);//Where条件是否可为空
+                class_Field.WhereSelect = Convert.ToBoolean(dataRow["WhereSelect"]);//重复判断选择
+                class_Field.WhereType = dataRow["WhereType"].ToString();//And Or
+                class_Field.LogType = dataRow["LogType"].ToString();// = > < like，固定值
+                class_Field.WhereValue = dataRow["WhereValue"].ToString();
+                class_Field.WhereIsNull = Convert.ToBoolean(dataRow["WhereIsNull"]);//Where条件是否可为空
 
-                    class_Field.FrontSelect = Convert.ToBoolean(dataRow["FrontSelect"]);//是否页面显示
-                    class_Field.LabelCaption = dataRow["LabelCaption"].ToString();//标签内容
-                    class_Field.IsMust = Convert.ToBoolean(dataRow["IsMust"]);//是否为必填项
+                class_Field.FrontSelect = Convert.ToBoolean(dataRow["FrontSelect"]);//是否页面显示
+                class_Field.LabelCaption = dataRow["LabelCaption"].ToString();//标签内容
+                class_Field.IsMust = Convert.ToBoolean(dataRow["IsMust"]);//是否为必填项
 
-                    class_Field.CompomentType = dataRow["CompomentType"].ToString();//控件类型
-                    class_Field.Hint = dataRow["Hint"].ToString();//提示
-                    class_Field.DefaultValue = dataRow["DefaultValue"].ToString();//默认值
-                    class_Field.SortNo = Convert.ToInt32(dataRow["SortNo"]); ;//出现顺序
-                    class_Field.ValueId = dataRow["ValueId"].ToString();//值ID
-                    class_Field.ReadOnly = Convert.ToBoolean(dataRow["ReadOnly"]);//是否只读
+                class_Field.CompomentType = dataRow["CompomentType"].ToString();//控件类型
+                class_Field.Hint = dataRow["Hint"].ToString();//提示
+                class_Field.DefaultValue = dataRow["DefaultValue"].ToString();//默认值
+                class_Field.SortNo = Convert.ToInt32(dataRow["SortNo"]); ;//出现顺序
+                class_Field.ValueId = dataRow["ValueId"].ToString();//值ID
+                class_Field.ReadOnly = Convert.ToBoolean(dataRow["ReadOnly"]);//是否只读
 
-                    class_Field.CheckType = dataRow["CheckType"].ToString();//校验类型
-                    class_Field.ClassTitle = dataRow["ClassTitle"].ToString();//分类标题
+                class_Field.CheckType = dataRow["CheckType"].ToString();//校验类型
+                class_Field.ClassTitle = dataRow["ClassTitle"].ToString();//分类标题
 
-                    class_Fields.Add(class_Field);
-                }
+                class_Fields.Add(class_Field);
             }
             class_Sub.class_Fields = class_Fields;
             class_Sub.TableName = TableName;
