@@ -692,9 +692,7 @@ namespace MDIDemo.PublicClass
                 InsertSelect = false;
                 TrimSign = false;
                 WhereSelect = false;
-                WhereTrim = false;
                 WhereIsNull = false;
-                CheckMult = true;
             }
             #region 字段名称
             public string FieldName { get; set; }
@@ -710,12 +708,10 @@ namespace MDIDemo.PublicClass
 
             #region Insert
             public bool InsertSelect { get; set; }
-            public string ParaName { get; set; }
-            public int MaxLegth { get; set; }
-            public string CaseWhen { get; set; }
-            public string ReturnType { get; set; }
             public bool TrimSign { get; set; }
-            public string FunctionName { get; set; }
+
+
+
             #endregion
 
             #region Where
@@ -723,7 +719,6 @@ namespace MDIDemo.PublicClass
             public string WhereType { get; set; }
             public string LogType { get; set; }
             public string WhereValue { get; set; }
-            public bool WhereTrim { get; set; }
             public bool WhereIsNull { get; set; }
             #endregion
 
@@ -739,10 +734,6 @@ namespace MDIDemo.PublicClass
             public bool ReadOnly { get; set; }
             public string CheckType { get; set; }
             public string ClassTitle { get; set; }
-            /// <summary>
-            /// 是否校验重复
-            /// </summary>
-            public bool CheckMult { get; set; }
             #endregion
         }
         #endregion

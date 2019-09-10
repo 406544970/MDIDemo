@@ -556,18 +556,11 @@ namespace MDIDemo.vou
                     class_Field.FieldIsKey = Convert.ToBoolean(dataRow["FieldIsKey"]);
                     class_Field.FieldIsAutoAdd = Convert.ToBoolean(dataRow["FieldIsAutoAdd"]);
                     class_Field.InsertSelect = InsertSelect;
-                    class_Field.ParaName = dataRow["ParaName"].ToString();
-                    if ((dataRow["MaxLegth"] != null) && (dataRow["MaxLegth"].ToString().Length > 0))
-                        class_Field.MaxLegth = Convert.ToInt32(dataRow["MaxLegth"]);
-                    class_Field.CaseWhen = dataRow["CaseWhen"].ToString();
-                    class_Field.ReturnType = dataRow["ReturnType"].ToString();
                     class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);
-                    class_Field.FunctionName = dataRow["FunctionName"].ToString();
                     class_Field.WhereSelect = WhereSelect;
                     class_Field.WhereType = dataRow["WhereType"].ToString();
                     class_Field.LogType = dataRow["LogType"].ToString();
                     class_Field.WhereValue = dataRow["WhereValue"].ToString();
-                    class_Field.WhereTrim = Convert.ToBoolean(dataRow["WhereTrim"]);
                     class_Field.WhereIsNull = Convert.ToBoolean(dataRow["WhereIsNull"]);
 
                     class_Fields.Add(class_Field);

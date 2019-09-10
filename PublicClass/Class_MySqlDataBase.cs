@@ -473,17 +473,14 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                         case "insert":
                             {
                                 #region 加入自定义Insert列
-                                DataColumn InsertSelect = new DataColumn("InsertSelect", typeof(bool));
-                                DataColumn ParaName = new DataColumn("ParaName", typeof(string));
-                                DataColumn MaxLegth = new DataColumn("MaxLegth", typeof(Int32));
-                                DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));
+                                DataColumn InsertSelect = new DataColumn("InsertSelect", typeof(bool));//Insert/Values选择
+                                DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));//是否去空格
 
-                                DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));
-                                DataColumn WhereType = new DataColumn("WhereType", typeof(string));
-                                DataColumn LogType = new DataColumn("LogType", typeof(string));
+                                DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));//重复判断选择
+                                DataColumn WhereType = new DataColumn("WhereType", typeof(string));//And Or
+                                DataColumn LogType = new DataColumn("LogType", typeof(string));// = >< like，固定值
                                 DataColumn WhereValue = new DataColumn("WhereValue", typeof(string));
-                                DataColumn WhereTrim = new DataColumn("WhereTrim", typeof(bool));
-                                DataColumn WhereIsNull = new DataColumn("WhereIsNull", typeof(bool));
+                                DataColumn WhereIsNull = new DataColumn("WhereIsNull", typeof(bool));//Where条件是否可为空
 
                                 DataColumn FrontSelect = new DataColumn("FrontSelect", typeof(bool));//是否页面显示
                                 DataColumn LabelCaption = new DataColumn("LabelCaption", typeof(string));//标签内容
@@ -496,26 +493,23 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 DataColumn ReadOnly = new DataColumn("ReadOnly", typeof(bool));//是否只读
                                 DataColumn CheckType = new DataColumn("CheckType", typeof(string));//校验类型
                                 DataColumn ClassTitle = new DataColumn("ClassTitle", typeof(string));//分类标题
-                                DataColumn CheckMult = new DataColumn("CheckMult", typeof(bool));//增加时是否校验重复：后端属性
 
-                                InsertSelect.DefaultValue = SelectSelectDefault;
+                                InsertSelect.DefaultValue = true;
                                 TrimSign.DefaultValue = true;
                                 WhereSelect.DefaultValue = false;
-                                WhereTrim.DefaultValue = true;
                                 WhereIsNull.DefaultValue = true;
                                 ReadOnly.DefaultValue = false;
-                                CheckMult.DefaultValue = false;
+
+                                FrontSelect.DefaultValue = true;
+                                IsMust.DefaultValue = true;
 
                                 dataTable.Columns.Add(InsertSelect);
-                                dataTable.Columns.Add(ParaName);
-                                dataTable.Columns.Add(MaxLegth);
                                 dataTable.Columns.Add(TrimSign);
 
                                 dataTable.Columns.Add(WhereSelect);
                                 dataTable.Columns.Add(WhereType);
                                 dataTable.Columns.Add(LogType);
                                 dataTable.Columns.Add(WhereValue);
-                                dataTable.Columns.Add(WhereTrim);
                                 dataTable.Columns.Add(WhereIsNull);
 
                                 dataTable.Columns.Add(FrontSelect);
@@ -529,7 +523,6 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 dataTable.Columns.Add(ReadOnly);
                                 dataTable.Columns.Add(CheckType);
                                 dataTable.Columns.Add(ClassTitle);
-                                dataTable.Columns.Add(CheckMult);
                                 #endregion
                             }
                             break;
@@ -661,19 +654,14 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                             int FindIndex = class_CurrentPage.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
                                             if (FindIndex > -1)
                                             {
-                                                row["SelectSelect"] = class_CurrentPage.class_Fields[FindIndex].InsertSelect;
-                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
-                                                row["MaxLegth"] = class_CurrentPage.class_Fields[FindIndex].MaxLegth;
-                                                row["CaseWhen"] = class_CurrentPage.class_Fields[FindIndex].CaseWhen;
-                                                row["ReturnType"] = class_CurrentPage.class_Fields[FindIndex].ReturnType;
+                                                row["InsertSelect"] = class_CurrentPage.class_Fields[FindIndex].InsertSelect;
                                                 row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
-                                                row["FunctionName"] = class_CurrentPage.class_Fields[FindIndex].FunctionName;
                                                 row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
                                                 row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
                                                 row["LogType"] = class_CurrentPage.class_Fields[FindIndex].LogType;
                                                 row["WhereValue"] = class_CurrentPage.class_Fields[FindIndex].WhereValue;
-                                                row["WhereTrim"] = class_CurrentPage.class_Fields[FindIndex].WhereTrim;
                                                 row["WhereIsNull"] = class_CurrentPage.class_Fields[FindIndex].WhereIsNull;
+
                                                 row["FrontSelect"] = class_CurrentPage.class_Fields[FindIndex].FrontSelect;
                                                 row["IsMust"] = class_CurrentPage.class_Fields[FindIndex].IsMust;
                                                 row["LabelCaption"] = class_CurrentPage.class_Fields[FindIndex].LabelCaption;
@@ -684,7 +672,6 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 row["ValueId"] = class_CurrentPage.class_Fields[FindIndex].ValueId;
                                                 row["ReadOnly"] = class_CurrentPage.class_Fields[FindIndex].ReadOnly;
                                                 row["CheckType"] = class_CurrentPage.class_Fields[FindIndex].CheckType;
-                                                row["CheckMult"] = class_CurrentPage.class_Fields[FindIndex].CheckMult;
                                                 IsDefault = false;
                                             }
                                         }
@@ -693,8 +680,6 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                             row["LogType"] = "=";
                                             row["WhereType"] = "AND";
                                             row["WhereValue"] = "参数";
-                                            row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
-                                            row["MaxLegth"] = row["FieldLength"];
                                             row["SortNo"] = Counter++;
                                             switch (row["FieldName"].ToString())
                                             {
@@ -707,10 +692,6 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                                 default:
                                                     break;
                                             }
-                                            if (row["FieldType"].Equals("varchar"))
-                                                row["WhereTrim"] = Convert.ToBoolean(true);
-                                            else
-                                                row["WhereTrim"] = Convert.ToBoolean(false);
                                         }
                                     }
                                     break;
@@ -816,13 +797,13 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     case "Class_SelectAllModel":
                         OperateType = "select";
                         break;
-                    case "Class_delectAllModel":
+                    case "Class_DelectAllModel":
                         OperateType = "delect";
                         break;
-                    case "Class_updateAllModel":
+                    case "Class_UpdateAllModel":
                         OperateType = "update";
                         break;
-                    case "Class_insertAllModel":
+                    case "Class_InsertAllModel":
                         OperateType = "insert";
                         break;
                     default:
