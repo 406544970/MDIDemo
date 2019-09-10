@@ -14,14 +14,14 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            Form_Log form_Log = new Form_Log();
+            const string _Version = "0.81";
+            Form_Log form_Log = new Form_Log(_Version);
             if (form_Log.ShowDialog() == DialogResult.OK)
             {
                 Form_DownLoad form_DownLoad = new Form_DownLoad();
                 if (form_DownLoad.ShowDialog() == DialogResult.OK)
                 {
-                    Application.Run(new frmMain());
+                    Application.Run(new frmMain(_Version));
                 }
                 form_DownLoad.Dispose();
             }

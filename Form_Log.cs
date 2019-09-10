@@ -12,11 +12,13 @@ namespace MDIDemo
 {
     public partial class Form_Log : DevExpress.XtraEditors.XtraForm
     {
-        public Form_Log()
+        public Form_Log(string version)
         {
+            this.version = version;
             InitializeComponent();
             Ini();
         }
+        private string version;
         private void setIniSkin(string skinName)
         {
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(skinName);
@@ -28,6 +30,7 @@ namespace MDIDemo
             //this.textEdit1.Text = "";
             //this.textEdit2.Text = "";
             setIniSkin("Metropolis Dark");
+            this.Text = string.Format("登录 V {0}", this.version);
         }
 
         private void LogOk()

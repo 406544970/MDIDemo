@@ -22,17 +22,17 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 {
     public partial class frmMain : DevExpress.XtraEditors.XtraForm
     {
-        public frmMain()
+        public frmMain(string VersionNo)
         {
+            this.Version = VersionNo;
             InitializeComponent();
             InitTabbedMDI();
             SetCompoment();
         }
         private string mySkinName;
         private const string _Text = "myBatis 粘子层代码生成器 -Select、Insert";
-        private const string _Version = "0.8";
         bool IsTabbedMdi { get { return biTabbedMDI.Down; } }
-        public static string Version => _Version;
+        private string Version;
 
         private void SetCompoment()
         {
@@ -346,7 +346,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = _Text + " V " + _Version + "   作者：梁昊";
+            this.Text = _Text + " V " + this.Version + "   作者：梁昊";
             OpenHistoryWin();
             Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
             if ((this.MdiChildren.Length == 0) && (class_PublicMethod.GetOpenWelcome()))
@@ -358,7 +358,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         #region 公共方法
         public string getVersion()
         {
-            return _Version;
+            return this.Version;
         }
         public string getText()
         {

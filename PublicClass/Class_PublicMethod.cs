@@ -23,7 +23,7 @@ namespace MDIDemo.PublicClass
             bool SaveOk = false;
             string PathXmlSolutionName = string.Format("{0}\\{1}", Application.StartupPath, xmlPath);
             if (!System.IO.Directory.Exists(PathXmlSolutionName))
-                System.IO.Directory.CreateDirectory(PathXmlSolutionName); 
+                System.IO.Directory.CreateDirectory(PathXmlSolutionName);
             Class_PageInfomationMode class_PageInfomationMode = new Class_PageInfomationMode();
             Type type = t.GetType();
             switch (type.Name)
@@ -65,25 +65,11 @@ namespace MDIDemo.PublicClass
                     }
                     break;
                 case "Class_DataBaseConDefault":
+                case "Class_SystemDefault":
                     SaveOk = true;
                     break;
                 default:
-                    {
-                        Class_SelectAllModel class_SelectAllModel = new Class_SelectAllModel();
-                        class_SelectAllModel = t as Class_SelectAllModel;
-                        class_PageInfomationMode.pageKey = class_SelectAllModel.class_Create.MethodId;
-                        class_PageInfomationMode.projectId = "projectId";
-                        class_PageInfomationMode.pageType = "select";
-                        class_PageInfomationMode.pageVersion = 0;
-                        class_PageInfomationMode.createTime = System.DateTime.Now;
-                        class_PageInfomationMode.lastUpdateTime = class_PageInfomationMode.createTime;
-                        class_PageInfomationMode.createOperatorId = class_SelectAllModel.class_Create.CreateMan;
-                        class_PageInfomationMode.doOperatorId = class_SelectAllModel.class_Create.CreateDo;
-                        class_PageInfomationMode.frontOperatorId = class_SelectAllModel.class_Create.CreateFrontDo;
-                        class_PageInfomationMode.finishCount = 0;
-                        class_PageInfomationMode.readOnly = class_SelectAllModel.class_Create.ReadOnly;
-                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
-                    }
+                    SaveOk = true;
                     break;
             }
             if (SaveOk)
@@ -275,6 +261,27 @@ namespace MDIDemo.PublicClass
             return SaveToXml<T>("DataBaseDefault", fileName, t);
         }
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fileName"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public bool SystemDefaultValueToXml<T>(string fileName, T t)
+        {
+            return SaveToXml<T>("SystemDefault", fileName, t);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fileFullName"></param>
+        /// <returns></returns>
+        public T FromXmlToSystemDefaultObject<T>(string fileFullName) where T : class
+        {
+            return _FromXmlToObject<T>("SystemDefault", fileFullName);
+        }
+        /// <summary>
         /// 保存Select
         /// </summary>
         /// <typeparam name="T">类名</typeparam>
@@ -318,6 +325,7 @@ namespace MDIDemo.PublicClass
         {
             return SaveToXml<T>("delete", fileName, t);
         }
+
 
     }
 }

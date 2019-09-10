@@ -228,6 +228,7 @@
     <Compile Include="PublicClass\Class_DataBaseConDefault.cs" />
     <Compile Include="PublicClass\Class_InserAllModel.cs" />
     <Compile Include="PublicClass\Class_InterFaceCreateCode.cs" />
+    <Compile Include="PublicClass\Class_Model.cs" />
     <Compile Include="PublicClass\Class_Mydb.cs" />
     <Compile Include="PublicClass\Class_MySqlDataBase.cs" />
     <Compile Include="PublicClass\Class_PublicMethod.cs" />

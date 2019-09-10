@@ -20,11 +20,15 @@ namespace MDIDemo
         {
             InitializeComponent();
         }
+
+        private const string FileFullName = "SystemDefault";
         public string PageKey;
         public string PageType;
         public string OperateType;
+        private Class_PublicMethod class_PublicMethod;
         private void SetCompoment()
         {
+            class_PublicMethod = new Class_PublicMethod();
             this.Text += "---" + OperateType;
             memoEdit1.ReadOnly = true;
             GridC gridC = new GridC();
@@ -55,6 +59,10 @@ namespace MDIDemo
             this.gridControl4.DataSource = dataSet.Tables[3];
             this.xtraTabControl1.SelectedTabPageIndex = 0;
             this.gridView1.Focus();
+
+            Class_SystemDefault class_SystemDefaul = class_PublicMethod.FromXmlToSystemDefaultObject<Class_SystemDefault>(FileFullName);
+            if (class_SystemDefaul != null)
+                this.xtraTabControl1.SelectedTabPageIndex = class_SystemDefaul.SelectOpenWindowIndex;
         }
         private void SelectPageKey()
         {
@@ -88,7 +96,10 @@ namespace MDIDemo
                 if (Index > -1)
                 {
                     PageKey = gridView.GetRowCellValue(Index, "pageKey").ToString();
-                    this.DialogResult = DialogResult.OK;
+                    Class_SystemDefault class_SystemDefault = new Class_SystemDefault();
+                    class_SystemDefault.SelectOpenWindowIndex = this.xtraTabControl1.SelectedTabPageIndex;
+                    if (class_PublicMethod.SystemDefaultValueToXml<Class_SystemDefault>(FileFullName, class_SystemDefault))
+                        this.DialogResult = DialogResult.OK;
                 }
                 else
                     MessageBox.Show("请选择一条数据", "警告信息", MessageBoxButtons.OK, MessageBoxIcon.Warning);
