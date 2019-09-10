@@ -278,8 +278,6 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit24 = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -436,7 +434,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -3527,8 +3524,6 @@
             this.panelControl4.Controls.Add(this.textEdit14);
             this.panelControl4.Controls.Add(this.labelControl5);
             this.panelControl4.Controls.Add(this.checkEdit1);
-            this.panelControl4.Controls.Add(this.textEdit24);
-            this.panelControl4.Controls.Add(this.labelControl11);
             this.panelControl4.Controls.Add(this.textEdit16);
             this.panelControl4.Controls.Add(this.labelControl7);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -3750,14 +3745,14 @@
             // radioGroup9
             // 
             this.radioGroup9.EditValue = 1;
-            this.radioGroup9.Location = new System.Drawing.Point(436, 112);
+            this.radioGroup9.Location = new System.Drawing.Point(282, 60);
             this.radioGroup9.MenuManager = this.barManager1;
             this.radioGroup9.Name = "radioGroup9";
             this.radioGroup9.Properties.Columns = 2;
             this.radioGroup9.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "条数"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "主键")});
-            this.radioGroup9.Size = new System.Drawing.Size(110, 28);
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "返回影响条数"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "返回主键值")});
+            this.radioGroup9.Size = new System.Drawing.Size(264, 28);
             this.radioGroup9.TabIndex = 22;
             // 
             // textEdit20
@@ -3978,22 +3973,6 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(6, 92);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(87, 14);
-            this.labelControl11.TabIndex = 20;
-            this.labelControl11.Text = "ResultMapType:";
-            // 
-            // textEdit24
-            // 
-            this.textEdit24.Location = new System.Drawing.Point(98, 91);
-            this.textEdit24.MenuManager = this.barManager1;
-            this.textEdit24.Name = "textEdit24";
-            this.textEdit24.Size = new System.Drawing.Size(122, 20);
-            this.textEdit24.TabIndex = 3;
-            // 
             // Form_Insert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -4170,7 +4149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit24.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4425,7 +4403,5 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraEditors.TextEdit textEdit24;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
     }
 }

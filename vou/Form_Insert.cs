@@ -124,7 +124,7 @@ namespace MDIDemo.vou
                     this.memoEdit10.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].DAOContent);
                     this.memoEdit11.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].ControlContent);
                     this.memoEdit31.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].InPutParamContent);
-                    this.textEdit24.Text = class_InsertAllModel.class_SubList[index].ModelClassName;
+                    this.textEdit100.Text = class_InsertAllModel.class_SubList[index].ModelClassName;
                     this.textEdit17.Text = class_InsertAllModel.class_Create.MethodId;
                     this.textEdit20.Text = class_InsertAllModel.class_SubList[index].ServiceInterFaceReturnRemark;
                     this.textEdit47.Text = class_InsertAllModel.class_SubList[index].ControlSwaggerValue;
@@ -236,7 +236,6 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit15, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit16, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit20, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit24, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit46, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit47, Color.SkyBlue);
             class_SetTextEdit.SetTextEdit(this.textEdit99, Color.SkyBlue);
@@ -899,7 +898,7 @@ namespace MDIDemo.vou
                     class_InsertAllModel.class_SubList[index].DAOContent = Class_Tool.EscapeCharacter(this.memoEdit10.Text);
                     class_InsertAllModel.class_SubList[index].ControlContent = Class_Tool.EscapeCharacter(this.memoEdit11.Text);
                     class_InsertAllModel.class_SubList[index].InPutParamContent = Class_Tool.EscapeCharacter(this.memoEdit31.Text);
-                    class_InsertAllModel.class_SubList[index].ModelClassName = this.textEdit24.Text;
+                    class_InsertAllModel.class_SubList[index].ModelClassName = this.textEdit100.Text;
                     class_InsertAllModel.class_SubList[index].ControlSwaggerValue = this.textEdit47.Text;
                     class_InsertAllModel.class_SubList[index].ControlSwaggerDescription = this.textEdit46.Text;
                     class_InsertAllModel.class_SubList[index].ServiceInterFaceReturnRemark = this.textEdit20.Text;
@@ -1123,7 +1122,6 @@ namespace MDIDemo.vou
 
         private void textEdit16_EditValueChanged(object sender, EventArgs e)
         {
-            this.textEdit24.Text = (sender as TextEdit).Text;
             if (checkEdit8.Checked)
             {
                 this.textEdit99.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}InPutParam", (sender as TextEdit).Text));
