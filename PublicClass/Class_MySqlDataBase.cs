@@ -882,27 +882,23 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                         TableCount = 1;
                         foreach (Class_TableInfo class_TableInfo in class_TableInfos)
                         {
-                            //class_TableInfo.TableName
-                            if (TableCount > 65)
-                            {
-                                dataTable = new DataTable(class_TableInfo.TableName + TableCount.ToString());
-                                dataTable = _GetTableStruct(class_TableInfo.TableName);
-                                Class_SheetContent class_SheetContentRow = new Class_SheetContent();
-                                class_SheetContentRow.dataTable = dataTable;
-                                class_SheetContentRow.FieldTitleList.Add("字段名");
-                                class_SheetContentRow.FieldTitleList.Add("注释");
-                                class_SheetContentRow.FieldTitleList.Add("字段类型");
-                                class_SheetContentRow.FieldTitleList.Add("字段长度");
-                                class_SheetContentRow.FieldTitleList.Add("默认值");
-                                class_SheetContentRow.FieldTitleList.Add("是否可为空");
-                                class_SheetContentRow.FieldTitleList.Add("主键");
-                                class_SheetContentRow.FieldTitleList.Add("自增");
-                                class_SheetContentRow.LeftFieldNameList.Add("FieldRemark");
-                                class_SheetContentRow.SheetName = TableCount.ToString();
-                                class_SheetContentRow.SheetTitle = class_TableInfo.TableName;
-                                class_SheetContentRow.TableContent = class_TableInfo.TableComment;
-                                class_DataBaseContent.class_SheetContents.Add(class_SheetContentRow);
-                            }
+                            dataTable = new DataTable(class_TableInfo.TableName + TableCount.ToString());
+                            dataTable = _GetTableStruct(class_TableInfo.TableName);
+                            Class_SheetContent class_SheetContentRow = new Class_SheetContent();
+                            class_SheetContentRow.dataTable = dataTable;
+                            class_SheetContentRow.FieldTitleList.Add("字段名");
+                            class_SheetContentRow.FieldTitleList.Add("注释");
+                            class_SheetContentRow.FieldTitleList.Add("字段类型");
+                            class_SheetContentRow.FieldTitleList.Add("字段长度");
+                            class_SheetContentRow.FieldTitleList.Add("默认值");
+                            class_SheetContentRow.FieldTitleList.Add("是否可为空");
+                            class_SheetContentRow.FieldTitleList.Add("主键");
+                            class_SheetContentRow.FieldTitleList.Add("自增");
+                            class_SheetContentRow.LeftFieldNameList.Add("FieldRemark");
+                            class_SheetContentRow.SheetName = TableCount.ToString();
+                            class_SheetContentRow.SheetTitle = class_TableInfo.TableName;
+                            class_SheetContentRow.TableContent = class_TableInfo.TableComment;
+                            class_DataBaseContent.class_SheetContents.Add(class_SheetContentRow);
                             TableCount++;
                         }
                         dataTable.Dispose();
