@@ -300,7 +300,7 @@ namespace MDIDemo.PublicClass
             DataColumn FieldName = new DataColumn("FieldName", typeof(string));
             DataColumn FieldRemark = new DataColumn("FieldRemark", typeof(string));
             DataColumn FieldType = new DataColumn("FieldType", typeof(string));
-            DataColumn FieldLength = new DataColumn("FieldLength", typeof(Int32));
+            DataColumn FieldLength = new DataColumn("FieldLength", typeof(long));
             DataColumn FieldDefaultValue = new DataColumn("FieldDefaultValue", typeof(string));
             DataColumn FieldIsNull = new DataColumn("FieldIsNull", typeof(bool));
             DataColumn FieldIsKey = new DataColumn("FieldIsKey", typeof(bool));
@@ -316,7 +316,7 @@ namespace MDIDemo.PublicClass
 
             string Sql = string.Format(@"SELECT 
 cList.COLUMN_NAME AS FieldName,
-cList.COLUMN_COMMENT AS FieldRemark,
+TRIM(cList.COLUMN_COMMENT) AS FieldRemark,
 cList.DATA_TYPE AS FieldType,
 CASE WHEN cList.CHARACTER_MAXIMUM_LENGTH IS NOT NULL THEN cList.CHARACTER_MAXIMUM_LENGTH ELSE cList.NUMERIC_PRECISION END AS FieldLength,
 cList.COLUMN_DEFAULT AS FieldDefaultValue,
@@ -883,23 +883,26 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                         foreach (Class_TableInfo class_TableInfo in class_TableInfos)
                         {
                             //class_TableInfo.TableName
-                            dataTable = new DataTable(class_TableInfo.TableName + TableCount.ToString());
-                            dataTable = _GetTableStruct(class_TableInfo.TableName);
-                            Class_SheetContent class_SheetContentRow = new Class_SheetContent();
-                            class_SheetContentRow.dataTable = dataTable;
-                            class_SheetContentRow.FieldTitleList.Add("字段名");
-                            class_SheetContentRow.FieldTitleList.Add("注释");
-                            class_SheetContentRow.FieldTitleList.Add("字段类型");
-                            class_SheetContentRow.FieldTitleList.Add("字段长度");
-                            class_SheetContentRow.FieldTitleList.Add("默认值");
-                            class_SheetContentRow.FieldTitleList.Add("是否可为空");
-                            class_SheetContentRow.FieldTitleList.Add("主键");
-                            class_SheetContentRow.FieldTitleList.Add("自增");
-                            class_SheetContentRow.LeftFieldNameList.Add("FieldRemark");
-                            class_SheetContentRow.SheetName = TableCount.ToString();
-                            class_SheetContentRow.SheetTitle = class_TableInfo.TableName;
-                            class_SheetContentRow.TableContent = class_TableInfo.TableComment;
-                            class_DataBaseContent.class_SheetContents.Add(class_SheetContentRow);
+                            if (TableCount > 65)
+                            {
+                                dataTable = new DataTable(class_TableInfo.TableName + TableCount.ToString());
+                                dataTable = _GetTableStruct(class_TableInfo.TableName);
+                                Class_SheetContent class_SheetContentRow = new Class_SheetContent();
+                                class_SheetContentRow.dataTable = dataTable;
+                                class_SheetContentRow.FieldTitleList.Add("字段名");
+                                class_SheetContentRow.FieldTitleList.Add("注释");
+                                class_SheetContentRow.FieldTitleList.Add("字段类型");
+                                class_SheetContentRow.FieldTitleList.Add("字段长度");
+                                class_SheetContentRow.FieldTitleList.Add("默认值");
+                                class_SheetContentRow.FieldTitleList.Add("是否可为空");
+                                class_SheetContentRow.FieldTitleList.Add("主键");
+                                class_SheetContentRow.FieldTitleList.Add("自增");
+                                class_SheetContentRow.LeftFieldNameList.Add("FieldRemark");
+                                class_SheetContentRow.SheetName = TableCount.ToString();
+                                class_SheetContentRow.SheetTitle = class_TableInfo.TableName;
+                                class_SheetContentRow.TableContent = class_TableInfo.TableComment;
+                                class_DataBaseContent.class_SheetContents.Add(class_SheetContentRow);
+                            }
                             TableCount++;
                         }
                         dataTable.Dispose();

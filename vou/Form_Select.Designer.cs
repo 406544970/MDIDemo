@@ -1142,7 +1142,7 @@
             this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.hideContainerRight.Location = new System.Drawing.Point(1396, 0);
             this.hideContainerRight.Name = "hideContainerRight";
-            this.hideContainerRight.Size = new System.Drawing.Size(20, 695);
+            this.hideContainerRight.Size = new System.Drawing.Size(20, 683);
             // 
             // dockPanel2
             // 
@@ -1344,7 +1344,7 @@
             this.hideContainerBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.hideContainerBottom.Controls.Add(this.dockPanel3);
             this.hideContainerBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.hideContainerBottom.Location = new System.Drawing.Point(0, 675);
+            this.hideContainerBottom.Location = new System.Drawing.Point(0, 663);
             this.hideContainerBottom.Name = "hideContainerBottom";
             this.hideContainerBottom.Size = new System.Drawing.Size(1396, 20);
             // 
@@ -2885,7 +2885,7 @@
             // 
             this.barDockControl7.CausesValidation = false;
             this.barDockControl7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl7.Location = new System.Drawing.Point(0, 669);
+            this.barDockControl7.Location = new System.Drawing.Point(0, 657);
             this.barDockControl7.Manager = this.barManager3;
             this.barDockControl7.Size = new System.Drawing.Size(1183, 0);
             // 
@@ -2895,7 +2895,7 @@
             this.barDockControl8.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl8.Location = new System.Drawing.Point(0, 31);
             this.barDockControl8.Manager = this.barManager3;
-            this.barDockControl8.Size = new System.Drawing.Size(0, 638);
+            this.barDockControl8.Size = new System.Drawing.Size(0, 626);
             // 
             // barDockControl9
             // 
@@ -2903,7 +2903,7 @@
             this.barDockControl9.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl9.Location = new System.Drawing.Point(1183, 31);
             this.barDockControl9.Manager = this.barManager3;
-            this.barDockControl9.Size = new System.Drawing.Size(0, 638);
+            this.barDockControl9.Size = new System.Drawing.Size(0, 626);
             // 
             // xtraTabPage6
             // 
@@ -2915,7 +2915,7 @@
             this.xtraTabPage6.Controls.Add(this.barDockControl6);
             this.xtraTabPage6.ImageIndex = 32;
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1183, 669);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1183, 657);
             this.xtraTabPage6.Text = "配置";
             // 
             // xtraTabControl5
@@ -2925,7 +2925,7 @@
             this.xtraTabControl5.Location = new System.Drawing.Point(0, 31);
             this.xtraTabControl5.Name = "xtraTabControl5";
             this.xtraTabControl5.SelectedTabPage = this.xtraTabPage10;
-            this.xtraTabControl5.Size = new System.Drawing.Size(1183, 638);
+            this.xtraTabControl5.Size = new System.Drawing.Size(1183, 626);
             this.xtraTabControl5.TabIndex = 0;
             this.xtraTabControl5.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage10,
@@ -2941,7 +2941,7 @@
             this.xtraTabPage10.Controls.Add(this.panelControl1);
             this.xtraTabPage10.ImageIndex = 608;
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1177, 607);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1177, 595);
             this.xtraTabPage10.Text = "主表";
             // 
             // gridControl1
@@ -2982,7 +2982,7 @@
             this.repositoryItemComboBox47,
             this.repositoryItemComboBox48,
             this.repositoryItemSpinEdit12});
-            this.gridControl1.Size = new System.Drawing.Size(1177, 577);
+            this.gridControl1.Size = new System.Drawing.Size(1177, 565);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -8660,7 +8660,7 @@
             this.dockPanel1.Location = new System.Drawing.Point(0, 0);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(150, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(150, 675);
+            this.dockPanel1.Size = new System.Drawing.Size(150, 663);
             this.dockPanel1.Text = "用户表";
             // 
             // dockPanel1_Container
@@ -8668,7 +8668,7 @@
             this.dockPanel1_Container.Controls.Add(this.xtraTabControl2);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(141, 648);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(141, 636);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // xtraTabControl2
@@ -8678,7 +8678,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage4;
-            this.xtraTabControl2.Size = new System.Drawing.Size(141, 648);
+            this.xtraTabControl2.Size = new System.Drawing.Size(141, 636);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage4,
@@ -8691,7 +8691,7 @@
             this.xtraTabPage4.Controls.Add(this.simpleButton1);
             this.xtraTabPage4.Controls.Add(this.searchControl1);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(135, 619);
+            this.xtraTabPage4.Size = new System.Drawing.Size(135, 607);
             this.xtraTabPage4.Text = "表名";
             // 
             // listBoxControl1
@@ -8705,7 +8705,7 @@
             "asdfsaf"});
             this.listBoxControl1.Location = new System.Drawing.Point(0, 26);
             this.listBoxControl1.Name = "listBoxControl1";
-            this.listBoxControl1.Size = new System.Drawing.Size(135, 561);
+            this.listBoxControl1.Size = new System.Drawing.Size(135, 549);
             this.listBoxControl1.TabIndex = 0;
             this.listBoxControl1.SelectedIndexChanged += new System.EventHandler(this.listBoxControl1_SelectedIndexChanged);
             this.listBoxControl1.DoubleClick += new System.EventHandler(this.listBoxControl1_DoubleClick);
@@ -8715,7 +8715,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.simpleButton1.Location = new System.Drawing.Point(0, 587);
+            this.simpleButton1.Location = new System.Drawing.Point(0, 575);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(135, 32);
             this.simpleButton1.TabIndex = 2;
@@ -10081,7 +10081,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(150, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage6;
-            this.xtraTabControl3.Size = new System.Drawing.Size(1246, 675);
+            this.xtraTabControl3.Size = new System.Drawing.Size(1246, 663);
             this.xtraTabControl3.TabIndex = 7;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -10122,7 +10122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1416, 695);
+            this.ClientSize = new System.Drawing.Size(1416, 683);
             this.Controls.Add(this.xtraTabControl3);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.hideContainerBottom);
