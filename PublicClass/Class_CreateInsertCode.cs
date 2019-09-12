@@ -95,7 +95,7 @@ namespace MDIDemo.PublicClass
                 , class_InsertAllModel.class_Create.MethodId);
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (!class_Field.FieldIsKey)
+                if (!class_Field.FieldIsKey && class_Field.InsertSelect)
                     stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , class_Field.ParaName
@@ -189,7 +189,7 @@ namespace MDIDemo.PublicClass
                         stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
                         , row.ParaName);
                     if (row.FieldIsNull)
-                        stringBuilder.Append(" ,required = false");
+                        stringBuilder.Append(" , required = false");
                     if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
                         stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
                     stringBuilder.Append(")");
