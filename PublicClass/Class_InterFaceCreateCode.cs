@@ -16,6 +16,7 @@ namespace MDIDemo.PublicClass
         #region
         bool IsCheckOk(ref List<string> outMessage);
         void AddAllOutFieldName();
+        string _GetTypeContent(string FieldType);
         #endregion
 
         #region 

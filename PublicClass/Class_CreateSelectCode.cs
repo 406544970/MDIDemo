@@ -3672,6 +3672,11 @@ namespace MDIDemo.PublicClass
         {
             throw new NotImplementedException();
         }
+
+        public string _GetTypeContent(string FieldType)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

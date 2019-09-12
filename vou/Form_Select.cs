@@ -35,11 +35,13 @@ namespace MDIDemo.vou
         private List<string> myTableNameList;
         private List<string> myTableContentList;
         private Class_PublicMethod class_PublicMethod;
+        private string MyXmlFileName;
+
 
         private void _iniSelect(string skinName, string xmlFileName)
         {
             InitializeComponent();
-
+            MyXmlFileName = xmlFileName;
             publicSkinName = skinName;
             class_PublicMethod = new Class_PublicMethod();
             SetCompoment();
@@ -488,6 +490,22 @@ namespace MDIDemo.vou
         }
         private void AddUseTableData(string TableName, string TableAlias, int PageSelectIndex, bool SelectSelectDefault)
         {
+            if (this.MyXmlFileName != null)
+                class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(this.MyXmlFileName);
+            if (class_SelectAllModel == null)
+                class_SelectAllModel = new Class_SelectAllModel();
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord, class_SelectAllModel.class_SelectDataBase.Port);
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectAllModel.class_SelectDataBase.dataSourceUrl, class_SelectAllModel.class_SelectDataBase.dataBaseName, class_SelectAllModel.class_SelectDataBase.dataSourceUserName, class_SelectAllModel.class_SelectDataBase.dataSourcePassWord);
+                    break;
+                default:
+                    break;
+            }
+            class_InterFaceDataBase.SetClass_AllModel(class_SelectAllModel);
             switch (PageSelectIndex)
             {
                 case 0:
@@ -902,12 +920,11 @@ namespace MDIDemo.vou
                 if (item.RowCount > 0)
                 {
                     int FocuedCount = item.FocusedRowHandle;
-                    if (FocuedCount == item.RowCount - 1)
-                        item.FocusedRowHandle = 0;
                     if (FocuedCount == 0)
                         item.FocusedRowHandle = item.RowCount - 1;
-                    if (FocuedCount > 0 && FocuedCount < item.RowCount - 1)
+                    if (FocuedCount > 0 && FocuedCount < item.RowCount)
                         item.FocusedRowHandle = 0;
+                    item.FocusedRowHandle = FocuedCount;
                 }
             }
             #endregion
@@ -1794,7 +1811,6 @@ namespace MDIDemo.vou
             {
                 if (IsDisplayLog)
                     this.DisplayText("表是不连续的，保存失败。");
-                //jhkljkl
                 return;
             }
 
@@ -1806,7 +1822,6 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
                 this.Text = string.Format("SELECT：{0}", class_SelectAllModel.class_Create.MethodId);
                 this.textEdit17.Text = class_SelectAllModel.class_Create.MethodId;
-
             }
             Class_WindowType class_WindowType = new Class_WindowType();
             class_WindowType.WindowType = "select";

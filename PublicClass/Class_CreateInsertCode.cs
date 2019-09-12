@@ -96,8 +96,9 @@ namespace MDIDemo.PublicClass
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 if (!class_Field.FieldIsKey)
-                    stringBuilder.AppendFormat("{0} * @param {1}\r\n"
+                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
+                        , class_Field.ParaName
                         , class_Field.FieldRemark);
                 if (class_Field.FieldIsKey && KeyType == null)
                 {
@@ -123,16 +124,16 @@ namespace MDIDemo.PublicClass
                     int index = 0;
                     foreach (Class_Field row in class_Sub.class_Fields)
                     {
-                        if (!row.FieldIsKey)
+                        if (!row.FieldIsKey && row.InsertSelect)
                         {
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
                             if (index > 0)
                                 stringBuilder.Append(",");
-                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\""
+                            stringBuilder.AppendFormat(" @ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\""
                             , Class_Tool.GetFirstCodeLow(row.ParaName)
                             , row.FieldRemark
                             , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
-                            if (!row.WhereIsNull)
+                            if (!row.FieldIsNull)
                                 stringBuilder.Append(", required = true");
                             stringBuilder.Append(")\r\n");
                             index++;
@@ -178,7 +179,7 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field row in class_Sub.class_Fields)
             {
-                if (!row.FieldIsKey)
+                if (!row.FieldIsKey && row.InsertSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
@@ -187,10 +188,8 @@ namespace MDIDemo.PublicClass
                     else
                         stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
                         , row.ParaName);
-                    if (row.WhereIsNull)
-                    {
+                    if (row.FieldIsNull)
                         stringBuilder.Append(" ,required = false");
-                    }
                     if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
                         stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
                     stringBuilder.Append(")");
@@ -206,7 +205,7 @@ namespace MDIDemo.PublicClass
             #region 去空格
             foreach (Class_Field row in class_Sub.class_Fields)
             {
-                if (!row.FieldIsKey && (row.FieldType.Equals("varchar") || row.FieldType.Equals("char")) && row.TrimSign)
+                if (row.InsertSelect && !row.FieldIsKey && (row.FieldType.Equals("varchar") || row.FieldType.Equals("char")) && row.TrimSign)
                 {
                     stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), row.ParaName);
@@ -237,22 +236,26 @@ namespace MDIDemo.PublicClass
                     }
                 }
                 else
-                    stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(2)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
-                    , Class_Tool.GetFirstCodeUpper(row.ParaName)
-                    , row.ParaName);
+                {
+                    if (row.InsertSelect)
+                    {
+                        stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(2)
+                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
+                        , Class_Tool.GetFirstCodeUpper(row.ParaName)
+                        , row.ParaName);
+                    }
+                }
             }
             #endregion
 
             #region 返回
-            stringBuilder.AppendFormat("{0}{1} {2} = {3}.{4}({5} {6});\r\n"
+            stringBuilder.AppendFormat("{0}{1} {2} = {3}.{4}({5});\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2)
                 , "int"
                 , "resultCount"
                 , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName)
                 , class_Sub.MethodId
-                , Class_Tool.GetFirstCodeUpper(class_Sub.ParamClassName)
                 , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
             if (class_InsertAllModel.ReturnStructure)
             {
@@ -323,7 +326,7 @@ namespace MDIDemo.PublicClass
 
             return stringBuilder.ToString();
         }
-        private string _GetTypeContent(string FieldType)
+        public string _GetTypeContent(string FieldType)
         {
             string ResultContent;
             switch (FieldType)
@@ -383,10 +386,11 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
-            stringBuilder.AppendFormat("{0} * @param {1}.model.InPutParam.{2}\r\n"
+            stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[PageIndex].ParamClassName);
+                , class_InsertAllModel.class_SubList[PageIndex].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[PageIndex].ParamClassName));
 
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
@@ -532,7 +536,7 @@ namespace MDIDemo.PublicClass
         {
             return _GetServiceImpl(Index);
         }
-        public string _GetServiceImpl(int Index)
+        private string _GetServiceImpl(int Index)
         {
             Class_Sub class_Sub = class_InsertAllModel.class_SubList[Index];
             if (class_Sub == null)
@@ -569,10 +573,11 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
-            stringBuilder.AppendFormat("{0} * @param {1}.model.InPutParam.{2}\r\n"
+            stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[Index].ParamClassName);
+                , class_InsertAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -598,9 +603,9 @@ namespace MDIDemo.PublicClass
         {
             return _GetServiceInterFace(Index);
         }
-        private string _GetServiceInterFace(int PageIndex)
+        private string _GetServiceInterFace(int Index)
         {
-            Class_Sub class_Sub = class_InsertAllModel.class_SubList[PageIndex];
+            Class_Sub class_Sub = class_InsertAllModel.class_SubList[Index];
             if (class_Sub == null)
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -629,10 +634,12 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
-            stringBuilder.AppendFormat("{0} * @param {1}.model.InPutParam.{2}\r\n"
+            stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[PageIndex].ParamClassName);
+                , class_InsertAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+
 
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
@@ -641,8 +648,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}int {1}({2} {3});\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
-                , class_InsertAllModel.class_SubList[PageIndex].ParamClassName
-                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[PageIndex].ParamClassName));
+                , class_InsertAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
 
             stringBuilder.Append("}\r\n");
 

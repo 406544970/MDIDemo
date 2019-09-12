@@ -34,11 +34,12 @@ namespace MDIDemo.vou
         private List<string> myTableNameList;
         private List<string> myTableContentList;
         private Class_PublicMethod class_PublicMethod;
+        private string MyXmlFileName;
 
         private void _iniSelect(string skinName, string xmlFileName)
         {
             InitializeComponent();
-
+            MyXmlFileName = xmlFileName;
             publicSkinName = skinName;
             class_PublicMethod = new Class_PublicMethod();
             SetCompoment();
@@ -319,6 +320,22 @@ namespace MDIDemo.vou
         }
         private void AddUseTableData(string TableName, string TableAlias, int PageSelectIndex, bool SelectSelectDefault)
         {
+            if (this.MyXmlFileName != null)
+                class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(this.MyXmlFileName);
+            if (class_InsertAllModel == null)
+                class_InsertAllModel = new Class_InsertAllModel();
+            switch (class_InsertAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase(class_InsertAllModel.class_SelectDataBase.dataSourceUrl, class_InsertAllModel.class_SelectDataBase.dataBaseName, class_InsertAllModel.class_SelectDataBase.dataSourceUserName, class_InsertAllModel.class_SelectDataBase.dataSourcePassWord, class_InsertAllModel.class_SelectDataBase.Port);
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_InsertAllModel.class_SelectDataBase.dataSourceUrl, class_InsertAllModel.class_SelectDataBase.dataBaseName, class_InsertAllModel.class_SelectDataBase.dataSourceUserName, class_InsertAllModel.class_SelectDataBase.dataSourcePassWord);
+                    break;
+                default:
+                    break;
+            }
+            class_InterFaceDataBase.SetClass_AllModel(class_InsertAllModel);
             switch (PageSelectIndex)
             {
                 case 0:
@@ -604,6 +621,19 @@ namespace MDIDemo.vou
             #region 移动BandedGridView焦点
             BandedGridView[] bandedGridViews = new BandedGridView[1];
             bandedGridViews[0] = gridControl1.MainView as BandedGridView;
+            for (int i = 0; i < bandedGridViews.Length; i++)
+            {
+                BandedGridView item = bandedGridViews[i];
+                if (item.RowCount > 0)
+                {
+                    int FocuedCount = item.FocusedRowHandle;
+                    if (FocuedCount == 0)
+                        item.FocusedRowHandle = item.RowCount - 1;
+                    if (FocuedCount > 0 && FocuedCount < item.RowCount)
+                        item.FocusedRowHandle = 0;
+                    item.FocusedRowHandle = FocuedCount;
+                }
+            }
             #endregion
 
             bool IsOk = true;
