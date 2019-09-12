@@ -95,11 +95,14 @@ namespace MDIDemo.PublicClass
                 , class_InsertAllModel.class_Create.MethodId);
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                stringBuilder.AppendFormat("{0} * @param {1}\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(1)
-                    , class_Field.FieldRemark);
+                if (!class_Field.FieldIsKey)
+                    stringBuilder.AppendFormat("{0} * @param {1}\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , class_Field.FieldRemark);
                 if (class_Field.FieldIsKey && KeyType == null)
+                {
                     KeyType = Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType));
+                }
             }
 
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
@@ -128,7 +131,7 @@ namespace MDIDemo.PublicClass
                             stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\""
                             , Class_Tool.GetFirstCodeLow(row.ParaName)
                             , row.FieldRemark
-                            , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                            , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType)));
                             if (!row.WhereIsNull)
                                 stringBuilder.Append(", required = true");
                             stringBuilder.Append(")\r\n");
@@ -193,7 +196,7 @@ namespace MDIDemo.PublicClass
                     stringBuilder.Append(")");
 
                     stringBuilder.AppendFormat(" {0} {1}"
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType))
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.FieldType))
                         , row.ParaName);
                 }
             }
@@ -203,7 +206,7 @@ namespace MDIDemo.PublicClass
             #region 去空格
             foreach (Class_Field row in class_Sub.class_Fields)
             {
-                if (!row.FieldIsKey && (row.LogType.Equals("varchar") || row.LogType.Equals("char")) && row.TrimSign)
+                if (!row.FieldIsKey && (row.FieldType.Equals("varchar") || row.FieldType.Equals("char")) && row.TrimSign)
                 {
                     stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), row.ParaName);
@@ -213,9 +216,6 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region 构建输入参数对象
-            //stringBuilder.AppendFormat("{0}{1} mainKey = null;\r\n"
-            //    , class_ToolSpace.GetSetSpaceCount(2)
-            //    , KeyType);
             stringBuilder.AppendFormat("{0}{1} {2} = new {1}();\r\n"
             , class_ToolSpace.GetSetSpaceCount(2)
             , class_Sub.ParamClassName
@@ -226,6 +226,9 @@ namespace MDIDemo.PublicClass
                 {
                     if (!row.FieldIsAutoAdd)
                     {
+                        stringBuilder.AppendFormat("{0}{1} mainKey;//这里引用架包中的生成主键方法\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , KeyType);
                         stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2)
                         , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
@@ -295,8 +298,9 @@ namespace MDIDemo.PublicClass
 
                         stringBuilder.AppendFormat("{0}else\r\n"
                             , class_ToolSpace.GetSetSpaceCount(2));
-                        stringBuilder.AppendFormat("{0}return \"这里需要再修改\";\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(3));
+                        stringBuilder.AppendFormat("{0}return {1};\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3)
+                                , _GetTypeContent(KeyType));
                         break;
                     case 2:
                         stringBuilder.AppendFormat("{0}return {1};\r\n"
@@ -314,13 +318,33 @@ namespace MDIDemo.PublicClass
             #endregion
 
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
-            //if (!class_Sub.ControlMainCode)
-            //    stringBuilder.Append("}");
-            //stringBuilder.Append("\r\n");
+            if (!class_Sub.ControlMainCode)
+                stringBuilder.Append("}\r\n");
 
             return stringBuilder.ToString();
         }
-
+        private string _GetTypeContent(string FieldType)
+        {
+            string ResultContent;
+            switch (FieldType)
+            {
+                case "int":
+                case "float":
+                case "double":
+                case "byte":
+                case "short":
+                case "long":
+                    ResultContent = "-1000";
+                    break;
+                case "bool":
+                    ResultContent = "false";
+                    break;
+                default:
+                    ResultContent = "null";
+                    break;
+            }
+            return ResultContent;
+        }
         public string GetDAO(int Index)
         {
             return _GetDAO(Index);
