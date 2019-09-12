@@ -492,7 +492,7 @@ namespace MDIDemo.PublicClass
                             NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
                             if (class_Field.WhereValue == "参数")
                             {
-                                String XmlFieldString = "#{" + string.Format("{0},jdbcType={1}"
+                                string XmlFieldString = "#{" + string.Format("{0},jdbcType={1}"
                                     , InParaFieldName
                                     , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.ReturnType))) + "}";
                                 if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
@@ -3596,10 +3596,10 @@ namespace MDIDemo.PublicClass
         }
         public Class_CreateSelectCode(string xmlFileName)
         {
+            class_SelectAllModel = new Class_SelectAllModel();
             if (xmlFileName != null)
             {
                 Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-                class_SelectAllModel = new Class_SelectAllModel();
                 class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
             }
         }

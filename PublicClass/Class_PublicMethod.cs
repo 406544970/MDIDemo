@@ -245,7 +245,7 @@ namespace MDIDemo.PublicClass
         /// <typeparam name="T"></typeparam>
         /// <param name="fileFullName"></param>
         /// <returns></returns>
-        public T FromXmlInsertObject<T>(string fileFullName) where T : class
+        public T FromXmlToInsertObject<T>(string fileFullName) where T : class
         {
             return _FromXmlToObject<T>("insert", fileFullName);
         }

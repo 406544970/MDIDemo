@@ -75,7 +75,7 @@ namespace MDIDemo.vou
             try
             {
                 if (xmlFileName != null)
-                    class_InsertAllModel = class_PublicMethod.FromXmlInsertObject<Class_InsertAllModel>(xmlFileName);
+                    class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
                 if (class_InsertAllModel == null)
                     class_InsertAllModel = new Class_InsertAllModel();
                 switch (class_InsertAllModel.class_SelectDataBase.databaseType)
@@ -258,7 +258,7 @@ namespace MDIDemo.vou
 
             this.simpleButton2.Text = "折叠";
 
-            AddComponentType(this.repositoryItemComboBox10);
+            //AddComponentType(this.repositoryItemComboBox10);
         }
 
         private void SetIniSkin(string skinName)
@@ -1178,7 +1178,7 @@ namespace MDIDemo.vou
                     this.memoEdit6.Text = class_InterFaceCreateCode.GetServiceImpl(PageIndex);
                     // Model
                     this.memoEdit8.Text = class_InterFaceCreateCode.GetModel(PageIndex);
-                    //DTO
+                    // DTO
                     this.memoEdit9.Text = class_InterFaceCreateCode.GetDTO(PageIndex);
                     // DAO
                     this.memoEdit10.Text = class_InterFaceCreateCode.GetDAO(PageIndex);
