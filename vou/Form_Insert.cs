@@ -257,6 +257,8 @@ namespace MDIDemo.vou
             #endregion
 
             this.simpleButton2.Text = "折叠";
+
+            AddComponentType(this.repositoryItemComboBox10);
         }
 
         private void SetIniSkin(string skinName)
@@ -281,6 +283,15 @@ namespace MDIDemo.vou
         {
             repositoryItemComboBox.Items.Clear();
             foreach (string row in class_InterFaceDataBase.GetFunctionList(FieldType))
+            {
+                repositoryItemComboBox.Items.Add(row);
+            }
+        }
+        private void AddComponentType(RepositoryItemComboBox repositoryItemComboBox)
+        {
+            IClass_CreateFrontPage class_CreateFrontPage = new Class_CreateInsertCode();
+            repositoryItemComboBox.Items.Clear();
+            foreach (string row in class_CreateFrontPage.GetComponentType())
             {
                 repositoryItemComboBox.Items.Add(row);
             }
@@ -320,7 +331,7 @@ namespace MDIDemo.vou
                             textEdit10.Text = TableAlias.Length == 0 ? "main" : TableAlias;
                         AddColumnRepositoryCombox(this.repositoryItemComboBox2);
                         AddColumnComboxFunctionByDataType(this.repositoryItemComboBox1, "");
-                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");
+                        AddColumnComboxHavingFunctionByDataType(this.repositoryItemComboBox7, "");//repositoryItemComboBox10
                     }
                     break;
                 default:

@@ -3667,6 +3667,11 @@ namespace MDIDemo.PublicClass
         {
             return _GetUsedMethod();
         }
+
+        public List<string> GetComponentType()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

@@ -67,6 +67,13 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
             else
                 return -1;
         }
+        public List<string> GetComponentList()
+        {
+            string Sql = string.Format(@"SELECT id as ComponentName
+                FROM cp_ComponentFrontPage
+                ORDER BY sortNo");
+            return mySqlite3.ExecuteReadList(Sql);
+        }
         /// <summary>
         /// 得到表别名
         /// </summary>

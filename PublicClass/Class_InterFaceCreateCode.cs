@@ -9,6 +9,7 @@ namespace MDIDemo.PublicClass
     public interface IClass_CreateFrontPage
     {
         string GetUsedMethod();
+        List<string> GetComponentType();
     }
     public interface IClass_InterFaceCreateCode
     {

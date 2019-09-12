@@ -8,7 +8,15 @@ namespace MDIDemo.PublicClass
 {
     public class Class_CreateInsertCode : IClass_InterFaceCreateCode, IClass_CreateFrontPage
     {
+        public Class_CreateInsertCode()
+        {
+            InitClass(null);
+        }
         public Class_CreateInsertCode(string xmlFileName)
+        {
+            InitClass(xmlFileName);
+        }
+        private void InitClass(string xmlFileName)
         {
             if (xmlFileName != null)
             {
@@ -16,7 +24,9 @@ namespace MDIDemo.PublicClass
                 class_InsertAllModel = new Class_InsertAllModel();
                 class_InsertAllModel = class_PublicMethod.FromXmlToSelectObject<Class_InsertAllModel>(xmlFileName);
             }
+            class_SQLiteOperator = new Class_SQLiteOperator();
         }
+        private Class_SQLiteOperator class_SQLiteOperator;
         private Class_InsertAllModel class_InsertAllModel;
         public void AddAllOutFieldName()
         {
@@ -86,6 +96,11 @@ namespace MDIDemo.PublicClass
         public bool IsCheckOk(ref List<string> outMessage)
         {
             return true;
+        }
+
+        public List<string> GetComponentType()
+        {
+            return class_SQLiteOperator.GetComponentList();
         }
     }
 }
