@@ -708,6 +708,7 @@ namespace MDIDemo.PublicClass
 
             #region Insert
             public bool InsertSelect { get; set; }
+            public string ParaName { get; set; }
             public bool TrimSign { get; set; }
 
 
@@ -850,6 +851,7 @@ namespace MDIDemo.PublicClass
             /// 方法返回类型：0：影响行数，1：主键ID，2：结构体
             /// </summary>
             public int MethodReturyType { get; set; }
+
         }
         #endregion
 

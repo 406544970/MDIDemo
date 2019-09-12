@@ -474,6 +474,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             {
                                 #region 加入自定义Insert列
                                 DataColumn InsertSelect = new DataColumn("InsertSelect", typeof(bool));//Insert/Values选择
+                                DataColumn ParaName = new DataColumn("ParaName", typeof(string));
                                 DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));//是否去空格
 
                                 DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));//重复判断选择
@@ -504,6 +505,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 IsMust.DefaultValue = true;
 
                                 dataTable.Columns.Add(InsertSelect);
+                                dataTable.Columns.Add(ParaName);
                                 dataTable.Columns.Add(TrimSign);
 
                                 dataTable.Columns.Add(WhereSelect);
@@ -557,7 +559,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                             if (FindIndex > -1)
                                             {
                                                 row["SelectSelect"] = class_CurrentPage.class_Fields[FindIndex].SelectSelect;
-                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
+                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? Class_Tool.GetFirstCodeLow(row["FieldName"].ToString()) : class_CurrentPage.class_Fields[FindIndex].ParaName;
                                                 row["MaxLegth"] = class_CurrentPage.class_Fields[FindIndex].MaxLegth;
                                                 row["CaseWhen"] = class_CurrentPage.class_Fields[FindIndex].CaseWhen;
                                                 row["ReturnType"] = class_CurrentPage.class_Fields[FindIndex].ReturnType;
@@ -655,6 +657,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                             if (FindIndex > -1)
                                             {
                                                 row["InsertSelect"] = class_CurrentPage.class_Fields[FindIndex].InsertSelect;
+                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
                                                 row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
                                                 row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
                                                 row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
@@ -678,6 +681,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                         if (IsDefault)
                                         {
                                             row["LogType"] = "=";
+                                            row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
                                             row["WhereType"] = "AND";
                                             row["WhereValue"] = "参数";
                                             row["SortNo"] = Counter++;

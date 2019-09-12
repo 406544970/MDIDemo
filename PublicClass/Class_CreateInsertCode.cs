@@ -119,67 +119,60 @@ namespace MDIDemo.PublicClass
             }
             #region SelectId
             stringBuilder.AppendFormat("{1}<!-- 注释：{0} -->\r\n", class_Sub.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}<insert id=\"{1}\" "
+            stringBuilder.AppendFormat("{0}<insert id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , class_Sub.MethodId);
+                , class_Sub.MethodId
+                , class_InsertAllModel.AllPackerName
+                , class_InsertAllModel.class_SubList[PageIndex].ModelClassName);
             #endregion
-
-            #region resultMap resultType
-            //if (class_Sub.ResultType == 0)
-            //{
-            //    stringBuilder.AppendFormat("resultMap=\"{0}Map\""
-            //        , class_Sub.ResultMapId);
-            //}
-            //else
-            //{
-            //    if (class_InsertAllModel.IsMultTable)
-            //        stringBuilder.AppendFormat("resultType=\"{0}.dto.{1}\""
-            //        , class_InsertAllModel.AllPackerName
-            //        , class_InsertAllModel.class_SubList[PageIndex].DtoClassName);
-            //    else
-            //        stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
-            //        , class_InsertAllModel.AllPackerName
-            //        , class_InsertAllModel.class_SubList[PageIndex].ModelClassName);
-            //}
-            #endregion
-
 
             #region Insert Values
-            stringBuilder.AppendFormat("{0}INSERT INTO {1}(\r\n"
+            stringBuilder.AppendFormat("{0}INSERT INTO {1} (\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2)
                 , class_Sub.TableName);
             int Counter = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
+                bool IsAddField = false;
                 if (!class_Field.FieldIsKey)
+                {
+                    IsAddField = true;
+                }
+                else
+                    IsAddField = !class_Field.FieldIsAutoAdd;
+
+                if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
                 {
                     stringBuilderField.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
                         , class_ToolSpace.GetSetSpaceCount(3)
-                        , class_Field.FieldName);
+                        , class_Field.ParaName);
                     stringBuilderValue.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
                         , class_ToolSpace.GetSetSpaceCount(3)
-                        , class_Field.FieldName);
+                        , class_Field.ParaName);
                 }
-                stringBuilderField.Append(class_ToolSpace.GetSetSpaceCount(4));
-                stringBuilderValue.Append(class_ToolSpace.GetSetSpaceCount(4));
-                if (Counter > 0)
+                if (IsAddField)
                 {
-                    stringBuilderField.Append(",");
-                    stringBuilderValue.Append(",");
+                    stringBuilderField.Append(class_ToolSpace.GetSetSpaceCount(4));
+                    stringBuilderValue.Append(class_ToolSpace.GetSetSpaceCount(4));
+                    if (Counter > 0)
+                    {
+                        stringBuilderField.Append(",");
+                        stringBuilderValue.Append(",");
+                    }
+                    stringBuilderField.AppendFormat("{0}\r\n"
+                        , class_Field.FieldName);
+                    stringBuilderValue.AppendFormat("#{{{0},jdbcType={1}}}\r\n"
+                        , class_Field.ParaName
+                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    Counter++;
                 }
-                stringBuilderField.AppendFormat("{0}\r\n"
-                    , class_Field.FieldName);
-                stringBuilderValue.AppendFormat("#{{{0},jdbcType={1}}}\r\n"
-                    , class_Field.FieldName
-                    , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                if (!class_Field.FieldIsKey)
+                if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
                 {
                     stringBuilderField.AppendFormat("{0}</if>\r\n"
                         , class_ToolSpace.GetSetSpaceCount(3));
                     stringBuilderValue.AppendFormat("{0}</if>\r\n"
                         , class_ToolSpace.GetSetSpaceCount(3));
                 }
-                Counter++;
             }
             #endregion
 
@@ -223,6 +216,11 @@ namespace MDIDemo.PublicClass
             //stringBuilder.Append(_GetMainWhereLable());
             #endregion
 
+            stringBuilder.Append(stringBuilderField.ToString().Substring(1));
+            stringBuilder.AppendFormat("{0})\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}VALUES (\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.Append(stringBuilderValue.ToString().Substring(1));
+            stringBuilder.AppendFormat("{0})\r\n", class_ToolSpace.GetSetSpaceCount(2));
             stringBuilder.AppendFormat("{0}</insert>\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
             //if (class_Sub.ResultType > 0 && !class_Sub.IsAddXmlHead)
