@@ -766,7 +766,7 @@ namespace MDIDemo.PublicClass
             {
                 stringBuilder.Append("\r\n");
                 stringBuilder.AppendFormat("{1}<!-- 注释：重复检查功能,{0} -->\r\n", class_Sub.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
-                stringBuilder.AppendFormat("{0}<select id=\"{1}BeforeCheck\" resultType=\"int\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
+                stringBuilder.AppendFormat("{0}<select id=\"{1}BeforeCheck\" resultType=\"java.lang.Integer\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.MethodId
                     , class_InsertAllModel.AllPackerName
