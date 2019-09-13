@@ -446,6 +446,7 @@ namespace MDIDemo.PublicClass
                     }
                     else
                         InParaFieldName = class_Field.ParaName;
+
                     #region Where
                     if (class_Field.WhereSelect)
                     {
@@ -525,6 +526,7 @@ namespace MDIDemo.PublicClass
                             stringBuilderWhereOr.Append(IfLabel + NowWhere);
                     }
                     #endregion
+
                     #region Group
                     if (class_Field.GroupSelect)
                     {
@@ -539,6 +541,7 @@ namespace MDIDemo.PublicClass
                         stringBuilderGroup.AppendFormat("{0}", FieldName);
                     }
                     #endregion
+
                     #region Having
                     if (class_Field.HavingSelect)
                     {
@@ -556,6 +559,7 @@ namespace MDIDemo.PublicClass
                             , class_Field.HavingValue);
                     }
                     #endregion
+
                     #region Order
                     if (class_Field.OrderSelect)
                     {
