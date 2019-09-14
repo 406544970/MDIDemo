@@ -108,9 +108,25 @@ namespace MDIDemo.PublicClass
                     break;
                 case "insert":
                     returnKey = Class_Tool.getKeyId("IN");
+                    Class_InsertAllModel class_InsertAllModel = new Class_InsertAllModel();
+                    class_InsertAllModel = this.FromXmlToSelectObject<Class_InsertAllModel>(xmlFileName);
+                    class_InsertAllModel.class_Create.MethodId = returnKey;
+                    class_InsertAllModel.class_Create.DateTime = System.DateTime.Now;
+                    if ((true) && !this.SelectToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel))
+                    {
+                        returnKey = null;
+                    }
                     break;
                 case "update":
                     returnKey = Class_Tool.getKeyId("UP");
+                    Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
+                    class_UpdateAllModel = this.FromXmlToSelectObject<Class_UpdateAllModel>(xmlFileName);
+                    class_UpdateAllModel.class_Create.MethodId = returnKey;
+                    class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
+                    if ((true) && !this.SelectToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))
+                    {
+                        returnKey = null;
+                    }
                     break;
                 case "delete":
                     returnKey = Class_Tool.getKeyId("DE");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static MDIDemo.PublicClass.Class_InsertAllModel;
+using static MDIDemo.PublicClass.Class_UpdateAllModel;
 
 namespace MDIDemo.PublicClass
 {
@@ -19,16 +19,16 @@ namespace MDIDemo.PublicClass
         }
         private void InitClass(string xmlFileName)
         {
-            class_InsertAllModel = new Class_InsertAllModel();
+            class_UpdateAllModel = new Class_UpdateAllModel();
             if (xmlFileName != null)
             {
                 Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-                class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                class_UpdateAllModel = class_PublicMethod.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
             }
             class_SQLiteOperator = new Class_SQLiteOperator();
         }
         private Class_SQLiteOperator class_SQLiteOperator;
-        private Class_InsertAllModel class_InsertAllModel;
+        private Class_UpdateAllModel class_UpdateAllModel;
         public void AddAllOutFieldName()
         {
             throw new NotImplementedException();
@@ -41,16 +41,16 @@ namespace MDIDemo.PublicClass
         private string _GetControl(int PageIndex)
         {
             string KeyType = null;
-            if (class_InsertAllModel.class_SubList == null)
+            if (class_UpdateAllModel.class_SubList == null)
                 return null;
-            if (class_InsertAllModel.class_SubList[PageIndex] == null)
+            if (class_UpdateAllModel.class_SubList[PageIndex] == null)
                 return null;
             int RepetitionCounter = 0;
-            Class_Sub class_Sub = class_InsertAllModel.class_SubList[PageIndex];
+            Class_Sub class_Sub = class_UpdateAllModel.class_SubList[PageIndex];
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_InsertAllModel.class_SelectDataBase.databaseType)
+            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
             {
                 case "MySql":
                     class_InterFaceDataBase = new Class_MySqlDataBase();
@@ -75,7 +75,7 @@ namespace MDIDemo.PublicClass
                 if (class_Sub.ControlRequestMapping != null)
                     stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n", Class_Tool.GetFirstCodeLow(class_Sub.ControlRequestMapping));
 
-                if (class_InsertAllModel.class_Create.SwaggerSign)
+                if (class_UpdateAllModel.class_Create.SwaggerSign)
                     stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
                         , class_Sub.ControlSwaggerValue
                         , class_Sub.ControlSwaggerDescription);
@@ -93,7 +93,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0} * {1}，方法ID：{2}\r\n{0} *\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent
-                , class_InsertAllModel.class_Create.MethodId);
+                , class_UpdateAllModel.class_Create.MethodId);
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
@@ -114,7 +114,7 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region Swagger
-            if (class_InsertAllModel.class_Create.SwaggerSign)
+            if (class_UpdateAllModel.class_Create.SwaggerSign)
             {
                 stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
@@ -148,12 +148,12 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}\")\r\n"
             , class_ToolSpace.GetSetSpaceCount(1)
-            , class_InsertAllModel.class_Create.HttpRequestType
+            , class_UpdateAllModel.class_Create.HttpRequestType
             , class_Sub.MethodId);
             stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
 
             #region
-            if (class_InsertAllModel.ReturnStructure)
+            if (class_UpdateAllModel.ReturnStructure)
             {
                 stringBuilder.Append("ResultVO");
             }
@@ -263,7 +263,7 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
                 stringBuilder.AppendFormat("{0}if (repetitionCount > 0)\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2));
-                if (class_InsertAllModel.ReturnStructure)
+                if (class_UpdateAllModel.ReturnStructure)
                 {
                     stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败，有\" + repetitionCount + \"条数据已重复！\", ResultVO.Class);\r\n"
                         , class_ToolSpace.GetSetSpaceCount(3));
@@ -304,7 +304,7 @@ namespace MDIDemo.PublicClass
                 , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName)
                 , class_Sub.MethodId
                 , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
-            if (class_InsertAllModel.ReturnStructure)
+            if (class_UpdateAllModel.ReturnStructure)
             {
                 stringBuilder.AppendFormat("{0}if (resultCount > 0)\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2));
@@ -401,15 +401,15 @@ namespace MDIDemo.PublicClass
         }
         private string _GetDAO(int Index)
         {
-            if (class_InsertAllModel.class_SubList == null || class_InsertAllModel.class_SubList.Count < Index)
+            if (class_UpdateAllModel.class_SubList == null || class_UpdateAllModel.class_SubList.Count < Index)
                 return null;
-            Class_Sub class_Sub = class_InsertAllModel.class_SubList[Index];
+            Class_Sub class_Sub = class_UpdateAllModel.class_SubList[Index];
             if (class_Sub == null)
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_InsertAllModel.class_SelectDataBase.databaseType)
+            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
             {
                 case "MySql":
                     class_InterFaceDataBase = new Class_MySqlDataBase();
@@ -435,9 +435,9 @@ namespace MDIDemo.PublicClass
                 , class_Sub.MethodContent);
             stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[Index].ParamClassName
-                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                , class_UpdateAllModel.AllPackerName
+                , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
 
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
@@ -446,8 +446,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}int {1}({2} {3});\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
-                , class_InsertAllModel.class_SubList[Index].ParamClassName
-                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
 
             #region 重复
             int RepetitionCounter = 0;
@@ -460,9 +460,9 @@ namespace MDIDemo.PublicClass
                     , class_Sub.MethodContent);
                 stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , class_InsertAllModel.AllPackerName
-                    , class_InsertAllModel.class_SubList[Index].ParamClassName
-                    , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                    , class_UpdateAllModel.AllPackerName
+                    , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                    , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
                 stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.ServiceInterFaceReturnRemark);
                 stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -470,8 +470,8 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("{0}int {1}BeforeCheck({2} {3});\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.MethodId
-                    , class_InsertAllModel.class_SubList[Index].ParamClassName
-                    , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                    , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                    , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
             }
             #endregion
 
@@ -497,13 +497,13 @@ namespace MDIDemo.PublicClass
         }
         private string _GetInPutParam(int PageIndex)
         {
-            if (class_InsertAllModel.class_SubList == null || class_InsertAllModel.class_SubList.Count < PageIndex)
+            if (class_UpdateAllModel.class_SubList == null || class_UpdateAllModel.class_SubList.Count < PageIndex)
                 return null;
 
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_InsertAllModel.class_SelectDataBase.databaseType)
+            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
             {
                 case "MySql":
                     class_InterFaceDataBase = new Class_MySqlDataBase();
@@ -521,12 +521,12 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
             stringBuilder.AppendFormat("public class {0}"
-                , class_InsertAllModel.class_SubList[PageIndex].ParamClassName);
+                , class_UpdateAllModel.class_SubList[PageIndex].ParamClassName);
             stringBuilder.Append(" {\r\n");
 
             //加入字段
             int FieldCount = 0;
-            foreach (Class_Field class_Field in class_InsertAllModel.class_SubList[PageIndex].class_Fields)
+            foreach (Class_Field class_Field in class_UpdateAllModel.class_SubList[PageIndex].class_Fields)
             {
                 string ReturnType = class_Field.FieldType;
                 ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(ReturnType));
@@ -534,7 +534,7 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("{0} * {1}\r\n", class_ToolSpace.GetSetSpaceCount(1), class_Field.FieldRemark);
                 stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
                 stringBuilder.AppendFormat("{0}private", class_ToolSpace.GetSetSpaceCount(1));
-                if (class_InsertAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
+                if (class_UpdateAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
                     stringBuilder.Append(" transient");
                 stringBuilder.AppendFormat(" {0} {1};\r\n"
                     , ReturnType
@@ -543,7 +543,7 @@ namespace MDIDemo.PublicClass
             }
             if (FieldCount > 0)
             {
-                foreach (Class_Field class_Field in class_InsertAllModel.class_SubList[PageIndex].class_Fields)
+                foreach (Class_Field class_Field in class_UpdateAllModel.class_SubList[PageIndex].class_Fields)
                 {
                     string ReturnType = class_Field.FieldType;
                     ReturnType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(ReturnType));
@@ -584,14 +584,14 @@ namespace MDIDemo.PublicClass
         private string _GetAuthor()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendFormat(" * @author ：{0}", class_InsertAllModel.class_Create.CreateMan);
-            if (class_InsertAllModel.class_Create.CreateDo != null && class_InsertAllModel.class_Create.CreateDo.Length > 0)
+            stringBuilder.AppendFormat(" * @author ：{0}", class_UpdateAllModel.class_Create.CreateMan);
+            if (class_UpdateAllModel.class_Create.CreateDo != null && class_UpdateAllModel.class_Create.CreateDo.Length > 0)
             {
-                stringBuilder.AppendFormat("，后端工程师：{0}", class_InsertAllModel.class_Create.CreateDo);
+                stringBuilder.AppendFormat("，后端工程师：{0}", class_UpdateAllModel.class_Create.CreateDo);
             }
-            if (class_InsertAllModel.class_Create.CreateFrontDo != null && class_InsertAllModel.class_Create.CreateFrontDo.Length > 0)
+            if (class_UpdateAllModel.class_Create.CreateFrontDo != null && class_UpdateAllModel.class_Create.CreateFrontDo.Length > 0)
             {
-                stringBuilder.AppendFormat("，前端工程师：{0}", class_InsertAllModel.class_Create.CreateFrontDo);
+                stringBuilder.AppendFormat("，前端工程师：{0}", class_UpdateAllModel.class_Create.CreateFrontDo);
             }
             stringBuilder.AppendFormat("\r\n");
             return stringBuilder.ToString();
@@ -612,13 +612,13 @@ namespace MDIDemo.PublicClass
         }
         private string _GetServiceImpl(int Index)
         {
-            Class_Sub class_Sub = class_InsertAllModel.class_SubList[Index];
+            Class_Sub class_Sub = class_UpdateAllModel.class_SubList[Index];
             if (class_Sub == null)
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_InsertAllModel.class_SelectDataBase.databaseType)
+            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
             {
                 case "MySql":
                     class_InterFaceDataBase = new Class_MySqlDataBase();
@@ -649,9 +649,9 @@ namespace MDIDemo.PublicClass
                 , class_Sub.MethodContent);
             stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[Index].ParamClassName
-                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                , class_UpdateAllModel.AllPackerName
+                , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -681,9 +681,9 @@ namespace MDIDemo.PublicClass
                     , class_Sub.MethodContent);
                 stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , class_InsertAllModel.AllPackerName
-                    , class_InsertAllModel.class_SubList[Index].ParamClassName
-                    , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                    , class_UpdateAllModel.AllPackerName
+                    , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                    , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
                 stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.ServiceInterFaceReturnRemark);
                 stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -711,13 +711,13 @@ namespace MDIDemo.PublicClass
         }
         private string _GetServiceInterFace(int Index)
         {
-            Class_Sub class_Sub = class_InsertAllModel.class_SubList[Index];
+            Class_Sub class_Sub = class_UpdateAllModel.class_SubList[Index];
             if (class_Sub == null)
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_InsertAllModel.class_SelectDataBase.databaseType)
+            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
             {
                 case "MySql":
                     class_InterFaceDataBase = new Class_MySqlDataBase();
@@ -742,9 +742,9 @@ namespace MDIDemo.PublicClass
                 , class_Sub.MethodContent);
             stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
-                , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[Index].ParamClassName
-                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                , class_UpdateAllModel.AllPackerName
+                , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -752,8 +752,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}int {1}({2} {3});\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
-                , class_InsertAllModel.class_SubList[Index].ParamClassName
-                , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
 
             #region 重复
             int RepetitionCounter = 0;
@@ -766,9 +766,9 @@ namespace MDIDemo.PublicClass
                     , class_Sub.MethodContent);
                 stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
-                    , class_InsertAllModel.AllPackerName
-                    , class_InsertAllModel.class_SubList[Index].ParamClassName
-                    , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                    , class_UpdateAllModel.AllPackerName
+                    , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                    , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
                 stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.ServiceInterFaceReturnRemark);
                 stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -776,8 +776,8 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("{0}int {1}BeforeCheck({2} {3});\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.MethodId
-                    , class_InsertAllModel.class_SubList[Index].ParamClassName
-                    , Class_Tool.GetFirstCodeLow(class_InsertAllModel.class_SubList[Index].ParamClassName));
+                    , class_UpdateAllModel.class_SubList[Index].ParamClassName
+                    , Class_Tool.GetFirstCodeLow(class_UpdateAllModel.class_SubList[Index].ParamClassName));
             }
             #endregion
 
@@ -791,9 +791,9 @@ namespace MDIDemo.PublicClass
         }
         private string _GetSql(int Index)
         {
-            if (class_InsertAllModel.class_SubList.Count < Index)
+            if (class_UpdateAllModel.class_SubList.Count < Index)
                 return null;
-            Class_Sub class_Sub = class_InsertAllModel.class_SubList[Index];
+            Class_Sub class_Sub = class_UpdateAllModel.class_SubList[Index];
             if (class_Sub == null)
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -802,7 +802,7 @@ namespace MDIDemo.PublicClass
             StringBuilder stringBuilderValue = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
 
-            switch (class_InsertAllModel.class_SelectDataBase.databaseType)
+            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
             {
                 case "MySql":
                     class_InterFaceDataBase = new Class_MySqlDataBase();
@@ -819,7 +819,7 @@ namespace MDIDemo.PublicClass
                 stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                 stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
                 stringBuilder.AppendFormat("<mapper namespace=\"{0}.dao.{1}\">\r\n"
-                    , class_InsertAllModel.AllPackerName
+                    , class_UpdateAllModel.AllPackerName
                     , class_Sub.DaoClassName);
             }
             #region SelectId
@@ -827,8 +827,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}<insert id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
-                , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[Index].ParamClassName);
+                , class_UpdateAllModel.AllPackerName
+                , class_UpdateAllModel.class_SubList[Index].ParamClassName);
             #endregion
 
             #region Insert Values
@@ -898,8 +898,8 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("{0}<select id=\"{1}BeforeCheck\" resultType=\"java.lang.Integer\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
                     , class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.MethodId
-                    , class_InsertAllModel.AllPackerName
-                    , class_InsertAllModel.class_SubList[Index].ParamClassName);
+                    , class_UpdateAllModel.AllPackerName
+                    , class_UpdateAllModel.class_SubList[Index].ParamClassName);
                 stringBuilder.AppendFormat("{0}SELECT COUNT(*) AS COUNTER\r\n{0}FROM {1}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2), class_Sub.TableName);
                 stringBuilder.AppendFormat("{0}<where>\r\n"

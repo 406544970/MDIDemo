@@ -700,6 +700,57 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                     }
                                     break;
                                 case "update":
+                                    {
+                                        Class_UpdateAllModel.Class_Sub class_CurrentPage = new Class_UpdateAllModel.Class_Sub();
+                                        if ((mySelect as Class_UpdateAllModel).class_SubList.Count > PageSelectIndex)
+                                            class_CurrentPage = (mySelect as Class_UpdateAllModel).class_SubList[PageSelectIndex];
+                                        if ((mySelect as Class_UpdateAllModel).class_SubList.Count > PageSelectIndex && (mySelect as Class_UpdateAllModel).class_SubList[PageSelectIndex].class_Fields.Count > 0)
+                                        {
+                                            int FindIndex = class_CurrentPage.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
+                                            if (FindIndex > -1)
+                                            {
+                                                row["InsertSelect"] = class_CurrentPage.class_Fields[FindIndex].InsertSelect;
+                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
+                                                row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
+                                                row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
+                                                row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
+                                                row["LogType"] = class_CurrentPage.class_Fields[FindIndex].LogType;
+                                                row["WhereValue"] = class_CurrentPage.class_Fields[FindIndex].WhereValue;
+                                                row["WhereIsNull"] = class_CurrentPage.class_Fields[FindIndex].WhereIsNull;
+
+                                                row["FrontSelect"] = class_CurrentPage.class_Fields[FindIndex].FrontSelect;
+                                                row["IsMust"] = class_CurrentPage.class_Fields[FindIndex].IsMust;
+                                                row["LabelCaption"] = class_CurrentPage.class_Fields[FindIndex].LabelCaption;
+                                                row["CompomentType"] = class_CurrentPage.class_Fields[FindIndex].CompomentType;
+                                                row["Hint"] = class_CurrentPage.class_Fields[FindIndex].Hint;
+                                                row["DefaultValue"] = class_CurrentPage.class_Fields[FindIndex].DefaultValue;
+                                                row["SortNo"] = class_CurrentPage.class_Fields[FindIndex].SortNo;
+                                                row["ValueId"] = class_CurrentPage.class_Fields[FindIndex].ValueId;
+                                                row["ReadOnly"] = class_CurrentPage.class_Fields[FindIndex].ReadOnly;
+                                                row["CheckType"] = class_CurrentPage.class_Fields[FindIndex].CheckType;
+                                                IsDefault = false;
+                                            }
+                                        }
+                                        if (IsDefault)
+                                        {
+                                            row["LogType"] = "=";
+                                            row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
+                                            row["WhereType"] = "AND";
+                                            row["WhereValue"] = "参数";
+                                            row["SortNo"] = Counter++;
+                                            switch (row["FieldName"].ToString())
+                                            {
+                                                case "worktime":
+                                                    break;
+                                                case "stopSign":
+                                                    break;
+                                                case "sortNo":
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                    }
                                     break;
                                 case "delete":
                                     break;
@@ -707,13 +758,6 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                     break;
                             }
                         }
-                        //else
-                        //{
-                        //    row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
-                        //    row["MaxLegth"] = row["FieldLength"];
-                        //    row["ReturnType"] = row["FieldType"];
-                        //    row["SortNo"] = Counter++;
-                        //}
                         row.EndEdit();
                     }
                     vs.Clear();

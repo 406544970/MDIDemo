@@ -18,7 +18,7 @@ namespace MDIDemo.PublicClass
             class_SubList = new List<Class_Sub>();
             class_WindowLastState = new Class_WindowLastState();
             LastSelectTableName = null;
-            classType = "insert";
+            classType = "update";
             IsAutoWard = true;
             PageSign = true;
             ReturnStructure = false;
