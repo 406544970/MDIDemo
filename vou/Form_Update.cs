@@ -574,7 +574,7 @@ namespace MDIDemo.vou
                 class_Field.FieldIsKey = Convert.ToBoolean(dataRow["FieldIsKey"]);
                 class_Field.FieldIsAutoAdd = Convert.ToBoolean(dataRow["FieldIsAutoAdd"]);
 
-                class_Field.InsertSelect = Convert.ToBoolean(dataRow["InsertSelect"]);//Insert/Values选择
+                class_Field.UpdateSelect = Convert.ToBoolean(dataRow["UpdateSelect"]);//Set
                 class_Field.ParaName = dataRow["ParaName"].ToString();//映射参数名
                 class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);//是否去空格
 
@@ -582,6 +582,7 @@ namespace MDIDemo.vou
                 class_Field.WhereType = dataRow["WhereType"].ToString();//And Or
                 class_Field.LogType = dataRow["LogType"].ToString();// = > < like，固定值
                 class_Field.WhereValue = dataRow["WhereValue"].ToString();
+                class_Field.WhereTrim = Convert.ToBoolean(dataRow["WhereTrim"]);//去空格
                 class_Field.WhereIsNull = Convert.ToBoolean(dataRow["WhereIsNull"]);//Where条件是否可为空
 
                 class_Field.FrontSelect = Convert.ToBoolean(dataRow["FrontSelect"]);//是否页面显示
@@ -687,7 +688,7 @@ namespace MDIDemo.vou
                         for (int j = 0; j < item.RowCount; j++)
                         {
                             DataRow dataRow = item.GetDataRow(j);
-                            if (Convert.ToBoolean(dataRow["InsertSelect"]))
+                            if (Convert.ToBoolean(dataRow["UpdateSelect"]))
                                 InsertCount++;
                             if (Convert.ToBoolean(dataRow["WhereSelect"]))
                                 WhereCount++;
@@ -881,12 +882,12 @@ namespace MDIDemo.vou
             if (class_UpdateAllModel.class_Create.MethodId == null)
             {
                 class_UpdateAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
-                this.Text = string.Format("INSERT：{0}", class_UpdateAllModel.class_Create.MethodId);
+                this.Text = string.Format("UPDATE：{0}", class_UpdateAllModel.class_Create.MethodId);
                 this.textEdit17.Text = class_UpdateAllModel.class_Create.MethodId;
 
             }
             Class_WindowType class_WindowType = new Class_WindowType();
-            class_WindowType.WindowType = "insert";
+            class_WindowType.WindowType = "update";
             class_WindowType.XmlFileName = class_UpdateAllModel.class_Create.MethodId;
             this.Tag = class_WindowType;
             class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
@@ -961,7 +962,7 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
-                if (class_PublicMethod.InsertToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))
+                if (class_PublicMethod.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))
                 {
                     if (IsDisplayLog)
                         this.DisplayText(string.Format("已将{0}方法【{1}】，保存到本地。", class_UpdateAllModel.classType, class_UpdateAllModel.class_Create.MethodId));
@@ -1253,7 +1254,6 @@ namespace MDIDemo.vou
                 CreateCode();
             }
         }
-
 
         private void barButtonItem26_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

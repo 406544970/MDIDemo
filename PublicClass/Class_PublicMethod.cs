@@ -88,6 +88,7 @@ namespace MDIDemo.PublicClass
                 return class_SQLiteOperator.DeleteByPageKey(xmlFileName);
             }
         }
+
         public string CopyToNewXml(string xmlFileName, string classType)
         {
             string returnKey;
@@ -109,7 +110,7 @@ namespace MDIDemo.PublicClass
                 case "insert":
                     returnKey = Class_Tool.getKeyId("IN");
                     Class_InsertAllModel class_InsertAllModel = new Class_InsertAllModel();
-                    class_InsertAllModel = this.FromXmlToSelectObject<Class_InsertAllModel>(xmlFileName);
+                    class_InsertAllModel = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
                     class_InsertAllModel.class_Create.MethodId = returnKey;
                     class_InsertAllModel.class_Create.DateTime = System.DateTime.Now;
                     if ((true) && !this.SelectToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel))
@@ -120,7 +121,7 @@ namespace MDIDemo.PublicClass
                 case "update":
                     returnKey = Class_Tool.getKeyId("UP");
                     Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
-                    class_UpdateAllModel = this.FromXmlToSelectObject<Class_UpdateAllModel>(xmlFileName);
+                    class_UpdateAllModel = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
                     class_UpdateAllModel.class_Create.MethodId = returnKey;
                     class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
                     if ((true) && !this.SelectToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))

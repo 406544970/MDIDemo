@@ -97,7 +97,7 @@ namespace MDIDemo.PublicClass
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
-                if (!class_Field.FieldIsKey && (class_Field.InsertSelect || class_Field.WhereSelect))
+                if (!class_Field.FieldIsKey && (class_Field.UpdateSelect || class_Field.WhereSelect))
                     stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , class_Field.ParaName
@@ -126,7 +126,7 @@ namespace MDIDemo.PublicClass
                     int index = 0;
                     foreach (Class_Field class_Field in class_Sub.class_Fields)
                     {
-                        if (!class_Field.FieldIsKey && (class_Field.InsertSelect || class_Field.WhereSelect))
+                        if (!class_Field.FieldIsKey && (class_Field.UpdateSelect || class_Field.WhereSelect))
                         {
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
                             if (index > 0)
@@ -181,7 +181,7 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (!class_Field.FieldIsKey && (class_Field.InsertSelect || class_Field.WhereSelect))
+                if (!class_Field.FieldIsKey && (class_Field.UpdateSelect || class_Field.WhereSelect))
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
@@ -207,7 +207,7 @@ namespace MDIDemo.PublicClass
             #region 去空格
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if ((class_Field.InsertSelect || class_Field.WhereSelect) && !class_Field.FieldIsKey && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.TrimSign)
+                if ((class_Field.UpdateSelect || class_Field.WhereSelect) && !class_Field.FieldIsKey && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.TrimSign)
                 {
                     stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
@@ -239,7 +239,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_Field.InsertSelect || class_Field.WhereSelect)
+                    if (class_Field.UpdateSelect || class_Field.WhereSelect)
                     {
                         stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2)

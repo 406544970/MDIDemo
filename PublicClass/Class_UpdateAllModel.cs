@@ -689,11 +689,13 @@ namespace MDIDemo.PublicClass
         {
             public Class_Field()
             {
-                InsertSelect = false;
+                UpdateSelect = false;
                 TrimSign = false;
                 WhereSelect = false;
+                WhereTrim = true;
                 WhereIsNull = false;
             }
+
             #region 字段名称
             public string FieldName { get; set; }
             public string FieldRemark { get; set; }
@@ -706,19 +708,17 @@ namespace MDIDemo.PublicClass
             public string MultFieldName { get; set; }
             #endregion
 
-            #region Insert
-            public bool InsertSelect { get; set; }
+            #region Set
+            public bool UpdateSelect { get; set; }
             public string ParaName { get; set; }
             public bool TrimSign { get; set; }
-
-
-
             #endregion
 
             #region Where
             public bool WhereSelect { get; set; }
             public string WhereType { get; set; }
             public string LogType { get; set; }
+            public bool WhereTrim { get; set; }
             public string WhereValue { get; set; }
             public bool WhereIsNull { get; set; }
             #endregion
