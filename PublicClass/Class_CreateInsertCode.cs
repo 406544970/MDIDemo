@@ -789,11 +789,11 @@ namespace MDIDemo.PublicClass
         {
             return _GetSql(Index);
         }
-        private string _GetSql(int PageIndex)
+        private string _GetSql(int Index)
         {
-            if (class_InsertAllModel.class_SubList.Count < PageIndex)
+            if (class_InsertAllModel.class_SubList.Count < Index)
                 return null;
-            Class_Sub class_Sub = class_InsertAllModel.class_SubList[PageIndex];
+            Class_Sub class_Sub = class_InsertAllModel.class_SubList[Index];
             if (class_Sub == null)
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -828,7 +828,7 @@ namespace MDIDemo.PublicClass
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
                 , class_InsertAllModel.AllPackerName
-                , class_InsertAllModel.class_SubList[PageIndex].ParamClassName);
+                , class_InsertAllModel.class_SubList[Index].ParamClassName);
             #endregion
 
             #region Insert Values
@@ -899,7 +899,7 @@ namespace MDIDemo.PublicClass
                     , class_ToolSpace.GetSetSpaceCount(1)
                     , class_Sub.MethodId
                     , class_InsertAllModel.AllPackerName
-                    , class_InsertAllModel.class_SubList[PageIndex].ParamClassName);
+                    , class_InsertAllModel.class_SubList[Index].ParamClassName);
                 stringBuilder.AppendFormat("{0}SELECT COUNT(*) AS COUNTER\r\n{0}FROM {1}\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2), class_Sub.TableName);
                 stringBuilder.AppendFormat("{0}<where>\r\n"
@@ -909,8 +909,13 @@ namespace MDIDemo.PublicClass
                 {
                     if (class_Field.WhereSelect)
                     {
-                        string MyWhereSql = string.Format("{0} {2} {1} "
-                            , class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 3 : 4)
+                        string MyWhereSql = null;
+                        if (class_Field.WhereIsNull)
+                            WhereBuilder.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3)
+                                , class_Field.ParaName);
+                        MyWhereSql = string.Format("{0} {2} {1} "
+                            , class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 4 : 5)
                             , class_Field.FieldName, class_Field.WhereType);
                         if (class_Field.LogType.IndexOf("NULL") > -1)
                         {
@@ -947,6 +952,9 @@ namespace MDIDemo.PublicClass
                                 WhereBuilder.AppendFormat("{0}<![CDATA[{1}]]>", class_ToolSpace.GetSetSpaceCount(4), MyWhereSql.TrimStart());
                             else
                                 WhereBuilder.Append(MyWhereSql);
+                            if (class_Field.WhereIsNull)
+                                WhereBuilder.AppendFormat("\r\n{0}</if>"
+                                    , class_ToolSpace.GetSetSpaceCount(3));
                             WhereBuilder.Append("\r\n");
                         }
                     }
