@@ -64,6 +64,46 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         {
             get { return this.ActiveMdiChild; }
         }
+        public void OpenDeleteWin(string xmlFileName)
+        {
+            Class_WindowType class_WindowType = new Class_WindowType();
+            class_WindowType.WindowType = "delete";
+            Form_Update form_Insert;
+            if (xmlFileName == null)
+            {
+                form_Insert = new Form_Update(mySkinName);
+                form_Insert.Text = "新DELETE";
+                form_Insert.Tag = class_WindowType;
+            }
+            else
+            {
+                class_WindowType.XmlFileName = xmlFileName;
+                form_Insert = new Form_Update(mySkinName, xmlFileName);
+                form_Insert.Text = string.Format("DELETE：{0}", xmlFileName);
+                form_Insert.Tag = class_WindowType;
+            }
+            OpenSubForm(form_Insert);
+        }
+        public void OpenUpdateWin(string xmlFileName)
+        {
+            Class_WindowType class_WindowType = new Class_WindowType();
+            class_WindowType.WindowType = "update";
+            Form_Update form_Update;
+            if (xmlFileName == null)
+            {
+                form_Update = new Form_Update(mySkinName);
+                form_Update.Text = "新UPDATE";
+                form_Update.Tag = class_WindowType;
+            }
+            else
+            {
+                class_WindowType.XmlFileName = xmlFileName;
+                form_Update = new Form_Update(mySkinName, xmlFileName);
+                form_Update.Text = string.Format("UPDATE：{0}", xmlFileName);
+                form_Update.Tag = class_WindowType;
+            }
+            OpenSubForm(form_Update);
+        }
         public void OpenInsertWin(string xmlFileName)
         {
             Class_WindowType class_WindowType = new Class_WindowType();
@@ -133,8 +173,10 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                             OpenInsertWin(class_WindowType.XmlFileName);
                             break;
                         case "update":
+                            OpenUpdateWin(class_WindowType.XmlFileName);
                             break;
                         case "delete":
+                            OpenDeleteWin(class_WindowType.XmlFileName);
                             break;
                         case "welcome":
                             openFirstPage();
@@ -651,12 +693,12 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         private void barButtonItem22_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("正在玩命开发中！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenUpdateWin(null);
         }
 
         private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("正在玩命开发中！", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenDeleteWin(null);
         }
     }
 }

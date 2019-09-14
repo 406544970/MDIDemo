@@ -223,10 +223,12 @@
     <Compile Include="PublicClass\Class_ MySqlite.cs" />
     <Compile Include="PublicClass\Class_AllMode.cs" />
     <Compile Include="PublicClass\Class_CaseWhen.cs" />
+    <Compile Include="PublicClass\Class_CreateUpdateCode.cs" />
     <Compile Include="PublicClass\Class_CreateInsertCode.cs" />
     <Compile Include="PublicClass\Class_CreateSelectCode.cs" />
     <Compile Include="PublicClass\Class_DataBaseConDefault.cs" />
-    <Compile Include="PublicClass\Class_InserAllModel.cs" />
+    <Compile Include="PublicClass\Class_UpdateAllModel.cs" />
+    <Compile Include="PublicClass\Class_InsertAllModel.cs" />
     <Compile Include="PublicClass\Class_InterFaceCreateCode.cs" />
     <Compile Include="PublicClass\Class_Model.cs" />
     <Compile Include="PublicClass\Class_Mydb.cs" />
@@ -246,6 +248,12 @@
     <Compile Include="PublicSetUp\Class_SetTextEdit.cs" />
     <Compile Include="PublicSetUp\Class_SetUpBar.cs" />
     <Compile Include="PublicSetUp\GridC.cs" />
+    <Compile Include="vou\Form_Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vou\Form_Update.Designer.cs">
+      <DependentUpon>Form_Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="vou\Form_Insert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +305,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vou\Form_Update.resx">
+      <DependentUpon>Form_Update.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vou\Form_Insert.resx">
       <DependentUpon>Form_Insert.cs</DependentUpon>
