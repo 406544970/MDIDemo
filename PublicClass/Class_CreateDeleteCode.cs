@@ -97,13 +97,8 @@ namespace MDIDemo.PublicClass
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
-                if (class_Field.UpdateSelect)
-                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(1)
-                        , class_Field.ParaName
-                        , class_Field.FieldRemark);
                 if (class_Field.WhereSelect)
-                    stringBuilder.AppendFormat("{0} * @param {1}Where {2}, Where字段\r\n"
+                    stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , class_Field.ParaName
                         , class_Field.FieldRemark);
@@ -131,27 +126,12 @@ namespace MDIDemo.PublicClass
                     int index = 0;
                     foreach (Class_Field class_Field in class_Sub.class_Fields)
                     {
-                        if (class_Field.UpdateSelect)
-                        {
-                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
-                            if (index > 0)
-                                stringBuilder.Append(", ");
-                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\""
-                                , Class_Tool.GetFirstCodeLow(class_Field.FieldName)
-                                , class_Field.FieldRemark
-                                , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                            stringBuilder.Append(", required = true");
-                            if (class_Field.LogType.IndexOf("IN") > -1)
-                                stringBuilder.Append(", paramType = \"query\"");
-                            stringBuilder.Append(")\r\n");
-                            index++;
-                        }
                         if (class_Field.WhereSelect)
                         {
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
                             if (index > 0)
                                 stringBuilder.Append(", ");
-                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}Where\", value = \"{1}\", dataType = \"{2}\""
+                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\""
                                 , Class_Tool.GetFirstCodeLow(class_Field.FieldName)
                                 , class_Field.FieldRemark
                                 , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
@@ -203,7 +183,7 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.UpdateSelect)
+                if (class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
@@ -211,26 +191,6 @@ namespace MDIDemo.PublicClass
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
                         stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
-                        , class_Field.FieldName);
-                    if ((class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
-                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", class_Field.FieldDefaultValue);
-                    stringBuilder.Append(")");
-                    if (class_Field.LogType.IndexOf("IN") > -1)
-                        stringBuilder.AppendFormat(" List<{0}>"
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    else
-                        stringBuilder.AppendFormat(" {0}"
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    stringBuilder.AppendFormat(" {0}", class_Field.FieldName);
-                }
-                if (class_Field.WhereSelect)
-                {
-                    if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}Where\""
-                        , class_Field.FieldName
-                        , class_ToolSpace.GetSetSpaceCount(3));
-                    else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}Where\""
                         , class_Field.FieldName);
                     if (class_Field.WhereIsNull)
                         stringBuilder.Append(", required = false");
@@ -243,7 +203,7 @@ namespace MDIDemo.PublicClass
                     else
                         stringBuilder.AppendFormat(" {0}"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    stringBuilder.AppendFormat(" {0}Where", class_Field.FieldName);
+                    stringBuilder.AppendFormat(" {0}", class_Field.FieldName);
                 }
             }
             stringBuilder.Append(") {\r\n");
@@ -251,11 +211,8 @@ namespace MDIDemo.PublicClass
             #region 去空格
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.UpdateSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.TrimSign)
+                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.WhereSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.WhereTrim)
                     stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
-                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.WhereSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.TrimSign)
-                    stringBuilder.AppendFormat("{0}{1}Where = {1}Where == null ? {1}Where : {1}Where.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
             }
             stringBuilder.Append("\r\n");
@@ -268,7 +225,7 @@ namespace MDIDemo.PublicClass
             , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.UpdateSelect)
+                if (class_Field.WhereSelect)
                 {
                     stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2)
@@ -276,15 +233,6 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
                     , class_Field.ParaName);
                 }
-                if (class_Field.WhereSelect)
-                {
-                    stringBuilder.AppendFormat("{0}{1}.set{2}Where({3}Where);\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(2)
-                    , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
-                    , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
-                    , class_Field.ParaName);
-                }
-
             }
             #endregion
 

@@ -592,9 +592,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                         case "delete":
                             {
                                 #region 加入自定义Delete列
-                                DataColumn UpdateSelect = new DataColumn("UpdateSelect", typeof(bool));//SET选择
                                 DataColumn ParaName = new DataColumn("ParaName", typeof(string));
-                                DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));//是否去空格
 
                                 DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));//重复判断选择
                                 DataColumn WhereType = new DataColumn("WhereType", typeof(string));//And Or
@@ -615,8 +613,6 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 DataColumn CheckType = new DataColumn("CheckType", typeof(string));//校验类型
                                 DataColumn ClassTitle = new DataColumn("ClassTitle", typeof(string));//分类标题
 
-                                UpdateSelect.DefaultValue = true;
-                                TrimSign.DefaultValue = true;
                                 WhereSelect.DefaultValue = false;
                                 WhereTrim.DefaultValue = false;
                                 WhereIsNull.DefaultValue = true;
@@ -625,9 +621,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                 FrontSelect.DefaultValue = true;
                                 IsMust.DefaultValue = true;
 
-                                dataTable.Columns.Add(UpdateSelect);
                                 dataTable.Columns.Add(ParaName);
-                                dataTable.Columns.Add(TrimSign);
 
                                 dataTable.Columns.Add(WhereSelect);
                                 dataTable.Columns.Add(WhereType);
@@ -881,9 +875,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                             int FindIndex = class_CurrentPage.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
                                             if (FindIndex > -1)
                                             {
-                                                row["UpdateSelect"] = class_CurrentPage.class_Fields[FindIndex].UpdateSelect;
                                                 row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
-                                                row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
                                                 row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
                                                 row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
                                                 row["LogType"] = class_CurrentPage.class_Fields[FindIndex].LogType;

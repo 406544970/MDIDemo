@@ -254,7 +254,7 @@ namespace MDIDemo.PublicClass
                 if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.UpdateSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.TrimSign)
                     stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
-                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.WhereSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.TrimSign)
+                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.WhereSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.WhereTrim)
                     stringBuilder.AppendFormat("{0}{1}Where = {1}Where == null ? {1}Where : {1}Where.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
             }

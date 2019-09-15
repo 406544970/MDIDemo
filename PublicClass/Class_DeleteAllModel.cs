@@ -700,8 +700,6 @@ namespace MDIDemo.PublicClass
         {
             public Class_Field()
             {
-                UpdateSelect = false;
-                TrimSign = false;
                 WhereSelect = false;
                 WhereTrim = true;
                 WhereIsNull = false;
@@ -719,13 +717,8 @@ namespace MDIDemo.PublicClass
             public string MultFieldName { get; set; }
             #endregion
 
-            #region Set
-            public bool UpdateSelect { get; set; }
-            public string ParaName { get; set; }
-            public bool TrimSign { get; set; }
-            #endregion
-
             #region Where
+            public string ParaName { get; set; }
             public bool WhereSelect { get; set; }
             public string WhereType { get; set; }
             public string LogType { get; set; }

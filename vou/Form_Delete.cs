@@ -574,10 +574,6 @@ namespace MDIDemo.vou
                 class_Field.FieldIsKey = Convert.ToBoolean(dataRow["FieldIsKey"]);
                 class_Field.FieldIsAutoAdd = Convert.ToBoolean(dataRow["FieldIsAutoAdd"]);
 
-                class_Field.UpdateSelect = Convert.ToBoolean(dataRow["UpdateSelect"]);//Set
-                class_Field.ParaName = dataRow["ParaName"].ToString();//映射参数名
-                class_Field.TrimSign = Convert.ToBoolean(dataRow["TrimSign"]);//是否去空格
-
                 class_Field.WhereSelect = Convert.ToBoolean(dataRow["WhereSelect"]);//重复判断选择
                 class_Field.WhereType = dataRow["WhereType"].ToString();//And Or
                 class_Field.LogType = dataRow["LogType"].ToString();// = > < like，固定值
