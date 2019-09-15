@@ -84,21 +84,20 @@ namespace MDIDemo.PublicClass
                     break;
                 case "Class_DeleteAllModel":
                     {
-                        SaveOk = true;
-                        //Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
-                        //class_UpdateAllModel = t as Class_UpdateAllModel;
-                        //class_PageInfomationMode.pageKey = class_UpdateAllModel.class_Create.MethodId;
-                        //class_PageInfomationMode.projectId = "projectId";
-                        //class_PageInfomationMode.pageType = "delete";
-                        //class_PageInfomationMode.pageVersion = 0;
-                        //class_PageInfomationMode.createTime = System.DateTime.Now;
-                        //class_PageInfomationMode.lastUpdateTime = class_PageInfomationMode.createTime;
-                        //class_PageInfomationMode.createOperatorId = class_UpdateAllModel.class_Create.CreateMan;
-                        //class_PageInfomationMode.doOperatorId = class_UpdateAllModel.class_Create.CreateDo;
-                        //class_PageInfomationMode.frontOperatorId = class_UpdateAllModel.class_Create.CreateFrontDo;
-                        //class_PageInfomationMode.finishCount = 0;
-                        //class_PageInfomationMode.readOnly = class_UpdateAllModel.class_Create.ReadOnly;
-                        //SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                        Class_DeleteAllModel class_DeleteAllModel = new Class_DeleteAllModel();
+                        class_DeleteAllModel = t as Class_DeleteAllModel;
+                        class_PageInfomationMode.pageKey = class_DeleteAllModel.class_Create.MethodId;
+                        class_PageInfomationMode.projectId = "projectId";
+                        class_PageInfomationMode.pageType = "delete";
+                        class_PageInfomationMode.pageVersion = 0;
+                        class_PageInfomationMode.createTime = System.DateTime.Now;
+                        class_PageInfomationMode.lastUpdateTime = class_PageInfomationMode.createTime;
+                        class_PageInfomationMode.createOperatorId = class_DeleteAllModel.class_Create.CreateMan;
+                        class_PageInfomationMode.doOperatorId = class_DeleteAllModel.class_Create.CreateDo;
+                        class_PageInfomationMode.frontOperatorId = class_DeleteAllModel.class_Create.CreateFrontDo;
+                        class_PageInfomationMode.finishCount = 0;
+                        class_PageInfomationMode.readOnly = class_DeleteAllModel.class_Create.ReadOnly;
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
                 case "Class_DataBaseConDefault":
@@ -139,9 +138,7 @@ namespace MDIDemo.PublicClass
                         class_SelectAllModel.class_Create.MethodId = returnKey;
                         class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
                         if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
-                        {
                             returnKey = null;
-                        }
                     }
                     break;
                 case "insert":
@@ -151,9 +148,7 @@ namespace MDIDemo.PublicClass
                     class_InsertAllModel.class_Create.MethodId = returnKey;
                     class_InsertAllModel.class_Create.DateTime = System.DateTime.Now;
                     if ((true) && !this.SelectToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel))
-                    {
                         returnKey = null;
-                    }
                     break;
                 case "update":
                     returnKey = Class_Tool.getKeyId("UP");
@@ -162,12 +157,16 @@ namespace MDIDemo.PublicClass
                     class_UpdateAllModel.class_Create.MethodId = returnKey;
                     class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
                     if ((true) && !this.SelectToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))
-                    {
                         returnKey = null;
-                    }
                     break;
                 case "delete":
                     returnKey = Class_Tool.getKeyId("DE");
+                    Class_DeleteAllModel class_DeleteAllModel = new Class_DeleteAllModel();
+                    class_DeleteAllModel = this.FromXmlToUpdateObject<Class_DeleteAllModel>(xmlFileName);
+                    class_DeleteAllModel.class_Create.MethodId = returnKey;
+                    class_DeleteAllModel.class_Create.DateTime = System.DateTime.Now;
+                    if ((true) && !this.SelectToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel))
+                        returnKey = null;
                     break;
                 default:
                     {
@@ -177,9 +176,7 @@ namespace MDIDemo.PublicClass
                         class_SelectAllModel.class_Create.MethodId = returnKey;
                         class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
                         if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
-                        {
                             returnKey = null;
-                        }
                     }
                     break;
             }
