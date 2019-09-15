@@ -68,81 +68,81 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         {
             Class_WindowType class_WindowType = new Class_WindowType();
             class_WindowType.WindowType = "delete";
-            Form_Update form_Insert;
+            Form_Delete form;
             if (xmlFileName == null)
             {
-                form_Insert = new Form_Update(mySkinName);
-                form_Insert.Text = "新DELETE";
-                form_Insert.Tag = class_WindowType;
+                form = new Form_Delete(mySkinName);
+                form.Text = "新DELETE";
+                form.Tag = class_WindowType;
             }
             else
             {
                 class_WindowType.XmlFileName = xmlFileName;
-                form_Insert = new Form_Update(mySkinName, xmlFileName);
-                form_Insert.Text = string.Format("DELETE：{0}", xmlFileName);
-                form_Insert.Tag = class_WindowType;
+                form = new Form_Delete(mySkinName, xmlFileName);
+                form.Text = string.Format("DELETE：{0}", xmlFileName);
+                form.Tag = class_WindowType;
             }
-            OpenSubForm(form_Insert);
+            OpenSubForm(form);
         }
         public void OpenUpdateWin(string xmlFileName)
         {
             Class_WindowType class_WindowType = new Class_WindowType();
             class_WindowType.WindowType = "update";
-            Form_Update form_Update;
+            Form_Update form;
             if (xmlFileName == null)
             {
-                form_Update = new Form_Update(mySkinName);
-                form_Update.Text = "新UPDATE";
-                form_Update.Tag = class_WindowType;
+                form = new Form_Update(mySkinName);
+                form.Text = "新UPDATE";
+                form.Tag = class_WindowType;
             }
             else
             {
                 class_WindowType.XmlFileName = xmlFileName;
-                form_Update = new Form_Update(mySkinName, xmlFileName);
-                form_Update.Text = string.Format("UPDATE：{0}", xmlFileName);
-                form_Update.Tag = class_WindowType;
+                form = new Form_Update(mySkinName, xmlFileName);
+                form.Text = string.Format("UPDATE：{0}", xmlFileName);
+                form.Tag = class_WindowType;
             }
-            OpenSubForm(form_Update);
+            OpenSubForm(form);
         }
         public void OpenInsertWin(string xmlFileName)
         {
             Class_WindowType class_WindowType = new Class_WindowType();
             class_WindowType.WindowType = "insert";
-            Form_Insert form_Insert;
+            Form_Insert form;
             if (xmlFileName == null)
             {
-                form_Insert = new Form_Insert(mySkinName);
-                form_Insert.Text = "新INSERT";
-                form_Insert.Tag = class_WindowType;
+                form = new Form_Insert(mySkinName);
+                form.Text = "新INSERT";
+                form.Tag = class_WindowType;
             }
             else
             {
                 class_WindowType.XmlFileName = xmlFileName;
-                form_Insert = new Form_Insert(mySkinName, xmlFileName);
-                form_Insert.Text = string.Format("INSERT：{0}", xmlFileName);
-                form_Insert.Tag = class_WindowType;
+                form = new Form_Insert(mySkinName, xmlFileName);
+                form.Text = string.Format("INSERT：{0}", xmlFileName);
+                form.Tag = class_WindowType;
             }
-            OpenSubForm(form_Insert);
+            OpenSubForm(form);
         }
         public void OpenSelectWin(string xmlFileName)
         {
             Class_WindowType class_WindowType = new Class_WindowType();
             class_WindowType.WindowType = "select";
-            Form_Select form_Select;
+            Form_Select form;
             if (xmlFileName == null)
             {
-                form_Select = new Form_Select(mySkinName);
-                form_Select.Text = "新SELECT";
-                form_Select.Tag = class_WindowType;
+                form = new Form_Select(mySkinName);
+                form.Text = "新SELECT";
+                form.Tag = class_WindowType;
             }
             else
             {
                 class_WindowType.XmlFileName = xmlFileName;
-                form_Select = new Form_Select(mySkinName, xmlFileName);
-                form_Select.Text = string.Format("SELECT：{0}", xmlFileName);
-                form_Select.Tag = class_WindowType;
+                form = new Form_Select(mySkinName, xmlFileName);
+                form.Text = string.Format("SELECT：{0}", xmlFileName);
+                form.Tag = class_WindowType;
             }
-            OpenSubForm(form_Select);
+            OpenSubForm(form);
         }
         private void OpenHistoryWin()
         {
@@ -616,20 +616,22 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                         case "select":
                             PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
                             if (PageKey != null)
-                            {
                                 OpenSelectWin(PageKey);
-                            }
                             break;
                         case "insert":
                             PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
                             if (PageKey != null)
-                            {
                                 OpenInsertWin(PageKey);
-                            }
                             break;
                         case "update":
+                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
+                            if (PageKey != null)
+                                OpenUpdateWin(PageKey);
                             break;
                         case "delete":
+                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
+                            if (PageKey != null)
+                                OpenDeleteWin(PageKey);
                             break;
                         default:
                             PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
