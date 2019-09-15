@@ -147,7 +147,7 @@ namespace MDIDemo.PublicClass
                     class_InsertAllModel = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
                     class_InsertAllModel.class_Create.MethodId = returnKey;
                     class_InsertAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.SelectToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel))
+                    if ((true) && !this.InsertToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel))
                         returnKey = null;
                     break;
                 case "update":
@@ -156,16 +156,16 @@ namespace MDIDemo.PublicClass
                     class_UpdateAllModel = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
                     class_UpdateAllModel.class_Create.MethodId = returnKey;
                     class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.SelectToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))
+                    if ((true) && !this.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))
                         returnKey = null;
                     break;
                 case "delete":
                     returnKey = Class_Tool.getKeyId("DE");
                     Class_DeleteAllModel class_DeleteAllModel = new Class_DeleteAllModel();
-                    class_DeleteAllModel = this.FromXmlToUpdateObject<Class_DeleteAllModel>(xmlFileName);
+                    class_DeleteAllModel = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
                     class_DeleteAllModel.class_Create.MethodId = returnKey;
                     class_DeleteAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.SelectToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel))
+                    if ((true) && !this.DeleteToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel))
                         returnKey = null;
                     break;
                 default:

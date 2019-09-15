@@ -635,10 +635,8 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                             break;
                         default:
                             PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
-                            if (class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType) != null)
-                            {
+                            if (PageKey != null)
                                 OpenSelectWin(PageKey);
-                            }
                             break;
                     }
                 }
