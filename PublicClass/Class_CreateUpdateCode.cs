@@ -207,11 +207,11 @@ namespace MDIDemo.PublicClass
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
-                        , class_Field.FieldName
+                        , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
                         stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
-                        , class_Field.FieldName);
+                        , class_Field.ParaName);
                     if ((class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
                         stringBuilder.AppendFormat(", defaultValue = \"{0}\"", class_Field.FieldDefaultValue);
                     stringBuilder.Append(")");
@@ -221,17 +221,17 @@ namespace MDIDemo.PublicClass
                     else
                         stringBuilder.AppendFormat(" {0}"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    stringBuilder.AppendFormat(" {0}", class_Field.FieldName);
+                    stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
                 }
                 if (class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}Where\""
-                        , class_Field.FieldName
+                        , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
                         stringBuilder.AppendFormat("@RequestParam(value = \"{0}Where\""
-                        , class_Field.FieldName);
+                        , class_Field.ParaName);
                     if (class_Field.WhereIsNull)
                         stringBuilder.Append(", required = false");
                     if ((class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
@@ -243,7 +243,7 @@ namespace MDIDemo.PublicClass
                     else
                         stringBuilder.AppendFormat(" {0}"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    stringBuilder.AppendFormat(" {0}Where", class_Field.FieldName);
+                    stringBuilder.AppendFormat(" {0}Where", class_Field.ParaName);
                 }
             }
             stringBuilder.Append(") {\r\n");

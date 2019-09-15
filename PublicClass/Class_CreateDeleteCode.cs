@@ -187,11 +187,11 @@ namespace MDIDemo.PublicClass
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
-                        , class_Field.FieldName
+                        , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
                         stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
-                        , class_Field.FieldName);
+                        , class_Field.ParaName);
                     if (class_Field.WhereIsNull)
                         stringBuilder.Append(", required = false");
                     if ((class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
@@ -203,7 +203,7 @@ namespace MDIDemo.PublicClass
                     else
                         stringBuilder.AppendFormat(" {0}"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    stringBuilder.AppendFormat(" {0}", class_Field.FieldName);
+                    stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
                 }
             }
             stringBuilder.Append(") {\r\n");
@@ -729,7 +729,7 @@ namespace MDIDemo.PublicClass
             foreach (Class_Field class_Field in item.class_Fields)
             {
                 string FieldName = class_Field.FieldName;
-                string InParaFieldName = class_Field.ParaName + "Where";
+                string InParaFieldName = class_Field.ParaName;
 
                 #region Where
                 string IfLabel = null;
