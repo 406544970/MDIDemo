@@ -76,7 +76,7 @@ namespace MDIDemo.vou
             try
             {
                 if (xmlFileName != null)
-                    class_DeleteAllModel = class_PublicMethod.FromXmlToUpdateObject<Class_DeleteAllModel>(xmlFileName);
+                    class_DeleteAllModel = class_PublicMethod.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
                 if (class_DeleteAllModel == null)
                     class_DeleteAllModel = new Class_DeleteAllModel();
                 switch (class_DeleteAllModel.class_SelectDataBase.databaseType)
@@ -321,7 +321,7 @@ namespace MDIDemo.vou
         private void AddUseTableData(string TableName, string TableAlias, int PageSelectIndex, bool SelectSelectDefault)
         {
             if (this.MyXmlFileName != null)
-                class_DeleteAllModel = class_PublicMethod.FromXmlToUpdateObject<Class_DeleteAllModel>(this.MyXmlFileName);
+                class_DeleteAllModel = class_PublicMethod.FromXmlToDeleteObject<Class_DeleteAllModel>(this.MyXmlFileName);
             if (class_DeleteAllModel == null)
                 class_DeleteAllModel = new Class_DeleteAllModel();
             switch (class_DeleteAllModel.class_SelectDataBase.databaseType)
@@ -574,6 +574,8 @@ namespace MDIDemo.vou
                 class_Field.FieldIsKey = Convert.ToBoolean(dataRow["FieldIsKey"]);
                 class_Field.FieldIsAutoAdd = Convert.ToBoolean(dataRow["FieldIsAutoAdd"]);
 
+                class_Field.ParaName = dataRow["ParaName"].ToString();//映射参数名
+
                 class_Field.WhereSelect = Convert.ToBoolean(dataRow["WhereSelect"]);//重复判断选择
                 class_Field.WhereType = dataRow["WhereType"].ToString();//And Or
                 class_Field.LogType = dataRow["LogType"].ToString();// = > < like，固定值
@@ -671,36 +673,6 @@ namespace MDIDemo.vou
             }
             #endregion
 
-            int InsertCount = 0;
-            int WhereCount = 0;
-            #region Select字段非空验证
-            if (IsOk)
-            {
-                for (int i = 0; i < bandedGridViews.Length; i++)
-                {
-                    BandedGridView item = bandedGridViews[i];
-                    if (item.RowCount > 0)
-                    {
-                        for (int j = 0; j < item.RowCount; j++)
-                        {
-                            DataRow dataRow = item.GetDataRow(j);
-                            if (Convert.ToBoolean(dataRow["UpdateSelect"]))
-                                InsertCount++;
-                            if (Convert.ToBoolean(dataRow["WhereSelect"]))
-                                WhereCount++;
-                        }
-                    }
-                }
-                IsOk = InsertCount > 0 ? true : false;
-                if (!IsOk)
-                {
-                    MessageBox.Show("请选择Select字段！"
-                        , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.xtraTabControl3.SelectedTabPageIndex = 0;
-                }
-            }
-            #endregion
-
             #region 输入参数非空验证
             if (IsOk)
             {
@@ -728,24 +700,6 @@ namespace MDIDemo.vou
                 if (!IsOk)
                 {
                     this.xtraTabControl3.SelectedTabPageIndex = 0;
-                }
-            }
-            #endregion
-
-            #region Param类名非空验证
-            if (IsOk && WhereCount > 1)
-            {
-                BandedGridView bandedGridView = gridControl1.MainView as BandedGridView;
-                if (bandedGridView.RowCount > 0)
-                {
-                    if (this.textEdit99.Text == null || this.textEdit99.Text.Length == 0)
-                    {
-                        MessageBox.Show(string.Format("{0}类名不能为空！", "InPutParam")
-                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        IsOk = false;
-                        this.xtraTabControl3.SelectedTabPageIndex = 1;
-                        this.xtraTabControl8.SelectedTabPageIndex = 0;
-                    }
                 }
             }
             #endregion

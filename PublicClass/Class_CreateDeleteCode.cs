@@ -457,20 +457,6 @@ namespace MDIDemo.PublicClass
                     stringBuilder.AppendFormat(" {0} {1};\r\n"
                     , ReturnType
                     , class_Field.ParaName);
-                stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                stringBuilder.AppendFormat("{0} * {1}, Where字段\r\n", class_ToolSpace.GetSetSpaceCount(1), class_Field.FieldRemark);
-                stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                stringBuilder.AppendFormat("{0}private", class_ToolSpace.GetSetSpaceCount(1));
-                if (class_DeleteAllModel.class_Create.EnglishSign && Class_Tool.IsEnglishField(class_Field.ParaName))
-                    stringBuilder.Append(" transient");
-                if (class_Field.LogType.IndexOf("IN") > -1)
-                    stringBuilder.AppendFormat(" List<{0}> {1}Where;\r\n"
-                    , ReturnType
-                    , class_Field.ParaName);
-                else
-                    stringBuilder.AppendFormat(" {0} {1}Where;\r\n"
-                    , ReturnType
-                    , class_Field.ParaName);
                 FieldCount++;
             }
             if (FieldCount > 0)
@@ -496,21 +482,6 @@ namespace MDIDemo.PublicClass
                         , Class_Tool.GetFirstCodeLow(class_Field.ParaName));
                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.Append("}\r\n");
-                    if (class_Field.LogType.IndexOf("IN") > -1)
-                        stringBuilder.AppendFormat("{0}public List<{2}> get{1}Where(){{\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(1)
-                        , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
-                        , ReturnType);
-                    else
-                        stringBuilder.AppendFormat("{0}public {2} get{1}Where(){{\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(1)
-                    , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
-                    , ReturnType);
-                    stringBuilder.AppendFormat("{0}return {1}Where;\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2)
-                        , Class_Tool.GetFirstCodeLow(class_Field.ParaName));
-                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.Append("}\r\n");
                     #endregion
 
                     #region Set
@@ -527,23 +498,6 @@ namespace MDIDemo.PublicClass
                         , Class_Tool.GetFirstCodeLow(class_Field.ParaName)
                         , ReturnType);
                     stringBuilder.AppendFormat("{0}this.{1} = {1};\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2)
-                        , Class_Tool.GetFirstCodeLow(class_Field.ParaName));
-                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.Append("}\r\n");
-                    if (class_Field.LogType.IndexOf("IN") > -1)
-                        stringBuilder.AppendFormat("{0}public void set{1}Where(List<{3}> {2}Where){{\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(1)
-                        , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
-                        , Class_Tool.GetFirstCodeLow(class_Field.ParaName)
-                        , ReturnType);
-                    else
-                        stringBuilder.AppendFormat("{0}public void set{1}Where({3} {2}Where){{\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(1)
-                        , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
-                        , Class_Tool.GetFirstCodeLow(class_Field.ParaName)
-                        , ReturnType);
-                    stringBuilder.AppendFormat("{0}this.{1}Where = {1}Where;\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2)
                         , Class_Tool.GetFirstCodeLow(class_Field.ParaName));
                     stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
@@ -717,7 +671,6 @@ namespace MDIDemo.PublicClass
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            StringBuilder stringBuilderSet = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
 
             switch (class_DeleteAllModel.class_SelectDataBase.databaseType)
@@ -742,54 +695,21 @@ namespace MDIDemo.PublicClass
             }
             #region UpdateId
             stringBuilder.AppendFormat("{1}<!-- 注释：{0} -->\r\n", class_Sub.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}<update id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
+            stringBuilder.AppendFormat("{0}<delete id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
                 , class_DeleteAllModel.AllPackerName
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName);
             #endregion
 
-            #region Update Set
-            stringBuilder.AppendFormat("{0}UPDATE {1}\r\n"
+            #region DELETE
+            stringBuilder.AppendFormat("{0}DELETE FROM {1}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2)
                 , class_Sub.TableName);
-            int RepetitionCounter = 0;
-            int Counter = 0;
-            foreach (Class_Field class_Field in class_Sub.class_Fields)
-            {
-                bool IsAddField = false;
-                RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
-                if (!class_Field.FieldIsKey)
-                {
-                    IsAddField = true;
-                }
-                else
-                    IsAddField = !class_Field.FieldIsAutoAdd;
-
-                stringBuilderSet.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(3)
-                    , class_Field.ParaName);
-                if (IsAddField)
-                {
-                    stringBuilderSet.Append(class_ToolSpace.GetSetSpaceCount(4));
-                    stringBuilderSet.AppendFormat("{0} = #{{{1},jdbcType={2}}},\r\n"
-                        , class_Field.FieldName
-                        , class_Field.ParaName
-                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    Counter++;
-                }
-                stringBuilderSet.AppendFormat("{0}</if>\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(3));
-            }
             #endregion
 
-            stringBuilder.AppendFormat("{0}<set>\r\n"
-                , class_ToolSpace.GetSetSpaceCount(2));
-            stringBuilder.Append(stringBuilderSet.ToString().Substring(1));
-            stringBuilder.AppendFormat("{0}</set>\r\n"
-                , class_ToolSpace.GetSetSpaceCount(2));
             stringBuilder.Append(_GetMainWhereLable(class_InterFaceDataBase, Index));
-            stringBuilder.AppendFormat("{0}</update>\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}</delete>\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
             if (!class_Sub.IsAddXmlHead)
                 stringBuilder.Append("</mapper>\r\n");
