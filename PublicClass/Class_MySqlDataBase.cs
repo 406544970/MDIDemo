@@ -1010,14 +1010,14 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     case "Class_SelectAllModel":
                         OperateType = "select";
                         break;
-                    case "Class_DeleteAllModel":
-                        OperateType = "delete";
+                    case "Class_InsertAllModel":
+                        OperateType = "insert";
                         break;
                     case "Class_UpdateAllModel":
                         OperateType = "update";
                         break;
-                    case "Class_InsertAllModel":
-                        OperateType = "insert";
+                    case "Class_DeleteAllModel":
+                        OperateType = "delete";
                         break;
                     default:
                         break;
