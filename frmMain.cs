@@ -611,33 +611,27 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                 string PageKey = form_WindowSelect.PageKey;
                 if ((PageKey != null) && (PageKey.Length > 0))
                 {
-                    switch (form_WindowSelect.PageType)
+                    PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
+                    if (PageKey != null)
                     {
-                        case "select":
-                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
-                            if (PageKey != null)
+                        switch (form_WindowSelect.PageType)
+                        {
+                            case "select":
                                 OpenSelectWin(PageKey);
-                            break;
-                        case "insert":
-                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
-                            if (PageKey != null)
+                                break;
+                            case "insert":
                                 OpenInsertWin(PageKey);
-                            break;
-                        case "update":
-                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
-                            if (PageKey != null)
+                                break;
+                            case "update":
                                 OpenUpdateWin(PageKey);
-                            break;
-                        case "delete":
-                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
-                            if (PageKey != null)
+                                break;
+                            case "delete":
                                 OpenDeleteWin(PageKey);
-                            break;
-                        default:
-                            PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
-                            if (PageKey != null)
+                                break;
+                            default:
                                 OpenSelectWin(PageKey);
-                            break;
+                                break;
+                        }
                     }
                 }
             }
