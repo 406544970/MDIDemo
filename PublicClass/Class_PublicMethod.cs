@@ -64,6 +64,43 @@ namespace MDIDemo.PublicClass
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
+                case "Class_UpdateAllModel":
+                    {
+                        Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
+                        class_UpdateAllModel = t as Class_UpdateAllModel;
+                        class_PageInfomationMode.pageKey = class_UpdateAllModel.class_Create.MethodId;
+                        class_PageInfomationMode.projectId = "projectId";
+                        class_PageInfomationMode.pageType = "update";
+                        class_PageInfomationMode.pageVersion = 0;
+                        class_PageInfomationMode.createTime = System.DateTime.Now;
+                        class_PageInfomationMode.lastUpdateTime = class_PageInfomationMode.createTime;
+                        class_PageInfomationMode.createOperatorId = class_UpdateAllModel.class_Create.CreateMan;
+                        class_PageInfomationMode.doOperatorId = class_UpdateAllModel.class_Create.CreateDo;
+                        class_PageInfomationMode.frontOperatorId = class_UpdateAllModel.class_Create.CreateFrontDo;
+                        class_PageInfomationMode.finishCount = 0;
+                        class_PageInfomationMode.readOnly = class_UpdateAllModel.class_Create.ReadOnly;
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                    }
+                    break;
+                case "Class_DeleteAllModel":
+                    {
+                        SaveOk = true;
+                        //Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
+                        //class_UpdateAllModel = t as Class_UpdateAllModel;
+                        //class_PageInfomationMode.pageKey = class_UpdateAllModel.class_Create.MethodId;
+                        //class_PageInfomationMode.projectId = "projectId";
+                        //class_PageInfomationMode.pageType = "delete";
+                        //class_PageInfomationMode.pageVersion = 0;
+                        //class_PageInfomationMode.createTime = System.DateTime.Now;
+                        //class_PageInfomationMode.lastUpdateTime = class_PageInfomationMode.createTime;
+                        //class_PageInfomationMode.createOperatorId = class_UpdateAllModel.class_Create.CreateMan;
+                        //class_PageInfomationMode.doOperatorId = class_UpdateAllModel.class_Create.CreateDo;
+                        //class_PageInfomationMode.frontOperatorId = class_UpdateAllModel.class_Create.CreateFrontDo;
+                        //class_PageInfomationMode.finishCount = 0;
+                        //class_PageInfomationMode.readOnly = class_UpdateAllModel.class_Create.ReadOnly;
+                        //SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                    }
+                    break;
                 case "Class_DataBaseConDefault":
                 case "Class_SystemDefault":
                     SaveOk = true;

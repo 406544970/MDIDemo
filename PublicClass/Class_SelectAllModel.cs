@@ -466,6 +466,7 @@ namespace MDIDemo.PublicClass
                 HttpRequestType = "Post";
                 ReadOnly = false;
                 SwaggerSign = true;
+                Port = "8080";
             }
             [Browsable(true)]
             [Category("生成配置")]
@@ -512,6 +513,16 @@ namespace MDIDemo.PublicClass
             [ReadOnly(false)]
             [TypeConverter(typeof(ProjectNameTypeItem))] //使用自定义的属性下拉框
             public string SystemName
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
+            [DisplayName("启动端口")]
+            [Description("该实例启动的默认端口")]
+            [ReadOnly(false)]
+            [DefaultValue(8080)]
+            public string Port
             {
                 get; set;
             }

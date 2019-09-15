@@ -231,8 +231,10 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                             OpenInsertWin(PageKey);
                             break;
                         case "update":
+                            OpenUpdateWin(PageKey);
                             break;
                         case "delete":
+                            OpenDeleteWin(PageKey);
                             break;
                         default:
                             OpenSelectWin(PageKey);

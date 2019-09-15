@@ -798,8 +798,8 @@ namespace MDIDemo.PublicClass
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            StringBuilder stringBuilderField = new StringBuilder();
-            StringBuilder stringBuilderValue = new StringBuilder();
+            StringBuilder stringBuilderSet = new StringBuilder();
+            StringBuilder stringBuilderWhere = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
 
             switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
@@ -822,9 +822,9 @@ namespace MDIDemo.PublicClass
                     , class_UpdateAllModel.AllPackerName
                     , class_Sub.DaoClassName);
             }
-            #region SelectId
+            #region UpdateId
             stringBuilder.AppendFormat("{1}<!-- 注释：{0} -->\r\n", class_Sub.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}<insert id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
+            stringBuilder.AppendFormat("{0}<update id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
                 , class_UpdateAllModel.AllPackerName
@@ -832,7 +832,7 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region Insert Values
-            stringBuilder.AppendFormat("{0}INSERT INTO {1} (\r\n"
+            stringBuilder.AppendFormat("{0}UPDATE {1}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2)
                 , class_Sub.TableName);
             int RepetitionCounter = 0;
@@ -848,124 +848,48 @@ namespace MDIDemo.PublicClass
                 else
                     IsAddField = !class_Field.FieldIsAutoAdd;
 
-                if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
-                {
-                    stringBuilderField.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3)
-                        , class_Field.ParaName);
-                    stringBuilderValue.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3)
-                        , class_Field.ParaName);
-                }
+                stringBuilderSet.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(3)
+                    , class_Field.ParaName);
+                stringBuilderWhere.AppendFormat("{0}<if test=\"{1}Where != null\">\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(3)
+                    , class_Field.ParaName);
                 if (IsAddField)
                 {
-                    stringBuilderField.Append(class_ToolSpace.GetSetSpaceCount(4));
-                    stringBuilderValue.Append(class_ToolSpace.GetSetSpaceCount(4));
+                    stringBuilderSet.Append(class_ToolSpace.GetSetSpaceCount(4));
+                    stringBuilderWhere.Append(class_ToolSpace.GetSetSpaceCount(4));
                     if (Counter > 0)
                     {
-                        stringBuilderField.Append(",");
-                        stringBuilderValue.Append(",");
+                        stringBuilderSet.Append(",");
+                        stringBuilderWhere.Append(",");
                     }
-                    stringBuilderField.AppendFormat("{0}\r\n"
-                        , class_Field.FieldName);
-                    stringBuilderValue.AppendFormat("#{{{0},jdbcType={1}}}\r\n"
+                    stringBuilderSet.AppendFormat("{0} = #{{{1},jdbcType={2}}}\r\n"
+                        , class_Field.FieldName
+                        , class_Field.ParaName
+                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+
+                    stringBuilderWhere.AppendFormat("这是有问题{0} = #{{{1}Where,jdbcType={2}}}\r\n"
+                        , class_Field.FieldName
                         , class_Field.ParaName
                         , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     Counter++;
                 }
-                if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
-                {
-                    stringBuilderField.AppendFormat("{0}</if>\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3));
-                    stringBuilderValue.AppendFormat("{0}</if>\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3));
-                }
+                stringBuilderSet.AppendFormat("{0}</if>\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                stringBuilderWhere.AppendFormat("{0}</if>\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(3));
             }
             #endregion
 
-            stringBuilder.Append(stringBuilderField.ToString().Substring(1));
-            stringBuilder.AppendFormat("{0})\r\n", class_ToolSpace.GetSetSpaceCount(2));
-            stringBuilder.AppendFormat("{0}VALUES (\r\n", class_ToolSpace.GetSetSpaceCount(2));
-            stringBuilder.Append(stringBuilderValue.ToString().Substring(1));
-            stringBuilder.AppendFormat("{0})\r\n", class_ToolSpace.GetSetSpaceCount(2));
-            stringBuilder.AppendFormat("{0}</insert>\r\n", class_ToolSpace.GetSetSpaceCount(1));
-
-            #region 生成重复查询
-            if (RepetitionCounter > 0)
-            {
-                stringBuilder.Append("\r\n");
-                stringBuilder.AppendFormat("{1}<!-- 注释：重复检查功能,{0} -->\r\n", class_Sub.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
-                stringBuilder.AppendFormat("{0}<select id=\"{1}BeforeCheck\" resultType=\"java.lang.Integer\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(1)
-                    , class_Sub.MethodId
-                    , class_UpdateAllModel.AllPackerName
-                    , class_UpdateAllModel.class_SubList[Index].ParamClassName);
-                stringBuilder.AppendFormat("{0}SELECT COUNT(*) AS COUNTER\r\n{0}FROM {1}\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(2), class_Sub.TableName);
-                stringBuilder.AppendFormat("{0}<where>\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(2));
-                StringBuilder WhereBuilder = new StringBuilder();
-                foreach (Class_Field class_Field in class_Sub.class_Fields)
-                {
-                    if (class_Field.WhereSelect)
-                    {
-                        string MyWhereSql = null;
-                        if (class_Field.WhereIsNull)
-                            WhereBuilder.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
-                                , class_ToolSpace.GetSetSpaceCount(3)
-                                , class_Field.ParaName);
-                        MyWhereSql = string.Format("{0} {2} {1} "
-                            , class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 4 : 5)
-                            , class_Field.FieldName, class_Field.WhereType);
-                        if (class_Field.LogType.IndexOf("NULL") > -1)
-                        {
-                            MyWhereSql += string.Format("{0}\r\n", class_Field.LogType);
-                        }
-                        else
-                        {
-                            int LikeType = class_Field.LogType.IndexOf("Like") > -1 ? 1 : -100;
-                            if (class_Field.LogType.Equals("左Like"))
-                                LikeType = -1;
-                            if (class_Field.LogType.Equals("右Like"))
-                                LikeType = 1;
-                            if (class_Field.LogType.Equals("全Like"))
-                                LikeType = 0;
-                            MyWhereSql += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
-                            if (class_Field.WhereValue == "参数")
-                            {
-                                string XmlFieldString = string.Format("#{{{0},jdbcType={1}}}"
-                                    , class_Field.ParaName
-                                    , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                                if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
-                                    MyWhereSql += XmlFieldString;
-                                else
-                                    MyWhereSql += string.Format(class_InterFaceDataBase.GetLikeString(XmlFieldString, LikeType));
-                            }
-                            else
-                            {
-                                if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType))
-                                    MyWhereSql += string.Format("'{0}'", class_Field.WhereValue);
-                                else
-                                    MyWhereSql += string.Format("{0}", class_Field.WhereValue);
-                            }
-                            if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf("&") > -1))
-                                WhereBuilder.AppendFormat("{0}<![CDATA[{1}]]>", class_ToolSpace.GetSetSpaceCount(4), MyWhereSql.TrimStart());
-                            else
-                                WhereBuilder.Append(MyWhereSql);
-                            if (class_Field.WhereIsNull)
-                                WhereBuilder.AppendFormat("\r\n{0}</if>"
-                                    , class_ToolSpace.GetSetSpaceCount(3));
-                            WhereBuilder.Append("\r\n");
-                        }
-                    }
-                }
-                stringBuilder.Append(WhereBuilder.ToString());
-                stringBuilder.AppendFormat("{0}</where>\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.AppendFormat("{0}</select>\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(1));
-            }
-            #endregion
+            stringBuilder.AppendFormat("{0}<set>\r\n"
+                , class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.Append(stringBuilderSet.ToString().Substring(1));
+            stringBuilder.AppendFormat("{0}</set>\r\n"
+                , class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}<where>\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.Append(stringBuilderWhere.ToString().Substring(1));
+            stringBuilder.AppendFormat("{0}</where>\r\n", class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}</update>\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
             if (!class_Sub.IsAddXmlHead)
                 stringBuilder.Append("</mapper>\r\n");
