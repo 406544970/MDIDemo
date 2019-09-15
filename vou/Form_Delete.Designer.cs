@@ -119,10 +119,8 @@
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.bandedGridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn27 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.bandedGridColumn15 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit8 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -280,7 +278,6 @@
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -2256,7 +2253,6 @@
             this.bandedGridView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand7,
             this.gridBand1,
-            this.gridBand4,
             this.gridBand2,
             this.gridBand3});
             this.bandedGridView1.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
@@ -2268,8 +2264,6 @@
             this.bandedGridColumn6,
             this.bandedGridColumn7,
             this.bandedGridColumn8,
-            this.bandedGridColumn9,
-            this.bandedGridColumn13,
             this.bandedGridColumn15,
             this.bandedGridColumn16,
             this.bandedGridColumn17,
@@ -2416,18 +2410,6 @@
             this.repositoryItemCheckEdit3.AutoHeight = false;
             this.repositoryItemCheckEdit3.Name = "repositoryItemCheckEdit3";
             // 
-            // bandedGridColumn9
-            // 
-            this.bandedGridColumn9.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn9.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn9.Caption = "选择";
-            this.bandedGridColumn9.ColumnEdit = this.repositoryItemCheckEdit4;
-            this.bandedGridColumn9.FieldName = "UpdateSelect";
-            this.bandedGridColumn9.Name = "bandedGridColumn9";
-            this.bandedGridColumn9.OptionsColumn.FixedWidth = true;
-            this.bandedGridColumn9.Visible = true;
-            this.bandedGridColumn9.Width = 60;
-            // 
             // repositoryItemCheckEdit4
             // 
             this.repositoryItemCheckEdit4.AutoHeight = false;
@@ -2443,18 +2425,6 @@
             this.bandedGridColumn27.OptionsColumn.AllowMove = false;
             this.bandedGridColumn27.OptionsColumn.AllowSize = false;
             this.bandedGridColumn27.Visible = true;
-            // 
-            // bandedGridColumn13
-            // 
-            this.bandedGridColumn13.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumn13.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumn13.Caption = "去空格";
-            this.bandedGridColumn13.ColumnEdit = this.repositoryItemCheckEdit6;
-            this.bandedGridColumn13.FieldName = "TrimSign";
-            this.bandedGridColumn13.Name = "bandedGridColumn13";
-            this.bandedGridColumn13.OptionsColumn.FixedWidth = true;
-            this.bandedGridColumn13.Visible = true;
-            this.bandedGridColumn13.Width = 100;
             // 
             // repositoryItemCheckEdit6
             // 
@@ -3983,21 +3953,6 @@
             this.gridBand1.VisibleIndex = 1;
             this.gridBand1.Width = 580;
             // 
-            // gridBand4
-            // 
-            this.gridBand4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.gridBand4.AppearanceHeader.Options.UseFont = true;
-            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand4.Caption = "SET";
-            this.gridBand4.Columns.Add(this.bandedGridColumn9);
-            this.gridBand4.Columns.Add(this.bandedGridColumn13);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.OptionsBand.AllowMove = false;
-            this.gridBand4.OptionsBand.FixedWidth = true;
-            this.gridBand4.VisibleIndex = 2;
-            this.gridBand4.Width = 160;
-            // 
             // gridBand2
             // 
             this.gridBand2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -4016,7 +3971,7 @@
             this.gridBand2.OptionsBand.AllowMove = false;
             this.gridBand2.OptionsBand.FixedWidth = true;
             this.gridBand2.RowCount = 2;
-            this.gridBand2.VisibleIndex = 3;
+            this.gridBand2.VisibleIndex = 2;
             this.gridBand2.Width = 530;
             // 
             // gridBand3
@@ -4041,7 +3996,7 @@
             this.gridBand3.OptionsBand.AllowMove = false;
             this.gridBand3.OptionsBand.FixedWidth = true;
             this.gridBand3.RowCount = 2;
-            this.gridBand3.VisibleIndex = 4;
+            this.gridBand3.VisibleIndex = 3;
             this.gridBand3.Width = 849;
             // 
             // Form_Delete
@@ -4418,12 +4373,10 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn8;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
         private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn13;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn15;
@@ -4478,7 +4431,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit16;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
     }

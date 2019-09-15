@@ -37,6 +37,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -53,7 +54,6 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -155,6 +155,14 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "前端工程师";
+            this.gridColumn7.FieldName = "frontOperatorId";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 4;
+            // 
             // gridColumn5
             // 
             this.gridColumn5.Caption = "是否只读";
@@ -188,6 +196,7 @@
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.gridControl2.DoubleClick += new System.EventHandler(this.simpleButton1_Click);
             // 
             // gridView2
             // 
@@ -213,6 +222,7 @@
             this.gridControl3.TabIndex = 1;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
+            this.gridControl3.DoubleClick += new System.EventHandler(this.simpleButton1_Click);
             // 
             // gridView3
             // 
@@ -289,14 +299,6 @@
             this.splitterControl1.Size = new System.Drawing.Size(1019, 5);
             this.splitterControl1.TabIndex = 3;
             this.splitterControl1.TabStop = false;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "前端工程师";
-            this.gridColumn7.FieldName = "frontOperatorId";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
             // 
             // Form_WindowSelect
             // 
