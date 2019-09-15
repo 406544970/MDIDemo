@@ -794,6 +794,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                         {
                                             row["LogType"] = "=";
                                             row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
+                                            row["WhereSelect"] = true;
                                             row["WhereType"] = "AND";
                                             row["WhereValue"] = "参数";
                                             row["WhereTrim"] = true;
