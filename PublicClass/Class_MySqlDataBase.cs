@@ -530,7 +530,7 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             break;
                         case "update":
                             {
-                                #region 加入自定义Insert列
+                                #region 加入自定义Update列
                                 DataColumn UpdateSelect = new DataColumn("UpdateSelect", typeof(bool));//SET选择
                                 DataColumn ParaName = new DataColumn("ParaName", typeof(string));
                                 DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));//是否去空格
@@ -590,7 +590,65 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                             }
                             break;
                         case "delete":
-                            //mySelect = this.class_AllModel as Class_SelectAllModel;
+                            {
+                                #region 加入自定义Delete列
+                                DataColumn UpdateSelect = new DataColumn("UpdateSelect", typeof(bool));//SET选择
+                                DataColumn ParaName = new DataColumn("ParaName", typeof(string));
+                                DataColumn TrimSign = new DataColumn("TrimSign", typeof(bool));//是否去空格
+
+                                DataColumn WhereSelect = new DataColumn("WhereSelect", typeof(bool));//重复判断选择
+                                DataColumn WhereType = new DataColumn("WhereType", typeof(string));//And Or
+                                DataColumn LogType = new DataColumn("LogType", typeof(string));// = >< like，固定值
+                                DataColumn WhereValue = new DataColumn("WhereValue", typeof(string));
+                                DataColumn WhereTrim = new DataColumn("WhereTrim", typeof(bool));//去空格
+                                DataColumn WhereIsNull = new DataColumn("WhereIsNull", typeof(bool));//Where条件是否可为空
+
+                                DataColumn FrontSelect = new DataColumn("FrontSelect", typeof(bool));//是否页面显示
+                                DataColumn LabelCaption = new DataColumn("LabelCaption", typeof(string));//标签内容
+                                DataColumn IsMust = new DataColumn("IsMust", typeof(bool));//是否为必填项
+                                DataColumn CompomentType = new DataColumn("CompomentType", typeof(string));//控件类型
+                                DataColumn Hint = new DataColumn("Hint", typeof(string));//提示
+                                DataColumn DefaultValue = new DataColumn("DefaultValue", typeof(string));//默认值
+                                DataColumn SortNo = new DataColumn("SortNo", typeof(Int32));//出现顺序
+                                DataColumn ValueId = new DataColumn("ValueId", typeof(string));//值ID
+                                DataColumn ReadOnly = new DataColumn("ReadOnly", typeof(bool));//是否只读
+                                DataColumn CheckType = new DataColumn("CheckType", typeof(string));//校验类型
+                                DataColumn ClassTitle = new DataColumn("ClassTitle", typeof(string));//分类标题
+
+                                UpdateSelect.DefaultValue = true;
+                                TrimSign.DefaultValue = true;
+                                WhereSelect.DefaultValue = false;
+                                WhereTrim.DefaultValue = false;
+                                WhereIsNull.DefaultValue = true;
+                                ReadOnly.DefaultValue = false;
+
+                                FrontSelect.DefaultValue = true;
+                                IsMust.DefaultValue = true;
+
+                                dataTable.Columns.Add(UpdateSelect);
+                                dataTable.Columns.Add(ParaName);
+                                dataTable.Columns.Add(TrimSign);
+
+                                dataTable.Columns.Add(WhereSelect);
+                                dataTable.Columns.Add(WhereType);
+                                dataTable.Columns.Add(LogType);
+                                dataTable.Columns.Add(WhereValue);
+                                dataTable.Columns.Add(WhereTrim);
+                                dataTable.Columns.Add(WhereIsNull);
+
+                                dataTable.Columns.Add(FrontSelect);
+                                dataTable.Columns.Add(IsMust);
+                                dataTable.Columns.Add(LabelCaption);
+                                dataTable.Columns.Add(CompomentType);
+                                dataTable.Columns.Add(Hint);
+                                dataTable.Columns.Add(DefaultValue);
+                                dataTable.Columns.Add(SortNo);
+                                dataTable.Columns.Add(ValueId);
+                                dataTable.Columns.Add(ReadOnly);
+                                dataTable.Columns.Add(CheckType);
+                                dataTable.Columns.Add(ClassTitle);
+                                #endregion
+                            }
                             break;
                         default:
                             break;
@@ -814,6 +872,60 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                                     }
                                     break;
                                 case "delete":
+                                    {
+                                        Class_DeleteAllModel.Class_Sub class_CurrentPage = new Class_DeleteAllModel.Class_Sub();
+                                        if ((mySelect as Class_DeleteAllModel).class_SubList.Count > PageSelectIndex)
+                                            class_CurrentPage = (mySelect as Class_DeleteAllModel).class_SubList[PageSelectIndex];
+                                        if ((mySelect as Class_DeleteAllModel).class_SubList.Count > PageSelectIndex && (mySelect as Class_DeleteAllModel).class_SubList[PageSelectIndex].class_Fields.Count > 0)
+                                        {
+                                            int FindIndex = class_CurrentPage.class_Fields.FindIndex(a => a.FieldName.Equals(myFieldName));
+                                            if (FindIndex > -1)
+                                            {
+                                                row["UpdateSelect"] = class_CurrentPage.class_Fields[FindIndex].UpdateSelect;
+                                                row["ParaName"] = class_CurrentPage.class_Fields[FindIndex].ParaName == null ? row["FieldName"] : class_CurrentPage.class_Fields[FindIndex].ParaName;
+                                                row["TrimSign"] = class_CurrentPage.class_Fields[FindIndex].TrimSign;
+                                                row["WhereSelect"] = class_CurrentPage.class_Fields[FindIndex].WhereSelect;
+                                                row["WhereType"] = class_CurrentPage.class_Fields[FindIndex].WhereType;
+                                                row["LogType"] = class_CurrentPage.class_Fields[FindIndex].LogType;
+                                                row["WhereValue"] = class_CurrentPage.class_Fields[FindIndex].WhereValue;
+                                                row["WhereTrim"] = class_CurrentPage.class_Fields[FindIndex].WhereTrim;
+                                                row["WhereIsNull"] = class_CurrentPage.class_Fields[FindIndex].WhereIsNull;
+
+                                                row["FrontSelect"] = class_CurrentPage.class_Fields[FindIndex].FrontSelect;
+                                                row["IsMust"] = class_CurrentPage.class_Fields[FindIndex].IsMust;
+                                                row["LabelCaption"] = class_CurrentPage.class_Fields[FindIndex].LabelCaption;
+                                                row["CompomentType"] = class_CurrentPage.class_Fields[FindIndex].CompomentType;
+                                                row["Hint"] = class_CurrentPage.class_Fields[FindIndex].Hint;
+                                                row["DefaultValue"] = class_CurrentPage.class_Fields[FindIndex].DefaultValue;
+                                                row["SortNo"] = class_CurrentPage.class_Fields[FindIndex].SortNo;
+                                                row["ValueId"] = class_CurrentPage.class_Fields[FindIndex].ValueId;
+                                                row["ReadOnly"] = class_CurrentPage.class_Fields[FindIndex].ReadOnly;
+                                                row["CheckType"] = class_CurrentPage.class_Fields[FindIndex].CheckType;
+                                                IsDefault = false;
+                                            }
+                                        }
+                                        if (IsDefault)
+                                        {
+                                            row["LogType"] = "=";
+                                            row["ParaName"] = Class_Tool.GetFirstCodeLow(row["FieldName"].ToString());
+                                            row["WhereSelect"] = true;
+                                            row["WhereType"] = "AND";
+                                            row["WhereValue"] = "参数";
+                                            row["WhereTrim"] = true;
+                                            row["SortNo"] = Counter++;
+                                            switch (row["FieldName"].ToString())
+                                            {
+                                                case "worktime":
+                                                    break;
+                                                case "stopSign":
+                                                    break;
+                                                case "sortNo":
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                    }
                                     break;
                                 default:
                                     break;
@@ -906,8 +1018,8 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
                     case "Class_SelectAllModel":
                         OperateType = "select";
                         break;
-                    case "Class_DelectAllModel":
-                        OperateType = "delect";
+                    case "Class_DeleteAllModel":
+                        OperateType = "delete";
                         break;
                     case "Class_UpdateAllModel":
                         OperateType = "update";

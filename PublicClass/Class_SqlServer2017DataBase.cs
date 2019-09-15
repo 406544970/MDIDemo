@@ -581,7 +581,7 @@ namespace MDIDemo.PublicClass
                         OperateType = "select";
                         break;
                     case "Class_delectAllModel":
-                        OperateType = "delect";
+                        OperateType = "delete";
                         break;
                     case "Class_updateAllModel":
                         OperateType = "update";
