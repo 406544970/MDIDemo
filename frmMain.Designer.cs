@@ -1453,10 +1453,11 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             // 
             // barButtonItem8
             // 
-            this.barButtonItem8.Caption = "数据库链接";
+            this.barButtonItem8.Caption = "数据库设置";
             this.barButtonItem8.Id = 46;
             this.barButtonItem8.ImageOptions.ImageIndex = 336;
             this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
             // barButtonItem11
             // 

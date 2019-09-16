@@ -2457,7 +2457,7 @@ namespace MDIDemo.vou
 
             if (class_PublicMethod.DataBaseDefaultValueToXml("DataBaseDefaultValues", class_DataBaseConDefault))
             {
-                this.DisplayText("已数据库连接默认值，保存到本地。");
+                this.DisplayText("已将数据库连接默认值，保存到本地。");
             }
         }
 

@@ -286,11 +286,11 @@
     <Compile Include="vou\Form_SelectField.Designer.cs">
       <DependentUpon>Form_SelectField.cs</DependentUpon>
     </Compile>
-    <Compile Include="vou\Form_test.cs">
+    <Compile Include="vou\Form_DataBaseDefault.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vou\Form_test.Designer.cs">
-      <DependentUpon>Form_test.cs</DependentUpon>
+    <Compile Include="vou\Form_DataBaseDefault.Designer.cs">
+      <DependentUpon>Form_DataBaseDefault.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form_DownLoad.resx">
       <DependentUpon>Form_DownLoad.cs</DependentUpon>
@@ -332,8 +332,8 @@
     <EmbeddedResource Include="vou\Form_SelectField.resx">
       <DependentUpon>Form_SelectField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vou\Form_test.resx">
-      <DependentUpon>Form_test.cs</DependentUpon>
+    <EmbeddedResource Include="vou\Form_DataBaseDefault.resx">
+      <DependentUpon>Form_DataBaseDefault.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
