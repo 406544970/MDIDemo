@@ -744,6 +744,25 @@ namespace MDIDemo.PublicClass
                 else
                     stringBuilder.AppendFormat(" {0}();\r\n"
                         , class_Sub.MethodId);
+
+                #region 加入汇总代码
+                if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure
+                && (class_SelectAllModel.ReturnStructureType == 2
+                || class_SelectAllModel.ReturnStructureType == 3))
+                {
+                    stringBuilder.AppendFormat("\r\n{0}*\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                        , class_Sub.MethodContent);
+                    stringBuilder.AppendFormat("{0} * @param oldSql 原始SQL语句\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                        , class_Sub.ServiceInterFaceReturnRemark);
+                    stringBuilder.AppendFormat("{0} \r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0}LinkedHashMap {1}Total(@Param(\"oldSql\") String oldSql);\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , class_Sub.MethodId);
+                }
+                #endregion
             }
             stringBuilder.Append("}\r\n");
 
@@ -933,7 +952,10 @@ namespace MDIDemo.PublicClass
             #region 加入汇总
             if (AddTotal)
             {
-                if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2))
+                if (class_Sub.ServiceInterFaceReturnCount > 0
+                    && class_SelectAllModel.ReturnStructure
+                    && (class_SelectAllModel.ReturnStructureType == 2
+                    || class_SelectAllModel.ReturnStructureType == 3))
                 {
                     stringBuilder.AppendFormat("\r\n\r\n{0}SELECT\r\n", class_ToolSpace.GetSetSpaceCount(2));
                     Counter = 0;
@@ -1299,7 +1321,9 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}</select>\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
             #region 加入汇总代码
-            if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2))
+            if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure
+                && (class_SelectAllModel.ReturnStructureType == 2
+                || class_SelectAllModel.ReturnStructureType == 3))
             {
                 stringBuilder.AppendFormat("\r\n{1}<!-- 注释：{0}汇总 -->\r\n", class_Sub.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
                 stringBuilder.AppendFormat("{0}<select id=\"{1}Total\" parameterType=\"java.lang.String\" resultType=\"java.util.LinkedHashMap\">\r\n"
@@ -1314,7 +1338,14 @@ namespace MDIDemo.PublicClass
                     string AliasName = item.AliasName;
                     foreach (Class_Field class_Field in item.class_Fields)
                     {
-                        if (class_Field.SelectSelect && !(class_Field.CaseWhen != null && class_Field.CaseWhen.Length > 0) && !(class_Field.FunctionName != null && class_Field.FunctionName.Length > 0) && class_Field.TotalFunctionName != null && class_Field.TotalFunctionName.Length > 0 && (class_Field.FieldType.Equals("int") || class_Field.FieldType.Equals("tinyint") || class_Field.FieldType.Equals("decimal") || class_Field.FieldType.Equals("date") || class_Field.FieldType.Equals("datetime")))
+                        if (class_Field.SelectSelect
+                            && !(class_Field.CaseWhen != null && class_Field.CaseWhen.Length > 0)
+                            && !(class_Field.FunctionName != null && class_Field.FunctionName.Length > 0)
+                            && class_Field.TotalFunctionName != null
+                            && class_Field.TotalFunctionName.Length > 0
+                            && (class_Field.FieldType.Equals("int") || class_Field.FieldType.Equals("tinyint")
+                            || class_Field.FieldType.Equals("decimal") || class_Field.FieldType.Equals("date")
+                            || class_Field.FieldType.Equals("datetime")))
                         {
                             string MyFieldName = null;
                             if (class_SelectAllModel.GetHaveSameFieldName(class_Field.ParaName, CurPageIndex))
@@ -1506,7 +1537,10 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}{1} {2};\r\n", class_ToolSpace.GetSetSpaceCount(1)
             , class_Sub.DaoClassName
             , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
-            if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2))
+            if (class_Sub.ServiceInterFaceReturnCount > 0
+                && class_SelectAllModel.ReturnStructure
+                && (class_SelectAllModel.ReturnStructureType == 3
+                || class_SelectAllModel.ReturnStructureType == 2))
             {
                 stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
                 stringBuilder.AppendFormat("{0}SqlSessionFactory sqlSessionFactory;\r\n", class_ToolSpace.GetSetSpaceCount(1));
@@ -1610,128 +1644,128 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append("}\r\n");
 
             #region 加入汇总代码
-            if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure)
+            if (class_Sub.ServiceInterFaceReturnCount > 0
+                && class_SelectAllModel.ReturnStructure
+                && (class_SelectAllModel.ReturnStructureType == 2
+                || class_SelectAllModel.ReturnStructureType == 3))
             {
-                if (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2)
+                stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                    , class_Sub.MethodContent);
+                class_WhereFields = _GetParameterType();
+                if (class_WhereFields != null && class_WhereFields.Count > 0)
                 {
-                    stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                    if (class_WhereFields.Count > 1)
+                    {
+                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
                         , class_Sub.MethodContent);
-                    class_WhereFields = _GetParameterType();
-                    if (class_WhereFields != null && class_WhereFields.Count > 0)
-                    {
-                        if (class_WhereFields.Count > 1)
-                        {
-                            stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(1)
-                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
-                            , class_Sub.MethodContent);
-                        }
-                        else
-                        {
-                            stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(1)
-                            , Class_Tool.GetFirstCodeLow(class_WhereFields[0].OutFieldName)
-                            , class_WhereFields[0].FieldRemark);
-                        }
-                    }
-                    stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
-                        , class_Sub.ServiceInterFaceReturnRemark);
-                    stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0}@Override\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0}public LinkedHashMap"
-                        , class_ToolSpace.GetSetSpaceCount(1));
-                    if (class_WhereFields != null && class_WhereFields.Count > 0)
-                    {
-                        if (class_WhereFields.Count > 1)
-                        {
-                            stringBuilder.AppendFormat(" {0}Total({1} {2})"
-                                , class_Sub.MethodId
-                                , class_Sub.ParamClassName
-                                , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
-                        }
-                        else
-                        {
-                            if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
-                                stringBuilder.AppendFormat(" {0}Total(List<{1}> {2})"
-                                , class_Sub.MethodId
-                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
-                                , class_WhereFields[0].OutFieldName);
-                            else
-                                stringBuilder.AppendFormat(" {0}Total({1} {2})"
-                                , class_Sub.MethodId
-                                , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
-                                , class_WhereFields[0].OutFieldName);
-                        }
                     }
                     else
-                        stringBuilder.AppendFormat(" {0}Total()"
-                            , class_Sub.MethodId);
-                    stringBuilder.Append(" {\r\n");
-                    stringBuilder.AppendFormat("{0}mybatisSqlHelper = new MybatisSqlHelper(this.sqlSessionFactory);\r\n", class_ToolSpace.GetSetSpaceCount(2));
-                    stringBuilder.AppendFormat("{0}String mapperSql;\r\n", class_ToolSpace.GetSetSpaceCount(2));
-
-                    if (class_WhereFields != null && class_WhereFields.Count > 0)
                     {
-                        if (class_WhereFields.Count > 1)
+                        stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeLow(class_WhereFields[0].OutFieldName)
+                        , class_WhereFields[0].FieldRemark);
+                    }
+                }
+                stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                    , class_Sub.ServiceInterFaceReturnRemark);
+                stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}@Override\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}public LinkedHashMap"
+                    , class_ToolSpace.GetSetSpaceCount(1));
+                if (class_WhereFields != null && class_WhereFields.Count > 0)
+                {
+                    if (class_WhereFields.Count > 1)
+                    {
+                        stringBuilder.AppendFormat(" {0}Total({1} {2})"
+                            , class_Sub.MethodId
+                            , class_Sub.ParamClassName
+                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+                    }
+                    else
+                    {
+                        if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
+                            stringBuilder.AppendFormat(" {0}Total(List<{1}> {2})"
+                            , class_Sub.MethodId
+                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                            , class_WhereFields[0].OutFieldName);
+                        else
+                            stringBuilder.AppendFormat(" {0}Total({1} {2})"
+                            , class_Sub.MethodId
+                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                            , class_WhereFields[0].OutFieldName);
+                    }
+                }
+                else
+                    stringBuilder.AppendFormat(" {0}Total()"
+                        , class_Sub.MethodId);
+                stringBuilder.Append(" {\r\n");
+                stringBuilder.AppendFormat("{0}mybatisSqlHelper = new MybatisSqlHelper(this.sqlSessionFactory);\r\n", class_ToolSpace.GetSetSpaceCount(2));
+                stringBuilder.AppendFormat("{0}String mapperSql;\r\n", class_ToolSpace.GetSetSpaceCount(2));
+
+                if (class_WhereFields != null && class_WhereFields.Count > 0)
+                {
+                    if (class_WhereFields.Count > 1)
+                    {
+                        stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", {4});\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , class_SelectAllModel.AllPackerName
+                            , class_Sub.DaoClassName
+                            , class_Sub.MethodId
+                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+                    }
+                    else
+                    {
+                        if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
                         {
                             stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", {4});\r\n"
                                 , class_ToolSpace.GetSetSpaceCount(2)
                                 , class_SelectAllModel.AllPackerName
                                 , class_Sub.DaoClassName
                                 , class_Sub.MethodId
-                                , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+                                , class_WhereFields[0].OutFieldName);
                         }
                         else
                         {
-                            if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
-                            {
-                                stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", {4});\r\n"
-                                    , class_ToolSpace.GetSetSpaceCount(2)
-                                    , class_SelectAllModel.AllPackerName
-                                    , class_Sub.DaoClassName
-                                    , class_Sub.MethodId
-                                    , class_WhereFields[0].OutFieldName);
-                            }
-                            else
-                            {
-                                stringBuilder.AppendFormat("{0}if ({1} != null)"
-                                    , class_ToolSpace.GetSetSpaceCount(2)
-                                    , class_WhereFields[0].OutFieldName);
-                                stringBuilder.Append(" {\r\n");
-                                stringBuilder.AppendFormat("{0}Map map = new HashMap();\r\n", class_ToolSpace.GetSetSpaceCount(3));
-                                stringBuilder.AppendFormat("{0}map.put(\"{1}\",{1});\r\n"
-                                    , class_ToolSpace.GetSetSpaceCount(3)
-                                    , class_WhereFields[0].OutFieldName);
-                                stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", map);\r\n"
-                                    , class_ToolSpace.GetSetSpaceCount(3)
-                                    , class_SelectAllModel.AllPackerName
-                                    , class_Sub.DaoClassName
-                                    , class_Sub.MethodId);
-                                stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "}\r\n");
-                                stringBuilder.AppendFormat("{0}else\r\n", class_ToolSpace.GetSetSpaceCount(2));
-                                stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", null);\r\n"
-                                    , class_ToolSpace.GetSetSpaceCount(3)
-                                    , class_SelectAllModel.AllPackerName
-                                    , class_Sub.DaoClassName
-                                    , class_Sub.MethodId);
-                            }
+                            stringBuilder.AppendFormat("{0}if ({1} != null)"
+                                , class_ToolSpace.GetSetSpaceCount(2)
+                                , class_WhereFields[0].OutFieldName);
+                            stringBuilder.Append(" {\r\n");
+                            stringBuilder.AppendFormat("{0}Map map = new HashMap();\r\n", class_ToolSpace.GetSetSpaceCount(3));
+                            stringBuilder.AppendFormat("{0}map.put(\"{1}\",{1});\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3)
+                                , class_WhereFields[0].OutFieldName);
+                            stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", map);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3)
+                                , class_SelectAllModel.AllPackerName
+                                , class_Sub.DaoClassName
+                                , class_Sub.MethodId);
+                            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2) + "}\r\n");
+                            stringBuilder.AppendFormat("{0}else\r\n", class_ToolSpace.GetSetSpaceCount(2));
+                            stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", null);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3)
+                                , class_SelectAllModel.AllPackerName
+                                , class_Sub.DaoClassName
+                                , class_Sub.MethodId);
                         }
                     }
-                    else
-                        stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", null);\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(2)
-                            , class_SelectAllModel.AllPackerName
-                            , class_Sub.DaoClassName
-                            , class_Sub.MethodId);
-
-
-                    stringBuilder.AppendFormat("{0}return {1}.{2}Total(mapperSql);\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2)
-                        , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName)
-                        , class_Sub.MethodId);
-                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
                 }
+                else
+                    stringBuilder.AppendFormat("{0}mapperSql = mybatisSqlHelper.getNamespaceSql(\"{1}.dao.{2}.{3}\", null);\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(2)
+                        , class_SelectAllModel.AllPackerName
+                        , class_Sub.DaoClassName
+                        , class_Sub.MethodId);
+
+
+                stringBuilder.AppendFormat("{0}return {1}.{2}Total(mapperSql);\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(2)
+                    , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName)
+                    , class_Sub.MethodId);
+                stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
             }
             #endregion
 
@@ -1837,22 +1871,45 @@ namespace MDIDemo.PublicClass
                     , class_Sub.MethodId);
 
             #region 加入汇总代码
-            if (class_Sub.ServiceInterFaceReturnCount > 0 && class_SelectAllModel.ReturnStructure)
+            if (class_Sub.ServiceInterFaceReturnCount > 0
+                && class_SelectAllModel.ReturnStructure
+                && (class_SelectAllModel.ReturnStructureType == 2 
+                || class_SelectAllModel.ReturnStructureType == 3))
             {
-                if (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2)
+                stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                    , class_Sub.MethodContent);
+                stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                    , class_Sub.ServiceInterFaceReturnRemark);
+                stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}LinkedHashMap"
+                    , class_ToolSpace.GetSetSpaceCount(1));
+                if (class_WhereFields != null && class_WhereFields.Count > 0)
                 {
-                    stringBuilder.AppendFormat("\r\n{0}*\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
-                        , class_Sub.MethodContent);
-                    stringBuilder.AppendFormat("{0} * @param oldSql 原始SQL语句\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
-                        , class_Sub.ServiceInterFaceReturnRemark);
-                    stringBuilder.AppendFormat("{0} \r\n", class_ToolSpace.GetSetSpaceCount(1));
-                    stringBuilder.AppendFormat("{0}LinkedHashMap {1}Total(@Param(\"oldSql\") String oldSql);\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(1)
-                        , class_Sub.MethodId);
+                    if (class_WhereFields.Count > 1)
+                    {
+                        stringBuilder.AppendFormat(" {0}Total({1} {2})"
+                            , class_Sub.MethodId
+                            , class_Sub.ParamClassName
+                            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+                    }
+                    else
+                    {
+                        if (class_WhereFields[0].FieldLogType.IndexOf("IN") > -1)
+                            stringBuilder.AppendFormat(" {0}Total(List<{1}> {2})"
+                            , class_Sub.MethodId
+                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                            , class_WhereFields[0].OutFieldName);
+                        else
+                            stringBuilder.AppendFormat(" {0}Total({1} {2})"
+                            , class_Sub.MethodId
+                            , Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_WhereFields[0].LogType))
+                            , class_WhereFields[0].OutFieldName);
+                    }
                 }
+                else
+                    stringBuilder.AppendFormat(" {0}Total();\r\n"
+                        , class_Sub.MethodId);
             }
             #endregion
 
