@@ -348,7 +348,14 @@ namespace MDIDemo.vou
 
             #region TextEdit
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
-            class_SetTextEdit.SetTextEdit(this.textEdit19);
+            class_SetTextEdit.SetTextEdit(this.textEdit19, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit99, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit100, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit101, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit102, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit103, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit54, Color.LightGreen);
+
             class_SetTextEdit.SetTextEdit(this.textEdit25);
             class_SetTextEdit.SetTextEdit(this.textEdit91);
             class_SetTextEdit.SetTextEdit(this.textEdit93);
@@ -363,28 +370,21 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit61, Color.Yellow);
             class_SetTextEdit.SetTextEdit(this.textEdit57, Color.Yellow);
 
-            class_SetTextEdit.SetTextEdit(this.textEdit14, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit15, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit16, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit20, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit22, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit31, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit41, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit46, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit47, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit73, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit82, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit99, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit100, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit19, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit101, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit54, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit102, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit103, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit97, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit95, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit91, Color.SkyBlue);
-            class_SetTextEdit.SetTextEdit(this.textEdit93, Color.SkyBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit14, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit15, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit16, Color.LightBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit20, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit22, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit31, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit41, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit46, Color.LightBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit47, Color.LightBlue);
+            class_SetTextEdit.SetTextEdit(this.textEdit73, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit82, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit97, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit95, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit91, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit93, Color.LightGreen);
 
             class_SetTextEdit.SetTextEdit(this.textEdit17, true, Color.GreenYellow);
             class_SetTextEdit.SetTextEdit(this.textEdit1, true, Color.GreenYellow);
@@ -2473,8 +2473,8 @@ namespace MDIDemo.vou
         {
             if (checkEdit8.Checked)
             {
-                this.textEdit99.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}InPutParam", (sender as TextEdit).Text));
-                this.textEdit100.Text = Class_Tool.GetFirstCodeUpper((sender as TextEdit).Text);
+                this.textEdit99.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}SelectInParam", (sender as TextEdit).Text));
+                this.textEdit100.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Model", (sender as TextEdit).Text));
                 this.textEdit19.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
                 this.textEdit101.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Mapper", (sender as TextEdit).Text));
                 this.textEdit44.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Mapper.xml", (sender as TextEdit).Text));

@@ -9144,7 +9144,7 @@
             // checkEdit2
             // 
             this.checkEdit2.EditValue = true;
-            this.checkEdit2.Location = new System.Drawing.Point(601, 9);
+            this.checkEdit2.Location = new System.Drawing.Point(414, 9);
             this.checkEdit2.MenuManager = this.barManager3;
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "ToExcel";
@@ -9154,7 +9154,7 @@
             // comboBoxEdit1
             // 
             this.comboBoxEdit1.EditValue = "ResultVOPage";
-            this.comboBoxEdit1.Location = new System.Drawing.Point(419, 38);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(384, 38);
             this.comboBoxEdit1.MenuManager = this.barManager1;
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -9164,7 +9164,7 @@
             "ResultVOPage",
             "ResultVOPageTotal",
             "ResultVOTotal"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(127, 20);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(162, 20);
             this.comboBoxEdit1.TabIndex = 59;
             // 
             // labelControl23
@@ -9214,7 +9214,7 @@
             this.textEdit103.Location = new System.Drawing.Point(658, 169);
             this.textEdit103.MenuManager = this.barManager1;
             this.textEdit103.Name = "textEdit103";
-            this.textEdit103.Size = new System.Drawing.Size(125, 20);
+            this.textEdit103.Size = new System.Drawing.Size(145, 20);
             this.textEdit103.TabIndex = 14;
             // 
             // textEdit102
@@ -9222,7 +9222,7 @@
             this.textEdit102.Location = new System.Drawing.Point(658, 144);
             this.textEdit102.MenuManager = this.barManager1;
             this.textEdit102.Name = "textEdit102";
-            this.textEdit102.Size = new System.Drawing.Size(125, 20);
+            this.textEdit102.Size = new System.Drawing.Size(145, 20);
             this.textEdit102.TabIndex = 13;
             // 
             // textEdit101
@@ -9230,7 +9230,7 @@
             this.textEdit101.Location = new System.Drawing.Point(658, 118);
             this.textEdit101.MenuManager = this.barManager1;
             this.textEdit101.Name = "textEdit101";
-            this.textEdit101.Size = new System.Drawing.Size(125, 20);
+            this.textEdit101.Size = new System.Drawing.Size(145, 20);
             this.textEdit101.TabIndex = 12;
             this.textEdit101.EditValueChanged += new System.EventHandler(this.textEdit101_EditValueChanged);
             // 
@@ -9239,7 +9239,7 @@
             this.textEdit100.Location = new System.Drawing.Point(658, 64);
             this.textEdit100.MenuManager = this.barManager1;
             this.textEdit100.Name = "textEdit100";
-            this.textEdit100.Size = new System.Drawing.Size(125, 20);
+            this.textEdit100.Size = new System.Drawing.Size(145, 20);
             this.textEdit100.TabIndex = 10;
             // 
             // textEdit99
@@ -9247,7 +9247,7 @@
             this.textEdit99.Location = new System.Drawing.Point(658, 39);
             this.textEdit99.MenuManager = this.barManager1;
             this.textEdit99.Name = "textEdit99";
-            this.textEdit99.Size = new System.Drawing.Size(125, 20);
+            this.textEdit99.Size = new System.Drawing.Size(145, 20);
             this.textEdit99.TabIndex = 9;
             // 
             // textEdit44
@@ -9263,7 +9263,7 @@
             this.textEdit19.Location = new System.Drawing.Point(658, 90);
             this.textEdit19.MenuManager = this.barManager1;
             this.textEdit19.Name = "textEdit19";
-            this.textEdit19.Size = new System.Drawing.Size(125, 20);
+            this.textEdit19.Size = new System.Drawing.Size(145, 20);
             this.textEdit19.TabIndex = 11;
             // 
             // labelControl56
@@ -9324,7 +9324,7 @@
             // 
             // labelControl49
             // 
-            this.labelControl49.Location = new System.Drawing.Point(230, 41);
+            this.labelControl49.Location = new System.Drawing.Point(608, 196);
             this.labelControl49.Name = "labelControl49";
             this.labelControl49.Size = new System.Drawing.Size(43, 14);
             this.labelControl49.TabIndex = 39;
@@ -9332,16 +9332,16 @@
             // 
             // textEdit54
             // 
-            this.textEdit54.Location = new System.Drawing.Point(282, 38);
+            this.textEdit54.Location = new System.Drawing.Point(658, 194);
             this.textEdit54.MenuManager = this.barManager1;
             this.textEdit54.Name = "textEdit54";
-            this.textEdit54.Size = new System.Drawing.Size(131, 20);
+            this.textEdit54.Size = new System.Drawing.Size(145, 20);
             this.textEdit54.TabIndex = 38;
             // 
             // checkEdit20
             // 
             this.checkEdit20.EditValue = true;
-            this.checkEdit20.Location = new System.Drawing.Point(501, 9);
+            this.checkEdit20.Location = new System.Drawing.Point(314, 9);
             this.checkEdit20.MenuManager = this.barManager3;
             this.checkEdit20.Name = "checkEdit20";
             this.checkEdit20.Properties.Caption = "是否读写分离";
@@ -9351,7 +9351,7 @@
             // checkEdit19
             // 
             this.checkEdit19.EditValue = true;
-            this.checkEdit19.Location = new System.Drawing.Point(401, 9);
+            this.checkEdit19.Location = new System.Drawing.Point(288, 39);
             this.checkEdit19.MenuManager = this.barManager3;
             this.checkEdit19.Name = "checkEdit19";
             this.checkEdit19.Properties.Caption = "是否返回结构";
@@ -9361,7 +9361,7 @@
             // checkEdit17
             // 
             this.checkEdit17.EditValue = true;
-            this.checkEdit17.Location = new System.Drawing.Point(326, 9);
+            this.checkEdit17.Location = new System.Drawing.Point(237, 9);
             this.checkEdit17.MenuManager = this.barManager3;
             this.checkEdit17.Name = "checkEdit17";
             this.checkEdit17.Properties.Caption = "是否分页";
@@ -9370,7 +9370,7 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(707, 7);
+            this.simpleButton2.Location = new System.Drawing.Point(681, 7);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(75, 23);
             this.simpleButton2.TabIndex = 34;
@@ -9380,7 +9380,7 @@
             // checkEdit10
             // 
             this.checkEdit10.EditValue = true;
-            this.checkEdit10.Location = new System.Drawing.Point(215, 9);
+            this.checkEdit10.Location = new System.Drawing.Point(125, 9);
             this.checkEdit10.MenuManager = this.barManager3;
             this.checkEdit10.Name = "checkEdit10";
             this.checkEdit10.Properties.Caption = "仅生成主体代码";
@@ -9478,7 +9478,7 @@
             this.textEdit16.Location = new System.Drawing.Point(98, 39);
             this.textEdit16.MenuManager = this.barManager1;
             this.textEdit16.Name = "textEdit16";
-            this.textEdit16.Size = new System.Drawing.Size(122, 20);
+            this.textEdit16.Size = new System.Drawing.Size(175, 20);
             this.textEdit16.TabIndex = 1;
             this.textEdit16.EditValueChanged += new System.EventHandler(this.textEdit16_EditValueChanged);
             // 
