@@ -700,15 +700,15 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
         {
             Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-            Form_DataBaseDefault form_DataBaseDefault = new Form_DataBaseDefault();
-            form_DataBaseDefault.class_DataBaseConDefault = class_PublicMethod.FromXmlToDefaultValueObject<Class_DataBaseConDefault>("DataBaseDefaultValues");
-            if (form_DataBaseDefault.ShowDialog() == DialogResult.OK)
+            Class_DataBaseConDefault class_DataBaseConDefault = new Class_DataBaseConDefault();
+            class_DataBaseConDefault = class_PublicMethod.FromXmlToDefaultValueObject<Class_DataBaseConDefault>("DataBaseDefaultValues");
+            Form_DataBaseDefaultSet form_DataBaseDefaultSet = new Form_DataBaseDefaultSet(class_DataBaseConDefault);
+            if (form_DataBaseDefaultSet.ShowDialog() == DialogResult.OK)
             {
-                if (class_PublicMethod.DataBaseDefaultValueToXml("DataBaseDefaultValues", form_DataBaseDefault.class_DataBaseConDefault))
+                if (class_PublicMethod.DataBaseDefaultValueToXml("DataBaseDefaultValues", form_DataBaseDefaultSet.class_DataBaseConDefault))
                     MessageBox.Show("已将数据库连接默认值，保存到本地!", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
-            form_DataBaseDefault.Dispose();
-
+            form_DataBaseDefaultSet.Dispose();
         }
     }
 }
