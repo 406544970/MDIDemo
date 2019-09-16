@@ -287,7 +287,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                     XmlFileName = (OpenPage.Tag as Class_WindowType).XmlFileName,
                     WindowType = (OpenPage.Tag as Class_WindowType).WindowType,
                 };
-                if (ChildrenTag.XmlFileName.Equals(OpenPageTag.XmlFileName))
+                if (OpenPageTag.XmlFileName != null && ChildrenTag.XmlFileName.Equals(OpenPageTag.XmlFileName))
                 {
                     finder = true;
                     Children.WindowState = FormWindowState.Maximized;

@@ -3719,8 +3719,8 @@
             this.checkEdit10.Location = new System.Drawing.Point(215, 9);
             this.checkEdit10.MenuManager = this.barManager3;
             this.checkEdit10.Name = "checkEdit10";
-            this.checkEdit10.Properties.Caption = "仅生成Control层体代码";
-            this.checkEdit10.Size = new System.Drawing.Size(160, 19);
+            this.checkEdit10.Properties.Caption = "仅生成主体代码";
+            this.checkEdit10.Size = new System.Drawing.Size(105, 19);
             this.checkEdit10.TabIndex = 17;
             // 
             // radioGroup9
