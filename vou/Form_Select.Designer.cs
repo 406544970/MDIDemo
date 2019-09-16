@@ -730,6 +730,7 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -1106,6 +1107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -3968,7 +3970,7 @@
             this.xtraTabPage12.Controls.Add(this.panelControl2);
             this.xtraTabPage12.ImageIndex = 609;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 626);
+            this.xtraTabPage12.Size = new System.Drawing.Size(1177, 595);
             this.xtraTabPage12.Text = "表";
             // 
             // gridControl2
@@ -4009,7 +4011,7 @@
             this.repositoryItemComboBox20,
             this.repositoryItemComboBox18,
             this.repositoryItemSpinEdit5});
-            this.gridControl2.Size = new System.Drawing.Size(1177, 560);
+            this.gridControl2.Size = new System.Drawing.Size(1177, 529);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -5111,7 +5113,7 @@
             this.xtraTabPage14.Controls.Add(this.panelControl3);
             this.xtraTabPage14.ImageIndex = 611;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 626);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1177, 595);
             this.xtraTabPage14.Text = "表";
             // 
             // gridControl3
@@ -5152,7 +5154,7 @@
             this.repositoryItemComboBox32,
             this.repositoryItemComboBox30,
             this.repositoryItemSpinEdit9});
-            this.gridControl3.Size = new System.Drawing.Size(1177, 560);
+            this.gridControl3.Size = new System.Drawing.Size(1177, 529);
             this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView3});
@@ -6267,7 +6269,7 @@
             this.xtraTabPage52.Controls.Add(this.panelControl42);
             this.xtraTabPage52.ImageIndex = 610;
             this.xtraTabPage52.Name = "xtraTabPage52";
-            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 626);
+            this.xtraTabPage52.Size = new System.Drawing.Size(1177, 595);
             this.xtraTabPage52.Text = "表";
             // 
             // gridControl4
@@ -6308,7 +6310,7 @@
             this.repositoryItemComboBox45,
             this.repositoryItemComboBox43,
             this.repositoryItemSpinEdit15});
-            this.gridControl4.Size = new System.Drawing.Size(1177, 560);
+            this.gridControl4.Size = new System.Drawing.Size(1177, 529);
             this.gridControl4.TabIndex = 3;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView4});
@@ -7424,7 +7426,7 @@
             this.xtraTabPage53.Controls.Add(this.panelControl43);
             this.xtraTabPage53.ImageIndex = 612;
             this.xtraTabPage53.Name = "xtraTabPage53";
-            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 626);
+            this.xtraTabPage53.Size = new System.Drawing.Size(1177, 595);
             this.xtraTabPage53.Text = "表";
             // 
             // gridControl5
@@ -7465,7 +7467,7 @@
             this.repositoryItemComboBox60,
             this.repositoryItemComboBox58,
             this.repositoryItemSpinEdit19});
-            this.gridControl5.Size = new System.Drawing.Size(1177, 560);
+            this.gridControl5.Size = new System.Drawing.Size(1177, 529);
             this.gridControl5.TabIndex = 3;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView5});
@@ -9094,6 +9096,7 @@
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.checkEdit2);
             this.panelControl4.Controls.Add(this.comboBoxEdit1);
             this.panelControl4.Controls.Add(this.labelControl23);
             this.panelControl4.Controls.Add(this.textEdit46);
@@ -9331,7 +9334,7 @@
             // checkEdit20
             // 
             this.checkEdit20.EditValue = true;
-            this.checkEdit20.Location = new System.Drawing.Point(587, 9);
+            this.checkEdit20.Location = new System.Drawing.Point(501, 9);
             this.checkEdit20.MenuManager = this.barManager3;
             this.checkEdit20.Name = "checkEdit20";
             this.checkEdit20.Properties.Caption = "是否读写分离";
@@ -9341,17 +9344,17 @@
             // checkEdit19
             // 
             this.checkEdit19.EditValue = true;
-            this.checkEdit19.Location = new System.Drawing.Point(455, 9);
+            this.checkEdit19.Location = new System.Drawing.Point(401, 9);
             this.checkEdit19.MenuManager = this.barManager3;
             this.checkEdit19.Name = "checkEdit19";
-            this.checkEdit19.Properties.Caption = "是否返回固定结构体";
-            this.checkEdit19.Size = new System.Drawing.Size(126, 19);
+            this.checkEdit19.Properties.Caption = "是否返回结构";
+            this.checkEdit19.Size = new System.Drawing.Size(95, 19);
             this.checkEdit19.TabIndex = 19;
             // 
             // checkEdit17
             // 
             this.checkEdit17.EditValue = true;
-            this.checkEdit17.Location = new System.Drawing.Point(376, 9);
+            this.checkEdit17.Location = new System.Drawing.Point(326, 9);
             this.checkEdit17.MenuManager = this.barManager3;
             this.checkEdit17.Name = "checkEdit17";
             this.checkEdit17.Properties.Caption = "是否分页";
@@ -9373,8 +9376,8 @@
             this.checkEdit10.Location = new System.Drawing.Point(215, 9);
             this.checkEdit10.MenuManager = this.barManager3;
             this.checkEdit10.Name = "checkEdit10";
-            this.checkEdit10.Properties.Caption = "仅生成Control层主体代码";
-            this.checkEdit10.Size = new System.Drawing.Size(160, 19);
+            this.checkEdit10.Properties.Caption = "仅生成主体代码";
+            this.checkEdit10.Size = new System.Drawing.Size(105, 19);
             this.checkEdit10.TabIndex = 17;
             // 
             // radioGroup9
@@ -9507,7 +9510,7 @@
             this.xtraTabPage24.Controls.Add(this.xtraTabControl10);
             this.xtraTabPage24.Controls.Add(this.panelControl17);
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(1177, 598);
+            this.xtraTabPage24.Size = new System.Drawing.Size(1177, 567);
             this.xtraTabPage24.Text = "表";
             // 
             // xtraTabControl10
@@ -9516,7 +9519,7 @@
             this.xtraTabControl10.Location = new System.Drawing.Point(0, 33);
             this.xtraTabControl10.Name = "xtraTabControl10";
             this.xtraTabControl10.SelectedTabPage = this.xtraTabPage36;
-            this.xtraTabControl10.Size = new System.Drawing.Size(1177, 565);
+            this.xtraTabControl10.Size = new System.Drawing.Size(1177, 534);
             this.xtraTabControl10.TabIndex = 7;
             this.xtraTabControl10.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage36});
@@ -9526,7 +9529,7 @@
             this.xtraTabPage36.Controls.Add(this.memoEdit19);
             this.xtraTabPage36.Controls.Add(this.panelControl25);
             this.xtraTabPage36.Name = "xtraTabPage36";
-            this.xtraTabPage36.Size = new System.Drawing.Size(1171, 536);
+            this.xtraTabPage36.Size = new System.Drawing.Size(1171, 505);
             this.xtraTabPage36.Text = "DTO";
             // 
             // memoEdit19
@@ -9535,7 +9538,7 @@
             this.memoEdit19.Location = new System.Drawing.Point(0, 5);
             this.memoEdit19.MenuManager = this.barManager1;
             this.memoEdit19.Name = "memoEdit19";
-            this.memoEdit19.Size = new System.Drawing.Size(1171, 531);
+            this.memoEdit19.Size = new System.Drawing.Size(1171, 500);
             this.memoEdit19.TabIndex = 4;
             // 
             // panelControl25
@@ -10052,6 +10055,16 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // checkEdit2
+            // 
+            this.checkEdit2.EditValue = true;
+            this.checkEdit2.Location = new System.Drawing.Point(601, 9);
+            this.checkEdit2.MenuManager = this.barManager3;
+            this.checkEdit2.Name = "checkEdit2";
+            this.checkEdit2.Properties.Caption = "ToExcel";
+            this.checkEdit2.Size = new System.Drawing.Size(65, 19);
+            this.checkEdit2.TabIndex = 60;
+            // 
             // Form_Select
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -10455,6 +10468,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -11161,5 +11175,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage29;
         private DevExpress.XtraEditors.MemoEdit memoEdit13;
         private DevExpress.XtraEditors.RadioGroup radioGroup3;
+        private DevExpress.XtraEditors.CheckEdit checkEdit2;
     }
 }

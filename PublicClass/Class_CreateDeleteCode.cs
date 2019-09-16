@@ -361,14 +361,17 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            stringBuilder.Append("/**\r\n");
-            stringBuilder.AppendFormat(_GetAuthor());
-            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
-            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
-            stringBuilder.Append(" */\r\n");
-            stringBuilder.Append("@Mapper\r\n");
-            stringBuilder.Append(string.Format("public interface {0}", class_Sub.DaoClassName));
-            stringBuilder.Append(" {\r\n");
+            if (!class_Sub.ControlMainCode)
+            {
+                stringBuilder.Append("/**\r\n");
+                stringBuilder.AppendFormat(_GetAuthor());
+                stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+                stringBuilder.Append(" */\r\n");
+                stringBuilder.Append("@Mapper\r\n");
+                stringBuilder.Append(string.Format("public interface {0}", class_Sub.DaoClassName));
+                stringBuilder.Append(" {\r\n");
+            }
 
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
@@ -389,7 +392,8 @@ namespace MDIDemo.PublicClass
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
                 , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
 
-            stringBuilder.Append("}\r\n");
+            if (!class_Sub.ControlMainCode)
+                stringBuilder.Append("}\r\n");
 
             return stringBuilder.ToString();
         }
@@ -559,15 +563,18 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            stringBuilder.Append("/**\r\n");
-            stringBuilder.AppendFormat(_GetAuthor());
-            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
-            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
-            stringBuilder.Append(" */\r\n");
-            stringBuilder.Append("@SuppressWarnings(\"SpringJavaInjectionPointsAutowiringInspection\")\r\n@Service\r\n");
-            stringBuilder.AppendFormat("public class {1} implements {0} {{\r\n"
-                , class_Sub.ServiceInterFaceName
-                , class_Sub.ServiceClassName);
+            if (!class_Sub.ControlMainCode)
+            {
+                stringBuilder.Append("/**\r\n");
+                stringBuilder.AppendFormat(_GetAuthor());
+                stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+                stringBuilder.Append(" */\r\n");
+                stringBuilder.Append("@SuppressWarnings(\"SpringJavaInjectionPointsAutowiringInspection\")\r\n@Service\r\n");
+                stringBuilder.AppendFormat("public class {1} implements {0} {{\r\n"
+                    , class_Sub.ServiceInterFaceName
+                    , class_Sub.ServiceClassName);
+            }
 
             stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0}{1} {2};\r\n", class_ToolSpace.GetSetSpaceCount(1)
@@ -599,7 +606,8 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.AppendFormat("{0}}}\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
-            stringBuilder.Append("}\r\n");
+            if (!class_Sub.ControlMainCode)
+                stringBuilder.Append("}\r\n");
 
             return stringBuilder.ToString();
         }
@@ -628,13 +636,16 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            stringBuilder.Append("/**\r\n");
-            stringBuilder.AppendFormat(_GetAuthor());
-            stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
-            stringBuilder.Append(" * @function\r\n * @editLog\r\n");
-            stringBuilder.Append(" */\r\n");
-            stringBuilder.Append(string.Format("public interface {0} {{\r\n"
-                , class_Sub.ServiceInterFaceName));
+            if (!class_Sub.ControlMainCode)
+            {
+                stringBuilder.Append("/**\r\n");
+                stringBuilder.AppendFormat(_GetAuthor());
+                stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+                stringBuilder.Append(" */\r\n");
+                stringBuilder.Append(string.Format("public interface {0} {{\r\n"
+                    , class_Sub.ServiceInterFaceName));
+            }
 
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
@@ -654,7 +665,8 @@ namespace MDIDemo.PublicClass
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
                 , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
 
-            stringBuilder.Append("}\r\n");
+            if (!class_Sub.ControlMainCode)
+                stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
 

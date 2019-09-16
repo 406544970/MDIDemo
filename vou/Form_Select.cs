@@ -1795,12 +1795,112 @@ namespace MDIDemo.vou
             }
             #endregion
 
+            #region 汇总与JoinType验证
+            if (IsOk)
+            {
+                if (radioGroup9.SelectedIndex == 1
+                    && checkEdit19.Checked
+                    && (comboBoxEdit1.SelectedIndex == 2
+                    || comboBoxEdit1.SelectedIndex == 3))
+                {
+                    BandedGridView[] vs = new BandedGridView[4];
+                    vs[0] = this.bandedGridView2;
+                    vs[1] = this.bandedGridView3;
+                    vs[2] = this.bandedGridView4;
+                    vs[3] = this.bandedGridView5;
+
+                    int i = 0;
+                    while (IsOk && i < vs.Length)
+                    {
+                        if (vs[i].RowCount > 0)
+                        {
+                            switch (i)
+                            {
+                                case 0:
+                                    if (this.radioGroup5.SelectedIndex > 0)
+                                        IsOk = false;
+                                    break;
+                                case 1:
+                                    if (this.radioGroup6.SelectedIndex > 0)
+                                        IsOk = false;
+                                    break;
+                                case 2:
+                                    if (this.radioGroup17.SelectedIndex > 0)
+                                        IsOk = false;
+                                    break;
+                                case 3:
+                                    if (this.radioGroup20.SelectedIndex > 0)
+                                        IsOk = false;
+                                    break;
+                                default:
+                                    if (this.radioGroup5.SelectedIndex > 0)
+                                        IsOk = false;
+                                    break;
+                            }
+                            if (!IsOk)
+                                MessageBox.Show(string.Format("有汇总功能时，从表{0}中的返回方式，只能是线性方式！"
+                                    , i + 1)
+                                    , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        i++;
+                    }
+                }
+            }
+            #endregion
+
+            #region 汇总字段验证
+            if (IsOk)
+            {
+                if (radioGroup9.SelectedIndex == 1
+                    && checkEdit19.Checked
+                    && (comboBoxEdit1.SelectedIndex == 2
+                    || comboBoxEdit1.SelectedIndex == 3))
+                {
+                    BandedGridView[] vs = new BandedGridView[5];
+                    vs[0] = this.bandedGridView1;
+                    vs[1] = this.bandedGridView2;
+                    vs[2] = this.bandedGridView3;
+                    vs[3] = this.bandedGridView4;
+                    vs[4] = this.bandedGridView5;
+
+                    int i = 0;
+                    while (IsOk && i < vs.Length)
+                    {
+                        int j = 0;
+                        while (IsOk && j < vs[i].RowCount)
+                        {
+                            DataRow DataRow = vs[i].GetDataRow(j);
+                            string TotalFunction = DataRow["TotalFunctionName"].ToString();
+                            string CaseWhen = DataRow["CaseWhen"].ToString();
+                            string FieldName = DataRow["FieldName"].ToString();
+                            if (Convert.ToBoolean(DataRow["SelectSelect"])
+                                && TotalFunction.Length > 0
+                                && CaseWhen.Length > 0)
+                            {
+                                if (i > 0)
+                                    MessageBox.Show(string.Format("从表{1}中的字段{0},CaseWhen与汇总函数不能同时存在！"
+                                        , FieldName, i)
+                                        , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                else
+                                    MessageBox.Show(string.Format("主表中的字段{0},CaseWhen与汇总函数不能同时存在！"
+                                        , FieldName)
+                                        , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                IsOk = false;
+                            }
+                            j++;
+                        }
+                        i++;
+                    }
+                }
+            }
+            #endregion
+
             #region 汇总
             if (IsOk)
             {
                 if (radioGroup9.SelectedIndex == 1
                     && checkEdit19.Checked
-                    && (comboBoxEdit1.SelectedIndex == 2 
+                    && (comboBoxEdit1.SelectedIndex == 2
                     || comboBoxEdit1.SelectedIndex == 3))
                 {
                     BandedGridView[] vs = new BandedGridView[5];
@@ -1817,7 +1917,10 @@ namespace MDIDemo.vou
                         {
                             DataRow DataRow = vs[i].GetDataRow(j);
                             string TotalFunction = DataRow["TotalFunctionName"].ToString();
-                            if (Convert.ToBoolean(DataRow["SelectSelect"]) && TotalFunction.Length > 0)
+                            string CaseWhen = DataRow["CaseWhen"].ToString();
+                            if (Convert.ToBoolean(DataRow["SelectSelect"])
+                                && TotalFunction.Length > 0
+                                && CaseWhen.Length == 0)
                                 TotalCount++;
                         }
                     }
