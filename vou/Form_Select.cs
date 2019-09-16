@@ -1795,6 +1795,63 @@ namespace MDIDemo.vou
             }
             #endregion
 
+            #region 汇总
+            if (IsOk)
+            {
+                if (radioGroup9.SelectedIndex == 1
+                    && checkEdit19.Checked
+                    && (comboBoxEdit1.SelectedIndex == 2 || comboBoxEdit1.SelectedIndex == 3))
+                {
+                    int TotalCount = 0;
+                    for (int i = 0; i < bandedGridView1.RowCount; i++)
+                    {
+                        DataRow DataRow =(DataRow) bandedGridView1.GetDataRow(i);
+                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
+                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
+                        if (SelectSelect && TotalFunction.Length > 0)
+                            TotalCount++;
+                    }
+                    for (int i = 0; i < bandedGridView2.RowCount; i++)
+                    {
+                        DataRow DataRow = (DataRow)bandedGridView2.GetDataRow(i);
+                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
+                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
+                        if (SelectSelect && TotalFunction.Length > 0)
+                            TotalCount++;
+                    }
+                    for (int i = 0; i < bandedGridView3.RowCount; i++)
+                    {
+                        DataRow DataRow = (DataRow)bandedGridView3.GetDataRow(i);
+                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
+                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
+                        if (SelectSelect && TotalFunction.Length > 0)
+                            TotalCount++;
+                    }
+                    for (int i = 0; i < bandedGridView4.RowCount; i++)
+                    {
+                        DataRow DataRow = (DataRow)bandedGridView4.GetDataRow(i);
+                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
+                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
+                        if (SelectSelect && TotalFunction.Length > 0)
+                            TotalCount++;
+                    }
+                    for (int i = 0; i < bandedGridView1.RowCount; i++)
+                    {
+                        DataRow DataRow = (DataRow)bandedGridView1.GetDataRow(i);
+                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
+                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
+                        if (SelectSelect && TotalFunction.Length > 0)
+                            TotalCount++;
+                    }
+                    IsOk = TotalCount > 0 ? true : false;
+                    if (!IsOk)
+                    {
+                        MessageBox.Show("亲，你选择要返回汇总功能，请再选择需要汇总的字段！"
+                            , "验证信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            #endregion
             waitDialogForm.Close();
             return IsOk;
         }

@@ -1205,7 +1205,7 @@
             this.xtraTabPage11.Controls.Add(this.splitterControl1);
             this.xtraTabPage11.Controls.Add(this.propertyDescriptionControl4);
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(297, 639);
+            this.xtraTabPage11.Size = new System.Drawing.Size(297, 607);
             this.xtraTabPage11.Text = "生成配置";
             // 
             // propertyGridControl4
@@ -1215,13 +1215,13 @@
             this.propertyGridControl4.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControl4.Name = "propertyGridControl4";
             this.propertyGridControl4.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
-            this.propertyGridControl4.Size = new System.Drawing.Size(297, 514);
+            this.propertyGridControl4.Size = new System.Drawing.Size(297, 482);
             this.propertyGridControl4.TabIndex = 2;
             // 
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 514);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 482);
             this.splitterControl1.Name = "splitterControl1";
             this.splitterControl1.Size = new System.Drawing.Size(297, 5);
             this.splitterControl1.TabIndex = 4;
@@ -1230,7 +1230,7 @@
             // propertyDescriptionControl4
             // 
             this.propertyDescriptionControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.propertyDescriptionControl4.Location = new System.Drawing.Point(0, 519);
+            this.propertyDescriptionControl4.Location = new System.Drawing.Point(0, 487);
             this.propertyDescriptionControl4.Name = "propertyDescriptionControl4";
             this.propertyDescriptionControl4.Size = new System.Drawing.Size(297, 120);
             this.propertyDescriptionControl4.TabIndex = 3;
@@ -1242,13 +1242,13 @@
             this.xtraTabPage13.Controls.Add(this.propertyGridControl5);
             this.xtraTabPage13.Controls.Add(this.propertyDescriptionControl5);
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(297, 639);
+            this.xtraTabPage13.Size = new System.Drawing.Size(297, 607);
             this.xtraTabPage13.Text = "mybatisMap配置";
             // 
             // splitterControl2
             // 
             this.splitterControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl2.Location = new System.Drawing.Point(0, 514);
+            this.splitterControl2.Location = new System.Drawing.Point(0, 482);
             this.splitterControl2.Name = "splitterControl2";
             this.splitterControl2.Size = new System.Drawing.Size(297, 5);
             this.splitterControl2.TabIndex = 4;
@@ -1261,13 +1261,13 @@
             this.propertyGridControl5.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControl5.Name = "propertyGridControl5";
             this.propertyGridControl5.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
-            this.propertyGridControl5.Size = new System.Drawing.Size(297, 519);
+            this.propertyGridControl5.Size = new System.Drawing.Size(297, 487);
             this.propertyGridControl5.TabIndex = 2;
             // 
             // propertyDescriptionControl5
             // 
             this.propertyDescriptionControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.propertyDescriptionControl5.Location = new System.Drawing.Point(0, 519);
+            this.propertyDescriptionControl5.Location = new System.Drawing.Point(0, 487);
             this.propertyDescriptionControl5.Name = "propertyDescriptionControl5";
             this.propertyDescriptionControl5.Size = new System.Drawing.Size(297, 120);
             this.propertyDescriptionControl5.TabIndex = 3;
