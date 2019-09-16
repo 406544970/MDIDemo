@@ -1873,7 +1873,7 @@ namespace MDIDemo.PublicClass
             #region 加入汇总代码
             if (class_Sub.ServiceInterFaceReturnCount > 0
                 && class_SelectAllModel.ReturnStructure
-                && (class_SelectAllModel.ReturnStructureType == 2 
+                && (class_SelectAllModel.ReturnStructureType == 2
                 || class_SelectAllModel.ReturnStructureType == 3))
             {
                 stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
