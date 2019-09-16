@@ -826,7 +826,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (!class_Sub.IsAddXmlHead)
+            if (!class_Sub.ControlMainCode)
             {
                 stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                 stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
@@ -979,7 +979,7 @@ namespace MDIDemo.PublicClass
             }
             #endregion
 
-            if (!class_Sub.IsAddXmlHead)
+            if (!class_Sub.ControlMainCode)
                 stringBuilder.Append("</mapper>\r\n");
 
             if (stringBuilder.Length > 0)

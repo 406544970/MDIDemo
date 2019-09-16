@@ -868,7 +868,6 @@ namespace MDIDemo.PublicClass
             {
                 class_Fields = new List<Class_Field>();
                 ResultType = 1;
-                IsAddXmlHead = true;
                 PanelHeight = 197;
             }
             ~Class_Main()
@@ -899,10 +898,6 @@ namespace MDIDemo.PublicClass
             /// 方法ID
             /// </summary>
             public string MethodId { get; set; }
-            /// <summary>
-            /// Map中是否加入Head
-            /// </summary>
-            public bool IsAddXmlHead { get; set; }
             /// <summary>
             /// 0：resultMap，1：resultType
             /// </summary>

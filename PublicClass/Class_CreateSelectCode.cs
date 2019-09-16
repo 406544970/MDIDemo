@@ -784,7 +784,7 @@ namespace MDIDemo.PublicClass
                 Class_Tool class_ToolSpace = new Class_Tool();
                 StringBuilder stringBuilder = new StringBuilder();
                 IClass_InterFaceDataBase class_InterFaceDataBase;
-                if (!class_Main.IsAddXmlHead)
+                if (!class_Main.ControlMainCode)
                 {
                     stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                     stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
@@ -818,7 +818,7 @@ namespace MDIDemo.PublicClass
                 stringBuilder.Append(_GetMyAllMap(PageIndex, class_SelectAllModel.IsMultTable, 0, 2));
 
                 stringBuilder.AppendFormat("{0}</resultMap>\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                if (!class_Main.IsAddXmlHead)
+                if (!class_Main.ControlMainCode)
                     stringBuilder.Append("</mapper>\r\n");
                 if (stringBuilder.Length > 0)
                     return stringBuilder.ToString();
@@ -1174,7 +1174,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (class_Sub.ResultType > 0 && !class_Sub.IsAddXmlHead)
+            if (class_Sub.ResultType > 0 && !class_Sub.ControlMainCode)
             {
                 stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                 stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
@@ -1379,7 +1379,7 @@ namespace MDIDemo.PublicClass
             }
             #endregion
 
-            if (class_Sub.ResultType > 0 && !class_Sub.IsAddXmlHead)
+            if (class_Sub.ResultType > 0 && !class_Sub.ControlMainCode)
             {
                 stringBuilder.Append("</mapper>\r\n");
             }

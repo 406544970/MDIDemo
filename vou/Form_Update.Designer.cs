@@ -259,7 +259,6 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit14 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.textEdit16 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
@@ -414,7 +413,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).BeginInit();
             this.xtraTabPage28.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).BeginInit();
@@ -530,7 +528,7 @@
             this.xtraTabPage11.Controls.Add(this.splitterControl1);
             this.xtraTabPage11.Controls.Add(this.propertyDescriptionControl4);
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(297, 639);
+            this.xtraTabPage11.Size = new System.Drawing.Size(297, 619);
             this.xtraTabPage11.Text = "生成配置";
             // 
             // propertyGridControl4
@@ -540,13 +538,13 @@
             this.propertyGridControl4.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControl4.Name = "propertyGridControl4";
             this.propertyGridControl4.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
-            this.propertyGridControl4.Size = new System.Drawing.Size(297, 514);
+            this.propertyGridControl4.Size = new System.Drawing.Size(297, 494);
             this.propertyGridControl4.TabIndex = 2;
             // 
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 514);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 494);
             this.splitterControl1.Name = "splitterControl1";
             this.splitterControl1.Size = new System.Drawing.Size(297, 5);
             this.splitterControl1.TabIndex = 4;
@@ -555,7 +553,7 @@
             // propertyDescriptionControl4
             // 
             this.propertyDescriptionControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.propertyDescriptionControl4.Location = new System.Drawing.Point(0, 519);
+            this.propertyDescriptionControl4.Location = new System.Drawing.Point(0, 499);
             this.propertyDescriptionControl4.Name = "propertyDescriptionControl4";
             this.propertyDescriptionControl4.Size = new System.Drawing.Size(297, 120);
             this.propertyDescriptionControl4.TabIndex = 3;
@@ -567,13 +565,13 @@
             this.xtraTabPage13.Controls.Add(this.propertyGridControl5);
             this.xtraTabPage13.Controls.Add(this.propertyDescriptionControl5);
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(297, 639);
+            this.xtraTabPage13.Size = new System.Drawing.Size(297, 619);
             this.xtraTabPage13.Text = "mybatisMap配置";
             // 
             // splitterControl2
             // 
             this.splitterControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl2.Location = new System.Drawing.Point(0, 514);
+            this.splitterControl2.Location = new System.Drawing.Point(0, 494);
             this.splitterControl2.Name = "splitterControl2";
             this.splitterControl2.Size = new System.Drawing.Size(297, 5);
             this.splitterControl2.TabIndex = 4;
@@ -586,13 +584,13 @@
             this.propertyGridControl5.Location = new System.Drawing.Point(0, 0);
             this.propertyGridControl5.Name = "propertyGridControl5";
             this.propertyGridControl5.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
-            this.propertyGridControl5.Size = new System.Drawing.Size(297, 519);
+            this.propertyGridControl5.Size = new System.Drawing.Size(297, 499);
             this.propertyGridControl5.TabIndex = 2;
             // 
             // propertyDescriptionControl5
             // 
             this.propertyDescriptionControl5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.propertyDescriptionControl5.Location = new System.Drawing.Point(0, 519);
+            this.propertyDescriptionControl5.Location = new System.Drawing.Point(0, 499);
             this.propertyDescriptionControl5.Name = "propertyDescriptionControl5";
             this.propertyDescriptionControl5.Size = new System.Drawing.Size(297, 120);
             this.propertyDescriptionControl5.TabIndex = 3;
@@ -3519,7 +3517,6 @@
             this.panelControl4.Controls.Add(this.labelControl6);
             this.panelControl4.Controls.Add(this.textEdit14);
             this.panelControl4.Controls.Add(this.labelControl5);
-            this.panelControl4.Controls.Add(this.checkEdit1);
             this.panelControl4.Controls.Add(this.textEdit16);
             this.panelControl4.Controls.Add(this.labelControl7);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -3807,16 +3804,6 @@
             this.labelControl5.Size = new System.Drawing.Size(40, 14);
             this.labelControl5.TabIndex = 25;
             this.labelControl5.Text = "方法名:";
-            // 
-            // checkEdit1
-            // 
-            this.checkEdit1.EditValue = true;
-            this.checkEdit1.Location = new System.Drawing.Point(122, 9);
-            this.checkEdit1.MenuManager = this.barManager1;
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "不生成Xml头";
-            this.checkEdit1.Size = new System.Drawing.Size(87, 19);
-            this.checkEdit1.TabIndex = 16;
             // 
             // textEdit16
             // 
@@ -4133,7 +4120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit20.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit15.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit14.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit16.Properties)).EndInit();
             this.xtraTabPage28.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit12.Properties)).EndInit();
@@ -4292,7 +4278,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.TextEdit textEdit14;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit16;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage49;

@@ -114,7 +114,6 @@ namespace MDIDemo.vou
                 {
                     this.textEdit14.Text = class_InsertAllModel.class_SubList[index].MethodId;
                     this.textEdit15.Text = class_InsertAllModel.class_SubList[index].MethodContent;
-                    this.checkEdit1.Checked = class_InsertAllModel.class_SubList[index].IsAddXmlHead;
                     this.textEdit16.Text = class_InsertAllModel.class_SubList[index].NameSpace;
                     this.memoEdit3.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].MapContent);
                     this.memoEdit4.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].SelectContent);
@@ -929,7 +928,6 @@ namespace MDIDemo.vou
                 {
                     class_InsertAllModel.class_SubList[index].MethodId = this.textEdit14.Text;
                     class_InsertAllModel.class_SubList[index].MethodContent = this.textEdit15.Text;
-                    class_InsertAllModel.class_SubList[index].IsAddXmlHead = this.checkEdit1.Checked;
                     class_InsertAllModel.class_SubList[index].NameSpace = this.textEdit16.Text;
                     class_InsertAllModel.class_SubList[index].MapContent = Class_Tool.EscapeCharacter(this.memoEdit3.Text);
                     class_InsertAllModel.class_SubList[index].SelectContent = Class_Tool.EscapeCharacter(this.memoEdit4.Text);
