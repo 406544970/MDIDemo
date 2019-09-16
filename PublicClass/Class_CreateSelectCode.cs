@@ -750,14 +750,14 @@ namespace MDIDemo.PublicClass
                 && (class_SelectAllModel.ReturnStructureType == 2
                 || class_SelectAllModel.ReturnStructureType == 3))
                 {
-                    stringBuilder.AppendFormat("\r\n{0}*\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.AppendFormat("{0} * {1}汇总功能\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                         , class_Sub.MethodContent);
                     stringBuilder.AppendFormat("{0} * @param oldSql 原始SQL语句\r\n"
                             , class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                         , class_Sub.ServiceInterFaceReturnRemark);
-                    stringBuilder.AppendFormat("{0} \r\n", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
                     stringBuilder.AppendFormat("{0}LinkedHashMap {1}Total(@Param(\"oldSql\") String oldSql);\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , class_Sub.MethodId);
@@ -2393,7 +2393,7 @@ namespace MDIDemo.PublicClass
                             , class_SelectAllModel.class_SubList[PageIndex].DtoClassName
                             , Class_Tool.GetFirstCodeUpper(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
                         stringBuilder.Append("{\r\n");
-                        stringBuilder.AppendFormat("{0}return {1};\r\n"
+                        stringBuilder.AppendFormat("{0}return {1}s;\r\n"
                             , class_ToolSpace.GetSetSpaceCount(2)
                             , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
                         stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
@@ -2401,13 +2401,13 @@ namespace MDIDemo.PublicClass
                         #endregion
 
                         #region Set
-                        stringBuilder.AppendFormat("{0}public void set{1}(List<{3}> {2})"
+                        stringBuilder.AppendFormat("{0}public void set{1}(List<{3}> {2}s)"
                             , class_ToolSpace.GetSetSpaceCount(1)
                             , Class_Tool.GetFirstCodeUpper(class_SelectAllModel.class_SubList[PageIndex].DtoClassName)
                             , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName)
                             , class_SelectAllModel.class_SubList[PageIndex].DtoClassName);
                         stringBuilder.Append("{\r\n");
-                        stringBuilder.AppendFormat("{0}this.{1} = {1};\r\n"
+                        stringBuilder.AppendFormat("{0}this.{1}s = {1}s;\r\n"
                             , class_ToolSpace.GetSetSpaceCount(2)
                             , Class_Tool.GetFirstCodeLow(class_SelectAllModel.class_SubList[PageIndex].DtoClassName));
                         stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
