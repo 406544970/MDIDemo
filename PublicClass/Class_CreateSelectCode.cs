@@ -1985,10 +1985,45 @@ namespace MDIDemo.PublicClass
                             , class_Field.OutFieldName);
                 }
             }
-            class_WhereFields.Clear();
-            //}
+
+            #region GET SET
+            if (class_WhereFields != null)
+            {
+                foreach (Class_WhereField class_Field in class_WhereFields)
+                {
+                    string JaveType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.LogType));
+                    if (class_Field.FieldLogType.IndexOf("IN") > -1)
+                    {
+                        JaveType = string.Format("List<{0}>", JaveType);
+                    }
+                    stringBuilder.AppendFormat("\r\n{0}public {2} get{1}()"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeUpper(class_Field.OutFieldName)
+                        , JaveType);
+                    stringBuilder.Append("{\r\n");
+                    stringBuilder.AppendFormat("{0}return {1};\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(2)
+                        , Class_Tool.GetFirstCodeLow(class_Field.OutFieldName));
+                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.Append("}\r\n\r\n");
+
+                    stringBuilder.AppendFormat("{0}public void set{1}({3} {2})"
+                        , class_ToolSpace.GetSetSpaceCount(1)
+                        , Class_Tool.GetFirstCodeUpper(class_Field.OutFieldName)
+                        , Class_Tool.GetFirstCodeLow(class_Field.OutFieldName)
+                        , JaveType);
+                    stringBuilder.Append("{\r\n");
+                    stringBuilder.AppendFormat("{0}this.{1} = {1};\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(2)
+                        , Class_Tool.GetFirstCodeLow(class_Field.OutFieldName));
+                    stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.Append("}\r\n");
+                }
+            }
+            #endregion
 
             stringBuilder.Append("}\r\n");
+            class_WhereFields.Clear();
 
             return stringBuilder.ToString();
         }
