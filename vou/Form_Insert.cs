@@ -130,7 +130,7 @@ namespace MDIDemo.vou
                     this.textEdit47.Text = class_InsertAllModel.class_SubList[index].ControlSwaggerValue;
                     this.textEdit46.Text = class_InsertAllModel.class_SubList[index].ControlSwaggerDescription;
                     this.radioGroup9.SelectedIndex = class_InsertAllModel.class_SubList[index].ServiceInterFaceReturnCount;
-                    this.checkEdit10.Checked = class_InsertAllModel.class_SubList[index].ControlMainCode;
+                    this.checkEdit10.Checked = class_InsertAllModel.class_SubList[index].CreateMainCode;
                     this.panelControl4.Height = class_InsertAllModel.class_SubList[index].PanelHeight;
                     this.memoEdit54.Text = Class_Tool.UnEscapeCharacter(class_InsertAllModel.class_SubList[index].TestSql);
 
@@ -544,12 +544,12 @@ namespace MDIDemo.vou
         /// <param name="AliasName">别名</param>
         /// <param name="TableNo">关系表的序号</param>
         /// <param name="MapMainCode">仅生成Map层体代码</param>
-        /// <param name="ControlMainCode">仅生成Control层体代码</param>
+        /// <param name="CreateMainCode">仅生成Control层体代码</param>
         /// <returns></returns>
         private Class_InsertAllModel.Class_Sub DataViewIntoClass(BandedGridView bandedGridView,
             string OutFieldName, int LinkType, int CountToCount, string TableName,
             string MainFieldName, bool AddPoint, string AliasName,
-            int TableNo, bool ControlMainCode)
+            int TableNo, bool CreateMainCode)
         {
             Class_InsertAllModel.Class_Sub class_Sub = new Class_InsertAllModel.Class_Sub();
             List<Class_InsertAllModel.Class_Field> class_Fields = new List<Class_InsertAllModel.Class_Field>();
@@ -604,7 +604,7 @@ namespace MDIDemo.vou
             class_Sub.AddPoint = false;
             class_Sub.AliasName = AliasName;
             class_Sub.MainFieldName = MainFieldName;
-            class_Sub.ControlMainCode = ControlMainCode;
+            class_Sub.CreateMainCode = CreateMainCode;
 
             return class_Sub;
         }

@@ -966,7 +966,7 @@ namespace MDIDemo.PublicClass
                 LinkType = 1;
                 CountToCount = 0;
                 TableNo = -1;
-                ControlMainCode = true;
+                CreateMainCode = true;
             }
             /// <summary>
             /// 本表的主键
@@ -992,7 +992,7 @@ namespace MDIDemo.PublicClass
             /// <summary>
             /// 仅生成主体代码Control
             /// </summary>
-            public bool ControlMainCode { get; set; }
+            public bool CreateMainCode { get; set; }
 
         }
         #endregion

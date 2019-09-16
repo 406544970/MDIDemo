@@ -832,12 +832,12 @@ namespace MDIDemo.PublicClass
         {
             public Class_Sub()
             {
-                ControlMainCode = true;
+                CreateMainCode = true;
             }
             /// <summary>
             /// 仅生成主体代码Control
             /// </summary>
-            public bool ControlMainCode { get; set; }
+            public bool CreateMainCode { get; set; }
             /// <summary>
             /// 页面编号,写入Description标签
             /// </summary>

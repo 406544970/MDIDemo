@@ -140,7 +140,7 @@ namespace MDIDemo.vou
                     this.textEdit47.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerValue;
                     this.textEdit46.Text = class_SelectAllModel.class_SubList[index].ControlSwaggerDescription;
                     this.radioGroup9.SelectedIndex = class_SelectAllModel.class_SubList[index].ServiceInterFaceReturnCount;
-                    this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+                    this.checkEdit10.Checked = class_SelectAllModel.class_SubList[index].CreateMainCode;
                     this.panelControl4.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
                     this.memoEdit54.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].TestSql);
 
@@ -189,7 +189,7 @@ namespace MDIDemo.vou
                     this.buttonEdit4.Text = class_SelectAllModel.class_SubList[index].OutFieldName;
                     this.buttonEdit3.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                     this.radioGroup29.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
-                    this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+                    this.checkEdit14.Checked = class_SelectAllModel.class_SubList[index].CreateMainCode;
 
                     this.textEdit95.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                     this.panelControl28.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
@@ -211,7 +211,7 @@ namespace MDIDemo.vou
                     //关联字段名称
                     this.buttonEdit5.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                     this.radioGroup30.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
-                    this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+                    this.checkEdit16.Checked = class_SelectAllModel.class_SubList[index].CreateMainCode;
 
                     this.textEdit91.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                     this.panelControl44.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
@@ -233,7 +233,7 @@ namespace MDIDemo.vou
                     //关联字段名称
                     this.buttonEdit7.Text = class_SelectAllModel.class_SubList[index].MainTableFieldName;
                     this.radioGroup31.SelectedIndex = class_SelectAllModel.class_SubList[index].TableNo;
-                    this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].ControlMainCode;
+                    this.checkEdit18.Checked = class_SelectAllModel.class_SubList[index].CreateMainCode;
 
                     this.textEdit93.Text = class_SelectAllModel.class_SubList[index].DtoClassName;
                     this.panelControl45.Height = class_SelectAllModel.class_SubList[index].PanelHeight;
@@ -800,12 +800,12 @@ namespace MDIDemo.vou
         /// <param name="AliasName">别名</param>
         /// <param name="TableNo">关系表的序号</param>
         /// <param name="MapMainCode">仅生成Map层主体代码</param>
-        /// <param name="ControlMainCode">仅生成Control层主体代码</param>
+        /// <param name="CreateMainCode">仅生成Control层主体代码</param>
         /// <returns></returns>
         private Class_SelectAllModel.Class_Sub DataViewIntoClass(BandedGridView bandedGridView,
             string OutFieldName, int LinkType, int CountToCount, string TableName,
             string MainFieldName, bool AddPoint, string AliasName,
-            int TableNo, bool ControlMainCode)
+            int TableNo, bool CreateMainCode)
         {
             Class_SelectAllModel.Class_Sub class_Sub = new Class_SelectAllModel.Class_Sub();
             List<Class_SelectAllModel.Class_Field> class_Fields = new List<Class_SelectAllModel.Class_Field>();
@@ -885,7 +885,7 @@ namespace MDIDemo.vou
             class_Sub.LinkType = LinkType;
             class_Sub.OutFieldName = OutFieldName;
             class_Sub.MainFieldName = MainFieldName;
-            class_Sub.ControlMainCode = ControlMainCode;
+            class_Sub.CreateMainCode = CreateMainCode;
 
             if (TableNo > -1)
                 class_Sub.TableNo = TableNo;

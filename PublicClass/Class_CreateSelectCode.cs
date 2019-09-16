@@ -665,7 +665,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.AppendFormat(_GetAuthor());
@@ -767,7 +767,7 @@ namespace MDIDemo.PublicClass
                 }
                 #endregion
             }
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
 
             return stringBuilder.ToString();
@@ -784,7 +784,7 @@ namespace MDIDemo.PublicClass
                 Class_Tool class_ToolSpace = new Class_Tool();
                 StringBuilder stringBuilder = new StringBuilder();
                 IClass_InterFaceDataBase class_InterFaceDataBase;
-                if (!class_Main.ControlMainCode)
+                if (!class_Main.CreateMainCode)
                 {
                     stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                     stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
@@ -818,7 +818,7 @@ namespace MDIDemo.PublicClass
                 stringBuilder.Append(_GetMyAllMap(PageIndex, class_SelectAllModel.IsMultTable, 0, 2));
 
                 stringBuilder.AppendFormat("{0}</resultMap>\r\n", class_ToolSpace.GetSetSpaceCount(1));
-                if (!class_Main.ControlMainCode)
+                if (!class_Main.CreateMainCode)
                     stringBuilder.Append("</mapper>\r\n");
                 if (stringBuilder.Length > 0)
                     return stringBuilder.ToString();
@@ -1174,7 +1174,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (class_Sub.ResultType > 0 && !class_Sub.ControlMainCode)
+            if (class_Sub.ResultType > 0 && !class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                 stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
@@ -1379,7 +1379,7 @@ namespace MDIDemo.PublicClass
             }
             #endregion
 
-            if (class_Sub.ResultType > 0 && !class_Sub.ControlMainCode)
+            if (class_Sub.ResultType > 0 && !class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("</mapper>\r\n");
             }
@@ -1528,7 +1528,7 @@ namespace MDIDemo.PublicClass
             }
 
 
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.AppendFormat(_GetAuthor());
@@ -1778,7 +1778,7 @@ namespace MDIDemo.PublicClass
             }
             #endregion
 
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
@@ -1803,7 +1803,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.AppendFormat(_GetAuthor());
@@ -1926,7 +1926,7 @@ namespace MDIDemo.PublicClass
                         , class_Sub.MethodId);
             }
             #endregion
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
@@ -2491,7 +2491,7 @@ namespace MDIDemo.PublicClass
             }
 
             #region 注释
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.Append(_GetAuthor());
@@ -3681,7 +3681,7 @@ namespace MDIDemo.PublicClass
                 }
             }
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}");
             stringBuilder.Append("\r\n");
 

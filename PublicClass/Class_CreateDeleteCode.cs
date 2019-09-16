@@ -64,7 +64,7 @@ namespace MDIDemo.PublicClass
             }
 
             #region 注释
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.Append(_GetAuthor());
@@ -308,7 +308,7 @@ namespace MDIDemo.PublicClass
             #endregion
 
             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1) + "}\r\n");
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
 
             return stringBuilder.ToString();
@@ -361,7 +361,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.AppendFormat(_GetAuthor());
@@ -392,7 +392,7 @@ namespace MDIDemo.PublicClass
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
                 , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
 
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
 
             return stringBuilder.ToString();
@@ -563,7 +563,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.AppendFormat(_GetAuthor());
@@ -606,7 +606,7 @@ namespace MDIDemo.PublicClass
 
             stringBuilder.AppendFormat("{0}}}\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
 
             return stringBuilder.ToString();
@@ -636,7 +636,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
                 stringBuilder.AppendFormat(_GetAuthor());
@@ -665,7 +665,7 @@ namespace MDIDemo.PublicClass
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
                 , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
 
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
         }
@@ -697,7 +697,7 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
                 stringBuilder.Append("<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\" >\r\n");
@@ -723,7 +723,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(_GetMainWhereLable(class_InterFaceDataBase, Index));
             stringBuilder.AppendFormat("{0}</delete>\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
-            if (!class_Sub.ControlMainCode)
+            if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("</mapper>\r\n");
 
             if (stringBuilder.Length > 0)
