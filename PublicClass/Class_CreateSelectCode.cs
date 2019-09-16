@@ -2055,9 +2055,8 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
             stringBuilder.Append(" * @function\r\n * @editLog\r\n");
             stringBuilder.Append(" */\r\n");
-            stringBuilder.AppendFormat("public final class {0}"
+            stringBuilder.AppendFormat("public final class {0} {{\r\n"
                 , class_SelectAllModel.class_SubList[PageIndex].DtoClassName);
-            stringBuilder.Append(" {\r\n");
 
             stringBuilder.Append(_GetMyDto(PageIndex, class_SelectAllModel.IsMultTable, 0));
 
