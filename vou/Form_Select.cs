@@ -1800,48 +1800,26 @@ namespace MDIDemo.vou
             {
                 if (radioGroup9.SelectedIndex == 1
                     && checkEdit19.Checked
-                    && (comboBoxEdit1.SelectedIndex == 2 || comboBoxEdit1.SelectedIndex == 3))
+                    && (comboBoxEdit1.SelectedIndex == 2 
+                    || comboBoxEdit1.SelectedIndex == 3))
                 {
+                    BandedGridView[] vs = new BandedGridView[5];
+                    vs[0] = this.bandedGridView1;
+                    vs[1] = this.bandedGridView2;
+                    vs[2] = this.bandedGridView3;
+                    vs[3] = this.bandedGridView4;
+                    vs[4] = this.bandedGridView5;
+
                     int TotalCount = 0;
-                    for (int i = 0; i < bandedGridView1.RowCount; i++)
+                    for (int i = 0; i < vs.Length; i++)
                     {
-                        DataRow DataRow =(DataRow) bandedGridView1.GetDataRow(i);
-                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
-                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
-                        if (SelectSelect && TotalFunction.Length > 0)
-                            TotalCount++;
-                    }
-                    for (int i = 0; i < bandedGridView2.RowCount; i++)
-                    {
-                        DataRow DataRow = (DataRow)bandedGridView2.GetDataRow(i);
-                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
-                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
-                        if (SelectSelect && TotalFunction.Length > 0)
-                            TotalCount++;
-                    }
-                    for (int i = 0; i < bandedGridView3.RowCount; i++)
-                    {
-                        DataRow DataRow = (DataRow)bandedGridView3.GetDataRow(i);
-                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
-                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
-                        if (SelectSelect && TotalFunction.Length > 0)
-                            TotalCount++;
-                    }
-                    for (int i = 0; i < bandedGridView4.RowCount; i++)
-                    {
-                        DataRow DataRow = (DataRow)bandedGridView4.GetDataRow(i);
-                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
-                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
-                        if (SelectSelect && TotalFunction.Length > 0)
-                            TotalCount++;
-                    }
-                    for (int i = 0; i < bandedGridView1.RowCount; i++)
-                    {
-                        DataRow DataRow = (DataRow)bandedGridView1.GetDataRow(i);
-                        bool SelectSelect = Convert.ToBoolean(DataRow["SelectSelect"]);
-                        string TotalFunction = DataRow["TotalFunctionName"].ToString();
-                        if (SelectSelect && TotalFunction.Length > 0)
-                            TotalCount++;
+                        for (int j = 0; j < vs[i].RowCount; j++)
+                        {
+                            DataRow DataRow = vs[i].GetDataRow(j);
+                            string TotalFunction = DataRow["TotalFunctionName"].ToString();
+                            if (Convert.ToBoolean(DataRow["SelectSelect"]) && TotalFunction.Length > 0)
+                                TotalCount++;
+                        }
                     }
                     IsOk = TotalCount > 0 ? true : false;
                     if (!IsOk)
