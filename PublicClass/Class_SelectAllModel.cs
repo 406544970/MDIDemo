@@ -16,6 +16,7 @@ namespace MDIDemo.PublicClass
             class_Create = new Class_Create();
             class_SubList = new List<Class_Sub>();
             class_WindowLastState = new Class_WindowLastState();
+            class_FrontPage = new Class_FrontPage();
             LastSelectTableName = null;
             classType = "select";
             FrontType = 0;
@@ -71,9 +72,36 @@ namespace MDIDemo.PublicClass
         /// </summary>
         public bool ReadWriteSeparation { get; set; }
 
+        public Class_FrontPage class_FrontPage;
         #endregion
 
         #region 子类
+
+        #region 前端页面
+        public partial class Class_FrontPage
+        {
+            public Class_FrontPage()
+            {
+                SelectType = 0;
+            }
+            /// <summary>
+            /// 动态表格名称
+            /// </summary>
+            public string GridName { get; set; }
+            /// <summary>
+            /// 工具栏类型
+            /// </summary>
+            public string ToolType { get; set; }
+            /// <summary>
+            /// 列工具栏类型
+            /// </summary>
+            public string ColumnToolType { get; set; }
+            /// <summary>
+            /// 动态表格上的选择类型：0:无选、1:单选、2:多选
+            /// </summary>
+            public int SelectType { get; set; }
+        }
+        #endregion
 
         #region 界面最后状态
         /// <summary>

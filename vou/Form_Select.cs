@@ -253,6 +253,13 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
+                #region 前端页面
+                this.textEdit18.Text = class_SelectAllModel.class_FrontPage.GridName;
+                this.comboBoxEdit2.Text = class_SelectAllModel.class_FrontPage.ToolType;
+                this.comboBoxEdit3.Text = class_SelectAllModel.class_FrontPage.ColumnToolType;
+                this.radioGroup3.SelectedIndex = class_SelectAllModel.class_FrontPage.SelectType;
+                #endregion
+
                 if (class_SelectAllModel != null)
                 {
                     this.propertyGridControl3.SelectedObject = class_SelectAllModel.class_SelectDataBase;
@@ -361,6 +368,7 @@ namespace MDIDemo.vou
 
             #region TextEdit
             Class_SetTextEdit class_SetTextEdit = new Class_SetTextEdit();
+            class_SetTextEdit.SetTextEdit(this.textEdit18, Color.LightGreen);
             class_SetTextEdit.SetTextEdit(this.textEdit19, Color.LightGreen);
             class_SetTextEdit.SetTextEdit(this.textEdit99, Color.LightGreen);
             class_SetTextEdit.SetTextEdit(this.textEdit100, Color.LightGreen);
@@ -2191,6 +2199,13 @@ namespace MDIDemo.vou
                 class_SelectAllModel.AddAllOutFieldName();
                 class_SelectAllModel.UpdateIsMultTableSign();
                 class_SelectAllModel.UpdateMultFieldName();
+                #endregion
+
+                #region 前端页面
+                class_SelectAllModel.class_FrontPage.GridName = this.textEdit18.Text;
+                class_SelectAllModel.class_FrontPage.ToolType = this.comboBoxEdit2.Text;
+                class_SelectAllModel.class_FrontPage.ColumnToolType = this.comboBoxEdit3.Text;
+                class_SelectAllModel.class_FrontPage.SelectType = this.radioGroup3.SelectedIndex;
                 #endregion
 
                 if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
