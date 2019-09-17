@@ -66,83 +66,235 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         public void OpenDeleteWin(string xmlFileName)
         {
-            Class_WindowType class_WindowType = new Class_WindowType();
-            class_WindowType.WindowType = "delete";
-            Form_Delete form;
-            if (xmlFileName == null)
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Class_DeleteAllModel class_DeleteAllModel = new Class_DeleteAllModel();
+            Class_DeleteAllModel.Class_InsertDataBase class_DeleteDataBase = new Class_DeleteAllModel.Class_InsertDataBase();
+            try
             {
-                form = new Form_Delete(mySkinName);
-                form.Text = "新DELETE";
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                {
+                    class_DeleteAllModel = class_PublicMethod.FromXmlToSelectObject<Class_DeleteAllModel>(mySkinName);
+                    class_DeleteDataBase = class_DeleteAllModel.class_SelectDataBase;
+                    switch (class_DeleteDataBase.databaseType)
+                    {
+                        case "MySql":
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord, class_DeleteDataBase.Port);
+                            break;
+                        case "SqlServer 2017":
+                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord);
+                            break;
+                        default:
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord, class_DeleteDataBase.Port);
+                            break;
+                    }
+                }
+                Class_WindowType class_WindowType = new Class_WindowType();
+                class_WindowType.WindowType = "delete";
+                Form_Delete form;
+                if (xmlFileName == null)
+                {
+                    form = new Form_Delete(mySkinName);
+                    form.Text = "新DELETE";
+                    form.Tag = class_WindowType;
+                }
+                else
+                {
+                    class_WindowType.XmlFileName = xmlFileName;
+                    form = new Form_Delete(mySkinName, xmlFileName);
+                    form.Text = string.Format("DELETE：{0}", xmlFileName);
+                    form.Tag = class_WindowType;
+                }
+                OpenSubForm(form);
             }
-            else
+            catch (Exception e)
             {
-                class_WindowType.XmlFileName = xmlFileName;
-                form = new Form_Delete(mySkinName, xmlFileName);
-                form.Text = string.Format("DELETE：{0}", xmlFileName);
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                    MessageBox.Show(string.Format("数据库[{0}:{3}]：Url[{1}],端口[{2}]，连接失败，无法打开该界面！\r\n异常：{4}。"
+                    , class_DeleteDataBase.databaseType
+                    , class_DeleteDataBase.dataSourceUrl
+                    , class_DeleteDataBase.Port
+                    , class_DeleteDataBase.dataBaseName
+                    , e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(string.Format("异常：{0}。", e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            OpenSubForm(form);
         }
         public void OpenUpdateWin(string xmlFileName)
         {
-            Class_WindowType class_WindowType = new Class_WindowType();
-            class_WindowType.WindowType = "update";
-            Form_Update form;
-            if (xmlFileName == null)
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
+            Class_UpdateAllModel.Class_InsertDataBase class_UpdateDataBase = new Class_UpdateAllModel.Class_InsertDataBase();
+            try
             {
-                form = new Form_Update(mySkinName);
-                form.Text = "新UPDATE";
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                {
+                    class_UpdateAllModel = class_PublicMethod.FromXmlToSelectObject<Class_UpdateAllModel>(mySkinName);
+                    class_UpdateDataBase = class_UpdateAllModel.class_SelectDataBase;
+                    switch (class_UpdateDataBase.databaseType)
+                    {
+                        case "MySql":
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord, class_UpdateDataBase.Port);
+                            break;
+                        case "SqlServer 2017":
+                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord);
+                            break;
+                        default:
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord, class_UpdateDataBase.Port);
+                            break;
+                    }
+                }
+                Class_WindowType class_WindowType = new Class_WindowType();
+                class_WindowType.WindowType = "update";
+                Form_Update form;
+                if (xmlFileName == null)
+                {
+                    form = new Form_Update(mySkinName);
+                    form.Text = "新UPDATE";
+                    form.Tag = class_WindowType;
+                }
+                else
+                {
+                    class_WindowType.XmlFileName = xmlFileName;
+                    form = new Form_Update(mySkinName, xmlFileName);
+                    form.Text = string.Format("UPDATE：{0}", xmlFileName);
+                    form.Tag = class_WindowType;
+                }
+                OpenSubForm(form);
             }
-            else
+            catch (Exception e)
             {
-                class_WindowType.XmlFileName = xmlFileName;
-                form = new Form_Update(mySkinName, xmlFileName);
-                form.Text = string.Format("UPDATE：{0}", xmlFileName);
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                    MessageBox.Show(string.Format("数据库[{0}:{3}]：Url[{1}],端口[{2}]，连接失败，无法打开该界面！\r\n异常：{4}。"
+                    , class_UpdateDataBase.databaseType
+                    , class_UpdateDataBase.dataSourceUrl
+                    , class_UpdateDataBase.Port
+                    , class_UpdateDataBase.dataBaseName
+                    , e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(string.Format("异常：{0}。", e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            OpenSubForm(form);
         }
         public void OpenInsertWin(string xmlFileName)
         {
-            Class_WindowType class_WindowType = new Class_WindowType();
-            class_WindowType.WindowType = "insert";
-            Form_Insert form;
-            if (xmlFileName == null)
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Class_InsertAllModel class_InsertAllModel = new Class_InsertAllModel();
+            Class_InsertAllModel.Class_InsertDataBase class_InsertDataBase = new Class_InsertAllModel.Class_InsertDataBase();
+            try
             {
-                form = new Form_Insert(mySkinName);
-                form.Text = "新INSERT";
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                {
+                    class_InsertAllModel = class_PublicMethod.FromXmlToSelectObject<Class_InsertAllModel>(mySkinName);
+                    class_InsertDataBase = class_InsertAllModel.class_SelectDataBase;
+                    switch (class_InsertDataBase.databaseType)
+                    {
+                        case "MySql":
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord, class_InsertDataBase.Port);
+                            break;
+                        case "SqlServer 2017":
+                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord);
+                            break;
+                        default:
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord, class_InsertDataBase.Port);
+                            break;
+                    }
+                }
+                Class_WindowType class_WindowType = new Class_WindowType();
+                class_WindowType.WindowType = "insert";
+                Form_Insert form;
+                if (xmlFileName == null)
+                {
+                    form = new Form_Insert(mySkinName);
+                    form.Text = "新INSERT";
+                    form.Tag = class_WindowType;
+                }
+                else
+                {
+                    class_WindowType.XmlFileName = xmlFileName;
+                    form = new Form_Insert(mySkinName, xmlFileName);
+                    form.Text = string.Format("INSERT：{0}", xmlFileName);
+                    form.Tag = class_WindowType;
+                }
+                OpenSubForm(form);
             }
-            else
+            catch (Exception e)
             {
-                class_WindowType.XmlFileName = xmlFileName;
-                form = new Form_Insert(mySkinName, xmlFileName);
-                form.Text = string.Format("INSERT：{0}", xmlFileName);
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                    MessageBox.Show(string.Format("数据库[{0}:{3}]：Url[{1}],端口[{2}]，连接失败，无法打开该界面！\r\n异常：{4}。"
+                    , class_InsertDataBase.databaseType
+                    , class_InsertDataBase.dataSourceUrl
+                    , class_InsertDataBase.Port
+                    , class_InsertDataBase.dataBaseName
+                    , e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(string.Format("异常：{0}。", e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            OpenSubForm(form);
         }
         public void OpenSelectWin(string xmlFileName)
         {
-            Class_WindowType class_WindowType = new Class_WindowType();
-            class_WindowType.WindowType = "select";
-            Form_Select form;
-            if (xmlFileName == null)
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Class_SelectAllModel class_SelectAllModel = new Class_SelectAllModel();
+            Class_SelectAllModel.Class_SelectDataBase class_SelectDataBase = new Class_SelectAllModel.Class_SelectDataBase();
+            try
             {
-                form = new Form_Select(mySkinName);
-                form.Text = "新SELECT";
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                {
+                    class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(mySkinName);
+                    class_SelectDataBase = class_SelectAllModel.class_SelectDataBase;
+                    switch (class_SelectDataBase.databaseType)
+                    {
+                        case "MySql":
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord, class_SelectDataBase.Port);
+                            break;
+                        case "SqlServer 2017":
+                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord);
+                            break;
+                        default:
+                            class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord, class_SelectDataBase.Port);
+                            break;
+                    }
+                }
+                Class_WindowType class_WindowType = new Class_WindowType();
+                class_WindowType.WindowType = "select";
+                Form_Select form;
+                if (xmlFileName == null)
+                {
+                    form = new Form_Select(mySkinName);
+                    form.Text = "新SELECT";
+                    form.Tag = class_WindowType;
+                }
+                else
+                {
+                    class_WindowType.XmlFileName = xmlFileName;
+                    form = new Form_Select(mySkinName, xmlFileName);
+                    form.Text = string.Format("SELECT：{0}", xmlFileName);
+                    form.Tag = class_WindowType;
+                }
+                OpenSubForm(form);
             }
-            else
+            catch (Exception e)
             {
-                class_WindowType.XmlFileName = xmlFileName;
-                form = new Form_Select(mySkinName, xmlFileName);
-                form.Text = string.Format("SELECT：{0}", xmlFileName);
-                form.Tag = class_WindowType;
+                if (xmlFileName != null)
+                    MessageBox.Show(string.Format("数据库[{0}:{3}]：Url[{1}],端口[{2}]，连接失败，无法打开该界面！\r\n异常：{4}。"
+                    , class_SelectDataBase.databaseType
+                    , class_SelectDataBase.dataSourceUrl
+                    , class_SelectDataBase.Port
+                    , class_SelectDataBase.dataBaseName
+                    , e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(string.Format("异常：{0}。", e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            OpenSubForm(form);
         }
         private void OpenHistoryWin()
         {
