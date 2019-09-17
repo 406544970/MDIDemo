@@ -258,7 +258,7 @@ namespace MDIDemo.vou
 
             this.simpleButton2.Text = "折叠";
 
-            //AddComponentType(this.repositoryItemComboBox10);
+            AddComponentType(this.repositoryItemComboBox10);
         }
 
         private void SetIniSkin(string skinName)
