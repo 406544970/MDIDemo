@@ -876,7 +876,8 @@ namespace MDIDemo.PublicClass
                 #region Where
                 string IfLabel = null;
                 string NowWhere = null;
-                IfLabel = string.Format("{1}<if test=\"{0} != null\">\r\n"
+                if (class_Field.LogType.IndexOf("NULL") < 0)
+                    IfLabel = string.Format("{1}<if test=\"{0} != null\">\r\n"
                 , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
                 NowWhere = string.Format("{0} {2} {1} "
                     , class_ToolSpace.GetSetSpaceCount((class_Field.WhereType == "AND" || class_Field.WhereType == "OR") ? 4 : 5)
@@ -906,23 +907,13 @@ namespace MDIDemo.PublicClass
                     if (class_Field.LogType.Equals("全Like"))
                         LikeType = 0;
                     NowWhere += string.Format("{0} ", class_Field.LogType.IndexOf("Like") > -1 ? "like" : class_Field.LogType);
-                    if (class_Field.WhereValue == "参数")
-                    {
-                        string XmlFieldString = "#{" + string.Format("{0},jdbcType={1}"
-                            , InParaFieldName
-                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
-                        if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
-                            NowWhere = NowWhere + XmlFieldString;
-                        else
-                            NowWhere = NowWhere + class_InterFaceDataBase.GetLikeString(XmlFieldString, LikeType);
-                    }
+                    string XmlFieldString = "#{" + string.Format("{0},jdbcType={1}"
+                        , InParaFieldName
+                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType))) + "}";
+                    if ((LikeType < -99) && (class_Field.LogType.IndexOf("NULL") == -1))
+                        NowWhere = NowWhere + XmlFieldString;
                     else
-                    {
-                        if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType))
-                            NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
-                        else
-                            NowWhere = NowWhere + string.Format("{0}", class_Field.WhereValue);
-                    }
+                        NowWhere = NowWhere + class_InterFaceDataBase.GetLikeString(XmlFieldString, LikeType);
                     if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf("&") > -1))
                         NowWhere = string.Format("{0}<![CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(4), NowWhere.Trim());
                     else
