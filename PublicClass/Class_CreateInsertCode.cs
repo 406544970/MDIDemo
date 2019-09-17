@@ -265,7 +265,7 @@ namespace MDIDemo.PublicClass
                     , class_ToolSpace.GetSetSpaceCount(2));
                 if (class_InsertAllModel.ReturnStructure)
                 {
-                    stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败，有\" + repetitionCount + \"条数据已重复！\", ResultVO.Class);\r\n"
+                    stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败，有\" + repetitionCount + \"条数据已重复！\", ResultVO.class);\r\n"
                         , class_ToolSpace.GetSetSpaceCount(3));
                 }
                 else
