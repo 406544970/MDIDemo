@@ -32,6 +32,7 @@ namespace MDIDemo.vou
 
         private Class_SelectAllModel class_SelectAllModel;
         private IClass_InterFaceDataBase class_InterFaceDataBase;
+        private IClass_InterFaceUiProperty class_InterFaceUiProperty;
         private List<string> myTableNameList;
         private List<string> myTableContentList;
         private Class_PublicMethod class_PublicMethod;
@@ -47,7 +48,6 @@ namespace MDIDemo.vou
             SetCompoment();
             this.listBoxControl1.Items.Clear();
             this.listBoxControl3.Items.Clear();
-            this.radioGroup3.Enabled = false;
             #region mybatisMap文件配置
             this.propertyGridControl5.OptionsBehavior.UseDefaultEditorsCollection = true;
             this.propertyGridControl5.LayoutChanged();
@@ -68,8 +68,21 @@ namespace MDIDemo.vou
 
             class_SelectAllModel = new Class_SelectAllModel();
             SetSelectAllMode(xmlFileName);
+
+            class_InterFaceUiProperty = new Class_LayUiProperty();
+            InsertCombox(this.comboBoxEdit2, class_InterFaceUiProperty.GetToolType());
+            InsertCombox(this.comboBoxEdit3, class_InterFaceUiProperty.GetColumnToolType());
         }
 
+        private void InsertCombox(ComboBoxEdit comboBoxEdit,List<string> vs)
+        {
+            if (vs != null && vs.Count > 0)
+            {
+                comboBoxEdit.Properties.Items.Clear();
+                foreach (string item in vs)
+                    comboBoxEdit.Properties.Items.Add(item);
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -2862,6 +2875,12 @@ namespace MDIDemo.vou
         {
             if (checkEdit18.Checked)
                 this.textEdit93.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Dto", (sender as TextEdit).Text));
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            this.panelControl16.Height = this.panelControl16.Height == 35 ? 122 : 35;
+            this.simpleButton3.Text = this.panelControl16.Height == 35 ? "展开" : "折叠";
         }
     }
 }

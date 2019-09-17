@@ -507,6 +507,53 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public class Class_Tool
     {
+        private static List<int> GetUpperSite(string Content)
+        {
+            if (Content == null || Content.Length == 0)
+                return null;
+            List<int> vs = new List<int>();
+            for (int i = 0; i < Content.Length; i++)
+            {
+                if (Content[i] <= 90 && Content[i] >= 65)
+                    vs.Add(i);
+            }
+            return vs;
+        }
+        public static string GetVueString(string Content)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            List<int> vs = new List<int>();
+            vs = GetUpperSite(Content);
+            if (vs != null && vs.Count > 0)
+            {
+                int BeginSite = 0;
+                int EndSite = 0;
+                int Index = 0;
+                foreach (int item in vs)
+                {
+                    EndSite = item;
+                    if (EndSite > BeginSite)
+                    {
+                        if (Index > 0)
+                            stringBuilder.Append("-");
+                        string MyString = Content.Substring(BeginSite, EndSite - BeginSite).ToLower();
+                        stringBuilder.Append(MyString);
+                        Index++;
+                    }
+                    BeginSite = EndSite;
+                }
+                if (EndSite < Content.Length)
+                {
+                    if (Index > 0)
+                        stringBuilder.Append("-");
+                    string MyString = Content.Substring(EndSite, Content.Length - EndSite).ToLower();
+                    stringBuilder.Append(MyString);
+                }
+            }
+            else
+                stringBuilder.Append(Content.ToLower());
+            return stringBuilder.ToString();
+        }
         public static string DeleteKuoHaoOther(string Content)
         {
             Content = Content.Replace("（", "(").Replace("）", ")");
