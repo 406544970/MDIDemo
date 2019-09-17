@@ -1227,7 +1227,7 @@ namespace MDIDemo.vou
                 this.xtraTabControl3.SelectedTabPageIndex = 1;
                 this.xtraTabControl8.SelectedTabPageIndex = 0;
                 this.xtraTabControl6.SelectedTabPageIndex = 4;
-                this.xtraTabControl7.SelectedTabPageIndex = 2;
+                this.xtraTabControl7.SelectedTabPageIndex = 1;
             }
             else
             {

@@ -74,7 +74,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             {
                 if (xmlFileName != null)
                 {
-                    class_DeleteAllModel = class_PublicMethod.FromXmlToSelectObject<Class_DeleteAllModel>(mySkinName);
+                    class_DeleteAllModel = class_PublicMethod.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
                     class_DeleteDataBase = class_DeleteAllModel.class_SelectDataBase;
                     switch (class_DeleteDataBase.databaseType)
                     {
@@ -132,7 +132,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             {
                 if (xmlFileName != null)
                 {
-                    class_UpdateAllModel = class_PublicMethod.FromXmlToSelectObject<Class_UpdateAllModel>(mySkinName);
+                    class_UpdateAllModel = class_PublicMethod.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
                     class_UpdateDataBase = class_UpdateAllModel.class_SelectDataBase;
                     switch (class_UpdateDataBase.databaseType)
                     {
@@ -190,7 +190,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             {
                 if (xmlFileName != null)
                 {
-                    class_InsertAllModel = class_PublicMethod.FromXmlToSelectObject<Class_InsertAllModel>(mySkinName);
+                    class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
                     class_InsertDataBase = class_InsertAllModel.class_SelectDataBase;
                     switch (class_InsertDataBase.databaseType)
                     {
@@ -248,7 +248,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             {
                 if (xmlFileName != null)
                 {
-                    class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(mySkinName);
+                    class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
                     class_SelectDataBase = class_SelectAllModel.class_SelectDataBase;
                     switch (class_SelectDataBase.databaseType)
                     {
