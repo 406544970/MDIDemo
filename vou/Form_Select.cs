@@ -286,12 +286,15 @@ namespace MDIDemo.vou
         public string publicSkinName;
         private void SetCompoment()
         {
+            #region CheckEdit
             this.checkEdit8.Checked = false;
             this.checkEdit3.Checked = false;
             this.checkEdit14.Checked = false;
             this.checkEdit16.Checked = false;
             this.checkEdit18.Checked = false;
+            #endregion
 
+            #region radioGroup
             radioGroup5.SelectedIndex = 0;
             radioGroup6.SelectedIndex = 0;
             radioGroup29.SelectedIndex = 1;
@@ -299,6 +302,7 @@ namespace MDIDemo.vou
             radioGroup31.SelectedIndex = 3;
             radioGroup1.SelectedIndex = 0;
             radioGroup2.SelectedIndex = 0;
+            #endregion
 
             SetIniSkin(publicSkinName);
             xtraTabControl3.SelectedTabPageIndex = 0;
