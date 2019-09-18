@@ -1540,12 +1540,11 @@ namespace MDIDemo.PublicClass
                     , class_Sub.ServiceInterFaceName
                     , class_Sub.ServiceClassName);
                 stringBuilder.Append(" {\r\n");
+                stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}{1} {2};\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.DaoClassName
+                , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
             }
-
-            stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}{1} {2};\r\n", class_ToolSpace.GetSetSpaceCount(1)
-            , class_Sub.DaoClassName
-            , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
             if (class_Sub.ServiceInterFaceReturnCount > 0
                 && class_SelectAllModel.ReturnStructure
                 && (class_SelectAllModel.ReturnStructureType == 3

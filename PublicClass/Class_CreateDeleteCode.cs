@@ -574,12 +574,11 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("public class {1} implements {0} {{\r\n"
                     , class_Sub.ServiceInterFaceName
                     , class_Sub.ServiceClassName);
+                stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}{1} {2};\r\n", class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.DaoClassName
+                , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
             }
-
-            stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}{1} {2};\r\n", class_ToolSpace.GetSetSpaceCount(1)
-            , class_Sub.DaoClassName
-            , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName));
             stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
