@@ -850,46 +850,49 @@ namespace MDIDemo.PublicClass
             int Counter = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                bool IsAddField = false;
-                RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
-                if (!class_Field.FieldIsKey)
+                if (class_Field.InsertSelect)
                 {
-                    IsAddField = true;
-                }
-                else
-                    IsAddField = !class_Field.FieldIsAutoAdd;
-
-                if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
-                {
-                    stringBuilderField.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3)
-                        , class_Field.ParaName);
-                    stringBuilderValue.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3)
-                        , class_Field.ParaName);
-                }
-                if (IsAddField)
-                {
-                    stringBuilderField.Append(class_ToolSpace.GetSetSpaceCount(4));
-                    stringBuilderValue.Append(class_ToolSpace.GetSetSpaceCount(4));
-                    if (Counter > 0)
+                    bool IsAddField = false;
+                    RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
+                    if (!class_Field.FieldIsKey)
                     {
-                        stringBuilderField.Append(",");
-                        stringBuilderValue.Append(",");
+                        IsAddField = true;
                     }
-                    stringBuilderField.AppendFormat("{0}\r\n"
-                        , class_Field.FieldName);
-                    stringBuilderValue.AppendFormat("#{{{0},jdbcType={1}}}\r\n"
-                        , class_Field.ParaName
-                        , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    Counter++;
-                }
-                if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
-                {
-                    stringBuilderField.AppendFormat("{0}</if>\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3));
-                    stringBuilderValue.AppendFormat("{0}</if>\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3));
+                    else
+                        IsAddField = !class_Field.FieldIsAutoAdd;
+
+                    if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
+                    {
+                        stringBuilderField.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(3)
+                            , class_Field.ParaName);
+                        stringBuilderValue.AppendFormat("{0}<if test=\"{1} != null\">\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(3)
+                            , class_Field.ParaName);
+                    }
+                    if (IsAddField)
+                    {
+                        stringBuilderField.Append(class_ToolSpace.GetSetSpaceCount(4));
+                        stringBuilderValue.Append(class_ToolSpace.GetSetSpaceCount(4));
+                        if (Counter > 0)
+                        {
+                            stringBuilderField.Append(",");
+                            stringBuilderValue.Append(",");
+                        }
+                        stringBuilderField.AppendFormat("{0}\r\n"
+                            , class_Field.FieldName);
+                        stringBuilderValue.AppendFormat("#{{{0},jdbcType={1}}}\r\n"
+                            , class_Field.ParaName
+                            , Class_Tool.GetJdbcType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                        Counter++;
+                    }
+                    if (IsAddField && !class_Field.FieldIsAutoAdd && class_Field.FieldIsNull)
+                    {
+                        stringBuilderField.AppendFormat("{0}</if>\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(3));
+                        stringBuilderValue.AppendFormat("{0}</if>\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(3));
+                    }
                 }
             }
             #endregion
