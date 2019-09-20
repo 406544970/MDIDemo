@@ -19,7 +19,7 @@ namespace MDIDemo.PublicClass
         string _GetTypeContent(string FieldType);
         #endregion
 
-        #region 
+        #region 粘子层
         string GetMap(int Index);
         string GetSql(int Index);
         string GetServiceInterFace(int Index);
@@ -31,6 +31,12 @@ namespace MDIDemo.PublicClass
         string GetInPutParam(int Index);
         string GetTestSql(int Index);
         string GetFrontPage();
+        #endregion
+
+        #region Feign
+        string GetFeignControl(int Index);
+        string GetFeignInterFace(int Index);
+        string GetFeignInterFaceHystric(int Index);
         #endregion
 
     }

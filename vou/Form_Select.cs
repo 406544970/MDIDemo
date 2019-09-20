@@ -166,6 +166,13 @@ namespace MDIDemo.vou
                     this.textEdit102.Text = class_SelectAllModel.class_SubList[index].ServiceInterFaceName;
                     this.textEdit103.Text = class_SelectAllModel.class_SubList[index].ServiceClassName;
 
+                    this.textEdit23.Text = class_SelectAllModel.class_SubList[index].FeignInterFaceClassName;
+                    this.textEdit21.Text = class_SelectAllModel.class_SubList[index].FeignInterFaceHystricClassName;
+                    this.textEdit24.Text = class_SelectAllModel.class_SubList[index].FeignControlClassName;
+                    this.memoEdit14.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].FeignInterFaceContent);
+                    this.memoEdit15.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].FeignInterFaceHystricContent);
+                    this.memoEdit16.Text = Class_Tool.UnEscapeCharacter(class_SelectAllModel.class_SubList[index].FeignControlContent);
+
                     if (this.panelControl4.Height > this.simpleButton2.Height + 5)
                         this.simpleButton2.Text = "折叠";
                     else
@@ -362,6 +369,9 @@ namespace MDIDemo.vou
             class_SetMemoEdit.SetMemoEdit(this.memoEdit11);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit12);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit13, true);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit14);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit15);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit16);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit19);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit28);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit31);
@@ -380,6 +390,10 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit102, Color.LightGreen);
             class_SetTextEdit.SetTextEdit(this.textEdit103, Color.LightGreen);
             class_SetTextEdit.SetTextEdit(this.textEdit54, Color.LightGreen);
+
+            class_SetTextEdit.SetTextEdit(this.textEdit21, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit23, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit24, Color.LightGreen);
 
             class_SetTextEdit.SetTextEdit(this.textEdit25);
             class_SetTextEdit.SetTextEdit(this.textEdit91);
@@ -2125,6 +2139,12 @@ namespace MDIDemo.vou
                     class_SelectAllModel.class_SubList[index].ServiceInterFaceName = this.textEdit102.Text;
                     class_SelectAllModel.class_SubList[index].ServiceClassName = this.textEdit103.Text;
 
+                    class_SelectAllModel.class_SubList[index].FeignInterFaceClassName = this.textEdit23.Text;
+                    class_SelectAllModel.class_SubList[index].FeignInterFaceHystricClassName = this.textEdit21.Text;
+                    class_SelectAllModel.class_SubList[index].FeignControlClassName = this.textEdit24.Text;
+                    class_SelectAllModel.class_SubList[index].FeignInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit14.Text);
+                    class_SelectAllModel.class_SubList[index].FeignInterFaceHystricContent = Class_Tool.EscapeCharacter(this.memoEdit15.Text);
+                    class_SelectAllModel.class_SubList[index].FeignControlContent = Class_Tool.EscapeCharacter(this.memoEdit16.Text);
                 }
                 #endregion
 
@@ -2211,6 +2231,13 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_FrontPage.ColumnToolType = this.comboBoxEdit3.Text;
                 class_SelectAllModel.class_FrontPage.SelectType = this.radioGroup3.SelectedIndex;
                 #endregion
+
+                #region 保存属性框
+                class_SelectAllModel.class_SelectDataBase = this.propertyGridControl3.SelectedObject as Class_SelectDataBase;
+                class_SelectAllModel.class_Create = this.propertyGridControl4.SelectedObject as Class_Create;
+                class_SelectAllModel.class_MyBatisMap = this.propertyGridControl5.SelectedObject as Class_MyBatisMap;
+                #endregion
+
 
                 if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
                 {
@@ -2513,6 +2540,10 @@ namespace MDIDemo.vou
                 this.textEdit54.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Controller", (sender as TextEdit).Text));
                 this.textEdit102.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Service", (sender as TextEdit).Text));
                 this.textEdit103.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}ServiceImpl", (sender as TextEdit).Text));
+
+                this.textEdit23.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}InterFace", (sender as TextEdit).Text));
+                this.textEdit21.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}InterFaceHystric", (sender as TextEdit).Text));
+                this.textEdit24.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}FeignControl", (sender as TextEdit).Text));
             }
         }
 
@@ -2572,6 +2603,10 @@ namespace MDIDemo.vou
                     this.memoEdit12.Text = class_InterFaceCreateCode.GetFrontPage();
                     //常用方法
                     this.memoEdit13.Text = class_CreateFrontPage.GetUsedMethod();
+                    //Feign
+                    this.memoEdit14.Text = class_InterFaceCreateCode.GetFeignInterFace(PageIndex);
+                    this.memoEdit15.Text = class_InterFaceCreateCode.GetFeignInterFaceHystric(PageIndex);
+                    this.memoEdit16.Text = class_InterFaceCreateCode.GetFeignControl(PageIndex);
                 }
                 #endregion
 

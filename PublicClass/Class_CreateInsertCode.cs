@@ -1009,5 +1009,20 @@ namespace MDIDemo.PublicClass
         {
             return class_SQLiteOperator.GetComponentList();
         }
+
+        public string GetFeignControl(int Index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetFeignInterFace(int Index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetFeignInterFaceHystric(int Index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

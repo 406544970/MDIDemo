@@ -2654,7 +2654,7 @@ namespace MDIDemo.PublicClass
             , class_Sub.MethodId);
             stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
 
-            #region
+            #region 返回值
             if (class_SelectAllModel.ReturnStructure)
             {
                 int StructureType = class_SelectAllModel.ReturnStructureType;
@@ -3785,6 +3785,792 @@ namespace MDIDemo.PublicClass
         {
             throw new NotImplementedException();
         }
+
         #endregion
+
+        #region Feign
+        public string GetFeignControl(int PageIndex)
+        {
+            return _GetFeignControl(PageIndex);
+        }
+        private string _GetFeignControl(int PageIndex)
+        {
+            if (class_SelectAllModel.class_SubList == null)
+                return null;
+            if (class_SelectAllModel.class_SubList[PageIndex] == null)
+                return null;
+            Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
+            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+
+            #region 注释
+            if (!class_Sub.CreateMainCode)
+            {
+                stringBuilder.Append("/**\r\n");
+                stringBuilder.Append(_GetAuthor());
+                stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+                stringBuilder.Append(" */\r\n");
+                stringBuilder.Append("@RestController\r\n");
+                if (class_Sub.ControlRequestMapping != null)
+                    stringBuilder.AppendFormat("@RequestMapping(\"/{0}\")\r\n"
+                        , Class_Tool.GetFirstCodeLow(class_Sub.FeignControlClassName));
+
+                if (class_SelectAllModel.class_Create.SwaggerSign)
+                    stringBuilder.AppendFormat("@Api(value = \"{0}\", description = \"{1}\")\r\n"
+                        , class_Sub.ControlSwaggerValue
+                        , class_Sub.ControlSwaggerDescription);
+                stringBuilder.AppendFormat("public class {0}", class_Sub.FeignControlClassName);
+                stringBuilder.Append(" {\r\n");
+                stringBuilder.AppendFormat("{0}@Autowired\r\n", class_ToolSpace.GetSetSpaceCount(1));
+                stringBuilder.AppendFormat("{0}{1} {2};\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1)
+                    , class_Sub.FeignInterFaceClassName
+                    , Class_Tool.GetFirstCodeLow(class_Sub.FeignInterFaceClassName));
+            }
+
+            stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0} * {1}，方法ID：{2}\r\n{0} *\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.MethodContent
+                , class_SelectAllModel.class_Create.MethodId);
+            class_WhereFields = _GetParameterType();
+            if (class_WhereFields != null)
+            {
+                foreach (Class_WhereField class_Field in class_WhereFields)
+                {
+                    string JaveType = Class_Tool.GetClosedJavaType(class_InterFaceDataBase.GetJavaType(class_Field.LogType));
+                    if (class_Field.LogType.IndexOf("IN") > -1)
+                    {
+                        JaveType = string.Format("List<{0}>", JaveType);
+                    }
+                    if (class_Field.IsSame)
+                        stringBuilder.AppendFormat("{0} * @param {3} 表{1},原字段名{2},现字段名{3}:{4}\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_Field.TableName
+                            , class_Field.FieldName
+                            , class_Field.OutFieldName
+                            , class_Field.FieldRemark);
+                    else
+                        stringBuilder.AppendFormat("{0} * @param {2} 表{1},字段名{2}:{3}\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(1)
+                            , class_Field.TableName
+                            , class_Field.OutFieldName
+                            , class_Field.FieldRemark);
+                }
+            }
+            if (class_SelectAllModel.PageSign)
+            {
+                stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , "page"
+                , "当前页数");
+                stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , "limit"
+                , "每页条数");
+            }
+            if (class_SelectAllModel.class_Create.EnglishSign)
+            {
+                stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1)
+                , "englishSign"
+                , "是否是英文版");
+            }
+            stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
+            , class_Sub.ServiceInterFaceReturnRemark);
+            stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
+            #endregion
+
+            #region Swagger
+            if (class_SelectAllModel.class_Create.SwaggerSign)
+            {
+                stringBuilder.AppendFormat("{0}@ApiOperation(value = \"{1}\", notes = \"{2}\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.MethodContent
+                , class_Sub.ServiceInterFaceReturnRemark);
+                if (class_WhereFields != null && class_WhereFields.Count > 0)
+                {
+                    stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.Append("{\r\n");
+                    int index = 0;
+                    foreach (Class_WhereField row in class_WhereFields)
+                    {
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\""
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , Class_Tool.GetFirstCodeLow(row.OutFieldName)
+                        , row.FieldRemark
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                        if (!row.WhereIsNull)
+                            stringBuilder.Append(", required = true");
+                        if (row.FieldLogType.IndexOf("IN") > -1)
+                            stringBuilder.Append(", paramType = \"query\"");
+                        stringBuilder.Append(")");
+
+                        if (index < class_WhereFields.Count - 1)
+                            stringBuilder.Append(",");
+                        if (index == class_WhereFields.Count - 1 && (class_SelectAllModel.class_Create.EnglishSign || class_SelectAllModel.PageSign))
+                            stringBuilder.Append(",");
+                        stringBuilder.Append("\r\n");
+                        index++;
+                    }
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\"),"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "page"
+                        , "当前页数"
+                        , "int");
+                        stringBuilder.Append("\r\n");
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\")"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "limit"
+                        , "每页条数"
+                        , "int");
+                        stringBuilder.Append("\r\n");
+                    }
+
+                    if (class_SelectAllModel.class_Create.EnglishSign)
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"englishSign\", value = \"是否生成英文\", required = true, dataType = \"Boolean\")\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(3));
+
+                    stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
+                    stringBuilder.Append("})\r\n");
+                }
+                else
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("{\r\n");
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\"),"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "page"
+                        , "当前页数"
+                        , "int");
+                        stringBuilder.Append("\r\n");
+                        stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\")"
+                        , class_ToolSpace.GetSetSpaceCount(3)
+                        , "limit"
+                        , "每页条数"
+                        , "int");
+                        stringBuilder.Append("\r\n");
+                        stringBuilder.AppendFormat("{0}", class_ToolSpace.GetSetSpaceCount(1));
+                        stringBuilder.Append("})\r\n");
+                    }
+                }
+            }
+            #endregion
+
+            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}\")\r\n"
+            , class_ToolSpace.GetSetSpaceCount(1)
+            , class_SelectAllModel.class_Create.HttpRequestType
+            , class_Sub.MethodId);
+            stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
+
+            #region 返回值
+            if (class_SelectAllModel.ReturnStructure)
+            {
+                int StructureType = class_SelectAllModel.ReturnStructureType;
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                    StructureType = 0;
+                switch (StructureType)
+                {
+                    case 0:
+                        stringBuilder.Append("ResultVO");
+                        break;
+                    case 1:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                    case 2:
+                        stringBuilder.Append("ResultVOPageTotal");
+                        break;
+                    case 3:
+                        stringBuilder.Append("ResultVOTotal");
+                        break;
+                    default:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                }
+            }
+            else
+            {
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                {
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("{0}", class_Sub.DtoClassName);
+                    else
+                        stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+
+                }
+                else
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.Append("PageInfo");
+                    }
+                    else
+                    {
+                        if (class_SelectAllModel.IsMultTable)
+                            stringBuilder.AppendFormat("List<{0}>", class_Sub.DtoClassName);
+                        else
+                            stringBuilder.AppendFormat("List<{0}>", _GetServiceReturnType(class_Sub, false));
+                    }
+                }
+            }
+            #endregion
+
+            stringBuilder.AppendFormat(" {0}", class_Sub.MethodId);
+            stringBuilder.Append("(");
+            int Index = 0;
+            foreach (Class_WhereField row in class_WhereFields)
+            {
+                if (Index++ > 0)
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                    , row.OutFieldName
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                else
+                    stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                    , row.OutFieldName);
+                if (row.WhereIsNull)
+                {
+                    stringBuilder.Append(" ,required = false");
+                }
+                if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
+                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
+                stringBuilder.Append(")");
+                if (row.FieldLogType.IndexOf("IN") > -1)
+                {
+                    stringBuilder.AppendFormat(" List<{0}>"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                }
+                else
+                    stringBuilder.AppendFormat(" {0}"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                stringBuilder.AppendFormat(" {0}", row.OutFieldName);
+            }
+            if (class_SelectAllModel.PageSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0}"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0},"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            if (class_SelectAllModel.class_Create.EnglishSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            stringBuilder.Append(") {\r\n");
+
+            #region 返回值
+            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(2));
+            if (class_SelectAllModel.ReturnStructure)
+            {
+                int StructureType = class_SelectAllModel.ReturnStructureType;
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                    StructureType = 0;
+                switch (StructureType)
+                {
+                    case 0:
+                        stringBuilder.Append("ResultVO");
+                        break;
+                    case 1:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                    case 2:
+                        stringBuilder.Append("ResultVOPageTotal");
+                        break;
+                    case 3:
+                        stringBuilder.Append("ResultVOTotal");
+                        break;
+                    default:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                }
+            }
+            else
+            {
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                {
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("{0}", class_Sub.DtoClassName);
+                    else
+                        stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+
+                }
+                else
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.Append("PageInfo");
+                    }
+                    else
+                    {
+                        if (class_SelectAllModel.IsMultTable)
+                            stringBuilder.AppendFormat("List<{0}>", class_Sub.DtoClassName);
+                        else
+                            stringBuilder.AppendFormat("List<{0}>", _GetServiceReturnType(class_Sub, false));
+                    }
+                }
+            }
+            #endregion
+
+            stringBuilder.AppendFormat(" resultValue = {0}."
+                , Class_Tool.GetFirstCodeLow(class_Sub.FeignInterFaceClassName));
+            stringBuilder.AppendFormat(" {0}", class_Sub.MethodId);
+            stringBuilder.Append("(");
+            Index = 0;
+            foreach (Class_WhereField row in class_WhereFields)
+            {
+                if (Index++ > 0)
+                    stringBuilder.Append(" ,");
+                stringBuilder.AppendFormat("{0}", row.OutFieldName);
+            }
+            if (class_SelectAllModel.PageSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, int {0}"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1}, int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} int {0},"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1} int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            if (class_SelectAllModel.class_Create.EnglishSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            stringBuilder.Append(");\r\n");
+            #endregion
+            stringBuilder.AppendFormat("\r\n{0}return resultValue;\r\n"
+                , class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}}}\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.Append("\r\n");
+            if (!class_Sub.CreateMainCode)
+                stringBuilder.Append("}\r\n");
+            return stringBuilder.ToString();
+        }
+
+        public string GetFeignInterFace(int PageIndex)
+        {
+            return _GetFeignInterFace(PageIndex);
+        }
+
+        private string _GetFeignInterFace(int PageIndex)
+        {
+            if (class_SelectAllModel.class_SubList == null)
+                return null;
+            if (class_SelectAllModel.class_SubList[PageIndex] == null)
+                return null;
+            Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
+            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+
+            #region 注释
+            if (!class_Sub.CreateMainCode)
+            {
+                stringBuilder.Append("/**\r\n");
+                stringBuilder.Append(_GetAuthor());
+                stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+                stringBuilder.Append(" */\r\n");
+                stringBuilder.Append("@Repository\r\n");
+                stringBuilder.Append("@");
+                stringBuilder.AppendFormat("FeignClient(value = \"{0}/{1}\"" +
+                    ", fallback = {2}.class)\r\n"
+                    , class_SelectAllModel.class_Create.MicroServiceName
+                    , class_Sub.ControlRequestMapping
+                    , class_Sub.FeignInterFaceHystricClassName);
+
+                stringBuilder.AppendFormat("public interface {0} {{\r\n", class_Sub.FeignInterFaceClassName);
+            }
+            #endregion
+
+            stringBuilder.AppendFormat("{0}@{1}Mapping(\"/{2}\")\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_SelectAllModel.class_Create.HttpRequestType
+                , class_Sub.MethodId);
+
+            #region 返回值
+            stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(1));
+            if (class_SelectAllModel.ReturnStructure)
+            {
+                int StructureType = class_SelectAllModel.ReturnStructureType;
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                    StructureType = 0;
+                switch (StructureType)
+                {
+                    case 0:
+                        stringBuilder.Append("ResultVO");
+                        break;
+                    case 1:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                    case 2:
+                        stringBuilder.Append("ResultVOPageTotal");
+                        break;
+                    case 3:
+                        stringBuilder.Append("ResultVOTotal");
+                        break;
+                    default:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                }
+            }
+            else
+            {
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                {
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("{0}", class_Sub.DtoClassName);
+                    else
+                        stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+
+                }
+                else
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.Append("PageInfo");
+                    }
+                    else
+                    {
+                        if (class_SelectAllModel.IsMultTable)
+                            stringBuilder.AppendFormat("List<{0}>", class_Sub.DtoClassName);
+                        else
+                            stringBuilder.AppendFormat("List<{0}>", _GetServiceReturnType(class_Sub, false));
+                    }
+                }
+            }
+            #endregion
+            stringBuilder.AppendFormat(" {0}", class_Sub.MethodId);
+            stringBuilder.Append("(");
+            class_WhereFields = _GetParameterType();
+            int Index = 0;
+            foreach (Class_WhereField row in class_WhereFields)
+            {
+                if (Index++ > 0)
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                    , row.OutFieldName
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                else
+                    stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                    , row.OutFieldName);
+                if (row.WhereIsNull)
+                {
+                    stringBuilder.Append(" ,required = false");
+                }
+                if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
+                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
+                stringBuilder.Append(")");
+                if (row.FieldLogType.IndexOf("IN") > -1)
+                {
+                    stringBuilder.AppendFormat(" List<{0}>"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                }
+                else
+                    stringBuilder.AppendFormat(" {0}"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                stringBuilder.AppendFormat(" {0}", row.OutFieldName);
+            }
+            if (class_SelectAllModel.PageSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0}"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0},"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            if (class_SelectAllModel.class_Create.EnglishSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            stringBuilder.Append(");\r\n");
+
+
+            if (!class_Sub.CreateMainCode)
+                stringBuilder.Append("}\r\n");
+            return stringBuilder.ToString();
+        }
+
+        public string GetFeignInterFaceHystric(int PageIndex)
+        {
+            return _GetFeignInterFaceHystric(PageIndex);
+        }
+
+        private string _GetFeignInterFaceHystric(int PageIndex)
+        {
+            if (class_SelectAllModel.class_SubList == null)
+                return null;
+            if (class_SelectAllModel.class_SubList[PageIndex] == null)
+                return null;
+            Class_Sub class_Sub = class_SelectAllModel.class_SubList[PageIndex];
+            List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
+            Class_Tool class_ToolSpace = new Class_Tool();
+            StringBuilder stringBuilder = new StringBuilder();
+            IClass_InterFaceDataBase class_InterFaceDataBase;
+            switch (class_SelectAllModel.class_SelectDataBase.databaseType)
+            {
+                case "MySql":
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+                case "SqlServer 2017":
+                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
+                    break;
+                default:
+                    class_InterFaceDataBase = new Class_MySqlDataBase();
+                    break;
+            }
+
+            #region 注释
+            if (!class_Sub.CreateMainCode)
+            {
+                stringBuilder.Append("/**\r\n");
+                stringBuilder.Append(_GetAuthor());
+                stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                stringBuilder.Append(" * @function\r\n * @editLog\r\n");
+                stringBuilder.Append(" */\r\n");
+                stringBuilder.Append("@Service\r\n");
+                stringBuilder.AppendFormat("public class {0} implements {1} {{\r\n"
+                    , class_Sub.FeignInterFaceHystricClassName
+                    , class_Sub.FeignInterFaceClassName);
+
+                stringBuilder.AppendFormat("{0}private final String hystricMessage = \"亲，服务器正忙，请稍后再戳。\";\r\n\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1));
+            }
+            #endregion
+            stringBuilder.AppendFormat("{0}@Override\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1));
+            stringBuilder.AppendFormat("{0}public ", class_ToolSpace.GetSetSpaceCount(1));
+
+            #region 返回值
+            if (class_SelectAllModel.ReturnStructure)
+            {
+                int StructureType = class_SelectAllModel.ReturnStructureType;
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                    StructureType = 0;
+                switch (StructureType)
+                {
+                    case 0:
+                        stringBuilder.Append("ResultVO");
+                        break;
+                    case 1:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                    case 2:
+                        stringBuilder.Append("ResultVOPageTotal");
+                        break;
+                    case 3:
+                        stringBuilder.Append("ResultVOTotal");
+                        break;
+                    default:
+                        stringBuilder.Append("ResultVOPage");
+                        break;
+                }
+            }
+            else
+            {
+                if (class_Sub.ServiceInterFaceReturnCount == 0)
+                {
+                    if (class_SelectAllModel.IsMultTable)
+                        stringBuilder.AppendFormat("{0}", class_Sub.DtoClassName);
+                    else
+                        stringBuilder.AppendFormat("{0}", _GetServiceReturnType(class_Sub, false));
+
+                }
+                else
+                {
+                    if (class_SelectAllModel.PageSign)
+                    {
+                        stringBuilder.Append("PageInfo");
+                    }
+                    else
+                    {
+                        if (class_SelectAllModel.IsMultTable)
+                            stringBuilder.AppendFormat("List<{0}>", class_Sub.DtoClassName);
+                        else
+                            stringBuilder.AppendFormat("List<{0}>", _GetServiceReturnType(class_Sub, false));
+                    }
+                }
+            }
+            #endregion
+
+            stringBuilder.AppendFormat(" {0}", class_Sub.MethodId);
+            stringBuilder.Append("(");
+            class_WhereFields = _GetParameterType();
+            int Index = 0;
+            foreach (Class_WhereField row in class_WhereFields)
+            {
+                if (Index++ > 0)
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                    , row.OutFieldName
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                else
+                    stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                    , row.OutFieldName);
+                if (row.WhereIsNull)
+                {
+                    stringBuilder.Append(" ,required = false");
+                }
+                if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
+                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
+                stringBuilder.Append(")");
+                if (row.FieldLogType.IndexOf("IN") > -1)
+                {
+                    stringBuilder.AppendFormat(" List<{0}>"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                }
+                else
+                    stringBuilder.AppendFormat(" {0}"
+                    , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
+                stringBuilder.AppendFormat(" {0}", row.OutFieldName);
+            }
+            if (class_SelectAllModel.PageSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0}"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"1\") int {0},"
+                    , "page"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"10\") int {0}"
+                    , "limit"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            if (class_SelectAllModel.class_Create.EnglishSign)
+            {
+                if (Index > 0)
+                {
+                    stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+                else
+                {
+                    stringBuilder.AppendFormat("\r\n{1} @RequestParam(value = \"{0}\", defaultValue = \"false\") Boolean {0}"
+                    , "englishSign"
+                    , class_ToolSpace.GetSetSpaceCount(3));
+                }
+            }
+            stringBuilder.Append(") {\r\n");
+
+            stringBuilder.AppendFormat("{0}return ResultStruct.error(hystricMessage, ResultVO.class);\r\n"
+                , class_ToolSpace.GetSetSpaceCount(2));
+            stringBuilder.AppendFormat("{0}}}\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1));
+            if (!class_Sub.CreateMainCode)
+                stringBuilder.Append("}\r\n");
+            return stringBuilder.ToString();
+
+        }
     }
 }
