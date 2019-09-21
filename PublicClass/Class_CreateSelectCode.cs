@@ -149,7 +149,7 @@ namespace MDIDemo.PublicClass
             }
 
             #region
-            //if (class_SelectAllModel.PageSign)
+            //if (MyPage)
             //{
             //    Class_WhereField class_WhereFieldpage = new Class_WhereField()
             //    {
@@ -2489,6 +2489,12 @@ namespace MDIDemo.PublicClass
                     break;
             }
 
+            bool MyPage = true;
+            MyPage = MyPage && class_SelectAllModel.PageSign;
+            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            if (MyPage && class_SelectAllModel.ReturnStructure)
+                MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
+
             #region 注释
             if (!class_Sub.CreateMainCode)
             {
@@ -2545,7 +2551,7 @@ namespace MDIDemo.PublicClass
                             , class_Field.FieldRemark);
                 }
             }
-            if (class_SelectAllModel.PageSign)
+            if (MyPage)
             {
                 stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
@@ -2595,12 +2601,12 @@ namespace MDIDemo.PublicClass
 
                         if (index < class_WhereFields.Count - 1)
                             stringBuilder.Append(",");
-                        if (index == class_WhereFields.Count - 1 && (class_SelectAllModel.class_Create.EnglishSign || class_SelectAllModel.PageSign))
+                        if (index == class_WhereFields.Count - 1 && (class_SelectAllModel.class_Create.EnglishSign || MyPage))
                             stringBuilder.Append(",");
                         stringBuilder.Append("\r\n");
                         index++;
                     }
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\"),"
                         , class_ToolSpace.GetSetSpaceCount(3)
@@ -2625,7 +2631,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
                         stringBuilder.Append("{\r\n");
@@ -2691,7 +2697,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.Append("PageInfo");
                     }
@@ -2735,7 +2741,7 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                 stringBuilder.AppendFormat(" {0}", row.OutFieldName);
             }
-            if (class_SelectAllModel.PageSign)
+            if (MyPage)
             {
                 if (Index > 0)
                 {
@@ -2833,7 +2839,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(page, limit);\r\n"
                             , class_ToolSpace.GetSetSpaceCount(2));
@@ -3364,7 +3370,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.AppendFormat("\r\n{0}PageHelper.startPage(page, limit);\r\n"
                             , class_ToolSpace.GetSetSpaceCount(2));
@@ -3816,6 +3822,11 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
+            bool MyPage = true;
+            MyPage = MyPage && class_SelectAllModel.PageSign;
+            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            if (MyPage && class_SelectAllModel.ReturnStructure)
+                MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
 
             #region 注释
             if (!class_Sub.CreateMainCode)
@@ -3873,7 +3884,7 @@ namespace MDIDemo.PublicClass
                             , class_Field.FieldRemark);
                 }
             }
-            if (class_SelectAllModel.PageSign)
+            if (MyPage)
             {
                 stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
@@ -3923,12 +3934,12 @@ namespace MDIDemo.PublicClass
 
                         if (index < class_WhereFields.Count - 1)
                             stringBuilder.Append(",");
-                        if (index == class_WhereFields.Count - 1 && (class_SelectAllModel.class_Create.EnglishSign || class_SelectAllModel.PageSign))
+                        if (index == class_WhereFields.Count - 1 && (class_SelectAllModel.class_Create.EnglishSign || MyPage))
                             stringBuilder.Append(",");
                         stringBuilder.Append("\r\n");
                         index++;
                     }
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.AppendFormat("{0}@ApiImplicitParam(name = \"{1}\", value = \"{2}\", dataType = \"{3}\"),"
                         , class_ToolSpace.GetSetSpaceCount(3)
@@ -3953,7 +3964,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.AppendFormat("{0}@ApiImplicitParams(", class_ToolSpace.GetSetSpaceCount(1));
                         stringBuilder.Append("{\r\n");
@@ -4019,7 +4030,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.Append("PageInfo");
                     }
@@ -4063,7 +4074,7 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                 stringBuilder.AppendFormat(" {0}", row.OutFieldName);
             }
-            if (class_SelectAllModel.PageSign)
+            if (MyPage)
             {
                 if (Index > 0)
                 {
@@ -4139,7 +4150,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.Append("PageInfo");
                     }
@@ -4165,7 +4176,7 @@ namespace MDIDemo.PublicClass
                     stringBuilder.Append(" ,");
                 stringBuilder.AppendFormat("{0}", row.OutFieldName);
             }
-            if (class_SelectAllModel.PageSign)
+            if (MyPage)
             {
                 if (Index > 0)
                 {
@@ -4241,6 +4252,11 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
+            bool MyPage = true;
+            MyPage = MyPage && class_SelectAllModel.PageSign;
+            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            if (MyPage && class_SelectAllModel.ReturnStructure)
+                MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
 
             #region 注释
             if (!class_Sub.CreateMainCode)
@@ -4305,7 +4321,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.Append("PageInfo");
                     }
@@ -4349,7 +4365,7 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                 stringBuilder.AppendFormat(" {0}", row.OutFieldName);
             }
-            if (class_SelectAllModel.PageSign)
+            if (MyPage)
             {
                 if (Index > 0)
                 {
@@ -4422,6 +4438,12 @@ namespace MDIDemo.PublicClass
                     break;
             }
 
+            bool MyPage = true;
+            MyPage = MyPage && class_SelectAllModel.PageSign;
+            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            if (MyPage && class_SelectAllModel.ReturnStructure)
+                MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
+
             #region 注释
             if (!class_Sub.CreateMainCode)
             {
@@ -4480,7 +4502,7 @@ namespace MDIDemo.PublicClass
                 }
                 else
                 {
-                    if (class_SelectAllModel.PageSign)
+                    if (MyPage)
                     {
                         stringBuilder.Append("PageInfo");
                     }
@@ -4525,7 +4547,7 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(row.LogType)));
                 stringBuilder.AppendFormat(" {0}", row.OutFieldName);
             }
-            if (class_SelectAllModel.PageSign)
+            if (MyPage)
             {
                 if (Index > 0)
                 {
