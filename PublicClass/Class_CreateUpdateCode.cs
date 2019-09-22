@@ -140,7 +140,6 @@ namespace MDIDemo.PublicClass
                                 , Class_Tool.GetFirstCodeLow(class_Field.FieldName)
                                 , class_Field.FieldRemark
                                 , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                            stringBuilder.Append(", required = true");
                             if (class_Field.LogType.IndexOf("IN") > -1)
                                 stringBuilder.Append(", paramType = \"query\"");
                             stringBuilder.Append(")\r\n");
@@ -210,11 +209,8 @@ namespace MDIDemo.PublicClass
                         , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\", required = false)"
                         , class_Field.ParaName);
-                    if ((class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
-                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", class_Field.FieldDefaultValue);
-                    stringBuilder.Append(")");
                     if (class_Field.LogType.IndexOf("IN") > -1)
                         stringBuilder.AppendFormat(" List<{0}>"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));

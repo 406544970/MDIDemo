@@ -1204,7 +1204,8 @@ namespace MDIDemo.PublicClass
                 else
                     stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
                     , class_SelectAllModel.AllPackerName
-                    , class_SelectAllModel.class_SubList[PageIndex].ModelClassName);
+                    , _GetServiceReturnType(class_Sub, false));
+                    //, class_SelectAllModel.class_SubList[PageIndex].ModelClassName);
             }
             #endregion
 
@@ -1413,7 +1414,7 @@ namespace MDIDemo.PublicClass
             foreach (Class_Field row in class_SelectAllModel.class_SubList[PageIndex].class_Fields)
                 if (row.SelectSelect)
                     Counter++;
-            if (Counter < 1 && class_SelectAllModel.class_SubList[PageIndex].ResultType == 1)
+            if (Counter < 2 && class_SelectAllModel.class_SubList[PageIndex].ResultType == 1)
                 return null;
 
             Class_Tool class_ToolSpace = new Class_Tool();
@@ -2491,7 +2492,7 @@ namespace MDIDemo.PublicClass
 
             bool MyPage = true;
             MyPage = MyPage && class_SelectAllModel.PageSign;
-            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            MyPage = MyPage && (class_Sub.ServiceInterFaceReturnCount == 0 ? false : true);
             if (MyPage && class_SelectAllModel.ReturnStructure)
                 MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
 
@@ -2953,7 +2954,9 @@ namespace MDIDemo.PublicClass
                                     , class_Sub.DtoClassName
                                     , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             else
-                                stringBuilder.AppendFormat("List<{0}> {0}s = ", _GetServiceReturnType(class_Sub, false));
+                                stringBuilder.AppendFormat("List<{0}> {1}s = "
+                                    , _GetServiceReturnType(class_Sub, false)
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
 
                             stringBuilder.AppendFormat("{0}."
                                 , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName));
@@ -2976,15 +2979,15 @@ namespace MDIDemo.PublicClass
                             }
                             if (class_SelectAllModel.IsMultTable)
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s, limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             }
                             else
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s, limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
-                                    , _GetServiceReturnType(class_Sub, false));
+                                    , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
                             }
                             if (class_SelectAllModel.ReturnStructure)
                             {
@@ -3079,19 +3082,19 @@ namespace MDIDemo.PublicClass
                                 switch (StructureType)
                                 {
                                     case 0:
-                                        stringBuilder.AppendFormat("({0}", OutObjectName);
+                                        stringBuilder.AppendFormat("({0}", Class_Tool.GetFirstCodeLow(OutObjectName));
                                         break;
                                     case 1:
-                                        stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", OutObjectName);
+                                        stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", Class_Tool.GetFirstCodeLow(OutObjectName));
                                         break;
                                     case 2:
-                                        stringBuilder.AppendFormat("PageTotal({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal(), totalValueClassList", OutObjectName);
+                                        stringBuilder.AppendFormat("PageTotal({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal(), totalValueClassList", Class_Tool.GetFirstCodeLow(OutObjectName));
                                         break;
                                     case 3:
-                                        stringBuilder.AppendFormat("Total({0}, totalValueClassList", OutObjectName);
+                                        stringBuilder.AppendFormat("Total({0}, totalValueClassList", Class_Tool.GetFirstCodeLow(OutObjectName));
                                         break;
                                     default:
-                                        stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", OutObjectName);
+                                        stringBuilder.AppendFormat("Page({0}, pageInfo.getPageNum(), pageInfo.getPageSize(), pageInfo.getTotal()", Class_Tool.GetFirstCodeLow(OutObjectName));
                                         break;
                                 }
                                 stringBuilder.Append(");\r\n");
@@ -3509,13 +3512,13 @@ namespace MDIDemo.PublicClass
                             }
                             if (class_SelectAllModel.IsMultTable)
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s, limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(class_Sub.DtoClassName));
                             }
                             else
                             {
-                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s,limit);\r\n"
+                                stringBuilder.AppendFormat("{0}PageInfo pageInfo = new PageInfo<>({1}s, limit);\r\n"
                                     , class_ToolSpace.GetSetSpaceCount(2)
                                     , Class_Tool.GetFirstCodeLow(_GetServiceReturnType(class_Sub, false)));
                             }
@@ -3824,7 +3827,7 @@ namespace MDIDemo.PublicClass
             }
             bool MyPage = true;
             MyPage = MyPage && class_SelectAllModel.PageSign;
-            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            MyPage = MyPage && (class_Sub.ServiceInterFaceReturnCount == 0 ? false : true);
             if (MyPage && class_SelectAllModel.ReturnStructure)
                 MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
 
@@ -4254,7 +4257,7 @@ namespace MDIDemo.PublicClass
             }
             bool MyPage = true;
             MyPage = MyPage && class_SelectAllModel.PageSign;
-            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            MyPage = MyPage && (class_Sub.ServiceInterFaceReturnCount == 0 ? false : true);
             if (MyPage && class_SelectAllModel.ReturnStructure)
                 MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
 
@@ -4440,7 +4443,7 @@ namespace MDIDemo.PublicClass
 
             bool MyPage = true;
             MyPage = MyPage && class_SelectAllModel.PageSign;
-            MyPage = MyPage && class_Sub.ServiceInterFaceReturnCount == 0 ? false : true;
+            MyPage = MyPage && (class_Sub.ServiceInterFaceReturnCount == 0 ? false : true);
             if (MyPage && class_SelectAllModel.ReturnStructure)
                 MyPage = MyPage && (class_SelectAllModel.ReturnStructureType == 1 || class_SelectAllModel.ReturnStructureType == 2) ? true : false;
 

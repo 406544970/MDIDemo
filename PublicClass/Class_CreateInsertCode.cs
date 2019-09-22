@@ -221,15 +221,15 @@ namespace MDIDemo.PublicClass
             , class_ToolSpace.GetSetSpaceCount(2)
             , class_Sub.ParamClassName
             , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+            stringBuilder.AppendFormat("{0}{1} mainKey;//这里引用架包中的生成主键方法\r\n"
+                , class_ToolSpace.GetSetSpaceCount(2)
+                , KeyType);
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 if (class_Field.FieldIsKey)
                 {
                     if (!class_Field.FieldIsAutoAdd)
                     {
-                        stringBuilder.AppendFormat("{0}{1} mainKey;//这里引用架包中的生成主键方法\r\n"
-                            , class_ToolSpace.GetSetSpaceCount(2)
-                            , KeyType);
                         stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2)
                         , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
