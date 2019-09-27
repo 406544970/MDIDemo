@@ -184,7 +184,7 @@ namespace MDIDemo.PublicClass
 
             return class_WhereFields;
         }
-        private string _GetServiceReturnType(Class_Sub class_Main, bool HavePackageName = true)
+        private string _GetServiceReturnType(Class_Sub class_Main, bool HavePackageName = true, bool SimpleSign = true)
         {
             StringBuilder stringBuilder = new StringBuilder();
             IClass_InterFaceDataBase class_InterFaceDataBase;
@@ -212,9 +212,15 @@ namespace MDIDemo.PublicClass
             }
             else
             {
-                stringBuilder.AppendFormat("{0}"
-                , Class_Tool.GetSimplificationJavaType(
-                    class_InterFaceDataBase.GetJavaType(ResultType)));
+                if (SimpleSign)
+                    stringBuilder.AppendFormat("{0}"
+                    , Class_Tool.GetSimplificationJavaType(
+                        class_InterFaceDataBase.GetJavaType(ResultType)));
+                else
+                    stringBuilder.AppendFormat("{0}"
+                    , Class_Tool.GetJavaTypeByClosedType(
+                        class_InterFaceDataBase.GetJavaType(ResultType)));
+
             }
             return stringBuilder.ToString();
         }
@@ -1200,12 +1206,10 @@ namespace MDIDemo.PublicClass
                 if (class_SelectAllModel.IsMultTable)
                     stringBuilder.AppendFormat("resultType=\"{0}.dto.{1}\""
                     , class_SelectAllModel.AllPackerName
-                    , class_SelectAllModel.class_SubList[PageIndex].DtoClassName);
+                        , class_Sub.DtoClassName);
                 else
-                    stringBuilder.AppendFormat("resultType=\"{0}.model.{1}\""
-                    , class_SelectAllModel.AllPackerName
-                    , _GetServiceReturnType(class_Sub, false));
-                    //, class_SelectAllModel.class_SubList[PageIndex].ModelClassName);
+                    stringBuilder.AppendFormat("resultType=\"{0}\""
+                        , _GetServiceReturnType(class_Sub, true, false));
             }
             #endregion
 
