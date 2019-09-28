@@ -17,6 +17,7 @@ namespace MDIDemo.PublicClass
         bool IsCheckOk(ref List<string> outMessage);
         void AddAllOutFieldName();
         string _GetTypeContent(string FieldType);
+        string _GetFieldDefaultValue(string DefaultValue);
         #endregion
 
         #region 粘子层

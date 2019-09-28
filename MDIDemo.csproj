@@ -231,6 +231,8 @@
     <Compile Include="PublicClass\Class_DeleteAllModel.cs" />
     <Compile Include="PublicClass\Class_InterFaceUiProperty.cs" />
     <Compile Include="PublicClass\Class_LayUiProperty.cs" />
+    <Compile Include="PublicClass\Class_MyInfo.cs" />
+    <Compile Include="PublicClass\Class_RestClient.cs" />
     <Compile Include="PublicClass\Class_UpdateAllModel.cs" />
     <Compile Include="PublicClass\Class_InsertAllModel.cs" />
     <Compile Include="PublicClass\Class_InterFaceCreateCode.cs" />

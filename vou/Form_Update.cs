@@ -880,7 +880,7 @@ namespace MDIDemo.vou
                 class_UpdateAllModel.LastSelectTableName = this.listBoxControl1.SelectedValue.ToString();
             if (class_UpdateAllModel.class_Create.MethodId == null)
             {
-                class_UpdateAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
+                class_UpdateAllModel.class_Create.MethodId = Class_Tool.getKeyId("UP");
                 this.Text = string.Format("UPDATE：{0}", class_UpdateAllModel.class_Create.MethodId);
                 this.textEdit17.Text = class_UpdateAllModel.class_Create.MethodId;
 

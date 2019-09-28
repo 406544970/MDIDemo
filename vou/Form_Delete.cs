@@ -830,7 +830,7 @@ namespace MDIDemo.vou
                 class_DeleteAllModel.LastSelectTableName = this.listBoxControl1.SelectedValue.ToString();
             if (class_DeleteAllModel.class_Create.MethodId == null)
             {
-                class_DeleteAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
+                class_DeleteAllModel.class_Create.MethodId = Class_Tool.getKeyId("DE");
                 this.Text = string.Format("DELETE：{0}", class_DeleteAllModel.class_Create.MethodId);
                 this.textEdit17.Text = class_DeleteAllModel.class_Create.MethodId;
 

@@ -231,7 +231,7 @@ namespace MDIDemo.PublicClass
                     if (class_Field.WhereIsNull)
                         stringBuilder.Append(", required = false");
                     if ((class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
-                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", class_Field.FieldDefaultValue);
+                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
                     stringBuilder.Append(")");
                     if (class_Field.LogType.IndexOf("IN") > -1)
                         stringBuilder.AppendFormat(" List<{0}>"
@@ -970,6 +970,16 @@ namespace MDIDemo.PublicClass
         public string GetFeignInterFaceHystric(int Index)
         {
             throw new NotImplementedException();
+        }
+
+        public string _GetFieldDefaultValue(string DefaultValue)
+        {
+            string ResultValue = DefaultValue;
+            if (DefaultValue == "b\'0\'")
+                ResultValue = "0";
+            if (DefaultValue == "b\'1\'")
+                ResultValue = "1";
+            return ResultValue;
         }
     }
 }
