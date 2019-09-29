@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MDIDemo.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -73,6 +74,75 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
                 FROM cp_ComponentFrontPage
                 ORDER BY sortNo");
             return mySqlite3.ExecuteReadList(Sql);
+        }
+        public Class_LogRemamber GetLogRemember()
+        {
+            Class_LogRemamber class_LogRemamber = new Class_LogRemamber();
+            List<string> vs = new List<string>();
+            vs = mySqlite3.ExecuteReadList("SELECT * FROM inf_log");
+            if (vs != null)
+            {
+                foreach (string row in vs)
+                {
+                    string[] rowList = row.Split(';');
+                    class_LogRemamber.UseName = rowList[0];
+                    class_LogRemamber.PassWord = rowList[1];
+                    class_LogRemamber.RememberSign = Convert.ToInt32(rowList[2]) == 1 ? true : false;
+                    class_LogRemamber.AutoLog = Convert.ToInt32(rowList[3]) == 1 ? true : false;
+                }
+                return class_LogRemamber;
+            }
+            else
+                return null;
+
+        }
+        public bool UpdateLogInfo(string UseName, string PassWord, bool RememberSign, bool AutoLog)
+        {
+            bool ResultValue = false;
+            string Sql = null;
+            if (PassWord == null)
+                Sql = string.Format(@"UPDATE inf_log
+                set passWord = null
+                ,rememberSign = {1}
+                ,autoLog= {2}
+                WHERE useName = '{0}'"
+                    , UseName
+                    , RememberSign ? 1 : 0
+                    , AutoLog ? 1 : 0);
+            else
+                Sql = string.Format(@"UPDATE inf_log
+                set passWord = '{1}'
+                ,rememberSign = {2}
+                ,autoLog= {3}
+                WHERE useName = '{0}'"
+                    , UseName
+                    , PassWord
+                    , RememberSign ? 1 : 0
+                    , AutoLog ? 1 : 0);
+            if (mySqlite3.ExecuteSql(Sql) > 0)
+                ResultValue = true;
+            else
+            {
+                if (PassWord == null)
+                    Sql = string.Format(@"INSERT INTO inf_log
+                        VALUES('{0}',null,{1},{2})"
+                    , UseName
+                    , RememberSign ? 1 : 0
+                    , AutoLog ? 1 : 0);
+                else
+                    Sql = string.Format(@"INSERT INTO inf_log
+                        VALUES('{0}','{1}',{2},{3})"
+                    , UseName
+                    , PassWord
+                    , RememberSign ? 1 : 0
+                    , AutoLog ? 1 : 0);
+                if (mySqlite3.ExecuteSql(Sql) > 0)
+                    ResultValue = true;
+            }
+            Sql = string.Format(@"DELETE FROM inf_log
+                WHERE UseName != '{0}'", UseName);
+            mySqlite3.ExecuteSql(Sql);
+            return ResultValue;
         }
         /// <summary>
         /// 得到表别名

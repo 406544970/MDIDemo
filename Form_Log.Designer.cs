@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Log));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -36,6 +37,7 @@
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
@@ -120,6 +122,11 @@
             this.pictureEdit1.Size = new System.Drawing.Size(489, 141);
             this.pictureEdit1.TabIndex = 0;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form_Log
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -133,6 +140,8 @@
             this.Name = "Form_Log";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "欢迎";
+            this.Load += new System.EventHandler(this.Form_Log_Load);
+            this.Shown += new System.EventHandler(this.Form_Log_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
@@ -153,5 +162,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

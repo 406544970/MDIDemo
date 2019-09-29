@@ -20,6 +20,8 @@ namespace MDIDemo
             Ini();
         }
         private string version;
+        private int LogCount;
+        private Class_SQLiteOperator class_SQLiteOperator;
         private void setIniSkin(string skinName)
         {
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(skinName);
@@ -32,6 +34,8 @@ namespace MDIDemo
             //this.textEdit2.Text = "";
             setIniSkin("Metropolis Dark");
             this.Text = string.Format("登录 V {0}", this.version);
+            class_SQLiteOperator = new Class_SQLiteOperator();
+            LogCount = 5;
         }
 
         private void LogOk()
@@ -64,15 +68,24 @@ namespace MDIDemo
                     Class_MyInfo.TokenNameValue = class_Use.token;
                     Class_MyInfo.DateTimeString = class_Use.tokenEffective;
                     Class_MyInfo.UseTypeValue = class_Use.useType;
+
+                    #region 记住登录信息
+                    class_SQLiteOperator.UpdateLogInfo(this.textEdit1.Text
+                        , this.textEdit2.Text.Length == 0 ? null : this.textEdit2.Text
+                        , this.checkEdit1.Checked
+                        , this.checkEdit2.Checked);
+                    #endregion
+
                     this.DialogResult = DialogResult.OK;
                 }
                 else
-                    MessageBox.Show(string.Format("登录失败:\r\n原因：{0}",resultVO.msg)
+                    MessageBox.Show(string.Format("登录失败\r\n原因：{0}", resultVO.msg)
                         , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(string.Format("登录失败\r\n原因：{0}", e.Message)
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -118,6 +131,41 @@ namespace MDIDemo
                 }
                 LogOk();
             }
+        }
+
+        private void Form_Log_Load(object sender, EventArgs e)
+        {
+            Class_LogRemamber class_LogRemamber = new Class_LogRemamber();
+            class_LogRemamber = class_SQLiteOperator.GetLogRemember();
+            if (class_LogRemamber != null)
+            {
+                this.textEdit1.Text = class_LogRemamber.UseName;
+                if (class_LogRemamber.PassWord != null)
+                    this.textEdit2.Text = class_LogRemamber.PassWord;
+                this.checkEdit1.Checked = class_LogRemamber.RememberSign;
+                this.checkEdit2.Checked = class_LogRemamber.AutoLog;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.simpleButton1.Text = string.Format("安全登录({0})", LogCount);
+            if (LogCount == 1)
+            {
+                this.timer1.Enabled = false;
+                this.simpleButton1.Text = "安全登录";
+                LogOk();
+            }
+            else
+                LogCount--;
+        }
+
+        private void Form_Log_Shown(object sender, EventArgs e)
+        {
+            bool AutoSign = this.textEdit1.Text.Length > 0 ? true : false;
+            AutoSign = AutoSign && (this.textEdit2.Text.Length > 0 ? true : false);
+            AutoSign = AutoSign && this.checkEdit2.Checked;
+            this.timer1.Enabled = AutoSign;
         }
     }
 }
