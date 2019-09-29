@@ -4220,7 +4220,6 @@ namespace MDIDemo.PublicClass
                 }
             }
             stringBuilder.Append(");\r\n");
-            #endregion
             stringBuilder.AppendFormat("\r\n{0}return resultValue;\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2));
             stringBuilder.AppendFormat("{0}}}\r\n"
@@ -4611,5 +4610,6 @@ namespace MDIDemo.PublicClass
                 ResultValue = "1";
             return ResultValue;
         }
+        #endregion
     }
 }

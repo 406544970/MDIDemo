@@ -1,4 +1,5 @@
-﻿using MDIDemo.PublicClass;
+﻿using MDIDemo.Model;
+using MDIDemo.PublicClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,13 +36,57 @@ namespace MDIDemo
 
         private void LogOk()
         {
-            Class_UseInfo.UserId = "No1";
-            Class_UseInfo.UserName = "梁昊";
-            Class_UseInfo.UserClass = 3;
-            this.DialogResult = DialogResult.OK;
+            Class_RestClient class_RestClient = new Class_RestClient("localhost:2510");
+            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+            Class_ParaArray class_ParaArray = new Class_ParaArray()
+            {
+                ParaName = "num",
+                ParaValue = this.textEdit1.Text
+            };
+            class_ParaArrays.Add(class_ParaArray);
+            Class_ParaArray class_ParaArrayPass = new Class_ParaArray()
+            {
+                ParaName = "passWord",
+                ParaValue = this.textEdit2.Text
+            };
+            class_ParaArrays.Add(class_ParaArrayPass);
+            try
+            {
+                string ResultValue = class_RestClient.Post("myBatisUseController/useLogCS", class_ParaArrays);
+                ResultVO<Class_Use> resultVO = new ResultVO<Class_Use>();
+                resultVO = JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<Class_Use>;
+                if (resultVO.code == 0)
+                {
+                    Class_Use class_Use = new Class_Use();
+                    class_Use = resultVO.data;
+                    Class_UseInfo.UserId = class_Use.id;
+                    Class_UseInfo.UserName = class_Use.nickName;
+                    Class_UseInfo.UserClass = 3;
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                    MessageBox.Show(string.Format("登录失败:\r\n原因：{0}",resultVO.msg)
+                        , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            if (this.textEdit1.Text.Length == 0)
+            {
+                MessageBox.Show("请输入登录账号、手机号或邮件！"
+                , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (this.textEdit2.Text.Length == 0)
+            {
+                MessageBox.Show("请输入登录密码！"
+                , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             LogOk();
         }
 
@@ -55,7 +100,7 @@ namespace MDIDemo
 
         private void textEdit2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char) Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 LogOk();
             }

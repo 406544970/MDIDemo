@@ -41,7 +41,7 @@ namespace MDIDemo.PublicClass
             foreach (Class_ParaArray class_ParaArray in class_ParaArrays)
                 stringBuilder.AppendFormat("&{0}={1}", class_ParaArray.ParaName, class_ParaArray.ParaValue.ToString());
             if (stringBuilder.Length > 0)
-                return stringBuilder.ToString().Substring(1);
+                return "?" + stringBuilder.ToString().Substring(1);
             else
                 return null;
         }
@@ -68,6 +68,10 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region Post请求
+        public string Post(string Url)
+        {
+            return Post(Url, null);
+        }
         public string Post(string Url, List<Class_ParaArray> class_ParaArrays)
         {
             HttpWebRequest myRequest = null;
@@ -78,24 +82,16 @@ namespace MDIDemo.PublicClass
                 string Data = _GetParaUrl(class_ParaArrays);
                 //先根据用户请求的uri构造请求地址
                 string serviceUrl = string.Format("{0}/{1}", this.BaseUrl, Url);
+                if (Data != null)
+                    serviceUrl += Data;
                 //创建Web访问对象
                 myRequest = (HttpWebRequest)WebRequest.Create(serviceUrl);
                 //把用户传过来的数据转成“UTF-8”的字节流
-                byte[] buf = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(Data);
-
                 myRequest.Method = "POST";
-                myRequest.ContentLength = buf.Length;
                 myRequest.ContentType = "application/json";
                 myRequest.MaximumAutomaticRedirections = 1;
                 myRequest.AllowAutoRedirect = true;
                 //发送请求
-                if (buf.Length > 0)
-                {
-                    Stream stream = myRequest.GetRequestStream();
-                    stream.Write(buf, 0, buf.Length);
-                    stream.Close();
-                }
-
                 //获取接口返回值
                 //通过Web访问对象获取响应内容
                 myResponse = (HttpWebResponse)myRequest.GetResponse();

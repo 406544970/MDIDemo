@@ -945,7 +945,7 @@ namespace MDIDemo.PublicClass
                 , Sign
                 , System.DateTime.Now.ToString("yyyyMMddHHmmss")
                 , getRandomInt().ToString()
-                , BitConverter.ToString(byteCsp));
+                , BitConverter.ToString(byteCsp).Replace("-",""));
         }
         private static int _getRandomInt(int Max, int Min)
         {
