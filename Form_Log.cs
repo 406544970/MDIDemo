@@ -59,9 +59,10 @@ namespace MDIDemo
                 {
                     Class_Use class_Use = new Class_Use();
                     class_Use = resultVO.data;
-                    Class_UseInfo.UserId = class_Use.id;
-                    Class_UseInfo.UserName = class_Use.nickName;
-                    Class_UseInfo.UserClass = 3;
+                    Class_MyInfo.UseIdValue = class_Use.id;
+                    Class_MyInfo.UseNameValue = class_Use.nickName;
+                    Class_MyInfo.TokenNameValue = class_Use.token;
+                    Class_MyInfo.TokenEffectiveDateTime = DateTime.Now.AddDays(1);
                     this.DialogResult = DialogResult.OK;
                 }
                 else
@@ -78,13 +79,13 @@ namespace MDIDemo
             if (this.textEdit1.Text.Length == 0)
             {
                 MessageBox.Show("请输入登录账号、手机号或邮件！"
-                , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                , "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (this.textEdit2.Text.Length == 0)
             {
                 MessageBox.Show("请输入登录密码！"
-                , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                , "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             LogOk();
@@ -102,6 +103,18 @@ namespace MDIDemo
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
+                if (this.textEdit1.Text.Length == 0)
+                {
+                    MessageBox.Show("请输入登录账号、手机号或邮件！"
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (this.textEdit2.Text.Length == 0)
+                {
+                    MessageBox.Show("请输入登录密码！"
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 LogOk();
             }
         }

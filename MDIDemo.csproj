@@ -248,7 +248,6 @@
     <Compile Include="PublicClass\Class_InterFaceDataBase.cs" />
     <Compile Include="PublicClass\Class_TableStructModel.cs" />
     <Compile Include="PublicClass\Class_Tool.cs" />
-    <Compile Include="PublicClass\Class_UseInfo.cs" />
     <Compile Include="PublicClass\GenderItem.cs" />
     <Compile Include="PublicSetUp\Class_SetButtonEdit.cs" />
     <Compile Include="PublicSetUp\Class_SetLabelControl.cs" />

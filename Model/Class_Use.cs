@@ -11,5 +11,6 @@ namespace MDIDemo.Model
         public string id { get; set; }
         public string nickName { get; set; }
         public string companyName { get; set; }
+        public string token { get; set; }
     }
 }

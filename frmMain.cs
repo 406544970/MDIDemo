@@ -49,7 +49,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.alertControl1.ControlBoxPosition = Alerter.AlertFormControlBoxPosition.Top;
             this.alertControl1.FormLocation = Alerter.AlertFormLocation.BottomRight;
 
-            displayState(string.Format("{0}，您好！", Class_UseInfo.UserName));
+            displayState(string.Format("{0}，您好！", Class_MyInfo.UseNameValue));
         }
 
         /// <summary>
@@ -610,7 +610,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             form_WelCome.mainPage = this;
             OpenSubForm(form_WelCome);
 
-            displayOkMessage(string.Format("{0}登录成功", Class_UseInfo.UserName));
+            displayOkMessage(string.Format("{0}登录成功", Class_MyInfo.UseNameValue));
         }
 
         private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
