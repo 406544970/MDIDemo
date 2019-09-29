@@ -62,7 +62,8 @@ namespace MDIDemo
                     Class_MyInfo.UseIdValue = class_Use.id;
                     Class_MyInfo.UseNameValue = class_Use.nickName;
                     Class_MyInfo.TokenNameValue = class_Use.token;
-                    Class_MyInfo.TokenEffectiveDateTime = DateTime.Now.AddDays(1);
+                    Class_MyInfo.DateTimeString = class_Use.tokenEffective;
+                    Class_MyInfo.UseTypeValue = class_Use.useType;
                     this.DialogResult = DialogResult.OK;
                 }
                 else
