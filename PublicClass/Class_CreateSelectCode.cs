@@ -2731,10 +2731,10 @@ namespace MDIDemo.PublicClass
                     , row.OutFieldName);
                 if (row.WhereIsNull)
                 {
-                    stringBuilder.Append(" ,required = false");
+                    stringBuilder.Append(", required = false");
                 }
                 if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
-                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
+                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
@@ -4066,10 +4066,10 @@ namespace MDIDemo.PublicClass
                     , row.OutFieldName);
                 if (row.WhereIsNull)
                 {
-                    stringBuilder.Append(" ,required = false");
+                    stringBuilder.Append(", required = false");
                 }
                 if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
-                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
+                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
@@ -4357,10 +4357,10 @@ namespace MDIDemo.PublicClass
                     , row.OutFieldName);
                 if (row.WhereIsNull)
                 {
-                    stringBuilder.Append(" ,required = false");
+                    stringBuilder.Append(", required = false");
                 }
                 if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
-                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
+                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
@@ -4539,10 +4539,10 @@ namespace MDIDemo.PublicClass
                     , row.OutFieldName);
                 if (row.WhereIsNull)
                 {
-                    stringBuilder.Append(" ,required = false");
+                    stringBuilder.Append(", required = false");
                 }
                 if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
-                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", row.FieldDefaultValue);
+                    stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
@@ -4600,6 +4600,16 @@ namespace MDIDemo.PublicClass
                 stringBuilder.Append("}\r\n");
             return stringBuilder.ToString();
 
+        }
+
+        public string _GetFieldDefaultValue(string DefaultValue)
+        {
+            string ResultValue = DefaultValue;
+            if (DefaultValue == "b\'0\'")
+                ResultValue = "0";
+            if (DefaultValue == "b\'1\'")
+                ResultValue = "1";
+            return ResultValue;
         }
     }
 }

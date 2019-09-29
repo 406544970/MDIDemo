@@ -879,7 +879,7 @@ namespace MDIDemo.vou
                 class_InsertAllModel.LastSelectTableName = this.listBoxControl1.SelectedValue.ToString();
             if (class_InsertAllModel.class_Create.MethodId == null)
             {
-                class_InsertAllModel.class_Create.MethodId = Class_Tool.getKeyId("SE");
+                class_InsertAllModel.class_Create.MethodId = Class_Tool.getKeyId("IN");
                 this.Text = string.Format("INSERT：{0}", class_InsertAllModel.class_Create.MethodId);
                 this.textEdit17.Text = class_InsertAllModel.class_Create.MethodId;
 

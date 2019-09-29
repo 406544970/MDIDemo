@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
+using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Serialization;
 using static MDIDemo.PublicClass.Class_DataBaseContent;
@@ -936,7 +937,15 @@ namespace MDIDemo.PublicClass
         }
         public static string getKeyId(string Sign)
         {
-            return string.Format("{0}{1}{2}", Sign, System.DateTime.Now.ToString("yyyyMMddHHmmss"), getRandomInt().ToString());
+            RNGCryptoServiceProvider csp = new RNGCryptoServiceProvider();
+            byte[] byteCsp = new byte[6];
+            csp.GetBytes(byteCsp);
+            Console.WriteLine();
+            return string.Format("{0}{1}{2}{3}"
+                , Sign
+                , System.DateTime.Now.ToString("yyyyMMddHHmmss")
+                , getRandomInt().ToString()
+                , BitConverter.ToString(byteCsp));
         }
         private static int _getRandomInt(int Max, int Min)
         {
