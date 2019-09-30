@@ -27,15 +27,20 @@ namespace MDIDemo.PublicClass
         {
             string Sql = string.Format(@"UPDATE vou_pageInfomation
                 SET projectId = '{1}',pageType = '{2}',
-                pageVersion = pageVersion + 1,lastUpdateTime = '{3}',
-                createOperatorId = '{4}',doOperatorId = '{5}',finishCount = {6},
-                methodRemark = {7},readOnly = {8},frontOperatorId = '{9}'
+                pageVersion = case pageVersion when 100000 then 0 else pageVersion + 1 end
+                ,lastUpdateTime = datetime('now','localtime')
+                ,createOperatorId = '{3}'
+                ,doOperatorId = '{4}'
+                ,finishCount = case finishCount when 100000 then 0 else finishCount + 1 end,
+                methodRemark = {5}
+                ,readOnly = {6}
+                ,frontOperatorId = '{7}'
                 WHERE pageKey = '{0}'"
-                , class_PageInfomationMode.pageKey, class_PageInfomationMode.projectId
+                , class_PageInfomationMode.pageKey
+                , class_PageInfomationMode.projectId
                 , class_PageInfomationMode.pageType
-                , class_PageInfomationMode.lastUpdateTime.ToString("yyyy-MM-dd HH:mm:ss")
-                , class_PageInfomationMode.createOperatorId, class_PageInfomationMode.doOperatorId
-                , class_PageInfomationMode.finishCount
+                , class_PageInfomationMode.createOperatorId
+                , class_PageInfomationMode.doOperatorId
                 , (class_PageInfomationMode.methodRemark == null ? "null" : "'" + class_PageInfomationMode.methodRemark + "'")
                 , (class_PageInfomationMode.readOnly ? 1 : 0)
                 , class_PageInfomationMode.frontOperatorId);
