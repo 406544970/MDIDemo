@@ -162,6 +162,12 @@ namespace MDIDemo
 
         private void Form_Log_Shown(object sender, EventArgs e)
         {
+            this.timer2.Enabled = true;
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            this.timer2.Enabled = false;
             bool AutoSign = this.textEdit1.Text.Length > 0 ? true : false;
             AutoSign = AutoSign && (this.textEdit2.Text.Length > 0 ? true : false);
             AutoSign = AutoSign && this.checkEdit2.Checked;
