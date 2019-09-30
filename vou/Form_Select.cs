@@ -93,8 +93,32 @@ namespace MDIDemo.vou
             {
                 if (xmlFileName != null)
                     class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
-                if (class_SelectAllModel == null)
-                    class_SelectAllModel = new Class_SelectAllModel();
+                else
+                {
+                    switch (Class_MyInfo.UseTypeValue)
+                    {
+                        case "R003":
+                            class_SelectAllModel.class_Create.CreateManId = Class_MyInfo.UseIdValue;
+                            class_SelectAllModel.class_Create.CreateMan = Class_MyInfo.UseNameValue;
+                            break;
+                        case "R004":
+                            class_SelectAllModel.class_Create.CreateDoId = Class_MyInfo.UseIdValue;
+                            class_SelectAllModel.class_Create.CreateDo = Class_MyInfo.UseNameValue;
+                            break;
+                        case "R005":
+                            class_SelectAllModel.class_Create.CreateFrontDoId = Class_MyInfo.UseIdValue;
+                            class_SelectAllModel.class_Create.CreateFrontDo = Class_MyInfo.UseNameValue;
+                            break;
+                        default:
+                            class_SelectAllModel.class_Create.CreateManId = Class_MyInfo.UseIdValue;
+                            class_SelectAllModel.class_Create.CreateMan = Class_MyInfo.UseNameValue;
+                            break;
+                    }
+                }
+                //if (class_SelectAllModel == null)
+                //{
+                //    class_SelectAllModel = new Class_SelectAllModel();
+                //}
                 switch (class_SelectAllModel.class_SelectDataBase.databaseType)
                 {
                     case "MySql":

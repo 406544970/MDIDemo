@@ -586,6 +586,16 @@ namespace MDIDemo.PublicClass
             }
             [Browsable(true)]
             [Category("生成配置")]
+            [DisplayName("创建者ID")]
+            [Description("设计者ID")]
+            [ReadOnly(true)]
+            //[Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            public string CreateManId
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
             [DisplayName("创建者姓名")]
             [Description("设计者姓名")]
             [ReadOnly(false)]
@@ -596,11 +606,31 @@ namespace MDIDemo.PublicClass
             }
             [Browsable(true)]
             [Category("生成配置")]
+            [DisplayName("后端工程师ID")]
+            [Description("后端工程师ID")]
+            [ReadOnly(true)]
+            //[Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            public string CreateDoId
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
             [DisplayName("后端工程师姓名")]
             [Description("后端工程师姓名")]
             [ReadOnly(false)]
             [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string CreateDo
+            {
+                get; set;
+            }
+            [Browsable(true)]
+            [Category("生成配置")]
+            [DisplayName("前端工程师ID")]
+            [Description("前端工程师ID")]
+            [ReadOnly(true)]
+            //[Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            public string CreateFrontDoId
             {
                 get; set;
             }
