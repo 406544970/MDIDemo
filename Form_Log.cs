@@ -40,7 +40,7 @@ namespace MDIDemo
 
         private void LogOk()
         {
-            Class_RestClient class_RestClient = new Class_RestClient("localhost:2510");
+            Class_RestClient class_RestClient = new Class_RestClient("localhost:2519");
             List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
             Class_ParaArray class_ParaArray = new Class_ParaArray()
             {
@@ -66,7 +66,7 @@ namespace MDIDemo
                     Class_MyInfo.UseIdValue = class_Use.id;
                     Class_MyInfo.UseNameValue = class_Use.nickName;
                     Class_MyInfo.TokenNameValue = class_Use.token;
-                    Class_MyInfo.DateTimeString = class_Use.tokenEffective;
+                    Class_MyInfo.TokenEffectiveDateTime = Convert.ToDateTime(class_Use.tokenEffective);
                     Class_MyInfo.UseTypeValue = class_Use.useType;
 
                     #region 记住登录信息
@@ -102,6 +102,8 @@ namespace MDIDemo
                 , "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            this.timer1.Enabled = false;
+            this.timer2.Enabled = false;
             LogOk();
         }
 
@@ -129,6 +131,8 @@ namespace MDIDemo
                     , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                this.timer1.Enabled = false;
+                this.timer2.Enabled = false;
                 LogOk();
             }
         }

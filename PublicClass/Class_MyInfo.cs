@@ -23,7 +23,6 @@ namespace MDIDemo.PublicClass
         /// token有效时间
         /// </summary>
         public static DateTime TokenEffectiveDateTime;
-        public static string DateTimeString;
 
         public List<Class_ParaArray> GetAddStrongPara(List<Class_ParaArray> OldParaArrays)
         {
