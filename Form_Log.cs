@@ -40,7 +40,7 @@ namespace MDIDemo
 
         private void LogOk()
         {
-            Class_RestClient class_RestClient = new Class_RestClient("localhost:2519");
+            Class_Remote class_Remote = new Class_Remote();
             List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
             Class_ParaArray class_ParaArray = new Class_ParaArray()
             {
@@ -56,9 +56,8 @@ namespace MDIDemo
             class_ParaArrays.Add(class_ParaArrayPass);
             try
             {
-                string ResultValue = class_RestClient.Post("myBatisUseController/useLogCS", class_ParaArrays);
                 ResultVO<Class_Use> resultVO = new ResultVO<Class_Use>();
-                resultVO = JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<Class_Use>;
+                resultVO = class_Remote.UseLogCS<Class_Use>(class_ParaArrays);
                 if (resultVO.code == 0)
                 {
                     Class_Use class_Use = new Class_Use();

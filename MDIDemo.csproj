@@ -235,6 +235,7 @@
     <Compile Include="PublicClass\Class_InterFaceUiProperty.cs" />
     <Compile Include="PublicClass\Class_LayUiProperty.cs" />
     <Compile Include="PublicClass\Class_MyInfo.cs" />
+    <Compile Include="PublicClass\Class_Remote.cs" />
     <Compile Include="PublicClass\Class_RestClient.cs" />
     <Compile Include="PublicClass\Class_UpdateAllModel.cs" />
     <Compile Include="PublicClass\Class_InsertAllModel.cs" />

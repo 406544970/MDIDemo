@@ -543,7 +543,7 @@ namespace MDIDemo.PublicClass
             {
                 get; set;
             }
-            [Browsable(true)]
+            [Browsable(false)]
             [Category("生成配置")]
             [DisplayName("创建者ID")]
             [Description("设计者ID")]
@@ -563,7 +563,7 @@ namespace MDIDemo.PublicClass
             {
                 get; set;
             }
-            [Browsable(true)]
+            [Browsable(false)]
             [Category("生成配置")]
             [DisplayName("后端工程师ID")]
             [Description("后端工程师ID")]
@@ -583,7 +583,7 @@ namespace MDIDemo.PublicClass
             {
                 get; set;
             }
-            [Browsable(true)]
+            [Browsable(false)]
             [Category("生成配置")]
             [DisplayName("前端工程师ID")]
             [Description("前端工程师ID")]

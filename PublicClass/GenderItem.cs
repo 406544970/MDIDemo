@@ -62,6 +62,11 @@ namespace MDIDemo.PublicClass
     /// </summary>
     public abstract class ComboxItem : StringConverter
     {
+        public ComboxItem()
+        {
+            class_Remote = new Class_Remote();
+        }
+        protected Class_Remote class_Remote;
         protected string[] myList;
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
@@ -119,9 +124,15 @@ namespace MDIDemo.PublicClass
     {
         public ProjectNameTypeItem()
         {
-            base.myList = new string[2];
-            myList[0] = "MyBatisCreateCode";
-            myList[1] = "系统架构项目";
+            List<string> vs = new List<string>();
+            vs = class_Remote.selectSystemListString();
+            if (vs != null)
+            {
+                base.myList = new string[vs.Count];
+                for (int i = 0; i < vs.Count; i++)
+                    base.myList[i] = vs[i];
+            }
+            vs.Clear();
         }
     }
     public sealed class MybatisXmlCreateType : ComboxItem
