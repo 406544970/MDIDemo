@@ -454,7 +454,9 @@ namespace MDIDemo.PublicClass
                 ReadOnly = false;
                 SwaggerSign = true;
                 Port = "8080";
+                class_Remote = new Class_Remote();
             }
+            private Class_Remote class_Remote;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("方法标识")]
@@ -544,64 +546,67 @@ namespace MDIDemo.PublicClass
                 get; set;
             }
             [Browsable(false)]
-            [Category("生成配置")]
-            [DisplayName("创建者ID")]
-            [Description("设计者ID")]
-            [ReadOnly(true)]
-            //[Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string CreateManId
             {
                 get; set;
             }
+            private string _CreateMan;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("创建者姓名")]
             [Description("设计者姓名")]
             [ReadOnly(false)]
-            [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            [TypeConverter(typeof(CreateNickTypeItem))] //使用自定义的属性下拉框
             public string CreateMan
             {
-                get; set;
+                get { return _CreateMan; }
+                set
+                {
+                    _CreateMan = value;
+                    this.CreateManId = class_Remote.SelectUseId(_CreateMan);
+                }
             }
             [Browsable(false)]
-            [Category("生成配置")]
-            [DisplayName("后端工程师ID")]
-            [Description("后端工程师ID")]
-            [ReadOnly(true)]
-            //[Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string CreateDoId
             {
                 get; set;
             }
+            private string _CreateDo;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("后端工程师姓名")]
             [Description("后端工程师姓名")]
             [ReadOnly(false)]
-            [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            [TypeConverter(typeof(DoNickTypeItem))] //使用自定义的属性下拉框
             public string CreateDo
             {
-                get; set;
+                get { return _CreateDo; }
+                set
+                {
+                    _CreateDo = value;
+                    this.CreateDoId = class_Remote.SelectUseId(_CreateDo);
+                }
             }
             [Browsable(false)]
-            [Category("生成配置")]
-            [DisplayName("前端工程师ID")]
-            [Description("前端工程师ID")]
-            [ReadOnly(true)]
-            //[Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
             public string CreateFrontDoId
             {
                 get; set;
             }
+            private string _CreateFrontDo;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("前端工程师姓名")]
             [Description("前端工程师姓名")]
             [ReadOnly(false)]
-            [Editor(typeof(PropertyGridRichText), typeof(System.Drawing.Design.UITypeEditor))]
+            [TypeConverter(typeof(FrontNickTypeItem))] //使用自定义的属性下拉框
             public string CreateFrontDo
             {
-                get; set;
+                get { return _CreateFrontDo; }
+                set
+                {
+                    _CreateFrontDo = value;
+                    this.CreateFrontDoId = class_Remote.SelectUseId(_CreateFrontDo);
+                }
             }
             [Browsable(true)]
             [Category("生成配置")]

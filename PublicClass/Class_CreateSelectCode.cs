@@ -726,7 +726,7 @@ namespace MDIDemo.PublicClass
                     , class_Sub.DtoClassName);
                 else
                     stringBuilder.AppendFormat("{0}List<{1}>", class_ToolSpace.GetSetSpaceCount(1)
-                    , class_Sub.ModelClassName);
+                    , _GetServiceReturnType(class_Sub, false));
             }
             if (class_WhereFields != null)
             {

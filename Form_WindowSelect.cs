@@ -45,10 +45,10 @@ namespace MDIDemo
                 this.gridView4.Columns.Add(gridColumn);
             }
             GridViewC gridViewC = new GridViewC();
-            gridViewC.SetGridView(this.gridView1);
-            gridViewC.SetGridView(this.gridView2);
-            gridViewC.SetGridView(this.gridView3);
-            gridViewC.SetGridView(this.gridView4);
+            gridViewC.SetGridView(this.gridView1, true);
+            gridViewC.SetGridView(this.gridView2, true);
+            gridViewC.SetGridView(this.gridView3, true);
+            gridViewC.SetGridView(this.gridView4, true);
 
             Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
             DataSet dataSet = new DataSet();

@@ -190,6 +190,9 @@ namespace MDIDemo.PublicClass
         public string createOperatorId;
         public string doOperatorId;
         public string frontOperatorId;
+        public string createOperator;
+        public string doOperator;
+        public string frontOperator;
         public int finishCount;
         public string methodRemark;
         public bool readOnly;

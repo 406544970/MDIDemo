@@ -35,6 +35,9 @@ namespace MDIDemo.PublicClass
                 methodRemark = {5}
                 ,readOnly = {6}
                 ,frontOperatorId = '{7}'
+                ,createOperator = '{8}'
+                ,doOperator = '{9}'
+                ,frontOperator = '{10}'
                 WHERE pageKey = '{0}'"
                 , class_PageInfomationMode.pageKey
                 , class_PageInfomationMode.projectId
@@ -43,15 +46,20 @@ namespace MDIDemo.PublicClass
                 , class_PageInfomationMode.doOperatorId
                 , (class_PageInfomationMode.methodRemark == null ? "null" : "'" + class_PageInfomationMode.methodRemark + "'")
                 , (class_PageInfomationMode.readOnly ? 1 : 0)
-                , class_PageInfomationMode.frontOperatorId);
+                , class_PageInfomationMode.frontOperatorId
+                , class_PageInfomationMode.createOperator
+                , class_PageInfomationMode.doOperator
+                , class_PageInfomationMode.frontOperator
+                );
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
         private bool _InsertIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
         {
             string Sql = string.Format(@"INSERT INTO vou_pageInfomation(pageKey, projectId, 
 pageType, pageVersion, createTime, lastUpdateTime, 
-createOperatorId, doOperatorId, finishCount, methodRemark,readOnly,frontOperatorId)
-VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
+createOperatorId, doOperatorId, finishCount, methodRemark,readOnly,frontOperatorId
+,createOperator, doOperator,frontOperator)
+VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}','{13}','{14}')"
 , class_PageInfomationMode.pageKey, class_PageInfomationMode.projectId
 , class_PageInfomationMode.pageType, class_PageInfomationMode.pageVersion
 , class_PageInfomationMode.createTime.ToString("yyyy-MM-dd HH:mm:ss")
@@ -59,7 +67,11 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
 , class_PageInfomationMode.createOperatorId, class_PageInfomationMode.doOperatorId
 , class_PageInfomationMode.finishCount, (class_PageInfomationMode.methodRemark == null ? "null" : "'" + class_PageInfomationMode.methodRemark + "'")
 , (class_PageInfomationMode.readOnly ? 1 : 0)
-, class_PageInfomationMode.frontOperatorId);
+, class_PageInfomationMode.frontOperatorId
+, class_PageInfomationMode.createOperator
+, class_PageInfomationMode.doOperator
+, class_PageInfomationMode.frontOperator
+);
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
         private int _GetPageKeyCount(string PageKey)
@@ -251,22 +263,22 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
         {
             int Index = 0;
             string Sql = @"SELECT pageKey,lastUpdateTime
-                ,createOperatorId,doOperatorId
+                ,createOperator as createOperatorId
+                ,doOperator as doOperatorId
                 ,readOnly,methodRemark
-                ,frontOperatorId
+                ,frontOperator as frontOperatorId
                 FROM vou_pageInfomation
-                WHERE projectId = 'projectId'
-                AND pageType = '{0}'
+                WHERE pageType = '{0}'
                 ORDER BY createTime DESC";
             DataSet dataSet = new DataSet();
             DataTable BeginTable = new DataTable("SelectTable");
             DataColumn pageKey = new DataColumn("pageKey", typeof(string));
             DataColumn lastUpdateTime = new DataColumn("lastUpdateTime", typeof(DateTime));
-            DataColumn createOperatorId = new DataColumn("createOperatorId", typeof(string));
-            DataColumn doOperatorId = new DataColumn("doOperatorId", typeof(string));
+            DataColumn createOperatorId = new DataColumn("createOperator", typeof(string));
+            DataColumn doOperatorId = new DataColumn("doOperator", typeof(string));
             DataColumn readOnly = new DataColumn("readOnly", typeof(bool));
             DataColumn methodRemark = new DataColumn("methodRemark", typeof(string));
-            DataColumn frontOperatorId = new DataColumn("frontOperatorId", typeof(string));
+            DataColumn frontOperatorId = new DataColumn("frontOperator", typeof(string));
             BeginTable.Columns.Add(pageKey);
             BeginTable.Columns.Add(lastUpdateTime);
             BeginTable.Columns.Add(createOperatorId);
@@ -307,11 +319,11 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}')"
                         string[] RowList = row.Split(';');
                         NewRow["pageKey"] = RowList[0];
                         NewRow["lastUpdateTime"] = Convert.ToDateTime(RowList[1]);
-                        NewRow["createOperatorId"] = RowList[2];
-                        NewRow["doOperatorId"] = RowList[3];
+                        NewRow["createOperator"] = RowList[2];
+                        NewRow["doOperator"] = RowList[3];
                         NewRow["readOnly"] = (RowList[4] == "1" ? true : false);
                         NewRow["methodRemark"] = RowList[5];
-                        NewRow["frontOperatorId"] = RowList[6];
+                        NewRow["frontOperator"] = RowList[6];
                         BeginTable.Rows.Add(NewRow);
                     }
                     BeginTable.AcceptChanges();

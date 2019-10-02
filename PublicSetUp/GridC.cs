@@ -493,7 +493,16 @@ namespace MDIDemo.PublicSetUp
 
     public class GridViewC
     {
+        public void SetGridView(GridView gridView,bool editWidth)
+        {
+            _SetGridView(gridView, editWidth);
+        }
         public void SetGridView(GridView gridView)
+        {
+            _SetGridView(gridView, false);
+        }
+
+        private void _SetGridView(GridView gridView, bool EditWidth)
         {
             gridView.OptionsCustomization.AllowColumnMoving = false;
             gridView.OptionsCustomization.AllowSort = false;
@@ -513,7 +522,8 @@ namespace MDIDemo.PublicSetUp
                 col.OptionsColumn.AllowEdit = false;
                 col.OptionsColumn.FixedWidth = true;
                 col.Visible = true;
-                col.Width = 150;
+                if (!EditWidth)
+                    col.Width = 150;
             }
         }
 

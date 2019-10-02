@@ -128,6 +128,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 230;
             // 
             // gridColumn2
             // 
@@ -138,30 +139,34 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 100;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "创建者";
-            this.gridColumn3.FieldName = "createOperatorId";
+            this.gridColumn3.FieldName = "createOperator";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 65;
             // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "后端工程师";
-            this.gridColumn4.FieldName = "doOperatorId";
+            this.gridColumn4.FieldName = "doOperator";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 65;
             // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "前端工程师";
-            this.gridColumn7.FieldName = "frontOperatorId";
+            this.gridColumn7.FieldName = "frontOperator";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 4;
+            this.gridColumn7.Width = 65;
             // 
             // gridColumn5
             // 
@@ -170,6 +175,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.Width = 41;
             // 
             // gridColumn6
             // 
@@ -178,6 +184,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.Width = 429;
             // 
             // xtraTabPage2
             // 

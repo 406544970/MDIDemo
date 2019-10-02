@@ -41,8 +41,13 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.createOperatorId = class_SelectAllModel.class_Create.CreateManId;
                         class_PageInfomationMode.doOperatorId = class_SelectAllModel.class_Create.CreateDoId;
                         class_PageInfomationMode.frontOperatorId = class_SelectAllModel.class_Create.CreateFrontDoId;
+                        class_PageInfomationMode.createOperator = class_SelectAllModel.class_Create.CreateMan;
+                        class_PageInfomationMode.doOperator = class_SelectAllModel.class_Create.CreateDo;
+                        class_PageInfomationMode.frontOperator = class_SelectAllModel.class_Create.CreateFrontDo;
                         class_PageInfomationMode.finishCount = 0;
                         class_PageInfomationMode.readOnly = class_SelectAllModel.class_Create.ReadOnly;
+                        if (class_SelectAllModel.class_SubList.Count > 0)
+                            class_PageInfomationMode.methodRemark = class_SelectAllModel.class_SubList[0].MethodContent;
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
@@ -59,8 +64,13 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.createOperatorId = class_InsertAllModel.class_Create.CreateManId;
                         class_PageInfomationMode.doOperatorId = class_InsertAllModel.class_Create.CreateDoId;
                         class_PageInfomationMode.frontOperatorId = class_InsertAllModel.class_Create.CreateFrontDoId;
+                        class_PageInfomationMode.createOperator = class_InsertAllModel.class_Create.CreateMan;
+                        class_PageInfomationMode.doOperator = class_InsertAllModel.class_Create.CreateDo;
+                        class_PageInfomationMode.frontOperator = class_InsertAllModel.class_Create.CreateFrontDo;
                         class_PageInfomationMode.finishCount = 0;
                         class_PageInfomationMode.readOnly = class_InsertAllModel.class_Create.ReadOnly;
+                        if (class_InsertAllModel.class_SubList.Count > 0)
+                            class_PageInfomationMode.methodRemark = class_InsertAllModel.class_SubList[0].MethodContent;
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
@@ -77,8 +87,13 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.createOperatorId = class_UpdateAllModel.class_Create.CreateManId;
                         class_PageInfomationMode.doOperatorId = class_UpdateAllModel.class_Create.CreateDoId;
                         class_PageInfomationMode.frontOperatorId = class_UpdateAllModel.class_Create.CreateFrontDoId;
+                        class_PageInfomationMode.createOperator = class_UpdateAllModel.class_Create.CreateMan;
+                        class_PageInfomationMode.doOperator = class_UpdateAllModel.class_Create.CreateDo;
+                        class_PageInfomationMode.frontOperator = class_UpdateAllModel.class_Create.CreateFrontDo;
                         class_PageInfomationMode.finishCount = 0;
                         class_PageInfomationMode.readOnly = class_UpdateAllModel.class_Create.ReadOnly;
+                        if (class_UpdateAllModel.class_SubList.Count > 0)
+                            class_PageInfomationMode.methodRemark = class_UpdateAllModel.class_SubList[0].MethodContent;
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
@@ -95,8 +110,13 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.createOperatorId = class_DeleteAllModel.class_Create.CreateManId;
                         class_PageInfomationMode.doOperatorId = class_DeleteAllModel.class_Create.CreateDoId;
                         class_PageInfomationMode.frontOperatorId = class_DeleteAllModel.class_Create.CreateFrontDoId;
+                        class_PageInfomationMode.createOperator = class_DeleteAllModel.class_Create.CreateMan;
+                        class_PageInfomationMode.doOperator = class_DeleteAllModel.class_Create.CreateDo;
+                        class_PageInfomationMode.frontOperator = class_DeleteAllModel.class_Create.CreateFrontDo;
                         class_PageInfomationMode.finishCount = 0;
                         class_PageInfomationMode.readOnly = class_DeleteAllModel.class_Create.ReadOnly;
+                        if (class_DeleteAllModel.class_SubList.Count > 0)
+                            class_PageInfomationMode.methodRemark = class_DeleteAllModel.class_SubList[0].MethodContent;
                         SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
                     }
                     break;
