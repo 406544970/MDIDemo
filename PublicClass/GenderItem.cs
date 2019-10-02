@@ -81,6 +81,51 @@ namespace MDIDemo.PublicClass
             return true;
         }
     }
+    public sealed class CreateNickTypeItem: ComboxItem
+    {
+        public CreateNickTypeItem()
+        {
+            List<string> vs = new List<string>();
+            vs = class_Remote.SelectUseCreateNickNameList();
+            if (vs != null)
+            {
+                base.myList = new string[vs.Count];
+                for (int i = 0; i < vs.Count; i++)
+                    base.myList[i] = vs[i];
+            }
+            vs.Clear();
+        }
+    }
+    public sealed class DoNickTypeItem : ComboxItem
+    {
+        public DoNickTypeItem()
+        {
+            List<string> vs = new List<string>();
+            vs = class_Remote.SelectUseDoNickNameList();
+            if (vs != null)
+            {
+                base.myList = new string[vs.Count];
+                for (int i = 0; i < vs.Count; i++)
+                    base.myList[i] = vs[i];
+            }
+            vs.Clear();
+        }
+    }
+    public sealed class FrontNickTypeItem : ComboxItem
+    {
+        public FrontNickTypeItem()
+        {
+            List<string> vs = new List<string>();
+            vs = class_Remote.SelectUseFrontNickNameList();
+            if (vs != null)
+            {
+                base.myList = new string[vs.Count];
+                for (int i = 0; i < vs.Count; i++)
+                    base.myList[i] = vs[i];
+            }
+            vs.Clear();
+        }
+    }
     /// <summary>
     /// 单选框：数据库类型
     /// </summary>

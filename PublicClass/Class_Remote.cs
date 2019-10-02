@@ -26,6 +26,24 @@ namespace MDIDemo.PublicClass
             this.BaseUrl = BaseUrl.Trim();
             class_RestClient = new Class_RestClient(this.BaseUrl, HttpSign);
         }
+        public List<string> SelectUseCreateNickNameList()
+        {
+            return _SelectUseNickNameList("selectUseCreateNickNameList");
+        }
+        public List<string> SelectUseDoNickNameList()
+        {
+            return _SelectUseNickNameList("selectUseDoNickNameList");
+        }
+        public List<string> SelectUseFrontNickNameList()
+        {
+            return _SelectUseNickNameList("selectUseFrontNickNameList");
+        }
+        private List<string> _SelectUseNickNameList(string MethodName)
+        {
+            MethodName = string.Format("myBatisUseController/{0}", MethodName);
+            return _SelectDictionaryListString(MethodName, null);
+
+        }
         /// <summary>
         /// 登录远程方法
         /// </summary>
@@ -51,7 +69,19 @@ namespace MDIDemo.PublicClass
         {
             List<string> vs = new List<string>();
             string ResultValue = class_RestClient.Post(MethodName, class_ParaArrays);
-            return JsonTools.JsonToObject(ResultValue, vs) as List<string>; ;
+            return JsonTools.JsonToObject(ResultValue, vs) as List<string>;
+        }
+
+        public string SelectUseId(string NickName)
+        {
+            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+            Class_ParaArray class_ParaArray = new Class_ParaArray();
+            class_ParaArray.ParaName = "nickName";
+            class_ParaArray.ParaValue = NickName;
+            class_ParaArrays.Add(class_ParaArray);
+            string ResultValue = class_RestClient.Post("myBatisUseController/selectUseId", class_ParaArrays);
+            return ResultValue;
+
         }
     }
 }
