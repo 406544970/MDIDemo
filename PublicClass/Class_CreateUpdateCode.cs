@@ -205,7 +205,7 @@ namespace MDIDemo.PublicClass
                 if (class_Field.UpdateSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\")"
                         , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
@@ -222,7 +222,7 @@ namespace MDIDemo.PublicClass
                 if (class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}Where\""
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}Where\")"
                         , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
