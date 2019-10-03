@@ -13,6 +13,12 @@ namespace MDIDemo.PublicClass
 
     public class PageModel
     {
+        public PageModel()
+        {
+            finishCount = 0;
+            pageVersion = 0;
+            operateType = -2;
+        }
         public string pageKey { get; set; }
         public string projectId { get; set; }
         public string pageType { get; set; }

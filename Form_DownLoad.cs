@@ -24,12 +24,26 @@ namespace MDIDemo
         {
             this.timer1.Enabled = false;
             List<PageVersionInParam> pageKey = new List<PageVersionInParam>();
-            PageVersionInParam pageVersionInParam = new PageVersionInParam()
+            #region 从SQLITE读取数据
+            Class_SQLiteOperator class_SQLiteOperator = new Class_SQLiteOperator();
+            List<string> vs = new List<string>();
+            vs = class_SQLiteOperator.GetLocalPageList();
+            if (vs != null)
             {
-                pageKey = "SE20190921083425696",
-                pageVersion = 23
-            };
-            pageKey.Add(pageVersionInParam);
+                foreach (string item in vs)
+                {
+                    string[] row = item.Split(';');
+                    PageVersionInParam pageVersionInParam = new PageVersionInParam()
+                    {
+                        pageKey = row[0],
+                        pageVersion = Convert.ToInt32(row[1])
+                    };
+                    pageKey.Add(pageVersionInParam);
+            }
+        }
+            vs.Clear();
+            
+            #endregion
             PageVersionListInParam pageVersionListInParam = new PageVersionListInParam();
             pageVersionListInParam.pageKey = pageKey;
             Class_Remote class_Remote = new Class_Remote();
@@ -42,7 +56,7 @@ namespace MDIDemo
                     this.progressBarControl1.Properties.Maximum = Convert.ToInt32(resultVO.count);
                     this.progressBarControl1.Properties.Maximum = 0;
                     this.progressBarControl1.Properties.Step = 1;
-                    this.progressBarControl1.Text = "0";
+                    this.progressBarControl1.Position = 0;
                 }
                 List<PageModel> pageModels = new List<PageModel>();
                 pageModels = resultVO.data;
@@ -61,10 +75,9 @@ namespace MDIDemo
                             break;
                     }
 
-                    this.progressBarControl1.Text = index.ToString();
-                    index++;
+                    this.progressBarControl1.Position = index++;
+                    Thread.Sleep(0);
                     Application.DoEvents();
-                    Thread.Sleep(500);
                 }
 
                 this.DialogResult = DialogResult.OK;

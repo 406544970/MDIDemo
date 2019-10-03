@@ -92,6 +92,13 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}',
                 ORDER BY sortNo");
             return mySqlite3.ExecuteReadList(Sql);
         }
+        public List<string> GetLocalPageList()
+        {
+            string Sql = string.Format(@"SELECT pageKey,pageVersion
+                FROM vou_pageInfomation
+                ORDER BY createTime");
+            return mySqlite3.ExecuteReadList(Sql);
+        }
         public Class_LogRemamber GetLogRemember()
         {
             Class_LogRemamber class_LogRemamber = new Class_LogRemamber();
