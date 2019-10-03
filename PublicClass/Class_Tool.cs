@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using static MDIDemo.PublicClass.Class_DataBaseContent;
 
@@ -563,7 +564,7 @@ namespace MDIDemo.PublicClass
             if (BeginSite > -1 && EndSite > -1 && EndSite > BeginSite)
             {
                 string SubString = Content.Substring(BeginSite, EndSite - BeginSite + 1);
-                Content = Content.Replace(SubString,"");
+                Content = Content.Replace(SubString, "");
             }
             return Content.Replace("ID", "编号").Replace("id", "编号");
         }
@@ -945,7 +946,7 @@ namespace MDIDemo.PublicClass
                 , Sign
                 , System.DateTime.Now.ToString("yyyyMMddHHmmss")
                 , getRandomInt().ToString()
-                , BitConverter.ToString(byteCsp).Replace("-",""));
+                , BitConverter.ToString(byteCsp).Replace("-", ""));
         }
         private static int _getRandomInt(int Max, int Min)
         {
@@ -1051,14 +1052,62 @@ namespace MDIDemo.PublicClass
         /// </summary>
         /// <param name="jsonString"></param>
         /// <param name="obj"></param>
+        /// <param name="PatternSign">是否启动正则表达式</param>
+        /// <returns></returns>
+        public static object JsonToObject(string jsonString, object obj,bool PatternSign)
+        {
+            return _JsonToObject(jsonString, obj, PatternSign);
+        }
+        /// <summary>
+        /// 从一个Json串生成对象信息
+        /// </summary>
+        /// <param name="jsonString"></param>
+        /// <param name="obj"></param>
         /// <returns></returns>
         public static object JsonToObject(string jsonString, object obj)
         {
+            return _JsonToObject(jsonString, obj, false);
+        }
+
+        private static object _JsonToObject(string jsonString, object obj, bool PatternSign)
+        {
+            if (PatternSign)
+            {
+                string pattern = @"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}\+\d{4}";
+                MatchEvaluator matchEvaluator = new MatchEvaluator(ConvertDateStringToJsonDate);
+                Regex reg = new Regex(pattern);
+                jsonString = reg.Replace(jsonString, matchEvaluator);
+            }
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
             MemoryStream mStream = new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
             return serializer.ReadObject(mStream);
         }
+        /// 
+        /// 将时间字符串转为Json时间
+        /// 
+        private static string ConvertDateStringToJsonDate(Match m)
+        {
+            string result = string.Empty;
+            DateTime dt = DateTime.Parse(m.Groups[0].Value);
+            dt = dt.ToUniversalTime();
+            TimeSpan ts = dt - DateTime.Parse("1970-01-01");
+            result = string.Format("\\/Date({0}+0800)\\/", ts.TotalMilliseconds);
+            return result;
+        }
+        private static string ConvertJsonDateToDateString(Match m)
+        {
+            string result = string.Empty;
+            DateTime dt = new DateTime(1970, 1, 1);
+            dt = dt.AddMilliseconds(long.Parse(m.Groups[1].Value));
+            dt = dt.ToLocalTime();
+            result = dt.ToString("yyyy-MM-dd HH:mm:ss");
+            return result;
+        }
     }
+    /// 
+    /// 将Json序列化的时间由/Date(1304931520336+0800)/转为字符串
+    /// 
+
     /// <summary>
     /// 序列化XML基础类
     /// </summary>

@@ -52,6 +52,7 @@
             // progressBarControl1
             // 
             this.progressBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBarControl1.EditValue = "0";
             this.progressBarControl1.Location = new System.Drawing.Point(2, 2);
             this.progressBarControl1.Name = "progressBarControl1";
             this.progressBarControl1.Size = new System.Drawing.Size(536, 30);

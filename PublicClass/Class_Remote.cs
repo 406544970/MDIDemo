@@ -44,6 +44,15 @@ namespace MDIDemo.PublicClass
             return _SelectDictionaryListString(MethodName, null);
 
         }
+        public ResultVO<T> SelectVersionList<T>(PageVersionListInParam pageVersionListInParam)
+        {
+            ResultVO<T> resultVO = new ResultVO<T>();
+            string ResultValue = class_RestClient.Post("pageController/selectVersionList"
+                , null
+                , JsonTools.ObjectToJson(pageVersionListInParam)
+                , true);
+            return JsonTools.JsonToObject(ResultValue, resultVO, true) as ResultVO<T>;
+        }
         /// <summary>
         /// 登录远程方法
         /// </summary>

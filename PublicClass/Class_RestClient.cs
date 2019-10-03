@@ -33,13 +33,20 @@ namespace MDIDemo.PublicClass
             else
                 this.BaseUrl = string.Format("https://{0}", BaseUrl);
         }
-        private string _GetParaUrl(List<Class_ParaArray> class_ParaArrays)
+        private string _GetParaUrl(List<Class_ParaArray> class_ParaArrays, bool AddDefault)
         {
-            if (class_ParaArrays == null)
-                return null;
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (Class_ParaArray class_ParaArray in class_ParaArrays)
-                stringBuilder.AppendFormat("&{0}={1}", class_ParaArray.ParaName, class_ParaArray.ParaValue.ToString());
+            if (class_ParaArrays != null)
+                foreach (Class_ParaArray class_ParaArray in class_ParaArrays)
+                    stringBuilder.AppendFormat("&{0}={1}", class_ParaArray.ParaName, class_ParaArray.ParaValue.ToString());
+            if (AddDefault)
+            {
+                stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.UseId, Class_MyInfo.UseIdValue);
+                stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.UseName, Class_MyInfo.UseNameValue);
+                stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.UseType, Class_MyInfo.UseTypeValue);
+                if (Class_MyInfo.TokenEffectiveDateTime <= DateTime.Now)
+                    stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.TokenName, Class_MyInfo.TokenNameValue);
+            }
             if (stringBuilder.Length > 0)
                 return "?" + stringBuilder.ToString().Substring(1);
             else
@@ -48,7 +55,7 @@ namespace MDIDemo.PublicClass
         #region Get请求
         public string Get(string Url, List<Class_ParaArray> class_ParaArrays)
         {
-            string ParaList = _GetParaUrl(class_ParaArrays);
+            string ParaList = _GetParaUrl(class_ParaArrays, false);
             //先根据用户请求的uri构造请求地址
             string serviceUrl = string.Format("{0}/{1}", this.BaseUrl, Url);
             if (ParaList != null)
@@ -70,16 +77,24 @@ namespace MDIDemo.PublicClass
         #region Post请求
         public string Post(string Url)
         {
-            return Post(Url, null);
+            return Post(Url, null, null, false);
         }
         public string Post(string Url, List<Class_ParaArray> class_ParaArrays)
+        {
+            return Post(Url, class_ParaArrays, null, false);
+        }
+        public string Post(string Url, List<Class_ParaArray> class_ParaArrays, string data, bool AddDefault)
         {
             HttpWebRequest myRequest = null;
             StreamReader reader = null;
             HttpWebResponse myResponse = null;
+            byte[] buf = null;
+            Stream stream = null;
             try
             {
-                string Data = _GetParaUrl(class_ParaArrays);
+                if (data != null)
+                    buf = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(data);
+                string Data = _GetParaUrl(class_ParaArrays, AddDefault);
                 //先根据用户请求的uri构造请求地址
                 string serviceUrl = string.Format("{0}/{1}", this.BaseUrl, Url);
                 if (Data != null)
@@ -91,7 +106,15 @@ namespace MDIDemo.PublicClass
                 myRequest.ContentType = "application/json";
                 myRequest.MaximumAutomaticRedirections = 1;
                 myRequest.AllowAutoRedirect = true;
+
                 //发送请求
+                if (data != null)
+                {
+                    stream = myRequest.GetRequestStream();
+                    stream.Write(buf, 0, buf.Length);
+                    stream.Close();
+                }
+
                 //获取接口返回值
                 //通过Web访问对象获取响应内容
                 myResponse = (HttpWebResponse)myRequest.GetResponse();
