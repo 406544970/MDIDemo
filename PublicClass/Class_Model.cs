@@ -44,6 +44,7 @@ namespace MDIDemo.PublicClass
         {
             public string pageKey { get; set; }
             public int pageVersion { get; set; }
+            public string pageType { get; set; }
         }
     }
 }

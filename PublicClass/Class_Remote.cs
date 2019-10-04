@@ -26,6 +26,18 @@ namespace MDIDemo.PublicClass
             this.BaseUrl = BaseUrl.Trim();
             class_RestClient = new Class_RestClient(this.BaseUrl, HttpSign);
         }
+        public ResultVO<T> DeletePage<T>(string PageKey)
+        {
+            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+            Class_ParaArray class_ParaArray = new Class_ParaArray();
+            class_ParaArray.ParaName = "pageKey";
+            class_ParaArray.ParaValue = PageKey;
+            class_ParaArrays.Add(class_ParaArray);
+            ResultVO<T> resultVO = new ResultVO<T>();
+            string ResultValue = class_RestClient.Post("pageController/deletePageAndXml", class_ParaArrays);
+            return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
+
+        }
         public List<string> SelectUseCreateNickNameList()
         {
             return _SelectUseNickNameList("selectUseCreateNickNameList");

@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using MDIDemo.PublicClass;
 using DevExpress.Utils;
 using System.Threading;
+using System.IO;
 
 namespace DevExpress.XtraBars.Demos.MDIDemo
 {
@@ -72,7 +73,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_DeleteAllModel.Class_InsertDataBase class_DeleteDataBase = new Class_DeleteAllModel.Class_InsertDataBase();
             try
             {
-                if (xmlFileName != null)
+                if (xmlFileName != null && File.Exists(string.Format("{0}\\delete\\{1}.xml", Application.StartupPath, xmlFileName)))
                 {
                     class_DeleteAllModel = class_PublicMethod.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
                     class_DeleteDataBase = class_DeleteAllModel.class_SelectDataBase;
@@ -130,7 +131,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_UpdateAllModel.Class_InsertDataBase class_UpdateDataBase = new Class_UpdateAllModel.Class_InsertDataBase();
             try
             {
-                if (xmlFileName != null)
+                if (xmlFileName != null && File.Exists(string.Format("{0}\\update\\{1}.xml", Application.StartupPath, xmlFileName)))
                 {
                     class_UpdateAllModel = class_PublicMethod.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
                     class_UpdateDataBase = class_UpdateAllModel.class_SelectDataBase;
@@ -188,7 +189,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_InsertAllModel.Class_InsertDataBase class_InsertDataBase = new Class_InsertAllModel.Class_InsertDataBase();
             try
             {
-                if (xmlFileName != null)
+                if (xmlFileName != null && File.Exists(string.Format("{0}\\insert\\{1}.xml", Application.StartupPath, xmlFileName)))
                 {
                     class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
                     class_InsertDataBase = class_InsertAllModel.class_SelectDataBase;
@@ -246,7 +247,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_SelectAllModel.Class_SelectDataBase class_SelectDataBase = new Class_SelectAllModel.Class_SelectDataBase();
             try
             {
-                if (xmlFileName != null)
+                if (xmlFileName != null && File.Exists(string.Format("{0}\\select\\{1}.xml", Application.StartupPath, xmlFileName)))
                 {
                     class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
                     class_SelectDataBase = class_SelectAllModel.class_SelectDataBase;
