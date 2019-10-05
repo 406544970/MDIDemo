@@ -16,10 +16,12 @@ namespace MDIDemo.PublicClass
     {
         private XmlUtil xmlUtil;
         private Class_SQLiteOperator class_SQLiteOperator;
+        private Class_Remote class_Remote;
         public Class_PublicMethod()
         {
             xmlUtil = new XmlUtil();
             class_SQLiteOperator = new Class_SQLiteOperator();
+            class_Remote = new Class_Remote();
         }
         private List<Class_ParaArray> GetVersionPara(PageModel pageModel)
         {
@@ -93,6 +95,38 @@ namespace MDIDemo.PublicClass
 
             return class_ParaArrays;
         }
+        /// <summary>
+        /// PUSH到远程
+        /// </summary>
+        /// <param name="PageKey"></param>
+        /// <returns></returns>
+        public bool PushToRemote(string PageKey)
+        {
+            bool ResultValue = false;
+            if (PageKey == null)
+                return ResultValue;
+
+            PageModel pageModel = class_SQLiteOperator.GetPageByPageKey(PageKey);
+            if (pageModel != null)
+            {
+                if (File.Exists(string.Format("{0}\\{1}\\{2}.xml", Application.StartupPath, pageModel.pageType, pageModel.pageKey)))
+                {
+                    if (class_SQLiteOperator.UpdatePushSign(pageModel.pageKey))
+                    {
+                        List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+                        class_ParaArrays = GetVersionPara(pageModel);
+                        int Index = class_Remote.InsertPage(class_ParaArrays);
+                        if (Index > 0)
+                        {
+                            //加入上传文件代码
+                        }
+                        ResultValue = Index > 0 ? true : false;
+                        class_ParaArrays.Clear();
+                    }
+                }
+            }
+            return ResultValue;
+        }
         public bool GetVersionUpdateInfo(ProgressBarControl progressBarControl)
         {
             bool ResultValue = true;
@@ -147,12 +181,12 @@ namespace MDIDemo.PublicClass
                         {
                             case -1:
                                 {
-                                    if (class_SQLiteOperator.DeleteByPageKey(pageModel.pageKey))
-                                    {
-                                        if (File.Exists(FileName))
-                                            File.Delete(FileName);
-                                        changeCount++;
-                                    }
+                                    //if (class_SQLiteOperator.DeleteByPageKey(pageModel.pageKey))
+                                    //{
+                                    //    if (File.Exists(FileName))
+                                    //        File.Delete(FileName);
+                                    //    changeCount++;
+                                    //}
                                     //ResultVO<int> resultVODel = new ResultVO<int>();
                                     //resultVODel = class_Remote.DeletePage<int>(pageModel.pageKey);
                                     //if (resultVODel.code == 0)

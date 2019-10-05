@@ -107,6 +107,72 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}',
             else
                 return -1;
         }
+        public PageModel GetPageByPageKey(string PageKey)
+        {
+            if (UpdatePushSign(PageKey))
+            {
+                string Sql = string.Format(@"SELECT
+                pageKey
+                ,projectId
+                ,pageType
+                ,pageVersion
+                ,createTime
+                ,lastUpdateTime
+                ,createOperator
+                ,createOperatorId
+                ,doOperator
+                ,doOperatorId
+                ,frontOperator
+                ,frontOperatorId
+                ,finishCount
+                ,readOnly
+                ,methodRemark
+                FROM vou_pageInfomation
+                WHERE pageKey = '{0}'
+                AND pushSign = 1", PageKey);
+                List<string> vs = new List<string>();
+                vs = mySqlite3.ExecuteReadList(Sql);
+                if (vs != null && vs.Count == 1)
+                {
+                    string row = vs[0];
+                    string[] rowList = row.Split(';');
+                    PageModel pageModel = new PageModel()
+                    {
+                        pageKey = rowList[0],
+                        projectId = rowList[1],
+                        pageType = rowList[2],
+                        pageVersion = Convert.ToInt32(rowList[3]),
+                        createTime = Convert.ToDateTime(rowList[4]),
+                        lastUpdateTime = Convert.ToDateTime(rowList[5]),
+                        createOperatorId = rowList[6],
+                        doOperatorId = rowList[7],
+                        frontOperatorId = rowList[8],
+                        createOperator = rowList[9],
+                        doOperator = rowList[10],
+                        frontOperator = rowList[11],
+                        finishCount = Convert.ToInt32(rowList[12]),
+                        readOnly = rowList[13].Equals("1") ? true : false,
+                        methodRemark = rowList[14]
+                    };
+                    return pageModel;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
+        public bool UpdatePushSign(string PageKey)
+        {
+            if (PageKey == null)
+                return false;
+            string Sql = string.Format(@"UPDATE vou_pageInfomation Set pushSign = 1
+                WHERE pageKey = '{0}'", PageKey);
+            if (mySqlite3.ExecuteSql(Sql) > 0)
+                return true;
+            else
+                return false;
+        }
         public List<string> GetComponentList()
         {
             string Sql = string.Format(@"SELECT id as ComponentName

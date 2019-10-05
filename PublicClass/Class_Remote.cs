@@ -56,6 +56,11 @@ namespace MDIDemo.PublicClass
             return _SelectDictionaryListString(MethodName, null);
 
         }
+        public int InsertPage(List<Class_ParaArray> class_ParaArrays)
+        {
+            string ResultValue = class_RestClient.Post("pageController/insertPage", class_ParaArrays);
+            return Convert.ToInt32(ResultValue);
+        }
         public ResultVO<T> SelectVersionList<T>(PageVersionListInParam pageVersionListInParam)
         {
             ResultVO<T> resultVO = new ResultVO<T>();
