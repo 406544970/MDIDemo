@@ -1,6 +1,7 @@
 ﻿using MDIDemo.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace MDIDemo.PublicClass
         }
         public Class_Remote()
         {
-            Ini("localhost:2519", true);//这里写入默认值
+            Ini("www.lh.com:2519", true);//这里写入默认值
         }
 
         private string BaseUrl;
@@ -25,6 +26,32 @@ namespace MDIDemo.PublicClass
         {
             this.BaseUrl = BaseUrl.Trim();
             class_RestClient = new Class_RestClient(this.BaseUrl, HttpSign);
+        }
+        public bool UploadFileByHttp(string FileName)
+        {
+            try
+            {
+                return class_RestClient.UploadFileByHttp("UploadFileController/saveCapture", FileName);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public ResultVO<T> upLoadFile<T>(string FileName)
+        {
+            FileStream fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read);
+            byte[] vs = new byte[fileStream.Length];
+            fileStream.Read(vs, 0, vs.Length);
+            fileStream.Close();
+
+            MyFile myFile = new MyFile();
+            myFile.date = Convert.ToBase64String(vs);
+            string data = System.Text.Encoding.UTF8.GetString(vs);
+            ResultVO<T> resultVO = new ResultVO<T>();
+            string ResultValue = class_RestClient.Post("UploadFileController/uploadFile", null
+                , JsonTools.ObjectToJson(data), false);
+            return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
         }
         public ResultVO<T> DeletePage<T>(string PageKey)
         {

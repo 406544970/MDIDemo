@@ -24,16 +24,17 @@ namespace MDIDemo.PublicClass
                 , XmlFileKey);
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
-        private bool _UpdateIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
+        private bool _UpdateIntoPageKey(Class_PageInfomationMode class_PageInfomationMode, bool PageVersionSign = false)
         {
             string Sql = string.Format(@"UPDATE vou_pageInfomation
-                SET projectId = '{1}',pageType = '{2}',
-                pageVersion = case pageVersion when 100000 then 0 else pageVersion + 1 end
+                SET projectId = '{1}'
+                ,pageType = '{2}'
+                ,pageVersion = case when pageVersion > 2147483647 then 0 else pageVersion + {12} end
                 ,lastUpdateTime = datetime('now','localtime')
                 ,createOperatorId = '{3}'
                 ,doOperatorId = '{4}'
-                ,finishCount = case finishCount when 100000 then 0 else finishCount + 1 end,
-                methodRemark = {5}
+                ,finishCount = {11}
+                ,methodRemark = {5}
                 ,readOnly = {6}
                 ,frontOperatorId = '{7}'
                 ,createOperator = '{8}'
@@ -51,20 +52,43 @@ namespace MDIDemo.PublicClass
                 , class_PageInfomationMode.createOperator
                 , class_PageInfomationMode.doOperator
                 , class_PageInfomationMode.frontOperator
+                , class_PageInfomationMode.finishCount
+                , PageVersionSign ? "1" : "0"
                 );
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
-        private string _GetInsertSql(string pageKey, string projectId, string pageType, int pageVersion
+        public int DownLoadUpate(PageModel pageModel)
+        {
+            string Sql = _GetUpdateSql(pageModel.pageKey, pageModel.projectId, pageModel.pageType, pageModel.pageVersion
+            , pageModel.createTime, pageModel.lastUpdateTime
+            , pageModel.createOperatorId, pageModel.doOperatorId, pageModel.finishCount
+            , pageModel.methodRemark, pageModel.readOnly
+            , pageModel.frontOperatorId, pageModel.createOperator, pageModel.doOperator, pageModel.frontOperator, true);
+            return mySqlite3.ExecuteSql(Sql);
+        }
+        private string _GetUpdateSql(string pageKey, string projectId, string pageType, int pageVersion
             , DateTime createTime, DateTime lastUpdateTime
             , string createOperatorId, string doOperatorId, int finishCount
             , string methodRemark, bool readOnly
-            , string frontOperatorId, string createOperator, string doOperator, string frontOperator)
+            , string frontOperatorId, string createOperator, string doOperator, string frontOperator, bool pushSign)
         {
-            return string.Format(@"INSERT INTO vou_pageInfomation(pageKey, projectId, 
-pageType, pageVersion, createTime, lastUpdateTime,
-createOperatorId, doOperatorId, finishCount, methodRemark, readOnly, frontOperatorId
-, createOperator, doOperator, frontOperator, pushSign)
-VAlUES('{0}', '{1}', '{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}','{13}','{14}',0)"
+            return string.Format(@"UPDATE vou_pageInfomation
+                SET projectId = '{1}'
+                , pageType = '{2}'
+                , pageVersion = {3}
+                , createTime = '{4}'
+                , lastUpdateTime = '{5}'
+                , createOperatorId = '{6}'
+                , doOperatorId = '{7}'
+                , finishCount = {8}
+                , methodRemark = {9}
+                , readOnly = {10}
+                , frontOperatorId = '{11}'
+                , createOperator = '{12}'
+                , doOperator = '{13}'
+                , frontOperator = '{14}'
+                , pushSign = {15}
+                WHERE pageKey = '{0}'"
                 , pageKey
                 , projectId, pageType, pageVersion
                 , createTime.ToString("yyyy-MM-dd HH:mm:ss")
@@ -73,7 +97,39 @@ VAlUES('{0}', '{1}', '{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}
                 , doOperatorId, finishCount
                 , (methodRemark == null ? "null" : "'" + methodRemark + "'")
                 , (readOnly ? 1 : 0)
-                , frontOperatorId, createOperator, doOperator, frontOperator);
+                , frontOperatorId, createOperator, doOperator, frontOperator
+                , pushSign ? "1" : "0");
+        }
+        public int DownLoadInsert(PageModel pageModel)
+        {
+            string Sql = _GetInsertSql(pageModel.pageKey, pageModel.projectId, pageModel.pageType, pageModel.pageVersion
+            , pageModel.createTime, pageModel.lastUpdateTime
+            , pageModel.createOperatorId, pageModel.doOperatorId, pageModel.finishCount
+            , pageModel.methodRemark, pageModel.readOnly
+            , pageModel.frontOperatorId, pageModel.createOperator, pageModel.doOperator, pageModel.frontOperator, true);
+            return mySqlite3.ExecuteSql(Sql);
+        }
+        private string _GetInsertSql(string pageKey, string projectId, string pageType, int pageVersion
+            , DateTime createTime, DateTime lastUpdateTime
+            , string createOperatorId, string doOperatorId, int finishCount
+            , string methodRemark, bool readOnly
+            , string frontOperatorId, string createOperator, string doOperator, string frontOperator,bool pushSign)
+        {
+            return string.Format(@"INSERT INTO vou_pageInfomation(pageKey, projectId, 
+pageType, pageVersion, createTime, lastUpdateTime,
+createOperatorId, doOperatorId, finishCount, methodRemark, readOnly, frontOperatorId
+, createOperator, doOperator, frontOperator, pushSign)
+VAlUES('{0}', '{1}', '{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}','{13}','{14}',{15})"
+                , pageKey
+                , projectId, pageType, pageVersion
+                , createTime.ToString("yyyy-MM-dd HH:mm:ss")
+                , lastUpdateTime.ToString("yyyy-MM-dd HH:mm:ss")
+                , createOperatorId
+                , doOperatorId, finishCount
+                , (methodRemark == null ? "null" : "'" + methodRemark + "'")
+                , (readOnly ? 1 : 0)
+                , frontOperatorId, createOperator, doOperator, frontOperator
+                , pushSign ? "1":"0");
         }
         private bool _InsertIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
         {
@@ -333,12 +389,12 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}',
             }
             return ResultCounter;
         }
-        public bool InsertIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
+        public bool InsertIntoPageKey(Class_PageInfomationMode class_PageInfomationMode, bool PageVersionSign)
         {
             if (_GetPageKeyCount(class_PageInfomationMode.pageKey) == 0)
                 return _InsertIntoPageKey(class_PageInfomationMode);
             else
-                return _UpdateIntoPageKey(class_PageInfomationMode);
+                return _UpdateIntoPageKey(class_PageInfomationMode, PageVersionSign);
         }
         /// <summary>
         /// 测试SQLite是否工作正常，用于热身工作池
@@ -364,8 +420,7 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}',
                 ,readOnly,methodRemark
                 ,frontOperator as frontOperatorId
                 FROM vou_pageInfomation
-                WHERE pageType = '{0}'
-                ORDER BY createTime DESC";
+                WHERE pageType = '{0}'";
             DataSet dataSet = new DataSet();
             DataTable BeginTable = new DataTable("SelectTable");
             DataColumn pageKey = new DataColumn("pageKey", typeof(string));
@@ -399,13 +454,13 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}',
                         NewSql = string.Format(Sql, "update");
                         break;
                     case 3:
-                        NewSql = string.Format(Sql, "delete");
+                        NewSql = string.Format(Sql + " And createOperatorId = '{1}'", "delete", Class_MyInfo.UseIdValue) ;
                         break;
                     default:
                         NewSql = string.Format(Sql, "select");
                         break;
                 }
-                vs = mySqlite3.ExecuteReadList(NewSql);
+                vs = mySqlite3.ExecuteReadList(NewSql + " ORDER BY createTime DESC");
                 BeginTable.Clear();
                 if ((vs != null) && (vs.Count > 0))
                 {

@@ -181,12 +181,12 @@ namespace MDIDemo.PublicClass
                         {
                             case -1:
                                 {
-                                    //if (class_SQLiteOperator.DeleteByPageKey(pageModel.pageKey))
-                                    //{
-                                    //    if (File.Exists(FileName))
-                                    //        File.Delete(FileName);
-                                    //    changeCount++;
-                                    //}
+                                    if (class_SQLiteOperator.DeleteByPageKey(pageModel.pageKey))
+                                    {
+                                        if (File.Exists(FileName))
+                                            File.Delete(FileName);
+                                        changeCount++;
+                                    }
                                     //ResultVO<int> resultVODel = new ResultVO<int>();
                                     //resultVODel = class_Remote.DeletePage<int>(pageModel.pageKey);
                                     //if (resultVODel.code == 0)
@@ -198,12 +198,14 @@ namespace MDIDemo.PublicClass
                                 {
                                     //更新文件
                                     //更新SQLITE
+                                    changeCount += class_SQLiteOperator.DownLoadUpate(pageModel);
                                 }
                                 break;
                             case 1:
                                 {
                                     //更新文件
                                     //更新SQLITE
+                                    changeCount += class_SQLiteOperator.DownLoadInsert(pageModel);
                                 }
                                 break;
                             default:
@@ -223,7 +225,7 @@ namespace MDIDemo.PublicClass
             return ResultValue;
         }
 
-        private bool SaveToXml<T>(string xmlPath, string fileName, T t)
+        private bool SaveToXml<T>(string xmlPath, string fileName, T t, bool PageVersionSign)
         {
             bool SaveOk = false;
             string PathXmlSolutionName = string.Format("{0}\\{1}", Application.StartupPath, xmlPath);
@@ -253,7 +255,7 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.readOnly = class_SelectAllModel.class_Create.ReadOnly;
                         if (class_SelectAllModel.class_SubList.Count > 0)
                             class_PageInfomationMode.methodRemark = class_SelectAllModel.class_SubList[0].MethodContent;
-                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode, PageVersionSign);
                     }
                     break;
                 case "Class_InsertAllModel":
@@ -276,7 +278,7 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.readOnly = class_InsertAllModel.class_Create.ReadOnly;
                         if (class_InsertAllModel.class_SubList.Count > 0)
                             class_PageInfomationMode.methodRemark = class_InsertAllModel.class_SubList[0].MethodContent;
-                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode, PageVersionSign);
                     }
                     break;
                 case "Class_UpdateAllModel":
@@ -299,7 +301,7 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.readOnly = class_UpdateAllModel.class_Create.ReadOnly;
                         if (class_UpdateAllModel.class_SubList.Count > 0)
                             class_PageInfomationMode.methodRemark = class_UpdateAllModel.class_SubList[0].MethodContent;
-                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode, PageVersionSign);
                     }
                     break;
                 case "Class_DeleteAllModel":
@@ -322,7 +324,7 @@ namespace MDIDemo.PublicClass
                         class_PageInfomationMode.readOnly = class_DeleteAllModel.class_Create.ReadOnly;
                         if (class_DeleteAllModel.class_SubList.Count > 0)
                             class_PageInfomationMode.methodRemark = class_DeleteAllModel.class_SubList[0].MethodContent;
-                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode);
+                        SaveOk = class_SQLiteOperator.InsertIntoPageKey(class_PageInfomationMode, PageVersionSign);
                     }
                     break;
                 case "Class_DataBaseConDefault":
@@ -362,7 +364,7 @@ namespace MDIDemo.PublicClass
                         class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
                         class_SelectAllModel.class_Create.MethodId = returnKey;
                         class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
-                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
+                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, false))
                             returnKey = null;
                     }
                     break;
@@ -372,7 +374,7 @@ namespace MDIDemo.PublicClass
                     class_InsertAllModel = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
                     class_InsertAllModel.class_Create.MethodId = returnKey;
                     class_InsertAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.InsertToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel))
+                    if ((true) && !this.InsertToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel, false))
                         returnKey = null;
                     break;
                 case "update":
@@ -381,7 +383,7 @@ namespace MDIDemo.PublicClass
                     class_UpdateAllModel = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
                     class_UpdateAllModel.class_Create.MethodId = returnKey;
                     class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel))
+                    if ((true) && !this.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel, false))
                         returnKey = null;
                     break;
                 case "delete":
@@ -390,7 +392,7 @@ namespace MDIDemo.PublicClass
                     class_DeleteAllModel = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
                     class_DeleteAllModel.class_Create.MethodId = returnKey;
                     class_DeleteAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.DeleteToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel))
+                    if ((true) && !this.DeleteToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel, false))
                         returnKey = null;
                     break;
                 default:
@@ -400,7 +402,7 @@ namespace MDIDemo.PublicClass
                         class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
                         class_SelectAllModel.class_Create.MethodId = returnKey;
                         class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
-                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
+                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, false))
                             returnKey = null;
                     }
                     break;
@@ -534,7 +536,7 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public bool DataBaseDefaultValueToXml<T>(string fileName, T t)
         {
-            return SaveToXml<T>("DataBaseDefault", fileName, t);
+            return SaveToXml<T>("DataBaseDefault", fileName, t, false);
         }
         /// <summary>
         /// 
@@ -545,7 +547,7 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public bool SystemDefaultValueToXml<T>(string fileName, T t)
         {
-            return SaveToXml<T>("SystemDefault", fileName, t);
+            return SaveToXml<T>("SystemDefault", fileName, t,false);
         }
         /// <summary>
         /// 
@@ -564,9 +566,9 @@ namespace MDIDemo.PublicClass
         /// <param name="fileName">文件名，不用加扩展名</param>
         /// <param name="t">对象</param>
         /// <returns></returns>
-        public bool SelectToXml<T>(string fileName, T t)
+        public bool SelectToXml<T>(string fileName, T t, bool PageVersionSign)
         {
-            return SaveToXml<T>("select", fileName, t);
+            return SaveToXml<T>("select", fileName, t, PageVersionSign);
         }
         /// <summary>
         /// 保存Insert
@@ -575,9 +577,9 @@ namespace MDIDemo.PublicClass
         /// <param name="fileName">文件名，不用加扩展名</param>
         /// <param name="t">对象</param>
         /// <returns></returns>
-        public bool InsertToXml<T>(string fileName, T t)
+        public bool InsertToXml<T>(string fileName, T t, bool PageVersionSign)
         {
-            return SaveToXml<T>("insert", fileName, t);
+            return SaveToXml<T>("insert", fileName, t, PageVersionSign);
         }
         /// <summary>
         /// 保存Update
@@ -586,9 +588,9 @@ namespace MDIDemo.PublicClass
         /// <param name="fileName">文件名，不用加扩展名</param>
         /// <param name="t">对象</param>
         /// <returns></returns>
-        public bool UpdateToXml<T>(string fileName, T t)
+        public bool UpdateToXml<T>(string fileName, T t, bool PageVersionSign)
         {
-            return SaveToXml<T>("update", fileName, t);
+            return SaveToXml<T>("update", fileName, t, PageVersionSign);
         }
         /// <summary>
         /// 保存Delete
@@ -597,9 +599,9 @@ namespace MDIDemo.PublicClass
         /// <param name="fileName">文件名，不用加扩展名</param>
         /// <param name="t">对象</param>
         /// <returns></returns>
-        public bool DeleteToXml<T>(string fileName, T t)
+        public bool DeleteToXml<T>(string fileName, T t, bool PageVersionSign)
         {
-            return SaveToXml<T>("delete", fileName, t);
+            return SaveToXml<T>("delete", fileName, t, PageVersionSign);
         }
 
 

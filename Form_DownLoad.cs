@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -23,9 +24,25 @@ namespace MDIDemo
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.timer1.Enabled = false;
-            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-            if (class_PublicMethod.GetVersionUpdateInfo(this.progressBarControl1))
-                this.DialogResult = DialogResult.OK;
+            string FileName = @"c:\1\lianghao.jpg";
+            if (File.Exists(FileName))
+            {
+                Class_Remote class_Remote = new Class_Remote();
+                //bool Upload = class_Remote.UploadFileByHttp(FileName);
+                bool Upload = class_Remote.upLoadFile<bool>(FileName).data;
+                if (Upload)
+                {
+                    Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                    if (class_PublicMethod.GetVersionUpdateInfo(this.progressBarControl1))
+                        this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                    if (class_PublicMethod.GetVersionUpdateInfo(this.progressBarControl1))
+                        this.DialogResult = DialogResult.OK;
+                }
+            }
         }
 
         private void Form_DownLoad_Load(object sender, EventArgs e)

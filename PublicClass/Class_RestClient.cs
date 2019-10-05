@@ -75,6 +75,82 @@ namespace MDIDemo.PublicClass
         #endregion
 
         #region Post请求
+        public bool UploadFileByHttp(string url, string filePath)
+        {
+            // 时间戳，用做boundary
+            url = string.Format("{0}/{1}", this.BaseUrl, url);
+            string timeStamp = DateTime.Now.Ticks.ToString("x");
+
+            //根据uri创建HttpWebRequest对象
+            HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create(new Uri(url));
+            httpReq.Method = "POST";
+            httpReq.AllowWriteStreamBuffering = false; //对发送的数据不使用缓存
+            httpReq.Timeout = 300000;  //设置获得响应的超时时间（300秒）
+            httpReq.ContentType = "multipart/form-data; boundary=" + timeStamp;
+
+            //文件
+            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            BinaryReader binaryReader = new BinaryReader(fileStream);
+
+            //头信息
+            string boundary = "--" + timeStamp;
+            string dataFormat = boundary + "\r\nContent-Disposition: form-data; name=\"{0}\";filename=\"{1}\"\r\nContent-Type:application/octet-stream\r\n\r\n";
+            string header = string.Format(dataFormat, "file", Path.GetFileName(filePath));
+            byte[] postHeaderBytes = Encoding.UTF8.GetBytes(header);
+
+            //结束边界
+            byte[] boundaryBytes = Encoding.ASCII.GetBytes("\r\n--" + timeStamp + "--\r\n");
+
+            long length = fileStream.Length + postHeaderBytes.Length + boundaryBytes.Length;
+
+            httpReq.ContentLength = length;//请求内容长度
+
+            try
+            {
+                //每次上传4k
+                int bufferLength = 4096;
+                byte[] buffer = new byte[bufferLength];
+
+                //已上传的字节数
+                long offset = 0;
+                int size = binaryReader.Read(buffer, 0, bufferLength);
+                Stream postStream = httpReq.GetRequestStream();
+
+                //发送请求头部消息
+                postStream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
+
+                while (size > 0)
+                {
+                    postStream.Write(buffer, 0, size);
+                    offset += size;
+                    size = binaryReader.Read(buffer, 0, bufferLength);
+                }
+
+                //添加尾部边界
+                postStream.Write(boundaryBytes, 0, boundaryBytes.Length);
+                postStream.Close();
+
+                //获取服务器端的响应
+                using (HttpWebResponse response = (HttpWebResponse)httpReq.GetResponse())
+                {
+                    Stream receiveStream = response.GetResponseStream();
+                    StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
+                    string returnValue = readStream.ReadToEnd();
+                    response.Close();
+                    readStream.Close();
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                fileStream.Close();
+                binaryReader.Close();
+            }
+        }
         public string Post(string Url)
         {
             return Post(Url, null, null, false);

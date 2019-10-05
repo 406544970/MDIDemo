@@ -10,7 +10,10 @@ namespace MDIDemo.PublicClass
     {
         public int SelectOpenWindowIndex { get; set; }
     }
-
+    public class MyFile
+    {
+        public string date;
+    }
     public class PageModel
     {
         public PageModel()

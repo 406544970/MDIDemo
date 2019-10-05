@@ -1998,7 +1998,7 @@ namespace MDIDemo.vou
             waitDialogForm.Close();
             return IsOk;
         }
-        private void _SaveSelectToXml(bool IsDisplayLog)
+        private void _SaveSelectToXml(bool IsDisplayLog,bool PageVersionSign = false)
         {
             int[] vs = new int[this.xtraTabControl5.TabPages.Count];
             vs[0] = this.gridControl1.MainView.RowCount;
@@ -2263,7 +2263,7 @@ namespace MDIDemo.vou
                 #endregion
 
 
-                if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel))
+                if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, PageVersionSign))
                 {
                     if (IsDisplayLog)
                         this.DisplayText(string.Format("已将{0}方法【{1}】，保存到本地。", class_SelectAllModel.classType, class_SelectAllModel.class_Create.MethodId));
@@ -2738,7 +2738,7 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
-                _SaveSelectToXml(false);
+                _SaveSelectToXml(false, true);
 
                 this.DisplayText("代码已重新生成!");
                 this.xtraTabControl3.SelectedTabPageIndex = 1;
