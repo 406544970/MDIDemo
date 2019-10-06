@@ -159,6 +159,57 @@ namespace MDIDemo.PublicClass
         {
             return Post(Url, class_ParaArrays, null, false);
         }
+        public string PostBinary(string Url, List<Class_ParaArray> class_ParaArrays, byte[] data, bool AddDefault)
+        {
+            HttpWebRequest myRequest = null;
+            StreamReader reader = null;
+            HttpWebResponse myResponse = null;
+            byte[] buf = null;
+            Stream stream = null;
+            try
+            {
+                if (data != null)
+                    buf = data;
+                string Data = _GetParaUrl(class_ParaArrays, AddDefault);
+                //先根据用户请求的uri构造请求地址
+                string serviceUrl = string.Format("{0}/{1}", this.BaseUrl, Url);
+                if (Data != null)
+                    serviceUrl += Data;
+                //创建Web访问对象
+                myRequest = (HttpWebRequest)WebRequest.Create(serviceUrl);
+                //把用户传过来的数据转成“UTF-8”的字节流
+                myRequest.Method = "POST";
+                myRequest.ContentType = "application/json";
+                myRequest.MaximumAutomaticRedirections = 1;
+                myRequest.AllowAutoRedirect = true;
+
+                //发送请求
+                if (data != null)
+                {
+                    stream = myRequest.GetRequestStream();
+                    stream.Write(buf, 0, buf.Length);
+                    stream.Close();
+                }
+
+                //获取接口返回值
+                //通过Web访问对象获取响应内容
+                myResponse = (HttpWebResponse)myRequest.GetResponse();
+                //通过响应内容流创建StreamReader对象，因为StreamReader更高级更快
+                reader = new StreamReader(myResponse.GetResponseStream(), Encoding.UTF8);
+                //string returnXml = HttpUtility.UrlDecode(reader.ReadToEnd());//如果有编码问题就用这个方法
+                string returnXml = reader.ReadToEnd();//利用StreamReader就可以从响应内容从头读到尾
+                return returnXml;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                reader.Close();
+                myResponse.Close();
+            }
+        }
         public string Post(string Url, List<Class_ParaArray> class_ParaArrays, string data, bool AddDefault)
         {
             HttpWebRequest myRequest = null;

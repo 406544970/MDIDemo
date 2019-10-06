@@ -38,19 +38,49 @@ namespace MDIDemo.PublicClass
                 throw e;
             }
         }
-        public ResultVO<T> upLoadFile<T>(string FileName)
+        public ResultVO<T> UpLoadFileBinary<T>(string AllPathFileName, string FolderName, string FileName)
         {
-            FileStream fileStream = new FileStream(FileName, FileMode.Open, FileAccess.Read);
-            byte[] vs = new byte[fileStream.Length];
-            fileStream.Read(vs, 0, vs.Length);
-            fileStream.Close();
+            return PrivateUploadFile<T>(AllPathFileName, FileName, null, FolderName);
+        }
+        public ResultVO<T> UploadFileSelect<T>(string AllPathFileName, string FileName)
+        {
+            return PrivateUploadFile<T>(AllPathFileName, FileName, "Select", null);
+        }
+        public ResultVO<T> UploadFileInsert<T>(string AllPathFileName, string FileName)
+        {
+            return PrivateUploadFile<T>(AllPathFileName, FileName, "Insert", null);
+        }
+        public ResultVO<T> UploadFileUpdate<T>(string AllPathFileName, string FileName)
+        {
+            return PrivateUploadFile<T>(AllPathFileName, FileName, "Update", null);
+        }
+        public ResultVO<T> UploadFileDelete<T>(string AllPathFileName, string FileName)
+        {
+            return PrivateUploadFile<T>(AllPathFileName, FileName, "Delete", null);
+        }
+        private ResultVO<T> PrivateUploadFile<T>(string AllPathFileName, string FileName, string Operate, string FolderName)
+        {
+            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+            Class_ParaArray class_ParaArrayFileName = new Class_ParaArray();
+            class_ParaArrayFileName.ParaName = "fileName";
+            class_ParaArrayFileName.ParaValue = FileName;
+            class_ParaArrays.Add(class_ParaArrayFileName);
+            if (FolderName != null)
+            {
+                Class_ParaArray class_ParaArrayFolderName = new Class_ParaArray();
+                class_ParaArrayFolderName.ParaName = "dictionary";
+                class_ParaArrayFolderName.ParaValue = FolderName;
+                class_ParaArrays.Add(class_ParaArrayFolderName);
+            }
 
-            MyFile myFile = new MyFile();
-            myFile.date = Convert.ToBase64String(vs);
-            string data = System.Text.Encoding.UTF8.GetString(vs);
+            byte[] byteArray = FileBinaryConvertHelper.File2Bytes(AllPathFileName);
             ResultVO<T> resultVO = new ResultVO<T>();
-            string ResultValue = class_RestClient.Post("UploadFileController/uploadFile", null
-                , JsonTools.ObjectToJson(data), false);
+            string Url = "UploadFileController/uploadFile";
+            if (FolderName == null)
+                Url = string.Format("UploadFileController/uploadFile{0}", Operate);
+            string ResultValue = class_RestClient.PostBinary(Url
+                , class_ParaArrays
+                , byteArray, true);
             return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
         }
         public ResultVO<T> DeletePage<T>(string PageKey)
