@@ -109,7 +109,8 @@ namespace MDIDemo.PublicClass
             PageModel pageModel = class_SQLiteOperator.GetPageByPageKey(PageKey);
             if (pageModel != null)
             {
-                if (File.Exists(string.Format("{0}\\{1}\\{2}.xml", Application.StartupPath, pageModel.pageType, pageModel.pageKey)))
+                string AllPathFileName = string.Format("{0}\\{1}\\{2}.xml", Application.StartupPath, pageModel.pageType, pageModel.pageKey);
+                if (File.Exists(AllPathFileName))
                 {
                     if (class_SQLiteOperator.UpdatePushSign(pageModel.pageKey))
                     {
@@ -119,6 +120,12 @@ namespace MDIDemo.PublicClass
                         if (Index > 0)
                         {
                             //加入上传文件代码
+                            ResultVO<bool> resultVO = new ResultVO<bool>();
+                            resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                            if (resultVO.code == 0)
+                                ResultValue = ResultValue && true;
+                            else
+                                ResultValue = ResultValue && false;
                         }
                         ResultValue = Index > 0 ? true : false;
                         class_ParaArrays.Clear();

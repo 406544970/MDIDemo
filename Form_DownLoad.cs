@@ -24,26 +24,9 @@ namespace MDIDemo
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.timer1.Enabled = false;
-            string FileName = @"SE20191005112039188E9FB614F1B36.xml";
-            string AllPathFileName = string.Format(@"D:\MDIDemo\bin\Debug\select\{0}", FileName);
-            string FolderName = "select";
-            if (File.Exists(AllPathFileName))
-            {
-                Class_Remote class_Remote = new Class_Remote();
-                bool Upload = class_Remote.upLoadFileBinary<bool>(AllPathFileName, FolderName, FileName).data;
-                if (Upload)
-                {
-                    Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-                    if (class_PublicMethod.GetVersionUpdateInfo(this.progressBarControl1))
-                        this.DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-                    if (class_PublicMethod.GetVersionUpdateInfo(this.progressBarControl1))
-                        this.DialogResult = DialogResult.OK;
-                }
-            }
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            if (class_PublicMethod.GetVersionUpdateInfo(this.progressBarControl1))
+                this.DialogResult = DialogResult.OK;
         }
 
         private void Form_DownLoad_Load(object sender, EventArgs e)
