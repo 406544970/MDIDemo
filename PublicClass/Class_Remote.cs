@@ -83,13 +83,33 @@ namespace MDIDemo.PublicClass
                 , byteArray, true);
             return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
         }
-        public ResultVO<T> DeletePage<T>(string PageKey)
+        public byte[] DownLoadFile(string PageKey, string pageType)
+        {
+            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+            Class_ParaArray class_ParaArray = new Class_ParaArray();
+            class_ParaArray.ParaName = "dictionary";
+            class_ParaArray.ParaValue = pageType;
+            class_ParaArrays.Add(class_ParaArray);
+
+            Class_ParaArray class_ParaArrayPageType = new Class_ParaArray();
+            class_ParaArrayPageType.ParaName = "fileName";
+            class_ParaArrayPageType.ParaValue = PageKey;
+            class_ParaArrays.Add(class_ParaArrayPageType);
+
+            string ResultValue = class_RestClient.Post("UploadFileController/downLoadFile", class_ParaArrays);
+            return System.Text.Encoding.UTF8.GetBytes(ResultValue);
+        }
+        public ResultVO<T> DeletePage<T>(string PageKey, string pageType)
         {
             List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
             Class_ParaArray class_ParaArray = new Class_ParaArray();
             class_ParaArray.ParaName = "pageKey";
             class_ParaArray.ParaValue = PageKey;
             class_ParaArrays.Add(class_ParaArray);
+            Class_ParaArray class_ParaArrayPageType = new Class_ParaArray();
+            class_ParaArrayPageType.ParaName = "pageType";
+            class_ParaArrayPageType.ParaValue = pageType;
+            class_ParaArrays.Add(class_ParaArrayPageType);
             ResultVO<T> resultVO = new ResultVO<T>();
             string ResultValue = class_RestClient.Post("pageController/deletePageAndXml", class_ParaArrays);
             return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;

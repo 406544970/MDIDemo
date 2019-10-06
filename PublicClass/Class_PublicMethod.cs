@@ -149,6 +149,10 @@ namespace MDIDemo.PublicClass
             }
             return ResultValue;
         }
+        public void DownLoadFile()
+        {
+            class_Remote.DownLoadFile("SE20191005142535878812C8537FD3C", "select");
+        }
         public bool GetVersionUpdateInfo(ProgressBarControl progressBarControl)
         {
             bool ResultValue = true;
@@ -209,8 +213,8 @@ namespace MDIDemo.PublicClass
                                             File.Delete(FileName);
                                         changeCount++;
                                     }
-                                    //ResultVO<int> resultVODel = new ResultVO<int>();
-                                    //resultVODel = class_Remote.DeletePage<int>(pageModel.pageKey);
+                                    ResultVO<int> resultVODel = new ResultVO<int>();
+                                    resultVODel = class_Remote.DeletePage<int>(pageModel.pageKey, pageModel.pageType);
                                     //if (resultVODel.code == 0)
                                     //    changeCount += resultVODel.data;
                                     //要删除SQLITE数据与文件
@@ -219,15 +223,25 @@ namespace MDIDemo.PublicClass
                             case 0:
                                 {
                                     //更新文件
-                                    //更新SQLITE
-                                    changeCount += class_SQLiteOperator.DownLoadUpate(pageModel);
+                                    byte[] FileByte = class_Remote.DownLoadFile(pageModel.pageKey, pageModel.pageType);
+                                    if (FileByte.Length > 0)
+                                    {
+                                        File.WriteAllBytes(FileName, FileByte);
+                                        //更新SQLITE
+                                        changeCount += class_SQLiteOperator.DownLoadUpate(pageModel);
+                                    }
                                 }
                                 break;
                             case 1:
                                 {
                                     //更新文件
-                                    //更新SQLITE
-                                    changeCount += class_SQLiteOperator.DownLoadInsert(pageModel);
+                                    byte[] FileByte = class_Remote.DownLoadFile(pageModel.pageKey, pageModel.pageType);
+                                    if (FileByte.Length > 0)
+                                    {
+                                        File.WriteAllBytes(FileName, FileByte);
+                                        //更新SQLITE
+                                        changeCount += class_SQLiteOperator.DownLoadInsert(pageModel);
+                                    }
                                 }
                                 break;
                             default:
