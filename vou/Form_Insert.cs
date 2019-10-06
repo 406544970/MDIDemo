@@ -979,7 +979,18 @@ namespace MDIDemo.vou
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.SetSelectAllMode("MM20190220175003765");
+            if (this.textEdit17.Text.Trim() != null)
+            {
+                Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                if (class_PublicMethod.PushToRemote(this.textEdit17.Text.Trim()))
+                {
+                    MessageBox.Show("成功PUSH到远程！"
+                    , "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+                MessageBox.Show("未保存界面，不允许PUSH到远程！"
+                , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void listBoxControl1_MouseUp(object sender, MouseEventArgs e)

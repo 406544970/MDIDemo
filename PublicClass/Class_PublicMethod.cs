@@ -114,21 +114,36 @@ namespace MDIDemo.PublicClass
                 {
                     if (class_SQLiteOperator.UpdatePushSign(pageModel.pageKey))
                     {
-                        List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
-                        class_ParaArrays = GetVersionPara(pageModel);
-                        int Index = class_Remote.InsertPage(class_ParaArrays);
-                        if (Index > 0)
+                        ResultVO<bool> resultVO = new ResultVO<bool>();
+                        switch (pageModel.pageType)
                         {
-                            //加入上传文件代码
-                            ResultVO<bool> resultVO = new ResultVO<bool>();
-                            resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
-                            if (resultVO.code == 0)
-                                ResultValue = ResultValue && true;
-                            else
-                                ResultValue = ResultValue && false;
+                            case "select":
+                                resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                break;
+                            case "insert":
+                                resultVO = class_Remote.UploadFileInsert<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                break;
+                            case "update":
+                                resultVO = class_Remote.UploadFileUpdate<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                break;
+                            case "delete":
+                                resultVO = class_Remote.UploadFileDelete<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                break;
+                            default:
+                                resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                break;
                         }
-                        ResultValue = Index > 0 ? true : false;
-                        class_ParaArrays.Clear();
+                        if (resultVO.code == 0)
+                        {
+                            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+                            class_ParaArrays = GetVersionPara(pageModel);
+                            ResultValue = class_Remote.InsertPage(class_ParaArrays) > 0 ? true : false;
+                            class_ParaArrays.Clear();
+                        }
+                        else
+                        {
+                            ResultValue = ResultValue && false;
+                        }
                     }
                 }
             }
