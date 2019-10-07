@@ -207,17 +207,15 @@ namespace MDIDemo.PublicClass
                         {
                             case -1:
                                 {
-                                    if (class_SQLiteOperator.DeleteByPageKey(pageModel.pageKey))
+                                    if (class_Remote.DeletePage(pageModel.pageKey, pageModel.pageType) > 0)
                                     {
-                                        if (File.Exists(FileName))
-                                            File.Delete(FileName);
-                                        changeCount++;
+                                        if (class_SQLiteOperator.DeleteByPageKey(pageModel.pageKey))
+                                        {
+                                            if (File.Exists(FileName))
+                                                File.Delete(FileName);
+                                            changeCount++;
+                                        }
                                     }
-                                    ResultVO<int> resultVODel = new ResultVO<int>();
-                                    resultVODel = class_Remote.DeletePage<int>(pageModel.pageKey, pageModel.pageType);
-                                    //if (resultVODel.code == 0)
-                                    //    changeCount += resultVODel.data;
-                                    //要删除SQLITE数据与文件
                                 }
                                 break;
                             case 0:
@@ -378,14 +376,14 @@ namespace MDIDemo.PublicClass
         }
         public bool DeleteXml(string xmlFileName, string classType)
         {
-            if (true)
+            if (class_Remote.DeletePage(xmlFileName, classType) > 0)
             {
                 if (File.Exists(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName)))
-                {
                     File.Delete(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName));
-                }
                 return class_SQLiteOperator.DeleteByPageKey(xmlFileName);
             }
+            else
+                return false;
         }
 
         public string CopyToNewXml(string xmlFileName, string classType)

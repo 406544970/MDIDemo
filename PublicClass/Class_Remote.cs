@@ -99,7 +99,7 @@ namespace MDIDemo.PublicClass
             string ResultValue = class_RestClient.Post("UploadFileController/downLoadFile", class_ParaArrays);
             return System.Text.Encoding.UTF8.GetBytes(ResultValue);
         }
-        public ResultVO<T> DeletePage<T>(string PageKey, string pageType)
+        public int DeletePage(string PageKey, string pageType)
         {
             List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
             Class_ParaArray class_ParaArray = new Class_ParaArray();
@@ -110,9 +110,8 @@ namespace MDIDemo.PublicClass
             class_ParaArrayPageType.ParaName = "pageType";
             class_ParaArrayPageType.ParaValue = pageType;
             class_ParaArrays.Add(class_ParaArrayPageType);
-            ResultVO<T> resultVO = new ResultVO<T>();
             string ResultValue = class_RestClient.Post("pageController/deletePageAndXml", class_ParaArrays);
-            return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
+            return Convert.ToInt32(ResultValue);
 
         }
         public List<string> SelectUseCreateNickNameList()
