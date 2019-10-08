@@ -16,7 +16,8 @@ namespace MDIDemo.PublicClass
         }
         public Class_Remote()
         {
-            Ini("www.lh.com:2519", true);//这里写入默认值
+            //Ini("www.lh.com:2510", true);//这里写入默认值
+            Ini("www.lh.com:2071", true);//这里写入默认值
         }
 
         private string BaseUrl;
@@ -31,7 +32,7 @@ namespace MDIDemo.PublicClass
         {
             try
             {
-                return class_RestClient.UploadFileByHttp("UploadFileController/saveCapture", FileName);
+                return class_RestClient.UploadFileByHttp("useAuthorityPageFeign/saveCapture", FileName);
             }
             catch (Exception e)
             {
@@ -75,9 +76,9 @@ namespace MDIDemo.PublicClass
 
             byte[] byteArray = FileBinaryConvertHelper.File2Bytes(AllPathFileName);
             ResultVO<T> resultVO = new ResultVO<T>();
-            string Url = "UploadFileController/uploadFile";
+            string Url = "useAuthorityPageFeign/uploadFile";
             if (FolderName == null)
-                Url = string.Format("UploadFileController/uploadFile{0}", Operate);
+                Url = string.Format("useAuthorityPageFeign/uploadFile{0}", Operate);
             string ResultValue = class_RestClient.PostBinary(Url
                 , class_ParaArrays
                 , byteArray, true);
@@ -96,7 +97,7 @@ namespace MDIDemo.PublicClass
             class_ParaArrayPageType.ParaValue = PageKey;
             class_ParaArrays.Add(class_ParaArrayPageType);
 
-            string ResultValue = class_RestClient.Post("UploadFileController/downLoadFile", class_ParaArrays);
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/downLoadFile", class_ParaArrays);
             return System.Text.Encoding.UTF8.GetBytes(ResultValue);
         }
         public int DeletePage(string PageKey, string pageType)
@@ -110,7 +111,7 @@ namespace MDIDemo.PublicClass
             class_ParaArrayPageType.ParaName = "pageType";
             class_ParaArrayPageType.ParaValue = pageType;
             class_ParaArrays.Add(class_ParaArrayPageType);
-            string ResultValue = class_RestClient.Post("pageController/deletePageAndXml", class_ParaArrays);
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/deletePageAndXml", class_ParaArrays);
             return Convert.ToInt32(ResultValue);
 
         }
@@ -128,19 +129,19 @@ namespace MDIDemo.PublicClass
         }
         private List<string> _SelectUseNickNameList(string MethodName)
         {
-            MethodName = string.Format("myBatisUseController/{0}", MethodName);
+            MethodName = string.Format("useAuthorityPageFeign/{0}", MethodName);
             return _SelectDictionaryListString(MethodName, null);
 
         }
         public int InsertPage(List<Class_ParaArray> class_ParaArrays)
         {
-            string ResultValue = class_RestClient.Post("pageController/insertPage", class_ParaArrays);
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/insertPage", class_ParaArrays);
             return Convert.ToInt32(ResultValue);
         }
         public ResultVO<T> SelectVersionList<T>(PageVersionListInParam pageVersionListInParam)
         {
             ResultVO<T> resultVO = new ResultVO<T>();
-            string ResultValue = class_RestClient.Post("pageController/selectVersionList"
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/selectVersionList"
                 , null
                 , JsonTools.ObjectToJson(pageVersionListInParam)
                 , true);
@@ -155,7 +156,7 @@ namespace MDIDemo.PublicClass
         public ResultVO<T> UseLogCS<T>(List<Class_ParaArray> class_ParaArrays) where T : class
         {
             ResultVO<T> resultVO = new ResultVO<T>();
-            string ResultValue = class_RestClient.Post("myBatisUseController/useLogCS", class_ParaArrays);
+            string ResultValue = class_RestClient.Post("logFeign/useLogCS", class_ParaArrays);
             return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
         }
         public List<string> selectSystemListString()
@@ -165,7 +166,7 @@ namespace MDIDemo.PublicClass
             class_ParaArray.ParaName = "signName";
             class_ParaArray.ParaValue = "STS";
             class_ParaArrays.Add(class_ParaArray);
-            return _SelectDictionaryListString("dictionaryController/selectDictionaryListString", class_ParaArrays);
+            return _SelectDictionaryListString("useAuthorityPageFeign/selectDictionaryListString", class_ParaArrays);
         }
         private List<string> _SelectDictionaryListString(string MethodName, List<Class_ParaArray> class_ParaArrays)
         {
@@ -181,9 +182,8 @@ namespace MDIDemo.PublicClass
             class_ParaArray.ParaName = "nickName";
             class_ParaArray.ParaValue = NickName;
             class_ParaArrays.Add(class_ParaArray);
-            string ResultValue = class_RestClient.Post("myBatisUseController/selectUseId", class_ParaArrays);
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/selectUseId", class_ParaArrays);
             return ResultValue;
-
         }
     }
 }
