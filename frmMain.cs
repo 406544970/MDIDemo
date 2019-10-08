@@ -704,9 +704,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
 
         private void alertControl1_BeforeFormShow(object sender, Alerter.AlertFormEventArgs e)
         {
-            e.AlertForm.Size = new Size(250,
-            alertControl1.AutoHeight ? 100 : 110);
-
+            e.AlertForm.Size = new Size(250, alertControl1.AutoHeight ? 100 : 110);
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
