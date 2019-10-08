@@ -38,7 +38,15 @@ namespace MDIDemo.vou
         private Class_PublicMethod class_PublicMethod;
         private string MyXmlFileName;
 
-
+        private void _ChangeRead(bool ReadSign)
+        {
+            this.barButtonItem8.Enabled = !ReadSign;
+            this.barButtonItem9.Enabled = !ReadSign;
+            this.barButtonItem21.Enabled = !ReadSign;
+            this.barButtonItem22.Enabled = !ReadSign;
+            this.barButtonItem23.Enabled = !ReadSign;
+            this.barButtonItem24.Enabled = !ReadSign;
+        }
         private void _iniSelect(string skinName, string xmlFileName)
         {
             InitializeComponent();
@@ -92,7 +100,10 @@ namespace MDIDemo.vou
             try
             {
                 if (xmlFileName != null)
+                {
                     class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                    _ChangeRead(class_SelectAllModel.class_Create.ReadOnly);
+                }
                 else
                 {
                     switch (Class_MyInfo.UseTypeValue)

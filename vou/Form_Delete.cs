@@ -36,6 +36,15 @@ namespace MDIDemo.vou
         private Class_PublicMethod class_PublicMethod;
         private string MyXmlFileName;
 
+        private void _ChangeRead(bool ReadSign)
+        {
+            this.barButtonItem8.Enabled = !ReadSign;
+            this.barButtonItem9.Enabled = !ReadSign;
+            this.barButtonItem21.Enabled = !ReadSign;
+            this.barButtonItem22.Enabled = !ReadSign;
+            this.barButtonItem23.Enabled = !ReadSign;
+            this.barButtonItem24.Enabled = !ReadSign;
+        }
         private void _iniSelect(string skinName, string xmlFileName)
         {
             InitializeComponent();
@@ -76,7 +85,10 @@ namespace MDIDemo.vou
             try
             {
                 if (xmlFileName != null)
+                {
                     class_DeleteAllModel = class_PublicMethod.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                    _ChangeRead(class_DeleteAllModel.class_Create.ReadOnly);
+                }
                 if (class_DeleteAllModel == null)
                     class_DeleteAllModel = new Class_DeleteAllModel();
                 switch (class_DeleteAllModel.class_SelectDataBase.databaseType)

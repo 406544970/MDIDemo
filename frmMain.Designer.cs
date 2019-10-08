@@ -1461,8 +1461,8 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             // 
             // barButtonItem11
             // 
-            this.barButtonItem11.Caption = "远程链接设置";
-            this.barButtonItem11.Hint = "配置远程服务端参数";
+            this.barButtonItem11.Caption = "综合参数设置";
+            this.barButtonItem11.Hint = "配置所需各种参数";
             this.barButtonItem11.Id = 49;
             this.barButtonItem11.ImageOptions.ImageIndex = 792;
             this.barButtonItem11.Name = "barButtonItem11";
@@ -1496,7 +1496,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             // 
             // barSubItem3
             // 
-            this.barSubItem3.Caption = "bbb";
+            this.barSubItem3.Caption = "创建新窗体";
             this.barSubItem3.Id = 59;
             this.barSubItem3.ImageOptions.ImageIndex = 627;
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {

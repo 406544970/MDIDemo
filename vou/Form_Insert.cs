@@ -36,6 +36,15 @@ namespace MDIDemo.vou
         private Class_PublicMethod class_PublicMethod;
         private string MyXmlFileName;
 
+        private void _ChangeRead(bool ReadSign)
+        {
+            this.barButtonItem8.Enabled = !ReadSign;
+            this.barButtonItem9.Enabled = !ReadSign;
+            this.barButtonItem21.Enabled = !ReadSign;
+            this.barButtonItem22.Enabled = !ReadSign;
+            this.barButtonItem23.Enabled = !ReadSign;
+            this.barButtonItem24.Enabled = !ReadSign;
+        }
         private void _iniSelect(string skinName, string xmlFileName)
         {
             InitializeComponent();
@@ -76,7 +85,11 @@ namespace MDIDemo.vou
             try
             {
                 if (xmlFileName != null)
+                {
+
                     class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                    _ChangeRead(class_InsertAllModel.class_Create.ReadOnly);
+                }
                 if (class_InsertAllModel == null)
                     class_InsertAllModel = new Class_InsertAllModel();
                 switch (class_InsertAllModel.class_SelectDataBase.databaseType)
