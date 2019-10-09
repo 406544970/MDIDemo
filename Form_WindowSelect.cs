@@ -27,7 +27,7 @@ namespace MDIDemo
             this.SelectDes = SelectDes;
         }
 
-        public string OldPageType;
+        public string NewPageType;
         private bool SelectDes;
         private const string FileFullName = "SystemDefault";
         public string PageKey;
@@ -112,19 +112,19 @@ namespace MDIDemo
                         switch (this.radioGroup1.SelectedIndex)
                         {
                             case 0:
-                                this.OldPageType = "select";
+                                this.NewPageType = "select";
                                 break;
                             case 1:
-                                this.OldPageType = "insert";
+                                this.NewPageType = "insert";
                                 break;
                             case 2:
-                                this.OldPageType = "update";
+                                this.NewPageType = "update";
                                 break;
                             case 3:
-                                this.OldPageType = "delete";
+                                this.NewPageType = "delete";
                                 break;
                             default:
-                                this.OldPageType = "select";
+                                this.NewPageType = "select";
                                 break;
                         }
                         this.DialogResult = DialogResult.OK;

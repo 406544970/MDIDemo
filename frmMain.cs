@@ -763,10 +763,10 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                 string PageKey = form_WindowSelect.PageKey;
                 if ((PageKey != null) && (PageKey.Length > 0))
                 {
-                    PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType, form_WindowSelect.OldPageType);
+                    PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.NewPageType, form_WindowSelect.PageType);
                     if (PageKey != null)
                     {
-                        switch (form_WindowSelect.OldPageType)
+                        switch (form_WindowSelect.NewPageType)
                         {
                             case "select":
                                 OpenSelectWin(PageKey);

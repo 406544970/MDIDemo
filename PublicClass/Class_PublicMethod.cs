@@ -387,7 +387,7 @@ namespace MDIDemo.PublicClass
                 return false;
         }
 
-        public string CopyToNewXml(string xmlFileName, string OldPageType, string NewPageType)
+        public string CopyToNewXml(string xmlFileName, string NewPageType, string OldPageType)
         {
             string returnKey;
             switch (NewPageType)
@@ -404,6 +404,50 @@ namespace MDIDemo.PublicClass
                             switch (OldPageType)
                             {
                                 case "select":
+                                    Class_SelectAllModel class_SelectAllModelOld = new Class_SelectAllModel();
+                                    class_SelectAllModelOld = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                                    if (class_SelectAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_SelectAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_SelectAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_SelectAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_SelectAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_SelectAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_SelectAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_SelectAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_SelectAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_SelectAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_SelectAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_SelectAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_SelectAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_SelectAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_SelectAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_SelectAllModelOld.class_SubList != null && class_SelectAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_SelectAllModel.Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_SelectAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_SelectAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_SelectAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_SelectAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_SelectAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_SelectAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_SelectAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_SelectAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_SelectAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_SelectAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_SelectAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_SelectAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_SelectAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_SelectAllModelOld.AllPackerName;
                                     break;
                                 case "insert":
                                     Class_InsertAllModel class_InsertAllModelOld = new Class_InsertAllModel();
@@ -425,13 +469,12 @@ namespace MDIDemo.PublicClass
                                         class_SelectAllModel.class_Create.SwaggerSign = class_InsertAllModelOld.class_Create.SwaggerSign;
                                         class_SelectAllModel.class_Create.SystemName = class_InsertAllModelOld.class_Create.SystemName;
                                     }
-
                                     if (class_InsertAllModelOld.class_SubList != null && class_InsertAllModelOld.class_SubList.Count > 0)
                                     {
-                                        Class_Sub class_Sub;
+                                        Class_SelectAllModel.Class_Sub class_Sub;
                                         if (class_SelectAllModel.class_SubList.Count == 0)
                                         {
-                                            class_Sub = new Class_Sub();
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
                                             class_SelectAllModel.class_SubList.Add(class_Sub);
                                         }
                                         else
@@ -441,6 +484,8 @@ namespace MDIDemo.PublicClass
                                         class_Sub.ControlSwaggerDescription = class_InsertAllModelOld.class_SubList[0].ControlSwaggerDescription;
                                         class_Sub.MethodContent = class_InsertAllModelOld.class_SubList[0].MethodContent;
                                         class_Sub.ServiceInterFaceReturnRemark = class_InsertAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_InsertAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_InsertAllModelOld.class_SubList[0].AliasName;
                                     }
                                     class_SelectAllModel.class_SelectDataBase.dataBaseName = class_InsertAllModelOld.class_SelectDataBase.dataBaseName;
                                     class_SelectAllModel.class_SelectDataBase.databaseType = class_InsertAllModelOld.class_SelectDataBase.databaseType;
@@ -448,10 +493,99 @@ namespace MDIDemo.PublicClass
                                     class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_InsertAllModelOld.class_SelectDataBase.dataSourceUrl;
                                     class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_InsertAllModelOld.class_SelectDataBase.dataSourceUserName;
                                     class_SelectAllModel.class_SelectDataBase.Port = class_InsertAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_InsertAllModelOld.AllPackerName;
                                     break;
                                 case "update":
+                                    Class_UpdateAllModel class_UpdateAllModelOld = new Class_UpdateAllModel();
+                                    class_UpdateAllModelOld = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
+                                    if (class_UpdateAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_UpdateAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_UpdateAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_UpdateAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_UpdateAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_UpdateAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_UpdateAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_UpdateAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_UpdateAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_UpdateAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_UpdateAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_UpdateAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_UpdateAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_UpdateAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_UpdateAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_UpdateAllModelOld.class_SubList != null && class_UpdateAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_SelectAllModel.Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_UpdateAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_UpdateAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_UpdateAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_UpdateAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_UpdateAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_UpdateAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_UpdateAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_UpdateAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_UpdateAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_UpdateAllModelOld.AllPackerName;
                                     break;
                                 case "delete":
+                                    Class_DeleteAllModel class_DeleteAllModelOld = new Class_DeleteAllModel();
+                                    class_DeleteAllModelOld = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                                    if (class_DeleteAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_DeleteAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_DeleteAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_DeleteAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_DeleteAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_DeleteAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_DeleteAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_DeleteAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_DeleteAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_DeleteAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_DeleteAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_DeleteAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_DeleteAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_DeleteAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_DeleteAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_DeleteAllModelOld.class_SubList != null && class_DeleteAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_SelectAllModel.Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_DeleteAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_DeleteAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_DeleteAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_DeleteAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_DeleteAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_DeleteAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_DeleteAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_DeleteAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_DeleteAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_DeleteAllModelOld.AllPackerName;
                                     break;
                                 default:
                                     break;
@@ -465,40 +599,780 @@ namespace MDIDemo.PublicClass
                     }
                     break;
                 case "insert":
-                    returnKey = Class_Tool.getKeyId("IN");
-                    Class_InsertAllModel class_InsertAllModel = new Class_InsertAllModel();
-                    class_InsertAllModel = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
-                    class_InsertAllModel.class_Create.MethodId = returnKey;
-                    class_InsertAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.InsertToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel, false))
-                        returnKey = null;
+                    {
+                        returnKey = Class_Tool.getKeyId("IN");
+                        Class_InsertAllModel class_InsertAllModel = new Class_InsertAllModel();
+                        #region COPY
+                        if (NewPageType == OldPageType)
+                            class_InsertAllModel = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                        else
+                        {
+                            switch (OldPageType)
+                            {
+                                case "select":
+                                    Class_SelectAllModel class_SelectAllModelOld = new Class_SelectAllModel();
+                                    class_SelectAllModelOld = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                                    if (class_SelectAllModelOld.class_Create != null)
+                                    {
+                                        class_InsertAllModel.class_Create.CreateDo = class_SelectAllModelOld.class_Create.CreateDo;
+                                        class_InsertAllModel.class_Create.CreateDoId = class_SelectAllModelOld.class_Create.CreateDoId;
+                                        class_InsertAllModel.class_Create.CreateFrontDo = class_SelectAllModelOld.class_Create.CreateFrontDo;
+                                        class_InsertAllModel.class_Create.CreateFrontDoId = class_SelectAllModelOld.class_Create.CreateFrontDoId;
+                                        class_InsertAllModel.class_Create.CreateMan = class_SelectAllModelOld.class_Create.CreateMan;
+                                        class_InsertAllModel.class_Create.CreateManId = class_SelectAllModelOld.class_Create.CreateManId;
+                                        class_InsertAllModel.class_Create.EnglishSign = class_SelectAllModelOld.class_Create.EnglishSign;
+                                        class_InsertAllModel.class_Create.HttpRequestType = class_SelectAllModelOld.class_Create.HttpRequestType;
+                                        class_InsertAllModel.class_Create.MethodSite = class_SelectAllModelOld.class_Create.MethodSite;
+                                        class_InsertAllModel.class_Create.MicroServiceName = class_SelectAllModelOld.class_Create.MicroServiceName;
+                                        class_InsertAllModel.class_Create.Port = class_SelectAllModelOld.class_Create.Port;
+                                        class_InsertAllModel.class_Create.ReadOnly = class_SelectAllModelOld.class_Create.ReadOnly;
+                                        class_InsertAllModel.class_Create.SwaggerSign = class_SelectAllModelOld.class_Create.SwaggerSign;
+                                        class_InsertAllModel.class_Create.SystemName = class_SelectAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_SelectAllModelOld.class_SubList != null && class_SelectAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_InsertAllModel.Class_Sub class_Sub;
+                                        if (class_InsertAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_InsertAllModel.Class_Sub();
+                                            class_InsertAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_InsertAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_SelectAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_SelectAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_SelectAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_SelectAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_SelectAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_SelectAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_SelectAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_InsertAllModel.class_SelectDataBase.dataBaseName = class_SelectAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_InsertAllModel.class_SelectDataBase.databaseType = class_SelectAllModelOld.class_SelectDataBase.databaseType;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourcePassWord = class_SelectAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourceUrl = class_SelectAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourceUserName = class_SelectAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_InsertAllModel.class_SelectDataBase.Port = class_SelectAllModelOld.class_SelectDataBase.Port;
+                                    class_InsertAllModel.AllPackerName = class_SelectAllModelOld.AllPackerName;
+                                    break;
+                                case "update":
+                                    Class_UpdateAllModel class_UpdateAllModelOld = new Class_UpdateAllModel();
+                                    class_UpdateAllModelOld = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
+                                    if (class_UpdateAllModelOld.class_Create != null)
+                                    {
+                                        class_InsertAllModel.class_Create.CreateDo = class_UpdateAllModelOld.class_Create.CreateDo;
+                                        class_InsertAllModel.class_Create.CreateDoId = class_UpdateAllModelOld.class_Create.CreateDoId;
+                                        class_InsertAllModel.class_Create.CreateFrontDo = class_UpdateAllModelOld.class_Create.CreateFrontDo;
+                                        class_InsertAllModel.class_Create.CreateFrontDoId = class_UpdateAllModelOld.class_Create.CreateFrontDoId;
+                                        class_InsertAllModel.class_Create.CreateMan = class_UpdateAllModelOld.class_Create.CreateMan;
+                                        class_InsertAllModel.class_Create.CreateManId = class_UpdateAllModelOld.class_Create.CreateManId;
+                                        class_InsertAllModel.class_Create.EnglishSign = class_UpdateAllModelOld.class_Create.EnglishSign;
+                                        class_InsertAllModel.class_Create.HttpRequestType = class_UpdateAllModelOld.class_Create.HttpRequestType;
+                                        class_InsertAllModel.class_Create.MethodSite = class_UpdateAllModelOld.class_Create.MethodSite;
+                                        class_InsertAllModel.class_Create.MicroServiceName = class_UpdateAllModelOld.class_Create.MicroServiceName;
+                                        class_InsertAllModel.class_Create.Port = class_UpdateAllModelOld.class_Create.Port;
+                                        class_InsertAllModel.class_Create.ReadOnly = class_UpdateAllModelOld.class_Create.ReadOnly;
+                                        class_InsertAllModel.class_Create.SwaggerSign = class_UpdateAllModelOld.class_Create.SwaggerSign;
+                                        class_InsertAllModel.class_Create.SystemName = class_UpdateAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_UpdateAllModelOld.class_SubList != null && class_UpdateAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_InsertAllModel.Class_Sub class_Sub;
+                                        if (class_InsertAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_InsertAllModel.Class_Sub();
+                                            class_InsertAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_InsertAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_UpdateAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_UpdateAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_UpdateAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_UpdateAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_UpdateAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_InsertAllModel.class_SelectDataBase.dataBaseName = class_UpdateAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_InsertAllModel.class_SelectDataBase.databaseType = class_UpdateAllModelOld.class_SelectDataBase.databaseType;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourcePassWord = class_UpdateAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourceUrl = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourceUserName = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_InsertAllModel.class_SelectDataBase.Port = class_UpdateAllModelOld.class_SelectDataBase.Port;
+                                    class_InsertAllModel.AllPackerName = class_UpdateAllModelOld.AllPackerName;
+                                    break;
+                                case "delete":
+                                    Class_DeleteAllModel class_DeleteAllModelOld = new Class_DeleteAllModel();
+                                    class_DeleteAllModelOld = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                                    if (class_DeleteAllModelOld.class_Create != null)
+                                    {
+                                        class_InsertAllModel.class_Create.CreateDo = class_DeleteAllModelOld.class_Create.CreateDo;
+                                        class_InsertAllModel.class_Create.CreateDoId = class_DeleteAllModelOld.class_Create.CreateDoId;
+                                        class_InsertAllModel.class_Create.CreateFrontDo = class_DeleteAllModelOld.class_Create.CreateFrontDo;
+                                        class_InsertAllModel.class_Create.CreateFrontDoId = class_DeleteAllModelOld.class_Create.CreateFrontDoId;
+                                        class_InsertAllModel.class_Create.CreateMan = class_DeleteAllModelOld.class_Create.CreateMan;
+                                        class_InsertAllModel.class_Create.CreateManId = class_DeleteAllModelOld.class_Create.CreateManId;
+                                        class_InsertAllModel.class_Create.EnglishSign = class_DeleteAllModelOld.class_Create.EnglishSign;
+                                        class_InsertAllModel.class_Create.HttpRequestType = class_DeleteAllModelOld.class_Create.HttpRequestType;
+                                        class_InsertAllModel.class_Create.MethodSite = class_DeleteAllModelOld.class_Create.MethodSite;
+                                        class_InsertAllModel.class_Create.MicroServiceName = class_DeleteAllModelOld.class_Create.MicroServiceName;
+                                        class_InsertAllModel.class_Create.Port = class_DeleteAllModelOld.class_Create.Port;
+                                        class_InsertAllModel.class_Create.ReadOnly = class_DeleteAllModelOld.class_Create.ReadOnly;
+                                        class_InsertAllModel.class_Create.SwaggerSign = class_DeleteAllModelOld.class_Create.SwaggerSign;
+                                        class_InsertAllModel.class_Create.SystemName = class_DeleteAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_DeleteAllModelOld.class_SubList != null && class_DeleteAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_InsertAllModel.Class_Sub class_Sub;
+                                        if (class_InsertAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_InsertAllModel.Class_Sub();
+                                            class_InsertAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_InsertAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_DeleteAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_DeleteAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_DeleteAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_DeleteAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_DeleteAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_InsertAllModel.class_SelectDataBase.dataBaseName = class_DeleteAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_InsertAllModel.class_SelectDataBase.databaseType = class_DeleteAllModelOld.class_SelectDataBase.databaseType;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourcePassWord = class_DeleteAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourceUrl = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_InsertAllModel.class_SelectDataBase.dataSourceUserName = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_InsertAllModel.class_SelectDataBase.Port = class_DeleteAllModelOld.class_SelectDataBase.Port;
+                                    class_InsertAllModel.AllPackerName = class_DeleteAllModelOld.AllPackerName;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        #endregion
+                        class_InsertAllModel.class_Create.MethodId = returnKey;
+                        class_InsertAllModel.class_Create.DateTime = System.DateTime.Now;
+                        if (!this.InsertToXml(class_InsertAllModel.class_Create.MethodId, class_InsertAllModel, false))
+                            returnKey = null;
+                    }
                     break;
                 case "update":
-                    returnKey = Class_Tool.getKeyId("UP");
-                    Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
-                    class_UpdateAllModel = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
-                    class_UpdateAllModel.class_Create.MethodId = returnKey;
-                    class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel, false))
-                        returnKey = null;
+                    {
+                        returnKey = Class_Tool.getKeyId("UP");
+                        Class_UpdateAllModel class_UpdateAllModel = new Class_UpdateAllModel();
+                        #region COPY
+                        if (NewPageType == OldPageType)
+                            class_UpdateAllModel = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
+                        else
+                        {
+                            switch (OldPageType)
+                            {
+                                case "select":
+                                    Class_SelectAllModel class_SelectAllModelOld = new Class_SelectAllModel();
+                                    class_SelectAllModelOld = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                                    if (class_SelectAllModelOld.class_Create != null)
+                                    {
+                                        class_UpdateAllModel.class_Create.CreateDo = class_SelectAllModelOld.class_Create.CreateDo;
+                                        class_UpdateAllModel.class_Create.CreateDoId = class_SelectAllModelOld.class_Create.CreateDoId;
+                                        class_UpdateAllModel.class_Create.CreateFrontDo = class_SelectAllModelOld.class_Create.CreateFrontDo;
+                                        class_UpdateAllModel.class_Create.CreateFrontDoId = class_SelectAllModelOld.class_Create.CreateFrontDoId;
+                                        class_UpdateAllModel.class_Create.CreateMan = class_SelectAllModelOld.class_Create.CreateMan;
+                                        class_UpdateAllModel.class_Create.CreateManId = class_SelectAllModelOld.class_Create.CreateManId;
+                                        class_UpdateAllModel.class_Create.EnglishSign = class_SelectAllModelOld.class_Create.EnglishSign;
+                                        class_UpdateAllModel.class_Create.HttpRequestType = class_SelectAllModelOld.class_Create.HttpRequestType;
+                                        class_UpdateAllModel.class_Create.MethodSite = class_SelectAllModelOld.class_Create.MethodSite;
+                                        class_UpdateAllModel.class_Create.MicroServiceName = class_SelectAllModelOld.class_Create.MicroServiceName;
+                                        class_UpdateAllModel.class_Create.Port = class_SelectAllModelOld.class_Create.Port;
+                                        class_UpdateAllModel.class_Create.ReadOnly = class_SelectAllModelOld.class_Create.ReadOnly;
+                                        class_UpdateAllModel.class_Create.SwaggerSign = class_SelectAllModelOld.class_Create.SwaggerSign;
+                                        class_UpdateAllModel.class_Create.SystemName = class_SelectAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_SelectAllModelOld.class_SubList != null && class_SelectAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_UpdateAllModel.Class_Sub class_Sub;
+                                        if (class_UpdateAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_UpdateAllModel.Class_Sub();
+                                            class_UpdateAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_UpdateAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_SelectAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_SelectAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_SelectAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_SelectAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_SelectAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_SelectAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_SelectAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_UpdateAllModel.class_SelectDataBase.dataBaseName = class_SelectAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_UpdateAllModel.class_SelectDataBase.databaseType = class_SelectAllModelOld.class_SelectDataBase.databaseType;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourcePassWord = class_SelectAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUrl = class_SelectAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUserName = class_SelectAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_UpdateAllModel.class_SelectDataBase.Port = class_SelectAllModelOld.class_SelectDataBase.Port;
+                                    class_UpdateAllModel.AllPackerName = class_SelectAllModelOld.AllPackerName;
+                                    break;
+                                case "insert":
+                                    Class_InsertAllModel class_InsertAllModelOld = new Class_InsertAllModel();
+                                    class_InsertAllModelOld = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                                    if (class_InsertAllModelOld.class_Create != null)
+                                    {
+                                        class_UpdateAllModel.class_Create.CreateDo = class_InsertAllModelOld.class_Create.CreateDo;
+                                        class_UpdateAllModel.class_Create.CreateDoId = class_InsertAllModelOld.class_Create.CreateDoId;
+                                        class_UpdateAllModel.class_Create.CreateFrontDo = class_InsertAllModelOld.class_Create.CreateFrontDo;
+                                        class_UpdateAllModel.class_Create.CreateFrontDoId = class_InsertAllModelOld.class_Create.CreateFrontDoId;
+                                        class_UpdateAllModel.class_Create.CreateMan = class_InsertAllModelOld.class_Create.CreateMan;
+                                        class_UpdateAllModel.class_Create.CreateManId = class_InsertAllModelOld.class_Create.CreateManId;
+                                        class_UpdateAllModel.class_Create.EnglishSign = class_InsertAllModelOld.class_Create.EnglishSign;
+                                        class_UpdateAllModel.class_Create.HttpRequestType = class_InsertAllModelOld.class_Create.HttpRequestType;
+                                        class_UpdateAllModel.class_Create.MethodSite = class_InsertAllModelOld.class_Create.MethodSite;
+                                        class_UpdateAllModel.class_Create.MicroServiceName = class_InsertAllModelOld.class_Create.MicroServiceName;
+                                        class_UpdateAllModel.class_Create.Port = class_InsertAllModelOld.class_Create.Port;
+                                        class_UpdateAllModel.class_Create.ReadOnly = class_InsertAllModelOld.class_Create.ReadOnly;
+                                        class_UpdateAllModel.class_Create.SwaggerSign = class_InsertAllModelOld.class_Create.SwaggerSign;
+                                        class_UpdateAllModel.class_Create.SystemName = class_InsertAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_InsertAllModelOld.class_SubList != null && class_InsertAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_UpdateAllModel.Class_Sub class_Sub;
+                                        if (class_UpdateAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_UpdateAllModel.Class_Sub();
+                                            class_UpdateAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_UpdateAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_InsertAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_InsertAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_InsertAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_InsertAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_InsertAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_InsertAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_InsertAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_UpdateAllModel.class_SelectDataBase.dataBaseName = class_InsertAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_UpdateAllModel.class_SelectDataBase.databaseType = class_InsertAllModelOld.class_SelectDataBase.databaseType;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourcePassWord = class_InsertAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUrl = class_InsertAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUserName = class_InsertAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_UpdateAllModel.class_SelectDataBase.Port = class_InsertAllModelOld.class_SelectDataBase.Port;
+                                    class_UpdateAllModel.AllPackerName = class_InsertAllModelOld.AllPackerName;
+                                    break;
+                                case "update":
+                                    Class_UpdateAllModel class_UpdateAllModelOld = new Class_UpdateAllModel();
+                                    class_UpdateAllModelOld = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
+                                    if (class_UpdateAllModelOld.class_Create != null)
+                                    {
+                                        class_UpdateAllModel.class_Create.CreateDo = class_UpdateAllModelOld.class_Create.CreateDo;
+                                        class_UpdateAllModel.class_Create.CreateDoId = class_UpdateAllModelOld.class_Create.CreateDoId;
+                                        class_UpdateAllModel.class_Create.CreateFrontDo = class_UpdateAllModelOld.class_Create.CreateFrontDo;
+                                        class_UpdateAllModel.class_Create.CreateFrontDoId = class_UpdateAllModelOld.class_Create.CreateFrontDoId;
+                                        class_UpdateAllModel.class_Create.CreateMan = class_UpdateAllModelOld.class_Create.CreateMan;
+                                        class_UpdateAllModel.class_Create.CreateManId = class_UpdateAllModelOld.class_Create.CreateManId;
+                                        class_UpdateAllModel.class_Create.EnglishSign = class_UpdateAllModelOld.class_Create.EnglishSign;
+                                        class_UpdateAllModel.class_Create.HttpRequestType = class_UpdateAllModelOld.class_Create.HttpRequestType;
+                                        class_UpdateAllModel.class_Create.MethodSite = class_UpdateAllModelOld.class_Create.MethodSite;
+                                        class_UpdateAllModel.class_Create.MicroServiceName = class_UpdateAllModelOld.class_Create.MicroServiceName;
+                                        class_UpdateAllModel.class_Create.Port = class_UpdateAllModelOld.class_Create.Port;
+                                        class_UpdateAllModel.class_Create.ReadOnly = class_UpdateAllModelOld.class_Create.ReadOnly;
+                                        class_UpdateAllModel.class_Create.SwaggerSign = class_UpdateAllModelOld.class_Create.SwaggerSign;
+                                        class_UpdateAllModel.class_Create.SystemName = class_UpdateAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_UpdateAllModelOld.class_SubList != null && class_UpdateAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_UpdateAllModel.Class_Sub class_Sub;
+                                        if (class_UpdateAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_UpdateAllModel.Class_Sub();
+                                            class_UpdateAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_UpdateAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_UpdateAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_UpdateAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_UpdateAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_UpdateAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_UpdateAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_UpdateAllModel.class_SelectDataBase.dataBaseName = class_UpdateAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_UpdateAllModel.class_SelectDataBase.databaseType = class_UpdateAllModelOld.class_SelectDataBase.databaseType;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourcePassWord = class_UpdateAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUrl = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUserName = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_UpdateAllModel.class_SelectDataBase.Port = class_UpdateAllModelOld.class_SelectDataBase.Port;
+                                    class_UpdateAllModel.AllPackerName = class_UpdateAllModelOld.AllPackerName;
+                                    break;
+                                case "delete":
+                                    Class_DeleteAllModel class_DeleteAllModelOld = new Class_DeleteAllModel();
+                                    class_DeleteAllModelOld = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                                    if (class_DeleteAllModelOld.class_Create != null)
+                                    {
+                                        class_UpdateAllModel.class_Create.CreateDo = class_DeleteAllModelOld.class_Create.CreateDo;
+                                        class_UpdateAllModel.class_Create.CreateDoId = class_DeleteAllModelOld.class_Create.CreateDoId;
+                                        class_UpdateAllModel.class_Create.CreateFrontDo = class_DeleteAllModelOld.class_Create.CreateFrontDo;
+                                        class_UpdateAllModel.class_Create.CreateFrontDoId = class_DeleteAllModelOld.class_Create.CreateFrontDoId;
+                                        class_UpdateAllModel.class_Create.CreateMan = class_DeleteAllModelOld.class_Create.CreateMan;
+                                        class_UpdateAllModel.class_Create.CreateManId = class_DeleteAllModelOld.class_Create.CreateManId;
+                                        class_UpdateAllModel.class_Create.EnglishSign = class_DeleteAllModelOld.class_Create.EnglishSign;
+                                        class_UpdateAllModel.class_Create.HttpRequestType = class_DeleteAllModelOld.class_Create.HttpRequestType;
+                                        class_UpdateAllModel.class_Create.MethodSite = class_DeleteAllModelOld.class_Create.MethodSite;
+                                        class_UpdateAllModel.class_Create.MicroServiceName = class_DeleteAllModelOld.class_Create.MicroServiceName;
+                                        class_UpdateAllModel.class_Create.Port = class_DeleteAllModelOld.class_Create.Port;
+                                        class_UpdateAllModel.class_Create.ReadOnly = class_DeleteAllModelOld.class_Create.ReadOnly;
+                                        class_UpdateAllModel.class_Create.SwaggerSign = class_DeleteAllModelOld.class_Create.SwaggerSign;
+                                        class_UpdateAllModel.class_Create.SystemName = class_DeleteAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_DeleteAllModelOld.class_SubList != null && class_DeleteAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_UpdateAllModel.Class_Sub class_Sub;
+                                        if (class_UpdateAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_UpdateAllModel.Class_Sub();
+                                            class_UpdateAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_UpdateAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_DeleteAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_DeleteAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_DeleteAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_DeleteAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_DeleteAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_UpdateAllModel.class_SelectDataBase.dataBaseName = class_DeleteAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_UpdateAllModel.class_SelectDataBase.databaseType = class_DeleteAllModelOld.class_SelectDataBase.databaseType;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourcePassWord = class_DeleteAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUrl = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_UpdateAllModel.class_SelectDataBase.dataSourceUserName = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_UpdateAllModel.class_SelectDataBase.Port = class_DeleteAllModelOld.class_SelectDataBase.Port;
+                                    class_UpdateAllModel.AllPackerName = class_DeleteAllModelOld.AllPackerName;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        #endregion
+                        class_UpdateAllModel.class_Create.MethodId = returnKey;
+                        class_UpdateAllModel.class_Create.DateTime = System.DateTime.Now;
+                        if (!this.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel, false))
+                            returnKey = null;
+                    }
                     break;
                 case "delete":
-                    returnKey = Class_Tool.getKeyId("DE");
-                    Class_DeleteAllModel class_DeleteAllModel = new Class_DeleteAllModel();
-                    class_DeleteAllModel = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
-                    class_DeleteAllModel.class_Create.MethodId = returnKey;
-                    class_DeleteAllModel.class_Create.DateTime = System.DateTime.Now;
-                    if ((true) && !this.DeleteToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel, false))
-                        returnKey = null;
+                    {
+                        returnKey = Class_Tool.getKeyId("DE");
+                        Class_DeleteAllModel class_DeleteAllModel = new Class_DeleteAllModel();
+                        #region COPY
+                        if (NewPageType == OldPageType)
+                            class_DeleteAllModel = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                        else
+                        {
+                            switch (OldPageType)
+                            {
+                                case "select":
+                                    Class_SelectAllModel class_SelectAllModelOld = new Class_SelectAllModel();
+                                    class_SelectAllModelOld = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                                    if (class_SelectAllModelOld.class_Create != null)
+                                    {
+                                        class_DeleteAllModel.class_Create.CreateDo = class_SelectAllModelOld.class_Create.CreateDo;
+                                        class_DeleteAllModel.class_Create.CreateDoId = class_SelectAllModelOld.class_Create.CreateDoId;
+                                        class_DeleteAllModel.class_Create.CreateFrontDo = class_SelectAllModelOld.class_Create.CreateFrontDo;
+                                        class_DeleteAllModel.class_Create.CreateFrontDoId = class_SelectAllModelOld.class_Create.CreateFrontDoId;
+                                        class_DeleteAllModel.class_Create.CreateMan = class_SelectAllModelOld.class_Create.CreateMan;
+                                        class_DeleteAllModel.class_Create.CreateManId = class_SelectAllModelOld.class_Create.CreateManId;
+                                        class_DeleteAllModel.class_Create.EnglishSign = class_SelectAllModelOld.class_Create.EnglishSign;
+                                        class_DeleteAllModel.class_Create.HttpRequestType = class_SelectAllModelOld.class_Create.HttpRequestType;
+                                        class_DeleteAllModel.class_Create.MethodSite = class_SelectAllModelOld.class_Create.MethodSite;
+                                        class_DeleteAllModel.class_Create.MicroServiceName = class_SelectAllModelOld.class_Create.MicroServiceName;
+                                        class_DeleteAllModel.class_Create.Port = class_SelectAllModelOld.class_Create.Port;
+                                        class_DeleteAllModel.class_Create.ReadOnly = class_SelectAllModelOld.class_Create.ReadOnly;
+                                        class_DeleteAllModel.class_Create.SwaggerSign = class_SelectAllModelOld.class_Create.SwaggerSign;
+                                        class_DeleteAllModel.class_Create.SystemName = class_SelectAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_SelectAllModelOld.class_SubList != null && class_SelectAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_DeleteAllModel.Class_Sub class_Sub;
+                                        if (class_DeleteAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_DeleteAllModel.Class_Sub();
+                                            class_DeleteAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_DeleteAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_SelectAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_SelectAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_SelectAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_SelectAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_SelectAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_SelectAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_SelectAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_DeleteAllModel.class_SelectDataBase.dataBaseName = class_SelectAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_DeleteAllModel.class_SelectDataBase.databaseType = class_SelectAllModelOld.class_SelectDataBase.databaseType;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourcePassWord = class_SelectAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUrl = class_SelectAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUserName = class_SelectAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_DeleteAllModel.class_SelectDataBase.Port = class_SelectAllModelOld.class_SelectDataBase.Port;
+                                    class_DeleteAllModel.AllPackerName = class_SelectAllModelOld.AllPackerName;
+                                    break;
+                                case "insert":
+                                    Class_InsertAllModel class_InsertAllModelOld = new Class_InsertAllModel();
+                                    class_InsertAllModelOld = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                                    if (class_InsertAllModelOld.class_Create != null)
+                                    {
+                                        class_DeleteAllModel.class_Create.CreateDo = class_InsertAllModelOld.class_Create.CreateDo;
+                                        class_DeleteAllModel.class_Create.CreateDoId = class_InsertAllModelOld.class_Create.CreateDoId;
+                                        class_DeleteAllModel.class_Create.CreateFrontDo = class_InsertAllModelOld.class_Create.CreateFrontDo;
+                                        class_DeleteAllModel.class_Create.CreateFrontDoId = class_InsertAllModelOld.class_Create.CreateFrontDoId;
+                                        class_DeleteAllModel.class_Create.CreateMan = class_InsertAllModelOld.class_Create.CreateMan;
+                                        class_DeleteAllModel.class_Create.CreateManId = class_InsertAllModelOld.class_Create.CreateManId;
+                                        class_DeleteAllModel.class_Create.EnglishSign = class_InsertAllModelOld.class_Create.EnglishSign;
+                                        class_DeleteAllModel.class_Create.HttpRequestType = class_InsertAllModelOld.class_Create.HttpRequestType;
+                                        class_DeleteAllModel.class_Create.MethodSite = class_InsertAllModelOld.class_Create.MethodSite;
+                                        class_DeleteAllModel.class_Create.MicroServiceName = class_InsertAllModelOld.class_Create.MicroServiceName;
+                                        class_DeleteAllModel.class_Create.Port = class_InsertAllModelOld.class_Create.Port;
+                                        class_DeleteAllModel.class_Create.ReadOnly = class_InsertAllModelOld.class_Create.ReadOnly;
+                                        class_DeleteAllModel.class_Create.SwaggerSign = class_InsertAllModelOld.class_Create.SwaggerSign;
+                                        class_DeleteAllModel.class_Create.SystemName = class_InsertAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_InsertAllModelOld.class_SubList != null && class_InsertAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_DeleteAllModel.Class_Sub class_Sub;
+                                        if (class_DeleteAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_DeleteAllModel.Class_Sub();
+                                            class_DeleteAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_DeleteAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_InsertAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_InsertAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_InsertAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_InsertAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_InsertAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_InsertAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_InsertAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_DeleteAllModel.class_SelectDataBase.dataBaseName = class_InsertAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_DeleteAllModel.class_SelectDataBase.databaseType = class_InsertAllModelOld.class_SelectDataBase.databaseType;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourcePassWord = class_InsertAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUrl = class_InsertAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUserName = class_InsertAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_DeleteAllModel.class_SelectDataBase.Port = class_InsertAllModelOld.class_SelectDataBase.Port;
+                                    class_DeleteAllModel.AllPackerName = class_InsertAllModelOld.AllPackerName;
+                                    break;
+                                case "update":
+                                    Class_UpdateAllModel class_UpdateAllModelOld = new Class_UpdateAllModel();
+                                    class_UpdateAllModelOld = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
+                                    if (class_UpdateAllModelOld.class_Create != null)
+                                    {
+                                        class_DeleteAllModel.class_Create.CreateDo = class_UpdateAllModelOld.class_Create.CreateDo;
+                                        class_DeleteAllModel.class_Create.CreateDoId = class_UpdateAllModelOld.class_Create.CreateDoId;
+                                        class_DeleteAllModel.class_Create.CreateFrontDo = class_UpdateAllModelOld.class_Create.CreateFrontDo;
+                                        class_DeleteAllModel.class_Create.CreateFrontDoId = class_UpdateAllModelOld.class_Create.CreateFrontDoId;
+                                        class_DeleteAllModel.class_Create.CreateMan = class_UpdateAllModelOld.class_Create.CreateMan;
+                                        class_DeleteAllModel.class_Create.CreateManId = class_UpdateAllModelOld.class_Create.CreateManId;
+                                        class_DeleteAllModel.class_Create.EnglishSign = class_UpdateAllModelOld.class_Create.EnglishSign;
+                                        class_DeleteAllModel.class_Create.HttpRequestType = class_UpdateAllModelOld.class_Create.HttpRequestType;
+                                        class_DeleteAllModel.class_Create.MethodSite = class_UpdateAllModelOld.class_Create.MethodSite;
+                                        class_DeleteAllModel.class_Create.MicroServiceName = class_UpdateAllModelOld.class_Create.MicroServiceName;
+                                        class_DeleteAllModel.class_Create.Port = class_UpdateAllModelOld.class_Create.Port;
+                                        class_DeleteAllModel.class_Create.ReadOnly = class_UpdateAllModelOld.class_Create.ReadOnly;
+                                        class_DeleteAllModel.class_Create.SwaggerSign = class_UpdateAllModelOld.class_Create.SwaggerSign;
+                                        class_DeleteAllModel.class_Create.SystemName = class_UpdateAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_UpdateAllModelOld.class_SubList != null && class_UpdateAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_DeleteAllModel.Class_Sub class_Sub;
+                                        if (class_DeleteAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_DeleteAllModel.Class_Sub();
+                                            class_DeleteAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_DeleteAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_UpdateAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_UpdateAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_UpdateAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_UpdateAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_UpdateAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_DeleteAllModel.class_SelectDataBase.dataBaseName = class_UpdateAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_DeleteAllModel.class_SelectDataBase.databaseType = class_UpdateAllModelOld.class_SelectDataBase.databaseType;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourcePassWord = class_UpdateAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUrl = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUserName = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_DeleteAllModel.class_SelectDataBase.Port = class_UpdateAllModelOld.class_SelectDataBase.Port;
+                                    class_DeleteAllModel.AllPackerName = class_UpdateAllModelOld.AllPackerName;
+                                    break;
+                                case "delete":
+                                    Class_DeleteAllModel class_DeleteAllModelOld = new Class_DeleteAllModel();
+                                    class_DeleteAllModelOld = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                                    if (class_DeleteAllModelOld.class_Create != null)
+                                    {
+                                        class_DeleteAllModel.class_Create.CreateDo = class_DeleteAllModelOld.class_Create.CreateDo;
+                                        class_DeleteAllModel.class_Create.CreateDoId = class_DeleteAllModelOld.class_Create.CreateDoId;
+                                        class_DeleteAllModel.class_Create.CreateFrontDo = class_DeleteAllModelOld.class_Create.CreateFrontDo;
+                                        class_DeleteAllModel.class_Create.CreateFrontDoId = class_DeleteAllModelOld.class_Create.CreateFrontDoId;
+                                        class_DeleteAllModel.class_Create.CreateMan = class_DeleteAllModelOld.class_Create.CreateMan;
+                                        class_DeleteAllModel.class_Create.CreateManId = class_DeleteAllModelOld.class_Create.CreateManId;
+                                        class_DeleteAllModel.class_Create.EnglishSign = class_DeleteAllModelOld.class_Create.EnglishSign;
+                                        class_DeleteAllModel.class_Create.HttpRequestType = class_DeleteAllModelOld.class_Create.HttpRequestType;
+                                        class_DeleteAllModel.class_Create.MethodSite = class_DeleteAllModelOld.class_Create.MethodSite;
+                                        class_DeleteAllModel.class_Create.MicroServiceName = class_DeleteAllModelOld.class_Create.MicroServiceName;
+                                        class_DeleteAllModel.class_Create.Port = class_DeleteAllModelOld.class_Create.Port;
+                                        class_DeleteAllModel.class_Create.ReadOnly = class_DeleteAllModelOld.class_Create.ReadOnly;
+                                        class_DeleteAllModel.class_Create.SwaggerSign = class_DeleteAllModelOld.class_Create.SwaggerSign;
+                                        class_DeleteAllModel.class_Create.SystemName = class_DeleteAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_DeleteAllModelOld.class_SubList != null && class_DeleteAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_DeleteAllModel.Class_Sub class_Sub;
+                                        if (class_DeleteAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_DeleteAllModel.Class_Sub();
+                                            class_DeleteAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_DeleteAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_DeleteAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_DeleteAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_DeleteAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_DeleteAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_DeleteAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_DeleteAllModel.class_SelectDataBase.dataBaseName = class_DeleteAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_DeleteAllModel.class_SelectDataBase.databaseType = class_DeleteAllModelOld.class_SelectDataBase.databaseType;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourcePassWord = class_DeleteAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUrl = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_DeleteAllModel.class_SelectDataBase.dataSourceUserName = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_DeleteAllModel.class_SelectDataBase.Port = class_DeleteAllModelOld.class_SelectDataBase.Port;
+                                    class_DeleteAllModel.AllPackerName = class_DeleteAllModelOld.AllPackerName;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        #endregion
+                        class_DeleteAllModel.class_Create.MethodId = returnKey;
+                        class_DeleteAllModel.class_Create.DateTime = System.DateTime.Now;
+                        if (!this.DeleteToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel, false))
+                            returnKey = null;
+                    }
                     break;
                 default:
                     {
                         returnKey = Class_Tool.getKeyId("SE");
                         Class_SelectAllModel class_SelectAllModel = new Class_SelectAllModel();
-                        class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                        #region COPY
+                        if (NewPageType == OldPageType)
+                            class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                        else
+                        {
+                            switch (OldPageType)
+                            {
+                                case "select":
+                                    Class_SelectAllModel class_SelectAllModelOld = new Class_SelectAllModel();
+                                    class_SelectAllModelOld = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                                    if (class_SelectAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_SelectAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_SelectAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_SelectAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_SelectAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_SelectAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_SelectAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_SelectAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_SelectAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_SelectAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_SelectAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_SelectAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_SelectAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_SelectAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_SelectAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_SelectAllModelOld.class_SubList != null && class_SelectAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_SelectAllModel.Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_SelectAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_SelectAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_SelectAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_SelectAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_SelectAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_SelectAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_SelectAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_SelectAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_SelectAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_SelectAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_SelectAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_SelectAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_SelectAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_SelectAllModelOld.AllPackerName;
+                                    break;
+                                case "insert":
+                                    Class_InsertAllModel class_InsertAllModelOld = new Class_InsertAllModel();
+                                    class_InsertAllModelOld = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                                    if (class_InsertAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_InsertAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_InsertAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_InsertAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_InsertAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_InsertAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_InsertAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_InsertAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_InsertAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_InsertAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_InsertAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_InsertAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_InsertAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_InsertAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_InsertAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_InsertAllModelOld.class_SubList != null && class_InsertAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_SelectAllModel.Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_InsertAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_InsertAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_InsertAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_InsertAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_InsertAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_InsertAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_InsertAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_InsertAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_InsertAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_InsertAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_InsertAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_InsertAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_InsertAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_InsertAllModelOld.AllPackerName;
+                                    break;
+                                case "update":
+                                    Class_UpdateAllModel class_UpdateAllModelOld = new Class_UpdateAllModel();
+                                    class_UpdateAllModelOld = this.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
+                                    if (class_UpdateAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_UpdateAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_UpdateAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_UpdateAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_UpdateAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_UpdateAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_UpdateAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_UpdateAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_UpdateAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_UpdateAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_UpdateAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_UpdateAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_UpdateAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_UpdateAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_UpdateAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_UpdateAllModelOld.class_SubList != null && class_UpdateAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_SelectAllModel.Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_UpdateAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_UpdateAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_UpdateAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_UpdateAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_UpdateAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_UpdateAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_UpdateAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_UpdateAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_UpdateAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_UpdateAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_UpdateAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_UpdateAllModelOld.AllPackerName;
+                                    break;
+                                case "delete":
+                                    Class_DeleteAllModel class_DeleteAllModelOld = new Class_DeleteAllModel();
+                                    class_DeleteAllModelOld = this.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                                    if (class_DeleteAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_DeleteAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_DeleteAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_DeleteAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_DeleteAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_DeleteAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_DeleteAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_DeleteAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_DeleteAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_DeleteAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_DeleteAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_DeleteAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_DeleteAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_DeleteAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_DeleteAllModelOld.class_Create.SystemName;
+                                    }
+                                    if (class_DeleteAllModelOld.class_SubList != null && class_DeleteAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_SelectAllModel.Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_SelectAllModel.Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_DeleteAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_DeleteAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_DeleteAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_DeleteAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                        class_Sub.TableName = class_DeleteAllModelOld.class_SubList[0].TableName;
+                                        class_Sub.AliasName = class_DeleteAllModelOld.class_SubList[0].AliasName;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_DeleteAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_DeleteAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_DeleteAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_DeleteAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_DeleteAllModelOld.class_SelectDataBase.Port;
+                                    class_SelectAllModel.AllPackerName = class_DeleteAllModelOld.AllPackerName;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        #endregion
                         class_SelectAllModel.class_Create.MethodId = returnKey;
                         class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
-                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, false))
+                        if (!this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, false))
                             returnKey = null;
                     }
                     break;
