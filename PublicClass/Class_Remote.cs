@@ -39,6 +39,16 @@ namespace MDIDemo.PublicClass
                 throw e;
             }
         }
+        public int UpdatePassWord(string PassWord)
+        {
+            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+            Class_ParaArray class_ParaArrayFileName = new Class_ParaArray();
+            class_ParaArrayFileName.ParaName = "passWord";
+            class_ParaArrayFileName.ParaValue = PassWord;
+            class_ParaArrays.Add(class_ParaArrayFileName);
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/updatePassWord", class_ParaArrays, null, true);
+            return Convert.ToInt32(ResultValue);
+        }
         public ResultVO<T> UpLoadFileBinary<T>(string AllPathFileName, string FolderName, string FileName)
         {
             return PrivateUploadFile<T>(AllPathFileName, FileName, null, FolderName);

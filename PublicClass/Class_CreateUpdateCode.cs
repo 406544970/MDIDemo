@@ -205,12 +205,13 @@ namespace MDIDemo.PublicClass
                 if (class_Field.UpdateSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\")"
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
                         , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\", required = false)"
+                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\", required = false"
                         , class_Field.ParaName);
+                    stringBuilder.Append(")");
                     if (class_Field.LogType.IndexOf("IN") > -1)
                         stringBuilder.AppendFormat(" List<{0}>"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
@@ -222,7 +223,7 @@ namespace MDIDemo.PublicClass
                 if (class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}Where\")"
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}Where\""
                         , class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
