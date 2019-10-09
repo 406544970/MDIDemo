@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MDIDemo.PublicClass.Class_SelectAllModel;
 using static MDIDemo.PublicClass.PageVersionListInParam;
 
 namespace MDIDemo.PublicClass
@@ -386,19 +387,80 @@ namespace MDIDemo.PublicClass
                 return false;
         }
 
-        public string CopyToNewXml(string xmlFileName, string classType)
+        public string CopyToNewXml(string xmlFileName, string OldPageType, string NewPageType)
         {
             string returnKey;
-            switch (classType)
+            switch (NewPageType)
             {
                 case "select":
                     {
                         returnKey = Class_Tool.getKeyId("SE");
                         Class_SelectAllModel class_SelectAllModel = new Class_SelectAllModel();
-                        class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                        #region COPY
+                        if (NewPageType == OldPageType)
+                            class_SelectAllModel = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                        else
+                        {
+                            switch (OldPageType)
+                            {
+                                case "select":
+                                    break;
+                                case "insert":
+                                    Class_InsertAllModel class_InsertAllModelOld = new Class_InsertAllModel();
+                                    class_InsertAllModelOld = this.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                                    if (class_InsertAllModelOld.class_Create != null)
+                                    {
+                                        class_SelectAllModel.class_Create.CreateDo = class_InsertAllModelOld.class_Create.CreateDo;
+                                        class_SelectAllModel.class_Create.CreateDoId = class_InsertAllModelOld.class_Create.CreateDoId;
+                                        class_SelectAllModel.class_Create.CreateFrontDo = class_InsertAllModelOld.class_Create.CreateFrontDo;
+                                        class_SelectAllModel.class_Create.CreateFrontDoId = class_InsertAllModelOld.class_Create.CreateFrontDoId;
+                                        class_SelectAllModel.class_Create.CreateMan = class_InsertAllModelOld.class_Create.CreateMan;
+                                        class_SelectAllModel.class_Create.CreateManId = class_InsertAllModelOld.class_Create.CreateManId;
+                                        class_SelectAllModel.class_Create.EnglishSign = class_InsertAllModelOld.class_Create.EnglishSign;
+                                        class_SelectAllModel.class_Create.HttpRequestType = class_InsertAllModelOld.class_Create.HttpRequestType;
+                                        class_SelectAllModel.class_Create.MethodSite = class_InsertAllModelOld.class_Create.MethodSite;
+                                        class_SelectAllModel.class_Create.MicroServiceName = class_InsertAllModelOld.class_Create.MicroServiceName;
+                                        class_SelectAllModel.class_Create.Port = class_InsertAllModelOld.class_Create.Port;
+                                        class_SelectAllModel.class_Create.ReadOnly = class_InsertAllModelOld.class_Create.ReadOnly;
+                                        class_SelectAllModel.class_Create.SwaggerSign = class_InsertAllModelOld.class_Create.SwaggerSign;
+                                        class_SelectAllModel.class_Create.SystemName = class_InsertAllModelOld.class_Create.SystemName;
+                                    }
+
+                                    if (class_InsertAllModelOld.class_SubList != null && class_InsertAllModelOld.class_SubList.Count > 0)
+                                    {
+                                        Class_Sub class_Sub;
+                                        if (class_SelectAllModel.class_SubList.Count == 0)
+                                        {
+                                            class_Sub = new Class_Sub();
+                                            class_SelectAllModel.class_SubList.Add(class_Sub);
+                                        }
+                                        else
+                                            class_Sub = class_SelectAllModel.class_SubList[0];
+                                        class_Sub.NameSpace = class_InsertAllModelOld.class_SubList[0].NameSpace;
+                                        class_Sub.ControlSwaggerValue = class_InsertAllModelOld.class_SubList[0].ControlSwaggerValue;
+                                        class_Sub.ControlSwaggerDescription = class_InsertAllModelOld.class_SubList[0].ControlSwaggerDescription;
+                                        class_Sub.MethodContent = class_InsertAllModelOld.class_SubList[0].MethodContent;
+                                        class_Sub.ServiceInterFaceReturnRemark = class_InsertAllModelOld.class_SubList[0].ServiceInterFaceReturnRemark;
+                                    }
+                                    class_SelectAllModel.class_SelectDataBase.dataBaseName = class_InsertAllModelOld.class_SelectDataBase.dataBaseName;
+                                    class_SelectAllModel.class_SelectDataBase.databaseType = class_InsertAllModelOld.class_SelectDataBase.databaseType;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourcePassWord = class_InsertAllModelOld.class_SelectDataBase.dataSourcePassWord;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUrl = class_InsertAllModelOld.class_SelectDataBase.dataSourceUrl;
+                                    class_SelectAllModel.class_SelectDataBase.dataSourceUserName = class_InsertAllModelOld.class_SelectDataBase.dataSourceUserName;
+                                    class_SelectAllModel.class_SelectDataBase.Port = class_InsertAllModelOld.class_SelectDataBase.Port;
+                                    break;
+                                case "update":
+                                    break;
+                                case "delete":
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        #endregion
                         class_SelectAllModel.class_Create.MethodId = returnKey;
                         class_SelectAllModel.class_Create.DateTime = System.DateTime.Now;
-                        if ((true) && !this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, false))
+                        if (!this.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, false))
                             returnKey = null;
                     }
                     break;
@@ -581,7 +643,7 @@ namespace MDIDemo.PublicClass
         /// <returns></returns>
         public bool SystemDefaultValueToXml<T>(string fileName, T t)
         {
-            return SaveToXml<T>("SystemDefault", fileName, t,false);
+            return SaveToXml<T>("SystemDefault", fileName, t, false);
         }
         /// <summary>
         /// 

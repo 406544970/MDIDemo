@@ -27,6 +27,7 @@ namespace MDIDemo
             this.SelectDes = SelectDes;
         }
 
+        public string OldPageType;
         private bool SelectDes;
         private const string FileFullName = "SystemDefault";
         public string PageKey;
@@ -107,7 +108,27 @@ namespace MDIDemo
                     Class_SystemDefault class_SystemDefault = new Class_SystemDefault();
                     class_SystemDefault.SelectOpenWindowIndex = this.xtraTabControl1.SelectedTabPageIndex;
                     if (class_PublicMethod.SystemDefaultValueToXml(FileFullName, class_SystemDefault))
+                    {
+                        switch (this.radioGroup1.SelectedIndex)
+                        {
+                            case 0:
+                                this.OldPageType = "select";
+                                break;
+                            case 1:
+                                this.OldPageType = "insert";
+                                break;
+                            case 2:
+                                this.OldPageType = "update";
+                                break;
+                            case 3:
+                                this.OldPageType = "delete";
+                                break;
+                            default:
+                                this.OldPageType = "select";
+                                break;
+                        }
                         this.DialogResult = DialogResult.OK;
+                    }
                 }
                 else
                     MessageBox.Show("请选择一条数据", "警告信息", MessageBoxButtons.OK, MessageBoxIcon.Warning);

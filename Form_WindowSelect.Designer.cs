@@ -196,7 +196,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1013, 435);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1013, 373);
             this.xtraTabPage2.Text = "INSERT";
             // 
             // gridControl2
@@ -205,7 +205,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1013, 435);
+            this.gridControl2.Size = new System.Drawing.Size(1013, 373);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -222,7 +222,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.gridControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1013, 435);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1013, 373);
             this.xtraTabPage3.Text = "UPDATE";
             // 
             // gridControl3
@@ -231,7 +231,7 @@
             this.gridControl3.Location = new System.Drawing.Point(0, 0);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1013, 435);
+            this.gridControl3.Size = new System.Drawing.Size(1013, 373);
             this.gridControl3.TabIndex = 1;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -247,7 +247,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.gridControl4);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1013, 435);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1013, 373);
             this.xtraTabPage4.Text = "DELETE";
             // 
             // gridControl4
@@ -256,7 +256,7 @@
             this.gridControl4.Location = new System.Drawing.Point(0, 0);
             this.gridControl4.MainView = this.gridView4;
             this.gridControl4.Name = "gridControl4";
-            this.gridControl4.Size = new System.Drawing.Size(1013, 435);
+            this.gridControl4.Size = new System.Drawing.Size(1013, 373);
             this.gridControl4.TabIndex = 1;
             this.gridControl4.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -330,10 +330,10 @@
             this.radioGroup1.Name = "radioGroup1";
             this.radioGroup1.Properties.Columns = 4;
             this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "SELECT"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(1, "INSERT"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(2, "UPDATE"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem(3, "DELETE")});
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("select", "SELECT"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("insert", "INSERT"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("update", "UPDATE"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("delete", "DELETE")});
             this.radioGroup1.Size = new System.Drawing.Size(1015, 26);
             this.radioGroup1.TabIndex = 0;
             // 

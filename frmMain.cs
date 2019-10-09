@@ -239,6 +239,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                     , "´íÎóÐÅÏ¢", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void OpenSelectWin(string xmlFileName)
         {
             IClass_InterFaceDataBase class_InterFaceDataBase;
@@ -762,10 +763,10 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                 string PageKey = form_WindowSelect.PageKey;
                 if ((PageKey != null) && (PageKey.Length > 0))
                 {
-                    PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType);
+                    PageKey = class_PublicMethod.CopyToNewXml(PageKey, form_WindowSelect.PageType, form_WindowSelect.OldPageType);
                     if (PageKey != null)
                     {
-                        switch (form_WindowSelect.PageType)
+                        switch (form_WindowSelect.OldPageType)
                         {
                             case "select":
                                 OpenSelectWin(PageKey);
