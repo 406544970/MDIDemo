@@ -102,10 +102,10 @@ namespace MDIDemo.PublicClass
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , class_Field.ParaName
                         , class_Field.FieldRemark);
-                if (class_Field.WhereSelect)
-                    stringBuilder.AppendFormat("{0} * @param {1}Where {2}, Where字段\r\n"
+                if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
+                    stringBuilder.AppendFormat("{0} * @param {1}{2}, Where字段\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
-                        , class_Field.ParaName
+                        , Class_Tool.GetFirstCodeLow(class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName)
                         , class_Field.FieldRemark);
                 if (class_Field.FieldIsKey && KeyType == null)
                 {
@@ -136,8 +136,8 @@ namespace MDIDemo.PublicClass
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
                             if (index > 0)
                                 stringBuilder.Append(", ");
-                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\""
-                                , Class_Tool.GetFirstCodeLow(class_Field.FieldName)
+                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\", required = true"
+                                , Class_Tool.GetFirstCodeLow(class_Field.ParaName)
                                 , class_Field.FieldRemark
                                 , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                             if (class_Field.LogType.IndexOf("IN") > -1)
@@ -145,13 +145,13 @@ namespace MDIDemo.PublicClass
                             stringBuilder.Append(")\r\n");
                             index++;
                         }
-                        if (class_Field.WhereSelect)
+                        if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
                         {
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
                             if (index > 0)
                                 stringBuilder.Append(", ");
-                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}Where\", value = \"{1}\", dataType = \"{2}\""
-                                , Class_Tool.GetFirstCodeLow(class_Field.FieldName)
+                            stringBuilder.AppendFormat("@ApiImplicitParam(name = \"{0}\", value = \"{1}\", dataType = \"{2}\""
+                                , Class_Tool.GetFirstCodeLow(class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName)
                                 , class_Field.FieldRemark
                                 , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                             if (!class_Field.WhereIsNull)
@@ -220,15 +220,15 @@ namespace MDIDemo.PublicClass
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
                 }
-                if (class_Field.WhereSelect)
+                if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}Where\""
-                        , class_Field.ParaName
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName
                         , class_ToolSpace.GetSetSpaceCount(3));
                     else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}Where\""
-                        , class_Field.ParaName);
+                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
                     if (class_Field.WhereIsNull)
                         stringBuilder.Append(", required = false");
                     if ((class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
@@ -240,7 +240,7 @@ namespace MDIDemo.PublicClass
                     else
                         stringBuilder.AppendFormat(" {0}"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    stringBuilder.AppendFormat(" {0}Where", class_Field.ParaName);
+                    stringBuilder.AppendFormat(" {0}", class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
                 }
             }
             stringBuilder.Append(") {\r\n");
@@ -273,12 +273,12 @@ namespace MDIDemo.PublicClass
                     , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
                     , class_Field.ParaName);
                 }
-                if (class_Field.WhereSelect)
+                if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
                 {
-                    stringBuilder.AppendFormat("{0}{1}.set{2}Where({3}Where);\r\n"
+                    stringBuilder.AppendFormat("{0}{1}.set{2}Where({3});\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2)
                     , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
-                    , Class_Tool.GetFirstCodeUpper(class_Field.ParaName)
+                    , Class_Tool.GetFirstCodeUpper(class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName)
                     , class_Field.ParaName);
                 }
 
@@ -316,8 +316,22 @@ namespace MDIDemo.PublicClass
                 }
                 stringBuilder.AppendFormat(");\r\n{0}else\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.AppendFormat("{0}return ResultStruct.error(\"修改失败\", ResultVO.class);\r\n"
+                stringBuilder.AppendFormat("{0}return ResultStruct.error(\"修改失败\", ResultVO.class, "
                         , class_ToolSpace.GetSetSpaceCount(3));
+                switch (class_Sub.ServiceInterFaceReturnCount)
+                {
+                    case 0:
+                        stringBuilder.Append("int.Class");
+                        break;
+                    case 1:
+                    case 2:
+                        stringBuilder.Append("null");
+                        break;
+                    default:
+                        break;
+                }
+
+                stringBuilder.Append(");\r\n");
             }
             else
             {

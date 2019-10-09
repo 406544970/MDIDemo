@@ -267,8 +267,22 @@ namespace MDIDemo.PublicClass
                 }
                 stringBuilder.AppendFormat(");\r\n{0}else\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.AppendFormat("{0}return ResultStruct.error(\"修改失败\", ResultVO.class);\r\n"
+                stringBuilder.AppendFormat("{0}return ResultStruct.error(\"修改失败\", ResultVO.class, "
                         , class_ToolSpace.GetSetSpaceCount(3));
+                switch (class_Sub.ServiceInterFaceReturnCount)
+                {
+                    case 0:
+                        stringBuilder.Append("int.Class");
+                        break;
+                    case 1:
+                    case 2:
+                        stringBuilder.Append("null");
+                        break;
+                    default:
+                        break;
+                }
+
+                stringBuilder.Append(");\r\n");
             }
             else
             {
