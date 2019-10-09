@@ -755,7 +755,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
             Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-            Form_WindowSelect form_WindowSelect = new Form_WindowSelect();
+            Form_WindowSelect form_WindowSelect = new Form_WindowSelect(true);
             form_WindowSelect.OperateType = "Ð§·ÂÌí¼Ó";
             if (form_WindowSelect.ShowDialog() == DialogResult.OK)
             {

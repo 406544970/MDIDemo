@@ -19,8 +19,15 @@ namespace MDIDemo
         public Form_WindowSelect()
         {
             InitializeComponent();
+            this.SelectDes = false;
+        }
+        public Form_WindowSelect(bool SelectDes)
+        {
+            InitializeComponent();
+            this.SelectDes = SelectDes;
         }
 
+        private bool SelectDes;
         private const string FileFullName = "SystemDefault";
         public string PageKey;
         public string PageType;
@@ -28,6 +35,7 @@ namespace MDIDemo
         private Class_PublicMethod class_PublicMethod;
         private void SetCompoment()
         {
+            this.panelControl2.Visible = this.SelectDes;
             class_PublicMethod = new Class_PublicMethod();
             this.Text += "---" + OperateType;
             memoEdit1.ReadOnly = true;
@@ -137,6 +145,14 @@ namespace MDIDemo
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             DisplayRemark(sender);
+        }
+
+        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (this.SelectDes)
+            {
+                this.radioGroup1.SelectedIndex = xtraTabControl1.SelectedTabPageIndex;
+            }
         }
     }
 }
