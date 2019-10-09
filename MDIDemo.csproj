@@ -223,7 +223,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PublicClass\Class_ MySqlite.cs" />
+    <Compile Include="PublicClass\Class_MySqlite.cs" />
     <Compile Include="PublicClass\Class_AllMode.cs" />
     <Compile Include="PublicClass\Class_CaseWhen.cs" />
     <Compile Include="PublicClass\Class_CreateDeleteCode.cs" />
