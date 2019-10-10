@@ -867,5 +867,16 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             }
             form_DataBaseDefaultSet.Dispose();
         }
+        /// <summary>
+        /// ◊€∫œ…Ë÷√
+        /// </summary>
+        private void _AllSetUp()
+        {
+
+        }
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            _AllSetUp();
+        }
     }
 }
