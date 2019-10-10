@@ -17,7 +17,7 @@ namespace MDIDemo.PublicClass
         public Class_Remote()
         {
             XmlUtil xmlUtil = new XmlUtil();
-            string FileName = string.Format("",)
+            string FileName = string.Format("{0}","");
             //Ini("www.lh.com:2510", true);//这里写入默认值
             Ini("www.lh.com:2071", true);//这里写入默认值
         }
