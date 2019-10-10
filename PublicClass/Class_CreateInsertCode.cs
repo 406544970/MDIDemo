@@ -221,15 +221,15 @@ namespace MDIDemo.PublicClass
             , class_ToolSpace.GetSetSpaceCount(2)
             , class_Sub.ParamClassName
             , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
-            stringBuilder.AppendFormat("{0}{1} mainKey;//这里引用架包中的生成主键方法\r\n"
-                , class_ToolSpace.GetSetSpaceCount(2)
-                , KeyType);
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 if (class_Field.FieldIsKey)
                 {
-                    if (!class_Field.FieldIsAutoAdd)
+                    if (!class_Field.FieldIsAutoAdd && (class_Field.InsertSelect || class_Field.WhereSelect))
                     {
+                        stringBuilder.AppendFormat("{0}{1} mainKey;//这里引用架包中的生成主键方法\r\n"
+                            , class_ToolSpace.GetSetSpaceCount(2)
+                            , KeyType);
                         stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2)
                         , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
@@ -265,8 +265,23 @@ namespace MDIDemo.PublicClass
                     , class_ToolSpace.GetSetSpaceCount(2));
                 if (class_InsertAllModel.ReturnStructure)
                 {
-                    stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败，有\" + repetitionCount + \"条数据已重复！\", ResultVO.class);\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3));
+                    switch (class_Sub.ServiceInterFaceReturnCount)
+                    {
+                        case 0:
+                            stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败，有\" + repetitionCount + \"条数据已重复！\", ResultVO.class, int.class);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3));
+                            break;
+                        case 1:
+                        case 2:
+                            stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败，有\" + repetitionCount + \"条数据已重复！\", ResultVO.class, null);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3));
+                            break;
+                        default:
+                            stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败，有\" + repetitionCount + \"条数据已重复！\", ResultVO.class, null);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3));
+                            break;
+                    }
+
                 }
                 else
                 {
@@ -327,8 +342,22 @@ namespace MDIDemo.PublicClass
                 }
                 stringBuilder.AppendFormat(");\r\n{0}else\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败\",ResultVO.class);\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(3));
+                switch (class_Sub.ServiceInterFaceReturnCount)
+                {
+                    case 0:
+                        stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败\", ResultVO.class, int.class);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3));
+                        break;
+                    case 1:
+                    case 2:
+                        stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败\", ResultVO.class, null);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3));
+                        break;
+                    default:
+                        stringBuilder.AppendFormat("{0}return ResultStruct.error(\"增加失败\", ResultVO.class, null);\r\n"
+                                , class_ToolSpace.GetSetSpaceCount(3));
+                        break;
+                }
             }
             else
             {
@@ -850,10 +879,10 @@ namespace MDIDemo.PublicClass
             int Counter = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
+                RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
                 if (class_Field.InsertSelect)
                 {
                     bool IsAddField = false;
-                    RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
                     if (!class_Field.FieldIsKey)
                     {
                         IsAddField = true;
