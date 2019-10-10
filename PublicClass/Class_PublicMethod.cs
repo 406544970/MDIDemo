@@ -377,14 +377,10 @@ namespace MDIDemo.PublicClass
         }
         public bool DeleteXml(string xmlFileName, string classType)
         {
-            if (class_Remote.DeletePage(xmlFileName, classType) > 0)
-            {
-                if (File.Exists(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName)))
-                    File.Delete(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName));
-                return class_SQLiteOperator.DeleteByPageKey(xmlFileName);
-            }
-            else
-                return false;
+            class_Remote.DeletePage(xmlFileName, classType);
+            if (File.Exists(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName)))
+                File.Delete(string.Format(@"{0}\\{1}\\{2}.xml", Application.StartupPath, classType, xmlFileName));
+            return class_SQLiteOperator.DeleteByPageKey(xmlFileName);
         }
 
         public string CopyToNewXml(string xmlFileName, string NewPageType, string OldPageType)
