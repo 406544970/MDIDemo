@@ -22,7 +22,24 @@ namespace MDIDemo.PublicClass
         {
             xmlUtil = new XmlUtil();
             class_SQLiteOperator = new Class_SQLiteOperator();
-            class_Remote = new Class_Remote();
+            string RemoteAddress = null;
+            int RemotePort = 0;
+            string MyBaseUrl = null;
+            Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
+            class_AllParamSetUp = _FromXmlToObject<Class_AllParamSetUp>("AllParamSetUp", "Class_AllParamSetUp");
+            if (class_AllParamSetUp != null)
+            {
+                RemoteAddress = class_AllParamSetUp.RemoteAddress;
+                RemotePort = class_AllParamSetUp.RemotePort;
+                MyBaseUrl = RemoteAddress;
+                if (RemotePort > 0)
+                {
+                    MyBaseUrl += ":" + RemotePort.ToString();
+                }
+                class_Remote = new Class_Remote(MyBaseUrl, true);
+            }
+            else
+                class_Remote = new Class_Remote();
         }
         private List<Class_ParaArray> GetVersionPara(PageModel pageModel)
         {
@@ -364,6 +381,7 @@ namespace MDIDemo.PublicClass
                     break;
                 case "Class_DataBaseConDefault":
                 case "Class_SystemDefault":
+                case "Class_AllParamSetUp":
                     SaveOk = true;
                     break;
                 default:
@@ -1449,6 +1467,10 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
+        public T FromXmlToAllParamSetUpObject<T>(string fileFullName) where T : class
+        {
+            return _FromXmlToObject<T>("AllParamSetUp", fileFullName);
+        }
         public T FromXmlToDefaultValueObject<T>(string fileFullName) where T : class
         {
             return _FromXmlToObject<T>("DataBaseDefault", fileFullName);
@@ -1492,6 +1514,17 @@ namespace MDIDemo.PublicClass
         public T FromXmlToInsertObject<T>(string fileFullName) where T : class
         {
             return _FromXmlToObject<T>("insert", fileFullName);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fileName"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public bool DataBaseAllParamSetUpValueToXml<T>(string fileName, T t)
+        {
+            return SaveToXml<T>("AllParamSetUp", fileName, t, false);
         }
         /// <summary>
         /// 

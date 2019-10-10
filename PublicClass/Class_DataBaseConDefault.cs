@@ -19,4 +19,14 @@ namespace MDIDemo.PublicClass
     {
         public int Port { get; set; }
     }
+    public class Class_AllParamSetUp
+    {
+        public Class_AllParamSetUp()
+        {
+            this.RemotePort = 0;
+        }
+        public string AllPackageName;
+        public int RemotePort;
+        public string RemoteAddress;
+    }
 }

@@ -91,6 +91,13 @@ namespace MDIDemo.vou
                 }
                 if (class_DeleteAllModel == null)
                     class_DeleteAllModel = new Class_DeleteAllModel();
+                if (class_DeleteAllModel.AllPackerName == null || class_DeleteAllModel.AllPackerName.Length == 0)
+                {
+                    Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
+                    class_AllParamSetUp = class_PublicMethod.FromXmlToAllParamSetUpObject<Class_AllParamSetUp>("Class_AllParamSetUp");
+                    if (class_AllParamSetUp != null)
+                        class_DeleteAllModel.AllPackerName = class_AllParamSetUp.AllPackageName;
+                }
                 switch (class_DeleteAllModel.class_SelectDataBase.databaseType)
                 {
                     case "MySql":

@@ -126,6 +126,13 @@ namespace MDIDemo.vou
                             break;
                     }
                 }
+                if (class_SelectAllModel.AllPackerName == null || class_SelectAllModel.AllPackerName.Length == 0)
+                {
+                    Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
+                    class_AllParamSetUp = class_PublicMethod.FromXmlToAllParamSetUpObject<Class_AllParamSetUp>("Class_AllParamSetUp");
+                    if (class_AllParamSetUp != null)
+                        class_SelectAllModel.AllPackerName = class_AllParamSetUp.AllPackageName;
+                }
                 //if (class_SelectAllModel == null)
                 //{
                 //    class_SelectAllModel = new Class_SelectAllModel();

@@ -91,6 +91,13 @@ namespace MDIDemo.vou
                 }
                 if (class_UpdateAllModel == null)
                     class_UpdateAllModel = new Class_UpdateAllModel();
+                if (class_UpdateAllModel.AllPackerName == null || class_UpdateAllModel.AllPackerName.Length == 0)
+                {
+                    Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
+                    class_AllParamSetUp = class_PublicMethod.FromXmlToAllParamSetUpObject<Class_AllParamSetUp>("Class_AllParamSetUp");
+                    if (class_AllParamSetUp != null)
+                        class_UpdateAllModel.AllPackerName = class_AllParamSetUp.AllPackageName;
+                }
                 switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
                 {
                     case "MySql":

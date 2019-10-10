@@ -872,7 +872,16 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         /// </summary>
         private void _AllSetUp()
         {
-
+            Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+            Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
+            class_AllParamSetUp = class_PublicMethod.FromXmlToAllParamSetUpObject<Class_AllParamSetUp>("Class_AllParamSetUp");
+            Form_AllSetUp form_AllSetUp = new Form_AllSetUp(class_AllParamSetUp);
+            if (form_AllSetUp.ShowDialog() == DialogResult.OK)
+            {
+                if (class_PublicMethod.DataBaseAllParamSetUpValueToXml("Class_AllParamSetUp", form_AllSetUp.class_AllParamSetUp))
+                    MessageBox.Show("已将参数默认值，保存到本地!", "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+            form_AllSetUp.Dispose();
         }
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
