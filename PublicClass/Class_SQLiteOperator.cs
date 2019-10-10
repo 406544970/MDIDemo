@@ -19,8 +19,7 @@ namespace MDIDemo.PublicClass
         {
             string Sql = string.Format(@"DELETE
                 FROM vou_pageInfomation
-                WHERE pageKey = '{0}'
-                And pushSign = 1"
+                WHERE pageKey = '{0}'"
                 , XmlFileKey);
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
