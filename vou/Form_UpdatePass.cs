@@ -52,7 +52,6 @@ namespace MDIDemo.vou
             else
                 MessageBox.Show("相同的密码，请输入两次！"
                     , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
