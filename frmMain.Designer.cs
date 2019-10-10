@@ -1474,6 +1474,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             this.barButtonItem9.Id = 47;
             this.barButtonItem9.ImageOptions.ImageIndex = 676;
             this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // bar2
             // 

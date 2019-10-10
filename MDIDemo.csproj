@@ -257,6 +257,12 @@
     <Compile Include="PublicSetUp\Class_SetTextEdit.cs" />
     <Compile Include="PublicSetUp\Class_SetUpBar.cs" />
     <Compile Include="PublicSetUp\GridC.cs" />
+    <Compile Include="vou\Form_UpdatePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vou\Form_UpdatePass.Designer.cs">
+      <DependentUpon>Form_UpdatePass.cs</DependentUpon>
+    </Compile>
     <Compile Include="vou\Form_AllSetup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vou\Form_UpdatePass.resx">
+      <DependentUpon>Form_UpdatePass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vou\Form_AllSetup.resx">
       <DependentUpon>Form_AllSetup.cs</DependentUpon>

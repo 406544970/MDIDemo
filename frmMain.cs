@@ -893,5 +893,25 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
                     , MessageBoxIcon.Information
                     , MessageBoxDefaultButton.Button1);
         }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form_UpdatePass form_UpdatePass = new Form_UpdatePass();
+            if (form_UpdatePass.ShowDialog() == DialogResult.OK)
+            {
+                Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                if (class_PublicMethod.UpdatePassWord(form_UpdatePass.PassWord) > 0)
+                    MessageBox.Show("ÃÜÂëÐÞ¸Ä³É¹¦£¡", "ÎÂÜ°ÌáÊ¾"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        , MessageBoxDefaultButton.Button1);
+                else
+                    MessageBox.Show("ÃÜÂëÐÞ¸ÄÊ§°Ü£¡", "ÎÂÜ°ÌáÊ¾"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error
+                    , MessageBoxDefaultButton.Button1);
+            }
+            form_UpdatePass.Dispose();
+        }
     }
 }

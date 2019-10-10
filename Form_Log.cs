@@ -75,9 +75,6 @@ namespace MDIDemo
                         , this.checkEdit2.Checked);
                     #endregion
                     this.DialogResult = DialogResult.OK;
-                    //if (class_Remote.UpdatePassWord("123456") > 0)
-                    //{
-                    //}
                 }
                 else
                     MessageBox.Show(string.Format("登录失败\r\n原因：{0}", resultVO.msg)

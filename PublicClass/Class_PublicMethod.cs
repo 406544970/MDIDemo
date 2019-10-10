@@ -22,24 +22,6 @@ namespace MDIDemo.PublicClass
         {
             xmlUtil = new XmlUtil();
             class_SQLiteOperator = new Class_SQLiteOperator();
-            string RemoteAddress = null;
-            int RemotePort = 0;
-            string MyBaseUrl = null;
-            //Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
-            //class_AllParamSetUp = _FromXmlToObject<Class_AllParamSetUp>("AllParamSetUp", "Class_AllParamSetUp");
-            //if (class_AllParamSetUp != null)
-            //{
-            //    RemoteAddress = class_AllParamSetUp.RemoteAddress;
-            //    RemotePort = class_AllParamSetUp.RemotePort;
-            //    MyBaseUrl = RemoteAddress;
-            //    if (RemotePort > 0)
-            //    {
-            //        MyBaseUrl += ":" + RemotePort.ToString();
-            //    }
-            //    class_Remote = new Class_Remote(MyBaseUrl, class_AllParamSetUp.HttpSign);
-            //}
-            //else
-            //    class_Remote = new Class_Remote();
             class_Remote = new Class_Remote();
         }
         private List<Class_ParaArray> GetVersionPara(PageModel pageModel)
@@ -113,6 +95,11 @@ namespace MDIDemo.PublicClass
             #endregion
 
             return class_ParaArrays;
+        }
+
+        public int UpdatePassWord(string PassWord)
+        {
+            return class_Remote.UpdatePassWord(PassWord);
         }
         /// <summary>
         /// PUSH到远程
