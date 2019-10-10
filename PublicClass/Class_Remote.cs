@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MDIDemo.PublicClass
 {
@@ -16,10 +17,32 @@ namespace MDIDemo.PublicClass
         }
         public Class_Remote()
         {
-            XmlUtil xmlUtil = new XmlUtil();
-            string FileName = string.Format("{0}","");
-            //Ini("www.lh.com:2510", true);//这里写入默认值
-            Ini("www.lh.com:2071", true);//这里写入默认值
+            string FileName = string.Format("{0}\\{1}\\{2}.xml"
+                , Application.StartupPath
+                , "AllParamSetUp"
+                , "Class_AllParamSetUp");
+            if (File.Exists(FileName))
+            {
+                string RemoteAddress = null;
+                int RemotePort = 0;
+                string MyBaseUrl = null;
+                Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
+                XmlUtil xmlUtil = new XmlUtil();
+                class_AllParamSetUp = xmlUtil.XmlSerialObject<Class_AllParamSetUp>(FileName);
+                if (class_AllParamSetUp != null)
+                {
+                    RemoteAddress = class_AllParamSetUp.RemoteAddress;
+                    RemotePort = class_AllParamSetUp.RemotePort;
+                    MyBaseUrl = RemoteAddress;
+                    if (RemotePort > 0)
+                    {
+                        MyBaseUrl += ":" + RemotePort.ToString();
+                    }
+                    Ini(MyBaseUrl, true);//这里写入默认值
+                }
+            }
+            else
+                Ini("www.lh.com:2510", true);//这里写入默认值
         }
 
         private string BaseUrl;
