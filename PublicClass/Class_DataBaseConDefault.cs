@@ -24,9 +24,11 @@ namespace MDIDemo.PublicClass
         public Class_AllParamSetUp()
         {
             this.RemotePort = 0;
+            HttpSign = true;
         }
         public string AllPackageName;
         public int RemotePort;
         public string RemoteAddress;
+        public bool HttpSign;
     }
 }

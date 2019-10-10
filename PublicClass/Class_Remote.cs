@@ -38,11 +38,11 @@ namespace MDIDemo.PublicClass
                     {
                         MyBaseUrl += ":" + RemotePort.ToString();
                     }
-                    Ini(MyBaseUrl, true);//这里写入默认值
+                    Ini(MyBaseUrl, class_AllParamSetUp.HttpSign);//这里写入默认值
                 }
             }
             else
-                Ini("www.lh.com:2510", true);//这里写入默认值
+                Ini("www.lh.com:2071", true);//这里写入默认值
         }
 
         private string BaseUrl;

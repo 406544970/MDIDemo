@@ -885,7 +885,13 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
         }
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            _AllSetUp();
+            if (Class_MyInfo.UseTypeValue.Equals("R001"))
+                _AllSetUp();
+            else
+                MessageBox.Show("您无权限打开此界面，请与系统管理员联系!\r\n系统管理员：梁昊<40654970@qq.com>。", "温馨提示"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Information
+                    , MessageBoxDefaultButton.Button1);
         }
     }
 }

@@ -25,21 +25,22 @@ namespace MDIDemo.PublicClass
             string RemoteAddress = null;
             int RemotePort = 0;
             string MyBaseUrl = null;
-            Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
-            class_AllParamSetUp = _FromXmlToObject<Class_AllParamSetUp>("AllParamSetUp", "Class_AllParamSetUp");
-            if (class_AllParamSetUp != null)
-            {
-                RemoteAddress = class_AllParamSetUp.RemoteAddress;
-                RemotePort = class_AllParamSetUp.RemotePort;
-                MyBaseUrl = RemoteAddress;
-                if (RemotePort > 0)
-                {
-                    MyBaseUrl += ":" + RemotePort.ToString();
-                }
-                class_Remote = new Class_Remote(MyBaseUrl, true);
-            }
-            else
-                class_Remote = new Class_Remote();
+            //Class_AllParamSetUp class_AllParamSetUp = new Class_AllParamSetUp();
+            //class_AllParamSetUp = _FromXmlToObject<Class_AllParamSetUp>("AllParamSetUp", "Class_AllParamSetUp");
+            //if (class_AllParamSetUp != null)
+            //{
+            //    RemoteAddress = class_AllParamSetUp.RemoteAddress;
+            //    RemotePort = class_AllParamSetUp.RemotePort;
+            //    MyBaseUrl = RemoteAddress;
+            //    if (RemotePort > 0)
+            //    {
+            //        MyBaseUrl += ":" + RemotePort.ToString();
+            //    }
+            //    class_Remote = new Class_Remote(MyBaseUrl, class_AllParamSetUp.HttpSign);
+            //}
+            //else
+            //    class_Remote = new Class_Remote();
+            class_Remote = new Class_Remote();
         }
         private List<Class_ParaArray> GetVersionPara(PageModel pageModel)
         {

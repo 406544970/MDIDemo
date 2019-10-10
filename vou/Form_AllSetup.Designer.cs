@@ -41,9 +41,9 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
             this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
+            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -51,9 +51,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -106,9 +106,9 @@
             this.tableLayoutPanel1.Controls.Add(this.labelControl5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.textEdit1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textEdit2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textEdit3, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.textEdit4, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.spinEdit1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radioGroup1, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -159,11 +159,11 @@
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelControl4.Location = new System.Drawing.Point(107, 91);
+            this.labelControl4.Location = new System.Drawing.Point(69, 91);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(57, 23);
+            this.labelControl4.Size = new System.Drawing.Size(95, 23);
             this.labelControl4.TabIndex = 3;
-            this.labelControl4.Text = "预留：";
+            this.labelControl4.Text = "请求方式：";
             // 
             // labelControl5
             // 
@@ -196,16 +196,6 @@
             this.textEdit2.Size = new System.Drawing.Size(305, 26);
             this.textEdit2.TabIndex = 6;
             // 
-            // textEdit3
-            // 
-            this.textEdit3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEdit3.Location = new System.Drawing.Point(170, 91);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit3.Properties.Appearance.Options.UseFont = true;
-            this.textEdit3.Size = new System.Drawing.Size(305, 26);
-            this.textEdit3.TabIndex = 7;
-            // 
             // textEdit4
             // 
             this.textEdit4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -218,7 +208,7 @@
             // 
             // spinEdit1
             // 
-            this.spinEdit1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.spinEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spinEdit1.EditValue = new decimal(new int[] {
             0,
             0,
@@ -232,10 +222,22 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinEdit1.Properties.IsFloatValue = false;
             this.spinEdit1.Properties.Mask.EditMask = "N00";
-            this.spinEdit1.Size = new System.Drawing.Size(173, 30);
+            this.spinEdit1.Size = new System.Drawing.Size(305, 30);
             this.spinEdit1.TabIndex = 9;
             // 
-            // Form_AllSetup
+            // radioGroup1
+            // 
+            this.radioGroup1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.radioGroup1.Location = new System.Drawing.Point(170, 91);
+            this.radioGroup1.Name = "radioGroup1";
+            this.radioGroup1.Properties.Columns = 2;
+            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(0, "Http"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(1)), "Https")});
+            this.radioGroup1.Size = new System.Drawing.Size(305, 26);
+            this.radioGroup1.TabIndex = 10;
+            // 
+            // Form_AllSetUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -243,7 +245,7 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.panelControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form_AllSetup";
+            this.Name = "Form_AllSetUp";
             this.Text = "Form_DataBaseDefaultSet";
             this.Load += new System.EventHandler(this.Form_DataBaseDefaultSet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -254,9 +256,9 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -275,8 +277,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
         private DevExpress.XtraEditors.TextEdit textEdit4;
         private DevExpress.XtraEditors.SpinEdit spinEdit1;
+        private DevExpress.XtraEditors.RadioGroup radioGroup1;
     }
 }

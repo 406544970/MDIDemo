@@ -36,6 +36,7 @@ namespace MDIDemo.vou
             this.class_AllParamSetUp.AllPackageName = this.textEdit1.Text;
             this.class_AllParamSetUp.RemoteAddress = this.textEdit2.Text;
             this.class_AllParamSetUp.RemotePort = (int)this.spinEdit1.Value;
+            this.class_AllParamSetUp.HttpSign = this.radioGroup1.SelectedIndex == 0 ? true : false;
 
             this.DialogResult = DialogResult.OK;
         }
@@ -52,6 +53,12 @@ namespace MDIDemo.vou
                 this.textEdit1.Text = this.class_AllParamSetUp.AllPackageName;
                 this.textEdit2.Text = this.class_AllParamSetUp.RemoteAddress;
                 this.spinEdit1.Value = Convert.ToInt32(this.class_AllParamSetUp.RemotePort);
+                this.radioGroup1.SelectedIndex = this.class_AllParamSetUp.HttpSign ? 0 : 1;
+            }
+            else
+            {
+                this.spinEdit1.Value = 0;
+                this.radioGroup1.SelectedIndex = 0;
             }
         }
     }
