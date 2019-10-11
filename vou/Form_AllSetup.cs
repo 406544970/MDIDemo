@@ -1,4 +1,5 @@
 ﻿using MDIDemo.PublicClass;
+using MDIDemo.PublicSetUp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,9 @@ namespace MDIDemo.vou
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+
+            Class_SetButtonEdit class_SetButtonEdit = new Class_SetButtonEdit();
+            class_SetButtonEdit.SetButtonEdit(this.buttonEdit1);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -37,6 +41,7 @@ namespace MDIDemo.vou
             this.class_AllParamSetUp.RemoteAddress = this.textEdit2.Text;
             this.class_AllParamSetUp.RemotePort = (int)this.spinEdit1.Value;
             this.class_AllParamSetUp.HttpSign = this.radioGroup1.SelectedIndex == 0 ? true : false;
+            this.class_AllParamSetUp.OutFileFolder = this.buttonEdit1.Text;
 
             this.DialogResult = DialogResult.OK;
         }
@@ -54,12 +59,31 @@ namespace MDIDemo.vou
                 this.textEdit2.Text = this.class_AllParamSetUp.RemoteAddress;
                 this.spinEdit1.Value = Convert.ToInt32(this.class_AllParamSetUp.RemotePort);
                 this.radioGroup1.SelectedIndex = this.class_AllParamSetUp.HttpSign ? 0 : 1;
+                if (this.class_AllParamSetUp.OutFileFolder != null && this.class_AllParamSetUp.OutFileFolder.Length > 0)
+                {
+                    this.buttonEdit1.Text = this.class_AllParamSetUp.OutFileFolder;
+                    this.folderBrowserDialog1.SelectedPath = this.class_AllParamSetUp.OutFileFolder;
+                }
+                else
+                {
+                    this.buttonEdit1.Text = @"c:\";
+                    this.folderBrowserDialog1.SelectedPath = @"c:\";
+                }
             }
             else
             {
                 this.spinEdit1.Value = 0;
                 this.radioGroup1.SelectedIndex = 0;
             }
+        }
+
+        private void buttonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.buttonEdit1.Text = this.folderBrowserDialog1.SelectedPath;
+            }
+            
         }
     }
 }

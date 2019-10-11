@@ -30,5 +30,6 @@ namespace MDIDemo.PublicClass
         public int RemotePort;
         public string RemoteAddress;
         public bool HttpSign;
+        public string OutFileFolder;
     }
 }

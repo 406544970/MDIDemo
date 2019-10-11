@@ -13,9 +13,13 @@ namespace MDIDemo.PublicSetUp
         {
             _SetButtonEdit(buttonEdit, true);
         }
-        private void _SetButtonEdit(ButtonEdit buttonEdit,bool ReadOnly)
+        public void SetButtonEdit(ButtonEdit buttonEdit, bool DisableTextEditor)
         {
-            buttonEdit.Properties.ReadOnly = ReadOnly;
+            _SetButtonEdit(buttonEdit, DisableTextEditor);
+        }
+        private void _SetButtonEdit(ButtonEdit buttonEdit,bool DisableTextEditor)
+        {
+            buttonEdit.Properties.TextEditStyle = DisableTextEditor ? DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor : DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
         }
     }
 }
