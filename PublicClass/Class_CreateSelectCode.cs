@@ -4591,7 +4591,7 @@ namespace MDIDemo.PublicClass
             }
             stringBuilder.Append(") {\r\n");
 
-            stringBuilder.AppendFormat("{0}return ResultStruct.error(hystricMessage, ResultVO.class);\r\n"
+            stringBuilder.AppendFormat("{0}return ResultStruct.error(hystricMessage, ResultVO.class, null);\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2));
             stringBuilder.AppendFormat("{0}}}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1));
