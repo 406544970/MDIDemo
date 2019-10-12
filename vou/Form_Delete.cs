@@ -948,6 +948,12 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
+                #region 保存属性框
+                class_DeleteAllModel.class_SelectDataBase = this.propertyGridControl3.SelectedObject as Class_InsertDataBase;
+                class_DeleteAllModel.class_Create = this.propertyGridControl4.SelectedObject as Class_Create;
+                class_DeleteAllModel.class_MyBatisMap = this.propertyGridControl5.SelectedObject as Class_MyBatisMap;
+                #endregion
+
                 if (class_PublicMethod.DeleteToXml(class_DeleteAllModel.class_Create.MethodId, class_DeleteAllModel, PageVersionSign))
                 {
                     if (IsDisplayLog)

@@ -979,6 +979,12 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
+                #region 保存属性框
+                class_UpdateAllModel.class_SelectDataBase = this.propertyGridControl3.SelectedObject as Class_InsertDataBase;
+                class_UpdateAllModel.class_Create = this.propertyGridControl4.SelectedObject as Class_Create;
+                class_UpdateAllModel.class_MyBatisMap = this.propertyGridControl5.SelectedObject as Class_MyBatisMap;
+                #endregion
+
                 if (class_PublicMethod.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel, PageVersionSign))
                 {
                     if (IsDisplayLog)

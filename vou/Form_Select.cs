@@ -2280,7 +2280,6 @@ namespace MDIDemo.vou
                 class_SelectAllModel.class_MyBatisMap = this.propertyGridControl5.SelectedObject as Class_MyBatisMap;
                 #endregion
 
-
                 if (class_PublicMethod.SelectToXml(class_SelectAllModel.class_Create.MethodId, class_SelectAllModel, PageVersionSign))
                 {
                     if (IsDisplayLog)
