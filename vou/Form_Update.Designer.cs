@@ -56,8 +56,8 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barAndDockingController1 = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -93,8 +93,8 @@
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl7 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl8 = new DevExpress.XtraBars.BarDockControl();
@@ -276,6 +276,14 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu3 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabControl11 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit14 = new DevExpress.XtraEditors.MemoEdit();
+            this.xtraTabPage30 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit15 = new DevExpress.XtraEditors.MemoEdit();
+            this.xtraTabPage31 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit16 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -429,6 +437,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl11)).BeginInit();
+            this.xtraTabControl11.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit14.Properties)).BeginInit();
+            this.xtraTabPage30.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit15.Properties)).BeginInit();
+            this.xtraTabPage31.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit16.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager1
@@ -1729,8 +1746,7 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem21),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)
-            });
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.bar1.Text = "Custom 1";
             // 
             // barButtonItem8
@@ -1741,14 +1757,6 @@
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "保存到远程";
-            this.barButtonItem9.Id = 5;
-            this.barButtonItem9.ImageOptions.ImageIndex = 143;
-            this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
-            // 
             // barButtonItem21
             // 
             this.barButtonItem21.Caption = "生成";
@@ -1757,6 +1765,14 @@
             this.barButtonItem21.ImageOptions.ImageIndex = 508;
             this.barButtonItem21.Name = "barButtonItem21";
             this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem21_ItemClick);
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "保存到远程";
+            this.barButtonItem9.Id = 5;
+            this.barButtonItem9.ImageOptions.ImageIndex = 143;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // barAndDockingController1
             // 
@@ -2062,8 +2078,7 @@
             this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem22),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem24),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23)
-            });
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23)});
             this.bar4.Offset = 97;
             this.bar4.Text = "Custom 2";
             // 
@@ -2075,14 +2090,6 @@
             this.barButtonItem22.Name = "barButtonItem22";
             this.barButtonItem22.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
-            // barButtonItem23
-            // 
-            this.barButtonItem23.Caption = "保存到远程";
-            this.barButtonItem23.Id = 3;
-            this.barButtonItem23.ImageOptions.ImageIndex = 143;
-            this.barButtonItem23.Name = "barButtonItem23";
-            this.barButtonItem23.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
-            // 
             // barButtonItem24
             // 
             this.barButtonItem24.Caption = "生成";
@@ -2091,6 +2098,14 @@
             this.barButtonItem24.ImageOptions.ImageIndex = 508;
             this.barButtonItem24.Name = "barButtonItem24";
             this.barButtonItem24.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem21_ItemClick);
+            // 
+            // barButtonItem23
+            // 
+            this.barButtonItem23.Caption = "保存到远程";
+            this.barButtonItem23.Id = 3;
+            this.barButtonItem23.ImageOptions.ImageIndex = 143;
+            this.barButtonItem23.Name = "barButtonItem23";
+            this.barButtonItem23.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // barDockControl6
             // 
@@ -3197,7 +3212,8 @@
             this.xtraTabPage19,
             this.xtraTabPage15,
             this.xtraTabPage16,
-            this.xtraTabPage20});
+            this.xtraTabPage20,
+            this.xtraTabPage1});
             // 
             // xtraTabPage15
             // 
@@ -3967,6 +3983,74 @@
             this.popupMenu3.Manager = this.barManager1;
             this.popupMenu3.Name = "popupMenu3";
             // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.xtraTabControl11);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1171, 305);
+            this.xtraTabPage1.Text = "Feign";
+            // 
+            // xtraTabControl11
+            // 
+            this.xtraTabControl11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl11.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl11.Name = "xtraTabControl11";
+            this.xtraTabControl11.SelectedTabPage = this.xtraTabPage2;
+            this.xtraTabControl11.Size = new System.Drawing.Size(1171, 305);
+            this.xtraTabControl11.TabIndex = 1;
+            this.xtraTabControl11.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage2,
+            this.xtraTabPage30,
+            this.xtraTabPage31});
+            // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.memoEdit14);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1165, 276);
+            this.xtraTabPage2.Text = "feignInterFace";
+            // 
+            // memoEdit14
+            // 
+            this.memoEdit14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit14.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit14.MenuManager = this.barManager1;
+            this.memoEdit14.Name = "memoEdit14";
+            this.memoEdit14.Size = new System.Drawing.Size(1165, 276);
+            this.memoEdit14.TabIndex = 5;
+            // 
+            // xtraTabPage30
+            // 
+            this.xtraTabPage30.Controls.Add(this.memoEdit15);
+            this.xtraTabPage30.Name = "xtraTabPage30";
+            this.xtraTabPage30.Size = new System.Drawing.Size(1165, 264);
+            this.xtraTabPage30.Text = "feignInterFace.hystric";
+            // 
+            // memoEdit15
+            // 
+            this.memoEdit15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit15.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit15.MenuManager = this.barManager1;
+            this.memoEdit15.Name = "memoEdit15";
+            this.memoEdit15.Size = new System.Drawing.Size(1165, 264);
+            this.memoEdit15.TabIndex = 5;
+            // 
+            // xtraTabPage31
+            // 
+            this.xtraTabPage31.Controls.Add(this.memoEdit16);
+            this.xtraTabPage31.Name = "xtraTabPage31";
+            this.xtraTabPage31.Size = new System.Drawing.Size(1165, 264);
+            this.xtraTabPage31.Text = "controller";
+            // 
+            // memoEdit16
+            // 
+            this.memoEdit16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit16.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit16.MenuManager = this.barManager1;
+            this.memoEdit16.Name = "memoEdit16";
+            this.memoEdit16.Size = new System.Drawing.Size(1165, 264);
+            this.memoEdit16.TabIndex = 5;
+            // 
             // Form_Update
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -4140,6 +4224,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu3)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl11)).EndInit();
+            this.xtraTabControl11.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit14.Properties)).EndInit();
+            this.xtraTabPage30.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit15.Properties)).EndInit();
+            this.xtraTabPage31.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit16.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4392,5 +4485,13 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl11;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraEditors.MemoEdit memoEdit14;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage30;
+        private DevExpress.XtraEditors.MemoEdit memoEdit15;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage31;
+        private DevExpress.XtraEditors.MemoEdit memoEdit16;
     }
 }

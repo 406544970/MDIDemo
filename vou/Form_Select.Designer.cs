@@ -9134,7 +9134,7 @@
             this.xtraTabPage1.Controls.Add(this.xtraTabControl11);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1171, 293);
-            this.xtraTabPage1.Text = "Feign聚合层";
+            this.xtraTabPage1.Text = "Feign";
             // 
             // xtraTabControl11
             // 
