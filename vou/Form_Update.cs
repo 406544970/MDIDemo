@@ -162,6 +162,13 @@ namespace MDIDemo.vou
                     this.textEdit102.Text = class_UpdateAllModel.class_SubList[index].ServiceInterFaceName;
                     this.textEdit103.Text = class_UpdateAllModel.class_SubList[index].ServiceClassName;
 
+                    this.textEdit23.Text = class_UpdateAllModel.class_SubList[index].FeignInterFaceClassName;
+                    this.textEdit4.Text = class_UpdateAllModel.class_SubList[index].FeignInterFaceHystricClassName;
+                    this.textEdit24.Text = class_UpdateAllModel.class_SubList[index].FeignControlClassName;
+                    this.memoEdit14.Text = Class_Tool.UnEscapeCharacter(class_UpdateAllModel.class_SubList[index].FeignInterFaceContent);
+                    this.memoEdit15.Text = Class_Tool.UnEscapeCharacter(class_UpdateAllModel.class_SubList[index].FeignInterFaceHystricContent);
+                    this.memoEdit16.Text = Class_Tool.UnEscapeCharacter(class_UpdateAllModel.class_SubList[index].FeignControlContent);
+
                     if (this.panelControl4.Height > this.simpleButton2.Height + 5)
                         this.simpleButton2.Text = "折叠";
                     else
@@ -239,6 +246,9 @@ namespace MDIDemo.vou
             class_SetMemoEdit.SetMemoEdit(this.memoEdit10);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit11);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit12);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit14);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit15);
+            class_SetMemoEdit.SetMemoEdit(this.memoEdit16);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit31);
             class_SetMemoEdit.SetMemoEdit(this.memoEdit54);
             #endregion
@@ -252,6 +262,9 @@ namespace MDIDemo.vou
             class_SetTextEdit.SetTextEdit(this.textEdit102, Color.LightGreen);
             class_SetTextEdit.SetTextEdit(this.textEdit103, Color.LightGreen);
 
+            class_SetTextEdit.SetTextEdit(this.textEdit4, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit23, Color.LightGreen);
+            class_SetTextEdit.SetTextEdit(this.textEdit24, Color.LightGreen);
             class_SetTextEdit.SetTextEdit(this.textEdit44);
 
             class_SetTextEdit.SetTextEdit(this.textEdit13, Color.Yellow);
@@ -976,6 +989,12 @@ namespace MDIDemo.vou
                     class_UpdateAllModel.class_SubList[index].ServiceInterFaceName = this.textEdit102.Text;
                     class_UpdateAllModel.class_SubList[index].ServiceClassName = this.textEdit103.Text;
 
+                    class_UpdateAllModel.class_SubList[index].FeignInterFaceClassName = this.textEdit23.Text;
+                    class_UpdateAllModel.class_SubList[index].FeignInterFaceHystricClassName = this.textEdit4.Text;
+                    class_UpdateAllModel.class_SubList[index].FeignControlClassName = this.textEdit24.Text;
+                    class_UpdateAllModel.class_SubList[index].FeignInterFaceContent = Class_Tool.EscapeCharacter(this.memoEdit14.Text);
+                    class_UpdateAllModel.class_SubList[index].FeignInterFaceHystricContent = Class_Tool.EscapeCharacter(this.memoEdit15.Text);
+                    class_UpdateAllModel.class_SubList[index].FeignControlContent = Class_Tool.EscapeCharacter(this.memoEdit16.Text);
                 }
                 #endregion
 
@@ -1209,6 +1228,10 @@ namespace MDIDemo.vou
                 this.textEdit54.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Controller", (sender as TextEdit).Text));
                 this.textEdit102.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}Service", (sender as TextEdit).Text));
                 this.textEdit103.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}ServiceImpl", (sender as TextEdit).Text));
+
+                this.textEdit23.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}InterFace", (sender as TextEdit).Text));
+                this.textEdit4.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}InterFaceHystric", (sender as TextEdit).Text));
+                this.textEdit24.Text = Class_Tool.GetFirstCodeUpper(string.Format("{0}FeignControl", (sender as TextEdit).Text));
             }
         }
 
@@ -1254,6 +1277,10 @@ namespace MDIDemo.vou
                     this.memoEdit31.Text = class_InterFaceCreateCode.GetInPutParam(PageIndex);
                     //
                     this.memoEdit54.Text = class_InterFaceCreateCode.GetTestSql(PageIndex);
+                    //Feign
+                    this.memoEdit14.Text = class_InterFaceCreateCode.GetFeignInterFace(PageIndex);
+                    this.memoEdit15.Text = class_InterFaceCreateCode.GetFeignInterFaceHystric(PageIndex);
+                    this.memoEdit16.Text = class_InterFaceCreateCode.GetFeignControl(PageIndex);
                 }
                 #endregion
 

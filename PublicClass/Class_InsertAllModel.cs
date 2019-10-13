@@ -866,6 +866,12 @@ namespace MDIDemo.PublicClass
             public string ControlRequestMapping { get; set; }
             public string ServiceInterFaceName { get; set; }
             public string ServiceClassName { get; set; }
+            public string FeignControlClassName { get; set; }
+            public string FeignInterFaceClassName { get; set; }
+            public string FeignInterFaceHystricClassName { get; set; }
+            public string FeignControlContent { get; set; }
+            public string FeignInterFaceContent { get; set; }
+            public string FeignInterFaceHystricContent { get; set; }
         }
         #endregion
 
