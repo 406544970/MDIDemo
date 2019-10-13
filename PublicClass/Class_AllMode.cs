@@ -30,6 +30,7 @@ namespace MDIDemo.PublicClass
         public string LogType;
         public string FieldDefaultValue;
         public string FieldLogType;
+        public string FieldType;
         public bool WhereIsNull;
         public bool WhereTrim;
     }

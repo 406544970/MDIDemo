@@ -139,6 +139,7 @@ namespace MDIDemo.PublicClass
                                 OutFieldName = InParaFieldName,
                                 WhereIsNull = class_Field.WhereIsNull,
                                 TableName = item.TableName,
+                                FieldType = class_Field.FieldType,
                                 WhereTrim = class_Field.WhereTrim
                             };
                             class_WhereFields.Add(class_WhereField);
@@ -149,37 +150,6 @@ namespace MDIDemo.PublicClass
             }
 
             #region
-            //if (MyPage)
-            //{
-            //    Class_WhereField class_WhereFieldpage = new Class_WhereField()
-            //    {
-            //        FieldName = "page",
-            //        ParaName = "page",
-            //        FieldRemark = "当前页数",
-            //        LogType = "int",
-            //        FieldDefaultValue = "1",
-            //        FieldLogType = "参数",
-            //        TableNo = 0,
-            //        IsSame = false,
-            //        OutFieldName = "page",
-            //        TableName = null
-            //    };
-            //    class_WhereFields.Add(class_WhereFieldpage);
-            //    Class_WhereField class_WhereFieldlimit = new Class_WhereField()
-            //    {
-            //        FieldName = "limit",
-            //        ParaName = "limit",
-            //        FieldRemark = "分页条数",
-            //        LogType = "int",
-            //        FieldDefaultValue = "10",
-            //        FieldLogType = "参数",
-            //        TableNo = 0,
-            //        IsSame = false,
-            //        OutFieldName = "limit",
-            //        TableName = null
-            //    };
-            //    class_WhereFields.Add(class_WhereFieldlimit);
-            //}
             #endregion
 
             return class_WhereFields;
@@ -2733,9 +2703,16 @@ namespace MDIDemo.PublicClass
                 {
                     stringBuilder.Append(", required = false");
                 }
-                if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
+                if (!row.FieldDefaultValue.Equals("CURRENT_TIMESTAMP") && (row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
                     stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
+                if (row.FieldType.IndexOf("date") > -1 && row.LogType.IndexOf("IN") < 0)
+                {
+                    if (row.FieldType.Equals("date"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd\")");
+                    if (row.FieldType.Equals("datetime"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                }
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
                     stringBuilder.AppendFormat(" List<{0}>"
@@ -2795,6 +2772,12 @@ namespace MDIDemo.PublicClass
                             , class_ToolSpace.GetSetSpaceCount(2), row.OutFieldName);
                     }
                 }
+            }
+            foreach (Class_Field class_Field in class_Sub.class_Fields)
+            {
+                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.FieldType.IndexOf("date") > -1 && class_Field.FieldDefaultValue.Equals("CURRENT_TIMESTAMP"))
+                    stringBuilder.AppendFormat("{0}{1} = {1} == null ? new Date() : {1};\r\n"
+                        , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
             }
             stringBuilder.Append("\r\n");
             #endregion
@@ -4068,9 +4051,16 @@ namespace MDIDemo.PublicClass
                 {
                     stringBuilder.Append(", required = false");
                 }
-                if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
+                if (!row.FieldDefaultValue.Equals("CURRENT_TIMESTAMP") && (row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
                     stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
+                if (row.FieldType.IndexOf("date") > -1 && row.LogType.IndexOf("IN") < 0)
+                {
+                    if (row.FieldType.Equals("date"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd\")");
+                    if (row.FieldType.Equals("datetime"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                }
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
                     stringBuilder.AppendFormat(" List<{0}>"
@@ -4358,9 +4348,16 @@ namespace MDIDemo.PublicClass
                 {
                     stringBuilder.Append(", required = false");
                 }
-                if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
+                if (!row.FieldDefaultValue.Equals("CURRENT_TIMESTAMP") && (row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
                     stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
+                if (row.FieldType.IndexOf("date") > -1 && row.LogType.IndexOf("IN") < 0)
+                {
+                    if (row.FieldType.Equals("date"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd\")");
+                    if (row.FieldType.Equals("datetime"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                }
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
                     stringBuilder.AppendFormat(" List<{0}>"
@@ -4540,9 +4537,16 @@ namespace MDIDemo.PublicClass
                 {
                     stringBuilder.Append(", required = false");
                 }
-                if ((row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
+                if (!row.FieldDefaultValue.Equals("CURRENT_TIMESTAMP") && (row.FieldDefaultValue != null) && (row.FieldDefaultValue.Length > 0))
                     stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(row.FieldDefaultValue));
                 stringBuilder.Append(")");
+                if (row.FieldType.IndexOf("date") > -1 && row.LogType.IndexOf("IN") < 0)
+                {
+                    if (row.FieldType.Equals("date"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd\")");
+                    if (row.FieldType.Equals("datetime"))
+                        stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                }
                 if (row.FieldLogType.IndexOf("IN") > -1)
                 {
                     stringBuilder.AppendFormat(" List<{0}>"
