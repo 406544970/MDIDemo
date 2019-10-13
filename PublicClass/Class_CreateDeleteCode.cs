@@ -221,11 +221,6 @@ namespace MDIDemo.PublicClass
                 if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.WhereSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.WhereTrim)
                     stringBuilder.AppendFormat("{0}{1} = {1} == null ? {1} : {1}.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
-                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.FieldType.IndexOf("date") > -1 && class_Field.FieldDefaultValue.Equals("CURRENT_TIMESTAMP"))
-                {
-                    stringBuilder.AppendFormat("{0}{1} = {1} == null ? new Date() : {1};\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
-                }
             }
             stringBuilder.Append("\r\n");
             #endregion

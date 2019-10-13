@@ -2773,12 +2773,6 @@ namespace MDIDemo.PublicClass
                     }
                 }
             }
-            foreach (Class_Field class_Field in class_Sub.class_Fields)
-            {
-                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.FieldType.IndexOf("date") > -1 && class_Field.FieldDefaultValue.Equals("CURRENT_TIMESTAMP"))
-                    stringBuilder.AppendFormat("{0}{1} = {1} == null ? new Date() : {1};\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
-            }
             stringBuilder.Append("\r\n");
             #endregion
             if (class_WhereFields != null)

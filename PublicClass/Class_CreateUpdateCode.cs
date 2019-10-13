@@ -205,19 +205,10 @@ namespace MDIDemo.PublicClass
                 if (class_Field.UpdateSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
-                        , class_Field.ParaName
+                        stringBuilder.AppendFormat("\r\n{0}, "
                         , class_ToolSpace.GetSetSpaceCount(3));
-                    else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\", required = false"
-                        , class_Field.ParaName);
+                    stringBuilder.AppendFormat("@RequestParam(value = \"{0}\"", class_Field.ParaName);
                     stringBuilder.Append(")");
-                    if (class_Field.LogType.IndexOf("IN") > -1)
-                        stringBuilder.AppendFormat(" List<{0}>"
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    else
-                        stringBuilder.AppendFormat(" {0}"
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
                     {
                         if (class_Field.FieldType.Equals("date"))
@@ -225,6 +216,12 @@ namespace MDIDemo.PublicClass
                         if (class_Field.FieldType.Equals("datetime"))
                             stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
                     }
+                    if (class_Field.LogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" List<{0}>"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    else
+                        stringBuilder.AppendFormat(" {0}"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
                 }
                 if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
@@ -238,7 +235,7 @@ namespace MDIDemo.PublicClass
                         , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
                     if (class_Field.WhereIsNull)
                         stringBuilder.Append(", required = false");
-                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) 
+                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0)
                         && class_Field.LogType.IndexOf("IN") < 0)
                         stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
                     stringBuilder.Append(")");
@@ -269,14 +266,6 @@ namespace MDIDemo.PublicClass
                 if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.WhereSelect && (class_Field.FieldType.Equals("varchar") || class_Field.FieldType.Equals("char")) && class_Field.WhereTrim)
                     stringBuilder.AppendFormat("{0}{1}Where = {1}Where == null ? {1}Where : {1}Where.trim();\r\n"
                         , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
-
-                if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.FieldDefaultValue.Equals("CURRENT_TIMESTAMP"))
-                    stringBuilder.AppendFormat("{0}{1} = {1} == null ? new Date() : {1};\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
-                if (class_Field.LogType.IndexOf("IN") < 0 && class_Field.WhereSelect && class_Field.FieldType.IndexOf("date") > -1
-                    && class_Field.FieldDefaultValue.Equals("CURRENT_TIMESTAMP"))
-                stringBuilder.AppendFormat("{0}{1}Where = {1}Where == null ? new Date() : {1}Where;\r\n"
-                    , class_ToolSpace.GetSetSpaceCount(2), class_Field.ParaName);
             }
             stringBuilder.Append("\r\n");
             #endregion
@@ -298,11 +287,11 @@ namespace MDIDemo.PublicClass
                 }
                 if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
                 {
-                    stringBuilder.AppendFormat("{0}{1}.set{2}Where({3});\r\n"
+                    stringBuilder.AppendFormat("{0}{1}.set{2}({3});\r\n"
                     , class_ToolSpace.GetSetSpaceCount(2)
                     , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName)
                     , Class_Tool.GetFirstCodeUpper(class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName)
-                    , class_Field.ParaName);
+                    , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
                 }
 
             }
@@ -1146,19 +1135,12 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.UpdateSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
-                        , class_Field.ParaName
+                        stringBuilder.AppendFormat("\r\n{0}, "
                         , class_ToolSpace.GetSetSpaceCount(3));
-                    else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
-                        , class_Field.ParaName);
-                    if (class_Field.WhereIsNull)
-                        stringBuilder.Append(", required = false");
-                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
-                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
+                    stringBuilder.AppendFormat("@RequestParam(value = \"{0}\"", class_Field.ParaName);
                     stringBuilder.Append(")");
                     if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
                     {
@@ -1175,6 +1157,36 @@ namespace MDIDemo.PublicClass
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
                 }
+                if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
+                {
+                    if (Index++ > 0)
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName
+                        , class_ToolSpace.GetSetSpaceCount(3));
+                    else
+                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
+                    if (class_Field.WhereIsNull)
+                        stringBuilder.Append(", required = false");
+                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0)
+                        && class_Field.LogType.IndexOf("IN") < 0)
+                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
+                    stringBuilder.Append(")");
+                    if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
+                    {
+                        if (class_Field.FieldType.Equals("date"))
+                            stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd\")");
+                        if (class_Field.FieldType.Equals("datetime"))
+                            stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                    }
+                    if (class_Field.LogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" List<{0}>"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    else
+                        stringBuilder.AppendFormat(" {0}"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    stringBuilder.AppendFormat(" {0}", class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
+                }
             }
             stringBuilder.Append(") {\r\n");
 
@@ -1186,11 +1198,17 @@ namespace MDIDemo.PublicClass
             Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.UpdateSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.Append(", ");
                     stringBuilder.Append(class_Field.ParaName);
+                }
+                if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
+                {
+                    if (Index++ > 0)
+                        stringBuilder.Append(", ");
+                    stringBuilder.Append(class_Field.ParaName + "Where");
                 }
             }
             stringBuilder.Append(");\r\n");
@@ -1293,19 +1311,12 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.UpdateSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
-                        , class_Field.ParaName
+                        stringBuilder.AppendFormat("\r\n{0}, "
                         , class_ToolSpace.GetSetSpaceCount(3));
-                    else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
-                        , class_Field.ParaName);
-                    if (class_Field.WhereIsNull)
-                        stringBuilder.Append(", required = false");
-                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
-                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
+                    stringBuilder.AppendFormat("@RequestParam(value = \"{0}\"", class_Field.ParaName);
                     stringBuilder.Append(")");
                     if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
                     {
@@ -1321,6 +1332,36 @@ namespace MDIDemo.PublicClass
                         stringBuilder.AppendFormat(" {0}"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
+                }
+                if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
+                {
+                    if (Index++ > 0)
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName
+                        , class_ToolSpace.GetSetSpaceCount(3));
+                    else
+                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
+                    if (class_Field.WhereIsNull)
+                        stringBuilder.Append(", required = false");
+                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0)
+                        && class_Field.LogType.IndexOf("IN") < 0)
+                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
+                    stringBuilder.Append(")");
+                    if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
+                    {
+                        if (class_Field.FieldType.Equals("date"))
+                            stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd\")");
+                        if (class_Field.FieldType.Equals("datetime"))
+                            stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                    }
+                    if (class_Field.LogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" List<{0}>"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    else
+                        stringBuilder.AppendFormat(" {0}"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    stringBuilder.AppendFormat(" {0}", class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
                 }
             }
             stringBuilder.Append(");\r\n");
@@ -1416,19 +1457,12 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.UpdateSelect)
                 {
                     if (Index++ > 0)
-                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
-                        , class_Field.ParaName
+                        stringBuilder.AppendFormat("\r\n{0}, "
                         , class_ToolSpace.GetSetSpaceCount(3));
-                    else
-                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
-                        , class_Field.ParaName);
-                    if (class_Field.WhereIsNull)
-                        stringBuilder.Append(", required = false");
-                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
-                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
+                    stringBuilder.AppendFormat("@RequestParam(value = \"{0}\"", class_Field.ParaName);
                     stringBuilder.Append(")");
                     if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
                     {
@@ -1444,6 +1478,36 @@ namespace MDIDemo.PublicClass
                         stringBuilder.AppendFormat(" {0}"
                         , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
+                }
+                if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
+                {
+                    if (Index++ > 0)
+                        stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName
+                        , class_ToolSpace.GetSetSpaceCount(3));
+                    else
+                        stringBuilder.AppendFormat("@RequestParam(value = \"{0}\""
+                        , class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
+                    if (class_Field.WhereIsNull)
+                        stringBuilder.Append(", required = false");
+                    if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0)
+                        && class_Field.LogType.IndexOf("IN") < 0)
+                        stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
+                    stringBuilder.Append(")");
+                    if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
+                    {
+                        if (class_Field.FieldType.Equals("date"))
+                            stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd\")");
+                        if (class_Field.FieldType.Equals("datetime"))
+                            stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                    }
+                    if (class_Field.LogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" List<{0}>"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    else
+                        stringBuilder.AppendFormat(" {0}"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    stringBuilder.AppendFormat(" {0}", class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName);
                 }
             }
             stringBuilder.Append(") {\r\n");
