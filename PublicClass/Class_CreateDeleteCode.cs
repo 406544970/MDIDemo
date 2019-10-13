@@ -272,7 +272,7 @@ namespace MDIDemo.PublicClass
                 switch (class_Sub.ServiceInterFaceReturnCount)
                 {
                     case 0:
-                        stringBuilder.Append("int.Class");
+                        stringBuilder.Append("int.class");
                         break;
                     case 1:
                     case 2:
@@ -1345,21 +1345,44 @@ namespace MDIDemo.PublicClass
                 }
             }
             stringBuilder.Append(") {\r\n");
-            switch (class_Sub.ServiceInterFaceReturnCount)
+            stringBuilder.AppendFormat("{0}return "
+                , class_ToolSpace.GetSetSpaceCount(2));
+            if (class_DeleteAllModel.ReturnStructure)
             {
-                case 0:
-                    stringBuilder.AppendFormat("{0}return ResultStruct.error(hystricMessage, ResultVO.class, 0);\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2));
-                    break;
-                case 1:
-                case 2:
-                    stringBuilder.AppendFormat("{0}return ResultStruct.error(hystricMessage, ResultVO.class, null);\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2));
-                    break;
-                default:
-                    stringBuilder.AppendFormat("{0}return ResultStruct.error(hystricMessage, ResultVO.class, null);\r\n"
-                        , class_ToolSpace.GetSetSpaceCount(2));
-                    break;
+                stringBuilder.Append("ResultStruct.error(hystricMessage, ResultVO.class, ");
+                switch (class_Sub.ServiceInterFaceReturnCount)
+                {
+                    case 0:
+                        stringBuilder.Append("int.class");
+                        break;
+                    case 1:
+                    case 2:
+                        stringBuilder.Append("null");
+                        break;
+                    default:
+                        stringBuilder.Append("null");
+                        break;
+                }
+                stringBuilder.Append(");\r\n");
+            }
+            else
+            {
+                switch (class_Sub.ServiceInterFaceReturnCount)
+                {
+                    case 0:
+                        stringBuilder.Append("0");
+                        break;
+                    case 1:
+                        stringBuilder.Append("null");
+                        break;
+                    case 2:
+                        stringBuilder.Append("null");
+                        break;
+                    default:
+                        stringBuilder.Append("null");
+                        break;
+                }
+                stringBuilder.Append(";\r\n");
             }
 
             stringBuilder.AppendFormat("{0}}}\r\n"
