@@ -959,7 +959,7 @@ namespace MDIDemo.PublicClass
                 StringBuilder WhereBuilder = new StringBuilder();
                 foreach (Class_Field class_Field in class_Sub.class_Fields)
                 {
-                    if (class_Field.WhereSelect)
+                    if (class_Field.InsertSelect || class_Field.WhereSelect)
                     {
                         string MyWhereSql = null;
                         if (class_Field.WhereIsNull)
@@ -1113,7 +1113,7 @@ namespace MDIDemo.PublicClass
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
-                if (class_Field.WhereSelect)
+                if (class_Field.InsertSelect || class_Field.WhereSelect)
                     stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , class_Field.ParaName
@@ -1142,7 +1142,7 @@ namespace MDIDemo.PublicClass
                     int index = 0;
                     foreach (Class_Field class_Field in class_Sub.class_Fields)
                     {
-                        if (class_Field.WhereSelect)
+                        if (class_Field.InsertSelect || class_Field.WhereSelect)
                         {
                             stringBuilder.Append(class_ToolSpace.GetSetSpaceCount(3));
                             if (index > 0)
@@ -1199,7 +1199,7 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.InsertSelect || class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
@@ -1213,7 +1213,6 @@ namespace MDIDemo.PublicClass
                     if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
                         stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
                     stringBuilder.Append(")");
-
                     if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
                     {
                         if (class_Field.FieldType.Equals("date"))
@@ -1240,7 +1239,7 @@ namespace MDIDemo.PublicClass
             Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.InsertSelect || class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.Append(", ");
@@ -1347,7 +1346,7 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.InsertSelect || class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
@@ -1470,7 +1469,7 @@ namespace MDIDemo.PublicClass
             int Index = 0;
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                if (class_Field.WhereSelect)
+                if (class_Field.InsertSelect || class_Field.WhereSelect)
                 {
                     if (Index++ > 0)
                         stringBuilder.AppendFormat("\r\n{1}, @RequestParam(value = \"{0}\""
@@ -1484,12 +1483,6 @@ namespace MDIDemo.PublicClass
                     if (class_Field.FieldType.IndexOf("date") < 0 && (class_Field.FieldDefaultValue != null) && (class_Field.FieldDefaultValue.Length > 0) && class_Field.LogType.IndexOf("IN") < 0)
                         stringBuilder.AppendFormat(", defaultValue = \"{0}\"", _GetFieldDefaultValue(class_Field.FieldDefaultValue));
                     stringBuilder.Append(")");
-                    if (class_Field.LogType.IndexOf("IN") > -1)
-                        stringBuilder.AppendFormat(" List<{0}>"
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
-                    else
-                        stringBuilder.AppendFormat(" {0}"
-                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     if (class_Field.FieldType.IndexOf("date") > -1 && class_Field.LogType.IndexOf("IN") < 0)
                     {
                         if (class_Field.FieldType.Equals("date"))
@@ -1497,6 +1490,12 @@ namespace MDIDemo.PublicClass
                         if (class_Field.FieldType.Equals("datetime"))
                             stringBuilder.Append(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
                     }
+                    if (class_Field.LogType.IndexOf("IN") > -1)
+                        stringBuilder.AppendFormat(" List<{0}>"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
+                    else
+                        stringBuilder.AppendFormat(" {0}"
+                        , Class_Tool.GetSimplificationJavaType(class_InterFaceDataBase.GetJavaType(class_Field.FieldType)));
                     stringBuilder.AppendFormat(" {0}", class_Field.ParaName);
                 }
             }
