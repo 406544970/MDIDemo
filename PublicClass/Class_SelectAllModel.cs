@@ -495,7 +495,7 @@ namespace MDIDemo.PublicClass
                 ReadOnly = false;
                 SwaggerSign = true;
                 Port = "8080";
-                class_Remote = new Class_Remote();
+                class_Remote = new Class_Remote("dictionary", true);
             }
             private Class_Remote class_Remote;
             [Browsable(true)]

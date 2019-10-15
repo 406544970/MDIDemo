@@ -22,6 +22,7 @@ namespace MDIDemo
         private string version;
         private int LogCount;
         private Class_SQLiteOperator class_SQLiteOperator;
+
         private void setIniSkin(string skinName)
         {
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle(skinName);
@@ -40,7 +41,7 @@ namespace MDIDemo
 
         private void LogOk()
         {
-            Class_Remote class_Remote = new Class_Remote();
+            Class_Remote class_Remote = new Class_Remote("dictionary", false);
             List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
             Class_ParaArray class_ParaArray = new Class_ParaArray()
             {

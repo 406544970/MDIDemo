@@ -17,17 +17,22 @@ namespace MDIDemo.PublicClass
     public class Class_RestClient
     {
         private string BaseUrl;
-        public Class_RestClient(string BaseUrl, bool HttpSign)
+        public Class_RestClient(string BaseUrl, bool HttpSign, string MicroServePath, bool CSign)
         {
-            IniClass(BaseUrl, HttpSign);
+            IniClass(BaseUrl, HttpSign, MicroServePath, CSign);
         }
-        public Class_RestClient(string BaseUrl)
+        public Class_RestClient(string BaseUrl, string MicroServePath)
         {
-            IniClass(BaseUrl, true);
+            IniClass(BaseUrl, true, MicroServePath, true);
         }
 
-        private void IniClass(string BaseUrl, bool HttpSign)
+        private void IniClass(string BaseUrl, bool HttpSign, string MicroServePath, bool CSign)
         {
+            BaseUrl = string.Format(@"{0}/api-a-{1}kf-/{2}"
+                    , BaseUrl.Trim()
+                    , (CSign ? "c" : "o")
+                    , MicroServePath);
+
             if (HttpSign)
                 this.BaseUrl = string.Format("http://{0}", BaseUrl);
             else

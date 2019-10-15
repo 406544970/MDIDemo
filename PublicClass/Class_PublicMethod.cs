@@ -22,7 +22,7 @@ namespace MDIDemo.PublicClass
         {
             xmlUtil = new XmlUtil();
             class_SQLiteOperator = new Class_SQLiteOperator();
-            class_Remote = new Class_Remote();
+            class_Remote = new Class_Remote("dictionary", true);
         }
         private List<Class_ParaArray> GetVersionPara(PageModel pageModel)
         {
@@ -185,7 +185,7 @@ namespace MDIDemo.PublicClass
             #endregion
             PageVersionListInParam pageVersionListInParam = new PageVersionListInParam();
             pageVersionListInParam.pageKey = pageKey;
-            Class_Remote class_Remote = new Class_Remote();
+            Class_Remote class_Remote = new Class_Remote("dictionary", true);
             ResultVO<List<PageModel>> resultVO = new ResultVO<List<PageModel>>();
             resultVO = class_Remote.SelectVersionList<List<PageModel>>(pageVersionListInParam);
             if (resultVO.code == 0)

@@ -11,13 +11,21 @@ namespace MDIDemo.PublicClass
 {
     public class Class_Remote
     {
-        public Class_Remote(string BaseUrl, bool HttpSign)
+        public Class_Remote(string BaseUrl, bool HttpSign, string MicroServePath, bool CSign)
         {
-            Ini(BaseUrl, HttpSign);
+            Ini(BaseUrl, HttpSign, MicroServePath, CSign);
         }
-        public Class_Remote()
+        public Class_Remote(string MicroServePath, bool CSign)
         {
-            string FileName = string.Format("{0}\\{1}\\{2}.xml"
+            DefaultIni(MicroServePath, CSign);
+        }
+        public Class_Remote(string MicroServePath)
+        {
+            DefaultIni(MicroServePath, true);
+        }
+        private void DefaultIni(string MicroServePath, bool CSign)
+        {
+            string FileName = string.Format(@"{0}\{1}\{2}.xml"
                 , Application.StartupPath
                 , "AllParamSetUp"
                 , "Class_AllParamSetUp");
@@ -38,20 +46,17 @@ namespace MDIDemo.PublicClass
                     {
                         MyBaseUrl += ":" + RemotePort.ToString();
                     }
-                    Ini(MyBaseUrl, class_AllParamSetUp.HttpSign);//这里写入默认值
+                    Ini(MyBaseUrl, class_AllParamSetUp.HttpSign, MicroServePath, CSign);//这里写入默认值
                 }
             }
             else
-                Ini("www.lh.com:2071", true);//这里写入默认值
+                Ini("www.lh.com:2000", true, MicroServePath, CSign);//这里写入默认值
         }
-
-        private string BaseUrl;
         private Class_RestClient class_RestClient;
 
-        private void Ini(string BaseUrl, bool HttpSign)
+        private void Ini(string BaseUrl, bool HttpSign, string MicroServePath, bool CSign)
         {
-            this.BaseUrl = BaseUrl.Trim();
-            class_RestClient = new Class_RestClient(this.BaseUrl, HttpSign);
+            class_RestClient = new Class_RestClient(BaseUrl, HttpSign, MicroServePath, CSign);
         }
         public bool UploadFileByHttp(string FileName)
         {

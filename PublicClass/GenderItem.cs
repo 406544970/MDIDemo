@@ -64,7 +64,7 @@ namespace MDIDemo.PublicClass
     {
         public ComboxItem()
         {
-            class_Remote = new Class_Remote();
+            class_Remote = new Class_Remote("dictionary", true);
         }
         protected Class_Remote class_Remote;
         protected string[] myList;
