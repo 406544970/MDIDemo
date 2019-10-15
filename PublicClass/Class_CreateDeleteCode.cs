@@ -284,7 +284,7 @@ namespace MDIDemo.PublicClass
                 }
                 stringBuilder.AppendFormat(");\r\n{0}else\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2));
-                stringBuilder.AppendFormat("{0}return ResultStruct.error(\"修改失败\", ResultVO.class, "
+                stringBuilder.AppendFormat("{0}return ResultStruct.error(\"删除失败\", ResultVO.class, "
                         , class_ToolSpace.GetSetSpaceCount(3));
                 switch (class_Sub.ServiceInterFaceReturnCount)
                 {
