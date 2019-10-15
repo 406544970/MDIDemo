@@ -546,18 +546,17 @@ namespace MDIDemo.PublicClass
             }
             return vs;
         }
-        /// <summary>
-        /// 查询条件中，此字段是否加入单引号
-        /// </summary>
-        /// <param name="FieldType"></param>
-        /// <returns></returns>
-        public bool IsAddPoint(string FieldType)
+        public bool IsAddPoint(string FieldType, string WhereValue)
         {
             bool isAdd;
             switch (FieldType)
             {
                 case "datetime":
                 case "date":
+                    isAdd = true;
+                    if (WhereValue != null && WhereValue.Equals("now()"))
+                        isAdd = false;
+                    break;
                 case "bit":
                 case "char":
                 case "varchar":

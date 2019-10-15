@@ -41,7 +41,7 @@ namespace MDIDemo.PublicClass
         /// </summary>
         /// <param name="FieldType">字段类型</param>
         /// <returns></returns>
-        bool IsAddPoint(string FieldType);
+        bool IsAddPoint(string FieldType, string WhereValue);
         void SetClass_AllModel<T>(T class_AllModel);
 
         string GetDataTypeByFunction(string FunctionName, string MySqlDataType);

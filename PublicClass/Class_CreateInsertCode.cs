@@ -1010,7 +1010,7 @@ namespace MDIDemo.PublicClass
                             }
                             else
                             {
-                                if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType))
+                                if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType, class_Field.WhereValue))
                                     MyWhereSql += string.Format("'{0}'", class_Field.WhereValue);
                                 else
                                     MyWhereSql += string.Format("{0}", class_Field.WhereValue);

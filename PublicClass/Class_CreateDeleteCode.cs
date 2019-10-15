@@ -45,7 +45,7 @@ namespace MDIDemo.PublicClass
                 return null;
             if (class_DeleteAllModel.class_SubList[PageIndex] == null)
                 return null;
-            int RepetitionCounter = 0;
+            int ParamCounter = 0;
             Class_Sub class_Sub = class_DeleteAllModel.class_SubList[PageIndex];
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
@@ -96,7 +96,7 @@ namespace MDIDemo.PublicClass
                 , class_DeleteAllModel.class_Create.MethodId);
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
-                RepetitionCounter += class_Field.WhereSelect ? 1 : 0;
+                ParamCounter += class_Field.WhereSelect ? 1 : 0;
                 if (class_Field.WhereSelect)
                     stringBuilder.AppendFormat("{0} * @param {1} {2}\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
@@ -226,10 +226,11 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region 构建输入参数对象
-            stringBuilder.AppendFormat("{0}{1} {2} = new {1}();\r\n"
-            , class_ToolSpace.GetSetSpaceCount(2)
-            , class_Sub.ParamClassName
-            , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0}{1} {2} = new {1}();\r\n"
+                , class_ToolSpace.GetSetSpaceCount(2)
+                , class_Sub.ParamClassName
+                , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
             foreach (Class_Field class_Field in class_Sub.class_Fields)
             {
                 if (class_Field.WhereSelect)
@@ -244,13 +245,22 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region 返回
-            stringBuilder.AppendFormat("{0}{1} {2} = {3}.{4}({5});\r\n"
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0}{1} {2} = {3}.{4}({5});\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2)
                 , "int"
                 , "updateCount"
                 , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName)
                 , class_Sub.MethodId
                 , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+            else
+                stringBuilder.AppendFormat("{0}{1} {2} = {3}.{4}();\r\n"
+                , class_ToolSpace.GetSetSpaceCount(2)
+                , "int"
+                , "updateCount"
+                , Class_Tool.GetFirstCodeLow(class_Sub.ServiceInterFaceName)
+                , class_Sub.MethodId);
+
             if (class_DeleteAllModel.ReturnStructure)
             {
                 stringBuilder.AppendFormat("{0}if (updateCount > 0)\r\n"
@@ -397,21 +407,30 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
-            stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
-                , class_ToolSpace.GetSetSpaceCount(1)
-                , class_DeleteAllModel.AllPackerName
-                , class_DeleteAllModel.class_SubList[Index].ParamClassName
-                , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
+            int ParamCounter = 0;
+            foreach (Class_Field field in class_Sub.class_Fields)
+                ParamCounter += field.WhereSelect ? 1 : 0;
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1)
+                    , class_DeleteAllModel.AllPackerName
+                    , class_DeleteAllModel.class_SubList[Index].ParamClassName
+                    , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
 
             stringBuilder.AppendFormat("{0} * @return {1}\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
-
-            stringBuilder.AppendFormat("{0}int {1}({2} {3});\r\n"
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0}int {1}({2} {3});\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
                 , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
+            else
+                stringBuilder.AppendFormat("{0}int {1}();\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.MethodId);
+
 
             if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
@@ -603,7 +622,11 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("\r\n{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
-            stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
+            int ParamCounter = 0;
+            foreach (Class_Field field in class_Sub.class_Fields)
+                ParamCounter += field.WhereSelect ? 1 : 0;
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_DeleteAllModel.AllPackerName
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
@@ -612,17 +635,28 @@ namespace MDIDemo.PublicClass
                 , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
-            stringBuilder.AppendFormat("{0}@Override\r\n{0}public int {1} ({2} {3}) {{\r\n"
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0}@Override\r\n{0}public int {1} ({2} {3}) {{\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
                 , class_Sub.ParamClassName
                 , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+            else
+                stringBuilder.AppendFormat("{0}@Override\r\n{0}public int {1} () {{\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.MethodId);
 
-            stringBuilder.AppendFormat("{0}return {1}.{2}({3});\r\n"
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0}return {1}.{2}({3});\r\n"
             , class_ToolSpace.GetSetSpaceCount(2)
             , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName)
             , class_Sub.MethodId
             , Class_Tool.GetFirstCodeLow(class_Sub.ParamClassName));
+            else
+                stringBuilder.AppendFormat("{0}return {1}.{2}();\r\n"
+            , class_ToolSpace.GetSetSpaceCount(2)
+            , Class_Tool.GetFirstCodeLow(class_Sub.DaoClassName)
+            , class_Sub.MethodId);
 
             stringBuilder.AppendFormat("{0}}}\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
@@ -670,7 +704,11 @@ namespace MDIDemo.PublicClass
             stringBuilder.AppendFormat("{0}/**\r\n", class_ToolSpace.GetSetSpaceCount(1));
             stringBuilder.AppendFormat("{0} * {1}\r\n{0} *\r\n", class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodContent);
-            stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
+            int ParamCounter = 0;
+            foreach (Class_Field field in class_Sub.class_Fields)
+                ParamCounter += field.WhereSelect ? 1 : 0;
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0} * @param {3} {1}.model.InPutParam.{2}\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_DeleteAllModel.AllPackerName
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
@@ -679,11 +717,16 @@ namespace MDIDemo.PublicClass
                 , class_Sub.ServiceInterFaceReturnRemark);
             stringBuilder.AppendFormat("{0} */\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
-            stringBuilder.AppendFormat("{0}int {1}({2} {3});\r\n"
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0}int {1}({2} {3});\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName
                 , Class_Tool.GetFirstCodeLow(class_DeleteAllModel.class_SubList[Index].ParamClassName));
+            else
+                stringBuilder.AppendFormat("{0}int {1}();\r\n"
+                , class_ToolSpace.GetSetSpaceCount(1)
+                , class_Sub.MethodId);
 
             if (!class_Sub.CreateMainCode)
                 stringBuilder.Append("}\r\n");
@@ -717,6 +760,10 @@ namespace MDIDemo.PublicClass
                     class_InterFaceDataBase = new Class_MySqlDataBase();
                     break;
             }
+            int ParamCounter = 0;
+            foreach (Class_Field field in class_Sub.class_Fields)
+                ParamCounter += field.WhereSelect ? 1 : 0;
+
             if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
@@ -727,11 +774,16 @@ namespace MDIDemo.PublicClass
             }
             #region UpdateId
             stringBuilder.AppendFormat("{1}<!-- 注释：{0} -->\r\n", class_Sub.MethodContent, class_ToolSpace.GetSetSpaceCount(1));
-            stringBuilder.AppendFormat("{0}<delete id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
+            if (ParamCounter > 0)
+                stringBuilder.AppendFormat("{0}<delete id=\"{1}\" parameterType=\"{2}.model.InPutParam.{3}\">\r\n"
                 , class_ToolSpace.GetSetSpaceCount(1)
                 , class_Sub.MethodId
                 , class_DeleteAllModel.AllPackerName
                 , class_DeleteAllModel.class_SubList[Index].ParamClassName);
+            else
+                stringBuilder.AppendFormat("{0}<delete id=\"{1}\">\r\n"
+                    , class_ToolSpace.GetSetSpaceCount(1)
+                    , class_Sub.MethodId);
             #endregion
 
             #region DELETE
@@ -808,18 +860,22 @@ namespace MDIDemo.PublicClass
                     }
                     else
                     {
-                        if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType))
+                        if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType, class_Field.WhereValue))
                             NowWhere = NowWhere + string.Format("'{0}'\r\n", class_Field.WhereValue);
                         else
                             NowWhere = NowWhere + string.Format("{0}\r\n", class_Field.WhereValue);
                     }
                 }
+                if ((class_Field.LogType.IndexOf("<") > -1) || (class_Field.LogType.IndexOf("&") > -1))
+                    NowWhere = string.Format("{0}<![CDATA[{1}]]>\r\n", class_ToolSpace.GetSetSpaceCount(4), NowWhere.Trim());
+                else
+                    NowWhere += "\r\n";
                 if (IsAddIf)
                     stringBuilderWhere.AppendFormat("{1}<if test=\"{0} != null\">\r\n"
                         , InParaFieldName, class_ToolSpace.GetSetSpaceCount(3));
                 stringBuilderWhere.Append(NowWhere);
                 if (IsAddIf)
-                    stringBuilderWhere.AppendFormat("\r\n{0}</if>\r\n", class_ToolSpace.GetSetSpaceCount(3));
+                    stringBuilderWhere.AppendFormat("{0}</if>\r\n", class_ToolSpace.GetSetSpaceCount(3));
                 #endregion
             }
             if (stringBuilderWhere.Length > 0)

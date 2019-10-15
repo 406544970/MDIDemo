@@ -272,7 +272,7 @@ namespace MDIDemo.PublicClass
                                 }
                                 else
                                 {
-                                    if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType))
+                                    if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType, class_Field.WhereValue))
                                         NowWhere = NowWhere + "'{0}'";
                                     else
                                         NowWhere = NowWhere + "0";
@@ -280,7 +280,7 @@ namespace MDIDemo.PublicClass
                             }
                             else
                             {
-                                if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType))
+                                if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType, class_Field.WhereValue))
                                     NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
                                 else
                                     NowWhere = NowWhere + string.Format("{0}", class_Field.WhereValue);
@@ -479,7 +479,7 @@ namespace MDIDemo.PublicClass
                             }
                             else
                             {
-                                if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType))
+                                if (class_InterFaceDataBase.IsAddPoint(class_Field.ReturnType, class_Field.WhereValue))
                                     NowWhere = NowWhere + string.Format("'{0}'", class_Field.WhereValue);
                                 else
                                     NowWhere = NowWhere + string.Format("{0}", class_Field.WhereValue);

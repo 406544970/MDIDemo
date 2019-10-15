@@ -939,7 +939,7 @@ namespace MDIDemo.PublicClass
                     }
                     else
                     {
-                        if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType))
+                        if (class_InterFaceDataBase.IsAddPoint(class_Field.FieldType, class_Field.WhereValue))
                             NowWhere = NowWhere + string.Format("'{0}'\r\n", class_Field.WhereValue);
                         else
                             NowWhere = NowWhere + string.Format("{0}\r\n", class_Field.WhereValue);

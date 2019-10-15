@@ -203,7 +203,7 @@ namespace MDIDemo.vou
         private void SetCompoment()
         {
             this.checkEdit8.Checked = false;
-
+            this.radioGroup9.Enabled = false;
             SetIniSkin(publicSkinName);
             xtraTabControl3.SelectedTabPageIndex = 0;
             xtraTabControl4.SelectedTabPageIndex = 0;
@@ -591,7 +591,7 @@ namespace MDIDemo.vou
                 if (Convert.ToBoolean(dataRow["FieldIsKey"]))
                 {
                     class_Sub.MainFieldName = dataRow["FieldName"].ToString();
-                    class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString());
+                    class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString(), null);
                 }
 
                 Class_DeleteAllModel.Class_Field class_Field = new Class_DeleteAllModel.Class_Field();
@@ -855,7 +855,7 @@ namespace MDIDemo.vou
             waitDialogForm.Close();
             return IsOk;
         }
-        private void _SaveSelectToXml(bool IsDisplayLog,bool PageVersionSign = false)
+        private void _SaveSelectToXml(bool IsDisplayLog, bool PageVersionSign = false)
         {
             int index = 0;
             if (this.listBoxControl1.SelectedIndex > -1)

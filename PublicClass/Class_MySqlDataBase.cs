@@ -980,14 +980,17 @@ ORDER BY cList.ORDINAL_POSITION", TableName, this.DataBaseName);
             UseTable.Dispose();
             return vs;
         }
-
-        public bool IsAddPoint(string FieldType)
+        public bool IsAddPoint(string FieldType,string WhereValue)
         {
             bool isAdd;
             switch (FieldType)
             {
                 case "datetime":
                 case "date":
+                    isAdd = true;
+                    if (WhereValue != null && WhereValue.Equals("now()"))
+                        isAdd = false;
+                    break;
                 case "bit":
                 case "char":
                 case "varchar":

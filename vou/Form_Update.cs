@@ -591,7 +591,7 @@ namespace MDIDemo.vou
                 if (Convert.ToBoolean(dataRow["FieldIsKey"]))
                 {
                     class_Sub.MainFieldName = dataRow["FieldName"].ToString();
-                    class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString());
+                    class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString(), null);
                 }
 
                 Class_UpdateAllModel.Class_Field class_Field = new Class_UpdateAllModel.Class_Field();
