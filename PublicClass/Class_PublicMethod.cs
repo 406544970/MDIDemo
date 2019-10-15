@@ -616,6 +616,7 @@ namespace MDIDemo.PublicClass
                                     class_SelectAllModelOld = this.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
                                     if (class_SelectAllModelOld.class_Create != null)
                                     {
+                                        class_InsertAllModel.class_Create = new Class_InsertAllModel.Class_Create();
                                         class_InsertAllModel.class_Create.CreateDo = class_SelectAllModelOld.class_Create.CreateDo;
                                         class_InsertAllModel.class_Create.CreateDoId = class_SelectAllModelOld.class_Create.CreateDoId;
                                         class_InsertAllModel.class_Create.CreateFrontDo = class_SelectAllModelOld.class_Create.CreateFrontDo;

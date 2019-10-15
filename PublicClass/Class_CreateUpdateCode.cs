@@ -103,7 +103,7 @@ namespace MDIDemo.PublicClass
                         , class_Field.ParaName
                         , class_Field.FieldRemark);
                 if (class_Field.WhereSelect && class_Field.WhereValue == "参数")
-                    stringBuilder.AppendFormat("{0} * @param {1}{2}, Where字段\r\n"
+                    stringBuilder.AppendFormat("{0} * @param {1} {2}, Where字段\r\n"
                         , class_ToolSpace.GetSetSpaceCount(1)
                         , Class_Tool.GetFirstCodeLow(class_Field.ParaName == class_Field.FieldName ? class_Field.ParaName + "Where" : class_Field.ParaName)
                         , class_Field.FieldRemark);
