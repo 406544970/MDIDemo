@@ -49,6 +49,7 @@ namespace MDIDemo.PublicClass
                 stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.UseId, Class_MyInfo.UseIdValue);
                 stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.UseName, Class_MyInfo.UseNameValue);
                 stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.UseType, Class_MyInfo.UseTypeValue);
+                stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.ClientType, Class_MyInfo.ClientTypeValue);
                 if (Class_MyInfo.TokenEffectiveDateTime > DateTime.Now)
                     stringBuilder.AppendFormat("&{0}={1}", Class_MyInfo.TokenName, Class_MyInfo.TokenNameValue);
             }
