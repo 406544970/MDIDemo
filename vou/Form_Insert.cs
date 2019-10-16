@@ -325,7 +325,7 @@ namespace MDIDemo.vou
         }
         private void AddComponentType(RepositoryItemComboBox repositoryItemComboBox)
         {
-            IClass_CreateFrontPage class_CreateFrontPage = new Class_CreateInsertCode();
+            IClass_CreateFrontPage class_CreateFrontPage = new Class_CreateInsertCode(class_InterFaceDataBase);
             repositoryItemComboBox.Items.Clear();
             foreach (string row in class_CreateFrontPage.GetComponentType())
             {
@@ -516,7 +516,7 @@ namespace MDIDemo.vou
             }
             catch (Exception e)
             {
-                MessageBox.Show(string.Format("关系型数据库链接错误，请核对数据库链接参数！\r\n{0}",e.Message)
+                MessageBox.Show(string.Format("关系型数据库链接错误，请核对数据库链接参数！\r\n{0}", e.Message)
                     , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -595,7 +595,7 @@ namespace MDIDemo.vou
                 if (Convert.ToBoolean(dataRow["FieldIsKey"]))
                 {
                     class_Sub.MainFieldName = dataRow["FieldName"].ToString();
-                    class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString(), null); 
+                    class_Sub.AddPoint = class_InterFaceDataBase.IsAddPoint(dataRow["FieldType"].ToString(), null);
                 }
 
                 Class_InsertAllModel.Class_Field class_Field = new Class_InsertAllModel.Class_Field();
@@ -908,7 +908,7 @@ namespace MDIDemo.vou
             waitDialogForm.Close();
             return IsOk;
         }
-        private void _SaveSelectToXml(bool IsDisplayLog,bool PageVersionSign = false)
+        private void _SaveSelectToXml(bool IsDisplayLog, bool PageVersionSign = false)
         {
             int index = 0;
             if (this.listBoxControl1.SelectedIndex > -1)
@@ -1259,7 +1259,7 @@ namespace MDIDemo.vou
             //2：得到XML文件名
             string MethodId = class_InsertAllModel.class_Create.MethodId;
             //3：初始化生成类
-            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateInsertCode(MethodId);
+            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateInsertCode(class_InterFaceDataBase, MethodId);
             //4：验证合法性
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))

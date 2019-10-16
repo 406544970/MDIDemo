@@ -323,7 +323,7 @@ namespace MDIDemo.vou
         }
         private void AddComponentType(RepositoryItemComboBox repositoryItemComboBox)
         {
-            IClass_CreateFrontPage class_CreateFrontPage = new Class_CreateUpdateCode();
+            IClass_CreateFrontPage class_CreateFrontPage = new Class_CreateUpdateCode(class_InterFaceDataBase);
             repositoryItemComboBox.Items.Clear();
             foreach (string row in class_CreateFrontPage.GetComponentType())
             {
@@ -907,7 +907,7 @@ namespace MDIDemo.vou
             waitDialogForm.Close();
             return IsOk;
         }
-        private void _SaveSelectToXml(bool IsDisplayLog,bool PageVersionSign = false)
+        private void _SaveSelectToXml(bool IsDisplayLog, bool PageVersionSign = false)
         {
             int index = 0;
             if (this.listBoxControl1.SelectedIndex > -1)
@@ -1258,7 +1258,7 @@ namespace MDIDemo.vou
             //2：得到XML文件名
             string MethodId = class_UpdateAllModel.class_Create.MethodId;
             //3：初始化生成类
-            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateUpdateCode(MethodId);
+            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateUpdateCode(class_InterFaceDataBase, MethodId);
             //4：验证合法性
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
@@ -1297,7 +1297,7 @@ namespace MDIDemo.vou
                 }
                 #endregion
 
-                _SaveSelectToXml(false,true);
+                _SaveSelectToXml(false, true);
 
                 this.DisplayText("代码已重新生成!");
                 this.xtraTabControl3.SelectedTabPageIndex = 1;

@@ -9,16 +9,17 @@ namespace MDIDemo.PublicClass
 {
     public class Class_CreateUpdateCode : IClass_InterFaceCreateCode, IClass_CreateFrontPage
     {
-        public Class_CreateUpdateCode()
+        public Class_CreateUpdateCode(IClass_InterFaceDataBase class_InterFaceDataBase)
         {
-            InitClass(null);
+            InitClass(class_InterFaceDataBase,null);
         }
-        public Class_CreateUpdateCode(string xmlFileName)
+        public Class_CreateUpdateCode(IClass_InterFaceDataBase class_InterFaceDataBase,string xmlFileName)
         {
-            InitClass(xmlFileName);
+            InitClass(class_InterFaceDataBase,xmlFileName);
         }
-        private void InitClass(string xmlFileName)
+        private void InitClass(IClass_InterFaceDataBase class_InterFaceDataBase,string xmlFileName)
         {
+            this.class_InterFaceDataBase = class_InterFaceDataBase;
             class_UpdateAllModel = new Class_UpdateAllModel();
             if (xmlFileName != null)
             {
@@ -27,6 +28,7 @@ namespace MDIDemo.PublicClass
             }
             class_SQLiteOperator = new Class_SQLiteOperator();
         }
+        private IClass_InterFaceDataBase class_InterFaceDataBase;
         private Class_SQLiteOperator class_SQLiteOperator;
         private Class_UpdateAllModel class_UpdateAllModel;
         public void AddAllOutFieldName()
@@ -49,20 +51,6 @@ namespace MDIDemo.PublicClass
             Class_Sub class_Sub = class_UpdateAllModel.class_SubList[PageIndex];
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
-
             #region 注释
             if (!class_Sub.CreateMainCode)
             {
@@ -423,19 +411,6 @@ namespace MDIDemo.PublicClass
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
             if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
@@ -493,19 +468,6 @@ namespace MDIDemo.PublicClass
 
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
             stringBuilder.Append("/**\r\n");
             stringBuilder.AppendFormat(_GetAuthor());
             stringBuilder.AppendFormat(" * @create {0}\r\n", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
@@ -670,19 +632,6 @@ namespace MDIDemo.PublicClass
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
             if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
@@ -742,19 +691,6 @@ namespace MDIDemo.PublicClass
                 return null;
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
             if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("/**\r\n");
@@ -802,20 +738,6 @@ namespace MDIDemo.PublicClass
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
             StringBuilder stringBuilderSet = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
             if (!class_Sub.CreateMainCode)
             {
                 stringBuilder.Append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n");
@@ -872,7 +794,7 @@ namespace MDIDemo.PublicClass
             stringBuilder.Append(stringBuilderSet.ToString().Substring(1));
             stringBuilder.AppendFormat("{0}</set>\r\n"
                 , class_ToolSpace.GetSetSpaceCount(2));
-            stringBuilder.Append(_GetMainWhereLable(class_InterFaceDataBase, Index));
+            stringBuilder.Append(_GetMainWhereLable(Index));
             stringBuilder.AppendFormat("{0}</update>\r\n", class_ToolSpace.GetSetSpaceCount(1));
 
             if (!class_Sub.CreateMainCode)
@@ -883,7 +805,7 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
-        private string _GetMainWhereLable(IClass_InterFaceDataBase class_InterFaceDataBase, int Index)
+        private string _GetMainWhereLable(int Index)
         {
             if (class_UpdateAllModel == null)
                 return null;
@@ -1000,20 +922,6 @@ namespace MDIDemo.PublicClass
             Class_Sub class_Sub = class_UpdateAllModel.class_SubList[PageIndex];
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
-
             #region 注释
             if (!class_Sub.CreateMainCode)
             {
@@ -1236,19 +1144,6 @@ namespace MDIDemo.PublicClass
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
             #region 注释
             if (!class_Sub.CreateMainCode)
             {
@@ -1386,20 +1281,6 @@ namespace MDIDemo.PublicClass
             List<Class_WhereField> class_WhereFields = new List<Class_WhereField>();
             Class_Tool class_ToolSpace = new Class_Tool();
             StringBuilder stringBuilder = new StringBuilder();
-            IClass_InterFaceDataBase class_InterFaceDataBase;
-            switch (class_UpdateAllModel.class_SelectDataBase.databaseType)
-            {
-                case "MySql":
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-                case "SqlServer 2017":
-                    class_InterFaceDataBase = new Class_SqlServer2017DataBase();
-                    break;
-                default:
-                    class_InterFaceDataBase = new Class_MySqlDataBase();
-                    break;
-            }
-
             #region 注释
             if (!class_Sub.CreateMainCode)
             {

@@ -2018,7 +2018,7 @@ namespace MDIDemo.vou
             waitDialogForm.Close();
             return IsOk;
         }
-        private void _SaveSelectToXml(bool IsDisplayLog,bool PageVersionSign = false)
+        private void _SaveSelectToXml(bool IsDisplayLog, bool PageVersionSign = false)
         {
             int[] vs = new int[this.xtraTabControl5.TabPages.Count];
             vs[0] = this.gridControl1.MainView.RowCount;
@@ -2623,15 +2623,15 @@ namespace MDIDemo.vou
             //2：得到XML文件名
             string MethodId = class_SelectAllModel.class_Create.MethodId;
             //3：初始化生成类
-            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(MethodId);
+            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateSelectCode(class_InterFaceDataBase, MethodId);
             IClass_CreateFrontPage class_CreateFrontPage;
             switch (this.radioGroup3.SelectedIndex)
             {
                 case 0:
-                    class_CreateFrontPage = new Class_CreateSelectCode(MethodId);
+                    class_CreateFrontPage = new Class_CreateSelectCode(class_InterFaceDataBase, MethodId);
                     break;
                 default:
-                    class_CreateFrontPage = new Class_CreateSelectCode(MethodId);
+                    class_CreateFrontPage = new Class_CreateSelectCode(class_InterFaceDataBase, MethodId);
                     break;
             }
             //4：验证合法性
