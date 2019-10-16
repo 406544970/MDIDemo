@@ -68,6 +68,7 @@ namespace MDIDemo
                     Class_MyInfo.TokenNameValue = class_Use.token;
                     Class_MyInfo.TokenEffectiveDateTime = Convert.ToDateTime(class_Use.tokenEffective);
                     Class_MyInfo.UseTypeValue = class_Use.useType;
+                    Class_MyInfo.CompanyName = class_Use.companyName;
 
                     #region 记住登录信息
                     class_SQLiteOperator.UpdateLogInfo(this.textEdit1.Text

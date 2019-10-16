@@ -178,6 +178,25 @@ namespace MDIDemo.PublicClass
             string ResultValue = class_RestClient.Post("useAuthorityPageFeign/insertPage", class_ParaArrays);
             return Convert.ToInt32(ResultValue);
         }
+        /// <summary>
+        /// 下载指定公司所有用户
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Company">公司全称</param>
+        /// <param name="Page">当前页数</param>
+        /// <param name="Limit">每页条数</param>
+        /// <returns></returns>
+        public ResultVOPage<T> DownAllUseByCompany<T>(string Company)
+        {
+            ResultVOPage<T> resultVO = new ResultVOPage<T>();
+            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+            Class_ParaArray class_ParaArray = new Class_ParaArray();
+            class_ParaArray.ParaName = "companyName";
+            class_ParaArray.ParaValue = Company;
+            class_ParaArrays.Add(class_ParaArray);
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/downAllUseByCompany", class_ParaArrays, null, true);
+            return JsonTools.JsonToObject(ResultValue, resultVO, true) as ResultVOPage<T>;
+        }
         public ResultVO<T> SelectVersionList<T>(PageVersionListInParam pageVersionListInParam)
         {
             ResultVO<T> resultVO = new ResultVO<T>();

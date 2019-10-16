@@ -56,6 +56,19 @@ namespace MDIDemo.PublicClass
                 );
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
+        public int InsertUser(Class_MyBatisAllUseModel class_MyBatisAllUseModel)
+        {
+            string Sql = string.Format(@"Insert into sys_useInfo (id,nickName,stopSign)
+                values('{0}','{1}',{2})"
+                , class_MyBatisAllUseModel.id
+                , class_MyBatisAllUseModel.nickName
+                , (class_MyBatisAllUseModel.stopSign ? 1:0));
+            return mySqlite3.ExecuteSql(Sql);
+        }
+        public int DeleteAllUser()
+        {
+            return mySqlite3.ExecuteSql("DELETE FROM sys_useInfo");
+        }
         public int DownLoadUpate(PageModel pageModel)
         {
             string Sql = _GetUpdateSql(pageModel.pageKey, pageModel.projectId, pageModel.pageType, pageModel.pageVersion

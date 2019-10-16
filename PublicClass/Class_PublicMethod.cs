@@ -183,25 +183,49 @@ namespace MDIDemo.PublicClass
             }
 
             #endregion
+
+            #region 下载更新XML任务
             PageVersionListInParam pageVersionListInParam = new PageVersionListInParam();
             pageVersionListInParam.pageKey = pageKey;
             Class_Remote class_Remote = new Class_Remote("dictionary", true);
             ResultVO<List<PageModel>> resultVO = new ResultVO<List<PageModel>>();
             resultVO = class_Remote.SelectVersionList<List<PageModel>>(pageVersionListInParam);
-            if (resultVO.code == 0)
+            #endregion
+
+            if (progressBarControl != null)
             {
+                if (resultVO.code == 0)
+                    progressBarControl.Properties.Maximum = Convert.ToInt32(resultVO.count);
+                progressBarControl.Properties.Maximum = 0;
+                progressBarControl.Properties.Step = 1;
+                progressBarControl.Position = 0;
+            }
+
+            #region 下载所有用户
+            long TotalRowCount = 0;
+            List<Class_MyBatisAllUseModel> class_MyBatisAllUseModels = new List<Class_MyBatisAllUseModel>();
+            ResultVO<List<Class_MyBatisAllUseModel>> resultVOPage = new ResultVO<List<Class_MyBatisAllUseModel>>();
+            resultVOPage = class_Remote.DownAllUseByCompany<List<Class_MyBatisAllUseModel>>(Class_MyInfo.CompanyName);
+            if (resultVOPage.code == 0)
+            {
+                TotalRowCount = resultVOPage.count;
+                class_MyBatisAllUseModels = resultVOPage.data;
+            }
+            if (progressBarControl != null)
+                progressBarControl.Properties.Maximum += Convert.ToInt32(TotalRowCount);
+            #endregion
+
+
+            #region
+            if (resultVO.code == 0 || resultVOPage.code == 0)
+            {
+                int Index = 1;
+
+                #region 下载
                 if (resultVO.count > 0)
                 {
-                    if (progressBarControl != null)
-                    {
-                        progressBarControl.Properties.Maximum = Convert.ToInt32(resultVO.count);
-                        progressBarControl.Properties.Maximum = 0;
-                        progressBarControl.Properties.Step = 1;
-                        progressBarControl.Position = 0;
-                    }
                     List<PageModel> pageModels = new List<PageModel>();
                     pageModels = resultVO.data;
-                    int index = 1;
                     int changeCount = 0;
                     Thread.Sleep(300);
                     Application.DoEvents();
@@ -255,15 +279,43 @@ namespace MDIDemo.PublicClass
                         }
                         if (progressBarControl != null)
                         {
-                            progressBarControl.Position = index++;
+                            progressBarControl.Position = Index++;
                             Thread.Sleep(300);
                             Application.DoEvents();
                         }
                     }
-
                     ResultValue = ResultValue && true;
                 }
+                #endregion
+
+                #region 更新用户
+                if (resultVOPage.count > 0)
+                {
+                    Thread.Sleep(300);
+                    Application.DoEvents();
+                    #region 删除SQLITE数据
+                    class_SQLiteOperator.DeleteAllUser();
+                    #endregion
+                    #region 循环INSERT
+                    if (class_MyBatisAllUseModels != null)
+                        foreach (Class_MyBatisAllUseModel class_MyBatisAllUseModel in class_MyBatisAllUseModels)
+                        {
+                            if (class_SQLiteOperator.InsertUser(class_MyBatisAllUseModel) > 0)
+                            {
+                                ResultValue = ResultValue && true;
+                                if (progressBarControl != null)
+                                {
+                                    progressBarControl.Position = Index++;
+                                    Thread.Sleep(300);
+                                    Application.DoEvents();
+                                }
+                            }
+                        }
+                    #endregion
+                }
+                #endregion
             }
+            #endregion
             return ResultValue;
         }
 

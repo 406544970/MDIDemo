@@ -14,4 +14,10 @@ namespace MDIDemo.Model
         public T data { get; set; }
 
     }
+
+    public class ResultVOPage<T> : ResultVO<T>
+    {
+        public int page { get; set; }
+        public int limit { get; set; }
+    }
 }

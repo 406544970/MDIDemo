@@ -19,6 +19,7 @@ namespace MDIDemo.PublicClass
         public static string UseTypeValue;
         public static string ClientTypeValue = "CS";
         public static string TokenNameValue;
+        public static string CompanyName;
         /// <summary>
         /// token有效时间
         /// </summary>
