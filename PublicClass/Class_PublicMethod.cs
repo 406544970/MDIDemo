@@ -245,9 +245,13 @@ namespace MDIDemo.PublicClass
                     Application.DoEvents();
                     foreach (PageModel pageModel in pageModels)
                     {
-                        string FileName = string.Format("{0}\\{1}\\{2}.xml"
+                        string FileFolder = string.Format("{0}\\{1}"
                             , Application.StartupPath
-                            , pageModel.pageType
+                            , pageModel.pageType);
+                        if (!Directory.Exists(FileFolder))
+                            Directory.CreateDirectory(FileFolder);
+                        string FileName = string.Format("{0}\\{1}.xml"
+                            , FileFolder
                             , pageModel.pageKey);
                         switch (pageModel.operateType)
                         {
