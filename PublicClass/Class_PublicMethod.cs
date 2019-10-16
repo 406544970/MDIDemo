@@ -203,6 +203,8 @@ namespace MDIDemo.PublicClass
                     pageModels = resultVO.data;
                     int index = 1;
                     int changeCount = 0;
+                    Thread.Sleep(300);
+                    Application.DoEvents();
                     foreach (PageModel pageModel in pageModels)
                     {
                         string FileName = string.Format("{0}\\{1}\\{2}.xml"
@@ -254,7 +256,7 @@ namespace MDIDemo.PublicClass
                         if (progressBarControl != null)
                         {
                             progressBarControl.Position = index++;
-                            Thread.Sleep(0);
+                            Thread.Sleep(300);
                             Application.DoEvents();
                         }
                     }
