@@ -4171,19 +4171,19 @@ namespace MDIDemo.PublicClass
             {
                 if (Index > 0)
                 {
-                    stringBuilder.AppendFormat("\r\n{1}, int {0}"
+                    stringBuilder.AppendFormat("\r\n{1}, {0}"
                     , "page"
                     , class_ToolSpace.GetSetSpaceCount(3));
-                    stringBuilder.AppendFormat("\r\n{1}, int {0}"
+                    stringBuilder.AppendFormat("\r\n{1}, {0}"
                     , "limit"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
                 else
                 {
-                    stringBuilder.AppendFormat("\r\n{1} int {0},"
+                    stringBuilder.AppendFormat("\r\n{1} {0},"
                     , "page"
                     , class_ToolSpace.GetSetSpaceCount(3));
-                    stringBuilder.AppendFormat("\r\n{1} int {0}"
+                    stringBuilder.AppendFormat("\r\n{1} {0}"
                     , "limit"
                     , class_ToolSpace.GetSetSpaceCount(3));
                 }
