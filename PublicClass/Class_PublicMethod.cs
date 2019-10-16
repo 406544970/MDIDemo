@@ -161,6 +161,7 @@ namespace MDIDemo.PublicClass
         }
         public bool GetVersionUpdateInfo(ProgressBarControl progressBarControl)
         {
+            int SleepTime = 150;
             bool ResultValue = true;
             List<PageVersionInParam> pageKey = new List<PageVersionInParam>();
             #region 从SQLITE读取数据
@@ -210,14 +211,27 @@ namespace MDIDemo.PublicClass
             {
                 TotalRowCount = resultVOPage.count;
                 class_MyBatisAllUseModels = resultVOPage.data;
+                if (progressBarControl != null)
+                    progressBarControl.Properties.Maximum += Convert.ToInt32(TotalRowCount);
             }
-            if (progressBarControl != null)
-                progressBarControl.Properties.Maximum += Convert.ToInt32(TotalRowCount);
             #endregion
 
+            #region 下载所有字典
+            long TotalDictionary = 0;
+            ResultVO<List<Class_Dictionary>> resultVODic = new ResultVO<List<Class_Dictionary>>();
+            List<Class_Dictionary> class_Dictionaries = new List<Class_Dictionary>();
+            resultVODic = class_Remote.DownIniDictionary<List<Class_Dictionary>>();
+            if (resultVODic.code == 0)
+            {
+                TotalDictionary = resultVODic.count;
+                class_Dictionaries = resultVODic.data;
+                if (progressBarControl != null)
+                    progressBarControl.Properties.Maximum += Convert.ToInt32(TotalDictionary);
+            }
+            #endregion
 
             #region
-            if (resultVO.code == 0 || resultVOPage.code == 0)
+            if (resultVO.code == 0 || resultVOPage.code == 0 || resultVODic.code == 0)
             {
                 int Index = 1;
 
@@ -227,7 +241,7 @@ namespace MDIDemo.PublicClass
                     List<PageModel> pageModels = new List<PageModel>();
                     pageModels = resultVO.data;
                     int changeCount = 0;
-                    Thread.Sleep(300);
+                    Thread.Sleep(SleepTime);
                     Application.DoEvents();
                     foreach (PageModel pageModel in pageModels)
                     {
@@ -280,7 +294,7 @@ namespace MDIDemo.PublicClass
                         if (progressBarControl != null)
                         {
                             progressBarControl.Position = Index++;
-                            Thread.Sleep(300);
+                            Thread.Sleep(SleepTime);
                             Application.DoEvents();
                         }
                     }
@@ -291,7 +305,7 @@ namespace MDIDemo.PublicClass
                 #region 更新用户
                 if (resultVOPage.count > 0)
                 {
-                    Thread.Sleep(300);
+                    Thread.Sleep(SleepTime);
                     Application.DoEvents();
                     #region 删除SQLITE数据
                     class_SQLiteOperator.DeleteAllUser();
@@ -306,12 +320,40 @@ namespace MDIDemo.PublicClass
                                 if (progressBarControl != null)
                                 {
                                     progressBarControl.Position = Index++;
-                                    Thread.Sleep(300);
+                                    Thread.Sleep(SleepTime);
                                     Application.DoEvents();
                                 }
                             }
                         }
                     #endregion
+                }
+                #endregion
+
+                #region 更新字典
+                if (resultVODic.count > 0)
+                {
+                    Thread.Sleep(SleepTime);
+                    Application.DoEvents();
+                    #region 删除SQLITE数据
+                    class_SQLiteOperator.DeleteAllDictionary();
+                    #endregion
+                    if (class_Dictionaries != null)
+                    {
+                        foreach (Class_Dictionary class_Dictionary in class_Dictionaries)
+                        {
+                            if (class_SQLiteOperator.InsertDictionary(class_Dictionary) > 0)
+                            {
+                                ResultValue = ResultValue && true;
+                                if (progressBarControl != null)
+                                {
+                                    progressBarControl.Position = Index++;
+                                    Thread.Sleep(SleepTime);
+                                    Application.DoEvents();
+                                }
+                            }
+                        }
+                    }
+
                 }
                 #endregion
             }

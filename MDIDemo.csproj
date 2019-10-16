@@ -214,6 +214,7 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Class_Dictionary.cs" />
     <Compile Include="Model\Class_LogRemamber.cs" />
     <Compile Include="Model\Class_MyBatisAllUseModel.cs" />
     <Compile Include="Model\Class_Result.cs" />

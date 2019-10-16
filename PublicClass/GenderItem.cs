@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MDIDemo.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
@@ -64,9 +65,9 @@ namespace MDIDemo.PublicClass
     {
         public ComboxItem()
         {
-            class_Remote = new Class_Remote("dictionary", true);
+            class_SQLiteOperator = new Class_SQLiteOperator();
         }
-        protected Class_Remote class_Remote;
+        protected Class_SQLiteOperator class_SQLiteOperator;
         protected string[] myList;
         public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
         {
@@ -86,7 +87,7 @@ namespace MDIDemo.PublicClass
         public CreateNickTypeItem()
         {
             List<string> vs = new List<string>();
-            vs = class_Remote.SelectUseCreateNickNameList();
+            vs = class_SQLiteOperator.SelectUseCreateNickNameList();
             if (vs != null)
             {
                 base.myList = new string[vs.Count];
@@ -101,7 +102,7 @@ namespace MDIDemo.PublicClass
         public DoNickTypeItem()
         {
             List<string> vs = new List<string>();
-            vs = class_Remote.SelectUseDoNickNameList();
+            vs = class_SQLiteOperator.SelectUseDoNickNameList();
             if (vs != null)
             {
                 base.myList = new string[vs.Count];
@@ -116,7 +117,7 @@ namespace MDIDemo.PublicClass
         public FrontNickTypeItem()
         {
             List<string> vs = new List<string>();
-            vs = class_Remote.SelectUseFrontNickNameList();
+            vs = class_SQLiteOperator.SelectUseFrontNickNameList();
             if (vs != null)
             {
                 base.myList = new string[vs.Count];
@@ -169,13 +170,13 @@ namespace MDIDemo.PublicClass
     {
         public ProjectNameTypeItem()
         {
-            List<string> vs = new List<string>();
-            vs = class_Remote.selectSystemListString();
+            List<Class_Dictionary> vs = new List<Class_Dictionary>();
+            vs = class_SQLiteOperator.GetAllDictionary("STS");
             if (vs != null)
             {
                 base.myList = new string[vs.Count];
                 for (int i = 0; i < vs.Count; i++)
-                    base.myList[i] = vs[i];
+                    base.myList[i] = vs[i].contentName;
             }
             vs.Clear();
         }

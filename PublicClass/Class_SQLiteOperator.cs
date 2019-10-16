@@ -56,6 +56,42 @@ namespace MDIDemo.PublicClass
                 );
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
+        public List<Class_Dictionary> GetAllDictionary(string SignName)
+        {
+            string Sql = "Select id, signName, contentName, defaultSelect, sortNo, stopSign, remark From inf_dictionary";
+            if (SignName != null)
+                Sql = string.Format(@"{1} Where signName='{0}' 
+                    And stopSign = '0'
+                    Order by sortNo"
+                    , SignName, Sql);
+            List<string> vs = new List<string>();
+            vs = mySqlite3.ExecuteReadList(Sql);
+            if (vs != null)
+            {
+                List<Class_Dictionary> class_Dictionaries = new List<Class_Dictionary>();
+                foreach (string row in vs)
+                {
+                    string[] rowList = row.Split(';');
+                    Class_Dictionary class_Dictionary = new Class_Dictionary();
+                    class_Dictionary.id = rowList[0];
+                    class_Dictionary.signName = rowList[1];
+                    class_Dictionary.contentName = rowList[2];
+                    class_Dictionary.defaultSelect = rowList[3] == "1" ? true : false;
+                    class_Dictionary.sortNo = Convert.ToInt32(rowList[4]);
+                    class_Dictionary.stopSign = rowList[5] == "1" ? true : false;
+                    class_Dictionary.remark = rowList[6];
+                    class_Dictionaries.Add(class_Dictionary);
+                }
+                return class_Dictionaries;
+            }
+            else
+                return null;
+
+        }
+        public int DeleteDictionary()
+        {
+            return mySqlite3.ExecuteSql("DELETE FROM inf_dictionary");
+        }
         /// <summary>
         /// 根据昵称得到用户ID
         /// </summary>
@@ -80,14 +116,66 @@ namespace MDIDemo.PublicClass
             else
                 return null;
         }
+        public List<string> SelectUseCreateNickNameList()
+        {
+            return _SelectDictionaryListString("R003");
+        }
+        public List<string> SelectUseDoNickNameList()
+        {
+            return _SelectDictionaryListString("R004");
+        }
+        public List<string> SelectUseFrontNickNameList()
+        {
+            return _SelectDictionaryListString("R005");
+        }
+        private List<string> _SelectDictionaryListString(string RoleId)
+        {
+            string Sql = string.Format(@"Select nickName 
+                From sys_useInfo 
+                Where roleId = '{0}'
+                AND endDate > datetime('now')
+                AND stopSign = '0'
+                Order by nickName", RoleId);
+            return mySqlite3.ExecuteReadList(Sql);
+        }
+        public int InsertDictionary(Class_Dictionary class_Dictionary)
+        {
+            string Sql = string.Format(@"Insert into inf_dictionary (id, signName
+                , contentName, defaultSelect
+                , sortNo, stopSign, remark )
+                values('{0}','{1}','{2}',{3}
+                ,{4},{5},'{6}')"
+                , class_Dictionary.id
+                , class_Dictionary.signName
+                , class_Dictionary.contentName
+                , class_Dictionary.defaultSelect ? "1" : "0"
+                , class_Dictionary.sortNo
+                , class_Dictionary.stopSign ? "1" : "0"
+                , class_Dictionary.remark
+                );
+            return mySqlite3.ExecuteSql(Sql);
+        }
         public int InsertUser(Class_MyBatisAllUseModel class_MyBatisAllUseModel)
         {
-            string Sql = string.Format(@"Insert into sys_useInfo (id,nickName,stopSign)
-                values('{0}','{1}',{2})"
+            string Sql = string.Format(@"Insert into sys_useInfo (id,nickName,stopSign
+                ,mobile,email,endDate,companyName
+                ,roleId,workTime)
+                values('{0}','{1}',{2},'{3}','{4}','{5}','{6}','{7}','{8}')"
                 , class_MyBatisAllUseModel.id
                 , class_MyBatisAllUseModel.nickName
-                , (class_MyBatisAllUseModel.stopSign ? 1 : 0));
+                , (class_MyBatisAllUseModel.stopSign ? 1 : 0)
+                , class_MyBatisAllUseModel.mobile
+                , class_MyBatisAllUseModel.email
+                , class_MyBatisAllUseModel.endDate.ToString("yyyy-MM-dd HH:mm:ss")
+                , class_MyBatisAllUseModel.companyName
+                , class_MyBatisAllUseModel.roleId
+                , class_MyBatisAllUseModel.workTime.ToString("yyyy-MM-dd HH:mm:ss")
+                );
             return mySqlite3.ExecuteSql(Sql);
+        }
+        public int DeleteAllDictionary()
+        {
+            return mySqlite3.ExecuteSql("DELETE FROM inf_dictionary");
         }
         public int DeleteAllUser()
         {

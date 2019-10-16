@@ -155,28 +155,16 @@ namespace MDIDemo.PublicClass
             return Convert.ToInt32(ResultValue);
 
         }
-        public List<string> SelectUseCreateNickNameList()
-        {
-            return _SelectUseNickNameList("selectUseCreateNickNameList");
-        }
-        public List<string> SelectUseDoNickNameList()
-        {
-            return _SelectUseNickNameList("selectUseDoNickNameList");
-        }
-        public List<string> SelectUseFrontNickNameList()
-        {
-            return _SelectUseNickNameList("selectUseFrontNickNameList");
-        }
-        private List<string> _SelectUseNickNameList(string MethodName)
-        {
-            MethodName = string.Format("useAuthorityPageFeign/{0}", MethodName);
-            return _SelectDictionaryListString(MethodName, null);
-
-        }
         public int InsertPage(List<Class_ParaArray> class_ParaArrays)
         {
             string ResultValue = class_RestClient.Post("useAuthorityPageFeign/insertPage", class_ParaArrays);
             return Convert.ToInt32(ResultValue);
+        }
+        public ResultVO<T> DownIniDictionary<T>()
+        {
+            ResultVO<T> resultVO = new ResultVO<T>();
+            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/downIniDictionary", null, null, true);
+            return JsonTools.JsonToObject(ResultValue, resultVO, true) as ResultVO<T>;
         }
         /// <summary>
         /// 下载指定公司所有用户
