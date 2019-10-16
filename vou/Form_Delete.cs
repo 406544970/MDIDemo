@@ -323,7 +323,7 @@ namespace MDIDemo.vou
         }
         private void AddComponentType(RepositoryItemComboBox repositoryItemComboBox)
         {
-            IClass_CreateFrontPage class_CreateFrontPage = new Class_CreateDeleteCode();
+            IClass_CreateFrontPage class_CreateFrontPage = new Class_CreateDeleteCode(class_InterFaceDataBase);
             repositoryItemComboBox.Items.Clear();
             foreach (string row in class_CreateFrontPage.GetComponentType())
             {
@@ -1209,7 +1209,7 @@ namespace MDIDemo.vou
             //2：得到XML文件名
             string MethodId = class_DeleteAllModel.class_Create.MethodId;
             //3：初始化生成类
-            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateDeleteCode(MethodId);
+            IClass_InterFaceCreateCode class_InterFaceCreateCode = new Class_CreateDeleteCode(class_InterFaceDataBase,MethodId);
             //4：验证合法性
             List<string> outMessage = new List<string>();
             if (class_InterFaceCreateCode.IsCheckOk(ref outMessage))
