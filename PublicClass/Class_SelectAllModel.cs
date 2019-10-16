@@ -495,9 +495,7 @@ namespace MDIDemo.PublicClass
                 ReadOnly = false;
                 SwaggerSign = true;
                 Port = "8080";
-                class_Remote = new Class_Remote("dictionary", true);
             }
-            private Class_Remote class_Remote;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("方法标识")]
@@ -591,7 +589,6 @@ namespace MDIDemo.PublicClass
             {
                 get; set;
             }
-            private string _CreateMan;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("创建者姓名")]
@@ -600,19 +597,13 @@ namespace MDIDemo.PublicClass
             [TypeConverter(typeof(CreateNickTypeItem))] //使用自定义的属性下拉框
             public string CreateMan
             {
-                get { return _CreateMan; }
-                set
-                {
-                    _CreateMan = value;
-                    this.CreateManId = class_Remote.SelectUseId(_CreateMan);
-                }
+                get; set;
             }
             [Browsable(false)]
             public string CreateDoId
             {
                 get; set;
             }
-            private string _CreateDo;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("后端工程师姓名")]
@@ -621,19 +612,13 @@ namespace MDIDemo.PublicClass
             [TypeConverter(typeof(DoNickTypeItem))] //使用自定义的属性下拉框
             public string CreateDo
             {
-                get { return _CreateDo; }
-                set
-                {
-                    _CreateDo = value;
-                    this.CreateDoId = class_Remote.SelectUseId(_CreateDo);
-                }
+                get; set;
             }
             [Browsable(false)]
             public string CreateFrontDoId
             {
-                get;set;
+                get; set;
             }
-            private string _CreateFrontDo;
             [Browsable(true)]
             [Category("生成配置")]
             [DisplayName("前端工程师姓名")]
@@ -642,12 +627,7 @@ namespace MDIDemo.PublicClass
             [TypeConverter(typeof(FrontNickTypeItem))] //使用自定义的属性下拉框
             public string CreateFrontDo
             {
-                get { return _CreateFrontDo; }
-                set
-                {
-                    _CreateFrontDo = value;
-                    this.CreateFrontDoId = class_Remote.SelectUseId(_CreateFrontDo);
-                }
+                get; set;
             }
             [Browsable(true)]
             [Category("生成配置")]

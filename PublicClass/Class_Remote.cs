@@ -234,15 +234,15 @@ namespace MDIDemo.PublicClass
             return JsonTools.JsonToObject(ResultValue, vs) as List<string>;
         }
 
-        public string SelectUseId(string NickName)
-        {
-            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
-            Class_ParaArray class_ParaArray = new Class_ParaArray();
-            class_ParaArray.ParaName = "nickName";
-            class_ParaArray.ParaValue = NickName;
-            class_ParaArrays.Add(class_ParaArray);
-            string ResultValue = class_RestClient.Post("useAuthorityPageFeign/selectUseId", class_ParaArrays);
-            return ResultValue;
-        }
+        //public string SelectUseId(string NickName)
+        //{
+        //    List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+        //    Class_ParaArray class_ParaArray = new Class_ParaArray();
+        //    class_ParaArray.ParaName = "nickName";
+        //    class_ParaArray.ParaValue = NickName;
+        //    class_ParaArrays.Add(class_ParaArray);
+        //    string ResultValue = class_RestClient.Post("useAuthorityPageFeign/selectUseId", class_ParaArrays);
+        //    return ResultValue;
+        //}
     }
 }

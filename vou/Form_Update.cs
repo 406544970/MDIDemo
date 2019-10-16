@@ -34,6 +34,7 @@ namespace MDIDemo.vou
         private List<string> myTableNameList;
         private List<string> myTableContentList;
         private Class_PublicMethod class_PublicMethod;
+        private Class_SQLiteOperator Class_SQLiteOperator;
         private string MyXmlFileName;
 
         private void _ChangeRead(bool ReadSign)
@@ -51,6 +52,7 @@ namespace MDIDemo.vou
             MyXmlFileName = xmlFileName;
             publicSkinName = skinName;
             class_PublicMethod = new Class_PublicMethod();
+            Class_SQLiteOperator = new Class_SQLiteOperator();
             SetCompoment();
             this.listBoxControl1.Items.Clear();
             this.listBoxControl3.Items.Clear();
@@ -1000,8 +1002,19 @@ namespace MDIDemo.vou
 
                 #region 保存属性框
                 class_UpdateAllModel.class_SelectDataBase = this.propertyGridControl3.SelectedObject as Class_InsertDataBase;
-                class_UpdateAllModel.class_Create = this.propertyGridControl4.SelectedObject as Class_Create;
                 class_UpdateAllModel.class_MyBatisMap = this.propertyGridControl5.SelectedObject as Class_MyBatisMap;
+                Class_UpdateAllModel.Class_Create class_Create = this.propertyGridControl4.SelectedObject as Class_Create;
+                class_UpdateAllModel.class_Create = class_Create;
+                string tempString = null;
+                tempString = Class_SQLiteOperator.GetUserId(class_UpdateAllModel.class_Create.CreateDo);
+                if (tempString != null)
+                    class_UpdateAllModel.class_Create.CreateDoId = tempString;
+                tempString = Class_SQLiteOperator.GetUserId(class_UpdateAllModel.class_Create.CreateMan);
+                if (tempString != null)
+                    class_UpdateAllModel.class_Create.CreateManId = tempString;
+                tempString = Class_SQLiteOperator.GetUserId(class_UpdateAllModel.class_Create.CreateFrontDo);
+                if (tempString != null)
+                    class_UpdateAllModel.class_Create.CreateFrontDoId = tempString;
                 #endregion
 
                 if (class_PublicMethod.UpdateToXml(class_UpdateAllModel.class_Create.MethodId, class_UpdateAllModel, PageVersionSign))

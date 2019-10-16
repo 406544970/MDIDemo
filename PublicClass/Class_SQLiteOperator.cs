@@ -56,13 +56,37 @@ namespace MDIDemo.PublicClass
                 );
             return mySqlite3.ExecuteSql(Sql) == 1 ? true : false;
         }
+        /// <summary>
+        /// 根据昵称得到用户ID
+        /// </summary>
+        /// <param name="NickName"></param>
+        /// <returns></returns>
+        public string GetUserId(string NickName)
+        {
+            if (NickName == null)
+                return null;
+
+            List<string> vs = new List<string>();
+            vs = mySqlite3.ExecuteReadList(string.Format("SELECT id FROM sys_useInfo Where nickName='{0}'", NickName));
+            if (vs != null)
+            {
+                if (vs.Count == 1)
+                {
+                    return vs[0].ToString();
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
         public int InsertUser(Class_MyBatisAllUseModel class_MyBatisAllUseModel)
         {
             string Sql = string.Format(@"Insert into sys_useInfo (id,nickName,stopSign)
                 values('{0}','{1}',{2})"
                 , class_MyBatisAllUseModel.id
                 , class_MyBatisAllUseModel.nickName
-                , (class_MyBatisAllUseModel.stopSign ? 1:0));
+                , (class_MyBatisAllUseModel.stopSign ? 1 : 0));
             return mySqlite3.ExecuteSql(Sql);
         }
         public int DeleteAllUser()
@@ -125,7 +149,7 @@ namespace MDIDemo.PublicClass
             , DateTime createTime, DateTime lastUpdateTime
             , string createOperatorId, string doOperatorId, int finishCount
             , string methodRemark, bool readOnly
-            , string frontOperatorId, string createOperator, string doOperator, string frontOperator,bool pushSign)
+            , string frontOperatorId, string createOperator, string doOperator, string frontOperator, bool pushSign)
         {
             return string.Format(@"INSERT INTO vou_pageInfomation(pageKey, projectId, 
 pageType, pageVersion, createTime, lastUpdateTime,
@@ -141,7 +165,7 @@ VAlUES('{0}', '{1}', '{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}
                 , (methodRemark == null ? "null" : "'" + methodRemark + "'")
                 , (readOnly ? 1 : 0)
                 , frontOperatorId, createOperator, doOperator, frontOperator
-                , pushSign ? "1":"0");
+                , pushSign ? "1" : "0");
         }
         private bool _InsertIntoPageKey(Class_PageInfomationMode class_PageInfomationMode)
         {
@@ -466,7 +490,7 @@ VAlUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}',{8},{9},{10},'{11}','{12}',
                         NewSql = string.Format(Sql, "update");
                         break;
                     case 3:
-                        NewSql = string.Format(Sql + " And createOperatorId = '{1}'", "delete", Class_MyInfo.UseIdValue) ;
+                        NewSql = string.Format(Sql + " And createOperatorId = '{1}'", "delete", Class_MyInfo.UseIdValue);
                         break;
                     default:
                         NewSql = string.Format(Sql, "select");
