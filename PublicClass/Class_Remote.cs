@@ -102,27 +102,38 @@ namespace MDIDemo.PublicClass
         private ResultVO<T> PrivateUploadFile<T>(string AllPathFileName, string FileName, string Operate, string FolderName)
         {
             List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
-            Class_ParaArray class_ParaArrayFileName = new Class_ParaArray();
-            class_ParaArrayFileName.ParaName = "fileName";
-            class_ParaArrayFileName.ParaValue = FileName;
-            class_ParaArrays.Add(class_ParaArrayFileName);
-            if (FolderName != null)
+            try
             {
-                Class_ParaArray class_ParaArrayFolderName = new Class_ParaArray();
-                class_ParaArrayFolderName.ParaName = "dictionary";
-                class_ParaArrayFolderName.ParaValue = FolderName;
-                class_ParaArrays.Add(class_ParaArrayFolderName);
-            }
+                Class_ParaArray class_ParaArrayFileName = new Class_ParaArray();
+                class_ParaArrayFileName.ParaName = "fileName";
+                class_ParaArrayFileName.ParaValue = FileName;
+                class_ParaArrays.Add(class_ParaArrayFileName);
+                if (FolderName != null)
+                {
+                    Class_ParaArray class_ParaArrayFolderName = new Class_ParaArray();
+                    class_ParaArrayFolderName.ParaName = "dictionary";
+                    class_ParaArrayFolderName.ParaValue = FolderName;
+                    class_ParaArrays.Add(class_ParaArrayFolderName);
+                }
 
-            byte[] byteArray = FileBinaryConvertHelper.File2Bytes(AllPathFileName);
-            ResultVO<T> resultVO = new ResultVO<T>();
-            string Url = "useAuthorityPageFeign/uploadFile";
-            if (FolderName == null)
-                Url = string.Format("useAuthorityPageFeign/uploadFile{0}", Operate);
-            string ResultValue = class_RestClient.PostBinary(Url
-                , class_ParaArrays
-                , byteArray, true);
-            return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
+                byte[] byteArray = FileBinaryConvertHelper.File2Bytes(AllPathFileName);
+                ResultVO<T> resultVO = new ResultVO<T>();
+                string Url = "useAuthorityPageFeign/uploadFile";
+                if (FolderName == null)
+                    Url = string.Format("useAuthorityPageFeign/uploadFile{0}", Operate);
+                string ResultValue = class_RestClient.PostBinary(Url
+                    , class_ParaArrays
+                    , byteArray, true);
+                return JsonTools.JsonToObject(ResultValue, resultVO) as ResultVO<T>;
+            }
+            catch (Exception error)
+            {
+                throw error;
+            }
+            finally
+            {
+                class_ParaArrays.Clear();
+            }
         }
         public byte[] DownLoadFile(string PageKey, string pageType)
         {

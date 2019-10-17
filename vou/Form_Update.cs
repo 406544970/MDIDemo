@@ -1045,6 +1045,9 @@ namespace MDIDemo.vou
                     MessageBox.Show("成功PUSH到远程！"
                     , "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                else
+                    MessageBox.Show("未保存界面，不允许PUSH到远程！"
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("未保存界面，不允许PUSH到远程！"

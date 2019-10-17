@@ -1038,18 +1038,29 @@ namespace MDIDemo.vou
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.textEdit17.Text.Trim() != null)
+            try
             {
-                Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
-                if (class_PublicMethod.PushToRemote(this.textEdit17.Text.Trim()))
+                if (this.textEdit17.Text.Trim() != null)
                 {
-                    MessageBox.Show("成功PUSH到远程！"
-                    , "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Class_PublicMethod class_PublicMethod = new Class_PublicMethod();
+                    if (class_PublicMethod.PushToRemote(this.textEdit17.Text.Trim()))
+                    {
+                        MessageBox.Show("成功PUSH到远程！"
+                        , "温馨提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                        MessageBox.Show("未保存界面，不允许PUSH到远程！"
+                        , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else
+                    MessageBox.Show("未保存界面，不允许PUSH到远程！"
+                    , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-                MessageBox.Show("未保存界面，不允许PUSH到远程！"
+            catch (Exception error)
+            {
+                MessageBox.Show(string.Format("未保存界面，不允许PUSH到远程！\r\n原因：{0}", error.Message)
                 , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void listBoxControl1_MouseUp(object sender, MouseEventArgs e)

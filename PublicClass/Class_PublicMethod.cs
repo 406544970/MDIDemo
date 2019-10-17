@@ -109,51 +109,58 @@ namespace MDIDemo.PublicClass
         public bool PushToRemote(string PageKey)
         {
             bool ResultValue = false;
-            if (PageKey == null)
-                return ResultValue;
-
-            PageModel pageModel = class_SQLiteOperator.GetPageByPageKey(PageKey);
-            if (pageModel != null)
+            try
             {
-                string AllPathFileName = string.Format("{0}\\{1}\\{2}.xml", Application.StartupPath, pageModel.pageType, pageModel.pageKey);
-                if (File.Exists(AllPathFileName))
+                if (PageKey == null)
+                    return ResultValue;
+
+                PageModel pageModel = class_SQLiteOperator.GetPageByPageKey(PageKey);
+                if (pageModel != null)
                 {
-                    if (class_SQLiteOperator.UpdatePushSign(pageModel.pageKey))
+                    string AllPathFileName = string.Format("{0}\\{1}\\{2}.xml", Application.StartupPath, pageModel.pageType, pageModel.pageKey);
+                    if (File.Exists(AllPathFileName))
                     {
-                        ResultVO<bool> resultVO = new ResultVO<bool>();
-                        switch (pageModel.pageType)
+                        if (class_SQLiteOperator.UpdatePushSign(pageModel.pageKey))
                         {
-                            case "select":
-                                resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
-                                break;
-                            case "insert":
-                                resultVO = class_Remote.UploadFileInsert<bool>(AllPathFileName, pageModel.pageKey + ".xml");
-                                break;
-                            case "update":
-                                resultVO = class_Remote.UploadFileUpdate<bool>(AllPathFileName, pageModel.pageKey + ".xml");
-                                break;
-                            case "delete":
-                                resultVO = class_Remote.UploadFileDelete<bool>(AllPathFileName, pageModel.pageKey + ".xml");
-                                break;
-                            default:
-                                resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
-                                break;
-                        }
-                        if (resultVO.code == 0)
-                        {
-                            List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
-                            class_ParaArrays = GetVersionPara(pageModel);
-                            ResultValue = class_Remote.InsertPage(class_ParaArrays) > 0 ? true : false;
-                            class_ParaArrays.Clear();
-                        }
-                        else
-                        {
-                            ResultValue = ResultValue && false;
+                            ResultVO<bool> resultVO = new ResultVO<bool>();
+                            switch (pageModel.pageType)
+                            {
+                                case "select":
+                                    resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                    break;
+                                case "insert":
+                                    resultVO = class_Remote.UploadFileInsert<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                    break;
+                                case "update":
+                                    resultVO = class_Remote.UploadFileUpdate<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                    break;
+                                case "delete":
+                                    resultVO = class_Remote.UploadFileDelete<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                    break;
+                                default:
+                                    resultVO = class_Remote.UploadFileSelect<bool>(AllPathFileName, pageModel.pageKey + ".xml");
+                                    break;
+                            }
+                            if (resultVO.code == 0)
+                            {
+                                List<Class_ParaArray> class_ParaArrays = new List<Class_ParaArray>();
+                                class_ParaArrays = GetVersionPara(pageModel);
+                                ResultValue = class_Remote.InsertPage(class_ParaArrays) > 0 ? true : false;
+                                class_ParaArrays.Clear();
+                            }
+                            else
+                            {
+                                ResultValue = ResultValue && false;
+                            }
                         }
                     }
                 }
+                return ResultValue;
             }
-            return ResultValue;
+            catch (Exception error)
+            {
+                throw error;
+            }
         }
         public void DownLoadFile()
         {
