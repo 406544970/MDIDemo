@@ -14,7 +14,7 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            const string _Version = "1.12";
+            const string _Version = "1.13";
             Form_Log form_Log = new Form_Log(_Version);
             if (form_Log.ShowDialog() == DialogResult.OK)
             {
