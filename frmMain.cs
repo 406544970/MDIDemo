@@ -73,40 +73,45 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_DeleteAllModel.Class_InsertDataBase class_DeleteDataBase = new Class_DeleteAllModel.Class_InsertDataBase();
             try
             {
-                if (xmlFileName != null && File.Exists(string.Format("{0}\\delete\\{1}.xml", Application.StartupPath, xmlFileName)))
-                {
-                    class_DeleteAllModel = class_PublicMethod.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
-                    class_DeleteDataBase = class_DeleteAllModel.class_SelectDataBase;
-                    switch (class_DeleteDataBase.databaseType)
-                    {
-                        case "MySql":
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord, class_DeleteDataBase.Port);
-                            break;
-                        case "SqlServer 2017":
-                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord);
-                            break;
-                        default:
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord, class_DeleteDataBase.Port);
-                            break;
-                    }
-                }
                 Class_WindowType class_WindowType = new Class_WindowType();
                 class_WindowType.WindowType = "delete";
                 Form_Delete form;
-                if (xmlFileName == null)
+                if (xmlFileName != null)
+                {
+                    if (File.Exists(string.Format("{0}\\delete\\{1}.xml", Application.StartupPath, xmlFileName)))
+                    {
+
+                        class_DeleteAllModel = class_PublicMethod.FromXmlToDeleteObject<Class_DeleteAllModel>(xmlFileName);
+                        class_DeleteDataBase = class_DeleteAllModel.class_SelectDataBase;
+                        switch (class_DeleteDataBase.databaseType)
+                        {
+                            case "MySql":
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord, class_DeleteDataBase.Port);
+                                break;
+                            case "SqlServer 2017":
+                                class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord);
+                                break;
+                            default:
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_DeleteDataBase.dataSourceUrl, class_DeleteDataBase.dataBaseName, class_DeleteDataBase.dataSourceUserName, class_DeleteDataBase.dataSourcePassWord, class_DeleteDataBase.Port);
+                                break;
+                        }
+                        class_WindowType.XmlFileName = xmlFileName;
+                        form = new Form_Delete(mySkinName, xmlFileName);
+                        form.Text = string.Format("DELETE：{0}", xmlFileName);
+                        form.Tag = class_WindowType;
+                        OpenSubForm(form);
+                    }
+                    else
+                        MessageBox.Show(string.Format("文件【{0}.xml】不存在，无法打开界面！", xmlFileName)
+                        , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
                 {
                     form = new Form_Delete(mySkinName);
                     form.Text = "新DELETE";
                     form.Tag = class_WindowType;
+                    OpenSubForm(form);
                 }
-                else
-                {
-                    class_WindowType.XmlFileName = xmlFileName;
-                    form = new Form_Delete(mySkinName, xmlFileName);
-                    form.Text = string.Format("DELETE：{0}", xmlFileName);
-                    form.Tag = class_WindowType;
-                }
-                OpenSubForm(form);
             }
             catch (Exception e)
             {
@@ -131,40 +136,44 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_UpdateAllModel.Class_InsertDataBase class_UpdateDataBase = new Class_UpdateAllModel.Class_InsertDataBase();
             try
             {
-                if (xmlFileName != null && File.Exists(string.Format("{0}\\update\\{1}.xml", Application.StartupPath, xmlFileName)))
-                {
-                    class_UpdateAllModel = class_PublicMethod.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
-                    class_UpdateDataBase = class_UpdateAllModel.class_SelectDataBase;
-                    switch (class_UpdateDataBase.databaseType)
-                    {
-                        case "MySql":
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord, class_UpdateDataBase.Port);
-                            break;
-                        case "SqlServer 2017":
-                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord);
-                            break;
-                        default:
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord, class_UpdateDataBase.Port);
-                            break;
-                    }
-                }
                 Class_WindowType class_WindowType = new Class_WindowType();
                 class_WindowType.WindowType = "update";
                 Form_Update form;
-                if (xmlFileName == null)
+                if (xmlFileName != null)
+                {
+                    if (File.Exists(string.Format("{0}\\update\\{1}.xml", Application.StartupPath, xmlFileName)))
+                    {
+                        class_UpdateAllModel = class_PublicMethod.FromXmlToUpdateObject<Class_UpdateAllModel>(xmlFileName);
+                        class_UpdateDataBase = class_UpdateAllModel.class_SelectDataBase;
+                        switch (class_UpdateDataBase.databaseType)
+                        {
+                            case "MySql":
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord, class_UpdateDataBase.Port);
+                                break;
+                            case "SqlServer 2017":
+                                class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord);
+                                break;
+                            default:
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_UpdateDataBase.dataSourceUrl, class_UpdateDataBase.dataBaseName, class_UpdateDataBase.dataSourceUserName, class_UpdateDataBase.dataSourcePassWord, class_UpdateDataBase.Port);
+                                break;
+                        }
+                        class_WindowType.XmlFileName = xmlFileName;
+                        form = new Form_Update(mySkinName, xmlFileName);
+                        form.Text = string.Format("UPDATE：{0}", xmlFileName);
+                        form.Tag = class_WindowType;
+                        OpenSubForm(form);
+                    }
+                    else
+                        MessageBox.Show(string.Format("文件【{0}.xml】不存在，无法打开界面！", xmlFileName)
+                        , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
                 {
                     form = new Form_Update(mySkinName);
                     form.Text = "新UPDATE";
                     form.Tag = class_WindowType;
+                    OpenSubForm(form);
                 }
-                else
-                {
-                    class_WindowType.XmlFileName = xmlFileName;
-                    form = new Form_Update(mySkinName, xmlFileName);
-                    form.Text = string.Format("UPDATE：{0}", xmlFileName);
-                    form.Tag = class_WindowType;
-                }
-                OpenSubForm(form);
             }
             catch (Exception e)
             {
@@ -189,40 +198,44 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_InsertAllModel.Class_InsertDataBase class_InsertDataBase = new Class_InsertAllModel.Class_InsertDataBase();
             try
             {
-                if (xmlFileName != null && File.Exists(string.Format("{0}\\insert\\{1}.xml", Application.StartupPath, xmlFileName)))
-                {
-                    class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
-                    class_InsertDataBase = class_InsertAllModel.class_SelectDataBase;
-                    switch (class_InsertDataBase.databaseType)
-                    {
-                        case "MySql":
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord, class_InsertDataBase.Port);
-                            break;
-                        case "SqlServer 2017":
-                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord);
-                            break;
-                        default:
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord, class_InsertDataBase.Port);
-                            break;
-                    }
-                }
                 Class_WindowType class_WindowType = new Class_WindowType();
                 class_WindowType.WindowType = "insert";
                 Form_Insert form;
-                if (xmlFileName == null)
+                if (xmlFileName != null)
+                {
+                    if (File.Exists(string.Format("{0}\\insert\\{1}.xml", Application.StartupPath, xmlFileName)))
+                    {
+                        class_InsertAllModel = class_PublicMethod.FromXmlToInsertObject<Class_InsertAllModel>(xmlFileName);
+                        class_InsertDataBase = class_InsertAllModel.class_SelectDataBase;
+                        switch (class_InsertDataBase.databaseType)
+                        {
+                            case "MySql":
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord, class_InsertDataBase.Port);
+                                break;
+                            case "SqlServer 2017":
+                                class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord);
+                                break;
+                            default:
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_InsertDataBase.dataSourceUrl, class_InsertDataBase.dataBaseName, class_InsertDataBase.dataSourceUserName, class_InsertDataBase.dataSourcePassWord, class_InsertDataBase.Port);
+                                break;
+                        }
+                        class_WindowType.XmlFileName = xmlFileName;
+                        form = new Form_Insert(mySkinName, xmlFileName);
+                        form.Text = string.Format("INSERT：{0}", xmlFileName);
+                        form.Tag = class_WindowType;
+                        OpenSubForm(form);
+                    }
+                    else
+                        MessageBox.Show(string.Format("文件【{0}.xml】不存在，无法打开界面！", xmlFileName)
+                        , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
                 {
                     form = new Form_Insert(mySkinName);
                     form.Text = "新INSERT";
                     form.Tag = class_WindowType;
+                    OpenSubForm(form);
                 }
-                else
-                {
-                    class_WindowType.XmlFileName = xmlFileName;
-                    form = new Form_Insert(mySkinName, xmlFileName);
-                    form.Text = string.Format("INSERT：{0}", xmlFileName);
-                    form.Tag = class_WindowType;
-                }
-                OpenSubForm(form);
             }
             catch (Exception e)
             {
@@ -248,40 +261,44 @@ namespace DevExpress.XtraBars.Demos.MDIDemo
             Class_SelectAllModel.Class_SelectDataBase class_SelectDataBase = new Class_SelectAllModel.Class_SelectDataBase();
             try
             {
-                if (xmlFileName != null && File.Exists(string.Format("{0}\\select\\{1}.xml", Application.StartupPath, xmlFileName)))
-                {
-                    class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
-                    class_SelectDataBase = class_SelectAllModel.class_SelectDataBase;
-                    switch (class_SelectDataBase.databaseType)
-                    {
-                        case "MySql":
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord, class_SelectDataBase.Port);
-                            break;
-                        case "SqlServer 2017":
-                            class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord);
-                            break;
-                        default:
-                            class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord, class_SelectDataBase.Port);
-                            break;
-                    }
-                }
                 Class_WindowType class_WindowType = new Class_WindowType();
                 class_WindowType.WindowType = "select";
                 Form_Select form;
-                if (xmlFileName == null)
+                if (xmlFileName != null)
+                {
+                    if (File.Exists(string.Format("{0}\\select\\{1}.xml", Application.StartupPath, xmlFileName)))
+                    {
+                        class_SelectAllModel = class_PublicMethod.FromXmlToSelectObject<Class_SelectAllModel>(xmlFileName);
+                        class_SelectDataBase = class_SelectAllModel.class_SelectDataBase;
+                        switch (class_SelectDataBase.databaseType)
+                        {
+                            case "MySql":
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord, class_SelectDataBase.Port);
+                                break;
+                            case "SqlServer 2017":
+                                class_InterFaceDataBase = new Class_SqlServer2017DataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord);
+                                break;
+                            default:
+                                class_InterFaceDataBase = new Class_MySqlDataBase(class_SelectDataBase.dataSourceUrl, class_SelectDataBase.dataBaseName, class_SelectDataBase.dataSourceUserName, class_SelectDataBase.dataSourcePassWord, class_SelectDataBase.Port);
+                                break;
+                        }
+                        class_WindowType.XmlFileName = xmlFileName;
+                        form = new Form_Select(mySkinName, xmlFileName);
+                        form.Text = string.Format("SELECT：{0}", xmlFileName);
+                        form.Tag = class_WindowType;
+                        OpenSubForm(form);
+                    }
+                    else
+                        MessageBox.Show(string.Format("文件【{0}.xml】不存在，无法打开界面！", xmlFileName)
+                        , "错误信息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
                 {
                     form = new Form_Select(mySkinName);
                     form.Text = "新SELECT";
                     form.Tag = class_WindowType;
+                    OpenSubForm(form);
                 }
-                else
-                {
-                    class_WindowType.XmlFileName = xmlFileName;
-                    form = new Form_Select(mySkinName, xmlFileName);
-                    form.Text = string.Format("SELECT：{0}", xmlFileName);
-                    form.Tag = class_WindowType;
-                }
-                OpenSubForm(form);
             }
             catch (Exception e)
             {
