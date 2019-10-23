@@ -170,7 +170,7 @@ namespace MDIDemo.PublicClass
         {
             int SleepTime = 150;
             bool ResultValue = true;
-            List<PageVersionInParam> pageKey = new List<PageVersionInParam>();
+            List<PageVersionInParam> pageKeys = new List<PageVersionInParam>();
             #region 从SQLITE读取数据
             List<string> vs = new List<string>();
             vs = class_SQLiteOperator.GetLocalPageList();
@@ -185,7 +185,7 @@ namespace MDIDemo.PublicClass
                         pageVersion = Convert.ToInt32(row[1]),
                         pageType = row[2]
                     };
-                    pageKey.Add(pageVersionInParam);
+                    pageKeys.Add(pageVersionInParam);
                 }
                 vs.Clear();
             }
@@ -193,11 +193,28 @@ namespace MDIDemo.PublicClass
             #endregion
 
             #region 下载更新XML任务
+            List<PageVersionInParam> pageKeysNew = new List<PageVersionInParam>();
+            foreach (PageVersionInParam pageVersionInParam in pageKeys)
+            {
+                if (File.Exists(string.Format("{0}\\{1}\\{2}.xml"
+                        , Application.StartupPath
+                        , pageVersionInParam.pageType
+                        , pageVersionInParam.pageKey)))
+                {
+                    pageKeysNew.Add(pageVersionInParam);
+                }
+                else
+                    class_SQLiteOperator.DeleteByPageKey(pageVersionInParam.pageKey);
+            }
+            pageKeys.Clear();
+            pageKeys = null;
             PageVersionListInParam pageVersionListInParam = new PageVersionListInParam();
-            pageVersionListInParam.pageKey = pageKey;
+            pageVersionListInParam.pageKey = pageKeysNew;
             Class_Remote class_Remote = new Class_Remote("dictionary", true);
             ResultVO<List<PageModel>> resultVO = new ResultVO<List<PageModel>>();
             resultVO = class_Remote.SelectVersionList<List<PageModel>>(pageVersionListInParam);
+            pageKeysNew.Clear();
+            pageKeysNew = null;
             #endregion
 
             if (progressBarControl != null)
